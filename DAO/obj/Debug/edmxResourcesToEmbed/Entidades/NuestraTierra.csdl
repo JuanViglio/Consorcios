@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NuestraTierraModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+  <EntityContainer Name="NuestraTierraEntities">
+    <EntitySet Name="Padres" EntityType="NuestraTierraModel.Padres" />
+  </EntityContainer>
+  <EntityType Name="Padres">
+    <Key>
+      <PropertyRef Name="Mail" />
+    </Key>
+    <Property Type="String" Name="Mail" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Password" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

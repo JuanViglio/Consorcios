@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCliente xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Cliente>
+    <Nombre>Tincho</Nombre>
+    <Direccion>qq</Direccion>
+    <Importe>300</Importe>
+  </Cliente>
+  <Cliente>
+    <Nombre>Colo</Nombre>
+    <Direccion>ww</Direccion>
+    <Importe>500</Importe>
+  </Cliente>
+  <Cliente>
+    <Nombre>Rulo</Nombre>
+    <Direccion>ee</Direccion>
+    <Importe>250</Importe>
+  </Cliente>
+</ArrayOfCliente>

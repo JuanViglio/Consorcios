@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SistemmasAgroModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+  <EntityContainer Name="SistemmasAgroEF">
+    <EntitySet Name="Cosechas" EntityType="SistemmasAgroModel.Cosechas" />
+    <EntitySet Name="Costos" EntityType="SistemmasAgroModel.Costos" />
+    <EntitySet Name="EstadisticaActual" EntityType="SistemmasAgroModel.EstadisticaActual" />
+    <EntitySet Name="Historico" EntityType="SistemmasAgroModel.Historico" />
+    <EntitySet Name="Precampaña" EntityType="SistemmasAgroModel.Precampaña" />
+  </EntityContainer>
+  <EntityType Name="Cosechas">
+    <Key>
+      <PropertyRef Name="idCosecha" />
+    </Key>
+    <Property Name="idCosecha" Type="Int32" Nullable="false" />
+    <Property Name="NombreCosecha" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="PrecioUnitario" Type="Decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="Cantidad1" Type="Int32" Nullable="true" />
+    <Property Name="Cantidad2" Type="Int32" Nullable="true" />
+    <Property Name="Cantidad3" Type="Int32" Nullable="true" />
+    <Property Name="Cantidad4" Type="Int32" Nullable="true" />
+    <Property Name="GraficoMinimo" Type="Int32" Nullable="true" />
+    <Property Name="GraficoMaximo" Type="Int32" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Costos">
+    <Key>
+      <PropertyRef Name="idCosto" />
+    </Key>
+    <Property Name="idCosto" Type="Int32" Nullable="false" />
+    <Property Name="NombreCosto" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Tipo" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="EstadisticaActual">
+    <Key>
+      <PropertyRef Name="idCosecha" />
+      <PropertyRef Name="idCosto" />
+    </Key>
+    <Property Name="idCosecha" Type="Int32" Nullable="false" />
+    <Property Name="importe" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="idCosto" Type="Int32" Nullable="false" />
+    <Property Name="tipo" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Historico">
+    <Key>
+      <PropertyRef Name="idHistorico" />
+    </Key>
+    <Property Name="idHistorico" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="año" Type="Int32" Nullable="false" />
+    <Property Name="mes" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="idCosecha" Type="Int32" Nullable="false" />
+    <Property Name="idCosto" Type="Int32" Nullable="false" />
+    <Property Name="importe" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="Precampaña">
+    <Key>
+      <PropertyRef Name="idCosecha" />
+      <PropertyRef Name="idCosto" />
+    </Key>
+    <Property Type="Int32" Name="idCosecha" Nullable="false" />
+    <Property Type="Int32" Name="idCosto" Nullable="false" />
+    <Property Type="Decimal" Name="importe" Precision="18" Scale="2" />
+    <Property Type="String" Name="tipo" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

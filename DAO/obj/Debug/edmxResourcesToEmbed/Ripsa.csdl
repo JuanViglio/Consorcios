@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RipsaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+  <EntityContainer Name="RipsaEntities">
+    <EntitySet Name="Inmobiliarias" EntityType="RipsaModel.Inmobiliarias" />
+    <EntitySet Name="Inquilinos" EntityType="RipsaModel.Inquilinos" />
+    <EntitySet Name="PagosAlquiler" EntityType="RipsaModel.PagosAlquiler" />
+    <AssociationSet Name="FK_Inquilinos_Inmobiliarias" Association="RipsaModel.FK_Inquilinos_Inmobiliarias">
+      <End Role="Inmobiliarias" EntitySet="Inmobiliarias" />
+      <End Role="Inquilinos" EntitySet="Inquilinos" />
+    </AssociationSet>
+    <EntitySet Name="Alquileres" EntityType="RipsaModel.Alquileres" />
+    <AssociationSet Name="FK_Alquileres_Inquilinos" Association="RipsaModel.FK_Alquileres_Inquilinos">
+      <End Role="Inquilinos" EntitySet="Inquilinos" />
+      <End Role="Alquileres" EntitySet="Alquileres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Alquileres_PagosAlquiler" Association="RipsaModel.FK_Alquileres_PagosAlquiler">
+      <End Role="Alquileres" EntitySet="Alquileres" />
+      <End Role="PagosAlquiler" EntitySet="PagosAlquiler" />
+    </AssociationSet>
+    <EntitySet Name="CtaCte_Inmobiliarias" EntityType="RipsaModel.CtaCte_Inmobiliarias" />
+    <AssociationSet Name="FK_CtaCte_Inmobiliarias" Association="RipsaModel.FK_CtaCte_Inmobiliarias">
+      <End Role="Inmobiliarias" EntitySet="Inmobiliarias" />
+      <End Role="CtaCte_Inmobiliarias" EntitySet="CtaCte_Inmobiliarias" />
+    </AssociationSet>
+    <EntitySet Name="Saldos" EntityType="RipsaModel.Saldos" />
+    <AssociationSet Name="FK_Saldos_Inmobiliarias" Association="RipsaModel.FK_Saldos_Inmobiliarias">
+      <End Role="Inmobiliarias" EntitySet="Inmobiliarias" />
+      <End Role="Saldos" EntitySet="Saldos" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Inmobiliarias">
+    <Key>
+      <PropertyRef Name="ID_Inmobiliaria" />
+    </Key>
+    <Property Type="Int32" Name="ID_Inmobiliaria" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="mail" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="contraseña" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="nombre" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Inquilinos" Relationship="RipsaModel.FK_Inquilinos_Inmobiliarias" FromRole="Inmobiliarias" ToRole="Inquilinos" />
+    <NavigationProperty Name="CtaCte_Inmobiliarias" Relationship="RipsaModel.FK_CtaCte_Inmobiliarias" FromRole="Inmobiliarias" ToRole="CtaCte_Inmobiliarias" />
+    <NavigationProperty Name="Saldos" Relationship="RipsaModel.FK_Saldos_Inmobiliarias" FromRole="Inmobiliarias" ToRole="Saldos" />
+  </EntityType>
+  <EntityType Name="Inquilinos">
+    <Key>
+      <PropertyRef Name="ID_Inquilino" />
+    </Key>
+    <Property Type="Int32" Name="ID_Inquilino" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Nombre" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="DNI" />
+    <Property Type="String" Name="Telefono" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Inmobiliarias" Relationship="RipsaModel.FK_Inquilinos_Inmobiliarias" FromRole="Inquilinos" ToRole="Inmobiliarias" />
+    <NavigationProperty Name="Alquileres" Relationship="RipsaModel.FK_Alquileres_Inquilinos" FromRole="Inquilinos" ToRole="Alquileres" />
+  </EntityType>
+  <EntityType Name="PagosAlquiler">
+    <Key>
+      <PropertyRef Name="ID_PagoAlquiler" />
+    </Key>
+    <Property Type="Decimal" Name="ID_PagoAlquiler" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Periodo" Nullable="false" />
+    <Property Type="Int32" Name="Cuota" Nullable="false" />
+    <Property Type="Decimal" Name="Importe" Nullable="false" Precision="18" Scale="0" ConcurrencyMode="None" />
+    <Property Type="DateTime" Name="FechaPago" Precision="3" />
+    <Property Type="String" Name="Mes" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="ImporteInmobiliaria" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="ImporteAdicional" Precision="18" Scale="0" />
+    <NavigationProperty Name="Alquileres" Relationship="RipsaModel.FK_Alquileres_PagosAlquiler" FromRole="PagosAlquiler" ToRole="Alquileres" />
+  </EntityType>
+  <Association Name="FK_Inquilinos_Inmobiliarias">
+    <End Type="RipsaModel.Inmobiliarias" Role="Inmobiliarias" Multiplicity="1" />
+    <End Type="RipsaModel.Inquilinos" Role="Inquilinos" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Alquileres">
+    <Key>
+      <PropertyRef Name="ID_Alquiler" />
+    </Key>
+    <Property Type="Int32" Name="ID_Alquiler" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Direccion" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="FechaInicio" Precision="3" />
+    <Property Type="DateTime" Name="FechaFin" Precision="3" />
+    <Property Type="Boolean" Name="Intereses" />
+    <Property Type="Decimal" Name="InteresDiario" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="UltimoDiaPago" />
+    <NavigationProperty Name="Inquilinos" Relationship="RipsaModel.FK_Alquileres_Inquilinos" FromRole="Alquileres" ToRole="Inquilinos" />
+    <NavigationProperty Name="PagosAlquiler" Relationship="RipsaModel.FK_Alquileres_PagosAlquiler" FromRole="Alquileres" ToRole="PagosAlquiler" />
+  </EntityType>
+  <Association Name="FK_Alquileres_Inquilinos">
+    <End Type="RipsaModel.Inquilinos" Role="Inquilinos" Multiplicity="1" />
+    <End Type="RipsaModel.Alquileres" Role="Alquileres" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Alquileres_PagosAlquiler">
+    <End Type="RipsaModel.Alquileres" Role="Alquileres" Multiplicity="1" />
+    <End Type="RipsaModel.PagosAlquiler" Role="PagosAlquiler" Multiplicity="*" />
+  </Association>
+  <EntityType Name="CtaCte_Inmobiliarias">
+    <Key>
+      <PropertyRef Name="ID_CtaCte" />
+    </Key>
+    <Property Type="Int64" Name="ID_CtaCte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Detalle" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="Cobros" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Pagos" Precision="18" Scale="2" />
+    <NavigationProperty Name="Inmobiliarias" Relationship="RipsaModel.FK_CtaCte_Inmobiliarias" FromRole="CtaCte_Inmobiliarias" ToRole="Inmobiliarias" />
+    <Property Type="DateTime" Name="Fecha" Precision="3" />
+    <Property Type="Decimal" Name="Saldo" Precision="18" Scale="2" />
+  </EntityType>
+  <Association Name="FK_CtaCte_Inmobiliarias">
+    <End Type="RipsaModel.Inmobiliarias" Role="Inmobiliarias" Multiplicity="0..1" />
+    <End Type="RipsaModel.CtaCte_Inmobiliarias" Role="CtaCte_Inmobiliarias" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Saldos">
+    <Key>
+      <PropertyRef Name="ID_Saldo" />
+    </Key>
+    <Property Type="Int32" Name="ID_Saldo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Decimal" Name="Saldo" Nullable="false" Precision="18" Scale="2" />
+    <NavigationProperty Name="Inmobiliarias" Relationship="RipsaModel.FK_Saldos_Inmobiliarias" FromRole="Saldos" ToRole="Inmobiliarias" />
+  </EntityType>
+  <Association Name="FK_Saldos_Inmobiliarias">
+    <End Type="RipsaModel.Inmobiliarias" Role="Inmobiliarias" Multiplicity="1" />
+    <End Type="RipsaModel.Saldos" Role="Saldos" Multiplicity="*" />
+  </Association>
+</Schema>

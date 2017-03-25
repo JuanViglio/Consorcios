@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RipsaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+  <EntityContainer Name="RipsaModelStoreContainer">
+    <EntitySet Name="Alquileres" EntityType="RipsaModel.Store.Alquileres" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CtaCte_Inmobiliarias" EntityType="RipsaModel.Store.CtaCte_Inmobiliarias" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Inmobiliarias" EntityType="RipsaModel.Store.Inmobiliarias" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Inquilinos" EntityType="RipsaModel.Store.Inquilinos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PagosAlquiler" EntityType="RipsaModel.Store.PagosAlquiler" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Saldos" EntityType="RipsaModel.Store.Saldos" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Alquileres_Inquilinos" Association="RipsaModel.Store.FK_Alquileres_Inquilinos">
+      <End Role="Inquilinos" EntitySet="Inquilinos" />
+      <End Role="Alquileres" EntitySet="Alquileres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Alquileres_PagosAlquiler" Association="RipsaModel.Store.FK_Alquileres_PagosAlquiler">
+      <End Role="Alquileres" EntitySet="Alquileres" />
+      <End Role="PagosAlquiler" EntitySet="PagosAlquiler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CtaCte_Inmobiliarias" Association="RipsaModel.Store.FK_CtaCte_Inmobiliarias">
+      <End Role="Inmobiliarias" EntitySet="Inmobiliarias" />
+      <End Role="CtaCte_Inmobiliarias" EntitySet="CtaCte_Inmobiliarias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inquilinos_Inmobiliarias" Association="RipsaModel.Store.FK_Inquilinos_Inmobiliarias">
+      <End Role="Inmobiliarias" EntitySet="Inmobiliarias" />
+      <End Role="Inquilinos" EntitySet="Inquilinos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Saldos_Inmobiliarias" Association="RipsaModel.Store.FK_Saldos_Inmobiliarias">
+      <End Role="Inmobiliarias" EntitySet="Inmobiliarias" />
+      <End Role="Saldos" EntitySet="Saldos" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Alquileres">
+    <Key>
+      <PropertyRef Name="ID_Alquiler" />
+    </Key>
+    <Property Name="ID_Alquiler" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="50" />
+    <Property Name="FechaInicio" Type="datetime" />
+    <Property Name="FechaFin" Type="datetime" />
+    <Property Name="Inquilinos_ID_Inquilino" Type="int" Nullable="false" />
+    <Property Name="Intereses" Type="bit" />
+    <Property Name="InteresDiario" Type="decimal" Scale="2" />
+    <Property Name="UltimoDiaPago" Type="int" />
+  </EntityType>
+  <EntityType Name="CtaCte_Inmobiliarias">
+    <Key>
+      <PropertyRef Name="ID_CtaCte" />
+    </Key>
+    <Property Name="ID_CtaCte" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Detalle" Type="nvarchar" MaxLength="500" />
+    <Property Name="Cobros" Type="decimal" Scale="2" />
+    <Property Name="Pagos" Type="decimal" Scale="2" />
+    <Property Name="Inmobiliaria_ID_Inmobiliaria" Type="int" />
+    <Property Name="Fecha" Type="datetime" />
+    <Property Name="Saldo" Type="decimal" Scale="2" />
+  </EntityType>
+  <EntityType Name="Inmobiliarias">
+    <Key>
+      <PropertyRef Name="ID_Inmobiliaria" />
+    </Key>
+    <Property Name="ID_Inmobiliaria" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="mail" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="contraseña" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Inquilinos">
+    <Key>
+      <PropertyRef Name="ID_Inquilino" />
+    </Key>
+    <Property Name="ID_Inquilino" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="DNI" Type="int" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+    <Property Name="Inmobiliarias_ID_Inmobiliaria" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PagosAlquiler">
+    <Key>
+      <PropertyRef Name="ID_PagoAlquiler" />
+    </Key>
+    <Property Name="ID_PagoAlquiler" Type="decimal" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Periodo" Type="int" Nullable="false" />
+    <Property Name="Cuota" Type="int" Nullable="false" />
+    <Property Name="Importe" Type="decimal" Nullable="false" />
+    <Property Name="FechaPago" Type="datetime" />
+    <Property Name="Mes" Type="nvarchar" MaxLength="50" />
+    <Property Name="ImporteInmobiliaria" Type="decimal" />
+    <Property Name="ImporteAdicional" Type="decimal" />
+    <Property Name="Alquileres_ID_Alquiler" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Saldos">
+    <Key>
+      <PropertyRef Name="ID_Saldo" />
+    </Key>
+    <Property Name="ID_Saldo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Inmobiliaria_ID_Inmobiliaria" Type="int" Nullable="false" />
+    <Property Name="Saldo" Type="decimal" Nullable="false" Scale="2" />
+  </EntityType>
+  <Association Name="FK_Alquileres_Inquilinos">
+    <End Role="Inquilinos" Type="RipsaModel.Store.Inquilinos" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Alquileres" Type="RipsaModel.Store.Alquileres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inquilinos">
+        <PropertyRef Name="ID_Inquilino" />
+      </Principal>
+      <Dependent Role="Alquileres">
+        <PropertyRef Name="Inquilinos_ID_Inquilino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Alquileres_PagosAlquiler">
+    <End Role="Alquileres" Type="RipsaModel.Store.Alquileres" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PagosAlquiler" Type="RipsaModel.Store.PagosAlquiler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alquileres">
+        <PropertyRef Name="ID_Alquiler" />
+      </Principal>
+      <Dependent Role="PagosAlquiler">
+        <PropertyRef Name="Alquileres_ID_Alquiler" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CtaCte_Inmobiliarias">
+    <End Role="Inmobiliarias" Type="RipsaModel.Store.Inmobiliarias" Multiplicity="0..1" />
+    <End Role="CtaCte_Inmobiliarias" Type="RipsaModel.Store.CtaCte_Inmobiliarias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inmobiliarias">
+        <PropertyRef Name="ID_Inmobiliaria" />
+      </Principal>
+      <Dependent Role="CtaCte_Inmobiliarias">
+        <PropertyRef Name="Inmobiliaria_ID_Inmobiliaria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inquilinos_Inmobiliarias">
+    <End Role="Inmobiliarias" Type="RipsaModel.Store.Inmobiliarias" Multiplicity="1" />
+    <End Role="Inquilinos" Type="RipsaModel.Store.Inquilinos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inmobiliarias">
+        <PropertyRef Name="ID_Inmobiliaria" />
+      </Principal>
+      <Dependent Role="Inquilinos">
+        <PropertyRef Name="Inmobiliarias_ID_Inmobiliaria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Saldos_Inmobiliarias">
+    <End Role="Inmobiliarias" Type="RipsaModel.Store.Inmobiliarias" Multiplicity="1" />
+    <End Role="Saldos" Type="RipsaModel.Store.Saldos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inmobiliarias">
+        <PropertyRef Name="ID_Inmobiliaria" />
+      </Principal>
+      <Dependent Role="Saldos">
+        <PropertyRef Name="Inmobiliaria_ID_Inmobiliaria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

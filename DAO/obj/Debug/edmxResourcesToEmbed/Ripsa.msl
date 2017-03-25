@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+  <EntityContainerMapping StorageEntityContainer="RipsaModelStoreContainer" CdmEntityContainer="RipsaEntities">
+    <EntitySetMapping Name="Inmobiliarias">
+      <EntityTypeMapping TypeName="RipsaModel.Inmobiliarias">
+        <MappingFragment StoreEntitySet="Inmobiliarias">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="ID_Inmobiliaria" ColumnName="ID_Inmobiliaria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Inquilinos">
+      <EntityTypeMapping TypeName="RipsaModel.Inquilinos">
+        <MappingFragment StoreEntitySet="Inquilinos">
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="DNI" ColumnName="DNI" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="ID_Inquilino" ColumnName="ID_Inquilino" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PagosAlquiler">
+      <EntityTypeMapping TypeName="RipsaModel.PagosAlquiler">
+        <MappingFragment StoreEntitySet="PagosAlquiler">
+          <ScalarProperty Name="ImporteAdicional" ColumnName="ImporteAdicional" />
+          <ScalarProperty Name="ImporteInmobiliaria" ColumnName="ImporteInmobiliaria" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+          <ScalarProperty Name="Importe" ColumnName="Importe" />
+          <ScalarProperty Name="Cuota" ColumnName="Cuota" />
+          <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+          <ScalarProperty Name="ID_PagoAlquiler" ColumnName="ID_PagoAlquiler" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_Inquilinos_Inmobiliarias" TypeName="RipsaModel.FK_Inquilinos_Inmobiliarias" StoreEntitySet="Inquilinos">
+      <EndProperty Name="Inquilinos">
+        <ScalarProperty Name="ID_Inquilino" ColumnName="ID_Inquilino" />
+      </EndProperty>
+      <EndProperty Name="Inmobiliarias">
+        <ScalarProperty Name="ID_Inmobiliaria" ColumnName="Inmobiliarias_ID_Inmobiliaria" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="Alquileres">
+      <EntityTypeMapping TypeName="RipsaModel.Alquileres">
+        <MappingFragment StoreEntitySet="Alquileres">
+          <ScalarProperty Name="UltimoDiaPago" ColumnName="UltimoDiaPago" />
+          <ScalarProperty Name="InteresDiario" ColumnName="InteresDiario" />
+          <ScalarProperty Name="Intereses" ColumnName="Intereses" />
+          <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="ID_Alquiler" ColumnName="ID_Alquiler" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_Alquileres_Inquilinos" TypeName="RipsaModel.FK_Alquileres_Inquilinos" StoreEntitySet="Alquileres">
+      <EndProperty Name="Alquileres">
+        <ScalarProperty Name="ID_Alquiler" ColumnName="ID_Alquiler" />
+      </EndProperty>
+      <EndProperty Name="Inquilinos">
+        <ScalarProperty Name="ID_Inquilino" ColumnName="Inquilinos_ID_Inquilino" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Alquileres_PagosAlquiler" TypeName="RipsaModel.FK_Alquileres_PagosAlquiler" StoreEntitySet="PagosAlquiler">
+      <EndProperty Name="PagosAlquiler">
+        <ScalarProperty Name="ID_PagoAlquiler" ColumnName="ID_PagoAlquiler" />
+      </EndProperty>
+      <EndProperty Name="Alquileres">
+        <ScalarProperty Name="ID_Alquiler" ColumnName="Alquileres_ID_Alquiler" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="CtaCte_Inmobiliarias">
+      <EntityTypeMapping TypeName="RipsaModel.CtaCte_Inmobiliarias">
+        <MappingFragment StoreEntitySet="CtaCte_Inmobiliarias">
+          <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Pagos" ColumnName="Pagos" />
+          <ScalarProperty Name="Cobros" ColumnName="Cobros" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+          <ScalarProperty Name="ID_CtaCte" ColumnName="ID_CtaCte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_CtaCte_Inmobiliarias" TypeName="RipsaModel.FK_CtaCte_Inmobiliarias" StoreEntitySet="CtaCte_Inmobiliarias">
+      <EndProperty Name="CtaCte_Inmobiliarias">
+        <ScalarProperty Name="ID_CtaCte" ColumnName="ID_CtaCte" />
+      </EndProperty>
+      <EndProperty Name="Inmobiliarias">
+        <ScalarProperty Name="ID_Inmobiliaria" ColumnName="Inmobiliaria_ID_Inmobiliaria" />
+      </EndProperty>
+      <Condition ColumnName="Inmobiliaria_ID_Inmobiliaria" IsNull="false" />
+    </AssociationSetMapping>
+    <EntitySetMapping Name="Saldos">
+      <EntityTypeMapping TypeName="RipsaModel.Saldos">
+        <MappingFragment StoreEntitySet="Saldos">
+          <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+          <ScalarProperty Name="ID_Saldo" ColumnName="ID_Saldo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_Saldos_Inmobiliarias" TypeName="RipsaModel.FK_Saldos_Inmobiliarias" StoreEntitySet="Saldos">
+      <EndProperty Name="Saldos">
+        <ScalarProperty Name="ID_Saldo" ColumnName="ID_Saldo" />
+      </EndProperty>
+      <EndProperty Name="Inmobiliarias">
+        <ScalarProperty Name="ID_Inmobiliaria" ColumnName="Inmobiliaria_ID_Inmobiliaria" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

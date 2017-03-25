@@ -1,0 +1,49 @@
+D:\Sistemmas\Working Copy\ServEmp Web\Servicios\obj\Debug\ResolveAssemblyReference.cache
+D:\Sistemmas\Working Copy\ServEmp Web\Servicios\bin\Debug\Servicios.dll
+D:\Sistemmas\Working Copy\ServEmp Web\Servicios\bin\Debug\Servicios.pdb
+D:\Sistemmas\Working Copy\ServEmp Web\Servicios\bin\Debug\DAO.dll
+D:\Sistemmas\Working Copy\ServEmp Web\Servicios\bin\Debug\DAO.pdb
+D:\Sistemmas\Working Copy\ServEmp Web\Servicios\obj\Debug\Servicios.dll
+D:\Sistemmas\Working Copy\ServEmp Web\Servicios\obj\Debug\Servicios.pdb
+D:\Sistemmas\Working Copy\Sistemmas Agro\Servicios\obj\Debug\ResolveAssemblyReference.cache
+D:\Sistemmas\Working Copy\Sistemmas Agro\Servicios\obj\Debug\Servicios.dll
+D:\Sistemmas\Working Copy\Sistemmas Agro\Servicios\obj\Debug\Servicios.pdb
+D:\Sistemmas\Working Copy\Sistemmas Agro\Servicios\bin\Debug\Servicios.dll
+D:\Sistemmas\Working Copy\Sistemmas Agro\Servicios\bin\Debug\Servicios.pdb
+D:\Sistemmas\Working Copy\Sistemmas Agro\Servicios\bin\Debug\DAO.dll
+D:\Sistemmas\Working Copy\Sistemmas Agro\Servicios\bin\Debug\DAO.pdb
+D:\Sistemmas\Working Copy\Sistemma Agro\Servicios\bin\Debug\Servicios.dll
+D:\Sistemmas\Working Copy\Sistemma Agro\Servicios\bin\Debug\Servicios.pdb
+D:\Sistemmas\Working Copy\Sistemma Agro\Servicios\bin\Debug\DAO.dll
+D:\Sistemmas\Working Copy\Sistemma Agro\Servicios\bin\Debug\DAO.pdb
+D:\Sistemmas\Working Copy\Sistemma Agro\Servicios\obj\Debug\ResolveAssemblyReference.cache
+D:\Sistemmas\Working Copy\Sistemma Agro\Servicios\obj\Debug\Servicios.dll
+D:\Sistemmas\Working Copy\Sistemma Agro\Servicios\obj\Debug\Servicios.pdb
+D:\Sistemmas\Working Copy\PaginaWeb\Servicios\bin\Debug\Servicios.dll
+D:\Sistemmas\Working Copy\PaginaWeb\Servicios\bin\Debug\Servicios.pdb
+D:\Sistemmas\Working Copy\PaginaWeb\Servicios\bin\Debug\DAO.dll
+D:\Sistemmas\Working Copy\PaginaWeb\Servicios\bin\Debug\DAO.pdb
+D:\Sistemmas\Working Copy\PaginaWeb\Servicios\obj\Debug\ResolveAssemblyReference.cache
+D:\Sistemmas\Working Copy\PaginaWeb\Servicios\obj\Debug\Servicios.dll
+D:\Sistemmas\Working Copy\PaginaWeb\Servicios\obj\Debug\Servicios.pdb
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Servicios\bin\Debug\Servicios.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Servicios\bin\Debug\Servicios.pdb
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Servicios\bin\Debug\DAO.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Servicios\bin\Debug\DAO.pdb
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Servicios\obj\Debug\Servicios.csprojResolveAssemblyReference.cache
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Servicios\obj\Debug\Servicios.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Servicios\obj\Debug\Servicios.pdb
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Servicios\bin\Debug\Servicios.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Servicios\bin\Debug\Servicios.pdb
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Servicios\bin\Debug\DAO.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Servicios\bin\Debug\DAO.pdb
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Servicios\obj\Debug\Servicios.csprojResolveAssemblyReference.cache
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Servicios\obj\Debug\Servicios.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Servicios\obj\Debug\Servicios.pdb
+D:\Sistemmas\Working Copy\WebSistemmas\Servicios\bin\Debug\Servicios.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Servicios\bin\Debug\Servicios.pdb
+D:\Sistemmas\Working Copy\WebSistemmas\Servicios\bin\Debug\DAO.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Servicios\bin\Debug\DAO.pdb
+D:\Sistemmas\Working Copy\WebSistemmas\Servicios\obj\Debug\Servicios.csprojResolveAssemblyReference.cache
+D:\Sistemmas\Working Copy\WebSistemmas\Servicios\obj\Debug\Servicios.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Servicios\obj\Debug\Servicios.pdb

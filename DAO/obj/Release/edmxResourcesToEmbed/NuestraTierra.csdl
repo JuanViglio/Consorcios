@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NuestraTierraModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+  <EntityContainer Name="NuestraTierraEntities">
+    <EntitySet Name="Chat" EntityType="NuestraTierraModel.Chat" />
+    <EntitySet Name="Padres" EntityType="NuestraTierraModel.Padres" />
+  </EntityContainer>
+  <EntityType Name="Chat">
+    <Key>
+      <PropertyRef Name="idChat" />
+    </Key>
+    <Property Type="Int32" Name="idChat" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="String" Name="NombrePadre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Texto" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Padres">
+    <Key>
+      <PropertyRef Name="Mail" />
+    </Key>
+    <Property Type="String" Name="Mail" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Password" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="Admin" Nullable="false" />
+    <Property Type="Boolean" Name="Confirmado" />
+  </EntityType>
+</Schema>

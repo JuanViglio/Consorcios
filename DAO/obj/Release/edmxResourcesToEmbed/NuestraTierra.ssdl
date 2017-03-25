@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NuestraTierraModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+  <EntityContainer Name="NuestraTierraModelStoreContainer">
+    <EntitySet Name="Chat" EntityType="NuestraTierraModel.Store.Chat" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Padres" EntityType="NuestraTierraModel.Store.Padres" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Chat">
+    <Key>
+      <PropertyRef Name="idChat" />
+    </Key>
+    <Property Name="idChat" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NombrePadre" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Texto" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Padres">
+    <Key>
+      <PropertyRef Name="Mail" />
+    </Key>
+    <Property Name="Mail" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Admin" Type="bit" Nullable="false" />
+    <Property Name="Confirmado" Type="bit" />
+  </EntityType>
+</Schema>

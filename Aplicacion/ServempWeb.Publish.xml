@@ -1,0 +1,57 @@
+<publishData>
+  <publishTarget publishUrl="C:\Documents and Settings\Administrador\Escritorio\ServEmp\">
+    <file relUrl="ClientesDatos.aspx.cs" publishTime="05/09/2012 21:28:54" />
+    <file relUrl="ClientesListar.aspx" publishTime="05/04/2012 01:19:40" />
+    <file relUrl="Default.aspx.designer.cs" publishTime="05/09/2012 20:53:36" />
+    <file relUrl="bin/ServempWeb.pdb" publishTime="05/09/2012 21:29:58" />
+    <file relUrl="bin/.svn/prop-base/DAO.dll.svn-base" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="bin/.svn/text-base/ServempWeb.dll.svn-base" publishTime="05/09/2012 01:56:21" />
+    <file relUrl="css/ie.css" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="MasterPage.master" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="js/jquery-1.6.2.min.js" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="ClientesListar.aspx.designer.cs" publishTime="05/04/2012 01:17:23" />
+    <file relUrl="Properties/AssemblyInfo.cs" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="MasterPage.master.cs" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="js/lavalamp.js" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="css/lavalamp.css" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="Datos.xml" publishTime="04/29/2012 16:17:00" />
+    <file relUrl="bin/ServempWeb.dll" publishTime="05/09/2012 21:29:58" />
+    <file relUrl="js/jquery.ui.accordion.js" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="js/jquery.ui.widget.js" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="js/jquery.js" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="ServempWeb.csproj.user" publishTime="05/09/2012 02:56:16" />
+    <file relUrl="bin/.svn/prop-base/ServempWeb.dll.svn-base" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="js/jquery.easing.1.3.js" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="js/jquery-ui-1.8.16.custom.min.js" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="bin/.svn/prop-base/ServempWeb.pdb.svn-base" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="bin/Servicios.dll" publishTime="05/09/2012 21:29:58" />
+    <file relUrl="bin/.svn/text-base/DAO.dll.svn-base" publishTime="05/04/2012 01:25:19" />
+    <file relUrl="App_Themes/ico_modificar.gif" publishTime="04/29/2012 15:24:00" />
+    <file relUrl="bin/.svn/text-base/ServempWeb.pdb.svn-base" publishTime="05/09/2012 01:56:22" />
+    <file relUrl="js/jquery.ui.core.js" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="bin/.svn/prop-base/Servicios.pdb.svn-base" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="js/jquery1-2-6-min.js" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="ServempWeb.csproj" publishTime="05/09/2012 02:56:16" />
+    <file relUrl="css/demos.css" publishTime="05/04/2012 01:23:51" />
+    <file relUrl="css/styles.css" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="bin/.svn/entries" publishTime="05/09/2012 01:56:22" />
+    <file relUrl="bin/.svn/text-base/Servicios.pdb.svn-base" publishTime="05/09/2012 01:56:22" />
+    <file relUrl="bin/.svn/text-base/Servicios.dll.svn-base" publishTime="05/09/2012 01:56:22" />
+    <file relUrl="js/tabs.js" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="css/jquery-ui-1.8.16.custom.css" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="ClientesDatos.aspx" publishTime="05/07/2012 21:00:56" />
+    <file relUrl="bin/DAO.dll" publishTime="05/09/2012 21:29:58" />
+    <file relUrl="bin/.svn/prop-base/DAO.pdb.svn-base" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="Web.config" publishTime="05/06/2012 19:08:17" />
+    <file relUrl="Default.aspx.cs" publishTime="05/09/2012 21:01:00" />
+    <file relUrl="bin/DAO.pdb" publishTime="05/09/2012 21:29:57" />
+    <file relUrl="bin/.svn/text-base/DAO.pdb.svn-base" publishTime="05/04/2012 01:25:19" />
+    <file relUrl="bin/Servicios.pdb" publishTime="05/09/2012 21:29:58" />
+    <file relUrl="css/jquery.ui.all.css" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="bin/.svn/prop-base/Servicios.dll.svn-base" publishTime="04/29/2012 15:24:01" />
+    <file relUrl="ClientesListar.aspx.cs" publishTime="05/04/2012 01:03:53" />
+    <file relUrl="ClientesDatos.aspx.designer.cs" publishTime="05/07/2012 21:00:56" />
+    <file relUrl="Default.aspx" publishTime="05/09/2012 20:53:36" />
+    <file relUrl="css/main.css" publishTime="04/29/2012 15:24:01" />
+  </publishTarget>
+</publishData>

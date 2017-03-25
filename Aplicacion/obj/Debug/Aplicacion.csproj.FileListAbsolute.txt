@@ -1,0 +1,192 @@
+C:\Documents and Settings\ar26465161\Mis documentos\Sistemmas\Sistemmas Agro\Aplicacion\bin\ServempWeb.dll
+C:\Documents and Settings\ar26465161\Mis documentos\Sistemmas\Sistemmas Agro\Aplicacion\bin\ServempWeb.pdb
+C:\Documents and Settings\ar26465161\Mis documentos\Sistemmas\Sistemmas Agro\Aplicacion\bin\DAO.dll
+C:\Documents and Settings\ar26465161\Mis documentos\Sistemmas\Sistemmas Agro\Aplicacion\bin\Servicios.dll
+C:\Documents and Settings\ar26465161\Mis documentos\Sistemmas\Sistemmas Agro\Aplicacion\bin\DAO.pdb
+C:\Documents and Settings\ar26465161\Mis documentos\Sistemmas\Sistemmas Agro\Aplicacion\bin\Servicios.pdb
+C:\Documents and Settings\ar26465161\Mis documentos\Sistemmas\Sistemmas Agro\Aplicacion\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\ar26465161\Mis documentos\Sistemmas\Sistemmas Agro\Aplicacion\obj\Debug\ServempWeb.dll
+C:\Documents and Settings\ar26465161\Mis documentos\Sistemmas\Sistemmas Agro\Aplicacion\obj\Debug\ServempWeb.pdb
+D:\Sistemmas\Working Copy\Sistemmas Agro\Aplicacion\obj\Debug\ResolveAssemblyReference.cache
+D:\Sistemmas\Working Copy\Sistemmas Agro\Aplicacion\obj\Debug\ServempWeb.dll
+D:\Sistemmas\Working Copy\Sistemma Agro\Aplicacion\obj\Debug\ResolveAssemblyReference.cache
+D:\Sistemmas\Working Copy\Sistemma Agro\Aplicacion\obj\Debug\ServempWeb.dll
+D:\Sistemmas\Working Copy\Sistemma Agro\Aplicacion\bin\ServempWeb.dll
+D:\Sistemmas\Working Copy\Sistemma Agro\Aplicacion\bin\ServempWeb.pdb
+D:\Sistemmas\Working Copy\Sistemma Agro\Aplicacion\bin\DAO.dll
+D:\Sistemmas\Working Copy\Sistemma Agro\Aplicacion\bin\Servicios.dll
+D:\Sistemmas\Working Copy\Sistemma Agro\Aplicacion\bin\DAO.pdb
+D:\Sistemmas\Working Copy\Sistemma Agro\Aplicacion\bin\Servicios.pdb
+D:\Sistemmas\Working Copy\Sistemma Agro\Aplicacion\obj\Debug\ServempWeb.pdb
+D:\Sistemmas\Working Copy\Sistemma Agro\Aplicacion\bin\JQChart.Web.xml
+D:\Sistemmas\Working Copy\PaginaWeb\Aplicacion\bin\ServempWeb.dll
+D:\Sistemmas\Working Copy\PaginaWeb\Aplicacion\bin\ServempWeb.pdb
+D:\Sistemmas\Working Copy\PaginaWeb\Aplicacion\bin\DAO.dll
+D:\Sistemmas\Working Copy\PaginaWeb\Aplicacion\bin\Servicios.dll
+D:\Sistemmas\Working Copy\PaginaWeb\Aplicacion\bin\DAO.pdb
+D:\Sistemmas\Working Copy\PaginaWeb\Aplicacion\bin\JQChart.Web.xml
+D:\Sistemmas\Working Copy\PaginaWeb\Aplicacion\bin\Servicios.pdb
+D:\Sistemmas\Working Copy\PaginaWeb\Aplicacion\obj\Debug\ResolveAssemblyReference.cache
+D:\Sistemmas\Working Copy\PaginaWeb\Aplicacion\obj\Debug\ServempWeb.dll
+D:\Sistemmas\Working Copy\PaginaWeb\Aplicacion\obj\Debug\ServempWeb.pdb
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\WebSistemmas.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\WebSistemmas.pdb
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\AjaxMin.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\DAO.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\Microsoft.Data.Edm.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\Microsoft.Data.OData.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\Microsoft.ReportViewer.WebForms.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\Microsoft.WindowsAzure.Configuration.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\Microsoft.WindowsAzure.Storage.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\PrintReport.exe
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\Servicios.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\System.Spatial.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\DAO.pdb
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\PrintReport.pdb
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\Servicios.pdb
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\Microsoft.Data.Edm.xml
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\Microsoft.Data.OData.xml
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\Microsoft.WindowsAzure.Storage.xml
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\System.Spatial.xml
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\de\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\es\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\it\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\de\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\es\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\fr\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\it\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\ja\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\ko\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\ru\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\de\Microsoft.ReportViewer.WebForms.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\es\Microsoft.ReportViewer.WebForms.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\fr\Microsoft.ReportViewer.WebForms.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\it\Microsoft.ReportViewer.WebForms.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\ja\Microsoft.ReportViewer.WebForms.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\ko\Microsoft.ReportViewer.WebForms.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\pt\Microsoft.ReportViewer.WebForms.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\ru\Microsoft.ReportViewer.WebForms.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\zh-CHS\Microsoft.ReportViewer.WebForms.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\zh-CHT\Microsoft.ReportViewer.WebForms.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\de\System.Spatial.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\es\System.Spatial.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\fr\System.Spatial.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\it\System.Spatial.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\ja\System.Spatial.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\ko\System.Spatial.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\ru\System.Spatial.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\zh-Hans\System.Spatial.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\bin\zh-Hant\System.Spatial.resources.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\obj\Debug\Aplicacion.csprojResolveAssemblyReference.cache
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\obj\Debug\RdlCompile.cache
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\obj\Debug\RdlCompile.compiled
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\obj\Debug\WebSistemmas.dll
+D:\Sistemmas\Working Copy\PaginaWeb Websistemmas\Aplicacion\obj\Debug\WebSistemmas.pdb
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\WebSistemmas.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\WebSistemmas.pdb
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\AjaxMin.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\DAO.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\Microsoft.Data.Edm.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\Microsoft.Data.OData.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\Microsoft.ReportViewer.WebForms.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\Microsoft.WindowsAzure.Configuration.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\Microsoft.WindowsAzure.Storage.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\PrintReport.exe
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\Servicios.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\System.Spatial.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\Microsoft.SqlServer.Types.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\DAO.pdb
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\PrintReport.pdb
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\Servicios.pdb
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\Microsoft.Data.Edm.xml
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\Microsoft.Data.OData.xml
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\Microsoft.WindowsAzure.Storage.xml
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\System.Spatial.xml
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\de\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\es\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\it\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\de\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\es\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\fr\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\it\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\ja\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\ko\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\ru\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\de\System.Spatial.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\es\System.Spatial.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\fr\System.Spatial.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\it\System.Spatial.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\ja\System.Spatial.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\ko\System.Spatial.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\ru\System.Spatial.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\zh-Hans\System.Spatial.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\bin\zh-Hant\System.Spatial.resources.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\obj\Debug\Aplicacion.csprojResolveAssemblyReference.cache
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\obj\Debug\RdlCompile.cache
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\obj\Debug\RdlCompile.compiled
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\obj\Debug\WebSistemmas.dll
+D:\Sistemmas\_DE CLIENTES\WebSistemmas\WebSistemmas 20150220\Aplicacion\obj\Debug\WebSistemmas.pdb
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\WebSistemmas.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\WebSistemmas.pdb
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\AjaxMin.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\DAO.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\Microsoft.Data.Edm.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\Microsoft.Data.OData.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\Microsoft.ReportViewer.WebForms.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\Microsoft.WindowsAzure.Configuration.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\Microsoft.WindowsAzure.Storage.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\Servicios.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\System.Data.Entity.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\System.Spatial.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\DAO.pdb
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\Servicios.pdb
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\Microsoft.Data.Edm.xml
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\Microsoft.Data.OData.xml
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\Microsoft.WindowsAzure.Storage.xml
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\System.Spatial.xml
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\de\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\es\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\it\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\de\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\es\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\fr\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\it\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\ja\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\ko\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\ru\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\de\System.Spatial.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\es\System.Spatial.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\fr\System.Spatial.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\it\System.Spatial.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\ja\System.Spatial.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\ko\System.Spatial.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\ru\System.Spatial.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\zh-Hans\System.Spatial.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\bin\zh-Hant\System.Spatial.resources.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\obj\Debug\Aplicacion.csprojResolveAssemblyReference.cache
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\obj\Debug\WebSistemmas.dll
+D:\Sistemmas\Working Copy\WebSistemmas\Aplicacion\obj\Debug\WebSistemmas.pdb

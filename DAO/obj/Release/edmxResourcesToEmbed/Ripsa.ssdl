@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RipsaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+  <EntityContainer Name="RipsaModelStoreContainer">
+    <EntitySet Name="Alquileres" EntityType="RipsaModel.Store.Alquileres" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Inmobiliarias" EntityType="RipsaModel.Store.Inmobiliarias" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Inquilinos" EntityType="RipsaModel.Store.Inquilinos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PagosAlquiler" EntityType="RipsaModel.Store.PagosAlquiler" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Alquileres_Inquilinos" Association="RipsaModel.Store.FK_Alquileres_Inquilinos">
+      <End Role="Inquilinos" EntitySet="Inquilinos" />
+      <End Role="Alquileres" EntitySet="Alquileres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Alquileres_PagosAlquiler" Association="RipsaModel.Store.FK_Alquileres_PagosAlquiler">
+      <End Role="Alquileres" EntitySet="Alquileres" />
+      <End Role="PagosAlquiler" EntitySet="PagosAlquiler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inquilinos_Inmobiliarias" Association="RipsaModel.Store.FK_Inquilinos_Inmobiliarias">
+      <End Role="Inmobiliarias" EntitySet="Inmobiliarias" />
+      <End Role="Inquilinos" EntitySet="Inquilinos" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Alquileres">
+    <Key>
+      <PropertyRef Name="ID_Alquiler" />
+    </Key>
+    <Property Name="ID_Alquiler" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Inquilinos_ID_Inquilino" Type="int" Nullable="false" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="50" />
+    <Property Name="FechaInicio" Type="date" />
+    <Property Name="FechaFin" Type="date" />
+  </EntityType>
+  <EntityType Name="Inmobiliarias">
+    <Key>
+      <PropertyRef Name="ID_Inmobiliaria" />
+    </Key>
+    <Property Name="ID_Inmobiliaria" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="mail" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="contraseña" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Inquilinos">
+    <Key>
+      <PropertyRef Name="ID_Inquilino" />
+    </Key>
+    <Property Name="ID_Inquilino" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Inmobiliaria_ID_Inmobliliaria" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="DNI" Type="int" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PagosAlquiler">
+    <Key>
+      <PropertyRef Name="ID_PagoAlquiler" />
+    </Key>
+    <Property Name="ID_PagoAlquiler" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Alquiler_ID_Alquiler" Type="int" Nullable="false" />
+    <Property Name="Periodo" Type="int" Nullable="false" />
+    <Property Name="Cuota" Type="int" Nullable="false" />
+    <Property Name="Importe" Type="numeric" Nullable="false" />
+    <Property Name="FechaPago" Type="date" />
+    <Property Name="Mes" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Alquileres_Inquilinos">
+    <End Role="Inquilinos" Type="RipsaModel.Store.Inquilinos" Multiplicity="1" />
+    <End Role="Alquileres" Type="RipsaModel.Store.Alquileres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inquilinos">
+        <PropertyRef Name="ID_Inquilino" />
+      </Principal>
+      <Dependent Role="Alquileres">
+        <PropertyRef Name="Inquilinos_ID_Inquilino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Alquileres_PagosAlquiler">
+    <End Role="Alquileres" Type="RipsaModel.Store.Alquileres" Multiplicity="1" />
+    <End Role="PagosAlquiler" Type="RipsaModel.Store.PagosAlquiler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alquileres">
+        <PropertyRef Name="ID_Alquiler" />
+      </Principal>
+      <Dependent Role="PagosAlquiler">
+        <PropertyRef Name="Alquiler_ID_Alquiler" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inquilinos_Inmobiliarias">
+    <End Role="Inmobiliarias" Type="RipsaModel.Store.Inmobiliarias" Multiplicity="1" />
+    <End Role="Inquilinos" Type="RipsaModel.Store.Inquilinos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inmobiliarias">
+        <PropertyRef Name="ID_Inmobiliaria" />
+      </Principal>
+      <Dependent Role="Inquilinos">
+        <PropertyRef Name="Inmobiliaria_ID_Inmobliliaria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

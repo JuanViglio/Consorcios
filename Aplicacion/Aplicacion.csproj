@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0F13F18A-63CD-496C-BB60-9DFB24224A53}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebSistemmas</RootNamespace>
+    <AssemblyName>WebSistemmas</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxMin">
+      <HintPath>..\packages\AjaxMin.5.10.5260.16959\lib\net40\AjaxMin.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="JQChart.Web, Version=3.5.1.0, Culture=neutral, PublicKeyToken=00a4df79b4acdadb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\JQChart.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.2.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.5.2.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration">
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage">
+      <HintPath>..\packages\WindowsAzure.Storage.2.1.0.4\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Spatial, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Spatial.5.2.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\WINDOWS\assembly\GAC_MSIL\System.Web.Entity\3.5.0.0__b77a5c561934e089\System.Web.Entity.dll</HintPath>
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\css\menuCobranza.css" />
+    <Content Include="assets\css\styles.css" />
+    <Content Include="assets\img\bg_tile.jpg" />
+    <Content Include="assets\img\bg_vert.jpg" />
+    <Content Include="assets\img\home.png" />
+    <Content Include="assets\img\ico_eliminar.png" />
+    <Content Include="assets\img\ico_pesos.png" />
+    <Content Include="assets\img\logo.png" />
+    <Content Include="Consorcios\ConsorciosListado.aspx" />
+    <Content Include="Consorcios\x.aspx" />
+    <Content Include="Imagenes\Equipo2.jpg" />
+    <Content Include="assets\img\iconback.gif" />
+    <Content Include="css\styleLoginInmobiliarias.css" />
+    <Content Include="js\jquery-1.10.2.js" />
+    <Content Include="images\mail.png" />
+    <Content Include="Invitaciones.aspx" />
+    <Content Include="RegistrarNT.aspx" />
+    <Content Include="css\demos.css" />
+    <Content Include="css\ie.css" />
+    <Content Include="css\jquery-ui-1.8.16.custom.css" />
+    <Content Include="css\jquery.ui.all.css" />
+    <Content Include="css\lavalamp.css" />
+    <Content Include="css\main.css" />
+    <Content Include="css\styles.css" />
+    <Content Include="Imagenes\Equipo.jpg" />
+    <Content Include="js\jquery-1.6.2.min.js" />
+    <Content Include="js\jquery-ui-1.8.16.custom.min.js" />
+    <Content Include="js\jquery.easing.1.3.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\jquery.ui.accordion.js" />
+    <Content Include="js\jquery.ui.core.js" />
+    <Content Include="js\jquery.ui.widget.js" />
+    <Content Include="js\jquery1-2-6-min.js" />
+    <Content Include="js\lavalamp.js" />
+    <Content Include="js\tabs.js" />
+    <Content Include="LoginNT.aspx" />
+    <Content Include="NuestraTierra.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="WebService.asmx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Consorcios\ConsorciosListado.aspx.cs">
+      <DependentUpon>ConsorciosListado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\ConsorciosListado.aspx.designer.cs">
+      <DependentUpon>ConsorciosListado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\x.aspx.cs">
+      <DependentUpon>x.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\x.aspx.designer.cs">
+      <DependentUpon>x.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\MenuConsorcios.Master.cs">
+      <DependentUpon>MenuConsorcios.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\MenuConsorcios.Master.designer.cs">
+      <DependentUpon>MenuConsorcios.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Invitaciones.aspx.cs">
+      <DependentUpon>Invitaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Invitaciones.aspx.designer.cs">
+      <DependentUpon>Invitaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarNT.aspx.cs">
+      <DependentUpon>RegistrarNT.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarNT.aspx.designer.cs">
+      <DependentUpon>RegistrarNT.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ingreso.aspx.cs">
+      <DependentUpon>Ingreso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ingreso.aspx.designer.cs">
+      <DependentUpon>Ingreso.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginNT.aspx.cs">
+      <DependentUpon>LoginNT.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginNT.aspx.designer.cs">
+      <DependentUpon>LoginNT.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.Master.cs">
+      <DependentUpon>Menu.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu.Master.designer.cs">
+      <DependentUpon>Menu.Master</DependentUpon>
+    </Compile>
+    <Compile Include="NuestraTierra.aspx.cs">
+      <DependentUpon>NuestraTierra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NuestraTierra.aspx.designer.cs">
+      <DependentUpon>NuestraTierra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebService.asmx.cs">
+      <DependentUpon>WebService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{7C34FDD6-D1C3-46F9-9885-2C8D3F9C4DE6}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Servicios\Servicios.csproj">
+      <Project>{C685E1F7-2804-49A0-B823-BA24A914BF43}</Project>
+      <Name>Servicios</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\jquery.jqChart.css" />
+    <Content Include="css\jquery.jqRangeSlider.css" />
+    <Content Include="css\Sistemmas.css" />
+    <Content Include="js\jquery.jqChart.min.js" />
+    <Content Include="js\jquery.jqRangeSlider.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\Curvas.css" />
+    <Content Include="css\Default.css" />
+    <Content Include="css\jquery.galleryview-3.0-dev.css" />
+    <Content Include="css\styleLogin.css" />
+    <Content Include="images\formbody.png" />
+    <Content Include="images\header_bg.png" />
+    <Content Include="images\login.png" />
+    <Content Include="images\password.png" />
+    <Content Include="images\show_window.png" />
+    <Content Include="images\username.png" />
+    <Content Include="Ingreso.aspx" />
+    <Content Include="js\Default.js" />
+    <Content Include="js\excanvas.pack.js" />
+    <Content Include="js\jquery-1.2.6.min.js" />
+    <Content Include="js\jquery-ui.min.js" />
+    <Content Include="js\jquery.blockUI.js" />
+    <Content Include="js\jquery.corner.pack.js" />
+    <Content Include="js\jquery.galleryview-3.0-dev.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\jquery.timers-1.2.js" />
+    <Content Include="js\json2.js" />
+    <Content Include="Menu.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="App_Themes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="Consorcios\MenuConsorcios.Master" />
+    <None Include="Properties\PublishProfiles\Perfil1.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51139</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

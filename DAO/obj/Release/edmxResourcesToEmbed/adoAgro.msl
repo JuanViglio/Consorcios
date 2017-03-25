@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+  <EntityContainerMapping StorageEntityContainer="SistemmasAgroModelStoreContainer" CdmEntityContainer="SistemmasAgroEF">
+    <EntitySetMapping Name="Cosechas">
+      <EntityTypeMapping TypeName="IsTypeOf(SistemmasAgroModel.Cosechas)">
+        <MappingFragment StoreEntitySet="Cosechas">
+          <ScalarProperty Name="GraficoMaximo" ColumnName="GraficoMaximo" />
+          <ScalarProperty Name="GraficoMinimo" ColumnName="GraficoMinimo" />
+          <ScalarProperty Name="Cantidad4" ColumnName="Cantidad4" />
+          <ScalarProperty Name="Cantidad3" ColumnName="Cantidad3" />
+          <ScalarProperty Name="Cantidad2" ColumnName="Cantidad2" />
+          <ScalarProperty Name="Cantidad1" ColumnName="Cantidad1" />
+          <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+          <ScalarProperty Name="idCosecha" ColumnName="idCosecha" />
+          <ScalarProperty Name="NombreCosecha" ColumnName="NombreCosecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Costos">
+      <EntityTypeMapping TypeName="IsTypeOf(SistemmasAgroModel.Costos)">
+        <MappingFragment StoreEntitySet="Costos">
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="idCosto" ColumnName="idCosto" />
+          <ScalarProperty Name="NombreCosto" ColumnName="NombreCosto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadisticaActual">
+      <EntityTypeMapping TypeName="IsTypeOf(SistemmasAgroModel.EstadisticaActual)">
+        <MappingFragment StoreEntitySet="EstadisticaActual">
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="idCosto" ColumnName="idCosto" />
+          <ScalarProperty Name="idCosecha" ColumnName="idCosecha" />
+          <ScalarProperty Name="importe" ColumnName="importe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Historico">
+      <EntityTypeMapping TypeName="IsTypeOf(SistemmasAgroModel.Historico)">
+        <MappingFragment StoreEntitySet="Historico">
+          <ScalarProperty Name="importe" ColumnName="importe" />
+          <ScalarProperty Name="idCosto" ColumnName="idCosto" />
+          <ScalarProperty Name="idCosecha" ColumnName="idCosecha" />
+          <ScalarProperty Name="mes" ColumnName="mes" />
+          <ScalarProperty Name="año" ColumnName="año" />
+          <ScalarProperty Name="idHistorico" ColumnName="idHistorico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Precampaña">
+      <EntityTypeMapping TypeName="SistemmasAgroModel.Precampaña">
+        <MappingFragment StoreEntitySet="Precampaña">
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="importe" ColumnName="importe" />
+          <ScalarProperty Name="idCosto" ColumnName="idCosto" />
+          <ScalarProperty Name="idCosecha" ColumnName="idCosecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

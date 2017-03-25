@@ -1,0 +1,38 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MenuConsorcios.Master.cs" Inherits="WebSistemmas.MenuConsorcios
+    " %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+        <div>
+            &nbsp;</div>
+        <head>
+        <meta charset="utf-8" />
+        
+        <title></title>
+        
+        <!-- Our CSS stylesheet file -->
+
+        <link rel="stylesheet" href="../assets/css/styles.css" />
+        
+        <!-- Including the Lobster font from Google's Font Directory -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster" />        
+
+        <script src="../js/jquery-1.10.2.js"></script>
+    </head>
+
+    <body>
+        <nav>
+            <ul class="fancyNav">
+                <li id="consorcios"><a href="../Consorcios/ConsorciosLista.aspx#consorcios">Consorcios</a></li>
+
+            </ul>
+        </nav>
+
+    </body>
+
+    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+
+    </asp:ContentPlaceHolder>
+</html>
+
