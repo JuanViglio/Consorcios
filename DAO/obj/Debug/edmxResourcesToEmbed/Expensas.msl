@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+  <EntityContainerMapping StorageEntityContainer="ExpensasModelStoreContainer" CdmEntityContainer="ExpensasEntities">
+    <EntitySetMapping Name="Consorcios">
+      <EntityTypeMapping TypeName="ExpensasModel.Consorcio">
+        <MappingFragment StoreEntitySet="Consorcios">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="UltimaExpensa" ColumnName="UltimaExpensa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

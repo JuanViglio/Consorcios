@@ -57,6 +57,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Expensas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Expensas.edmx</DependentUpon>
+    </Compile>
     <Compile Include="NuestraTierra.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -78,6 +83,13 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>NuestraTierra.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="Expensas.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Expensas.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Expensas.edmx.diagram">
+      <DependentUpon>Expensas.edmx</DependentUpon>
+    </None>
     <None Include="NuestraTierra.edmx.diagram">
       <DependentUpon>NuestraTierra.edmx</DependentUpon>
     </None>

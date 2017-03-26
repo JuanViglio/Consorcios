@@ -47,3 +47,10 @@ D:\Sistemmas\Working Copy\WebSistemmas\Servicios\bin\Debug\DAO.pdb
 D:\Sistemmas\Working Copy\WebSistemmas\Servicios\obj\Debug\Servicios.csprojResolveAssemblyReference.cache
 D:\Sistemmas\Working Copy\WebSistemmas\Servicios\obj\Debug\Servicios.dll
 D:\Sistemmas\Working Copy\WebSistemmas\Servicios\obj\Debug\Servicios.pdb
+D:\Sistemmas\Working Copy\Consorcios\Servicios\bin\Debug\Servicios.dll
+D:\Sistemmas\Working Copy\Consorcios\Servicios\bin\Debug\Servicios.pdb
+D:\Sistemmas\Working Copy\Consorcios\Servicios\bin\Debug\DAO.dll
+D:\Sistemmas\Working Copy\Consorcios\Servicios\bin\Debug\DAO.pdb
+D:\Sistemmas\Working Copy\Consorcios\Servicios\obj\Debug\Servicios.csprojResolveAssemblyReference.cache
+D:\Sistemmas\Working Copy\Consorcios\Servicios\obj\Debug\Servicios.dll
+D:\Sistemmas\Working Copy\Consorcios\Servicios\obj\Debug\Servicios.pdb

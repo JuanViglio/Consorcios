@@ -115,7 +115,6 @@
     <Content Include="assets\img\ico_pesos.png" />
     <Content Include="assets\img\logo.png" />
     <Content Include="Consorcios\ConsorciosListado.aspx" />
-    <Content Include="Consorcios\x.aspx" />
     <Content Include="Imagenes\Equipo2.jpg" />
     <Content Include="assets\img\iconback.gif" />
     <Content Include="css\styleLoginInmobiliarias.css" />
@@ -155,13 +154,6 @@
     </Compile>
     <Compile Include="Consorcios\ConsorciosListado.aspx.designer.cs">
       <DependentUpon>ConsorciosListado.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Consorcios\x.aspx.cs">
-      <DependentUpon>x.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Consorcios\x.aspx.designer.cs">
-      <DependentUpon>x.aspx</DependentUpon>
     </Compile>
     <Compile Include="Consorcios\MenuConsorcios.Master.cs">
       <DependentUpon>MenuConsorcios.Master</DependentUpon>
