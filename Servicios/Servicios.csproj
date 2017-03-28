@@ -53,7 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="consorcios.cs" />
+    <Compile Include="consorciosServ.cs" />
+    <Compile Include="expensasServ.cs" />
     <Compile Include="nuestraTierra.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

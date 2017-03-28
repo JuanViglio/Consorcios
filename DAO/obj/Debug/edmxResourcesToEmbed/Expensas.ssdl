@@ -2,6 +2,11 @@
 <Schema Namespace="ExpensasModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
   <EntityContainer Name="ExpensasModelStoreContainer">
     <EntitySet Name="Consorcios" EntityType="ExpensasModel.Store.Consorcios" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Expensas" EntityType="ExpensasModel.Store.Expensas" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Expensas_Consorcios" Association="ExpensasModel.Store.FK_Expensas_Consorcios">
+      <End Role="Consorcios" EntitySet="Consorcios" />
+      <End Role="Expensas" EntitySet="Expensas" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Consorcios">
     <Key>
@@ -11,4 +16,25 @@
     <Property Name="Direccion" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="UltimaExpensa" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="Expensas">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Consorcio_ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Periodo" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Total_Gastos" Type="numeric" Scale="2" />
+  </EntityType>
+  <Association Name="FK_Expensas_Consorcios">
+    <End Role="Consorcios" Type="ExpensasModel.Store.Consorcios" Multiplicity="1" />
+    <End Role="Expensas" Type="ExpensasModel.Store.Expensas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consorcios">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Expensas">
+        <PropertyRef Name="Consorcio_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

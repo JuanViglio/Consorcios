@@ -24,7 +24,7 @@
     <body>
         <nav>
             <ul class="fancyNav">
-                <li id="consorcios"><a href="../Consorcios/ConsorciosLista.aspx#consorcios">Consorcios</a></li>
+                <li id="consorcios"><a href="../Consorcios/Consorcios.aspx#consorcios">Consorcios</a></li>
 
             </ul>
         </nav>

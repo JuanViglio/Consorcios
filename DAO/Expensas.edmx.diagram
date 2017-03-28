@@ -6,6 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="943f978d6c784873bf7a7b8fc64b195f" Name="Diagrama1">
         <EntityTypeShape EntityType="ExpensasModel.Consorcio" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExpensasModel.Expensas" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="ExpensasModel.FK_Expensas_Consorcios" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

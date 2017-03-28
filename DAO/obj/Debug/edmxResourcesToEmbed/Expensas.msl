@@ -10,5 +10,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Expensas">
+      <EntityTypeMapping TypeName="ExpensasModel.Expensas">
+        <MappingFragment StoreEntitySet="Expensas">
+          <ScalarProperty Name="Total_Gastos" ColumnName="Total_Gastos" />
+          <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_Expensas_Consorcios" TypeName="ExpensasModel.FK_Expensas_Consorcios" StoreEntitySet="Expensas">
+      <EndProperty Name="Expensas">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <EndProperty Name="Consorcio">
+        <ScalarProperty Name="ID" ColumnName="Consorcio_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

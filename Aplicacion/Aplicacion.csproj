@@ -112,9 +112,11 @@
     <Content Include="assets\img\bg_vert.jpg" />
     <Content Include="assets\img\home.png" />
     <Content Include="assets\img\ico_eliminar.png" />
+    <Content Include="assets\img\ico_modificar.gif" />
     <Content Include="assets\img\ico_pesos.png" />
-    <Content Include="assets\img\logo.png" />
-    <Content Include="Consorcios\ConsorciosListado.aspx" />
+    <Content Include="Consorcios\Consorcios.aspx" />
+    <Content Include="Consorcios\Expensas.aspx" />
+    <Content Include="Consorcios\UnidadesFuncionales.aspx" />
     <Content Include="Imagenes\Equipo2.jpg" />
     <Content Include="assets\img\iconback.gif" />
     <Content Include="css\styleLoginInmobiliarias.css" />
@@ -148,12 +150,19 @@
     <Content Include="WebService.asmx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Consorcios\ConsorciosListado.aspx.cs">
-      <DependentUpon>ConsorciosListado.aspx</DependentUpon>
+    <Compile Include="Consorcios\Consorcios.aspx.cs">
+      <DependentUpon>Consorcios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Consorcios\ConsorciosListado.aspx.designer.cs">
-      <DependentUpon>ConsorciosListado.aspx</DependentUpon>
+    <Compile Include="Consorcios\Consorcios.aspx.designer.cs">
+      <DependentUpon>Consorcios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\Expensas.aspx.cs">
+      <DependentUpon>Expensas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\Expensas.aspx.designer.cs">
+      <DependentUpon>Expensas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Consorcios\MenuConsorcios.Master.cs">
       <DependentUpon>MenuConsorcios.Master</DependentUpon>
@@ -161,6 +170,13 @@
     </Compile>
     <Compile Include="Consorcios\MenuConsorcios.Master.designer.cs">
       <DependentUpon>MenuConsorcios.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UnidadesFuncionales.aspx.cs">
+      <DependentUpon>UnidadesFuncionales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UnidadesFuncionales.aspx.designer.cs">
+      <DependentUpon>UnidadesFuncionales.aspx</DependentUpon>
     </Compile>
     <Compile Include="Invitaciones.aspx.cs">
       <DependentUpon>Invitaciones.aspx</DependentUpon>
@@ -286,7 +302,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51139</DevelopmentServerPort>
+          <DevelopmentServerPort>1632</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

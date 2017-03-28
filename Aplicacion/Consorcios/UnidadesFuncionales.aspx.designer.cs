@@ -10,7 +10,7 @@
 namespace WebSistemmas.Consorcios {
     
     
-    public partial class ConsorciosListado {
+    public partial class UnidadesFuncionales {
         
         /// <summary>
         /// Control form1.
@@ -22,12 +22,12 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control grdConsorcios.
+        /// Control grdExpensas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdConsorcios;
+        protected global::System.Web.UI.WebControls.GridView grdExpensas;
     }
 }
