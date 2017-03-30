@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Servicios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,10 +12,23 @@ namespace WebSistemmas.Consorcios
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
+
+                grdUnidades.DataSource = serv.GetUnidadesFuncionales("1");
+                grdUnidades.DataBind();
+            }
+        }
+
+
+        protected void grdUnidades_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
 
         }
 
-        protected void grdExpensas_RowCommand(object sender, GridViewCommandEventArgs e)
+
+        protected void btnNuevaUnidad_Click(object sender, EventArgs e)
         {
 
         }

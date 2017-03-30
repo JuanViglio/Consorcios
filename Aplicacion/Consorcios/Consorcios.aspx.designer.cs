@@ -85,6 +85,15 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.Button btnCancelarModificar;
         
         /// <summary>
+        /// Control btnNuevoConsorcio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNuevoConsorcio;
+        
+        /// <summary>
         /// Control lblError.
         /// </summary>
         /// <remarks>

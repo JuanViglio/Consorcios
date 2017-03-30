@@ -23,7 +23,46 @@ namespace WebSistemmas.Consorcios
 
         protected void grdExpensas_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            GridViewRow GridViewrow = null;
 
+            try
+            {
+                if (e.CommandSource.GetType().ToString().ToUpper().Contains("IMAGEBUTTON"))
+                {
+                    ImageButton _ImgButton = (ImageButton)e.CommandSource;
+                    GridViewrow = (GridViewRow)_ImgButton.NamingContainer;
+
+                    string Tipo = e.CommandName.ToUpper();
+                    //lblError.Text = "";
+
+                    switch (Tipo)
+                    {
+                        case "UNIDADESFUNCIONALES":
+                            unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
+                            grdUnidades.DataSource = serv.GetUnidadesFuncionales("1");
+                            grdUnidades.DataBind();
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //lblError.Text = ex.Message;
+            }
+
+        }
+
+        protected void grdUnidades_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+        }
+
+        protected void btnNuevaExpensa_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ExpensaNueva.aspx", false);
         }
     }
 }

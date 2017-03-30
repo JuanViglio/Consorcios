@@ -8,6 +8,7 @@
         <EntityContainer Name="ExpensasModelStoreContainer">
           <EntitySet Name="Consorcios" EntityType="ExpensasModel.Store.Consorcios" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Expensas" EntityType="ExpensasModel.Store.Expensas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UnidadesFuncionales" EntityType="ExpensasModel.Store.UnidadesFuncionales" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Expensas_Consorcios" Association="ExpensasModel.Store.FK_Expensas_Consorcios">
             <End Role="Consorcios" EntitySet="Consorcios" />
             <End Role="Expensas" EntitySet="Expensas" />
@@ -29,6 +30,16 @@
           <Property Name="Consorcio_ID" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Periodo" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Total_Gastos" Type="numeric" Scale="2" />
+        </EntityType>
+        <EntityType Name="UnidadesFuncionales">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Consorcios_ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="5" />
+          <Property Name="Consorcios_ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Dueño" Type="nvarchar" MaxLength="50" />
+          <Property Name="Coeficiente" Type="numeric" Scale="2" />
         </EntityType>
         <Association Name="FK_Expensas_Consorcios">
           <End Role="Consorcios" Type="ExpensasModel.Store.Consorcios" Multiplicity="1" />
@@ -53,6 +64,7 @@
             <End Role="Consorcio" EntitySet="Consorcios" />
             <End Role="Expensas" EntitySet="Expensas" />
           </AssociationSet>
+          <EntitySet Name="UnidadesFuncionales" EntityType="ExpensasModel.UnidadesFuncionales" />
         </EntityContainer>
         <EntityType Name="Consorcio">
           <Key>
@@ -62,7 +74,7 @@
           <Property Name="Direccion" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="UltimaExpensa" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Expensas" Relationship="ExpensasModel.FK_Expensas_Consorcios" FromRole="Consorcio" ToRole="Expensas" />
-        </EntityType>
+          </EntityType>
         <EntityType Name="Expensas">
           <Key>
             <PropertyRef Name="ID" />
@@ -76,6 +88,16 @@
           <End Type="ExpensasModel.Consorcio" Role="Consorcio" Multiplicity="1" />
           <End Type="ExpensasModel.Expensas" Role="Expensas" Multiplicity="*" />
         </Association>
+        <EntityType Name="UnidadesFuncionales">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Consorcios_ID" />
+          </Key>
+          <Property Type="String" Name="ID" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Consorcios_ID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Dueño" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Coeficiente" Precision="18" Scale="2" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -108,6 +130,16 @@
               <ScalarProperty Name="ID" ColumnName="Consorcio_ID" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="UnidadesFuncionales">
+            <EntityTypeMapping TypeName="ExpensasModel.UnidadesFuncionales">
+              <MappingFragment StoreEntitySet="UnidadesFuncionales">
+                <ScalarProperty Name="Coeficiente" ColumnName="Coeficiente" />
+                <ScalarProperty Name="Dueño" ColumnName="Dueño" />
+                <ScalarProperty Name="Consorcios_ID" ColumnName="Consorcios_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -115,6 +115,7 @@
     <Content Include="assets\img\ico_modificar.gif" />
     <Content Include="assets\img\ico_pesos.png" />
     <Content Include="Consorcios\Consorcios.aspx" />
+    <Content Include="Consorcios\ExpensaNueva.aspx" />
     <Content Include="Consorcios\Expensas.aspx" />
     <Content Include="Consorcios\UnidadesFuncionales.aspx" />
     <Content Include="Imagenes\Equipo2.jpg" />
@@ -156,6 +157,13 @@
     </Compile>
     <Compile Include="Consorcios\Consorcios.aspx.designer.cs">
       <DependentUpon>Consorcios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\ExpensaNueva.aspx.cs">
+      <DependentUpon>ExpensaNueva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\ExpensaNueva.aspx.designer.cs">
+      <DependentUpon>ExpensaNueva.aspx</DependentUpon>
     </Compile>
     <Compile Include="Consorcios\Expensas.aspx.cs">
       <DependentUpon>Expensas.aspx</DependentUpon>

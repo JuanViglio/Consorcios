@@ -27,5 +27,15 @@
         <ScalarProperty Name="ID" ColumnName="Consorcio_ID" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="UnidadesFuncionales">
+      <EntityTypeMapping TypeName="ExpensasModel.UnidadesFuncionales">
+        <MappingFragment StoreEntitySet="UnidadesFuncionales">
+          <ScalarProperty Name="Coeficiente" ColumnName="Coeficiente" />
+          <ScalarProperty Name="Dueño" ColumnName="Dueño" />
+          <ScalarProperty Name="Consorcios_ID" ColumnName="Consorcios_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

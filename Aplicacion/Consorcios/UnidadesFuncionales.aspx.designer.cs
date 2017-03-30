@@ -22,12 +22,21 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control grdExpensas.
+        /// Control grdUnidades.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdExpensas;
+        protected global::System.Web.UI.WebControls.GridView grdUnidades;
+        
+        /// <summary>
+        /// Control btnNuevaUnidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNuevaUnidad;
     }
 }

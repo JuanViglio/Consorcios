@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="ExpensasModel.Consorcio" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ExpensasModel.Expensas" Width="1.5" PointX="3" PointY="0.75" />
         <AssociationConnector Association="ExpensasModel.FK_Expensas_Consorcios" />
+        <EntityTypeShape EntityType="ExpensasModel.UnidadesFuncionales" Width="2.125" PointX="5.375" PointY="0.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

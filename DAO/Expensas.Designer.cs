@@ -12,7 +12,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ExpensasModel", "FK_Expensas_Consorcios", "Consorcio", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.Consorcio), "Expensas", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.Expensas))]
 
 // Nombre de archivo original:
-// Fecha de generación: 28/03/2017 01:08:04 a.m.
+// Fecha de generación: 29/03/2017 12:11:12 a.m.
 namespace DAO
 {
     
@@ -81,6 +81,23 @@ namespace DAO
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         private global::System.Data.Objects.ObjectQuery<Expensas> _Expensas;
         /// <summary>
+        /// No hay ningún comentario para UnidadesFuncionales en el esquema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Data.Objects.ObjectQuery<UnidadesFuncionales> UnidadesFuncionales
+        {
+            get
+            {
+                if ((this._UnidadesFuncionales == null))
+                {
+                    this._UnidadesFuncionales = base.CreateQuery<UnidadesFuncionales>("[UnidadesFuncionales]");
+                }
+                return this._UnidadesFuncionales;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Data.Objects.ObjectQuery<UnidadesFuncionales> _UnidadesFuncionales;
+        /// <summary>
         /// No hay ningún comentario para Consorcios en el esquema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
@@ -95,6 +112,14 @@ namespace DAO
         public void AddToExpensas(Expensas expensas)
         {
             base.AddObject("Expensas", expensas);
+        }
+        /// <summary>
+        /// No hay ningún comentario para UnidadesFuncionales en el esquema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public void AddToUnidadesFuncionales(UnidadesFuncionales unidadesFuncionales)
+        {
+            base.AddObject("UnidadesFuncionales", unidadesFuncionales);
         }
     }
     /// <summary>
@@ -369,5 +394,139 @@ namespace DAO
                 }
             }
         }
+    }
+    /// <summary>
+    /// No hay ningún comentario para ExpensasModel.UnidadesFuncionales en el esquema.
+    /// </summary>
+    /// <KeyProperties>
+    /// ID
+    /// Consorcios_ID
+    /// </KeyProperties>
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="ExpensasModel", Name="UnidadesFuncionales")]
+    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
+    [global::System.Serializable()]
+    public partial class UnidadesFuncionales : global::System.Data.Objects.DataClasses.EntityObject
+    {
+        /// <summary>
+        /// Crear un nuevo objeto UnidadesFuncionales.
+        /// </summary>
+        /// <param name="id">Valor inicial de ID.</param>
+        /// <param name="consorcios_ID">Valor inicial de Consorcios_ID.</param>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public static UnidadesFuncionales CreateUnidadesFuncionales(string id, string consorcios_ID)
+        {
+            UnidadesFuncionales unidadesFuncionales = new UnidadesFuncionales();
+            unidadesFuncionales.ID = id;
+            unidadesFuncionales.Consorcios_ID = consorcios_ID;
+            return unidadesFuncionales;
+        }
+        /// <summary>
+        /// No hay ningún comentario para la propiedad ID en el esquema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string ID
+        {
+            get
+            {
+                return this._ID;
+            }
+            set
+            {
+                this.OnIDChanging(value);
+                this.ReportPropertyChanging("ID");
+                this._ID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("ID");
+                this.OnIDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _ID;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnIDChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnIDChanged();
+        /// <summary>
+        /// No hay ningún comentario para la propiedad Consorcios_ID en el esquema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string Consorcios_ID
+        {
+            get
+            {
+                return this._Consorcios_ID;
+            }
+            set
+            {
+                this.OnConsorcios_IDChanging(value);
+                this.ReportPropertyChanging("Consorcios_ID");
+                this._Consorcios_ID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Consorcios_ID");
+                this.OnConsorcios_IDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _Consorcios_ID;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnConsorcios_IDChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnConsorcios_IDChanged();
+        /// <summary>
+        /// No hay ningún comentario para la propiedad Dueño en el esquema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string Dueño
+        {
+            get
+            {
+                return this._Dueño;
+            }
+            set
+            {
+                this.OnDueñoChanging(value);
+                this.ReportPropertyChanging("Dueño");
+                this._Dueño = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Dueño");
+                this.OnDueñoChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _Dueño;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDueñoChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDueñoChanged();
+        /// <summary>
+        /// No hay ningún comentario para la propiedad Coeficiente en el esquema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Nullable<decimal> Coeficiente
+        {
+            get
+            {
+                return this._Coeficiente;
+            }
+            set
+            {
+                this.OnCoeficienteChanging(value);
+                this.ReportPropertyChanging("Coeficiente");
+                this._Coeficiente = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Coeficiente");
+                this.OnCoeficienteChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Nullable<decimal> _Coeficiente;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCoeficienteChanging(global::System.Nullable<decimal> value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCoeficienteChanged();
     }
 }

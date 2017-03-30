@@ -79,5 +79,10 @@ namespace WebSistemmas.Consorcios
         {
 
         }
+
+        protected void btnNuevoConsorcio_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

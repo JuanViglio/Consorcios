@@ -1,12 +1,15 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Consorcios.aspx.cs" Inherits="WebSistemmas.Consorcios.Consorcios" MasterPageFile ="~/Consorcios/MenuConsorcios.Master" %>
 <asp:Content ID="Content1" runat="server" contentplaceholderid="ContentPlaceHolder1"> 
 
-<form id="form1" runat="server">
+    <form id="form1" runat="server">
 <body>
     <table>
         <tr>
             <td style="width: 669px">
-                <asp:GridView ID="grdConsorcios" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" OnRowCommand="grdConsorcios_RowCommand" style="margin-top: 47px; margin-left: 13px;" Width="622px">
+                <span style="font-size: large; color: #003399">
+                <br />
+                Consorcios</span><br />
+                <asp:GridView ID="grdConsorcios" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" OnRowCommand="grdConsorcios_RowCommand" style="margin-top: 0px; margin-left: 0px;" Width="622px">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
                         <asp:BoundField DataField="ID" HeaderText="Codigo">
@@ -74,6 +77,8 @@
             </td>
         </tr>
     </table>
+    <br />
+    <asp:Button ID="btnNuevoConsorcio" runat="server" Height="35px" OnClick="btnNuevoConsorcio_Click" Text="Nuevo" Width="107px" />
     <table><tr><td style="height: 59px">
         <asp:Label ID="lblError" runat="server" Font-Size="Large" ForeColor="#FF6600" style="margin-left: 13px;"></asp:Label>
     </td></tr></table>

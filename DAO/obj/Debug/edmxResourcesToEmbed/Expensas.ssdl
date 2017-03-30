@@ -3,6 +3,7 @@
   <EntityContainer Name="ExpensasModelStoreContainer">
     <EntitySet Name="Consorcios" EntityType="ExpensasModel.Store.Consorcios" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Expensas" EntityType="ExpensasModel.Store.Expensas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UnidadesFuncionales" EntityType="ExpensasModel.Store.UnidadesFuncionales" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_Expensas_Consorcios" Association="ExpensasModel.Store.FK_Expensas_Consorcios">
       <End Role="Consorcios" EntitySet="Consorcios" />
       <End Role="Expensas" EntitySet="Expensas" />
@@ -24,6 +25,16 @@
     <Property Name="Consorcio_ID" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Periodo" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Total_Gastos" Type="numeric" Scale="2" />
+  </EntityType>
+  <EntityType Name="UnidadesFuncionales">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Consorcios_ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="Consorcios_ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Dueño" Type="nvarchar" MaxLength="50" />
+    <Property Name="Coeficiente" Type="numeric" Scale="2" />
   </EntityType>
   <Association Name="FK_Expensas_Consorcios">
     <End Role="Consorcios" Type="ExpensasModel.Store.Consorcios" Multiplicity="1" />

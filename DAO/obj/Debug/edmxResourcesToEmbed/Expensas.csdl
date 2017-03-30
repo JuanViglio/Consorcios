@@ -7,6 +7,7 @@
       <End Role="Consorcio" EntitySet="Consorcios" />
       <End Role="Expensas" EntitySet="Expensas" />
     </AssociationSet>
+    <EntitySet Name="UnidadesFuncionales" EntityType="ExpensasModel.UnidadesFuncionales" />
   </EntityContainer>
   <EntityType Name="Consorcio">
     <Key>
@@ -30,4 +31,14 @@
     <End Type="ExpensasModel.Consorcio" Role="Consorcio" Multiplicity="1" />
     <End Type="ExpensasModel.Expensas" Role="Expensas" Multiplicity="*" />
   </Association>
+  <EntityType Name="UnidadesFuncionales">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Consorcios_ID" />
+    </Key>
+    <Property Type="String" Name="ID" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Consorcios_ID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Dueño" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="Coeficiente" Precision="18" Scale="2" />
+  </EntityType>
 </Schema>
