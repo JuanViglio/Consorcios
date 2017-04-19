@@ -1,5 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MenuConsorcios.Master.cs" Inherits="WebSistemmas.MenuConsorcios
-    " %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MenuConsorcios.Master.cs" Inherits="WebSistemmas.MenuConsorcios" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -23,7 +22,7 @@
         <nav>
             <ul class="fancyNav">
                 <li id="consorcios"><a href="../Consorcios/Consorcios.aspx#consorcios">Consorcios</a></li>
-
+                <li id="gastos"><a href="../Consorcios/Gastos.aspx#gastos">Gastos</a></li>
             </ul>
         </nav>
 

@@ -55,6 +55,7 @@ namespace WebSistemmas.Consorcios
                             break;
 
                         case "EXPENSAS":
+                            Session["idConsorcio"] = GridViewrow.Cells[0].Text;
                             Response.Redirect("Expensas.aspx", false);
                             break;
 

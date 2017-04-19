@@ -9,7 +9,7 @@
         <table>
             <tr>
                 <td style="width: 652px">
-                    <asp:GridView ID="grdExpensas" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" OnRowCommand="grdExpensas_RowCommand" style="margin-top: 0px; margin-left: 0px;" Width="595px">
+                    <asp:GridView ID="grdExpensas" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" OnRowCommand="grdExpensas_RowCommand" style="margin-top: 0px; margin-left: 0px;" Width="595px" OnSelectedIndexChanged="grdExpensas_SelectedIndexChanged" OnRowDataBound="grdExpensas_RowDataBound">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
                             <asp:BoundField DataField="Periodo" HeaderText="Periodo">
@@ -18,6 +18,10 @@
                             <asp:BoundField DataField="Total_Gastos" HeaderText="Total">
                             <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
                             </asp:BoundField>
+                            <asp:BoundField DataField="ID" HeaderText="ID">
+                            <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
+                            </asp:BoundField>
+
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <div class="div_parent">

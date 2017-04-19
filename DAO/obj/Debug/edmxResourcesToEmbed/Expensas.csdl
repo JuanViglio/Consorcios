@@ -8,6 +8,17 @@
       <End Role="Expensas" EntitySet="Expensas" />
     </AssociationSet>
     <EntitySet Name="UnidadesFuncionales" EntityType="ExpensasModel.UnidadesFuncionales" />
+    <EntitySet Name="ExpensasDetalle" EntityType="ExpensasModel.ExpensasDetalle" />
+    <AssociationSet Name="FK_ExpensasDetalle_Expensas" Association="ExpensasModel.FK_ExpensasDetalle_Expensas">
+      <End Role="Expensas" EntitySet="Expensas" />
+      <End Role="ExpensasDetalle" EntitySet="ExpensasDetalle" />
+    </AssociationSet>
+    <EntitySet Name="Gastos" EntityType="ExpensasModel.Gastos" />
+    <EntitySet Name="TipoGastos" EntityType="ExpensasModel.TipoGastos" />
+    <AssociationSet Name="FK_Gastos_TipoGastos" Association="ExpensasModel.FK_Gastos_TipoGastos">
+      <End Role="TipoGastos" EntitySet="TipoGastos" />
+      <End Role="Gastos" EntitySet="Gastos" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Consorcio">
     <Key>
@@ -26,6 +37,8 @@
     <Property Type="String" Name="Periodo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Type="Decimal" Name="Total_Gastos" Precision="18" Scale="2" />
     <NavigationProperty Name="Consorcios" Relationship="ExpensasModel.FK_Expensas_Consorcios" FromRole="Expensas" ToRole="Consorcio" />
+    <NavigationProperty Name="ExpensasDetalle" Relationship="ExpensasModel.FK_ExpensasDetalle_Expensas" FromRole="Expensas" ToRole="ExpensasDetalle" />
+    <Property Type="Int32" Name="PeriodoNumerico" />
   </EntityType>
   <Association Name="FK_Expensas_Consorcios">
     <End Type="ExpensasModel.Consorcio" Role="Consorcio" Multiplicity="1" />
@@ -41,4 +54,39 @@
     <Property Type="String" Name="Dueño" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Type="Decimal" Name="Coeficiente" Precision="18" Scale="2" />
   </EntityType>
+  <EntityType Name="ExpensasDetalle">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Decimal" Name="ID" Nullable="false" Precision="18" Scale="0" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="String" Name="Detalle" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="Importe" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="TipoGasto_ID" />
+    <NavigationProperty Name="Expensas" Relationship="ExpensasModel.FK_ExpensasDetalle_Expensas" FromRole="ExpensasDetalle" ToRole="Expensas" />
+  </EntityType>
+  <Association Name="FK_ExpensasDetalle_Expensas">
+    <End Type="ExpensasModel.Expensas" Role="Expensas" Multiplicity="0..1" />
+    <End Type="ExpensasModel.ExpensasDetalle" Role="ExpensasDetalle" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Gastos">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Decimal" Name="ID" Nullable="false" Precision="18" Scale="0" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="String" Name="Detalle" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="Importe" Precision="18" Scale="2" />
+    <NavigationProperty Name="TipoGastos" Relationship="ExpensasModel.FK_Gastos_TipoGastos" FromRole="Gastos" ToRole="TipoGastos" />
+  </EntityType>
+  <EntityType Name="TipoGastos">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Decimal" Name="ID" Nullable="false" Precision="18" Scale="0" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="String" Name="Detalle" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Gastos" Relationship="ExpensasModel.FK_Gastos_TipoGastos" FromRole="TipoGastos" ToRole="Gastos" />
+  </EntityType>
+  <Association Name="FK_Gastos_TipoGastos">
+    <End Type="ExpensasModel.TipoGastos" Role="TipoGastos" Multiplicity="1" />
+    <End Type="ExpensasModel.Gastos" Role="Gastos" Multiplicity="*" />
+  </Association>
 </Schema>

@@ -10,13 +10,15 @@ namespace WebSistemmas.Consorcios
 {
     public partial class Expensas : System.Web.UI.Page
     {
+        private int col_ID_Expensa = 2;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 expensasServ serv = new expensasServ();
 
-                grdExpensas.DataSource = serv.GetExpensas("1");
+                grdExpensas.DataSource = serv.GetExpensas(Session["idConsorcio"].ToString());
                 grdExpensas.DataBind();
             }
         }
@@ -39,8 +41,13 @@ namespace WebSistemmas.Consorcios
                     {
                         case "UNIDADESFUNCIONALES":
                             unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
-                            grdUnidades.DataSource = serv.GetUnidadesFuncionales("1");
+                            grdUnidades.DataSource = serv.GetUnidadesFuncionales(Session["idConsorcio"].ToString());
                             grdUnidades.DataBind();
+                            break;
+
+                        case "EXPENSAS":
+                            Session["idExpensa"] = GridViewrow.Cells[col_ID_Expensa].Text;
+                            Response.Redirect("ExpensaNueva.aspx", false);
                             break;
 
                         default:
@@ -62,7 +69,21 @@ namespace WebSistemmas.Consorcios
 
         protected void btnNuevaExpensa_Click(object sender, EventArgs e)
         {
+            expensasServ serv = new expensasServ();
+
+            serv.AgregarExpensa(Session["idConsorcio"].ToString());
+
             Response.Redirect("ExpensaNueva.aspx", false);
+        }
+
+        protected void grdExpensas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void grdExpensas_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            e.Row.Cells[col_ID_Expensa].Visible = false;
         }
     }
 }

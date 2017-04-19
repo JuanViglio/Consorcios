@@ -117,10 +117,13 @@
     <Content Include="Consorcios\Consorcios.aspx" />
     <Content Include="Consorcios\ExpensaNueva.aspx" />
     <Content Include="Consorcios\Expensas.aspx" />
+    <Content Include="Consorcios\Gastos.aspx" />
     <Content Include="Consorcios\UnidadesFuncionales.aspx" />
+    <Content Include="css\jquery-ui.css" />
     <Content Include="Imagenes\Equipo2.jpg" />
     <Content Include="assets\img\iconback.gif" />
     <Content Include="css\styleLoginInmobiliarias.css" />
+    <Content Include="js\Expensas.js" />
     <Content Include="js\jquery-1.10.2.js" />
     <Content Include="images\mail.png" />
     <Content Include="Invitaciones.aspx" />
@@ -171,6 +174,13 @@
     </Compile>
     <Compile Include="Consorcios\Expensas.aspx.designer.cs">
       <DependentUpon>Expensas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\Gastos.aspx.cs">
+      <DependentUpon>Gastos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\Gastos.aspx.designer.cs">
+      <DependentUpon>Gastos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Consorcios\MenuConsorcios.Master.cs">
       <DependentUpon>MenuConsorcios.Master</DependentUpon>

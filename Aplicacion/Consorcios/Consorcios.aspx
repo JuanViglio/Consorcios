@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Consorcios.aspx.cs" Inherits="WebSistemmas.Consorcios.Consorcios" MasterPageFile ="~/Consorcios/MenuConsorcios.Master" %>
 <asp:Content ID="Content1" runat="server" contentplaceholderid="ContentPlaceHolder1"> 
 
-    <form id="form1" runat="server">
+<form id="form1" runat="server">
 <body>
     <table>
         <tr>
