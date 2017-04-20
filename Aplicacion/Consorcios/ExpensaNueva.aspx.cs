@@ -19,7 +19,7 @@ namespace WebSistemmas.Consorcios
             if (!IsPostBack)
             {
                 CargarGrilla();
-                CargarComboTipos();
+                CargarComboTipos();                
             }
         }
 
@@ -37,6 +37,11 @@ namespace WebSistemmas.Consorcios
             serv.AgregarExpensaDetalle(expensaID, txtDetalle.Text, Convert.ToDecimal(txtImporte.Text));
 
             CargarGrilla();
+
+            GuardarUltimoTotal(expensaID, Convert.ToDecimal(lblTotal.Text));
+
+            txtDetalle.Text = "";
+            txtImporte.Text = "";
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
@@ -46,26 +51,34 @@ namespace WebSistemmas.Consorcios
 
 
         #region Funciones Privadas
-       
+
+        private void GuardarUltimoTotal(int expensaID, decimal total)
+        {
+            expensasServ expensasServ = new expensasServ();
+
+            expensasServ.GuardarUltimoTotal(expensaID, total);
+        }
+
         private void CargarComboTipos()
         {
             var serv = new gastosServ();
             
             ddlTipoGastos.DataSource = serv.GetTipoGastos();
             ddlTipoGastos.DataTextField = "Detalle";
-            ddlTipoGastos.DataValueField = "Id";
-            
+            ddlTipoGastos.DataValueField = "Id";            
             ddlTipoGastos.DataBind();
         }
 
         private void CargarGrilla()
         {
-            expensasServ espensasServ = new expensasServ();
+            expensasServ expensasServ = new expensasServ();
 
             int expensaID = Convert.ToInt32(Session["idExpensa"]);
 
-            grdExpensas.DataSource = espensasServ.GetExpensaDetalle(expensaID);
+            grdExpensas.DataSource = expensasServ.GetExpensaDetalle(expensaID);
             grdExpensas.DataBind();
+
+            lblTotal.Text = expensasServ.GetTotalDetalle(expensaID).ToString();
         }
         
         #endregion

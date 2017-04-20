@@ -27,7 +27,7 @@
                                     </td>
                                     <td style="height: 23px">
 
-                    <asp:DropDownList ID="ddlTipoGastos" runat="server" Height="17px" Width="250px" OnSelectedIndexChanged="ddlTipoGastos_SelectedIndexChanged" onchange="YourChangeFun(this)">
+                    <asp:DropDownList ID="ddlTipoGastos" runat="server" Height="17px" Width="250px" OnSelectedIndexChanged="ddlTipoGastos_SelectedIndexChanged" onchange="cambioTipoGastos(this)">
                     
                     </asp:DropDownList>
                                     </td>
@@ -93,8 +93,20 @@
                             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                         </asp:GridView>
                         <br />
-                                        <asp:Button ID="btnAceptar" runat="server" Height="30px" OnClick="btnAgregarExpensa_Click" Text="Aceptar" Width="90px" />
-                                    <br />
+                        <table>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="Label5" runat="server" Text="Total:   $" Font-Size="Large"></asp:Label>
+                                </td>
+                                <td style="width: 97px">
+                                    <asp:Label ID="lblTotal" runat="server" Font-Size="Large"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Button ID="btnAceptar" runat="server" Height="30px" OnClick="btnAgregarExpensa_Click" Text="Aceptar" Width="90px" />
+                                </td>
+                            </tr>
+                        </table>
+                        <br />
                     </td>
                 </tr>
             </table>

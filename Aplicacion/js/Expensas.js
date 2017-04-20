@@ -1,4 +1,4 @@
-﻿function YourChangeFun(ddl)
+﻿function cambioTipoGastos(ddl)
 {
     $.ajax({
         type: "POST",

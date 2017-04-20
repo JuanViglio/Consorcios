@@ -102,5 +102,20 @@ namespace Servicios
         {
             return context.ExpensasDetalle.Where(x => x.Expensas.ID == ExpensaID).ToList();
         }
+
+        public Decimal GetTotalDetalle(int ExpensaID)
+        {
+            var detalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == ExpensaID).Sum(x => x.Importe);
+
+            return detalle.Value;
+        }
+
+        public void GuardarUltimoTotal(int ExpensaID, Decimal Total)
+        {
+            var expensa = context.Expensas.Where(x => x.ID == ExpensaID).FirstOrDefault();
+
+            expensa.Total_Gastos = Total;
+            context.SaveChanges();
+        }
     }
 }

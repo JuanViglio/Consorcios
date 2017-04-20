@@ -12,7 +12,17 @@ namespace Servicios
 
         public List<TipoGastos> GetTipoGastos()
         {
-            var tipoGastos = context.TipoGastos.ToList();
+            List<TipoGastos> tipoGastos = new List<TipoGastos>();
+
+            tipoGastos.Add(new TipoGastos { ID = 0, Detalle = "Seleccione un Tipo de Gasto" });
+            TipoGastos tipo = new TipoGastos();
+
+            foreach (var item in context.TipoGastos.ToList())
+            {
+                tipoGastos.Add(new TipoGastos {ID = item.ID, Detalle = item.Detalle });
+            }
+
+
 
             return tipoGastos;
         }
