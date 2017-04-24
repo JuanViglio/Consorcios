@@ -18,7 +18,8 @@ namespace WebSistemmas.Consorcios
         {
             if (!IsPostBack)
             {
-                CargarGrilla();
+                CargarGrillaGastosOrdinarios();
+                CargarGrillaGastosEventuales();
                 CargarComboTipos();                
             }
         }
@@ -29,18 +30,18 @@ namespace WebSistemmas.Consorcios
 
         }
 
-        protected void btnAgregarExpensa_Click(object sender, EventArgs e)
+        protected void btnAgregarGastoOrdinario_Click(object sender, EventArgs e)
         {
             expensasServ serv = new expensasServ();
             int expensaID = Convert.ToInt32(Session["idExpensa"]);
 
-            serv.AgregarExpensaDetalle(expensaID, txtDetalle.Text, Convert.ToDecimal(txtImporte.Text));
+            serv.AgregarExpensaDetalle(expensaID, txtDetalle.Text, Convert.ToDecimal(txtImporte.Text), Convert.ToInt32(ddlTipoGastos.SelectedValue));
 
-            CargarGrilla();
+            CargarGrillaGastosOrdinarios();
 
-            GuardarUltimoTotal(expensaID, Convert.ToDecimal(lblTotal.Text));
+            GuardarUltimoTotal(expensaID, Convert.ToDecimal(lblTotalGastosOrdinarios.Text)); 
 
-            txtDetalle.Text = "";
+            txtDetalle.Text = ""; 
             txtImporte.Text = "";
         }
 
@@ -69,18 +70,30 @@ namespace WebSistemmas.Consorcios
             ddlTipoGastos.DataBind();
         }
 
-        private void CargarGrilla()
+        private void CargarGrillaGastosOrdinarios()
         {
             expensasServ expensasServ = new expensasServ();
 
             int expensaID = Convert.ToInt32(Session["idExpensa"]);
 
-            grdExpensas.DataSource = expensasServ.GetExpensaDetalle(expensaID);
-            grdExpensas.DataBind();
+            grdGastosOrdinarios.DataSource = expensasServ.GetExpensaDetalle(expensaID).Where(x => x.TipoGasto_ID.Value != 2);
+            grdGastosOrdinarios.DataBind();
 
-            lblTotal.Text = expensasServ.GetTotalDetalle(expensaID).ToString();
+            lblTotalGastosOrdinarios.Text = expensasServ.GetTotalDetalle(expensaID).ToString();
         }
-        
+         
+        private void CargarGrillaGastosEventuales()
+        {
+            expensasServ expensasServ = new expensasServ();
+
+            int expensaID = Convert.ToInt32(Session["idExpensa"]);
+
+            grdGastosEventuales.DataSource = expensasServ.GetExpensaDetalle(expensaID).Where(x => x.TipoGasto_ID.Value == 2);
+            grdGastosEventuales.DataBind();
+
+            lblTotalGastosEventuales.Text = expensasServ.GetTotalGastosEventuales(expensaID).ToString();
+        }
+
         #endregion
 
         protected void ddlTipoGastos_SelectedIndexChanged(object sender, EventArgs e)
@@ -98,6 +111,27 @@ namespace WebSistemmas.Consorcios
 
             return gastos.Select(i => i.Detalle).ToList();
         }
+
+        protected void grdGastosOrdinarios_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+        }
+
+        protected void btnAgregarGastoEventual_Click(object sender, EventArgs e)
+        {
+            expensasServ serv = new expensasServ();
+            int expensaID = Convert.ToInt32(Session["idExpensa"]);
+
+            serv.AgregarExpensaDetalle(expensaID, txtDetalleGastoEventual.Text, Convert.ToDecimal(txtImporteGastoEventual.Text), 2);
+
+            CargarGrillaGastosEventuales();
+
+            GuardarUltimoTotal(expensaID, Convert.ToDecimal(lblTotalGastosOrdinarios.Text));
+
+            txtDetalleGastoEventual.Text = "";
+            txtImporteGastoEventual.Text = "";
+        }
+
 
     }
 }

@@ -39,4 +39,3 @@ D:\Sistemmas\Working Copy\Consorcios\DAO\bin\Debug\DAO.dll
 D:\Sistemmas\Working Copy\Consorcios\DAO\bin\Debug\DAO.pdb
 D:\Sistemmas\Working Copy\Consorcios\DAO\obj\Debug\DAO.dll
 D:\Sistemmas\Working Copy\Consorcios\DAO\obj\Debug\DAO.pdb
-D:\Sistemmas\Working Copy\Consorcios\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache

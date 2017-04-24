@@ -86,13 +86,14 @@ namespace Servicios
                 return Convert.ToInt32(periodoActual) + 1;            
         }
 
-        public void AgregarExpensaDetalle(int ExpensaID, string Detalle, Decimal Importe)
+        public void AgregarExpensaDetalle(int ExpensaID, string Detalle, Decimal Importe, int TipoGasto)
         {
             ExpensasDetalle detalle = new ExpensasDetalle();
 
             detalle.Expensas = context.Expensas.Where(x => x.ID == ExpensaID).FirstOrDefault();
             detalle.Detalle = Detalle;
             detalle.Importe = Importe;
+            detalle.TipoGasto_ID = TipoGasto;
 
             context.AddToExpensasDetalle(detalle);
             context.SaveChanges();
@@ -106,6 +107,13 @@ namespace Servicios
         public Decimal GetTotalDetalle(int ExpensaID)
         {
             var detalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == ExpensaID).Sum(x => x.Importe);
+
+            return detalle.Value;
+        }
+
+        public Decimal GetTotalGastosEventuales(int ExpensaID)
+        {
+            var detalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == ExpensaID).Where(x => x.TipoGasto_ID.Value == 2).Sum(x => x.Importe);
 
             return detalle.Value;
         }
