@@ -211,7 +211,9 @@
     <Folder Include="App_Themes\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Consorcios\MenuConsorcios.Master" />
     <None Include="Properties\PublishProfiles\Perfil1.pubxml" />
   </ItemGroup>

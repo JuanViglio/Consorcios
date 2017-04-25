@@ -98,11 +98,23 @@ namespace Servicios
             context.AddToExpensasDetalle(detalle);
             context.SaveChanges();
         }
-
-        public List<ExpensasDetalle> GetExpensaDetalle(int ExpensaID)
+         
+        public List<ExpensasDetalle> GetGastosOrdinarios(int ExpensaID)
         {
-            return context.ExpensasDetalle.Where(x => x.Expensas.ID == ExpensaID).ToList();
+            var detalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == ExpensaID).Where(x => x.TipoGasto_ID.Value == 1).ToList();
+            detalle.Add(new ExpensasDetalle { Detalle = "Fondo de Prevision mensual", Importe = GetTotalGastosEventuales(ExpensaID), TipoGasto_ID = 2 });
+
+            return detalle;
         }
+
+        public List<ExpensasDetalle> GetGastosEventuales(int ExpensaID)
+        {
+            var detalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == ExpensaID).Where(x => x.TipoGasto_ID.Value == 2).ToList();
+
+            return detalle;
+        }
+
+
 
         public Decimal GetTotalDetalle(int ExpensaID)
         {

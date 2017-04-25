@@ -76,7 +76,7 @@ namespace WebSistemmas.Consorcios
 
             int expensaID = Convert.ToInt32(Session["idExpensa"]);
 
-            grdGastosOrdinarios.DataSource = expensasServ.GetExpensaDetalle(expensaID).Where(x => x.TipoGasto_ID.Value != 2);
+            grdGastosOrdinarios.DataSource = expensasServ.GetGastosOrdinarios(expensaID);
             grdGastosOrdinarios.DataBind();
 
             lblTotalGastosOrdinarios.Text = expensasServ.GetTotalDetalle(expensaID).ToString();
@@ -88,7 +88,7 @@ namespace WebSistemmas.Consorcios
 
             int expensaID = Convert.ToInt32(Session["idExpensa"]);
 
-            grdGastosEventuales.DataSource = expensasServ.GetExpensaDetalle(expensaID).Where(x => x.TipoGasto_ID.Value == 2);
+            grdGastosEventuales.DataSource = expensasServ.GetGastosEventuales(expensaID);
             grdGastosEventuales.DataBind();
 
             lblTotalGastosEventuales.Text = expensasServ.GetTotalGastosEventuales(expensaID).ToString();
