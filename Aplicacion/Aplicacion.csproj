@@ -119,22 +119,10 @@
     <Content Include="Consorcios\Expensas.aspx" />
     <Content Include="Consorcios\Gastos.aspx" />
     <Content Include="Consorcios\UnidadesFuncionales.aspx" />
-    <Content Include="css\jquery-ui.css" />
     <Content Include="Imagenes\Equipo2.jpg" />
     <Content Include="assets\img\iconback.gif" />
-    <Content Include="css\styleLoginInmobiliarias.css" />
     <Content Include="js\Expensas.js" />
     <Content Include="js\jquery-1.10.2.js" />
-    <Content Include="images\mail.png" />
-    <Content Include="Invitaciones.aspx" />
-    <Content Include="RegistrarNT.aspx" />
-    <Content Include="css\demos.css" />
-    <Content Include="css\ie.css" />
-    <Content Include="css\jquery-ui-1.8.16.custom.css" />
-    <Content Include="css\jquery.ui.all.css" />
-    <Content Include="css\lavalamp.css" />
-    <Content Include="css\main.css" />
-    <Content Include="css\styles.css" />
     <Content Include="Imagenes\Equipo.jpg" />
     <Content Include="js\jquery-1.6.2.min.js" />
     <Content Include="js\jquery-ui-1.8.16.custom.min.js" />
@@ -144,14 +132,9 @@
     <Content Include="js\jquery.ui.core.js" />
     <Content Include="js\jquery.ui.widget.js" />
     <Content Include="js\jquery1-2-6-min.js" />
-    <Content Include="js\lavalamp.js" />
-    <Content Include="js\tabs.js" />
-    <Content Include="LoginNT.aspx" />
-    <Content Include="NuestraTierra.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="WebService.asmx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Consorcios\Consorcios.aspx.cs">
@@ -196,53 +179,7 @@
     <Compile Include="Consorcios\UnidadesFuncionales.aspx.designer.cs">
       <DependentUpon>UnidadesFuncionales.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Invitaciones.aspx.cs">
-      <DependentUpon>Invitaciones.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Invitaciones.aspx.designer.cs">
-      <DependentUpon>Invitaciones.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="RegistrarNT.aspx.cs">
-      <DependentUpon>RegistrarNT.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="RegistrarNT.aspx.designer.cs">
-      <DependentUpon>RegistrarNT.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Ingreso.aspx.cs">
-      <DependentUpon>Ingreso.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Ingreso.aspx.designer.cs">
-      <DependentUpon>Ingreso.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="LoginNT.aspx.cs">
-      <DependentUpon>LoginNT.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="LoginNT.aspx.designer.cs">
-      <DependentUpon>LoginNT.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Menu.Master.cs">
-      <DependentUpon>Menu.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Menu.Master.designer.cs">
-      <DependentUpon>Menu.Master</DependentUpon>
-    </Compile>
-    <Compile Include="NuestraTierra.aspx.cs">
-      <DependentUpon>NuestraTierra.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="NuestraTierra.aspx.designer.cs">
-      <DependentUpon>NuestraTierra.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebService.asmx.cs">
-      <DependentUpon>WebService.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAO\DAO.csproj">
@@ -255,26 +192,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\jquery.jqChart.css" />
-    <Content Include="css\jquery.jqRangeSlider.css" />
-    <Content Include="css\Sistemmas.css" />
     <Content Include="js\jquery.jqChart.min.js" />
     <Content Include="js\jquery.jqRangeSlider.min.js" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\Curvas.css" />
-    <Content Include="css\Default.css" />
-    <Content Include="css\jquery.galleryview-3.0-dev.css" />
-    <Content Include="css\styleLogin.css" />
-    <Content Include="images\formbody.png" />
-    <Content Include="images\header_bg.png" />
-    <Content Include="images\login.png" />
-    <Content Include="images\password.png" />
-    <Content Include="images\show_window.png" />
-    <Content Include="images\username.png" />
-    <Content Include="Ingreso.aspx" />
     <Content Include="js\Default.js" />
-    <Content Include="js\excanvas.pack.js" />
     <Content Include="js\jquery-1.2.6.min.js" />
     <Content Include="js\jquery-ui.min.js" />
     <Content Include="js\jquery.blockUI.js" />
@@ -283,7 +205,6 @@
     <Content Include="js\jquery.min.js" />
     <Content Include="js\jquery.timers-1.2.js" />
     <Content Include="js\json2.js" />
-    <Content Include="Menu.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
