@@ -24,9 +24,9 @@
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <div class="div_parent">
-                                    <asp:ImageButton ID="Modificar" runat="server" CausesValidation="False" CommandName="Modificar" ImageUrl="~/assets/img/ico_modificar.gif" ToolTip="Modificar" />
-                                    <asp:ImageButton ID="UnidadesFuncionales" runat="server" CausesValidation="False" CommandName="UnidadesFuncionales" ImageUrl="~/assets/img/home.png" ToolTip="Unidades Funcionales" />
-                                    <asp:ImageButton ID="Expensas" runat="server" CausesValidation="False" CommandName="Expensas" ImageUrl="~/assets/img/ico_pesos.png" ToolTip="Expensas" />
+                                    <asp:ImageButton ID="Modificar" runat="server" CausesValidation="False" CommandName="Modificar" ImageUrl="~/css/img/ico_modificar.gif" ToolTip="Modificar" />
+                                    <asp:ImageButton ID="UnidadesFuncionales" runat="server" CausesValidation="False" CommandName="UnidadesFuncionales" ImageUrl="~/css/img/home.png" ToolTip="Unidades Funcionales" />
+                                    <asp:ImageButton ID="Expensas" runat="server" CausesValidation="False" CommandName="Expensas" ImageUrl="~/css/img/ico_pesos.png" ToolTip="Expensas" />
                                 </div>
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" />

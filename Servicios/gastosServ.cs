@@ -31,5 +31,12 @@ namespace Servicios
         {
             return context.Gastos.Where(x => x.TipoGastos.ID == tipoGasto).OrderBy(x => x.Detalle).ToList();
         }
+
+        public void DeleteDetalle(decimal idExpensaDetalle)
+        {
+            ExpensasDetalle expensaDetalle = context.ExpensasDetalle.Where(x => x.ID == idExpensaDetalle).FirstOrDefault();
+            context.DeleteObject(expensaDetalle);
+            context.SaveChanges();            
+        }
     }
 }

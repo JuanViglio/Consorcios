@@ -71,7 +71,7 @@ namespace WebSistemmas.Consorcios
         {
             expensasServ serv = new expensasServ();
 
-            serv.AgregarExpensa(Session["idConsorcio"].ToString());
+            Session["idExpensa"] = serv.AgregarExpensa(Session["idConsorcio"].ToString());
 
             Response.Redirect("ExpensaNueva.aspx", false);
         }

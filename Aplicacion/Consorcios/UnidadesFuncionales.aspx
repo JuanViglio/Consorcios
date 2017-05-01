@@ -22,7 +22,7 @@
                     <asp:TemplateField>
                         <ItemTemplate>
                             <div class="div_parent">
-                                <asp:ImageButton ID="Modificar" runat="server" CausesValidation="False" CommandName="Modificar" ImageUrl="~/assets/img/ico_modificar.gif" ToolTip="Modificar" />
+                                <asp:ImageButton ID="Modificar" runat="server" CausesValidation="False" CommandName="Modificar" ImageUrl="~/css/img/ico_modificar.gif" ToolTip="Modificar" />
                             </div>
                         </ItemTemplate>
                         <ItemStyle HorizontalAlign="Center" />

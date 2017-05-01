@@ -17,17 +17,38 @@ namespace Servicios
             return expensas; 
         }
 
-        public void AgregarExpensa(string ConsorcioID)
+        public decimal AgregarExpensa(string ConsorcioID)
         {
             Expensas expensa = new Expensas();
-            Consorcio consorcio = context.Consorcios.Where(x => x.ID == ConsorcioID).FirstOrDefault();
-            expensa.Consorcios = consorcio;
 
+            List<ExpensasDetalle> expensaDetalle ;
+            Consorcio consorcio = context.Consorcios.Where(x => x.ID == ConsorcioID).FirstOrDefault();
+
+            expensa.Consorcios = consorcio;
+            expensa.Total_Gastos = GetUltimoTotal();
             expensa.PeriodoNumerico = GetNuevoPeriodo();
             expensa.Periodo = GetDescripcionPeriodo(expensa.PeriodoNumerico.Value);
 
+            expensaDetalle = GetUltimoDetalle();
+            foreach (var item in expensaDetalle)
+            {
+                expensa.ExpensasDetalle.Add(new ExpensasDetalle {Detalle = item.Detalle, Importe = item.Importe,TipoGasto_ID = item.TipoGasto_ID });                
+            }
+
             context.AddToExpensas(expensa);
+
             context.SaveChanges();
+
+            return context.Expensas.OrderByDescending(x => x.Periodo).FirstOrDefault().ID;
+        }
+
+        private List<ExpensasDetalle> GetUltimoDetalle()
+        {
+            decimal idExpensa = Convert.ToDecimal(context.Expensas.OrderByDescending(x => x.PeriodoNumerico).FirstOrDefault().ID.ToString());
+
+            var detalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == idExpensa).ToList();
+
+            return detalle;
         }
 
         private string GetDescripcionPeriodo(int Periodo)
@@ -114,20 +135,23 @@ namespace Servicios
             return detalle;
         }
 
-
+        public decimal GetUltimoTotal()
+        {
+            return context.Expensas.OrderByDescending(x => x.PeriodoNumerico).FirstOrDefault().Total_Gastos.Value;
+        }
 
         public Decimal GetTotalDetalle(int ExpensaID)
         {
             var detalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == ExpensaID).Sum(x => x.Importe);
 
-            return detalle.Value;
+            return (detalle == null) ? 0 : detalle.Value;
         }
 
         public Decimal GetTotalGastosEventuales(int ExpensaID)
         {
             var detalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == ExpensaID).Where(x => x.TipoGasto_ID.Value == 2).Sum(x => x.Importe);
 
-            return detalle.Value;
+            return (detalle == null) ? 0 : detalle.Value;
         }
 
         public void GuardarUltimoTotal(int ExpensaID, Decimal Total)
