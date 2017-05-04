@@ -12,7 +12,7 @@
         <p style="color: #003399; font-size: large">
         Nueva Expensa</p>
         <p style="color: #003399; font-size: large">
-        &nbsp;</p>
+            &nbsp;&nbsp;</p>
         <p style="color: #003399; font-size: large"></p>
         <span style="font-size: medium; color: #003399;">Ingreso de Gastos Ordinarios</span>
         <table>
@@ -46,12 +46,17 @@
                                     <asp:TextBox ID="txtImporte" runat="server" Width="380px"></asp:TextBox>
                                 </td>
                             </tr>
+                        </table>
+                        <table>
                             <tr>
-                                <td style="width: 100px; height: 53px">
+                                <td style="width: 100px; height: 51px">
                                     <asp:Button ID="btnAgregarGastoOrdinario" runat="server" Height="30px" OnClick="btnAgregarGastoOrdinario_Click" Text="Agregar" Width="90px" />
                                 </td>
-                                <td style="height: 53px">
-                                    <asp:Button ID="btnCancelar" runat="server" Height="30px" Text="Volver" Width="90px" OnClick="btnCancelar_Click" />                                
+                                <td style="height: 51px; width: 100px;">
+                                    <asp:Button ID="btnCancelarGastoOrdinario" runat="server" Height="30px" Text="Cancelar" Width="90px" OnClick="btnCancelarGastoOrdinario_Click" />                                
+                                </td>
+                                <td style="height: 51px">
+                                    <asp:Button ID="btnVolver" runat="server" Height="30px" Text="Volver" Width="90px" OnClick="btnVolver_Click" />                                
                                 </td>
                             </tr>
                         </table>
