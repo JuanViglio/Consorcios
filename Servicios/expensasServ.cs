@@ -8,6 +8,9 @@ namespace Servicios
 {
     public class expensasServ
     {
+        private const int GastoTipoOrdinario = 1;
+        private const int GastoTipoEventual = 2;
+        private const int GastoTipoExtraordinario = 3;
         private ExpensasEntities context = new ExpensasEntities();
 
         public List<Expensas> GetExpensas(string ConsorcioId)
@@ -25,14 +28,14 @@ namespace Servicios
             Consorcio consorcio = context.Consorcios.Where(x => x.ID == ConsorcioID).FirstOrDefault();
 
             expensa.Consorcios = consorcio;
-            expensa.Total_Gastos = GetUltimoTotal();
             expensa.PeriodoNumerico = GetNuevoPeriodo();
             expensa.Periodo = GetDescripcionPeriodo(expensa.PeriodoNumerico.Value);
 
-            expensaDetalle = GetUltimoDetalle();
+            expensaDetalle = GetUltimoDetallePorTipo(GastoTipoOrdinario);
             foreach (var item in expensaDetalle)
             {
-                expensa.ExpensasDetalle.Add(new ExpensasDetalle {Detalle = item.Detalle, Importe = item.Importe,TipoGasto_ID = item.TipoGasto_ID });                
+                expensa.ExpensasDetalle.Add(new ExpensasDetalle {Detalle = item.Detalle, Importe = item.Importe,TipoGasto_ID = item.TipoGasto_ID });
+                expensa.Total_Gastos = +item.Importe;
             }
 
             context.AddToExpensas(expensa);
@@ -46,9 +49,12 @@ namespace Servicios
         {
             decimal idExpensa = Convert.ToDecimal(context.Expensas.OrderByDescending(x => x.PeriodoNumerico).FirstOrDefault().ID.ToString());
 
-            var detalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == idExpensa).ToList();
+            return context.ExpensasDetalle.Where(x => x.Expensas.ID == idExpensa).ToList();
+        }
 
-            return detalle;
+        private List<ExpensasDetalle> GetUltimoDetallePorTipo(int tipoGasto)
+        {
+            return GetUltimoDetalle().Where(x => x.TipoGasto_ID == tipoGasto).ToList();
         }
 
         private string GetDescripcionPeriodo(int Periodo)
@@ -119,20 +125,28 @@ namespace Servicios
             context.AddToExpensasDetalle(detalle);
             context.SaveChanges();
         }
-         
+
+        public List<ExpensasDetalle> GetGastosByTipo(int ExpensaID, int TipoGasto)
+        {
+            return context.ExpensasDetalle.Where(x => x.Expensas.ID == ExpensaID).Where(x => x.TipoGasto_ID.Value == TipoGasto).ToList();
+        }
+ 
         public List<ExpensasDetalle> GetGastosOrdinarios(int ExpensaID)
         {
-            var detalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == ExpensaID).Where(x => x.TipoGasto_ID.Value == 1).ToList();
-            detalle.Add(new ExpensasDetalle { Detalle = "Fondo de Prevision mensual", Importe = GetTotalGastosEventuales(ExpensaID), TipoGasto_ID = 2 });
+            var detalle = GetGastosByTipo(ExpensaID, GastoTipoOrdinario);
+            detalle.Add(new ExpensasDetalle { Detalle = "Fondo de Prevision mensual", Importe = GetTotalGastosEventuales(ExpensaID), TipoGasto_ID = GastoTipoEventual });
 
             return detalle;
         }
 
-        public List<ExpensasDetalle> GetGastosEventuales(int ExpensaID)
+        public List<ExpensasDetalle> GetGastosEventuales(int ExpensaID)  
         {
-            var detalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == ExpensaID).Where(x => x.TipoGasto_ID.Value == 2).ToList();
+            return GetGastosByTipo(ExpensaID, GastoTipoEventual);
+        }
 
-            return detalle;
+        public ExpensasDetalle GetTotalGastosExtraordinario(int ExpensaID)
+        {
+            return GetGastosByTipo(ExpensaID, GastoTipoExtraordinario).FirstOrDefault();
         }
 
         public decimal GetUltimoTotal()

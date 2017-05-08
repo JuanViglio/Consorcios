@@ -21,16 +21,6 @@
                     <div id="divExpensaNueva" style="margin-top: 17px;  " >
                         <table style="margin-top: 0px; width: 500px;">
                             <tr>
-                                <td style="width: 100px; height: 23px;">
-                                    <asp:Label ID="Label1" runat="server" Text="Tipo"></asp:Label>
-                                </td>
-                                <td style="height: 23px">
-                                    <asp:DropDownList ID="ddlTipoGastos" runat="server" Height="17px" Width="385px" OnSelectedIndexChanged="ddlTipoGastos_SelectedIndexChanged" onchange="cambioTipoGastos(this)">
-                    
-                                    </asp:DropDownList>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td style="width: 100px">
                                     <asp:Label ID="Label2" runat="server" Text="Detalle"></asp:Label>
                                 </td>
@@ -108,13 +98,30 @@
                     <table>
                         <tr>
                             <td>
-                                <asp:Label ID="Label5" runat="server" Text="Total:   $" Font-Size="Large" style="color: #003399"></asp:Label>
-                            </td>
-                            <td style="width: 97px">
-                                <asp:Label ID="lblTotalGastosOrdinarios" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
+                                <asp:Label ID="Label1" runat="server" Text="Previsión para gastos Extraordinarios" Font-Size="Large" style="color: #003399" Width="420px"></asp:Label>
                             </td>
                             <td>
-                                &nbsp;</td>
+
+                                <asp:TextBox ID="txtGastosExtraordinarios" runat="server" Width="95px" style="text-align: right" >0</asp:TextBox>
+
+                            </td>
+                            <td style="width : 100px" align="right">
+
+                                    <asp:Button ID="btnActualizarTotalExtraordinario" runat="server" Height="30px" OnClick="btnAgregarGastoOrdinario_Click" Text="Actualizar" Width="87px" />
+
+                            </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td style="height: 72px">
+                                <asp:Label ID="Label5" runat="server" Text="Total:   $" Font-Size="Large" style="color: #003399"></asp:Label>
+                            </td>
+                            <td style="width: 97px; height: 72px;">
+                                <asp:Label ID="lblTotalGastosOrdinarios" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
+                            </td>
+                            <td style="height: 72px">
+                                </td>
                         </tr>
                     </table>
                     <br />

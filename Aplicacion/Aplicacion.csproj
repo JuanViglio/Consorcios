@@ -106,7 +106,6 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\images\ui-icons_444444_256x240.png" />
     <Content Include="css\jquery-ui.css" />
     <Content Include="css\menuCobranza.css" />
     <Content Include="css\styles.css" />

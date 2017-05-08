@@ -1,9 +1,9 @@
-﻿function cambioTipoGastos(ddl)
+﻿function cambioTipoGastos()
 {
     $.ajax({
         type: "POST",
         url: "ExpensaNueva.aspx/OnSubmit",
-        data: "{'tipoGastoID': " + ddl.value + "}",
+        data: "{'tipoGastoID': 1}",
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         error: function (XMLHttpRequest, textStatus, errorThrown) {

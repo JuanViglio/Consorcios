@@ -38,16 +38,6 @@ namespace WebSistemmas.Consorcios
             expensasServ.GuardarUltimoTotal(expensaID, total);
         }
 
-        private void CargarComboTipos()
-        {
-            var serv = new gastosServ();
-
-            ddlTipoGastos.DataSource = serv.GetTipoGastos();
-            ddlTipoGastos.DataTextField = "Detalle";
-            ddlTipoGastos.DataValueField = "Id";
-            ddlTipoGastos.DataBind();
-        }
-
         private void CargarGrillaGastosOrdinarios()
         {
             expensasServ expensasServ = new expensasServ();
@@ -72,6 +62,17 @@ namespace WebSistemmas.Consorcios
             lblTotalGastosEventuales.Text = expensasServ.GetTotalGastosEventuales(expensaID).ToString();
         }
 
+        private void CargarGrillaGastosExtraordinarios()
+        {
+            expensasServ expensasServ = new expensasServ();
+
+            int expensaID = Convert.ToInt32(Session["idExpensa"]);
+
+            var totalGastosExtraordinarios = expensasServ.GetTotalGastosExtraordinario(expensaID);
+            txtGastosExtraordinarios.Text = totalGastosExtraordinarios == null ? "0" : totalGastosExtraordinarios.Importe.ToString();
+
+        }
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -81,7 +82,8 @@ namespace WebSistemmas.Consorcios
                 btnCancelarGastoOrdinario.Enabled = false;
                 CargarGrillaGastosOrdinarios();
                 CargarGrillaGastosEventuales();
-                CargarComboTipos();                
+                CargarGrillaGastosExtraordinarios();
+                ClientScript.RegisterStartupScript(GetType(), "TipoGastos", "cambioTipoGastos()", true);
             }
         }
 
@@ -97,7 +99,7 @@ namespace WebSistemmas.Consorcios
 
             if (btnAgregarGastoOrdinario.Text=="Agregar")
             {
-                serv.AgregarExpensaDetalle(expensaID, txtDetalle.Text, Convert.ToDecimal(txtImporte.Text), Convert.ToInt32(ddlTipoGastos.SelectedValue));
+                serv.AgregarExpensaDetalle(expensaID, txtDetalle.Text, Convert.ToDecimal(txtImporte.Text), 1);
 
                 CargarGrillaGastosOrdinarios();
 
