@@ -19,6 +19,11 @@
       <End Role="TipoGastos" EntitySet="TipoGastos" />
       <End Role="Gastos" EntitySet="Gastos" />
     </AssociationSet>
+    <EntitySet Name="GastosExtDetalle" EntityType="ExpensasModel.GastosExtDetalle" />
+    <AssociationSet Name="FK_GastosExtDetalle_Expensas" Association="ExpensasModel.FK_GastosExtDetalle_Expensas">
+      <End Role="Expensas" EntitySet="Expensas" />
+      <End Role="GastosExtDetalle" EntitySet="GastosExtDetalle" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Consorcio">
     <Key>
@@ -39,6 +44,7 @@
     <NavigationProperty Name="Consorcios" Relationship="ExpensasModel.FK_Expensas_Consorcios" FromRole="Expensas" ToRole="Consorcio" />
     <NavigationProperty Name="ExpensasDetalle" Relationship="ExpensasModel.FK_ExpensasDetalle_Expensas" FromRole="Expensas" ToRole="ExpensasDetalle" />
     <Property Type="Int32" Name="PeriodoNumerico" />
+    <NavigationProperty Name="GastosExtDetalle" Relationship="ExpensasModel.FK_GastosExtDetalle_Expensas" FromRole="Expensas" ToRole="GastosExtDetalle" />
   </EntityType>
   <Association Name="FK_Expensas_Consorcios">
     <End Type="ExpensasModel.Consorcio" Role="Consorcio" Multiplicity="1" />
@@ -88,5 +94,18 @@
   <Association Name="FK_Gastos_TipoGastos">
     <End Type="ExpensasModel.TipoGastos" Role="TipoGastos" Multiplicity="1" />
     <End Type="ExpensasModel.Gastos" Role="Gastos" Multiplicity="*" />
+  </Association>
+  <EntityType Name="GastosExtDetalle">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Decimal" Name="ID" Nullable="false" Precision="18" Scale="0" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="String" Name="Detalle" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="Importe" Precision="18" Scale="2" />
+    <NavigationProperty Name="Expensas" Relationship="ExpensasModel.FK_GastosExtDetalle_Expensas" FromRole="GastosExtDetalle" ToRole="Expensas" />
+  </EntityType>
+  <Association Name="FK_GastosExtDetalle_Expensas">
+    <End Type="ExpensasModel.Expensas" Role="Expensas" Multiplicity="0..1" />
+    <End Type="ExpensasModel.GastosExtDetalle" Role="GastosExtDetalle" Multiplicity="*" />
   </Association>
 </Schema>

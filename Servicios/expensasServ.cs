@@ -126,9 +126,21 @@ namespace Servicios
             context.SaveChanges();
         }
 
+        public void AgregarGastoExtraordinario(int ExpensaID, string Detalle, Decimal Importe)
+        {
+            GastosExtDetalle detalle = new GastosExtDetalle();
+
+            detalle.Expensas = context.Expensas.Where(x => x.ID == ExpensaID).FirstOrDefault();
+            detalle.Detalle = Detalle;
+            detalle.Importe = Importe;
+
+            context.AddToGastosExtDetalle(detalle);
+            context.SaveChanges();
+        }
+
         public List<ExpensasDetalle> GetGastosByTipo(int ExpensaID, int TipoGasto)
         {
-            return context.ExpensasDetalle.Where(x => x.Expensas.ID == ExpensaID).Where(x => x.TipoGasto_ID.Value == TipoGasto).ToList();
+            return context.ExpensasDetalle.Where(x => x.Expensas.ID == ExpensaID && x.TipoGasto_ID.Value == TipoGasto).ToList();
         }
  
         public List<ExpensasDetalle> GetGastosOrdinarios(int ExpensaID)
@@ -144,7 +156,12 @@ namespace Servicios
             return GetGastosByTipo(ExpensaID, GastoTipoEventual);
         }
 
-        public ExpensasDetalle GetTotalGastosExtraordinario(int ExpensaID)
+        public List<GastosExtDetalle> GetGastosExtraordinarios(int ExpensaID)
+        {
+            return context.GastosExtDetalle.Where(x => x.Expensas.ID == ExpensaID).ToList();
+        }
+
+        public ExpensasDetalle GetTotalGastosExtraordinarios(int ExpensaID)
         {
             return GetGastosByTipo(ExpensaID, GastoTipoExtraordinario).FirstOrDefault();
         }
@@ -173,6 +190,28 @@ namespace Servicios
             var expensa = context.Expensas.Where(x => x.ID == ExpensaID).FirstOrDefault();
 
             expensa.Total_Gastos = Total;
+            context.SaveChanges();
+        }
+
+        public void ActualizarGastosExtraordinario(int ExpensaID, Decimal Importe)
+        {
+            var detalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == ExpensaID && x.TipoGasto_ID == GastoTipoExtraordinario).FirstOrDefault();
+
+            if (detalle == null)
+            {
+
+                ExpensasDetalle nuevoDetalle = new ExpensasDetalle();
+                nuevoDetalle.Expensas = context.Expensas.Where(x => x.ID == ExpensaID).FirstOrDefault();
+                nuevoDetalle.Importe = Importe;
+                nuevoDetalle.TipoGasto_ID = GastoTipoExtraordinario;                
+                nuevoDetalle.Detalle = "Prevision para gastos Extraordinarios";
+                context.AddToExpensasDetalle (nuevoDetalle);
+            }
+            else
+            {
+                detalle.Importe = Importe;
+            }
+
             context.SaveChanges();
         }
     }

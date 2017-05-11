@@ -68,9 +68,11 @@ namespace WebSistemmas.Consorcios
 
             int expensaID = Convert.ToInt32(Session["idExpensa"]);
 
-            var totalGastosExtraordinarios = expensasServ.GetTotalGastosExtraordinario(expensaID);
+            var totalGastosExtraordinarios = expensasServ.GetTotalGastosExtraordinarios(expensaID);
             txtGastosExtraordinarios.Text = totalGastosExtraordinarios == null ? "0" : totalGastosExtraordinarios.Importe.ToString();
 
+            grdGastosExtraordinarios.DataSource = expensasServ.GetGastosExtraordinarios(expensaID);
+            grdGastosExtraordinarios.DataBind();
         }
 
         #endregion
@@ -83,6 +85,7 @@ namespace WebSistemmas.Consorcios
                 CargarGrillaGastosOrdinarios();
                 CargarGrillaGastosEventuales();
                 CargarGrillaGastosExtraordinarios();
+
                 ClientScript.RegisterStartupScript(GetType(), "TipoGastos", "cambioTipoGastos()", true);
             }
         }
@@ -244,6 +247,75 @@ namespace WebSistemmas.Consorcios
 
             txtDetalle.Text = "";
             txtImporte.Text = "";
+        }
+
+        protected void btnAgregarGastoExtraordinario_Click(object sender, EventArgs e)
+        {
+            expensasServ serv = new expensasServ();
+            int expensaID = Convert.ToInt32(Session["idExpensa"]);
+
+            serv.ActualizarGastosExtraordinario(expensaID, Convert.ToDecimal(txtGastosExtraordinarios.Text));
+            lblTotalGastosOrdinarios.Text = serv.GetTotalDetalle(expensaID).ToString();
+
+            GuardarUltimoTotal(expensaID, Convert.ToDecimal(lblTotalGastosOrdinarios.Text));                 
+        }
+
+        protected void grdGastosExtraordinarios_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+           GridViewRow GridViewrow = null;
+            gastosServ gastosServ = new Servicios.gastosServ();
+
+            try
+            {
+                if (e.CommandSource.GetType().ToString().ToUpper().Contains("IMAGEBUTTON"))
+                {
+                    ImageButton _ImgButton = (ImageButton)e.CommandSource;
+                    GridViewrow = (GridViewRow)_ImgButton.NamingContainer;
+
+                    decimal idExpensaDetalle;
+                    string Tipo = e.CommandName.ToUpper();
+                    //lblError.Text = "";
+
+                    switch (Tipo)
+                    {
+                        case "ELIMINAR":
+                            idExpensaDetalle = Convert.ToDecimal(GridViewrow.Cells[col_ID_ExpensaDetalle].Text);
+                            int expensaID = Convert.ToInt32(Session["idExpensa"]);
+
+                            gastosServ.DeleteGastoExtraordinario(idExpensaDetalle);
+                            CargarGrillaGastosExtraordinarios();
+                            break;
+
+                        case "MODIFICAR":
+                            txtDetalleGastoExtraordinario.Text = GridViewrow.Cells[col_Detalle].Text;
+                            txtImporteGastoExtraordinario.Text = GridViewrow.Cells[col_Importe].Text;
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+            }
+            catch
+            { }
+        }
+
+        protected void grdGastosExtraordinarios_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            e.Row.Cells[col_ID_ExpensaDetalle].Visible = false;
+        }
+
+        protected void btnAgregarGastoExt_Click(object sender, EventArgs e)
+        {
+            expensasServ serv = new expensasServ();
+            int expensaID = Convert.ToInt32(Session["idExpensa"]);
+
+            serv.AgregarGastoExtraordinario(expensaID, txtDetalleGastoExtraordinario.Text, Convert.ToDecimal(txtImporteGastoExtraordinario.Text));
+
+            CargarGrillaGastosExtraordinarios();
+
+            txtDetalleGastoExtraordinario.Text = "";
+            txtImporteGastoExtraordinario.Text = "";
         }
 
     }

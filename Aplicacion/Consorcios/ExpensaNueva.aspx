@@ -107,7 +107,7 @@
                             </td>
                             <td style="width : 100px" align="right">
 
-                                    <asp:Button ID="btnActualizarTotalExtraordinario" runat="server" Height="30px" OnClick="btnAgregarGastoOrdinario_Click" Text="Actualizar" Width="87px" />
+                                    <asp:Button ID="btnActualizarTotalExtraordinario" runat="server" Height="30px" OnClick="btnAgregarGastoExtraordinario_Click" Text="Actualizar" Width="87px" />
 
                             </td>
                         </tr>
@@ -131,7 +131,7 @@
         <span style="font-size: medium; color: #003399;">Ingreso de Gastos Eventuales </span>
         <table>
             <tr>
-                <td valign="top" style="width: 530px">
+                <td valign="top" style="width: 530px; height: 196px;">
                     <div id="div1" style="margin-top: 17px;  " >
                         <table style="margin-top: 0px; width: 500px;">
                             <tr>
@@ -160,7 +160,7 @@
                         </table>
                     </div>
                 </td>
-                <td style="width: 643px">
+                <td style="width: 643px; height: 196px;">
                     <asp:GridView ID="grdGastosEventuales" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" style="margin-top: 0px; margin-left: 0px;" Width="622px" OnRowCommand="grdGastosEventuales_RowCommand" OnRowDataBound="grdGastosEventuales_RowDataBound">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
@@ -209,6 +209,96 @@
                             </td>
                             <td style="width: 97px">
                                 <asp:Label ID="lblTotalGastosEventuales" runat="server" Font-Size="Large" style="color: #003399; font-size: medium;"></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                </td>
+            </tr>
+        </table>           
+
+        <span style="font-size: medium; color: #003399;">
+        <br />
+        Ingreso de Gastos Extraordinarios </span>
+        <table>
+            <tr>
+                <td valign="top" style="width: 530px">
+                    <div id="div2" style="margin-top: 17px;  " >
+                        <table style="margin-top: 0px; width: 500px;">
+                            <tr>
+                                <td style="width: 100px">
+                                    <asp:Label ID="Label3" runat="server" Text="Detalle"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtDetalleGastoExtraordinario" runat="server" Width="380px" style="margin-left: 0px"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100px; height: 23px;">
+                                    <asp:Label ID="Label9" runat="server" Text="Importe"></asp:Label>
+                                </td>
+                                <td style="height: 23px">
+                                    <asp:TextBox ID="txtImporteGastoExtraordinario" runat="server" Width="380px"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100px; height: 53px">
+                                    <asp:Button ID="btnAgregarGastoExt" runat="server" Height="30px" OnClick="btnAgregarGastoExt_Click" Text="Agregar" Width="90px" />
+                                </td>
+                                <td style="height: 53px">
+                                    &nbsp;</td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+                <td style="width: 643px">
+                    <asp:GridView ID="grdGastosExtraordinarios" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" style="margin-top: 0px; margin-left: 0px;" Width="622px" OnRowCommand="grdGastosExtraordinarios_RowCommand" OnRowDataBound="grdGastosExtraordinarios_RowDataBound">
+                        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                        <Columns>
+                            <asp:BoundField DataField="Detalle" HeaderText="Detalle">
+                            <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Importe" HeaderText="Importe">
+                            <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ID" HeaderText="ID">
+                            <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
+                            </asp:BoundField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <div class="div_parent">
+                                        <asp:ImageButton ID="ImageButton3" runat="server" CausesValidation="False" CommandName="Eliminar" ImageUrl="~/css/img/ico_eliminar.png" ToolTip="Modificar" />
+                                    </div>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" />
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <div class="div_parent">
+                                        <asp:ImageButton ID="ImageButton4" runat="server" CausesValidation="False" CommandName="Modificar" ImageUrl="~/css/img/ico_modificar.gif" ToolTip="Modificar" />
+                                    </div>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" />
+                            </asp:TemplateField>
+                        </Columns>
+                        <EditRowStyle BackColor="#999999" />
+                        <FooterStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
+                        <HeaderStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                        <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                        <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                        <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                        <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                    </asp:GridView>
+                    <br />
+                    <table>
+                        <tr>
+                            <td>
+                                &nbsp;</td>
+                            <td style="width: 97px">
+                                <asp:Label ID="lblTotalGastosExtraordinarios" runat="server" Font-Size="Large" style="color: #003399; font-size: medium;"></asp:Label>
                             </td>
                         </tr>
                     </table>

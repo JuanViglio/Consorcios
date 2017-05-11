@@ -5,6 +5,7 @@
     <EntitySet Name="Expensas" EntityType="ExpensasModel.Store.Expensas" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ExpensasDetalle" EntityType="ExpensasModel.Store.ExpensasDetalle" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Gastos" EntityType="ExpensasModel.Store.Gastos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GastosExtDetalle" EntityType="ExpensasModel.Store.GastosExtDetalle" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TipoGastos" EntityType="ExpensasModel.Store.TipoGastos" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UnidadesFuncionales" EntityType="ExpensasModel.Store.UnidadesFuncionales" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_Expensas_Consorcios" Association="ExpensasModel.Store.FK_Expensas_Consorcios">
@@ -18,6 +19,10 @@
     <AssociationSet Name="FK_Gastos_TipoGastos" Association="ExpensasModel.Store.FK_Gastos_TipoGastos">
       <End Role="TipoGastos" EntitySet="TipoGastos" />
       <End Role="Gastos" EntitySet="Gastos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GastosExtDetalle_Expensas" Association="ExpensasModel.Store.FK_GastosExtDetalle_Expensas">
+      <End Role="Expensas" EntitySet="Expensas" />
+      <End Role="GastosExtDetalle" EntitySet="GastosExtDetalle" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Consorcios">
@@ -56,6 +61,15 @@
     <Property Name="Detalle" Type="nvarchar" MaxLength="50" />
     <Property Name="Importe" Type="numeric" Scale="2" />
     <Property Name="TipoGastos_ID" Type="numeric" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GastosExtDetalle">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Expensas_ID" Type="numeric" />
+    <Property Name="Detalle" Type="nvarchar" MaxLength="50" />
+    <Property Name="Importe" Type="numeric" Scale="2" />
   </EntityType>
   <EntityType Name="TipoGastos">
     <Key>
@@ -107,6 +121,18 @@
       </Principal>
       <Dependent Role="Gastos">
         <PropertyRef Name="TipoGastos_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GastosExtDetalle_Expensas">
+    <End Role="Expensas" Type="ExpensasModel.Store.Expensas" Multiplicity="0..1" />
+    <End Role="GastosExtDetalle" Type="ExpensasModel.Store.GastosExtDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Expensas">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GastosExtDetalle">
+        <PropertyRef Name="Expensas_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -82,5 +82,23 @@
         <ScalarProperty Name="ID" ColumnName="TipoGastos_ID" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="GastosExtDetalle">
+      <EntityTypeMapping TypeName="ExpensasModel.GastosExtDetalle">
+        <MappingFragment StoreEntitySet="GastosExtDetalle">
+          <ScalarProperty Name="Importe" ColumnName="Importe" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_GastosExtDetalle_Expensas" TypeName="ExpensasModel.FK_GastosExtDetalle_Expensas" StoreEntitySet="GastosExtDetalle">
+      <EndProperty Name="GastosExtDetalle">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <EndProperty Name="Expensas">
+        <ScalarProperty Name="ID" ColumnName="Expensas_ID" />
+      </EndProperty>
+      <Condition ColumnName="Expensas_ID" IsNull="false" />
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>
