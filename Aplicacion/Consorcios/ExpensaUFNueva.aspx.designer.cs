@@ -10,7 +10,7 @@
 namespace WebSistemmas.Consorcios {
     
     
-    public partial class ExpensaNueva {
+    public partial class ExpensaUFNueva {
         
         /// <summary>
         /// Control form1.
@@ -29,15 +29,6 @@ namespace WebSistemmas.Consorcios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager scrActualizarGastos;
-        
-        /// <summary>
-        /// Control UpdatePanel1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
         /// Control grdGastosOrdinarios.
@@ -64,25 +55,7 @@ namespace WebSistemmas.Consorcios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGastosExtraordinarios;
-        
-        /// <summary>
-        /// Control btnActualizarTotalExtraordinario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnActualizarTotalExtraordinario;
-        
-        /// <summary>
-        /// Control UpdatePanel2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
+        protected global::System.Web.UI.WebControls.Label txtGastosExtraordinarios;
         
         /// <summary>
         /// Control grdGastosEventuales.
@@ -112,15 +85,6 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.Label lblTotalGastosEventuales;
         
         /// <summary>
-        /// Control UpdatePanel3.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
-        
-        /// <summary>
         /// Control grdGastosExtraordinarios.
         /// </summary>
         /// <remarks>
@@ -139,13 +103,31 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.Label lblTotalGastosExtraordinarios;
         
         /// <summary>
-        /// Control UpdatePanel4.
+        /// Control txtCoeficiente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel4;
+        protected global::System.Web.UI.WebControls.TextBox txtCoeficiente;
+        
+        /// <summary>
+        /// Control txtVencimiento1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtVencimiento1;
+        
+        /// <summary>
+        /// Control txtImporteExtraordinario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtImporteExtraordinario;
         
         /// <summary>
         /// Control Label5.

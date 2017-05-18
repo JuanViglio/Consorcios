@@ -10,7 +10,8 @@ namespace WebSistemmas.Consorcios
 {
     public partial class Expensas : System.Web.UI.Page
     {
-        private int col_ID_Expensa = 2;
+        private int col_ID_Expensa = 3;
+        private int col_Coeficiente = 2;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,6 +42,8 @@ namespace WebSistemmas.Consorcios
                     {
                         case "UNIDADESFUNCIONALES":
                             unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
+
+                            Session["idExpensa"] = GridViewrow.Cells[col_ID_Expensa].Text;
                             grdUnidades.DataSource = serv.GetUnidadesFuncionales(Session["idConsorcio"].ToString());
                             grdUnidades.DataBind();
                             break;
@@ -64,7 +67,14 @@ namespace WebSistemmas.Consorcios
 
         protected void grdUnidades_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            ImageButton _ImgButton = (ImageButton)e.CommandSource;
+            GridViewRow GridViewrow = null;
 
+            GridViewrow = (GridViewRow)_ImgButton.NamingContainer;
+
+            Session["Coeficiente"] = GridViewrow.Cells[col_Coeficiente].Text;
+            //var idExpensa = Session["idExpensa"];
+            Response.Redirect("ExpensaUFNueva.aspx", false);
         }
 
         protected void btnNuevaExpensa_Click(object sender, EventArgs e)

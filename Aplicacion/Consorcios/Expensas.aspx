@@ -18,6 +18,9 @@
                             <asp:BoundField DataField="Total_Gastos" HeaderText="Total">
                             <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
                             </asp:BoundField>
+                            <asp:BoundField DataField="Estado" HeaderText="Estado">
+                            <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
+                            </asp:BoundField>
                             <asp:BoundField DataField="ID" HeaderText="ID">
                             <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
                             </asp:BoundField>
@@ -53,6 +56,9 @@
                     <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
                     </asp:BoundField>
                     <asp:BoundField DataField="Dueño" HeaderText="Dueño">
+                    <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Coeficiente" HeaderText="Coeficiente">
                     <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
                     </asp:BoundField>
                     <asp:TemplateField>

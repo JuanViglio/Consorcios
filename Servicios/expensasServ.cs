@@ -146,7 +146,7 @@ namespace Servicios
         public List<ExpensasDetalle> GetGastosOrdinarios(int ExpensaID)
         {
             var detalle = GetGastosByTipo(ExpensaID, GastoTipoOrdinario);
-            detalle.Add(new ExpensasDetalle { Detalle = "Fondo de Prevision mensual", Importe = GetTotalGastosEventuales(ExpensaID), TipoGasto_ID = GastoTipoEventual });
+            detalle.Add(new ExpensasDetalle { Detalle = "Total de Gastos Eventuales", Importe = GetTotalGastosEventuales(ExpensaID), TipoGasto_ID = GastoTipoEventual });
 
             return detalle;
         }
@@ -212,6 +212,14 @@ namespace Servicios
                 detalle.Importe = Importe;
             }
 
+            context.SaveChanges();
+        }
+
+        public void AceptarExpensa(int expensaID)
+        {
+            var expensa = context.Expensas.Where(x => x.ID == expensaID).FirstOrDefault();
+
+            expensa.Estado = "Aceptado";
             context.SaveChanges();
         }
     }

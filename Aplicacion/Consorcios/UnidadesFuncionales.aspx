@@ -6,7 +6,8 @@
         <div>
             <span style="color: #003399; font-size: large">
             <br />
-            Unidades Funcionales</span><br />
+            Unidades Funcionales<br />
+            </span><br />
             <asp:GridView ID="grdUnidades" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" OnRowCommand="grdUnidades_RowCommand" style="margin-top: 0px; margin-left: 0px;" Width="622px">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>

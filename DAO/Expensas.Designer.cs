@@ -15,7 +15,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ExpensasModel", "FK_GastosExtDetalle_Expensas", "Expensas", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.Expensas), "GastosExtDetalle", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.GastosExtDetalle))]
 
 // Nombre de archivo original:
-// Fecha de generación: 10/05/2017 01:26:07 a.m.
+// Fecha de generación: 16/05/2017 11:18:18 p.m.
 namespace DAO
 {
     
@@ -485,6 +485,33 @@ namespace DAO
         partial void OnPeriodoNumericoChanging(global::System.Nullable<int> value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnPeriodoNumericoChanged();
+        /// <summary>
+        /// No hay ningún comentario para la propiedad Estado en el esquema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string Estado
+        {
+            get
+            {
+                return this._Estado;
+            }
+            set
+            {
+                this.OnEstadoChanging(value);
+                this.ReportPropertyChanging("Estado");
+                this._Estado = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Estado");
+                this.OnEstadoChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _Estado;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnEstadoChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnEstadoChanged();
         /// <summary>
         /// No hay ningún comentario para Consorcios en el esquema.
         /// </summary>

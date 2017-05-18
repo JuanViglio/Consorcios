@@ -42,6 +42,7 @@
     <Property Name="Periodo" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Total_Gastos" Type="numeric" Scale="2" />
     <Property Name="PeriodoNumerico" Type="int" />
+    <Property Name="Estado" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="ExpensasDetalle">
     <Key>

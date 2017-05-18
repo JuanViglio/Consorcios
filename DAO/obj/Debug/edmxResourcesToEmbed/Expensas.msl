@@ -13,6 +13,7 @@
     <EntitySetMapping Name="Expensas">
       <EntityTypeMapping TypeName="ExpensasModel.Expensas">
         <MappingFragment StoreEntitySet="Expensas">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="PeriodoNumerico" ColumnName="PeriodoNumerico" />
           <ScalarProperty Name="Total_Gastos" ColumnName="Total_Gastos" />
           <ScalarProperty Name="Periodo" ColumnName="Periodo" />

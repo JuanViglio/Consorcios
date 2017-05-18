@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="ExpensasModel.Expensas" Width="1.5" PointX="3" PointY="0.75" />
         <AssociationConnector Association="ExpensasModel.FK_Expensas_Consorcios" />
         <EntityTypeShape EntityType="ExpensasModel.UnidadesFuncionales" Width="2.125" PointX="5.375" PointY="0.875" />
-        <EntityTypeShape EntityType="ExpensasModel.ExpensasDetalle" Width="1.5" PointX="3" PointY="3.375" />
+        <EntityTypeShape EntityType="ExpensasModel.ExpensasDetalle" Width="1.5" PointX="3" PointY="3.75" />
         <AssociationConnector Association="ExpensasModel.FK_ExpensasDetalle_Expensas" />
         <EntityTypeShape EntityType="ExpensasModel.Gastos" Width="1.5" PointX="5.375" PointY="3.125" />
         <EntityTypeShape EntityType="ExpensasModel.TipoGastos" Width="1.5" PointX="7.5" PointY="3.125" />

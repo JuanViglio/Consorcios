@@ -45,6 +45,7 @@
     <NavigationProperty Name="ExpensasDetalle" Relationship="ExpensasModel.FK_ExpensasDetalle_Expensas" FromRole="Expensas" ToRole="ExpensasDetalle" />
     <Property Type="Int32" Name="PeriodoNumerico" />
     <NavigationProperty Name="GastosExtDetalle" Relationship="ExpensasModel.FK_GastosExtDetalle_Expensas" FromRole="Expensas" ToRole="GastosExtDetalle" />
+    <Property Type="String" Name="Estado" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_Expensas_Consorcios">
     <End Type="ExpensasModel.Consorcio" Role="Consorcio" Multiplicity="1" />

@@ -1,4 +1,8 @@
-﻿function cambioTipoGastos()
+﻿$(function () {
+    $("#accordion").accordion();
+});
+
+function cambioTipoGastos()
 {
     $.ajax({
         type: "POST",
@@ -18,4 +22,9 @@
             });
         }
     });
+}
+
+function abrirAcordion(solapa) {
+    console.log(solapa);
+    $("#accordion").accordion({ active: + solapa });
 }

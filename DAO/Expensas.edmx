@@ -47,6 +47,7 @@
           <Property Name="Periodo" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Total_Gastos" Type="numeric" Scale="2" />
           <Property Name="PeriodoNumerico" Type="int" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ExpensasDetalle">
           <Key>
@@ -190,6 +191,7 @@
           <NavigationProperty Name="ExpensasDetalle" Relationship="ExpensasModel.FK_ExpensasDetalle_Expensas" FromRole="Expensas" ToRole="ExpensasDetalle" />
           <Property Type="Int32" Name="PeriodoNumerico" />
           <NavigationProperty Name="GastosExtDetalle" Relationship="ExpensasModel.FK_GastosExtDetalle_Expensas" FromRole="Expensas" ToRole="GastosExtDetalle" />
+          <Property Type="String" Name="Estado" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Expensas_Consorcios">
           <End Type="ExpensasModel.Consorcio" Role="Consorcio" Multiplicity="1" />
@@ -271,6 +273,7 @@
           <EntitySetMapping Name="Expensas">
             <EntityTypeMapping TypeName="ExpensasModel.Expensas">
               <MappingFragment StoreEntitySet="Expensas">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="PeriodoNumerico" ColumnName="PeriodoNumerico" />
                 <ScalarProperty Name="Total_Gastos" ColumnName="Total_Gastos" />
                 <ScalarProperty Name="Periodo" ColumnName="Periodo" />
