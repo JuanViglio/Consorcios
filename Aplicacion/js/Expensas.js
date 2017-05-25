@@ -20,7 +20,8 @@ function cambioTipoGastos()
             $("#ctl00_ContentPlaceHolder1_txtDetalle").autocomplete({
                 source: detalleGastos
             });
-        }
+        },
+        
     });
 }
 

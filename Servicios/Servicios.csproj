@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="consorciosServ.cs" />
     <Compile Include="expensasServ.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="gastosServ.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="unidadesFuncionalesServ.cs" />

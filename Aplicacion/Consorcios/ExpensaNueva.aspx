@@ -1,28 +1,38 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ExpensaNueva.aspx.cs" Inherits="WebSistemmas.Consorcios.ExpensaNueva" MasterPageFile ="~/Consorcios/MenuConsorcios.Master" %>
-<asp:Content ID="Content1" runat="server" contentplaceholderid="ContentPlaceHolder1"> 
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ExpensaNueva.aspx.cs" Inherits="WebSistemmas.Consorcios.ExpensaNueva" MasterPageFile="~/Consorcios/MenuConsorcios.Master" %>
+
+<asp:Content ID="Content1" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
 
     <script type="text/javascript" src="../js/Expensas.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="../css/jquery-ui.css" rel="stylesheet" />
 
-    <form id="form1" runat="server">
+    <form id="form2" runat="server">
         <p style="color: #003399; font-size: large">
-            <asp:ScriptManager ID="scrActualizarGastos" runat="server">
-            </asp:ScriptManager>
+            <asp:scriptmanager id="Scriptmanager1" runat="server">
+            </asp:scriptmanager>
         </p>
+
+
         <p style="color: #003399; font-size: large">
-            &nbsp;</p>
-        <p style="color: #003399; font-size: large">
-        Nueva Expensa</p>
-        <p style="color: #003399; font-size: large">
-            &nbsp;&nbsp;</p>
-        <p style="color: #003399; font-size: large"></p>
-       
+            &nbsp;
+        </p>
+        <p style="color: #003399; font-size: large; height: 39px;">
+            Nueva Expensa
+        </p>
+        <asp:updatepanel id="UpdatePanel5" runat="server">
+        <ContentTemplate>
+            <div id="divError" runat="server" style="color: #003399; font-size: large; height: 26px;">
+                <asp:label id="lblError" runat="server" forecolor="Red" style="text-align: left"></asp:label>
+            </div>
+        </ContentTemplate>
+        </asp:updatepanel>
+        <p style="color: #003399; font-size: large; height: 13px;"></p>
+
         <div id="accordion">
-        <h3>Ingreso de Gastos Ordinarios</h3>
-                <div>
-                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <h3>Ingreso de Gastos Ordinarios</h3>
+            <div>
+                <asp:updatepanel id="UpdatePanel1" runat="server">
                     <ContentTemplate>
                     <table>
                         <tr>
@@ -69,14 +79,6 @@
                                 </asp:GridView>
                                 <table>
                                     <tr>
-                                        <td style="height: 45px">
-                                            <a href="GastoOrdinario.aspx#consorcios"><img src="../css/img/ico_mas.jpg" style="height: 27px; width: 26px" title="Agrear nuevo Gasto" /></a>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <br />
-                                <table>
-                                    <tr>
                                         <td>
                                             <asp:Label ID="Label1" runat="server" Font-Size="Large" style="color: #003399" Text="Previsión para gastos Extraordinarios" Width="420px"></asp:Label>
                                         </td>
@@ -89,15 +91,47 @@
                                     </tr>
                                 </table>
                             </td>
-                        </tr>
+                            <td style="width: 530px; height: 226px;" valign="top">
+                            <div id="divExpensaNueva" style="margin-top: 17px;  ">
+                                <table style="margin-top: 0px; width: 500px;">
+                                    <tr>
+                                        <td style="width: 100px">
+                                            <asp:Label ID="Label2" runat="server" Text="Detalle"></asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtDetalle" runat="server" style="margin-left: 0px" Width="379px"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100px; height: 23px;">
+                                            <asp:Label ID="Label4" runat="server" Text="Importe"></asp:Label>
+                                        </td>
+                                        <td style="height: 23px">
+                                            <asp:TextBox ID="txtImporte" runat="server" Width="380px"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table>
+                                    <tr>
+                                        <td style="width: 100px; height: 51px">
+                                            <asp:Button ID="btnAgregarGastoOrdinario" runat="server" Height="30px" OnClick="btnAgregarGastoOrdinario_Click" Text="Agregar" Width="90px" />
+                                        </td>
+                                        <td style="height: 51px; width: 100px;">
+                                            <asp:Button ID="btnCancelarGastoOrdinario" runat="server" Height="30px" OnClick="btnCancelarGastoOrdinario_Click" Text="Cancelar" Width="90px" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                        </tr>                        
                     </table>
                     </ContentTemplate>
-                    </asp:UpdatePanel>
-                </div>
+                    </asp:updatepanel>
+            </div>
 
-        
-        <h3>Ingreso de Gastos Eventuales</h3>
-        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+
+            <h3>Ingreso de Gastos Eventuales</h3>
+            <asp:updatepanel id="UpdatePanel2" runat="server">
             <ContentTemplate>
                 <div>
                  <table>
@@ -161,7 +195,7 @@
                 </table>
                 <br />
             </td>                
-            <%--<td valign="top" style="width: 530px; height: 196px;">
+            <td valign="top" style="width: 530px; height: 196px;">
                 <div id="div1" style="margin-top: 17px;  " >
                     <table style="margin-top: 0px; width: 500px;">
                         <tr>
@@ -189,16 +223,16 @@
                         </tr>
                     </table>
                 </div>
-            </td>--%>
+            </td>
 
         </tr>
     </table>           
                 </div>
             </ContentTemplate>
-            </asp:UpdatePanel>
+            </asp:updatepanel>
 
-        <h3>Ingreso de Gastos Extraordinarios</h3>
-            <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+            <h3>Ingreso de Gastos Extraordinarios</h3>
+            <asp:updatepanel id="UpdatePanel3" runat="server">
             <ContentTemplate>
                 <div>        
                     <table>
@@ -261,7 +295,7 @@
                 </table>
                 <br />
             </td>
-            <%--<td valign="top" style="width: 530px">
+            <td valign="top" style="width: 530px">
                 <div id="div2" style="margin-top: 17px;  " >
                     <table style="margin-top: 0px; width: 500px;">
                         <tr>
@@ -289,16 +323,16 @@
                         </tr>
                     </table>
                 </div>
-            </td>--%>
+            </td>
 
         </tr>
     </table>           
                 </div>
             </ContentTemplate>
-            </asp:UpdatePanel>
+            </asp:updatepanel>
         </div>
 
-        <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+        <asp:updatepanel id="UpdatePanel4" runat="server">
         <ContentTemplate>
 
         <table>
@@ -320,9 +354,7 @@
         </table>
 
         </ContentTemplate>
-        </asp:UpdatePanel>
-               
-        </form>
-
+        </asp:updatepanel>
+    </form>
 </asp:Content>
 

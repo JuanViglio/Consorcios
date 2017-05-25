@@ -107,9 +107,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Consorcios\ExpensaUFNueva.aspx" />
-    <Content Include="Consorcios\GastoEventual.aspx" />
-    <Content Include="Consorcios\GastoOrdinario.aspx" />
-    <Content Include="Consorcios\GastoExtraordinario.aspx" />
     <Content Include="css\img\ico_mas.jpg" />
     <Content Include="css\jquery-ui.css" />
     <Content Include="css\menuCobranza.css" />
@@ -169,33 +166,12 @@
     <Compile Include="Consorcios\ExpensaUFNueva.aspx.designer.cs">
       <DependentUpon>ExpensaUFNueva.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Consorcios\GastoEventual.aspx.cs">
-      <DependentUpon>GastoEventual.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Consorcios\GastoEventual.aspx.designer.cs">
-      <DependentUpon>GastoEventual.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Consorcios\GastoOrdinario.aspx.cs">
-      <DependentUpon>GastoOrdinario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Consorcios\GastoOrdinario.aspx.designer.cs">
-      <DependentUpon>GastoOrdinario.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Consorcios\Gastos.aspx.cs">
       <DependentUpon>Gastos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Consorcios\Gastos.aspx.designer.cs">
       <DependentUpon>Gastos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Consorcios\GastoExtraordinario.aspx.cs">
-      <DependentUpon>GastoExtraordinario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Consorcios\GastoExtraordinario.aspx.designer.cs">
-      <DependentUpon>GastoExtraordinario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Consorcios\MenuConsorcios.Master.cs">
       <DependentUpon>MenuConsorcios.Master</DependentUpon>

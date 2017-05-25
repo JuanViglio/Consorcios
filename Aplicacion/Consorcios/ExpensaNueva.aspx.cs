@@ -14,6 +14,8 @@ namespace WebSistemmas.Consorcios
 {
     public partial class ExpensaNueva : System.Web.UI.Page
     {
+        private int col_Detalle = 0;
+        private int col_Importe = 1;
         private int col_ID_ExpensaDetalle = 2;
         private const int GastoTipoOrdinario = 1;
         private const int GastoTipoEventual = 2;
@@ -83,29 +85,24 @@ namespace WebSistemmas.Consorcios
         {
             if (!IsPostBack)
             {
+                divError.Visible = false;
                 CargarGrillaGastosOrdinarios();
                 CargarGrillaGastosEventuales();
                 CargarGrillaGastosExtraordinarios();
-
-                if (Session["TipoGasto"] == null)
-                    Session["TipoGasto"] = "Ordinario";
-
-                if (Session["TipoGasto"].ToString() == "Eventual")
-                {
-                    ClientScript.RegisterStartupScript(GetType(), "Acordion", "abrirAcordion(1)", true);
-                }
-                else if (Session["TipoGasto"].ToString() == "Extraordinario")
-                {
-                    ClientScript.RegisterStartupScript(GetType(), "Acordion", "abrirAcordion(2)", true);
-                }
-
+                ClientScript.RegisterStartupScript(GetType(), "TipoGastos", "cambioTipoGastos()", true);
             }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "TipoGastos", "cambioTipoGastos();", true);
+            }
+
         }
 
         protected void grdGastosOrdinarios_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             GridViewRow GridViewrow = null;
             gastosServ gastosServ = new Servicios.gastosServ();
+            lblError.Text = "";
 
             try
             {
@@ -114,15 +111,16 @@ namespace WebSistemmas.Consorcios
                     ImageButton _ImgButton = (ImageButton)e.CommandSource;
                     GridViewrow = (GridViewRow)_ImgButton.NamingContainer;
 
-                    decimal idExpensaDetalle; 
+                    decimal idExpensaDetalle;
                     string Tipo = e.CommandName.ToUpper();
-                    //lblError.Text = "";
+                    int expensaID;
+                    divError.Visible = false;
 
                     switch (Tipo)
                     {
                         case "ELIMINAR":
                             idExpensaDetalle = Convert.ToDecimal(GridViewrow.Cells[col_ID_ExpensaDetalle].Text);
-                            int expensaID = Convert.ToInt32(Session["idExpensa"]);
+                            expensaID = Convert.ToInt32(Session["idExpensa"]);
 
                             gastosServ.DeleteDetalle(idExpensaDetalle);
                             CargarGrillaGastosOrdinarios();
@@ -130,6 +128,21 @@ namespace WebSistemmas.Consorcios
                             break;
 
                         case "MODIFICAR":
+                            string Detalle = Server.HtmlDecode(GridViewrow.Cells[col_Detalle].Text);
+
+                            if (Detalle == "Total de Gastos Eventuales")
+                            {
+                                divError.Visible = true;
+                                lblError.Text = "No se puede Modificar el item 'Total de Gastos Eventuales'";
+                            }
+                            else
+                            {
+                                Session["idExpensaDetalle"] = Convert.ToDecimal(GridViewrow.Cells[col_ID_ExpensaDetalle].Text);
+                                txtDetalle.Text = Server.HtmlDecode(GridViewrow.Cells[col_Detalle].Text);
+                                txtImporte.Text = GridViewrow.Cells[col_Importe].Text;
+                                btnAgregarGastoOrdinario.Text = "Modificar";
+                            }
+
                             break;
 
                         default:
@@ -181,7 +194,7 @@ namespace WebSistemmas.Consorcios
                             CargarGrillaGastosEventuales();
                             GuardarUltimoTotal(expensaID, Convert.ToDecimal(lblTotalGastosOrdinarios.Text));
                             break;
-                        
+
                         case "MODIFICAR":
                             break;
 
@@ -209,7 +222,7 @@ namespace WebSistemmas.Consorcios
 
         protected void grdGastosExtraordinarios_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-           GridViewRow GridViewrow = null;
+            GridViewRow GridViewrow = null;
             gastosServ gastosServ = new Servicios.gastosServ();
 
             try
@@ -263,5 +276,87 @@ namespace WebSistemmas.Consorcios
             Response.Redirect("Expensas.aspx#consorcios");
         }
 
+        protected void btnAgregarGastoEventual_Click(object sender, EventArgs e)
+        {
+            expensasServ serv = new expensasServ();
+            int expensaID = Convert.ToInt32(Session["idExpensa"]);
+
+            serv.AgregarExpensaDetalle(expensaID, txtDetalleGastoEventual.Text, Convert.ToDecimal(txtImporteGastoEventual.Text), 2);
+
+            txtDetalleGastoEventual.Text = "";
+            txtImporteGastoEventual.Text = "";
+
+            CargarGrillaGastosOrdinarios();
+            CargarGrillaGastosEventuales();
+            GuardarUltimoTotal(expensaID, Convert.ToDecimal(lblTotalGastosOrdinarios.Text));
+
+        }
+
+        protected void btnAgregarGastoExt_Click(object sender, EventArgs e)
+        {
+            expensasServ serv = new expensasServ();
+            int expensaID = Convert.ToInt32(Session["idExpensa"]);
+
+            serv.AgregarGastoExtraordinario(expensaID, txtDetalleGastoExtraordinario.Text, Convert.ToDecimal(txtImporteGastoExtraordinario.Text));
+
+            txtDetalleGastoExtraordinario.Text = "";
+            txtImporteGastoExtraordinario.Text = "";
+
+            CargarGrillaGastosExtraordinarios();
+        }
+
+        protected void btnAgregarGastoOrdinario_Click(object sender, EventArgs e)
+        {
+            expensasServ serv = new expensasServ();
+            divError.Visible = false;
+
+            try
+            {
+                int IdExpensa = Convert.ToInt32(Session["idExpensa"]); 
+
+                if (txtDetalle.Text == "")
+                {
+                    divError.Visible = true;
+                    lblError.Text = "No se ingreso el Detalle";
+                    return;
+                }
+                else if (!txtImporte.Text.IsNumeric())
+                {
+                    divError.Visible = true;
+                    lblError.Text = "No se ingreso un Importe correcto";
+                    return;
+                }
+
+                if (btnAgregarGastoOrdinario.Text == "Agregar")
+                {
+                    serv.AgregarExpensaDetalle(IdExpensa, txtDetalle.Text, Convert.ToDecimal(txtImporte.Text), 1);
+                }
+                else
+                {
+                    int idExpensaDetalle = Convert.ToInt32(Session["idExpensaDetalle"].ToString());
+                    serv.ModificarExpensaDetalle(idExpensaDetalle, txtDetalle.Text, Convert.ToDecimal(txtImporte.Text));
+                    btnAgregarGastoOrdinario.Text = "Agregar";
+                }
+
+                txtDetalle.Text = "";
+                txtImporte.Text = "";
+
+                CargarGrillaGastosOrdinarios();
+
+            }
+            catch (Exception ex)
+            {
+                divError.Visible = true;
+                lblError.Text = "No se pudo guardar los cambios";
+            }
+        }
+
+        protected void btnCancelarGastoOrdinario_Click(object sender, EventArgs e)
+        {
+            txtDetalle.Text = "";
+            txtImporte.Text = "";
+            btnAgregarGastoOrdinario.Text = "Agregar";
+            divError.Visible = false;
+        }
     }
 }
