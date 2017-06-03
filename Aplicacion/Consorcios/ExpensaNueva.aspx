@@ -178,10 +178,6 @@
                     <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                 </asp:GridView>
                 <br />
-                <a href="GastoEventual.aspx#consorcios">
-                <img src="../css/img/ico_mas.jpg" style="height: 27px; width: 26px" title="Agrear nuevo Gasto" />
-                </a>
-                <br />
                 <br />
                 <table>
                     <tr>
@@ -278,10 +274,6 @@
                     <SortedDescendingCellStyle BackColor="#FFFDF8" />
                     <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                 </asp:GridView>
-                <br />
-                <a href="GastoExtraordinario.aspx#consorcios">
-                <img src="../css/img/ico_mas.jpg" style="height: 27px; width: 26px" title="Agrear nuevo Gasto" />
-                </a>
                 <br />
                 <br />
                 <table>

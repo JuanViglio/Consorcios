@@ -10,7 +10,7 @@ namespace Servicios
     { 
         private ExpensasEntities  context = new ExpensasEntities();
 
-        public List<Consorcio> GetConsorcios()
+        public List<Consorcios> GetConsorcios()
         {
             var consorcios = context.Consorcios.ToList();
 

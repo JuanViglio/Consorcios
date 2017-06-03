@@ -17,7 +17,7 @@ namespace WebSistemmas.Consorcios
             expensasServ expensasServ = new expensasServ();
             gastosServ gastosServ = new gastosServ();
 
-            int expensaID = Convert.ToInt32(Session["idExpensa"]);
+            int expensaID = Convert.ToInt32(Session["ExpensaId"]);
 
             grdGastosOrdinarios.DataSource = expensasServ.GetGastosOrdinarios(expensaID);
             grdGastosOrdinarios.DataBind();
@@ -29,7 +29,7 @@ namespace WebSistemmas.Consorcios
         {
             expensasServ expensasServ = new expensasServ();
 
-            int expensaID = Convert.ToInt32(Session["idExpensa"]);
+            int expensaID = Convert.ToInt32(Session["ExpensaId"]);
 
             grdGastosEventuales.DataSource = expensasServ.GetGastosEventuales(expensaID);
             grdGastosEventuales.DataBind();
@@ -41,7 +41,7 @@ namespace WebSistemmas.Consorcios
         {
             expensasServ expensasServ = new expensasServ();
 
-            int expensaID = Convert.ToInt32(Session["idExpensa"]);
+            int expensaID = Convert.ToInt32(Session["ExpensaId"]);
 
             var totalGastosExtraordinarios = expensasServ.GetTotalGastosExtraordinarios(expensaID);
             txtGastosExtraordinarios.Text = totalGastosExtraordinarios == null ? "0" : totalGastosExtraordinarios.Importe.ToString();
@@ -50,23 +50,42 @@ namespace WebSistemmas.Consorcios
             grdGastosExtraordinarios.DataBind();
         }
 
+        private void CalcularTotales()
+        {
+            unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
+
+            var PagoId = Session["PagoId"].ToString();
+            var Pago = serv.GetPago(PagoId);
+
+            
+            if (Pago.ImporteGastoParticular.ToString().IsNumeric())
+            {
+                txtImporteGastoParticular.Text = Pago.ImporteGastoParticular.ToString();
+                txtDetalleGastoParticular.Text = string.IsNullOrEmpty(Pago.DetalleGastoParticular) ? "" : Pago.DetalleGastoParticular.ToString();
+                lblTotalGastosOrdinarios.Text = (Convert.ToDecimal(lblTotalGastosOrdinarios.Text) + Pago.ImporteGastoParticular).ToString();                    
+            }
+
+            Decimal Coeficiente = Pago.Coeficiente;
+            txtCoeficiente.Text = Coeficiente.ToString();
+            Decimal GastosExtraordinarios = Convert.ToDecimal(txtGastosExtraordinarios.Text);
+            Decimal ImporteExtraordinario = GastosExtraordinarios * Coeficiente / 100;
+            txtImporteExtraordinario.Text = ImporteExtraordinario.ToString("#.##");
+            Decimal TotalGastosOrdinarios = Convert.ToDecimal(lblTotalGastosOrdinarios.Text);
+            Decimal TotalVencimiento1 = ((TotalGastosOrdinarios - GastosExtraordinarios) * Coeficiente / 100) + ImporteExtraordinario;
+            txtVencimiento1.Text = TotalVencimiento1.ToString("#.##");
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                divError.Visible = false;
+
                 CargarGrillaGastosOrdinarios();
                 CargarGrillaGastosEventuales();
                 CargarGrillaGastosExtraordinarios();
 
-                Single Coeficiente = Session["Coeficiente"] == null ? 0 : Convert.ToSingle(Session["Coeficiente"]);
-                txtCoeficiente.Text = Coeficiente.ToString();
-                Single GastosExtraordinarios = Convert.ToSingle(txtGastosExtraordinarios.Text);
-                Single ImporteExtraordinario = GastosExtraordinarios * Coeficiente / 100;
-                txtImporteExtraordinario.Text = ImporteExtraordinario.ToString("#.##");
-                Single TotalGastosOrdinarios = Convert.ToSingle(lblTotalGastosOrdinarios.Text);
-                Single TotalVencimiento1 = ((TotalGastosOrdinarios - GastosExtraordinarios) * Coeficiente / 100) + ImporteExtraordinario;
-                txtVencimiento1.Text = TotalVencimiento1.ToString("#.##");
+                CalcularTotales();
             }        
         }
 
@@ -103,6 +122,34 @@ namespace WebSistemmas.Consorcios
         protected void btnVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect("Expensas.aspx#consorcios");
+        }
+
+        protected void btnVolver_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("Expensas.aspx#consorcios");
+        }
+
+        protected void btnActualizar_Click(object sender, EventArgs e)
+        {            
+            if (txtImporteGastoParticular.Text.IsNumeric() == false)
+            {
+                divError.Visible = true;
+                lblError.Text = "No se ingreso un Importe correcto";
+                txtImporteExtraordinario.Text = "0";
+            }
+            else
+            {
+                lblError.Text = "";
+                divError.Visible = false;
+
+                unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
+                int PagoId = Convert.ToInt32(Session["PagoId"].ToString());
+                decimal importe = Convert.ToDecimal(txtImporteGastoParticular.Text);
+                serv.GuardarGastoParticular(PagoId, importe, txtDetalleGastoParticular.Text);
+
+                CargarGrillaGastosOrdinarios();
+                CalcularTotales();
+            }
         }
     }
 }

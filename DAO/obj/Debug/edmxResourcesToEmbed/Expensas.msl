@@ -2,7 +2,7 @@
 <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
   <EntityContainerMapping StorageEntityContainer="ExpensasModelStoreContainer" CdmEntityContainer="ExpensasEntities">
     <EntitySetMapping Name="Consorcios">
-      <EntityTypeMapping TypeName="ExpensasModel.Consorcio">
+      <EntityTypeMapping TypeName="ExpensasModel.Consorcios">
         <MappingFragment StoreEntitySet="Consorcios">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Direccion" ColumnName="Direccion" />
@@ -29,16 +29,6 @@
         <ScalarProperty Name="ID" ColumnName="Consorcio_ID" />
       </EndProperty>
     </AssociationSetMapping>
-    <EntitySetMapping Name="UnidadesFuncionales">
-      <EntityTypeMapping TypeName="ExpensasModel.UnidadesFuncionales">
-        <MappingFragment StoreEntitySet="UnidadesFuncionales">
-          <ScalarProperty Name="Coeficiente" ColumnName="Coeficiente" />
-          <ScalarProperty Name="Dueño" ColumnName="Dueño" />
-          <ScalarProperty Name="Consorcios_ID" ColumnName="Consorcios_ID" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ExpensasDetalle">
       <EntityTypeMapping TypeName="ExpensasModel.ExpensasDetalle">
         <MappingFragment StoreEntitySet="ExpensasDetalle">
@@ -100,6 +90,51 @@
         <ScalarProperty Name="ID" ColumnName="Expensas_ID" />
       </EndProperty>
       <Condition ColumnName="Expensas_ID" IsNull="false" />
+    </AssociationSetMapping>
+    <EntitySetMapping Name="UnidadesFuncionales">
+      <EntityTypeMapping TypeName="ExpensasModel.UnidadesFuncionales">
+        <MappingFragment StoreEntitySet="UnidadesFuncionales">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Coeficiente" ColumnName="Coeficiente" />
+          <ScalarProperty Name="Dueño" ColumnName="Dueño" />
+          <ScalarProperty Name="UF" ColumnName="UF" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_UnidadesFuncionales_Consorcios" TypeName="ExpensasModel.FK_UnidadesFuncionales_Consorcios" StoreEntitySet="UnidadesFuncionales">
+      <EndProperty Name="UnidadesFuncionales">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <EndProperty Name="Consorcio">
+        <ScalarProperty Name="ID" ColumnName="Consorcios_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="Pagos">
+      <EntityTypeMapping TypeName="ExpensasModel.Pagos">
+        <MappingFragment StoreEntitySet="Pagos">
+          <ScalarProperty Name="DetalleGastoParticular" ColumnName="DetalleGastoParticular" />
+          <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaPagado" ColumnName="FechaPagado" />
+          <ScalarProperty Name="ImportePagado" ColumnName="ImportePagado" />
+          <ScalarProperty Name="ImporteGastoParticular" ColumnName="ImporteGastoParticular" />
+          <ScalarProperty Name="ImporteExtraordinario" ColumnName="ImporteExtraordinario" />
+          <ScalarProperty Name="FechaPago2" ColumnName="FechaPago2" />
+          <ScalarProperty Name="ImportePago2" ColumnName="ImportePago2" />
+          <ScalarProperty Name="FechaPago1" ColumnName="FechaPago1" />
+          <ScalarProperty Name="ImportePago1" ColumnName="ImportePago1" />
+          <ScalarProperty Name="Coeficiente" ColumnName="Coeficiente" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_Pagos_UF" TypeName="ExpensasModel.FK_Pagos_UF" StoreEntitySet="Pagos">
+      <EndProperty Name="Pagos">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <EndProperty Name="UnidadesFuncionales">
+        <ScalarProperty Name="ID" ColumnName="UnidadesFuncionales_ID" />
+      </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

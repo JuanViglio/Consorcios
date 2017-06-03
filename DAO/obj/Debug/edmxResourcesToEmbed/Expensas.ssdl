@@ -6,6 +6,7 @@
     <EntitySet Name="ExpensasDetalle" EntityType="ExpensasModel.Store.ExpensasDetalle" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Gastos" EntityType="ExpensasModel.Store.Gastos" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="GastosExtDetalle" EntityType="ExpensasModel.Store.GastosExtDetalle" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Pagos" EntityType="ExpensasModel.Store.Pagos" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TipoGastos" EntityType="ExpensasModel.Store.TipoGastos" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UnidadesFuncionales" EntityType="ExpensasModel.Store.UnidadesFuncionales" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_Expensas_Consorcios" Association="ExpensasModel.Store.FK_Expensas_Consorcios">
@@ -23,6 +24,14 @@
     <AssociationSet Name="FK_GastosExtDetalle_Expensas" Association="ExpensasModel.Store.FK_GastosExtDetalle_Expensas">
       <End Role="Expensas" EntitySet="Expensas" />
       <End Role="GastosExtDetalle" EntitySet="GastosExtDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pagos_UF" Association="ExpensasModel.Store.FK_Pagos_UF">
+      <End Role="UnidadesFuncionales" EntitySet="UnidadesFuncionales" />
+      <End Role="Pagos" EntitySet="Pagos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UnidadesFuncionales_Consorcios" Association="ExpensasModel.Store.FK_UnidadesFuncionales_Consorcios">
+      <End Role="Consorcios" EntitySet="Consorcios" />
+      <End Role="UnidadesFuncionales" EntitySet="UnidadesFuncionales" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Consorcios">
@@ -72,6 +81,25 @@
     <Property Name="Detalle" Type="nvarchar" MaxLength="50" />
     <Property Name="Importe" Type="numeric" Scale="2" />
   </EntityType>
+  <EntityType Name="Pagos">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UnidadesFuncionales_ID" Type="numeric" Nullable="false" />
+    <Property Name="Coeficiente" Type="numeric" Nullable="false" Scale="2" />
+    <Property Name="ImportePago1" Type="numeric" Nullable="false" Scale="2" />
+    <Property Name="FechaPago1" Type="smalldatetime" Nullable="false" />
+    <Property Name="ImportePago2" Type="numeric" Nullable="false" Scale="2" />
+    <Property Name="FechaPago2" Type="smalldatetime" Nullable="false" />
+    <Property Name="ImporteExtraordinario" Type="numeric" Nullable="false" Scale="2" />
+    <Property Name="ImporteGastoParticular" Type="numeric" Nullable="false" />
+    <Property Name="ImportePagado" Type="numeric" Scale="2" />
+    <Property Name="FechaPagado" Type="smalldatetime" />
+    <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+    <Property Name="Periodo" Type="int" />
+    <Property Name="DetalleGastoParticular" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="TipoGastos">
     <Key>
       <PropertyRef Name="ID" />
@@ -82,12 +110,12 @@
   <EntityType Name="UnidadesFuncionales">
     <Key>
       <PropertyRef Name="ID" />
-      <PropertyRef Name="Consorcios_ID" />
     </Key>
-    <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="UF" Type="nvarchar" Nullable="false" MaxLength="5" />
     <Property Name="Consorcios_ID" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Dueño" Type="nvarchar" MaxLength="50" />
     <Property Name="Coeficiente" Type="numeric" Scale="2" />
+    <Property Name="ID" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
   </EntityType>
   <Association Name="FK_Expensas_Consorcios">
     <End Role="Consorcios" Type="ExpensasModel.Store.Consorcios" Multiplicity="1" />
@@ -134,6 +162,30 @@
       </Principal>
       <Dependent Role="GastosExtDetalle">
         <PropertyRef Name="Expensas_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pagos_UF">
+    <End Role="UnidadesFuncionales" Type="ExpensasModel.Store.UnidadesFuncionales" Multiplicity="1" />
+    <End Role="Pagos" Type="ExpensasModel.Store.Pagos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UnidadesFuncionales">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Pagos">
+        <PropertyRef Name="UnidadesFuncionales_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UnidadesFuncionales_Consorcios">
+    <End Role="Consorcios" Type="ExpensasModel.Store.Consorcios" Multiplicity="1" />
+    <End Role="UnidadesFuncionales" Type="ExpensasModel.Store.UnidadesFuncionales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consorcios">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UnidadesFuncionales">
+        <PropertyRef Name="Consorcios_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

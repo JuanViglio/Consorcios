@@ -31,6 +31,24 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.ScriptManager scrActualizarGastos;
         
         /// <summary>
+        /// Control divError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
+        
+        /// <summary>
+        /// Control lblError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
+        
+        /// <summary>
         /// Control grdGastosOrdinarios.
         /// </summary>
         /// <remarks>
@@ -109,7 +127,7 @@ namespace WebSistemmas.Consorcios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCoeficiente;
+        protected global::System.Web.UI.WebControls.Label txtCoeficiente;
         
         /// <summary>
         /// Control txtVencimiento1.
@@ -118,7 +136,7 @@ namespace WebSistemmas.Consorcios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtVencimiento1;
+        protected global::System.Web.UI.WebControls.Label txtVencimiento1;
         
         /// <summary>
         /// Control txtImporteExtraordinario.
@@ -127,7 +145,34 @@ namespace WebSistemmas.Consorcios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtImporteExtraordinario;
+        protected global::System.Web.UI.WebControls.Label txtImporteExtraordinario;
+        
+        /// <summary>
+        /// Control txtDetalleGastoParticular.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDetalleGastoParticular;
+        
+        /// <summary>
+        /// Control txtImporteGastoParticular.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtImporteGastoParticular;
+        
+        /// <summary>
+        /// Control btnActualizar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnActualizar;
         
         /// <summary>
         /// Control Label5.
@@ -155,14 +200,5 @@ namespace WebSistemmas.Consorcios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnVolver;
-        
-        /// <summary>
-        /// Control btnAceptar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAceptar;
     }
 }

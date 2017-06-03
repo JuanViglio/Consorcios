@@ -10,18 +10,25 @@ namespace WebSistemmas.Consorcios
 {
     public partial class Expensas : System.Web.UI.Page
     {
-        private int col_ID_Expensa = 3;
-        private int col_Coeficiente = 2;
+        private const int col_Coeficiente = 2;
+        private const int col_Expensa_ID = 3;
+        private const int col_Periodo = 6;
+        private const int col_Pago_ID = 3;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                expensasServ serv = new expensasServ();
-
-                grdExpensas.DataSource = serv.GetExpensas(Session["idConsorcio"].ToString());
-                grdExpensas.DataBind();
+                CargarGrillaExpensas();
             }
+        }
+
+        private void CargarGrillaExpensas()
+        {
+            expensasServ serv = new expensasServ();
+
+            grdExpensas.DataSource = serv.GetExpensas(Session["idConsorcio"].ToString());
+            grdExpensas.DataBind();
         }
 
         protected void grdExpensas_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -43,14 +50,38 @@ namespace WebSistemmas.Consorcios
                         case "UNIDADESFUNCIONALES":
                             unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
 
-                            Session["idExpensa"] = GridViewrow.Cells[col_ID_Expensa].Text;
-                            grdUnidades.DataSource = serv.GetUnidadesFuncionales(Session["idConsorcio"].ToString());
-                            grdUnidades.DataBind();
+                            if (GridViewrow.Cells[2].Text == "Aceptado")
+                            {
+                                Session["ExpensaId"] = GridViewrow.Cells[col_Expensa_ID].Text;
+                                Session["PeriodoNumerico"] = GridViewrow.Cells[col_Periodo].Text;
+                                grdUnidades.DataSource = serv.GetPagos(Session["idConsorcio"].ToString(), Convert.ToInt32(GridViewrow.Cells[col_Periodo].Text));
+                                grdUnidades.DataBind();
+                                divBotonesUF.Visible = true;
+                            }
+                            else
+                            {
+                                grdUnidades.DataSource = null;
+                                grdUnidades.DataBind();
+                                divBotonesUF.Visible = false;
+                                ClientScript.RegisterStartupScript(GetType(), "Atencion", "alert('La Expensa no esta Aceptada')", true);
+                            }
                             break;
 
                         case "EXPENSAS":
-                            Session["idExpensa"] = GridViewrow.Cells[col_ID_Expensa].Text;
-                            Response.Redirect("ExpensaNueva.aspx", false);
+                            if (GridViewrow.Cells[2].Text != "Finalizado")
+                            {
+                                if (GridViewrow.Cells[2].Text == "Aceptado")
+                                    Session["Estado"] = "Aceptado";
+                                else
+                                    Session["Estado"] = "En Proceso";
+
+                                Session["ExpensaId"] = GridViewrow.Cells[col_Expensa_ID].Text;
+                                Response.Redirect("ExpensaNueva.aspx", false);
+                            }
+                            else
+                            {
+                                ClientScript.RegisterStartupScript(GetType(), "Atencion", "alert('La Expensa se encuentra Finalizada')", true);
+                            }
                             break;
 
                         default:
@@ -73,7 +104,7 @@ namespace WebSistemmas.Consorcios
             GridViewrow = (GridViewRow)_ImgButton.NamingContainer;
 
             Session["Coeficiente"] = GridViewrow.Cells[col_Coeficiente].Text;
-            //var idExpensa = Session["idExpensa"];
+            Session["PagoId"] = GridViewrow.Cells[col_Pago_ID].Text;
             Response.Redirect("ExpensaUFNueva.aspx", false);
         }
 
@@ -81,9 +112,19 @@ namespace WebSistemmas.Consorcios
         {
             expensasServ serv = new expensasServ();
 
-            Session["idExpensa"] = serv.AgregarExpensa(Session["idConsorcio"].ToString());
+            var ExpensaId = serv.AgregarExpensa(Session["idConsorcio"].ToString());
 
-            Response.Redirect("ExpensaNueva.aspx", false);
+            if (ExpensaId == 0)
+            {
+                ClientScript.RegisterStartupScript(GetType(), "Atencion", "alert('La ultima Expensa no esta Aceptada')", true);
+            }
+            else
+            {
+                Session["ExpensaId"] = ExpensaId;
+
+                Response.Redirect("ExpensaNueva.aspx", false);
+            }
+
         }
 
         protected void grdExpensas_SelectedIndexChanged(object sender, EventArgs e)
@@ -93,7 +134,31 @@ namespace WebSistemmas.Consorcios
 
         protected void grdExpensas_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            e.Row.Cells[col_ID_Expensa].Visible = false;
+            e.Row.Cells[col_Expensa_ID].Visible = false;
+            e.Row.Cells[col_Periodo].Visible = false;
+        }
+
+        protected void btnAceptarExpensasUF_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnAnularExpensasUF_Click(object sender, EventArgs e)
+        {
+            unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
+
+            serv.CancelarPagos(Session["idConsorcio"].ToString(), Convert.ToInt32(Session["PeriodoNumerico"].ToString()));
+
+            grdUnidades.DataSource = "";
+            grdUnidades.DataBind();
+            divBotonesUF.Visible = false;
+
+            CargarGrillaExpensas();
+        }
+
+        protected void grdUnidades_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            e.Row.Cells[col_Pago_ID].Visible = false;
         }
     }
 }

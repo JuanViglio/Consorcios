@@ -29,3 +29,7 @@ function abrirAcordion(solapa) {
     console.log(solapa);
     $("#accordion").accordion({ active: + solapa });
 }
+
+function PopUp(mensaje) {
+    alert(mensaje);
+}
