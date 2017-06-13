@@ -19,19 +19,19 @@ namespace Servicios
 
         public void CancelarPagos(string consorciosID, int Periodo)
         {
-            //var UF = context.UnidadesFuncionales.Where(x => x.Consorcios.ID == consorciosID).ToList();
-            //var pagos = context.Pagos.Where(x => x.Periodo == Periodo).ToList();
-
-            //foreach (var item in pagos)
-            //{
-            //    context.DeleteObject(item);
-            //}
-
             var consorcio = context.Consorcios.Where(x => x.ID == consorciosID).FirstOrDefault();
             var expensa = context.Expensas.Where(x => x.Consorcios.ID == consorcio.ID && x.PeriodoNumerico == Periodo).FirstOrDefault();
 
             expensa.Estado = "En Proceso";
+            context.SaveChanges();
+        }
 
+        public void FinalizarPagos(string consorciosID, int Periodo)
+        {
+            var consorcio = context.Consorcios.Where(x => x.ID == consorciosID).FirstOrDefault();
+            var expensa = context.Expensas.Where(x => x.Consorcios.ID == consorcio.ID && x.PeriodoNumerico == Periodo).FirstOrDefault();
+
+            expensa.Estado = "Finalizado";
             context.SaveChanges();
         }
 

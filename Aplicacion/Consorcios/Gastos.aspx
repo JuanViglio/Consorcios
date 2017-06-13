@@ -6,6 +6,8 @@
             <br />
             <span style="font-size: large; color: #003399">
                 Gastos</span></p>
+        <p style="font-size: large">
+            &nbsp;</p>
         <p>
                 <asp:GridView ID="grdGastos" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" OnRowCommand="grdGastos_RowCommand" style="margin-top: 0px; margin-left: 0px;" Width="395px">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />

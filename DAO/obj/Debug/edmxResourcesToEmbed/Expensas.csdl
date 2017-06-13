@@ -43,6 +43,9 @@
     <Property Name="UltimaExpensa" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Expensas" Relationship="ExpensasModel.FK_Expensas_Consorcios" FromRole="Consorcio" ToRole="Expensas" />
     <NavigationProperty Name="UnidadesFuncionales" Relationship="ExpensasModel.FK_UnidadesFuncionales_Consorcios" FromRole="Consorcio" ToRole="UnidadesFuncionales" />
+    <Property Type="Int32" Name="PrimerVencimiento" />
+    <Property Type="Int32" Name="SegundoVencimiento" />
+    <Property Type="Decimal" Name="InteresSegundoVencimiento" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="Expensas">
     <Key>

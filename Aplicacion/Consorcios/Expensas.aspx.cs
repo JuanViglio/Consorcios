@@ -50,13 +50,17 @@ namespace WebSistemmas.Consorcios
                         case "UNIDADESFUNCIONALES":
                             unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
 
-                            if (GridViewrow.Cells[2].Text == "Aceptado")
+                            if (GridViewrow.Cells[2].Text == "Aceptado" || GridViewrow.Cells[2].Text == "Finalizado")
                             {
+                                Session["Estado"] = GridViewrow.Cells[2].Text;
                                 Session["ExpensaId"] = GridViewrow.Cells[col_Expensa_ID].Text;
                                 Session["PeriodoNumerico"] = GridViewrow.Cells[col_Periodo].Text;
                                 grdUnidades.DataSource = serv.GetPagos(Session["idConsorcio"].ToString(), Convert.ToInt32(GridViewrow.Cells[col_Periodo].Text));
                                 grdUnidades.DataBind();
-                                divBotonesUF.Visible = true;
+
+                                if (GridViewrow.Cells[2].Text == "Aceptado")                                
+                                    divBotonesUF.Visible = true;
+                                                                
                             }
                             else
                             {
@@ -65,6 +69,7 @@ namespace WebSistemmas.Consorcios
                                 divBotonesUF.Visible = false;
                                 ClientScript.RegisterStartupScript(GetType(), "Atencion", "alert('La Expensa no esta Aceptada')", true);
                             }
+
                             break;
 
                         case "EXPENSAS":
@@ -116,7 +121,7 @@ namespace WebSistemmas.Consorcios
 
             if (ExpensaId == 0)
             {
-                ClientScript.RegisterStartupScript(GetType(), "Atencion", "alert('La ultima Expensa no esta Aceptada')", true);
+                ClientScript.RegisterStartupScript(GetType(), "Atencion", "alert('La ultima Expensa no esta Finalizada')", true);
             }
             else
             {
@@ -140,6 +145,15 @@ namespace WebSistemmas.Consorcios
 
         protected void btnAceptarExpensasUF_Click(object sender, EventArgs e)
         {
+            unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
+
+            serv.FinalizarPagos(Session["idConsorcio"].ToString(), Convert.ToInt32(Session["PeriodoNumerico"].ToString()));
+
+            grdUnidades.DataSource = "";
+            grdUnidades.DataBind();
+            divBotonesUF.Visible = false;
+
+            CargarGrillaExpensas();
 
         }
 

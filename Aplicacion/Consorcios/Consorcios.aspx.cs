@@ -48,6 +48,9 @@ namespace WebSistemmas.Consorcios
 
                             txtCodigo.Text = GridViewrow.Cells[0].Text;
                             txtDireccion.Text = GridViewrow.Cells[1].Text;
+                            txtVencimiento1.Text = GridViewrow.Cells[2].Text;
+                            txtVencimiento2.Text = GridViewrow.Cells[3].Text;
+                            txtInteres.Text = GridViewrow.Cells[4].Text;
                             break;
 
                         case "UNIDADESFUNCIONALES":

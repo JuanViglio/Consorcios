@@ -46,6 +46,9 @@
           <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Direccion" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="UltimaExpensa" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrimerVencimiento" Type="int" />
+          <Property Name="SegundoVencimiento" Type="int" />
+          <Property Name="InteresSegundoVencimiento" Type="decimal" Scale="2" />
         </EntityType>
         <EntityType Name="Expensas">
           <Key>
@@ -241,6 +244,9 @@
           <Property Name="UltimaExpensa" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Expensas" Relationship="ExpensasModel.FK_Expensas_Consorcios" FromRole="Consorcio" ToRole="Expensas" />
           <NavigationProperty Name="UnidadesFuncionales" Relationship="ExpensasModel.FK_UnidadesFuncionales_Consorcios" FromRole="Consorcio" ToRole="UnidadesFuncionales" />
+          <Property Type="Int32" Name="PrimerVencimiento" />
+          <Property Type="Int32" Name="SegundoVencimiento" />
+          <Property Type="Decimal" Name="InteresSegundoVencimiento" Precision="18" Scale="2" />
           </EntityType>
         <EntityType Name="Expensas">
           <Key>
@@ -354,6 +360,9 @@
           <EntitySetMapping Name="Consorcios">
             <EntityTypeMapping TypeName="ExpensasModel.Consorcios">
               <MappingFragment StoreEntitySet="Consorcios">
+                <ScalarProperty Name="InteresSegundoVencimiento" ColumnName="InteresSegundoVencimiento" />
+                <ScalarProperty Name="SegundoVencimiento" ColumnName="SegundoVencimiento" />
+                <ScalarProperty Name="PrimerVencimiento" ColumnName="PrimerVencimiento" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Direccion" ColumnName="Direccion" />
                 <ScalarProperty Name="UltimaExpensa" ColumnName="UltimaExpensa" />

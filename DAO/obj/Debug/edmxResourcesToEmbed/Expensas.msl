@@ -4,6 +4,9 @@
     <EntitySetMapping Name="Consorcios">
       <EntityTypeMapping TypeName="ExpensasModel.Consorcios">
         <MappingFragment StoreEntitySet="Consorcios">
+          <ScalarProperty Name="InteresSegundoVencimiento" ColumnName="InteresSegundoVencimiento" />
+          <ScalarProperty Name="SegundoVencimiento" ColumnName="SegundoVencimiento" />
+          <ScalarProperty Name="PrimerVencimiento" ColumnName="PrimerVencimiento" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Direccion" ColumnName="Direccion" />
           <ScalarProperty Name="UltimaExpensa" ColumnName="UltimaExpensa" />

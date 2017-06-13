@@ -41,6 +41,9 @@
     <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Direccion" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="UltimaExpensa" Type="nvarchar" MaxLength="50" />
+    <Property Name="PrimerVencimiento" Type="int" />
+    <Property Name="SegundoVencimiento" Type="int" />
+    <Property Name="InteresSegundoVencimiento" Type="decimal" Scale="2" />
   </EntityType>
   <EntityType Name="Expensas">
     <Key>

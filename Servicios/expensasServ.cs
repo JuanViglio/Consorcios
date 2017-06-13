@@ -22,32 +22,35 @@ namespace Servicios
 
         public decimal AgregarExpensa(string IdConsorcio)
         {
-            if (context.Expensas.OrderByDescending(x => x.Periodo).FirstOrDefault().Estado != "Aceptado")
+            if (context.Expensas.OrderByDescending(x => x.Periodo).FirstOrDefault().Estado == "Finalizado")
             {
-                return 0;
+                Expensas expensa = new Expensas();
+
+                List<ExpensasDetalle> expensaDetalle;
+                Consorcios consorcio = context.Consorcios.Where(x => x.ID == IdConsorcio).FirstOrDefault();
+
+                expensa.Consorcios = consorcio;
+                expensa.PeriodoNumerico = GetNuevoPeriodo();
+                expensa.Periodo = GetDescripcionPeriodo(expensa.PeriodoNumerico.Value);
+                expensa.Estado = "En Proceso";
+
+                expensaDetalle = GetUltimoDetallePorTipo(GastoTipoOrdinario);
+                foreach (var item in expensaDetalle)
+                {
+                    expensa.ExpensasDetalle.Add(new ExpensasDetalle { Detalle = item.Detalle, Importe = item.Importe, TipoGasto_ID = item.TipoGasto_ID });
+                    expensa.Total_Gastos = +item.Importe;
+                }
+
+                context.AddToExpensas(expensa);
+
+                context.SaveChanges();
+
+                return context.Expensas.OrderByDescending(x => x.Periodo).FirstOrDefault().ID;
             }
-
-            Expensas expensa = new Expensas();
-
-            List<ExpensasDetalle> expensaDetalle;
-            Consorcios consorcio = context.Consorcios.Where(x => x.ID == IdConsorcio).FirstOrDefault();
-
-            expensa.Consorcios = consorcio;
-            expensa.PeriodoNumerico = GetNuevoPeriodo();
-            expensa.Periodo = GetDescripcionPeriodo(expensa.PeriodoNumerico.Value);
-
-            expensaDetalle = GetUltimoDetallePorTipo(GastoTipoOrdinario);
-            foreach (var item in expensaDetalle)
+            else
             {
-                expensa.ExpensasDetalle.Add(new ExpensasDetalle { Detalle = item.Detalle, Importe = item.Importe, TipoGasto_ID = item.TipoGasto_ID });
-                expensa.Total_Gastos = +item.Importe;
+                 return 0;
             }
-
-            context.AddToExpensas(expensa);
-
-            context.SaveChanges();
-
-            return context.Expensas.OrderByDescending(x => x.Periodo).FirstOrDefault().ID;
         }
 
         private List<ExpensasDetalle> GetUltimoDetalle()

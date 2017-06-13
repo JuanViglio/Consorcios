@@ -86,6 +86,19 @@ namespace WebSistemmas.Consorcios
                 CargarGrillaGastosExtraordinarios();
 
                 CalcularTotales();
+
+                if (Session["Estado"].ToString() == "Finalizado")
+                {
+                    txtDetalleGastoParticular.Enabled = false;
+                    txtImporteGastoParticular.Enabled = false;
+                    btnActualizar.Visible = false;
+                }
+                else
+                {
+                    txtDetalleGastoParticular.Enabled = true;
+                    txtImporteGastoParticular.Enabled = true;
+                    btnActualizar.Visible = true;
+                }
             }        
         }
 

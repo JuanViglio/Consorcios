@@ -17,7 +17,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ExpensasModel", "FK_Pagos_UF", "UnidadesFuncionales", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.UnidadesFuncionales), "Pagos", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.Pagos))]
 
 // Nombre de archivo original:
-// Fecha de generación: 03/06/2017 01:04:07 a.m.
+// Fecha de generación: 12/06/2017 09:06:31 p.m.
 namespace DAO
 {
     
@@ -357,6 +357,87 @@ namespace DAO
         partial void OnUltimaExpensaChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnUltimaExpensaChanged();
+        /// <summary>
+        /// No hay ningún comentario para la propiedad PrimerVencimiento en el esquema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Nullable<int> PrimerVencimiento
+        {
+            get
+            {
+                return this._PrimerVencimiento;
+            }
+            set
+            {
+                this.OnPrimerVencimientoChanging(value);
+                this.ReportPropertyChanging("PrimerVencimiento");
+                this._PrimerVencimiento = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("PrimerVencimiento");
+                this.OnPrimerVencimientoChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Nullable<int> _PrimerVencimiento;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnPrimerVencimientoChanging(global::System.Nullable<int> value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnPrimerVencimientoChanged();
+        /// <summary>
+        /// No hay ningún comentario para la propiedad SegundoVencimiento en el esquema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Nullable<int> SegundoVencimiento
+        {
+            get
+            {
+                return this._SegundoVencimiento;
+            }
+            set
+            {
+                this.OnSegundoVencimientoChanging(value);
+                this.ReportPropertyChanging("SegundoVencimiento");
+                this._SegundoVencimiento = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("SegundoVencimiento");
+                this.OnSegundoVencimientoChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Nullable<int> _SegundoVencimiento;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnSegundoVencimientoChanging(global::System.Nullable<int> value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnSegundoVencimientoChanged();
+        /// <summary>
+        /// No hay ningún comentario para la propiedad InteresSegundoVencimiento en el esquema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Nullable<decimal> InteresSegundoVencimiento
+        {
+            get
+            {
+                return this._InteresSegundoVencimiento;
+            }
+            set
+            {
+                this.OnInteresSegundoVencimientoChanging(value);
+                this.ReportPropertyChanging("InteresSegundoVencimiento");
+                this._InteresSegundoVencimiento = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("InteresSegundoVencimiento");
+                this.OnInteresSegundoVencimientoChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Nullable<decimal> _InteresSegundoVencimiento;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnInteresSegundoVencimientoChanging(global::System.Nullable<decimal> value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnInteresSegundoVencimientoChanged();
         /// <summary>
         /// No hay ningún comentario para Expensas en el esquema.
         /// </summary>
