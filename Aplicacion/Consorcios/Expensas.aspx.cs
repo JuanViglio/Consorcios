@@ -58,9 +58,9 @@ namespace WebSistemmas.Consorcios
                                 grdUnidades.DataSource = serv.GetPagos(Session["idConsorcio"].ToString(), Convert.ToInt32(GridViewrow.Cells[col_Periodo].Text));
                                 grdUnidades.DataBind();
 
-                                if (GridViewrow.Cells[2].Text == "Aceptado")                                
+                                if (GridViewrow.Cells[2].Text == "Aceptado")
                                     divBotonesUF.Visible = true;
-                                                                
+
                             }
                             else
                             {
@@ -145,29 +145,36 @@ namespace WebSistemmas.Consorcios
 
         protected void btnAceptarExpensasUF_Click(object sender, EventArgs e)
         {
-            unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
+            string confirmValue = Request.Form["confirm_value"];
+            if (confirmValue == "Si")
+            {
+                unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
 
-            serv.FinalizarPagos(Session["idConsorcio"].ToString(), Convert.ToInt32(Session["PeriodoNumerico"].ToString()));
+                serv.FinalizarPagos(Session["idConsorcio"].ToString(), Convert.ToInt32(Session["PeriodoNumerico"].ToString()));
 
-            grdUnidades.DataSource = "";
-            grdUnidades.DataBind();
-            divBotonesUF.Visible = false;
+                grdUnidades.DataSource = "";
+                grdUnidades.DataBind();
+                divBotonesUF.Visible = false;
 
-            CargarGrillaExpensas();
-
+                CargarGrillaExpensas();
+            }
         }
 
         protected void btnAnularExpensasUF_Click(object sender, EventArgs e)
         {
-            unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
+            string confirmValue = Request.Form["confirm_value"];
+            if (confirmValue == "Si")
+            {
+                unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
 
-            serv.CancelarPagos(Session["idConsorcio"].ToString(), Convert.ToInt32(Session["PeriodoNumerico"].ToString()));
+                serv.CancelarPagos(Session["idConsorcio"].ToString(), Convert.ToInt32(Session["PeriodoNumerico"].ToString()));
 
-            grdUnidades.DataSource = "";
-            grdUnidades.DataBind();
-            divBotonesUF.Visible = false;
+                grdUnidades.DataSource = "";
+                grdUnidades.DataBind();
+                divBotonesUF.Visible = false;
 
-            CargarGrillaExpensas();
+                CargarGrillaExpensas();
+            }
         }
 
         protected void grdUnidades_RowDataBound(object sender, GridViewRowEventArgs e)

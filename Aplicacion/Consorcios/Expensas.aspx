@@ -1,11 +1,16 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Expensas.aspx.cs" Inherits="WebSistemmas.Consorcios.Expensas" MasterPageFile="~/Consorcios/MenuConsorcios.Master" %>
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.3/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.3/jquery-confirm.min.js"></script>
+    <script type="text/javascript" src="../js/Confirm.js"></script>
+
     <form id="form1" runat="server">
         <span style="color: #003399; font-size: large">
             <br />
             Expensas<br />
-        </span><br />
+        </span>
+        <br />
         <table>
             <tr>
                 <td style="width: 652px">
@@ -61,7 +66,7 @@
                 </td>
                 <td>
                     <div>
-                        <asp:gridview id="grdUnidades" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" onrowcommand="grdUnidades_RowCommand" style="margin-top: 0px; margin-left: 0px;" width="622px" OnRowDataBound="grdUnidades_RowDataBound">
+                        <asp:gridview id="grdUnidades" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" onrowcommand="grdUnidades_RowCommand" style="margin-top: 0px; margin-left: 0px;" width="622px" onrowdatabound="grdUnidades_RowDataBound">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
                     <asp:BoundField DataField="ID" HeaderText="Numero">
@@ -104,15 +109,14 @@
                     <asp:button id="btnNuevaExpensa" runat="server" height="35px" onclick="btnNuevaExpensa_Click" text="Nuevo" width="107px" />
                 </td>
                 <td>
-                    <div id="divBotonesUF" runat ="server" visible="false">
+                    <div id="divBotonesUF" runat="server" visible="false">
                         <table>
-                            <tr style=" width:150px">
+                            <tr style="width: 150px">
                                 <td style="width: 144px">
-                                    <asp:button id="btnAceptarExpensasUF" runat="server" height="35px" onclick="btnAceptarExpensasUF_Click" text="Aceptar Expensas" width="128px" />                
+                                    <asp:button id="btnAceptarExpensasUF" runat="server" height="35px" onclientclick="Confirm('¿Esta seguro que quiere ACEPTAR las Expensas?')" onclick="btnAceptarExpensasUF_Click" text="Aceptar Expensas" width="128px" />
                                 </td>
                                 <td style="width: 148px">
-
-                                    <asp:button id="btnAnularExpensasUF" runat="server" height="35px" onclick="btnAnularExpensasUF_Click" text="Anular Expensas" width="128px" />                
+                                    <asp:button id="btnAnularExpensasUF" runat="server" height="35px" onclientclick="Confirm('¿Esta seguro que quiere ANULAR las Expensas?')" onclick="btnAnularExpensasUF_Click" text="Anular Expensas" width="128px" />
                                 </td>
                             </tr>
                         </table>
@@ -121,5 +125,5 @@
             </tr>
         </table>
     </form>
-
 </asp:Content>
+

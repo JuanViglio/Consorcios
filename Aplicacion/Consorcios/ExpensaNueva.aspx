@@ -1,18 +1,20 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ExpensaNueva.aspx.cs" Inherits="WebSistemmas.Consorcios.ExpensaNueva" MasterPageFile="~/Consorcios/MenuConsorcios.Master" %>
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.3/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.3/jquery-confirm.min.js"></script>
     <script type="text/javascript" src="../js/Expensas.js"></script>
+    <script type="text/javascript" src="../js/Confirm.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="../css/jquery-ui.css" rel="stylesheet" />
 
     <form id="form2" runat="server">
+
         <p style="color: #003399; font-size: large">
             <asp:scriptmanager id="Scriptmanager1" runat="server">
             </asp:scriptmanager>
         </p>
-
 
         <p style="color: #003399; font-size: large">
             &nbsp;
@@ -339,9 +341,8 @@
                     <asp:Button runat="server" Text="Volver" ID="btnVolver" Height="35px" OnClick="btnVolver_Click" Width="150px"></asp:Button>
                 </td>
                 <td style="width: 190px">
-                    <asp:Button runat="server" Text="Aceptar Expensa" ID="btnAceptar" Height="34px" OnClick="btnAceptar_Click" Width="150px"></asp:Button>
+                    <asp:Button runat="server" Text="Aceptar Expensa" ID="btnAceptar" Height="34px" OnClientClick = "Confirm('¿Esta seguro que quiere ACEPTAR las Expensas?')" OnClick="btnAceptar_Click" Width="150px"></asp:Button>
                 </td>
-
             </tr>
         </table>
 

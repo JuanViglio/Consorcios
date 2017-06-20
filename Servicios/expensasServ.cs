@@ -22,7 +22,7 @@ namespace Servicios
 
         public decimal AgregarExpensa(string IdConsorcio)
         {
-            if (context.Expensas.OrderByDescending(x => x.Periodo).FirstOrDefault().Estado == "Finalizado")
+            if (context.Expensas.OrderByDescending(x => x.ID).FirstOrDefault().Estado == "Finalizado")
             {
                 Expensas expensa = new Expensas();
 

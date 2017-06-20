@@ -123,6 +123,7 @@
     <Content Include="Consorcios\Gastos.aspx" />
     <Content Include="Consorcios\UnidadesFuncionales.aspx" />
     <Content Include="css\img\iconback.gif" />
+    <Content Include="js\Confirm.js" />
     <Content Include="js\Expensas.js" />
     <Content Include="js\jquery-1.10.2.js" />
     <Content Include="js\jquery-1.6.2.min.js" />

@@ -283,10 +283,14 @@ namespace WebSistemmas.Consorcios
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            expensasServ serv = new expensasServ();
+            string confirmValue = Request.Form["confirm_value"];
+            if (confirmValue == "Si")
+            {
+                expensasServ serv = new expensasServ();
 
-            serv.AceptarExpensa(Convert.ToInt32(Session["ExpensaId"]),txtGastosExtraordinarios.Text, lblTotalGastosOrdinarios.Text);
-            Response.Redirect("Expensas.aspx#consorcios");
+                serv.AceptarExpensa(Convert.ToInt32(Session["ExpensaId"]), txtGastosExtraordinarios.Text, lblTotalGastosOrdinarios.Text);
+                Response.Redirect("Expensas.aspx#consorcios");
+            }
         }
 
         protected void btnAgregarGastoEventual_Click(object sender, EventArgs e)
