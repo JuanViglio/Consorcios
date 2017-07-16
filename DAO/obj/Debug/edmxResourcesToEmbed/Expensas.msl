@@ -4,139 +4,140 @@
     <EntitySetMapping Name="Consorcios">
       <EntityTypeMapping TypeName="ExpensasModel.Consorcios">
         <MappingFragment StoreEntitySet="Consorcios">
-          <ScalarProperty Name="InteresSegundoVencimiento" ColumnName="InteresSegundoVencimiento" />
-          <ScalarProperty Name="SegundoVencimiento" ColumnName="SegundoVencimiento" />
-          <ScalarProperty Name="PrimerVencimiento" ColumnName="PrimerVencimiento" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Direccion" ColumnName="Direccion" />
           <ScalarProperty Name="UltimaExpensa" ColumnName="UltimaExpensa" />
+          <ScalarProperty Name="PrimerVencimiento" ColumnName="PrimerVencimiento" />
+          <ScalarProperty Name="SegundoVencimiento" ColumnName="SegundoVencimiento" />
+          <ScalarProperty Name="InteresSegundoVencimiento" ColumnName="InteresSegundoVencimiento" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Expensas">
       <EntityTypeMapping TypeName="ExpensasModel.Expensas">
         <MappingFragment StoreEntitySet="Expensas">
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-          <ScalarProperty Name="PeriodoNumerico" ColumnName="PeriodoNumerico" />
-          <ScalarProperty Name="Total_Gastos" ColumnName="Total_Gastos" />
-          <ScalarProperty Name="Periodo" ColumnName="Periodo" />
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+          <ScalarProperty Name="Total_Gastos" ColumnName="Total_Gastos" />
+          <ScalarProperty Name="PeriodoNumerico" ColumnName="PeriodoNumerico" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="FK_Expensas_Consorcios" TypeName="ExpensasModel.FK_Expensas_Consorcios" StoreEntitySet="Expensas">
-      <EndProperty Name="Expensas">
-        <ScalarProperty Name="ID" ColumnName="ID" />
-      </EndProperty>
-      <EndProperty Name="Consorcio">
-        <ScalarProperty Name="ID" ColumnName="Consorcio_ID" />
-      </EndProperty>
-    </AssociationSetMapping>
     <EntitySetMapping Name="ExpensasDetalle">
       <EntityTypeMapping TypeName="ExpensasModel.ExpensasDetalle">
         <MappingFragment StoreEntitySet="ExpensasDetalle">
-          <ScalarProperty Name="TipoGasto_ID" ColumnName="TipoGasto_ID" />
-          <ScalarProperty Name="Importe" ColumnName="Importe" />
-          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+          <ScalarProperty Name="Importe" ColumnName="Importe" />
+          <ScalarProperty Name="TipoGasto_ID" ColumnName="TipoGasto_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="FK_ExpensasDetalle_Expensas" TypeName="ExpensasModel.FK_ExpensasDetalle_Expensas" StoreEntitySet="ExpensasDetalle">
-      <EndProperty Name="ExpensasDetalle">
-        <ScalarProperty Name="ID" ColumnName="ID" />
-      </EndProperty>
-      <EndProperty Name="Expensas">
-        <ScalarProperty Name="ID" ColumnName="Expensas_ID" />
-      </EndProperty>
-      <Condition ColumnName="Expensas_ID" IsNull="false" />
-    </AssociationSetMapping>
     <EntitySetMapping Name="Gastos">
       <EntityTypeMapping TypeName="ExpensasModel.Gastos">
         <MappingFragment StoreEntitySet="Gastos">
-          <ScalarProperty Name="Importe" ColumnName="Importe" />
-          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+          <ScalarProperty Name="Importe" ColumnName="Importe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GastosExtDetalle">
+      <EntityTypeMapping TypeName="ExpensasModel.GastosExtDetalle">
+        <MappingFragment StoreEntitySet="GastosExtDetalle">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+          <ScalarProperty Name="Importe" ColumnName="Importe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pagos">
+      <EntityTypeMapping TypeName="ExpensasModel.Pagos">
+        <MappingFragment StoreEntitySet="Pagos">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Coeficiente" ColumnName="Coeficiente" />
+          <ScalarProperty Name="ImportePago1" ColumnName="ImportePago1" />
+          <ScalarProperty Name="FechaPago1" ColumnName="FechaPago1" />
+          <ScalarProperty Name="ImportePago2" ColumnName="ImportePago2" />
+          <ScalarProperty Name="FechaPago2" ColumnName="FechaPago2" />
+          <ScalarProperty Name="ImporteExtraordinario" ColumnName="ImporteExtraordinario" />
+          <ScalarProperty Name="ImporteGastoParticular" ColumnName="ImporteGastoParticular" />
+          <ScalarProperty Name="ImportePagado" ColumnName="ImportePagado" />
+          <ScalarProperty Name="FechaPagado" ColumnName="FechaPagado" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+          <ScalarProperty Name="DetalleGastoParticular" ColumnName="DetalleGastoParticular" />
+          <ScalarProperty Name="PeriodoDetalle" ColumnName="PeriodoDetalle" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TipoGastos">
       <EntityTypeMapping TypeName="ExpensasModel.TipoGastos">
         <MappingFragment StoreEntitySet="TipoGastos">
-          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="FK_Gastos_TipoGastos" TypeName="ExpensasModel.FK_Gastos_TipoGastos" StoreEntitySet="Gastos">
-      <EndProperty Name="Gastos">
-        <ScalarProperty Name="ID" ColumnName="ID" />
-      </EndProperty>
-      <EndProperty Name="TipoGastos">
-        <ScalarProperty Name="ID" ColumnName="TipoGastos_ID" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <EntitySetMapping Name="GastosExtDetalle">
-      <EntityTypeMapping TypeName="ExpensasModel.GastosExtDetalle">
-        <MappingFragment StoreEntitySet="GastosExtDetalle">
-          <ScalarProperty Name="Importe" ColumnName="Importe" />
-          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="FK_GastosExtDetalle_Expensas" TypeName="ExpensasModel.FK_GastosExtDetalle_Expensas" StoreEntitySet="GastosExtDetalle">
-      <EndProperty Name="GastosExtDetalle">
-        <ScalarProperty Name="ID" ColumnName="ID" />
-      </EndProperty>
-      <EndProperty Name="Expensas">
-        <ScalarProperty Name="ID" ColumnName="Expensas_ID" />
-      </EndProperty>
-      <Condition ColumnName="Expensas_ID" IsNull="false" />
-    </AssociationSetMapping>
     <EntitySetMapping Name="UnidadesFuncionales">
       <EntityTypeMapping TypeName="ExpensasModel.UnidadesFuncionales">
         <MappingFragment StoreEntitySet="UnidadesFuncionales">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Coeficiente" ColumnName="Coeficiente" />
-          <ScalarProperty Name="Dueño" ColumnName="Dueño" />
           <ScalarProperty Name="UF" ColumnName="UF" />
+          <ScalarProperty Name="Dueño" ColumnName="Dueño" />
+          <ScalarProperty Name="Coeficiente" ColumnName="Coeficiente" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="FK_UnidadesFuncionales_Consorcios" TypeName="ExpensasModel.FK_UnidadesFuncionales_Consorcios" StoreEntitySet="UnidadesFuncionales">
-      <EndProperty Name="UnidadesFuncionales">
-        <ScalarProperty Name="ID" ColumnName="ID" />
-      </EndProperty>
-      <EndProperty Name="Consorcio">
+    <AssociationSetMapping Name="FK_Expensas_Consorcios" TypeName="ExpensasModel.FK_Expensas_Consorcios" StoreEntitySet="Expensas">
+      <EndProperty Name="Consorcios">
         <ScalarProperty Name="ID" ColumnName="Consorcios_ID" />
       </EndProperty>
-    </AssociationSetMapping>
-    <EntitySetMapping Name="Pagos">
-      <EntityTypeMapping TypeName="ExpensasModel.Pagos">
-        <MappingFragment StoreEntitySet="Pagos">
-          <ScalarProperty Name="DetalleGastoParticular" ColumnName="DetalleGastoParticular" />
-          <ScalarProperty Name="Periodo" ColumnName="Periodo" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-          <ScalarProperty Name="FechaPagado" ColumnName="FechaPagado" />
-          <ScalarProperty Name="ImportePagado" ColumnName="ImportePagado" />
-          <ScalarProperty Name="ImporteGastoParticular" ColumnName="ImporteGastoParticular" />
-          <ScalarProperty Name="ImporteExtraordinario" ColumnName="ImporteExtraordinario" />
-          <ScalarProperty Name="FechaPago2" ColumnName="FechaPago2" />
-          <ScalarProperty Name="ImportePago2" ColumnName="ImportePago2" />
-          <ScalarProperty Name="FechaPago1" ColumnName="FechaPago1" />
-          <ScalarProperty Name="ImportePago1" ColumnName="ImportePago1" />
-          <ScalarProperty Name="Coeficiente" ColumnName="Coeficiente" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="FK_Pagos_UF" TypeName="ExpensasModel.FK_Pagos_UF" StoreEntitySet="Pagos">
-      <EndProperty Name="Pagos">
+      <EndProperty Name="Expensas">
         <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_UnidadesFuncionales_Consorcios" TypeName="ExpensasModel.FK_UnidadesFuncionales_Consorcios" StoreEntitySet="UnidadesFuncionales">
+      <EndProperty Name="Consorcios">
+        <ScalarProperty Name="ID" ColumnName="Consorcios_ID" />
+      </EndProperty>
+      <EndProperty Name="UnidadesFuncionales">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_ExpensasDetalle_Expensas" TypeName="ExpensasModel.FK_ExpensasDetalle_Expensas" StoreEntitySet="ExpensasDetalle">
+      <EndProperty Name="Expensas">
+        <ScalarProperty Name="ID" ColumnName="Expensas_ID" />
+      </EndProperty>
+      <EndProperty Name="ExpensasDetalle">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="Expensas_ID" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_GastosExtDetalle_Expensas" TypeName="ExpensasModel.FK_GastosExtDetalle_Expensas" StoreEntitySet="GastosExtDetalle">
+      <EndProperty Name="Expensas">
+        <ScalarProperty Name="ID" ColumnName="Expensas_ID" />
+      </EndProperty>
+      <EndProperty Name="GastosExtDetalle">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="Expensas_ID" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Gastos_TipoGastos" TypeName="ExpensasModel.FK_Gastos_TipoGastos" StoreEntitySet="Gastos">
+      <EndProperty Name="TipoGastos">
+        <ScalarProperty Name="ID" ColumnName="TipoGastos_ID" />
+      </EndProperty>
+      <EndProperty Name="Gastos">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Pagos_UF" TypeName="ExpensasModel.FK_Pagos_UF" StoreEntitySet="Pagos">
       <EndProperty Name="UnidadesFuncionales">
         <ScalarProperty Name="ID" ColumnName="UnidadesFuncionales_ID" />
+      </EndProperty>
+      <EndProperty Name="Pagos">
+        <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

@@ -24,6 +24,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -106,8 +107,10 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Cobranza\Cobros.aspx" />
     <Content Include="Consorcios\ExpensaUFNueva.aspx" />
     <Content Include="css\img\ico_mas.jpg" />
+    <Content Include="css\jquery-ui-1.8.16.custom.css" />
     <Content Include="css\jquery-ui.css" />
     <Content Include="css\menuCobranza.css" />
     <Content Include="css\styles.css" />
@@ -123,6 +126,7 @@
     <Content Include="Consorcios\Gastos.aspx" />
     <Content Include="Consorcios\UnidadesFuncionales.aspx" />
     <Content Include="css\img\iconback.gif" />
+    <Content Include="js\Cobranza.js" />
     <Content Include="js\Confirm.js" />
     <Content Include="js\Expensas.js" />
     <Content Include="js\jquery-1.10.2.js" />
@@ -134,11 +138,23 @@
     <Content Include="js\jquery.ui.core.js" />
     <Content Include="js\jquery.ui.widget.js" />
     <Content Include="js\jquery1-2-6-min.js" />
+    <Content Include="js\tabs.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cobranza\Cobros.aspx.cs">
+      <DependentUpon>Cobros.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cobranza\Cobros.aspx.designer.cs">
+      <DependentUpon>Cobros.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cobranza\MenuCobranza.Master.cs">
+      <DependentUpon>MenuCobranza.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Consorcios\Consorcios.aspx.cs">
       <DependentUpon>Consorcios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -224,6 +240,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Consorcios\MenuConsorcios.Master" />
+    <Content Include="Cobranza\MenuCobranza.Master" />
     <None Include="Properties\PublishProfiles\Perfil1.pubxml" />
   </ItemGroup>
   <ItemGroup>
