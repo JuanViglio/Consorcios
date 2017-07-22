@@ -239,59 +239,66 @@ namespace Servicios
 
         public void AceptarExpensa(int expensaID, string gastosExtraordinarios, string totalGastosOrdinarios)
         {
-            Pagos pago;
-            var consorcio = context.Consorcios.ToList();
-            var uf = context.UnidadesFuncionales.ToList();
-
-            var expensa = context.Expensas.Where(x => x.ID == expensaID).FirstOrDefault();
-            expensa.Estado = "Aceptado";
-
-            //buscar las UF de consorcio
-            foreach (var item in expensa.Consorcios.UnidadesFuncionales)
+            try
             {
-                //Buscar los pagos y sobreescribirlos. Si no los encuentra los creo
-                pago = context.Pagos.Where(x => x.UnidadesFuncionales.UF == item.UF && x.Periodo == expensa.PeriodoNumerico).FirstOrDefault();
+                Pagos pago;
+                var consorcio = context.Consorcios.ToList();
+                var uf = context.UnidadesFuncionales.ToList();
 
-                if (pago == null)
+                var expensa = context.Expensas.Where(x => x.ID == expensaID).FirstOrDefault();
+                expensa.Estado = "Aceptado";
+
+                //buscar las UF de consorcio
+                foreach (var item in expensa.Consorcios.UnidadesFuncionales)
                 {
-                    pago = new Pagos();
-                    pago.UnidadesFuncionales = new UnidadesFuncionales();
-                    pago.UnidadesFuncionales = context.UnidadesFuncionales.Where(x => x.UF == item.UF).FirstOrDefault();
-                    pago.FechaPago1 = Convert.ToDateTime("10/06/17");
-                    pago.FechaPago2 = Convert.ToDateTime("20/06/17");
-                    pago.ImporteGastoParticular = Convert.ToDecimal("0");
+                    //Buscar los pagos y sobreescribirlos. Si no los encuentra los creo
+                    pago = context.Pagos.Where(x => x.UnidadesFuncionales.UF == item.UF && x.Periodo == expensa.PeriodoNumerico).FirstOrDefault();
 
-                    Decimal Coeficiente = item.Coeficiente.Value;
-                    Decimal GastosExtraordinarios = Convert.ToDecimal(gastosExtraordinarios);
-                    Decimal ImporteExtraordinario = GastosExtraordinarios * Coeficiente / 100;
-                    Decimal TotalGastosOrdinarios = Convert.ToDecimal(totalGastosOrdinarios) + pago.ImporteGastoParticular;
-                    Decimal TotalVencimiento1 = ((TotalGastosOrdinarios - GastosExtraordinarios) * Coeficiente / 100) + ImporteExtraordinario;
+                    if (pago == null)
+                    {
+                        pago = new Pagos();
+                        pago.UnidadesFuncionales = new UnidadesFuncionales();
+                        pago.UnidadesFuncionales = context.UnidadesFuncionales.Where(x => x.UF == item.UF).FirstOrDefault();
+                        pago.FechaPago1 = Convert.ToDateTime("10/06/17");
+                        pago.FechaPago2 = Convert.ToDateTime("20/06/17");
+                        pago.ImporteGastoParticular = Convert.ToDecimal("0");
 
-                    pago.Coeficiente = item.Coeficiente.Value;
-                    pago.ImportePago1 = TotalVencimiento1;
-                    pago.ImportePago2 = TotalVencimiento1 + 10;
-                    pago.ImporteExtraordinario = ImporteExtraordinario;
-                    pago.Periodo = expensa.PeriodoNumerico;
+                        Decimal Coeficiente = item.Coeficiente.Value;
+                        Decimal GastosExtraordinarios = Convert.ToDecimal(gastosExtraordinarios);
+                        Decimal ImporteExtraordinario = GastosExtraordinarios * Coeficiente / 100;
+                        Decimal TotalGastosOrdinarios = Convert.ToDecimal(totalGastosOrdinarios) + pago.ImporteGastoParticular;
+                        Decimal TotalVencimiento1 = ((TotalGastosOrdinarios - GastosExtraordinarios) * Coeficiente / 100) + ImporteExtraordinario;
 
-                    context.AddToPagos(pago);
+                        pago.Coeficiente = item.Coeficiente.Value;
+                        pago.ImportePago1 = TotalVencimiento1;
+                        pago.ImportePago2 = TotalVencimiento1 + 10;
+                        pago.ImporteExtraordinario = ImporteExtraordinario;
+                        pago.Periodo = expensa.PeriodoNumerico;
+
+                        context.AddToPagos(pago);
+                    }
+                    else
+                    {
+                        Decimal Coeficiente = item.Coeficiente.Value;
+                        Decimal GastosExtraordinarios = Convert.ToDecimal(gastosExtraordinarios);
+                        Decimal ImporteExtraordinario = GastosExtraordinarios * Coeficiente / 100;
+                        Decimal TotalGastosOrdinarios = Convert.ToDecimal(totalGastosOrdinarios) + pago.ImporteGastoParticular;
+                        Decimal TotalVencimiento1 = ((TotalGastosOrdinarios - GastosExtraordinarios) * Coeficiente / 100) + ImporteExtraordinario;
+
+                        pago.Coeficiente = item.Coeficiente.Value;
+                        pago.ImportePago1 = TotalVencimiento1;
+                        pago.ImportePago2 = TotalVencimiento1 + 10;
+                        pago.ImporteExtraordinario = ImporteExtraordinario;
+                        pago.Periodo = expensa.PeriodoNumerico;
+                    }
                 }
-                else
-                {
-                    Decimal Coeficiente = item.Coeficiente.Value;
-                    Decimal GastosExtraordinarios = Convert.ToDecimal(gastosExtraordinarios);
-                    Decimal ImporteExtraordinario = GastosExtraordinarios * Coeficiente / 100;
-                    Decimal TotalGastosOrdinarios = Convert.ToDecimal(totalGastosOrdinarios) + pago.ImporteGastoParticular;
-                    Decimal TotalVencimiento1 = ((TotalGastosOrdinarios - GastosExtraordinarios) * Coeficiente / 100) + ImporteExtraordinario;
 
-                    pago.Coeficiente = item.Coeficiente.Value;
-                    pago.ImportePago1 = TotalVencimiento1;
-                    pago.ImportePago2 = TotalVencimiento1 + 10;
-                    pago.ImporteExtraordinario = ImporteExtraordinario;
-                    pago.Periodo = expensa.PeriodoNumerico;
-                }
+                context.SaveChanges();
             }
-
-            context.SaveChanges();
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

@@ -10,3 +10,9 @@ D:\Sistemmas\Working Copy\WebSistemmas\DAO\bin\Release\DAO.pdb
 D:\Sistemmas\Working Copy\WebSistemmas\DAO\obj\Release\DAO.csprojResolveAssemblyReference.cache
 D:\Sistemmas\Working Copy\WebSistemmas\DAO\obj\Release\DAO.dll
 D:\Sistemmas\Working Copy\WebSistemmas\DAO\obj\Release\DAO.pdb
+D:\Sistemmas\Working Copy\Consorcios\DAO\bin\Release\DAO.dll.config
+D:\Sistemmas\Working Copy\Consorcios\DAO\bin\Release\DAO.dll
+D:\Sistemmas\Working Copy\Consorcios\DAO\bin\Release\DAO.pdb
+D:\Sistemmas\Working Copy\Consorcios\DAO\obj\Release\DAO.csprojResolveAssemblyReference.cache
+D:\Sistemmas\Working Copy\Consorcios\DAO\obj\Release\DAO.dll
+D:\Sistemmas\Working Copy\Consorcios\DAO\obj\Release\DAO.pdb

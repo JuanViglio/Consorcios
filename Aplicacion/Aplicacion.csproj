@@ -128,6 +128,7 @@
     <Content Include="css\img\iconback.gif" />
     <Content Include="js\Cobranza.js" />
     <Content Include="js\Confirm.js" />
+    <Content Include="js\Consorcios.js" />
     <Content Include="js\Expensas.js" />
     <Content Include="js\jquery-1.10.2.js" />
     <Content Include="js\jquery-1.6.2.min.js" />

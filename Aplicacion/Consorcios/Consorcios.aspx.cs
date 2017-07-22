@@ -1,4 +1,5 @@
 ﻿using Servicios;
+using Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,13 @@ namespace WebSistemmas.Consorcios
 {
     public partial class Consorcios : System.Web.UI.Page
     {
+        IConsorcios serv;
+
+        public Consorcios()
+        {
+            serv = new consorciosServ();
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -18,18 +26,25 @@ namespace WebSistemmas.Consorcios
                 //{
                 //    Response.Redirect("LoginConsorcios.aspx");
                 //    return;
-                //}
+                //}                
 
-                consorciosServ serv = new consorciosServ();
-
-                grdConsorcios.DataSource = serv.GetConsorcios();
-                grdConsorcios.DataBind();
+                try
+                {
+                    lblError.Text = "";
+                    grdConsorcios.DataSource = serv.GetConsorcios();
+                    grdConsorcios.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    lblError.Text = ex.Message;
+                }
             }
         }
 
         protected void grdConsorcios_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             GridViewRow GridViewrow = null;
+            lblError.Text = "";
 
             try
             {
@@ -44,7 +59,7 @@ namespace WebSistemmas.Consorcios
                     switch (Tipo)
                     {
                         case "MODIFICAR":
-                            ClientScript.RegisterStartupScript(GetType(), "showDiv", "$('#divConsorciosModificar').slideDown();", true);
+                            ClientScript.RegisterStartupScript(GetType(), "showDiv", "$('#divConsorcioModificar').slideDown();", true);
 
                             txtCodigo.Text = GridViewrow.Cells[0].Text;
                             txtDireccion.Text = GridViewrow.Cells[1].Text;
@@ -71,22 +86,121 @@ namespace WebSistemmas.Consorcios
             {
                 lblError.Text = ex.Message;
             }
-        
+
         }
 
         protected void btnAceptarModificar_Click(object sender, EventArgs e)
         {
+            lblError.Text = "";
 
+            #region Validaciones
+            if (txtDireccion.Text == "")
+            {
+                lblError.Text = "No se ingreso la Direccion";
+                return;
+            }
+            else if (txtVencimiento1.Text == "")
+            {
+                lblError.Text = "No se ingreso el Vencimiento 1";
+                return;
+            }
+            else if (!txtVencimiento1.Text.IsNumeric())
+            {
+                lblError.Text = "No se ingreso un Vencimiento numerico";
+                return;
+            }
+            else if (txtVencimiento2.Text == "")
+            {
+                lblError.Text = "No se ingreso el Vencimiento 2";
+                return;
+            }
+            else if (!txtVencimiento2.Text.IsNumeric())
+            {
+                lblError.Text = "No se ingreso un Vencimiento numerico";
+                return;
+            }
+            else if (txtInteres.Text == "")
+            {
+                lblError.Text = "No se ingreso el Interes";
+                return;
+            }
+            else if (!txtInteres.Text.IsNumeric())
+            {
+                lblError.Text = "No se ingreso un Interes numerico";
+                return;
+            }
+            #endregion
+
+            grdConsorcios.DataSource = serv.UpdateConsorcios(txtCodigo.Text, txtDireccion.Text, txtVencimiento1.Text, txtVencimiento2.Text, txtInteres.Text);
+            grdConsorcios.DataBind();
         }
 
-        protected void btnCancelarModificar_Click(object sender, EventArgs e)
+        protected void btnAceptarNuevoConsorcio_Click(object sender, EventArgs e)
         {
+            lblError.Text = "";
 
+            #region Validaciones
+            if (txtCodigoNuevo.Text == "")
+            {
+                lblError.Text = "No se ingreso el Codigo del Consorcio";
+                return;
+            }
+            else if (txtDireccionNuevo.Text == "")
+            {
+                lblError.Text = "No se ingreso la Direccion";
+                return;
+            }
+            else if (txtVencimiento1Nuevo.Text == "")
+            {
+                lblError.Text = "No se ingreso el Vencimiento 1";
+                return;
+            }
+            else if (!txtVencimiento1Nuevo.Text.IsNumeric())
+            {
+                lblError.Text = "No se ingreso un Vencimiento numerico";
+                return;
+            }
+            else if (txtVencimiento2Nuevo.Text == "")
+            {
+                lblError.Text = "No se ingreso el Vencimiento 2";
+                return;
+            }
+            else if (!txtVencimiento2Nuevo.Text.IsNumeric())
+            {
+                lblError.Text = "No se ingreso un Vencimiento numerico";
+                return;
+            }
+            else if (txtInteresNuevo.Text == "")
+            {
+                lblError.Text = "No se ingreso el Interes";
+                return;
+            }
+            else if (!txtInteresNuevo.Text.IsNumeric())
+            {
+                lblError.Text = "No se ingreso un Interes numerico";
+                return;
+            }
+            #endregion
+
+            var consorcios = serv.AddConsorcio(txtCodigoNuevo.Text, txtDireccionNuevo.Text, txtVencimiento1Nuevo.Text, txtVencimiento2Nuevo.Text, txtInteresNuevo.Text);
+
+            if (consorcios != null)
+            {
+                grdConsorcios.DataSource = consorcios;
+                grdConsorcios.DataBind();
+
+                #region Limpiar campos
+                txtCodigoNuevo.Text = "";
+                txtDireccionNuevo.Text = "";
+                txtVencimiento1Nuevo.Text = "";
+                txtVencimiento2Nuevo.Text = "";
+                txtInteresNuevo.Text = "";
+                #endregion
+            }
+            else
+                lblError.Text = "No se pudo ingresar el Consorcio. Revise el codigo ingresado";
+            
         }
 
-        protected void btnNuevoConsorcio_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
