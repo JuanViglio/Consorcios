@@ -1,4 +1,5 @@
 ﻿using DAO;
+using Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace Servicios
 {
-    public class unidadesFuncionalesServ
+    public class unidadesFuncionalesServ : IUnidadesServ
     {
         private ExpensasEntities context = new ExpensasEntities();
 
@@ -112,6 +113,32 @@ namespace Servicios
             pago.FechaPagado = System.DateTime.Now;
 
             context.SaveChanges();
+        }
+
+        public List<UnidadesFuncionales> ModificarUnidades(string idConsorcio, int idUF, string numeroUF, string dueño, decimal coeficiente) 
+        {
+            var UF = context.UnidadesFuncionales.Where(x => x.Consorcios.ID == idConsorcio && x.ID == idUF).FirstOrDefault();
+            UF.UF = numeroUF;
+            UF.Dueño = dueño;
+            UF.Coeficiente = coeficiente;
+            context.SaveChanges();
+
+            return GetUnidadesFuncionales(idConsorcio);
+        }
+
+        public List<UnidadesFuncionales> AgregarUnidad(string idConsorcio, string idUf, string dueño, decimal coeficiente)
+        {
+            var consorcio = context.Consorcios.Where(x => x.ID == idConsorcio).FirstOrDefault();
+
+            UnidadesFuncionales UF = new UnidadesFuncionales();
+            UF.UF = idUf;
+            UF.Consorcios = consorcio;
+            UF.Dueño = dueño;
+            UF.Coeficiente = coeficiente;
+            context.AddToUnidadesFuncionales(UF);
+            context.SaveChanges();
+
+            return GetUnidadesFuncionales(idConsorcio);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DAO;
+using Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace Servicios
 {
-    public class expensasServ
+    public class expensasServ : IExpensasServ
     {
         private const int GastoTipoOrdinario = 1;
         private const int GastoTipoEventual = 2;
@@ -216,7 +217,6 @@ namespace Servicios
 
             if (detalle == null)
             {
-
                 ExpensasDetalle nuevoDetalle = new ExpensasDetalle();
                 nuevoDetalle.Expensas = context.Expensas.Where(x => x.ID == IdExpensa).FirstOrDefault();
                 nuevoDetalle.Importe = Importe;

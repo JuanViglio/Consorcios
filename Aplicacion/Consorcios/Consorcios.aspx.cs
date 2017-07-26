@@ -11,6 +11,7 @@ namespace WebSistemmas.Consorcios
 {
     public partial class Consorcios : System.Web.UI.Page
     {
+        private const int colIdConsorcio = 0;
         IConsorcios serv;
 
         public Consorcios()
@@ -61,7 +62,7 @@ namespace WebSistemmas.Consorcios
                         case "MODIFICAR":
                             ClientScript.RegisterStartupScript(GetType(), "showDiv", "$('#divConsorcioModificar').slideDown();", true);
 
-                            txtCodigo.Text = GridViewrow.Cells[0].Text;
+                            txtCodigo.Text = GridViewrow.Cells[colIdConsorcio].Text;
                             txtDireccion.Text = GridViewrow.Cells[1].Text;
                             txtVencimiento1.Text = GridViewrow.Cells[2].Text;
                             txtVencimiento2.Text = GridViewrow.Cells[3].Text;
@@ -69,11 +70,12 @@ namespace WebSistemmas.Consorcios
                             break;
 
                         case "UNIDADESFUNCIONALES":
+                            Session["idConsorcio"] = GridViewrow.Cells[colIdConsorcio].Text;
                             Response.Redirect("UnidadesFuncionales.aspx", false);
                             break;
 
                         case "EXPENSAS":
-                            Session["idConsorcio"] = GridViewrow.Cells[0].Text;
+                            Session["idConsorcio"] = GridViewrow.Cells[colIdConsorcio].Text;
                             Response.Redirect("Expensas.aspx", false);
                             break;
 
