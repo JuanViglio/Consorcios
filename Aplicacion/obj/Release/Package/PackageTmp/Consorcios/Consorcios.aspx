@@ -113,7 +113,7 @@
                 <tr>
                     <td style="text-align: left">
                         <div id="divConsorcioNuevo" style="height: 61px">
-                            <asp:Button ID="btnNuevoConsorcio" runat="server" Height="35px" OnClientClick="SlideDivConsorcioDatos(); return false;" Text="Nuevo" Width="107px" />
+                            <asp:Button ID="btnNuevoConsorcio" runat="server" Height="35px" OnClientClick="SlideDivConsorcioDatos(); return false;" Text="Nuevo" Width="107px" OnClick="btnNuevoConsorcio_Click" />
                         </div>
                     </td>
                     <td style="width: 470px">

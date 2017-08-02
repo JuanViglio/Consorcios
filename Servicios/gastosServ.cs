@@ -15,15 +15,10 @@ namespace Servicios
         {
             List<TipoGastos> tipoGastos = new List<TipoGastos>();
 
-            tipoGastos.Add(new TipoGastos { ID = 0, Detalle = "Seleccione un Tipo de Gasto" });
-            TipoGastos tipo = new TipoGastos();
-
             foreach (var item in context.TipoGastos.ToList())
             {
                 tipoGastos.Add(new TipoGastos {ID = item.ID, Detalle = item.Detalle });
             }
-
-
 
             return tipoGastos;
         }
@@ -45,6 +40,29 @@ namespace Servicios
             GastosExtDetalle gastoExtDetalle = context.GastosExtDetalle.Where(x => x.ID == idGasto).FirstOrDefault();
             context.DeleteObject(gastoExtDetalle);
             context.SaveChanges();
+        }
+
+        public List<Gastos> AddGasto(int idTipoGasto, string detalleGasto)
+        {
+            TipoGastos tipoGasto = context.TipoGastos.Where(x => x.ID == idTipoGasto).FirstOrDefault();
+            Gastos gasto = new Gastos();
+
+            gasto.Detalle = detalleGasto;
+            gasto.TipoGastos = tipoGasto;
+
+            context.AddToGastos(gasto);
+            context.SaveChanges();
+
+            return GetGastos(idTipoGasto);
+        }
+
+        public List<Gastos> DeleteGasto(int idGasto, int tipoGasto)
+        {
+            var gasto = context.Gastos.Where(x => x.ID == idGasto).FirstOrDefault();
+            context.DeleteObject(gasto);
+            context.SaveChanges();
+
+            return GetGastos(tipoGasto);
         }
     }
 }

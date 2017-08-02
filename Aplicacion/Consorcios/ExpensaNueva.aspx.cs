@@ -15,9 +15,9 @@ namespace WebSistemmas.Consorcios
 {
     public partial class ExpensaNueva : System.Web.UI.Page
     {
-        private int col_Detalle = 0;
-        private int col_Importe = 1;
-        private int col_ID_ExpensaDetalle = 2;
+        private const int col_Detalle = 0;
+        private const int col_Importe = 1;
+        private const int col_ID_ExpensaDetalle = 2;
         private const int GastoTipoOrdinario = 1;
         private const int GastoTipoEventual = 2;
         private const int GastoTipoExtraordinario = 3;

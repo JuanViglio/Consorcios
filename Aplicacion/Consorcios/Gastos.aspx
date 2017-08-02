@@ -1,20 +1,34 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Gastos.aspx.cs" Inherits="WebSistemmas.Consorcios.Gastos" MasterPageFile ="~/Consorcios/MenuConsorcios.Master" %>
-<asp:Content ID="Content1" runat="server" contentplaceholderid="ContentPlaceHolder1"> 
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Gastos.aspx.cs" Inherits="WebSistemmas.Consorcios.Gastos" MasterPageFile="~/Consorcios/MenuConsorcios.Master" %>
+
+<asp:Content ID="Content1" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
+    <script src="../js/Gastos.js"></script>
 
     <form id="form1" runat="server">
         <p style="font-size: large">
             <br />
-            <span style="font-size: large; color: #003399">
-                Gastos</span></p>
+            <span style="font-size: large; color: #003399">Gastos</span>
+        </p>
         <p style="font-size: large">
-            &nbsp;</p>
+            &nbsp;
+        </p>
         <p>
-                <asp:GridView ID="grdGastos" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" OnRowCommand="grdGastos_RowCommand" style="margin-top: 0px; margin-left: 0px;" Width="395px">
+            <asp:gridview id="grdGastos" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" onrowcommand="grdGastos_RowCommand" style="margin-top: 0px; margin-left: 0px; margin-right: 30px;" width="578px" OnRowDataBound="grdGastos_RowDataBound">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
                         <asp:BoundField DataField="detalle" HeaderText="Detalle">
-                        <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
-                        </asp:BoundField>                
+                            <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="id" HeaderText="ID">
+                            <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
+                        </asp:BoundField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <div class="div_parent">
+                                    <asp:ImageButton ID="Eliminar" runat="server" CausesValidation="False" CommandName="Eliminar" ImageUrl="~/css/img/ico_eliminar.png" ToolTip="Eliminar" />
+                                </div>
+                            </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:TemplateField>                                        
                     </Columns>
                     <EditRowStyle BackColor="#999999" />
                     <FooterStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
@@ -26,25 +40,55 @@
                     <SortedAscendingHeaderStyle BackColor="#506C8C" />
                     <SortedDescendingCellStyle BackColor="#FFFDF8" />
                     <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
-                </asp:GridView>
-            </p>
+                </asp:gridview>
+        </p>
         <p>
-                &nbsp;</p>
-        <table style="width: 508px; height: 37px">
+            &nbsp;
+        </p>
+        <table style="width: 417px; height: 37px">
             <tr>
-                <td style="width: 68px; height: 21px;">
-                    <asp:Label ID="Label1" runat="server" Text="Tipo"></asp:Label>
+                <td style="width: 56px; height: 21px;">
+                    <asp:label id="Label1" runat="server" text="Tipo"></asp:label>
                 </td>
-                <td style="width: 292px; height: 21px">
-                    <asp:DropDownList ID="ddlTipoGastos" runat="server" Height="17px" Width="250px">
-                    </asp:DropDownList>
+                <td style="width: 239px; height: 21px">
+                    <asp:dropdownlist id="ddlTipoGastos" runat="server" height="17px" width="217px" autopostback="True" onselectedindexchanged="ddlTipoGastos_SelectedIndexChanged" style="margin-right: 24px; margin-left: 0px;">
+                    </asp:dropdownlist>
                 </td>
-                <td>
-
-                    <asp:Button ID="btnActualizar" runat="server" Text="Actualizar" Height="32px" OnClick="btnActualizar_Click" Width="97px" />
-
+                <td colspan="2">
+                    <asp:button id="btnNuevoGasto" runat="server" text="Nuevo Gasto" height="32px" onclientclick="SlideDivGastoDatos(); return false;" width="103px" style="margin-left: 0px" />
                 </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td colspan="4">
+                    <div id="divGastoDatos" style="margin-top: 30px; display: none">
+                        <table style="margin-top: 0px; width: 513px; height: 85px;">
+                            <tr>
+                                <td style="width: 120px">Nombre del Gasto</td>
+                                <td colspan="2" style="width: 200px">
+                                    <asp:textbox id="txtDetalleGasto" runat="server" width="309px" style="margin-left: 0px"></asp:textbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 120px; height: 53px">
+                                    <asp:button id="btnAceptarNuevoConsorcio" runat="server" height="30px" onclick="btnAceptarNuevoGasto_Click" text="Agregar" width="90px" />
+                                </td>
+                                <td style="height: 53px; width: 200px;" colspan="2">
+                                    <asp:button id="btnCancelarDatos" runat="server" height="30px" text="Cancelar" width="90px" onclientclick="CerrarDivConsorcioDatos(); return false;" />
+                                </td>
+                            </tr>
+                        </table>
 
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 64px">
+                    
+                        <asp:Label ID="lblError" runat="server" Font-Size="Large" ForeColor="#FF6600"></asp:Label>
+                    
+                </td>
             </tr>
         </table>
     </form>

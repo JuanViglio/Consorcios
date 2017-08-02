@@ -16,7 +16,7 @@ function cambioTipoGastos()
         success: function (result) {
             var detalleGastos = result.d;
 
-            $("#ctl00_ContentPlaceHolder1_txtDetalle").autocomplete({
+            $("#ContentPlaceHolder1_txtDetalle").autocomplete({
                 source: detalleGastos
             });
         },        
@@ -34,7 +34,7 @@ function cambioTipoGastos()
         success: function (result) {
             var detalleGastos = result.d;
 
-            $("#ctl00_ContentPlaceHolder1_txtDetalleGastoEventual").autocomplete({
+            $("#ContentPlaceHolder1_txtDetalleGastoEventual").autocomplete({
                 source: detalleGastos
             });
         },
