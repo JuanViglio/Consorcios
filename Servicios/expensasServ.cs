@@ -126,10 +126,11 @@ namespace Servicios
         {
             ExpensasDetalle detalle = new ExpensasDetalle();
 
-            detalle.Expensas = context.Expensas.Where(x => x.ID == IdExpensa).FirstOrDefault();
+            detalle.Expensas = context.Expensas.FirstOrDefault(x => x.ID == IdExpensa);
             detalle.Detalle = Detalle;
             detalle.Importe = Importe;
             detalle.TipoGasto_ID = TipoGasto;
+            detalle.Sumar = true;
 
             context.AddToExpensasDetalle(detalle);
             context.SaveChanges();
@@ -164,7 +165,7 @@ namespace Servicios
         public List<ExpensasDetalle> GetGastosOrdinarios(int ExpensaID)
         {
             var detalle = GetGastosByTipo(ExpensaID, GastoTipoOrdinario);
-            detalle.Add(new ExpensasDetalle { Detalle = "Total de Gastos Eventuales", Importe = GetTotalGastosEventuales(ExpensaID), TipoGasto_ID = GastoTipoEventual });
+            detalle.Add(new ExpensasDetalle { Detalle = "Total de Gastos Eventuales", Importe = GetTotalGastosEventuales(ExpensaID), TipoGasto_ID = GastoTipoEventual, Sumar=true });
 
             return detalle;
         }
@@ -189,25 +190,25 @@ namespace Servicios
             return context.Expensas.OrderByDescending(x => x.PeriodoNumerico).FirstOrDefault().Total_Gastos.Value;
         }
 
-        public Decimal GetTotalDetalle(int IdExpensa)
+        public decimal GetTotalDetalle(int idExpensa)
         {
-            var detalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == IdExpensa).Sum(x => x.Importe);
+            var detalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == idExpensa && x.Sumar == true).Sum(x => x.Importe);
+
+            return detalle ?? 0;
+        }
+
+        public Decimal GetTotalGastosEventuales(int idExpensa)
+        {
+            var detalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == idExpensa).Where(x => x.TipoGasto_ID.Value == 2).Sum(x => x.Importe);
 
             return (detalle == null) ? 0 : detalle.Value;
         }
 
-        public Decimal GetTotalGastosEventuales(int IdExpensa)
+        public void GuardarUltimoTotal(int idExpensa, Decimal total)
         {
-            var detalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == IdExpensa).Where(x => x.TipoGasto_ID.Value == 2).Sum(x => x.Importe);
+            var expensa = context.Expensas.Where(x => x.ID == idExpensa).FirstOrDefault();
 
-            return (detalle == null) ? 0 : detalle.Value;
-        }
-
-        public void GuardarUltimoTotal(int IdExpensa, Decimal Total)
-        {
-            var expensa = context.Expensas.Where(x => x.ID == IdExpensa).FirstOrDefault();
-
-            expensa.Total_Gastos = Total;
+            expensa.Total_Gastos = total;
             context.SaveChanges();
         }
 
@@ -242,8 +243,6 @@ namespace Servicios
             try
             {
                 Pagos pago;
-                var consorcio = context.Consorcios.ToList();
-                var uf = context.UnidadesFuncionales.ToList();
 
                 var expensa = context.Expensas.Where(x => x.ID == expensaID).FirstOrDefault();
                 expensa.Estado = "Aceptado";
@@ -299,6 +298,20 @@ namespace Servicios
             {
                 throw ex;
             }
+        }
+
+        public bool ActualizarCheckSumar(int idExpensaDetalle, bool sumar)
+        {
+            var detalle = context.ExpensasDetalle.FirstOrDefault(x => x.ID == idExpensaDetalle);
+
+            if (detalle != null)
+            {
+                detalle.Sumar = sumar;
+                context.SaveChanges();
+                return true;
+            }
+
+            return false;
         }
     }
 }

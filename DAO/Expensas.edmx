@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ExpensasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+    <Schema Namespace="ExpensasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityType Name="Consorcios">
           <Key>
             <PropertyRef Name="ID" />
@@ -36,6 +36,7 @@
           <Property Name="Importe" Type="decimal" Precision="18" Scale="2" />
           <Property Name="TipoGasto_ID" Type="int" />
           <Property Name="Expensas_ID" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Sumar" Type="bit" />
         </EntityType>
         <EntityType Name="Gastos">
           <Key>
@@ -198,8 +199,7 @@
             <End Role="UnidadesFuncionales" EntitySet="UnidadesFuncionales" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ExpensasModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
@@ -238,6 +238,7 @@
           <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="TipoGasto_ID" Type="Int32" />
           <NavigationProperty Name="Expensas" Relationship="Self.FK_ExpensasDetalle_Expensas" FromRole="ExpensasDetalle" ToRole="Expensas" />
+          <Property Name="Sumar" Type="Boolean" />
         </EntityType>
         <EntityType Name="Gastos">
           <Key>
@@ -386,6 +387,7 @@
           <EntitySetMapping Name="ExpensasDetalle">
             <EntityTypeMapping TypeName="ExpensasModel.ExpensasDetalle">
               <MappingFragment StoreEntitySet="ExpensasDetalle">
+                <ScalarProperty Name="Sumar" ColumnName="Sumar" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Detalle" ColumnName="Detalle" />
                 <ScalarProperty Name="Importe" ColumnName="Importe" />

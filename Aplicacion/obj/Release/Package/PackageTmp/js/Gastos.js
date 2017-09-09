@@ -21,6 +21,6 @@ function CerrarDivGastoModificar() {
     $('#ctl00_ContentPlaceHolder1_lblError').text("")
 }
 
-function ConfirmarBajaConorcio() {
+function ConfirmarBajaGasto() {
     return confirm("¿Esta seguro que quiere Eliminar el Gasto?")
 }

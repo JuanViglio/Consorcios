@@ -12,5 +12,9 @@ namespace Servicios.Interfaces
         void AgregarExpensaDetalle(int IdExpensa, string Detalle, Decimal Importe, int TipoGasto);
 
         void ModificarExpensaDetalle(int IdExpensaDetalle, string Detalle, Decimal Importe);
+
+        bool ActualizarCheckSumar(int idExpensaDetalle, bool sumar);
+
+        decimal GetTotalDetalle(int idExpensa);
     }
 }

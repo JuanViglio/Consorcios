@@ -64,6 +64,18 @@
                                             </ItemTemplate>
                                             <ItemStyle HorizontalAlign="Center" />
                                         </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Sumar">  
+                                            <HeaderTemplate>
+                                                Sumar
+                                            </HeaderTemplate>
+                                            <ItemTemplate>  
+                                                <asp:CheckBox runat="server" ID="chkSumar" 
+                                                     AutoPostback="true" OnCheckedChanged="chkSumar_CheckedChanged" 
+                                                     Checked='<%# Eval("Sumar")  %>' 
+                                                     />  
+                                            </ItemTemplate> 
+                                            <ItemStyle HorizontalAlign="Center" /> 
+                                        </asp:TemplateField>
                                     </Columns>
                                     <EditRowStyle BackColor="#999999" />
                                     <FooterStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />

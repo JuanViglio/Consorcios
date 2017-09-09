@@ -31,6 +31,7 @@
     <Property Name="Importe" Type="decimal" Precision="18" Scale="2" />
     <Property Name="TipoGasto_ID" Type="int" />
     <Property Name="Expensas_ID" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Sumar" Type="bit" />
   </EntityType>
   <EntityType Name="Gastos">
     <Key>

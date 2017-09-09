@@ -12,12 +12,23 @@
             &nbsp;
         </p>
         <p>
-            <asp:gridview id="grdGastos" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" onrowcommand="grdGastos_RowCommand" style="margin-top: 0px; margin-left: 0px; margin-right: 30px;" width="395px">
+            <asp:gridview id="grdGastos" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" onrowcommand="grdGastos_RowCommand" style="margin-top: 0px; margin-left: 0px; margin-right: 30px;" width="578px" OnRowDataBound="grdGastos_RowDataBound">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
                         <asp:BoundField DataField="detalle" HeaderText="Detalle">
-                        <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
-                        </asp:BoundField>                
+                            <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="id" HeaderText="ID">
+                            <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
+                        </asp:BoundField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <div class="div_parent">
+                                    <asp:ImageButton ID="Eliminar" runat="server" CausesValidation="False" CommandName="Eliminar" ImageUrl="~/css/img/ico_eliminar.png" ToolTip="Eliminar" />
+                                </div>
+                            </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:TemplateField>                                        
                     </Columns>
                     <EditRowStyle BackColor="#999999" />
                     <FooterStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
@@ -70,6 +81,13 @@
                         </table>
 
                     </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 64px">
+                    
+                        <asp:Label ID="lblError" runat="server" Font-Size="Large" ForeColor="#FF6600"></asp:Label>
+                    
                 </td>
             </tr>
         </table>
