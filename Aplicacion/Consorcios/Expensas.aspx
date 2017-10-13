@@ -8,7 +8,8 @@
     <form id="form1" runat="server">
         <span style="color: #003399; font-size: large">
             <br />
-            Expensas<br />
+            <asp:Label ID="lblTitulo" runat="server" Text="Expensas"></asp:Label>
+        <br />
         </span>
         <br />
         <table>

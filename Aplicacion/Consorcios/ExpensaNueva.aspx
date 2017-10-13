@@ -20,7 +20,7 @@
             &nbsp;
         </p>
         <p style="color: #003399; font-size: large; height: 39px;">
-            Nueva Expensa
+            <asp:Label ID="lblTitulo" runat="server" Text="Nueva Expensa"></asp:Label>
         </p>
 
         <asp:updatepanel id="UpdatePanel5" runat="server">

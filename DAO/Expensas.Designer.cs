@@ -17,7 +17,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ExpensasModel", "FK_Pagos_UF", "UnidadesFuncionales", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.UnidadesFuncionales), "Pagos", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.Pagos))]
 
 // Original file name:
-// Generation date: 9/3/2017 2:40:31 AM
+// Generation date: 10/4/2017 1:09:30 AM
 namespace DAO
 {
     
@@ -995,21 +995,17 @@ namespace DAO
         /// <param name="id">Initial value of ID.</param>
         /// <param name="coeficiente">Initial value of Coeficiente.</param>
         /// <param name="importePago1">Initial value of ImportePago1.</param>
-        /// <param name="fechaPago1">Initial value of FechaPago1.</param>
         /// <param name="importePago2">Initial value of ImportePago2.</param>
-        /// <param name="fechaPago2">Initial value of FechaPago2.</param>
         /// <param name="importeExtraordinario">Initial value of ImporteExtraordinario.</param>
         /// <param name="importeGastoParticular">Initial value of ImporteGastoParticular.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Pagos CreatePagos(decimal id, decimal coeficiente, decimal importePago1, global::System.DateTime fechaPago1, decimal importePago2, global::System.DateTime fechaPago2, decimal importeExtraordinario, decimal importeGastoParticular)
+        public static Pagos CreatePagos(decimal id, decimal coeficiente, decimal importePago1, decimal importePago2, decimal importeExtraordinario, decimal importeGastoParticular)
         {
             Pagos pagos = new Pagos();
             pagos.ID = id;
             pagos.Coeficiente = coeficiente;
             pagos.ImportePago1 = importePago1;
-            pagos.FechaPago1 = fechaPago1;
             pagos.ImportePago2 = importePago2;
-            pagos.FechaPago2 = fechaPago2;
             pagos.ImporteExtraordinario = importeExtraordinario;
             pagos.ImporteGastoParticular = importeGastoParticular;
             return pagos;
@@ -1098,10 +1094,10 @@ namespace DAO
         /// <summary>
         /// There are no comments for property FechaPago1 in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.DateTime FechaPago1
+        public global::System.Nullable<global::System.DateTime> FechaPago1
         {
             get
             {
@@ -1117,9 +1113,9 @@ namespace DAO
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.DateTime _FechaPago1;
+        private global::System.Nullable<global::System.DateTime> _FechaPago1;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnFechaPago1Changing(global::System.DateTime value);
+        partial void OnFechaPago1Changing(global::System.Nullable<global::System.DateTime> value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnFechaPago1Changed();
         /// <summary>
@@ -1152,10 +1148,10 @@ namespace DAO
         /// <summary>
         /// There are no comments for property FechaPago2 in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.DateTime FechaPago2
+        public global::System.Nullable<global::System.DateTime> FechaPago2
         {
             get
             {
@@ -1171,9 +1167,9 @@ namespace DAO
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.DateTime _FechaPago2;
+        private global::System.Nullable<global::System.DateTime> _FechaPago2;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnFechaPago2Changing(global::System.DateTime value);
+        partial void OnFechaPago2Changing(global::System.Nullable<global::System.DateTime> value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnFechaPago2Changed();
         /// <summary>

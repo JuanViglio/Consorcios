@@ -101,10 +101,12 @@ namespace WebSistemmas.Consorcios
                 CargarGrillaGastosExtraordinarios();
                 ClientScript.RegisterStartupScript(GetType(), "TipoGastos", "cambioTipoGastos()", true);
 
+                if (Session["Periodo"] != null)                
+                    lblTitulo.Text = "Expensa de " + Session["direccionConsorcio"] + " del Periodo " + Session["Periodo"].ToString();
+
                 if (Session["Estado"].ToString() == EstadoAceptado)
-                {
                     btnAceptar.Enabled = false;
-                }
+
             }
             else
             {
@@ -285,7 +287,7 @@ namespace WebSistemmas.Consorcios
                 }
                 catch (Exception ex)
                 {
-                    lblError.Text = ex.Message;
+                    lblError.Text = ex.InnerException.Message;
                     return;
                 }
 
@@ -362,7 +364,7 @@ namespace WebSistemmas.Consorcios
                 GuardarUltimoTotal(expensaId, Convert.ToDecimal(lblTotalGastosOrdinarios.Text));
 
             }
-            catch (Exception ex)
+            catch
             {
                 divError.Visible = true;
                 lblError.Text = "No se pudo guardar los cambios";
@@ -388,6 +390,8 @@ namespace WebSistemmas.Consorcios
 
             int expensaId = Convert.ToInt32(Session["ExpensaId"]);
             lblTotalGastosOrdinarios.Text = _expensasServ.GetTotalDetalle(expensaId).ToString();
+
+            GuardarUltimoTotal(expensaId, Convert.ToDecimal(lblTotalGastosOrdinarios.Text));
         }
     }
 }

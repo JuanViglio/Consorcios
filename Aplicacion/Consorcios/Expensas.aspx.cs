@@ -10,6 +10,7 @@ namespace WebSistemmas.Consorcios
 {
     public partial class Expensas : System.Web.UI.Page
     {
+        private const int col_PeriodoExpensa = 0;
         private const int col_Coeficiente = 2;
         private const int col_Expensa_ID = 3;
         private const int col_Periodo = 6;
@@ -20,6 +21,9 @@ namespace WebSistemmas.Consorcios
             if (!IsPostBack)
             {
                 CargarGrillaExpensas();
+
+                if (Session["direccionConsorcio"] != null)
+                    lblTitulo.Text = "Expensas de " + Session["direccionConsorcio"].ToString();
             }
         }
 
@@ -80,6 +84,7 @@ namespace WebSistemmas.Consorcios
                                 else
                                     Session["Estado"] = "En Proceso";
 
+                                Session["Periodo"] = GridViewrow.Cells[col_PeriodoExpensa].Text;
                                 Session["ExpensaId"] = GridViewrow.Cells[col_Expensa_ID].Text;
                                 Response.Redirect("ExpensaNueva.aspx", false);
                             }
@@ -118,6 +123,7 @@ namespace WebSistemmas.Consorcios
             expensasServ serv = new expensasServ();
 
             var ExpensaId = serv.AgregarExpensa(Session["idConsorcio"].ToString());
+            Session["Periodo"] = null;
 
             if (ExpensaId == 0)
             {
@@ -129,7 +135,6 @@ namespace WebSistemmas.Consorcios
 
                 Response.Redirect("ExpensaNueva.aspx", false);
             }
-
         }
 
         protected void grdExpensas_SelectedIndexChanged(object sender, EventArgs e)

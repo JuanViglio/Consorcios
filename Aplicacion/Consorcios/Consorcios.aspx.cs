@@ -1,10 +1,6 @@
 ﻿using Servicios;
 using Servicios.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace WebSistemmas.Consorcios
@@ -12,6 +8,7 @@ namespace WebSistemmas.Consorcios
     public partial class Consorcios : System.Web.UI.Page
     {
         private const int colIdConsorcio = 0;
+        private const int colDireccionConsorcio = 1;
         IConsorcios serv;
 
         public Consorcios()
@@ -76,6 +73,7 @@ namespace WebSistemmas.Consorcios
 
                         case "EXPENSAS":
                             Session["idConsorcio"] = GridViewrow.Cells[colIdConsorcio].Text;
+                            Session["direccionConsorcio"] = GridViewrow.Cells[colDireccionConsorcio].Text;
                             Response.Redirect("Expensas.aspx", false);
                             break;
 

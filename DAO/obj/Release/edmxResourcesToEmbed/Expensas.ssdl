@@ -31,6 +31,7 @@
     <Property Name="Importe" Type="decimal" Precision="18" Scale="2" />
     <Property Name="TipoGasto_ID" Type="int" />
     <Property Name="Expensas_ID" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Sumar" Type="bit" />
   </EntityType>
   <EntityType Name="Gastos">
     <Key>
@@ -57,9 +58,9 @@
     <Property Name="ID" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Coeficiente" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="ImportePago1" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-    <Property Name="FechaPago1" Type="datetime" Nullable="false" />
+    <Property Name="FechaPago1" Type="datetime2" Precision="7" />
     <Property Name="ImportePago2" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-    <Property Name="FechaPago2" Type="datetime" Nullable="false" />
+    <Property Name="FechaPago2" Type="datetime2" Precision="7" />
     <Property Name="ImporteExtraordinario" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="ImporteGastoParticular" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="ImportePagado" Type="decimal" Precision="18" Scale="2" />

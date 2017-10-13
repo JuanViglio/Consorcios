@@ -3,7 +3,6 @@ using Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Servicios
 {
@@ -38,7 +37,7 @@ namespace Servicios
                 expensaDetalle = GetUltimoDetallePorTipo(GastoTipoOrdinario);
                 foreach (var item in expensaDetalle)
                 {
-                    expensa.ExpensasDetalle.Add(new ExpensasDetalle { Detalle = item.Detalle, Importe = item.Importe, TipoGasto_ID = item.TipoGasto_ID });
+                    expensa.ExpensasDetalle.Add(new ExpensasDetalle { Detalle = item.Detalle, Importe = item.Importe, TipoGasto_ID = item.TipoGasto_ID, Sumar = item.Sumar });
                     expensa.Total_Gastos = +item.Importe;
                 }
 
@@ -242,9 +241,18 @@ namespace Servicios
         {
             try
             {
-                Pagos pago;
+               /*var e = from exp in context.Expensas
+                        select new
+                        {
+                            exp.Estado,
+                            exp.Consorcios.UnidadesFuncionales
+                        };*/
 
+                Pagos pago;
                 var expensa = context.Expensas.Where(x => x.ID == expensaID).FirstOrDefault();
+                var consorcios = context.Consorcios.ToList();
+                var unidadesFuncionales = context.UnidadesFuncionales.ToList();
+
                 expensa.Estado = "Aceptado";
 
                 //buscar las UF de consorcio
@@ -258,15 +266,15 @@ namespace Servicios
                         pago = new Pagos();
                         pago.UnidadesFuncionales = new UnidadesFuncionales();
                         pago.UnidadesFuncionales = context.UnidadesFuncionales.Where(x => x.UF == item.UF).FirstOrDefault();
-                        pago.FechaPago1 = Convert.ToDateTime("10/06/17");
-                        pago.FechaPago2 = Convert.ToDateTime("20/06/17");
+                        //pago.FechaPago1 = new DateTime(17,10,06);
+                        //pago.FechaPago2 = new DateTime(17,10,20);
                         pago.ImporteGastoParticular = Convert.ToDecimal("0");
 
-                        Decimal Coeficiente = item.Coeficiente.Value;
-                        Decimal GastosExtraordinarios = Convert.ToDecimal(gastosExtraordinarios);
-                        Decimal ImporteExtraordinario = GastosExtraordinarios * Coeficiente / 100;
-                        Decimal TotalGastosOrdinarios = Convert.ToDecimal(totalGastosOrdinarios) + pago.ImporteGastoParticular;
-                        Decimal TotalVencimiento1 = ((TotalGastosOrdinarios - GastosExtraordinarios) * Coeficiente / 100) + ImporteExtraordinario;
+                        var Coeficiente = item.Coeficiente.Value;
+                        var GastosExtraordinarios = Convert.ToDecimal(gastosExtraordinarios);
+                        var ImporteExtraordinario = GastosExtraordinarios * Coeficiente / 100;
+                        var TotalGastosOrdinarios = Convert.ToDecimal(totalGastosOrdinarios) + pago.ImporteGastoParticular;
+                        var TotalVencimiento1 = ((TotalGastosOrdinarios - GastosExtraordinarios) * Coeficiente / 100) + ImporteExtraordinario;
 
                         pago.Coeficiente = item.Coeficiente.Value;
                         pago.ImportePago1 = TotalVencimiento1;
@@ -278,11 +286,11 @@ namespace Servicios
                     }
                     else
                     {
-                        Decimal Coeficiente = item.Coeficiente.Value;
-                        Decimal GastosExtraordinarios = Convert.ToDecimal(gastosExtraordinarios);
-                        Decimal ImporteExtraordinario = GastosExtraordinarios * Coeficiente / 100;
-                        Decimal TotalGastosOrdinarios = Convert.ToDecimal(totalGastosOrdinarios) + pago.ImporteGastoParticular;
-                        Decimal TotalVencimiento1 = ((TotalGastosOrdinarios - GastosExtraordinarios) * Coeficiente / 100) + ImporteExtraordinario;
+                        var Coeficiente = item.Coeficiente.Value;
+                        var GastosExtraordinarios = Convert.ToDecimal(gastosExtraordinarios);
+                        var ImporteExtraordinario = GastosExtraordinarios * Coeficiente / 100;
+                        var TotalGastosOrdinarios = Convert.ToDecimal(totalGastosOrdinarios) + pago.ImporteGastoParticular;
+                        var TotalVencimiento1 = ((TotalGastosOrdinarios - GastosExtraordinarios) * Coeficiente / 100) + ImporteExtraordinario;
 
                         pago.Coeficiente = item.Coeficiente.Value;
                         pago.ImportePago1 = TotalVencimiento1;

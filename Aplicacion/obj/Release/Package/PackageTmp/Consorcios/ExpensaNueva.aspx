@@ -20,7 +20,7 @@
             &nbsp;
         </p>
         <p style="color: #003399; font-size: large; height: 39px;">
-            Nueva Expensa
+            <asp:Label ID="lblTitulo" runat="server" Text="Nueva Expensa"></asp:Label>
         </p>
 
         <asp:updatepanel id="UpdatePanel5" runat="server">
@@ -63,6 +63,18 @@
                                                 </div>
                                             </ItemTemplate>
                                             <ItemStyle HorizontalAlign="Center" />
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Sumar">  
+                                            <HeaderTemplate>
+                                                Sumar
+                                            </HeaderTemplate>
+                                            <ItemTemplate>  
+                                                <asp:CheckBox runat="server" ID="chkSumar" 
+                                                     AutoPostback="true" OnCheckedChanged="chkSumar_CheckedChanged" 
+                                                     Checked='<%# Eval("Sumar")  %>' 
+                                                     />  
+                                            </ItemTemplate> 
+                                            <ItemStyle HorizontalAlign="Center" /> 
                                         </asp:TemplateField>
                                     </Columns>
                                     <EditRowStyle BackColor="#999999" />

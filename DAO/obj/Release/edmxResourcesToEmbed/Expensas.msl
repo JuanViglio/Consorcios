@@ -27,6 +27,7 @@
     <EntitySetMapping Name="ExpensasDetalle">
       <EntityTypeMapping TypeName="ExpensasModel.ExpensasDetalle">
         <MappingFragment StoreEntitySet="ExpensasDetalle">
+          <ScalarProperty Name="Sumar" ColumnName="Sumar" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Detalle" ColumnName="Detalle" />
           <ScalarProperty Name="Importe" ColumnName="Importe" />

@@ -104,9 +104,10 @@ D:\Sistemmas\Working Copy\Consorcios\Aplicacion\bin\System.Spatial.dll
 D:\Sistemmas\Working Copy\Consorcios\Aplicacion\bin\System.Web.Entity.dll
 D:\Sistemmas\Working Copy\Consorcios\Aplicacion\bin\DAO.pdb
 D:\Sistemmas\Working Copy\Consorcios\Aplicacion\bin\Servicios.pdb
-D:\Sistemmas\Working Copy\Consorcios\Aplicacion\bin\Microsoft.Data.Edm.xml
-D:\Sistemmas\Working Copy\Consorcios\Aplicacion\bin\Microsoft.Data.OData.xml
 D:\Sistemmas\Working Copy\Consorcios\Aplicacion\bin\System.Spatial.xml
 D:\Sistemmas\Working Copy\Consorcios\Aplicacion\obj\Release\Aplicacion.csprojResolveAssemblyReference.cache
 D:\Sistemmas\Working Copy\Consorcios\Aplicacion\obj\Release\WebSistemmas.dll
 D:\Sistemmas\Working Copy\Consorcios\Aplicacion\obj\Release\WebSistemmas.pdb
+D:\Sistemmas\Working Copy\Consorcios\Aplicacion\bin\Microsoft.WindowsAzure.Storage.dll
+D:\Sistemmas\Working Copy\Consorcios\Aplicacion\bin\Microsoft.Data.Services.Client.dll
+D:\Sistemmas\Working Copy\Consorcios\Aplicacion\bin\Newtonsoft.Json.dll
