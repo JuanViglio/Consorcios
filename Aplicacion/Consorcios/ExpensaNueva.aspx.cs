@@ -22,11 +22,11 @@ namespace WebSistemmas.Consorcios
         #region Funciones Privadas
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static List<string> OnSubmit(string tipoGastoId)
+        public static List<string> OnSubmit(string tipoGastoID)
         {
             gastosServ gastosServ = new gastosServ();
 
-            var gastos = gastosServ.GetGastos(Convert.ToInt32(tipoGastoId)).ToList();
+            var gastos = gastosServ.GetGastos(Convert.ToInt32(tipoGastoID)).ToList();
 
             return gastos.Select(i => i.Detalle).ToList();
         }
