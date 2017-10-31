@@ -84,10 +84,8 @@
                 </td>
             </tr>
             <tr>
-                <td style="height: 64px">
-                    
-                        <asp:Label ID="lblError" runat="server" Font-Size="Large" ForeColor="#FF6600"></asp:Label>
-                    
+                <td style="height: 64px">                    
+                    <asp:Label ID="lblError" runat="server" Font-Size="Large" ForeColor="#FF6600"></asp:Label>                    
                 </td>
             </tr>
         </table>

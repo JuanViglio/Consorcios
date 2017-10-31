@@ -48,7 +48,8 @@ namespace Servicios
                 UFmodel = new UnidadesFuncionalesModel();
 
                 UFmodel.ID = Convert.ToDecimal(item.UnidadesFuncionales.UF);
-                UFmodel.Dueño = item.UnidadesFuncionales.Dueño;
+                UFmodel.Apellido = item.UnidadesFuncionales.Apellido;
+                UFmodel.Nombre = item.UnidadesFuncionales.Nombre;
                 UFmodel.Coeficiente = item.Coeficiente.ToString();
                 UFmodel.PagoId = item.ID.ToString();
 
@@ -95,12 +96,12 @@ namespace Servicios
             context.SaveChanges();
         }
 
-        public IQueryable<UnidadesFuncionalesModel> GetUFByFilter(string nombre, string direccion)
+        public IQueryable<UnidadesFuncionalesModel> GetUFByFilter(string apellido, string direccion)
         {
             List<UnidadesFuncionalesModel> model = new List<UnidadesFuncionalesModel>();
             var uf = from u in context.UnidadesFuncionales
-                     where (u.Dueño.Contains(nombre) || nombre == "") 
-                     select new UnidadesFuncionalesModel {ID = u.ID, Direccion = u.Consorcios.Direccion, Dueño = u.Dueño,UF = u.UF };
+                     where (u.Apellido.Contains(apellido) || apellido == "") 
+                     select new UnidadesFuncionalesModel {ID = u.ID, Direccion = u.Consorcios.Direccion, Apellido = u.Apellido, UF = u.UF };
             
             return uf;
         }
@@ -115,25 +116,29 @@ namespace Servicios
             context.SaveChanges();
         }
 
-        public List<UnidadesFuncionales> ModificarUnidades(string idConsorcio, int idUF, string numeroUF, string dueño, decimal coeficiente) 
+        public List<UnidadesFuncionales> ModificarUnidades(string idConsorcio, int idUF, string departamento, string numeroUF, string apellido, string nombre, decimal coeficiente) 
         {
             var UF = context.UnidadesFuncionales.Where(x => x.Consorcios.ID == idConsorcio && x.ID == idUF).FirstOrDefault();
             UF.UF = numeroUF;
-            UF.Dueño = dueño;
+            UF.Departamento = departamento;
+            UF.Apellido = apellido;
+            UF.Nombre = nombre;
             UF.Coeficiente = coeficiente;
             context.SaveChanges();
 
             return GetUnidadesFuncionales(idConsorcio);
         }
 
-        public List<UnidadesFuncionales> AgregarUnidad(string idConsorcio, string idUf, string dueño, decimal coeficiente)
+        public List<UnidadesFuncionales> AgregarUnidad(string idConsorcio, string idUf, string departamento, string apellido, string nombre, decimal coeficiente)
         {
             var consorcio = context.Consorcios.Where(x => x.ID == idConsorcio).FirstOrDefault();
 
             UnidadesFuncionales UF = new UnidadesFuncionales();
             UF.UF = idUf;
+            UF.Departamento = departamento;
             UF.Consorcios = consorcio;
-            UF.Dueño = dueño;
+            UF.Apellido = apellido;
+            UF.Nombre = nombre;
             UF.Coeficiente = coeficiente;
             context.AddToUnidadesFuncionales(UF);
             context.SaveChanges();

@@ -35,7 +35,14 @@ namespace Servicios
             context.SaveChanges();            
         }
 
-        public void DeleteGastoExtraordinario(decimal idGasto)
+        public void DeleteGastoEvOrdinario(decimal idGasto)
+        {
+            GastosEvOrdinariosDetalle gastosEvOrdinariosDetalle = context.GastosEvOrdinariosDetalle.Where(x => x.ID == idGasto).FirstOrDefault();
+            context.DeleteObject(gastosEvOrdinariosDetalle);
+            context.SaveChanges();
+        }
+
+        public void DeleteGastoEvExtraordinario(decimal idGasto)
         {
             GastosExtDetalle gastoExtDetalle = context.GastosExtDetalle.Where(x => x.ID == idGasto).FirstOrDefault();
             context.DeleteObject(gastoExtDetalle);

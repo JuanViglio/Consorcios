@@ -18,7 +18,13 @@
                     <asp:BoundField DataField="UF" HeaderText="Numero">
                     <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="Dueño" HeaderText="Dueño">
+                    <asp:BoundField DataField="Departamento" HeaderText="Departamento">
+                    <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Apellido" HeaderText="Apellido">
+                    <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Nombre" HeaderText="Nombre">
                     <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
                     </asp:BoundField>
                     <asp:BoundField DataField="Coeficiente" HeaderText="Coeficiente">
@@ -69,11 +75,27 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td style="width: 130px">
+                                        <asp:label id="Label11" runat="server" text="Departamento"></asp:label>
+                                    </td>
+                                    <td colspan="2">
+                                        <asp:textbox id="txtDepartamento" runat="server" width="155px" style="margin-left: 0px"></asp:textbox>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td style="width: 130px; height: 23px;">
-                                        <asp:label id="Label4" runat="server" text="Dueño"></asp:label>
+                                        <asp:label id="Label4" runat="server" text="Apellido"></asp:label>
                                     </td>
                                     <td style="height: 23px" colspan="2">
-                                        <asp:textbox id="txtDueño" runat="server" width="156px"></asp:textbox>
+                                        <asp:textbox id="txtApellido" runat="server" width="156px"></asp:textbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 130px; height: 23px;">
+                                        <asp:label id="Label3" runat="server" text="Nombre"></asp:label>
+                                    </td>
+                                    <td style="height: 23px" colspan="2">
+                                        <asp:textbox id="txtNombre" runat="server" width="156px"></asp:textbox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -112,11 +134,27 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td style="width: 130px">
+                                        <asp:label id="Label10" runat="server" text="Departamento"></asp:label>
+                                    </td>
+                                    <td colspan="2">
+                                        <asp:textbox id="txtDepartamentoNuevo" runat="server" width="155px" style="margin-left: 0px"></asp:textbox>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td style="width: 130px; height: 23px;">
-                                        <asp:label id="Label7" runat="server" text="Dueño"></asp:label>
+                                        <asp:label id="Label7" runat="server" text="Apellido"></asp:label>
                                     </td>
                                     <td style="height: 23px" colspan="2">
-                                        <asp:textbox id="txtDueñoNuevo" runat="server" width="156px"></asp:textbox>
+                                        <asp:textbox id="txtApellidoNuevo" runat="server" width="156px"></asp:textbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 130px; height: 23px;">
+                                        <asp:label id="Label9" runat="server" text="Nombre"></asp:label>
+                                    </td>
+                                    <td style="height: 23px" colspan="2">
+                                        <asp:textbox id="txtNombreNuevo" runat="server" width="156px"></asp:textbox>
                                     </td>
                                 </tr>
                                 <tr>

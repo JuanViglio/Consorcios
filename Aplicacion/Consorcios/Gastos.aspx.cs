@@ -23,8 +23,7 @@ namespace WebSistemmas.Consorcios
             
             if (!IsPostBack)
             {
-                CargarComboTipos();
-                
+                CargarComboTipos();                
                 CargarGrillaTipos(ddlTipoGastos.SelectedValue);
             }
         }

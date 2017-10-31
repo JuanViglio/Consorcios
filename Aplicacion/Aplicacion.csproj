@@ -144,6 +144,7 @@
       <DependentUpon>MenuCobranza.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Common\Constantes.cs" />
     <Compile Include="Consorcios\Consorcios.aspx.cs">
       <DependentUpon>Consorcios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

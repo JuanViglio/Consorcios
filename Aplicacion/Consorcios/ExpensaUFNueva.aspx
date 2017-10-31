@@ -76,7 +76,7 @@
                             </table>
                         </div>
 
-                        <h3>Ingreso de Gastos Eventuales</h3>
+                        <h3>Ingreso de Gastos Eventuales Ordinarios</h3>
                         <div>
                             <table>
                                 <tr>
@@ -123,7 +123,7 @@
                             </table>
                         </div>
 
-                        <h3>Ingreso de Gastos Extraordinarios</h3>
+                        <h3>Ingreso de Gastos Eventuales Extraordinarios</h3>
                         <div style="width: 652px">
                             <table>
                                 <tr>

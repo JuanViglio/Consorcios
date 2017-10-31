@@ -1,8 +1,5 @@
 ﻿using DAO;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Servicios.Interfaces
 {
@@ -10,8 +7,8 @@ namespace Servicios.Interfaces
     {
         List<UnidadesFuncionales> GetUnidadesFuncionales(string consorciosID);
 
-        List<UnidadesFuncionales> ModificarUnidades(string idConsorcio, int idUF, string idUf, string dueño, decimal coeficiente);
+        List<UnidadesFuncionales> ModificarUnidades(string idConsorcio, int idUF, string departamento, string idUf, string apellido, string nombre, decimal coeficiente);
 
-        List<UnidadesFuncionales> AgregarUnidad(string idConsorcio, string idUf, string dueño, decimal coeficiente);
+        List<UnidadesFuncionales> AgregarUnidad(string idConsorcio, string idUf, string departamento, string apellido, string nombre, decimal coeficiente);
     }
 }

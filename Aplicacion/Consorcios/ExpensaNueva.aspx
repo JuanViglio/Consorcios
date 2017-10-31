@@ -23,11 +23,6 @@
             <asp:Label ID="lblTitulo" runat="server" Text="Nueva Expensa"></asp:Label>
         </p>
 
-        <asp:updatepanel id="UpdatePanel5" runat="server">
-        </asp:updatepanel>
-
-        <p style="color: #003399; font-size: large; height: 13px;"></p>
-
         <div id="accordion">
             <h3>Ingreso de Gastos Ordinarios</h3>
             <div>
@@ -35,7 +30,7 @@
                     <ContentTemplate>
                     <table>
                         <tr>
-                            <td style="width: 643px; height: 226px;">
+                            <td style="width: 643px; height: 226px;" valign="top">
                                 <asp:GridView ID="grdGastosOrdinarios" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" OnRowCommand="grdGastosOrdinarios_RowCommand" OnRowDataBound="grdGastosOrdinarios_RowDataBound" style="margin-top: 0px; margin-left: 0px;" Width="622px">
                                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                     <Columns>
@@ -48,22 +43,6 @@
                                         <asp:BoundField DataField="ID" HeaderText="ID">
                                         <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
                                         </asp:BoundField>
-                                        <asp:TemplateField>
-                                            <ItemTemplate>
-                                                <div class="div_parent">
-                                                    <asp:ImageButton ID="Eliminar" runat="server" CausesValidation="False" CommandName="Eliminar" ImageUrl="~/css/img/ico_eliminar.png" ToolTip="Eliminar" />
-                                                </div>
-                                            </ItemTemplate>
-                                            <ItemStyle HorizontalAlign="Center" />
-                                        </asp:TemplateField>
-                                        <asp:TemplateField>
-                                            <ItemTemplate>
-                                                <div class="div_parent">
-                                                    <asp:ImageButton ID="Modificar" runat="server" CausesValidation="False" CommandName="Modificar" ImageUrl="~/css/img/ico_modificar.gif" ToolTip="Modificar" />
-                                                </div>
-                                            </ItemTemplate>
-                                            <ItemStyle HorizontalAlign="Center" />
-                                        </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Sumar">  
                                             <HeaderTemplate>
                                                 Sumar
@@ -75,6 +54,22 @@
                                                      />  
                                             </ItemTemplate> 
                                             <ItemStyle HorizontalAlign="Center" /> 
+                                        </asp:TemplateField>                                       
+                                        <asp:TemplateField>
+                                            <ItemTemplate>
+                                                <div class="div_parent">
+                                                    <asp:ImageButton ID="Modificar" runat="server" CausesValidation="False" CommandName="Modificar" ImageUrl="~/css/img/ico_modificar.gif" ToolTip="Modificar" />
+                                                </div>
+                                            </ItemTemplate>
+                                            <ItemStyle HorizontalAlign="Center" />
+                                        </asp:TemplateField>
+                                        <asp:TemplateField>
+                                            <ItemTemplate>
+                                                <div class="div_parent">
+                                                    <asp:ImageButton ID="Eliminar" runat="server" CausesValidation="False" CommandName="Eliminar" ImageUrl="~/css/img/ico_eliminar.png" ToolTip="Eliminar" />
+                                                </div>
+                                            </ItemTemplate>
+                                            <ItemStyle HorizontalAlign="Center" />
                                         </asp:TemplateField>
                                     </Columns>
                                     <EditRowStyle BackColor="#999999" />
@@ -88,19 +83,6 @@
                                     <SortedDescendingCellStyle BackColor="#FFFDF8" />
                                     <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                                 </asp:GridView>
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <asp:Label ID="Label1" runat="server" Font-Size="Large" style="color: #003399" Text="Previsión para gastos Extraordinarios" Width="420px"></asp:Label>
-                                        </td>
-                                        <td>
-                                            <asp:TextBox ID="txtGastosExtraordinarios" runat="server" style="text-align: right" Width="95px">0</asp:TextBox>
-                                        </td>
-                                        <td align="right" style="width : 100px">
-                                            <asp:Button ID="btnActualizarTotalExtraordinario" runat="server" Height="30px" OnClick="btnAgregarGastoExtraordinario_Click" Text="Actualizar" Width="87px" />
-                                        </td>
-                                    </tr>
-                                </table>
                             </td>
                             <td style="width: 530px; height: 226px;" valign="top">
                             <div id="divExpensaNueva" style="margin-top: 17px;  ">
@@ -141,7 +123,7 @@
             </div>
 
 
-            <h3>Ingreso de Gastos Eventuales</h3>
+            <h3>Ingreso de Gastos Eventuales Ordinarios</h3>
             <asp:updatepanel id="UpdatePanel2" runat="server">
             <ContentTemplate>
                 <div>
@@ -163,7 +145,7 @@
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <div class="div_parent">
-                                    <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" CommandName="Eliminar" ImageUrl="~/css/img/ico_eliminar.png" ToolTip="Modificar" />
+                                    <asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" CommandName="Modificar" ImageUrl="~/css/img/ico_modificar.gif" ToolTip="Modificar" />
                                 </div>
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" />
@@ -171,7 +153,7 @@
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <div class="div_parent">
-                                    <asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" CommandName="Modificar" ImageUrl="~/css/img/ico_modificar.gif" ToolTip="Modificar" />
+                                    <asp:ImageButton ID="EliminarGastoEvOrdinario" runat="server" CausesValidation="False" CommandName="Eliminar" ImageUrl="~/css/img/ico_eliminar.png" ToolTip="Modificar" />
                                 </div>
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" />
@@ -193,7 +175,7 @@
                 <table>
                     <tr>
                         <td>
-                            <asp:Label ID="Label8" runat="server" Text="Total:   $" Font-Size="Large" style="color: #003399; font-size: medium;"></asp:Label>
+                            <asp:Label ID="Label8" runat="server" Text="Total:" Font-Size="Large" style="color: #003399; font-size: medium;"></asp:Label>
                         </td>
                         <td style="width: 97px">
                             <asp:Label ID="lblTotalGastosEventuales" runat="server" Font-Size="Large" style="color: #003399; font-size: medium;"></asp:Label>
@@ -238,7 +220,7 @@
             </ContentTemplate>
             </asp:updatepanel>
 
-            <h3>Ingreso de Gastos Extraordinarios</h3>
+            <h3>Ingreso de Gastos Eventuales Extraordinarios</h3>
             <asp:updatepanel id="UpdatePanel3" runat="server">
             <ContentTemplate>
                 <div>        
@@ -260,7 +242,7 @@
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <div class="div_parent">
-                                    <asp:ImageButton ID="ImageButton3" runat="server" CausesValidation="False" CommandName="Eliminar" ImageUrl="~/css/img/ico_eliminar.png" ToolTip="Modificar" />
+                                    <asp:ImageButton ID="ImageButton4" runat="server" CausesValidation="False" CommandName="Modificar" ImageUrl="~/css/img/ico_modificar.gif" ToolTip="Modificar" />
                                 </div>
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" />
@@ -268,7 +250,7 @@
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <div class="div_parent">
-                                    <asp:ImageButton ID="ImageButton4" runat="server" CausesValidation="False" CommandName="Modificar" ImageUrl="~/css/img/ico_modificar.gif" ToolTip="Modificar" />
+                                    <asp:ImageButton ID="EliminarGastoEvExtraordinario" runat="server" CausesValidation="False" CommandName="Eliminar" ImageUrl="~/css/img/ico_eliminar.png" ToolTip="Modificar" />
                                 </div>
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" />
@@ -292,7 +274,7 @@
                         <td>
                             &nbsp;</td>
                         <td style="width: 97px">
-                            <asp:Label ID="lblTotalGastosExtraordinarios" runat="server" Font-Size="Large" style="color: #003399; font-size: medium;"></asp:Label>
+                            <asp:Label ID="lblTotalGastosEvExtraordinarios" runat="server" Font-Size="Large" style="color: #003399; font-size: medium;"></asp:Label>
                         </td>
                     </tr>
                 </table>
@@ -338,12 +320,12 @@
         <asp:updatepanel id="UpdatePanel4" runat="server">
         <ContentTemplate>
 
-        <table>
+        <table style="width: 931px">
             <tr>
-                <td style="height: 52px; text-align: right; width: 70px;">
-                    <asp:Label ID="Label5" runat="server" Text="Total:   $" Font-Size="Large" style="color: #003399"></asp:Label>
+                <td style="height: 52px; text-align: left; width: 182px;">
+                    <asp:Label ID="Label5" runat="server" Text="Total Ordinarios:" Font-Size="Large" style="color: #003399"></asp:Label>
                 </td>
-                <td style="width: 153px; height: 52px;">
+                <td style="width: 293px; height: 52px;">
                     <asp:Label ID="lblTotalGastosOrdinarios" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
                 </td>
                 <td style="width: 173px">
@@ -351,6 +333,16 @@
                 </td>
                 <td style="width: 190px">
                     <asp:Button runat="server" Text="Aceptar Expensa" ID="btnAceptar" Height="34px" OnClientClick = "Confirm('¿Esta seguro que quiere ACEPTAR las Expensas?')" OnClick="btnAceptar_Click" Width="150px"></asp:Button>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 182px">
+                    <asp:Label ID="Label1" runat="server" Text="Total Extraordinarios:" Font-Size="Large" style="color: #003399"></asp:Label>
+                </td>
+                <td colspan ="3">
+
+                    <asp:Label ID="lblTotalGastosExtraordinarios" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
+
                 </td>
             </tr>
         </table>

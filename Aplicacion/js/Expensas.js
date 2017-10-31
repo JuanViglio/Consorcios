@@ -50,3 +50,7 @@ function abrirAcordion(solapa) {
 function PopUp(mensaje) {
     alert(mensaje);
 }
+
+function ConfirmarBajaGastoOrdinario() {
+    return confirm("¿Esta seguro que quiere Eliminar el Gasto?")
+}

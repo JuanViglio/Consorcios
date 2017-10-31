@@ -40,15 +40,6 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.Label lblTitulo;
         
         /// <summary>
-        /// UpdatePanel5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel5;
-        
-        /// <summary>
         /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>
@@ -65,33 +56,6 @@ namespace WebSistemmas.Consorcios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grdGastosOrdinarios;
-        
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-        
-        /// <summary>
-        /// txtGastosExtraordinarios control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGastosExtraordinarios;
-        
-        /// <summary>
-        /// btnActualizarTotalExtraordinario control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnActualizarTotalExtraordinario;
         
         /// <summary>
         /// Label2 control.
@@ -247,13 +211,13 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.GridView grdGastosExtraordinarios;
         
         /// <summary>
-        /// lblTotalGastosExtraordinarios control.
+        /// lblTotalGastosEvExtraordinarios control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalGastosExtraordinarios;
+        protected global::System.Web.UI.WebControls.Label lblTotalGastosEvExtraordinarios;
         
         /// <summary>
         /// Label3 control.
@@ -344,6 +308,24 @@ namespace WebSistemmas.Consorcios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAceptar;
+        
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
+        /// lblTotalGastosExtraordinarios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalGastosExtraordinarios;
         
         /// <summary>
         /// divError control.

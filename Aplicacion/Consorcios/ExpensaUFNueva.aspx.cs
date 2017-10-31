@@ -22,7 +22,7 @@ namespace WebSistemmas.Consorcios
             grdGastosOrdinarios.DataSource = expensasServ.GetGastosOrdinarios(expensaID);
             grdGastosOrdinarios.DataBind();
 
-            lblTotalGastosOrdinarios.Text = expensasServ.GetTotalDetalle(expensaID).ToString();
+            lblTotalGastosOrdinarios.Text = expensasServ.GetTotalGastosOrdinarios(expensaID).ToString();
         }
 
         private void CargarGrillaGastosEventuales()
@@ -31,10 +31,10 @@ namespace WebSistemmas.Consorcios
 
             int expensaID = Convert.ToInt32(Session["ExpensaId"]);
 
-            grdGastosEventuales.DataSource = expensasServ.GetGastosEventuales(expensaID);
+            grdGastosEventuales.DataSource = expensasServ.GetGastosEvOrdinarios(expensaID);
             grdGastosEventuales.DataBind();
 
-            lblTotalGastosEventuales.Text = expensasServ.GetTotalGastosEventuales(expensaID).ToString();
+            lblTotalGastosEventuales.Text = expensasServ.GetTotalGastosEvOrdinarios(expensaID).ToString();
         }
 
         private void CargarGrillaGastosExtraordinarios()
@@ -44,9 +44,9 @@ namespace WebSistemmas.Consorcios
             int expensaID = Convert.ToInt32(Session["ExpensaId"]);
 
             var totalGastosExtraordinarios = expensasServ.GetTotalGastosExtraordinarios(expensaID);
-            txtGastosExtraordinarios.Text = totalGastosExtraordinarios == null ? "0" : totalGastosExtraordinarios.Importe.ToString();
+            txtGastosExtraordinarios.Text = totalGastosExtraordinarios.ToString();
 
-            grdGastosExtraordinarios.DataSource = expensasServ.GetGastosExtraordinarios(expensaID);
+            grdGastosExtraordinarios.DataSource = expensasServ.GetGastosEvExtraordinarios(expensaID);
             grdGastosExtraordinarios.DataBind();
         }
 

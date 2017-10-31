@@ -67,6 +67,24 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.TextBox txtNumero;
         
         /// <summary>
+        /// Label11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label11;
+        
+        /// <summary>
+        /// txtDepartamento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDepartamento;
+        
+        /// <summary>
         /// Label4 control.
         /// </summary>
         /// <remarks>
@@ -76,13 +94,31 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// txtDueño control.
+        /// txtApellido control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDueño;
+        protected global::System.Web.UI.WebControls.TextBox txtApellido;
+        
+        /// <summary>
+        /// Label3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label3;
+        
+        /// <summary>
+        /// txtNombre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNombre;
         
         /// <summary>
         /// Label1 control.
@@ -148,6 +184,24 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.TextBox txtNumeroNuevo;
         
         /// <summary>
+        /// Label10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label10;
+        
+        /// <summary>
+        /// txtDepartamentoNuevo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDepartamentoNuevo;
+        
+        /// <summary>
         /// Label7 control.
         /// </summary>
         /// <remarks>
@@ -157,13 +211,31 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.Label Label7;
         
         /// <summary>
-        /// txtDueñoNuevo control.
+        /// txtApellidoNuevo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDueñoNuevo;
+        protected global::System.Web.UI.WebControls.TextBox txtApellidoNuevo;
+        
+        /// <summary>
+        /// Label9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label9;
+        
+        /// <summary>
+        /// txtNombreNuevo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNombreNuevo;
         
         /// <summary>
         /// Label8 control.

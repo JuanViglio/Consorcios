@@ -8,7 +8,12 @@ namespace WebSistemmas.Consorcios
     public partial class UnidadesFuncionales : System.Web.UI.Page
     {
         private IUnidadesServ _serv;
-        private const int col_idUF = 3;
+        private const int col_numero = 0;
+        private const int col_departamento = 1;
+        private const int col_apellido = 2;
+        private const int col_nombre = 3;
+        private const int col_coeficiente = 4;
+        private const int col_idUF = 5;
 
         public UnidadesFuncionales()
         {
@@ -46,10 +51,13 @@ namespace WebSistemmas.Consorcios
                         case "MODIFICAR":
                             ClientScript.RegisterStartupScript(GetType(), "showDiv", "$('#divUFModificar').slideDown();", true);
 
-                            txtNumero.Text = GridViewrow.Cells[0].Text;
-                            txtDueño.Text = GridViewrow.Cells[1].Text;
-                            txtCoeficiente.Text = GridViewrow.Cells[2].Text;
-                            txtID.Text = GridViewrow.Cells[3].Text;
+                            txtNumero.Text = GridViewrow.Cells[col_numero].Text;
+                            txtDepartamento.Text = GridViewrow.Cells[col_departamento].Text;
+                            txtApellido.Text = GridViewrow.Cells[col_apellido].Text;
+                            txtNombre.Text = GridViewrow.Cells[col_nombre].Text;
+                            txtApellido.Text = GridViewrow.Cells[col_apellido].Text;
+                            txtCoeficiente.Text = GridViewrow.Cells[col_coeficiente].Text;
+                            txtID.Text = GridViewrow.Cells[col_idUF].Text;
                             break;
 
                         default:
@@ -69,9 +77,19 @@ namespace WebSistemmas.Consorcios
 
             #region Validaciones
 
-            if (txtDueño.Text == "")
+            if (txtDepartamento.Text == "")
             {
-                lblError.Text = "No se ingreso el Dueño de la Unidad Funcional";
+                lblError.Text = "No se ingreso el Departamento de la Unidad Funcional";
+                return;
+            }
+            if (txtApellido.Text == "")
+            {
+                lblError.Text = "No se ingreso el Apellido del dueño de la Unidad Funcional";
+                return;
+            }
+            if (txtNombre.Text == "")
+            {
+                lblError.Text = "No se ingreso el Nombre del dueño de la Unidad Funcional";
                 return;
             }
             else if (txtCoeficiente.Text == "")
@@ -89,7 +107,9 @@ namespace WebSistemmas.Consorcios
             try
             {
                 string idConsorcio = Session["idConsorcio"].ToString();
-                grdUnidades.DataSource = _serv.ModificarUnidades(idConsorcio, Convert.ToInt32(txtID.Text), txtNumero.Text, txtDueño.Text, Convert.ToDecimal(txtCoeficiente.Text));
+                string departamento = txtDepartamento.Text;
+                decimal coeficiente = decimal.Parse(txtCoeficiente.Text);
+                grdUnidades.DataSource = _serv.ModificarUnidades(idConsorcio, Convert.ToInt32(txtID.Text), departamento, txtNumero.Text, txtApellido.Text, txtNombre.Text, coeficiente);
                 grdUnidades.DataBind();
             }
             catch (Exception ex)
@@ -110,9 +130,14 @@ namespace WebSistemmas.Consorcios
                 lblError.Text = "No se ingreso el Numero de la Unididad Funcional";
                 return;
             }
-            else if (txtDueñoNuevo.Text == "")
+            else if (txtApellidoNuevo.Text == "")
             {
-                lblError.Text = "No se ingreso el Dueño de la Unidad Funcional";
+                lblError.Text = "No se ingreso el Apellido del dueño de la Unidad Funcional";
+                return;
+            }
+            else if (txtNombreNuevo.Text == "")
+            {
+                lblError.Text = "No se ingreso el Nombre del dueño de la Unidad Funcional";
                 return;
             }
             else if (txtCoeficienteNuevo.Text == "")
@@ -130,8 +155,13 @@ namespace WebSistemmas.Consorcios
             try
             {
                 string idConsorcio = Session["idConsorcio"].ToString();
-                grdUnidades.DataSource = _serv.AgregarUnidad(idConsorcio, txtNumeroNuevo.Text, txtDueñoNuevo.Text, Convert.ToDecimal(txtCoeficienteNuevo.Text));
+                grdUnidades.DataSource = _serv.AgregarUnidad(idConsorcio, txtNumeroNuevo.Text, txtDepartamentoNuevo.Text, txtApellidoNuevo.Text, txtNombreNuevo.Text, Convert.ToDecimal(txtCoeficienteNuevo.Text));
                 grdUnidades.DataBind();
+
+                txtNombreNuevo.Text = "";
+                txtApellidoNuevo.Text = "";
+                txtNombreNuevo.Text = "";
+                txtCoeficienteNuevo.Text = "";
             }
             catch (Exception ex)
             {

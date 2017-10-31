@@ -42,6 +42,15 @@
     <Property Name="Importe" Type="decimal" Precision="18" Scale="2" />
     <Property Name="TipoGastos_ID" Type="decimal" Precision="18" Scale="0" Nullable="false" />
   </EntityType>
+  <EntityType Name="GastosEvOrdinariosDetalle">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Detalle" Type="nvarchar" MaxLength="50" />
+    <Property Name="Importe" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Expensas_ID" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
   <EntityType Name="GastosExtDetalle">
     <Key>
       <PropertyRef Name="ID" />
@@ -83,10 +92,12 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="UF" Type="nvarchar" MaxLength="5" Nullable="false" />
-    <Property Name="Dueño" Type="nvarchar" MaxLength="50" />
     <Property Name="Coeficiente" Type="decimal" Precision="18" Scale="2" />
     <Property Name="ID" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Consorcios_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellido" Type="nchar" MaxLength="50" />
+    <Property Name="Nombre" Type="nchar" MaxLength="10" />
+    <Property Name="Departamento" Type="nvarchar" MaxLength="5" />
   </EntityType>
   <Association Name="FK_Expensas_Consorcios">
     <End Role="Consorcios" Type="Self.Consorcios" Multiplicity="1" />
@@ -121,6 +132,18 @@
       </Principal>
       <Dependent Role="Gastos">
         <PropertyRef Name="TipoGastos_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GastosEvOrdinariosDetalle_Expensas">
+    <End Role="Expensas" Type="Self.Expensas" Multiplicity="0..1" />
+    <End Role="GastosEvOrdinariosDetalle" Type="Self.GastosEvOrdinariosDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Expensas">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GastosEvOrdinariosDetalle">
+        <PropertyRef Name="Expensas_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -165,6 +188,7 @@
     <EntitySet Name="Expensas" EntityType="Self.Expensas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ExpensasDetalle" EntityType="Self.ExpensasDetalle" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Gastos" EntityType="Self.Gastos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GastosEvOrdinariosDetalle" EntityType="Self.GastosEvOrdinariosDetalle" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GastosExtDetalle" EntityType="Self.GastosExtDetalle" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoGastos" EntityType="Self.TipoGastos" Schema="dbo" store:Type="Tables" />
@@ -180,6 +204,10 @@
     <AssociationSet Name="FK_Gastos_TipoGastos" Association="Self.FK_Gastos_TipoGastos">
       <End Role="TipoGastos" EntitySet="TipoGastos" />
       <End Role="Gastos" EntitySet="Gastos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GastosEvOrdinariosDetalle_Expensas" Association="Self.FK_GastosEvOrdinariosDetalle_Expensas">
+      <End Role="Expensas" EntitySet="Expensas" />
+      <End Role="GastosEvOrdinariosDetalle" EntitySet="GastosEvOrdinariosDetalle" />
     </AssociationSet>
     <AssociationSet Name="FK_GastosExtDetalle_Expensas" Association="Self.FK_GastosExtDetalle_Expensas">
       <End Role="Expensas" EntitySet="Expensas" />
