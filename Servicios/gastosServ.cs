@@ -23,7 +23,7 @@ namespace Servicios
             return tipoGastos;
         }
 
-        public List<Gastos> GetGastos(int tipoGasto)
+        public List<Gastos> GetDetalleGastos(int tipoGasto)
         {
             return context.Gastos.Where(x => x.TipoGastos.ID == tipoGasto).OrderBy(x => x.Detalle).ToList();
         }
@@ -60,7 +60,7 @@ namespace Servicios
             context.AddToGastos(gasto);
             context.SaveChanges();
 
-            return GetGastos(idTipoGasto);
+            return GetDetalleGastos(idTipoGasto);
         }
 
         public List<Gastos> DeleteGasto(int idGasto, int tipoGasto)
@@ -69,7 +69,7 @@ namespace Servicios
             context.DeleteObject(gasto);
             context.SaveChanges();
 
-            return GetGastos(tipoGasto);
+            return GetDetalleGastos(tipoGasto);
         }
     }
 }

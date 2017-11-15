@@ -11,13 +11,15 @@ namespace Servicios.Mapper
             IEnumerable<GastosOrdinariosModel> gastosOdinarios;
 
             return gastosOdinarios = from e in expensasDetalles
-                              select new GastosOrdinariosModel()
-                              {
-                                  Detalle = e.Detalle,
-                                  ID = e.ID,
-                                  Importe = e.Importe,
-                                  Sumar = e.Sumar != null ? e.Sumar.Value : false
-                              };
+                                     orderby e.Orden
+                                     select new GastosOrdinariosModel()
+                                     {
+                                         Detalle = e.Detalle,
+                                         ID = e.ID,
+                                         Importe = e.Importe,
+                                         Sumar = e.Sumar.GetValueOrDefault(),
+                                         Orden = e.Orden.GetValueOrDefault()
+                                     };
         }
     }
 }

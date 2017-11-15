@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Constantes.cs" />
     <Compile Include="Expensas.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

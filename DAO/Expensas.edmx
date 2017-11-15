@@ -37,6 +37,7 @@
           <Property Name="TipoGasto_ID" Type="int" />
           <Property Name="Expensas_ID" Type="decimal" Precision="18" Scale="0" />
           <Property Name="Sumar" Type="bit" />
+          <Property Name="Orden" Type="int" />
         </EntityType>
         <EntityType Name="Gastos">
           <Key>
@@ -268,6 +269,7 @@
           <Property Name="TipoGasto_ID" Type="Int32" />
           <NavigationProperty Name="Expensas" Relationship="Self.FK_ExpensasDetalle_Expensas" FromRole="ExpensasDetalle" ToRole="Expensas" />
           <Property Name="Sumar" Type="Boolean" />
+          <Property Name="Orden" Type="Int32" />
         </EntityType>
         <EntityType Name="Gastos">
           <Key>
@@ -436,6 +438,7 @@
           <EntitySetMapping Name="ExpensasDetalle">
             <EntityTypeMapping TypeName="ExpensasModel.ExpensasDetalle">
               <MappingFragment StoreEntitySet="ExpensasDetalle">
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
                 <ScalarProperty Name="Sumar" ColumnName="Sumar" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Detalle" ColumnName="Detalle" />

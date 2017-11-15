@@ -24,14 +24,14 @@
         </p>
 
         <div id="accordion">
-            <h3>Ingreso de Gastos Ordinarios</h3>
-            <div>
+            <h3>Ingreso de Gastos Fijos</h3>
+            <div style="height: 159px">
                 <asp:updatepanel id="UpdatePanel1" runat="server">
                     <ContentTemplate>
-                    <table>
+                    <table style="height: 149px; width: 1179px">
                         <tr>
-                            <td style="width: 643px; height: 226px;" valign="top">
-                                <asp:GridView ID="grdGastosOrdinarios" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" OnRowCommand="grdGastosOrdinarios_RowCommand" OnRowDataBound="grdGastosOrdinarios_RowDataBound" style="margin-top: 0px; margin-left: 0px;" Width="622px">
+                            <td style="width: 643px; height: 156px;" valign="top">
+                                <asp:GridView ID="grdGastosOrdinarios" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="140px" OnRowCommand="grdGastosOrdinarios_RowCommand" OnRowDataBound="grdGastosOrdinarios_RowDataBound" style="margin-top: 0px; margin-left: 0px;" Width="622px">
                                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                     <Columns>
                                         <asp:BoundField DataField="Detalle" HeaderText="Detalle">
@@ -84,7 +84,7 @@
                                     <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                                 </asp:GridView>
                             </td>
-                            <td style="width: 530px; height: 226px;" valign="top">
+                            <td style="width: 530px; height: 156px;" valign="top">
                             <div id="divExpensaNueva" style="margin-top: 17px;  ">
                                 <table style="margin-top: 0px; width: 500px;">
                                     <tr>
@@ -129,8 +129,8 @@
                 <div>
                  <table>
         <tr>
-            <td style="width: 643px; height: 196px;">
-                <asp:GridView ID="grdGastosEventuales" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" style="margin-top: 0px; margin-left: 0px;" Width="622px" OnRowCommand="grdGastosEventuales_RowCommand" OnRowDataBound="grdGastosEventuales_RowDataBound">
+            <td style="width: 643px; height: 153px;">
+                <asp:GridView ID="grdGastosEventuales" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="140px" style="margin-top: 0px; margin-left: 0px;" Width="622px" OnRowCommand="grdGastosEventuales_RowCommand" OnRowDataBound="grdGastosEventuales_RowDataBound">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
                         <asp:BoundField DataField="Detalle" HeaderText="Detalle">
@@ -171,7 +171,6 @@
                     <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                 </asp:GridView>
                 <br />
-                <br />
                 <table>
                     <tr>
                         <td>
@@ -184,7 +183,7 @@
                 </table>
                 <br />
             </td>                
-            <td valign="top" style="width: 530px; height: 196px;">
+            <td valign="top" style="width: 530px; height: 153px;">
                 <div id="div1" style="margin-top: 17px;  " >
                     <table style="margin-top: 0px; width: 500px;">
                         <tr>
@@ -226,8 +225,8 @@
                 <div>        
                     <table>
         <tr>
-            <td style="width: 643px">
-                <asp:GridView ID="grdGastosExtraordinarios" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" style="margin-top: 0px; margin-left: 0px;" Width="622px" OnRowCommand="grdGastosExtraordinarios_RowCommand" OnRowDataBound="grdGastosExtraordinarios_RowDataBound">
+            <td style="width: 643px; height: 109px;">
+                <asp:GridView ID="grdGastosExtraordinarios" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="141px" style="margin-top: 0px; margin-left: 0px;" Width="622px" OnRowCommand="grdGastosExtraordinarios_RowCommand" OnRowDataBound="grdGastosExtraordinarios_RowDataBound">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
                         <asp:BoundField DataField="Detalle" HeaderText="Detalle">
@@ -268,19 +267,8 @@
                     <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                 </asp:GridView>
                 <br />
-                <br />
-                <table>
-                    <tr>
-                        <td>
-                            &nbsp;</td>
-                        <td style="width: 97px">
-                            <asp:Label ID="lblTotalGastosEvExtraordinarios" runat="server" Font-Size="Large" style="color: #003399; font-size: medium;"></asp:Label>
-                        </td>
-                    </tr>
-                </table>
-                <br />
             </td>
-            <td valign="top" style="width: 530px">
+            <td valign="top" style="width: 530px; height: 109px;">
                 <div id="div2" style="margin-top: 17px;  " >
                     <table style="margin-top: 0px; width: 500px;">
                         <tr>
@@ -320,34 +308,40 @@
         <asp:updatepanel id="UpdatePanel4" runat="server">
         <ContentTemplate>
 
-        <table style="width: 931px">
+        <table style="width: 844px">
             <tr>
-                <td style="height: 52px; text-align: left; width: 182px;">
+                <td style="height: 45px; text-align: left; width: 182px;">
                     <asp:Label ID="Label5" runat="server" Text="Total Ordinarios:" Font-Size="Large" style="color: #003399"></asp:Label>
                 </td>
-                <td style="width: 293px; height: 52px;">
+                <td style="width: 293px; height: 45px;">
                     <asp:Label ID="lblTotalGastosOrdinarios" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
                 </td>
-                <td style="width: 173px">
-                    <asp:Button runat="server" Text="Volver" ID="btnVolver" Height="35px" OnClick="btnVolver_Click" Width="150px"></asp:Button>
+                <td style="width: 157px; height: 45px;">
+                    <asp:Button runat="server" Text="Volver" ID="btnVolver" Height="30px" OnClick="btnVolver_Click" Width="120px"></asp:Button>
                 </td>
-                <td style="width: 190px">
-                    <asp:Button runat="server" Text="Aceptar Expensa" ID="btnAceptar" Height="34px" OnClientClick = "Confirm('¿Esta seguro que quiere ACEPTAR las Expensas?')" OnClick="btnAceptar_Click" Width="150px"></asp:Button>
+                <td style="width: 190px; height: 45px;">
+                    <asp:Button runat="server" Text="Aceptar Expensa" ID="btnAceptar" Height="30px" OnClientClick = "Confirm('¿Esta seguro que quiere ACEPTAR las Expensas?')" OnClick="btnAceptar_Click" Width="120px"></asp:Button>
                 </td>
             </tr>
             <tr>
-                <td style="width: 182px">
+                <td style="width: 182px; height: 40px;">
                     <asp:Label ID="Label1" runat="server" Text="Total Extraordinarios:" Font-Size="Large" style="color: #003399"></asp:Label>
                 </td>
-                <td colspan ="3">
-
+                <td colspan ="3" style="height: 40px">
                     <asp:Label ID="lblTotalGastosExtraordinarios" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
-
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 182px; height: 38px;">
+                    <asp:Label ID="Label10" runat="server" Text="Total Gastos:" Font-Size="Large" style="color: #003399"></asp:Label>
+                </td>
+                <td colspan ="3" style="height: 38px">
+                    <asp:Label ID="lblTotalGastos" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
                 </td>
             </tr>
         </table>
 
-        <div id="divError" runat="server" style="color: #003399; font-size: large; height: 26px;">
+        <div id="divError" runat="server" style="color: #003399; font-size: large; height: 36px;">
             <asp:label id="lblError" runat="server" forecolor="Red" style="text-align: left">miError</asp:label>
         </div>
         </ContentTemplate>

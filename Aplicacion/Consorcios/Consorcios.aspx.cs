@@ -86,7 +86,6 @@ namespace WebSistemmas.Consorcios
             {
                 lblError.Text = ex.Message;
             }
-
         }
 
         protected void btnAceptarModificar_Click(object sender, EventArgs e)
@@ -131,7 +130,7 @@ namespace WebSistemmas.Consorcios
             }
             #endregion
 
-            grdConsorcios.DataSource = serv.UpdateConsorcios(txtCodigo.Text, txtDireccion.Text, txtVencimiento1.Text, txtVencimiento2.Text, txtInteres.Text);
+            grdConsorcios.DataSource = serv.UpdateConsorcios(txtCodigo.Text, txtDireccion.Text.ToUpper(), txtVencimiento1.Text, txtVencimiento2.Text, txtInteres.Text);
             grdConsorcios.DataBind();
         }
 
@@ -182,7 +181,7 @@ namespace WebSistemmas.Consorcios
             }
             #endregion
 
-            var consorcios = serv.AddConsorcio(txtCodigoNuevo.Text, txtDireccionNuevo.Text, txtVencimiento1Nuevo.Text, txtVencimiento2Nuevo.Text, txtInteresNuevo.Text);
+            var consorcios = serv.AddConsorcio(txtCodigoNuevo.Text, txtDireccionNuevo.Text.ToUpper(), txtVencimiento1Nuevo.Text, txtVencimiento2Nuevo.Text, txtInteresNuevo.Text);
 
             if (consorcios != null)
             {

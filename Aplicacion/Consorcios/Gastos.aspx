@@ -45,7 +45,7 @@
         <p>
             &nbsp;
         </p>
-        <table style="width: 417px; height: 37px">
+        <table style="width: 618px; height: 37px">
             <tr>
                 <td style="width: 56px; height: 21px;">
                     <asp:label id="Label1" runat="server" text="Tipo"></asp:label>
@@ -55,7 +55,8 @@
                     </asp:dropdownlist>
                 </td>
                 <td colspan="2">
-                    <asp:button id="btnNuevoGasto" runat="server" text="Nuevo Gasto" height="32px" onclientclick="SlideDivGastoDatos(); return false;" width="103px" style="margin-left: 0px" />
+                    <asp:button id="btnNuevoGasto" runat="server" text="Nuevo Gasto" height="39px" onclientclick="SlideDivGastoDatos(); return false;" width="112px" style="margin-left: 0px" />
+                    <asp:button id="btnVolver" runat="server" text="Volver" height="39px" width="112px" style="margin-left: 30px" OnClick="btnVolver_Click" />
                 </td>
             </tr>
         </table>

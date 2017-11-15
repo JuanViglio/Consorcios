@@ -72,7 +72,7 @@ namespace WebSistemmas.Consorcios
 
         private void CargarGrillaTipos(string idTipoGasto)
         {
-            grdGastos.DataSource = serv.GetGastos(Convert.ToInt32(idTipoGasto));
+            grdGastos.DataSource = serv.GetDetalleGastos(Convert.ToInt32(idTipoGasto));
             grdGastos.DataBind();
         }
 
@@ -87,7 +87,7 @@ namespace WebSistemmas.Consorcios
         }
         protected void btnAceptarNuevoGasto_Click(object sender, EventArgs e)
         {
-            grdGastos.DataSource = serv.AddGasto(Convert.ToInt32(ddlTipoGastos.SelectedValue), txtDetalleGasto.Text);
+            grdGastos.DataSource = serv.AddGasto(Convert.ToInt32(ddlTipoGastos.SelectedValue), txtDetalleGasto.Text.ToUpper());
             grdGastos.DataBind();
         }
 
@@ -100,6 +100,11 @@ namespace WebSistemmas.Consorcios
                 imgBorrar.Attributes.Add("OnClick", "JavaScript:return ConfirmarBajaGasto();");
 
             e.Row.Cells[col_IdGasto].Visible = false;
+        }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Consorcios.aspx#consorcios");
         }
     }
 }

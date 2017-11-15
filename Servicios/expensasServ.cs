@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Servicios.Mapper;
+using WebSistemmas.Common;
 
 namespace Servicios
 {
@@ -12,8 +13,6 @@ namespace Servicios
         private const int GastoTipoOrdinario = 1;
         private const int GastoTipoEvOrdinario = 2;
         private const int GastoTipoEvExtraordinario = 3;
-        private const string TotalGastoEvOrdinarios = "Total de Gastos Eventuales Ordinarios";
-        private const string TotalGastoEvExtraordinarios = "Total de Gastos Eventuales Extraordinarios";
 
         private ExpensasEntities context = new ExpensasEntities();
 
@@ -36,9 +35,7 @@ namespace Servicios
                 expensa.Periodo = GetDescripcionPeriodo(expensa.PeriodoNumerico.Value);
                 expensa.Estado = "En Proceso";
 
-                //Agregar las filas de Totales a ExpensasDetalles
-                expensa.ExpensasDetalle.Add(new ExpensasDetalle { Detalle = TotalGastoEvOrdinarios, Importe = 0, TipoGasto_ID = GastoTipoEvOrdinario, Sumar = true });
-                expensa.ExpensasDetalle.Add(new ExpensasDetalle { Detalle = TotalGastoEvExtraordinarios, Importe = 0, TipoGasto_ID = GastoTipoEvExtraordinario, Sumar = true });
+                AddNewExpensaDetalle(expensa);
                 context.AddToExpensas(expensa);
                 context.SaveChanges();
 
@@ -64,9 +61,7 @@ namespace Servicios
                     expensa.Total_Gastos = +item.Importe;
                 }
 
-                //Agregar las filas de Totales a ExpensasDetalles
-                expensa.ExpensasDetalle.Add(new ExpensasDetalle { Detalle = TotalGastoEvOrdinarios, Importe = 0, TipoGasto_ID = GastoTipoEvOrdinario, Sumar = true });
-                expensa.ExpensasDetalle.Add(new ExpensasDetalle { Detalle = TotalGastoEvExtraordinarios, Importe = 0, TipoGasto_ID = GastoTipoEvExtraordinario, Sumar = true });
+                AddNewExpensaDetalle(expensa);
                 context.AddToExpensas(expensa);
                 context.SaveChanges();
 
@@ -76,6 +71,44 @@ namespace Servicios
             {
                  return 0;
             }
+        }
+
+        public bool DeleteExpensa (int idExpensa)
+        {
+            try
+            {
+                var detalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == idExpensa).ToList();
+
+                if (detalle != null)
+                {
+                    foreach (var item in detalle)
+                    {
+                        context.DeleteObject(item);
+                    }                    
+                }
+
+                var extraordinarios = context.GastosExtDetalle.Where(x => x.Expensas.ID == idExpensa).ToList();
+
+                if (extraordinarios != null)
+                {
+                    foreach (var item in extraordinarios)
+                    {
+                        context.DeleteObject(item);
+                    }                    
+                }
+
+                var expensa = context.Expensas.Where(x => x.ID == idExpensa).FirstOrDefault();
+
+                context.DeleteObject(expensa);
+
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private List<ExpensasDetalle> GetUltimoDetalle()
@@ -178,7 +211,7 @@ namespace Servicios
             var gastosEvOrdinarios = context.GastosEvOrdinariosDetalle.Where(x => x.Expensas.ID == idExpensa).Sum(x => x.Importe).GetValueOrDefault();
 
             //actualizar la tabla GastosDetalles
-            var expensaDetalle = context.ExpensasDetalle.Where(x => x.Detalle == TotalGastoEvOrdinarios && x.Expensas.ID == idExpensa).FirstOrDefault();
+            var expensaDetalle = context.ExpensasDetalle.Where(x => x.Detalle == Constantes.TotalGastoEvOrdinarios && x.Expensas.ID == idExpensa).FirstOrDefault();
             expensaDetalle.Importe = gastosEvOrdinarios;
 
             context.SaveChanges();
@@ -190,7 +223,7 @@ namespace Servicios
             var gastosEvExtraordinarios = context.GastosExtDetalle.Where(x => x.Expensas.ID == idExpensa).Sum(x => x.Importe).GetValueOrDefault();
 
             //actualizar la tabla GastosDetalles
-            var expensaDetalle = context.ExpensasDetalle.Where(x => x.Detalle == TotalGastoEvExtraordinarios && x.Expensas.ID == idExpensa).FirstOrDefault();
+            var expensaDetalle = context.ExpensasDetalle.Where(x => x.Detalle == Constantes.TotalGastoEvExtraordinarios && x.Expensas.ID == idExpensa).FirstOrDefault();
             expensaDetalle.Importe = gastosEvExtraordinarios;
 
             context.SaveChanges();
@@ -274,7 +307,7 @@ namespace Servicios
             return (detalle == null) ? 0 : detalle.Value;
         }
 
-        public void GuardarUltimoTotal(int idExpensa, Decimal total)
+        public void GuardarUltimoTotal(int idExpensa, decimal total)
         {
             var expensa = context.Expensas.Where(x => x.ID == idExpensa).FirstOrDefault();
 
@@ -282,7 +315,7 @@ namespace Servicios
             context.SaveChanges();
         }
 
-        public void ActualizarGastosExtraordinario(int IdExpensa, Decimal Importe)
+        public void ActualizarGastosExtraordinario(int IdExpensa, decimal Importe)
         {
             var detalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == IdExpensa && x.TipoGasto_ID == GastoTipoEvExtraordinario).FirstOrDefault();
 
@@ -292,7 +325,7 @@ namespace Servicios
                 nuevoDetalle.Expensas = context.Expensas.Where(x => x.ID == IdExpensa).FirstOrDefault();
                 nuevoDetalle.Importe = Importe;
                 nuevoDetalle.TipoGasto_ID = GastoTipoEvExtraordinario;
-                nuevoDetalle.Detalle = "Prevision para gastos Extraordinarios";
+                nuevoDetalle.Detalle = Constantes.FondoPrevisionExtraordinario;
                 context.AddToExpensasDetalle(nuevoDetalle);
             }
             else
@@ -392,5 +425,16 @@ namespace Servicios
 
             return false;
         }
+
+        #region Private Methods
+        private void AddNewExpensaDetalle(Expensas expensa)
+        {
+            //Agregar las filas de Totales a ExpensasDetalles
+            expensa.ExpensasDetalle.Add(new ExpensasDetalle { Detalle = Constantes.TotalGastoEvOrdinarios, Importe = 0, TipoGasto_ID = GastoTipoEvOrdinario, Sumar = true, Orden = 1 });
+            expensa.ExpensasDetalle.Add(new ExpensasDetalle { Detalle = Constantes.TotalGastoEvExtraordinarios, Importe = 0, TipoGasto_ID = GastoTipoEvExtraordinario, Sumar = true, Orden = 1 });
+            expensa.ExpensasDetalle.Add(new ExpensasDetalle { Detalle = Constantes.FondoPrevisionOrdinario, Importe = 0, TipoGasto_ID = GastoTipoOrdinario, Sumar = true, Orden = 2 });
+            expensa.ExpensasDetalle.Add(new ExpensasDetalle { Detalle = Constantes.FondoPrevisionExtraordinario, Importe = 0, TipoGasto_ID = GastoTipoEvExtraordinario, Sumar = true, Orden = 2 });
+        }
+        #endregion
     }
 }

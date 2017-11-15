@@ -109,7 +109,7 @@ namespace WebSistemmas.Consorcios
                 string idConsorcio = Session["idConsorcio"].ToString();
                 string departamento = txtDepartamento.Text;
                 decimal coeficiente = decimal.Parse(txtCoeficiente.Text);
-                grdUnidades.DataSource = _serv.ModificarUnidades(idConsorcio, Convert.ToInt32(txtID.Text), departamento, txtNumero.Text, txtApellido.Text, txtNombre.Text, coeficiente);
+                grdUnidades.DataSource = _serv.ModificarUnidades(idConsorcio, Convert.ToInt32(txtID.Text), departamento, txtNumero.Text, txtApellido.Text.ToUpper(), txtNombre.Text.ToUpper(), coeficiente);
                 grdUnidades.DataBind();
             }
             catch (Exception ex)
@@ -155,7 +155,7 @@ namespace WebSistemmas.Consorcios
             try
             {
                 string idConsorcio = Session["idConsorcio"].ToString();
-                grdUnidades.DataSource = _serv.AgregarUnidad(idConsorcio, txtNumeroNuevo.Text, txtDepartamentoNuevo.Text, txtApellidoNuevo.Text, txtNombreNuevo.Text, Convert.ToDecimal(txtCoeficienteNuevo.Text));
+                grdUnidades.DataSource = _serv.AgregarUnidad(idConsorcio, txtNumeroNuevo.Text, txtDepartamentoNuevo.Text, txtApellidoNuevo.Text.ToUpper(), txtNombreNuevo.Text.ToUpper(), Convert.ToDecimal(txtCoeficienteNuevo.Text));
                 grdUnidades.DataBind();
 
                 txtNombreNuevo.Text = "";
@@ -172,6 +172,11 @@ namespace WebSistemmas.Consorcios
         protected void grdUnidades_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             e.Row.Cells[col_idUF].Visible = false;
+        }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Consorcios.aspx#consorcios");
         }
     }
 }

@@ -37,6 +37,7 @@
     <Property Name="TipoGasto_ID" Type="Int32" />
     <NavigationProperty Name="Expensas" Relationship="Self.FK_ExpensasDetalle_Expensas" FromRole="ExpensasDetalle" ToRole="Expensas" />
     <Property Name="Sumar" Type="Boolean" />
+    <Property Name="Orden" Type="Int32" />
   </EntityType>
   <EntityType Name="Gastos">
     <Key>

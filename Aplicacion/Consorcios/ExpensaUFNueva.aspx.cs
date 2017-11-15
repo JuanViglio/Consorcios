@@ -158,7 +158,7 @@ namespace WebSistemmas.Consorcios
                 unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
                 int PagoId = Convert.ToInt32(Session["PagoId"].ToString());
                 decimal importe = Convert.ToDecimal(txtImporteGastoParticular.Text);
-                serv.GuardarGastoParticular(PagoId, importe, txtDetalleGastoParticular.Text);
+                serv.GuardarGastoParticular(PagoId, importe, txtDetalleGastoParticular.Text.ToUpper());
 
                 CargarGrillaGastosOrdinarios();
                 CalcularTotales();

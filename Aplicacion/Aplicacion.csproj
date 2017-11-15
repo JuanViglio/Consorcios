@@ -95,6 +95,7 @@
   <ItemGroup>
     <Content Include="Cobranza\Cobros.aspx" />
     <Content Include="Consorcios\ExpensaUFNueva.aspx" />
+    <Content Include="Consorcios\Privado.aspx" />
     <Content Include="css\img\ico_mas.jpg" />
     <Content Include="css\jquery-ui-1.8.16.custom.css" />
     <Content Include="css\jquery-ui.css" />
@@ -144,7 +145,6 @@
       <DependentUpon>MenuCobranza.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Common\Constantes.cs" />
     <Compile Include="Consorcios\Consorcios.aspx.cs">
       <DependentUpon>Consorcios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -186,6 +186,13 @@
     </Compile>
     <Compile Include="Consorcios\MenuConsorcios.Master.designer.cs">
       <DependentUpon>MenuConsorcios.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\Privado.aspx.cs">
+      <DependentUpon>Privado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\Privado.aspx.designer.cs">
+      <DependentUpon>Privado.aspx</DependentUpon>
     </Compile>
     <Compile Include="Consorcios\UnidadesFuncionales.aspx.cs">
       <DependentUpon>UnidadesFuncionales.aspx</DependentUpon>

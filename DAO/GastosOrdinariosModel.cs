@@ -9,5 +9,7 @@
         public decimal ID { get; set; }
 
         public bool Sumar { get; set; }
+
+        public int Orden { get; set; }
     }
 }

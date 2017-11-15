@@ -121,6 +121,7 @@
                 <tr>
                     <td>
                         <asp:Button ID="btnNuevoUF" runat="server" Height="35px" OnClientClick="SlideDivUFDatos(); return false;" Text="Nuevo" Width="107px" />
+                        <asp:Button ID="btnVolver" runat="server" Height="35px" Text="Vovler" Width="107px" OnClick="btnVolver_Click" style="margin-left: 26px" />
                     </td>
                     <td style="width: 470px">
                         <div id="divUFDatos" style="margin-top: 30px; display: none">

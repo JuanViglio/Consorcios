@@ -186,5 +186,10 @@ namespace WebSistemmas.Consorcios
         {
             e.Row.Cells[col_Pago_ID].Visible = false;
         }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Consorcios.aspx#consorcios");
+        }
     }
 }

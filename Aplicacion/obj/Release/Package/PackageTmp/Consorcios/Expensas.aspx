@@ -108,6 +108,8 @@
             <tr>
                 <td style="height: 68px">
                     <asp:button id="btnNuevaExpensa" runat="server" height="35px" onclick="btnNuevaExpensa_Click" text="Nuevo" width="107px" />
+                &nbsp;
+                    <asp:button id="btnVolver" runat="server" height="35px" onclick="btnVolver_Click" text="Volver" width="107px" style="margin-left: 24px" />
                 </td>
                 <td>
                     <div id="divBotonesUF" runat="server" visible="false">

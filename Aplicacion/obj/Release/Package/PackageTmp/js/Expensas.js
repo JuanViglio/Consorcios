@@ -38,7 +38,24 @@ function cambioTipoGastos()
                 source: detalleGastos
             });
         },
+    });
 
+    $.ajax({
+        type: "POST",
+        url: "ExpensaNueva.aspx/OnSubmit",
+        data: "{'tipoGastoID': 3}",
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        },
+        success: function (result) {
+            var detalleGastos = result.d;
+
+            $("#ContentPlaceHolder1_txtDetalleGastoExtraordinario").autocomplete({
+                source: detalleGastos
+            });
+        },
     });
 }
 
