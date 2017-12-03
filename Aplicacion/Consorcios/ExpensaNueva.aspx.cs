@@ -220,10 +220,10 @@ namespace WebSistemmas.Consorcios
                     switch (tipo)
                     {
                         case "ELIMINAR":
-                            var idExpensaDetalle = Convert.ToDecimal(gridViewrow.Cells[ColIdExpensaDetalle].Text);
+                            var idGasto = Convert.ToDecimal(gridViewrow.Cells[ColIdExpensaDetalle].Text);
                             int expensaId = Convert.ToInt32(Session["ExpensaId"]);
 
-                            _gastosServ.DeleteGastoEvOrdinario(idExpensaDetalle);
+                            _gastosServ.DeleteGastoEvOrdinario(idGasto);
                             _expensasServ.ActualizarTotalGastosEvOrdinarios(expensaId);
                             CargarGrillaGastosOrdinarios();
                             CargarGrillaGastosEvOrdinarios();
@@ -232,6 +232,10 @@ namespace WebSistemmas.Consorcios
                             break;
 
                         case "MODIFICAR":
+                            Session["gastoEvOrdinarioId"] = Convert.ToDecimal(gridViewrow.Cells[ColIdExpensaDetalle].Text);
+                            txtDetalleGastoEventual.Text = gridViewrow.Cells[ColDetalle].Text;
+                            txtImporteGastoEventual.Text = gridViewrow.Cells[ColImporte].Text;
+                            btnAgregarGastoEventual.Text = "Modificar";
                             break;
                     }
                 }
@@ -257,10 +261,10 @@ namespace WebSistemmas.Consorcios
                     switch (tipo)
                     {
                         case "ELIMINAR":
-                            var idExpensaDetalle = Convert.ToDecimal(gridViewrow.Cells[ColIdExpensaDetalle].Text);
+                            var idGasto = Convert.ToDecimal(gridViewrow.Cells[ColIdExpensaDetalle].Text);
                             int expensaId = Convert.ToInt32(Session["ExpensaId"]);
 
-                            _gastosServ.DeleteGastoEvExtraordinario(idExpensaDetalle);
+                            _gastosServ.DeleteGastoEvExtraordinario(idGasto);
                             _expensasServ.ActualizarTotalGastosEvExtraordinarios(expensaId);
                             CargarGrillaGastosOrdinarios();
                             CargarGrillaGastosEvExtraordinarios();
@@ -268,6 +272,10 @@ namespace WebSistemmas.Consorcios
                             break;
 
                         case "MODIFICAR":
+                            Session["gastoEvExtraordinarioId"] = Convert.ToDecimal(gridViewrow.Cells[ColIdExpensaDetalle].Text);
+                            txtDetalleGastoExtraordinario.Text = gridViewrow.Cells[ColDetalle].Text;
+                            txtImporteGastoExtraordinario.Text = gridViewrow.Cells[ColImporte].Text;
+                            btnAgregarGastoExt.Text = "Modificar";
                             break;
                     }
                 }
@@ -302,7 +310,7 @@ namespace WebSistemmas.Consorcios
             {
                 try
                 {
-                    //_expensasServ.AceptarExpensa(Convert.ToInt32(Session["ExpensaId"]), txtGastosExtraordinarios.Text, lblTotalGastosOrdinarios.Text);
+                    _expensasServ.AceptarExpensa(Convert.ToInt32(Session["ExpensaId"]), lblTotalGastosExtraordinarios.Text, lblTotalGastosOrdinarios.Text);
                 }
                 catch (Exception ex)
                 {
@@ -316,65 +324,88 @@ namespace WebSistemmas.Consorcios
 
         protected void btnAgregarGastoEventual_Click(object sender, EventArgs e)
         {
+            #region Validar
             if (txtDetalleGastoEventual.Text == "")
             {
                 divError.Visible = true;
                 lblError.Text = ErrorFaltaDetalle;
+                return;
             }
             else if (!txtImporteGastoEventual.Text.IsNumeric())
             {
                 divError.Visible = true;
                 lblError.Text = ErrorFaltaImporte;
+                return;
+            }
+            #endregion
+
+            divError.Visible = false;
+            lblError.Text = "";
+
+            int expensaId = Convert.ToInt32(Session["ExpensaId"]);
+            int gastoEvOrdinarioId = Convert.ToInt32(Session["gastoEvOrdinarioId"]);
+
+            if (btnAgregarGastoEventual.Text == "Agregar")
+            {
+                _expensasServ.AgregarGastoEvOrdinario(expensaId, txtDetalleGastoEventual.Text.ToUpper(), Convert.ToDecimal(txtImporteGastoEventual.Text), GastoTipoEvOrdinario);
             }
             else
             {
-                divError.Visible = false;
-                lblError.Text = "";
-
-                int expensaId = Convert.ToInt32(Session["ExpensaId"]);
-
-                _expensasServ.AgregarGastoEvOrdinario(expensaId, txtDetalleGastoEventual.Text.ToUpper(), Convert.ToDecimal(txtImporteGastoEventual.Text), GastoTipoEvOrdinario);
-                _expensasServ.ActualizarTotalGastosEvOrdinarios(expensaId);
-
-                txtDetalleGastoEventual.Text = "";
-                txtImporteGastoEventual.Text = "";
-
-                CargarGrillaGastosOrdinarios();
-                CargarGrillaGastosEvOrdinarios();
-                CargarTotalGastos();
-                GuardarUltimoTotal(expensaId, Constantes.GetDecimalFromCurrency(lblTotalGastosOrdinarios.Text));
+                _expensasServ.ModificarGastoEvOrdinario(gastoEvOrdinarioId, txtDetalleGastoEventual.Text.ToUpper(), Convert.ToDecimal(txtImporteGastoEventual.Text));
+                btnAgregarGastoEventual.Text = "Agregar";
             }
+
+            _expensasServ.ActualizarTotalGastosEvOrdinarios(expensaId);
+            txtDetalleGastoEventual.Text = "";
+            txtImporteGastoEventual.Text = "";
+
+            CargarGrillaGastosOrdinarios();
+            CargarGrillaGastosEvOrdinarios();
+            CargarTotalGastos();
+            GuardarUltimoTotal(expensaId, Constantes.GetDecimalFromCurrency(lblTotalGastosOrdinarios.Text));
+            
         }
 
         protected void btnAgregarGastoExt_Click(object sender, EventArgs e)
         {
+            #region Validar
             if (txtDetalleGastoExtraordinario.Text == "")
             {
                 divError.Visible = true;
                 lblError.Text = ErrorFaltaDetalle;
+                return;
             }
             else if (!txtImporteGastoExtraordinario.Text.IsNumeric())
             {
                 divError.Visible = true;
                 lblError.Text = ErrorFaltaImporte;
+                return;
+            }
+            #endregion
+
+            divError.Visible = false;
+            lblError.Text = "";
+
+            int expensaId = Convert.ToInt32(Session["ExpensaId"]);
+            int gastoEvExtraordinarioId = Convert.ToInt32(Session["gastoEvExtraordinarioId"]);
+
+            if (btnAgregarGastoExt.Text == "Agregar")
+            {
+                _expensasServ.AgregarGastoExtraordinario(expensaId, txtDetalleGastoExtraordinario.Text.ToUpper(), Convert.ToDecimal(txtImporteGastoExtraordinario.Text));
             }
             else
             {
-                divError.Visible = false;
-                lblError.Text = "";
-
-                int expensaId = Convert.ToInt32(Session["ExpensaId"]);
-
-                _expensasServ.AgregarGastoExtraordinario(expensaId, txtDetalleGastoExtraordinario.Text.ToUpper(), Convert.ToDecimal(txtImporteGastoExtraordinario.Text));
-                _expensasServ.ActualizarTotalGastosEvExtraordinarios(expensaId);
-
-                txtDetalleGastoExtraordinario.Text = "";
-                txtImporteGastoExtraordinario.Text = "";
-
-                CargarGrillaGastosOrdinarios();
-                CargarGrillaGastosEvExtraordinarios();
-                CargarTotalGastos();
+                _expensasServ.ModificarGastoExtraordinario(gastoEvExtraordinarioId, txtDetalleGastoExtraordinario.Text.ToUpper(), Convert.ToDecimal(txtImporteGastoExtraordinario.Text));
+                btnAgregarGastoExt.Text = "Agregar";
             }
+
+            _expensasServ.ActualizarTotalGastosEvExtraordinarios(expensaId);
+            txtDetalleGastoExtraordinario.Text = "";
+            txtImporteGastoExtraordinario.Text = "";
+
+            CargarGrillaGastosOrdinarios();
+            CargarGrillaGastosEvExtraordinarios();
+            CargarTotalGastos();            
         }
 
         protected void btnAgregarGastoOrdinario_Click(object sender, EventArgs e)
@@ -428,14 +459,6 @@ namespace WebSistemmas.Consorcios
             }
         }
 
-        protected void btnCancelarGastoOrdinario_Click(object sender, EventArgs e)
-        {
-            txtDetalle.Text = "";
-            txtImporte.Text = "";
-            btnAgregarGastoOrdinario.Text = "Agregar";
-            divError.Visible = false;
-        }
-
         protected void chkSumar_CheckedChanged(object sender, EventArgs e)
         {
             GridViewRow gr = (GridViewRow)((DataControlFieldCell)((CheckBox)sender).Parent).Parent;
@@ -450,6 +473,30 @@ namespace WebSistemmas.Consorcios
             lblTotalGastosExtraordinarios.Text = _expensasServ.GetTotalGastosExtraordinarios(expensaId).ToString("C", new CultureInfo("en-US"));
             CargarTotalGastos();
             GuardarUltimoTotal(expensaId, Constantes.GetDecimalFromCurrency(lblTotalGastosOrdinarios.Text));
+        }
+
+        protected void btnCancelarGastoOrdinario_Click(object sender, EventArgs e)
+        {
+            txtDetalle.Text = "";
+            txtImporte.Text = "";
+            btnAgregarGastoOrdinario.Text = "Agregar";
+            divError.Visible = false;
+        }
+
+        protected void btnCancelarGastoEvOrdinario_Click(object sender, EventArgs e)
+        {
+            txtDetalleGastoEventual.Text = "";
+            txtImporteGastoEventual.Text = "";
+            btnAgregarGastoEventual.Text = "Agregar";
+            divError.Visible = false;
+        }
+
+        protected void btnCancelarGastoEvExt_Click(object sender, EventArgs e)
+        {
+            txtDetalleGastoExtraordinario.Text = "";
+            txtImporteGastoExtraordinario.Text = "";
+            btnAgregarGastoExt.Text = "Agregar";
+            divError.Visible = false;
         }
     }
 }

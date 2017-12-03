@@ -193,6 +193,15 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.Button btnAgregarGastoEventual;
         
         /// <summary>
+        /// btnCancelarGastoEvOrdinario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelarGastoEvOrdinario;
+        
+        /// <summary>
         /// UpdatePanel3 control.
         /// </summary>
         /// <remarks>
@@ -254,6 +263,15 @@ namespace WebSistemmas.Consorcios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAgregarGastoExt;
+        
+        /// <summary>
+        /// btnCancelarGastoEvExt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelarGastoEvExt;
         
         /// <summary>
         /// UpdatePanel4 control.

@@ -207,7 +207,8 @@
                                 <asp:Button ID="btnAgregarGastoEventual" runat="server" Height="30px" OnClick="btnAgregarGastoEventual_Click" Text="Agregar" Width="90px" />
                             </td>
                             <td style="height: 53px">
-                                &nbsp;</td>
+                                <asp:Button ID="btnCancelarGastoEvOrdinario" runat="server" Height="30px" OnClick="btnCancelarGastoEvOrdinario_Click" Text="Cancelar" Width="90px" />
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -292,7 +293,8 @@
                                 <asp:Button ID="btnAgregarGastoExt" runat="server" Height="30px" OnClick="btnAgregarGastoExt_Click" Text="Agregar" Width="90px" />
                             </td>
                             <td style="height: 53px">
-                                &nbsp;</td>
+                                <asp:Button ID="btnCancelarGastoEvExt" runat="server" Height="30px" OnClick="btnCancelarGastoEvExt_Click" Text="Cancelar" Width="90px" />
+                            </td>
                         </tr>
                     </table>
                 </div>

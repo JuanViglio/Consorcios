@@ -205,6 +205,15 @@ namespace Servicios
             context.SaveChanges();
         }
 
+        public void ModificarGastoEvOrdinario(int IdGasto, string Detalle, decimal Importe)
+        {
+            var gasto = context.GastosEvOrdinariosDetalle.Where(x => x.ID == IdGasto).FirstOrDefault();
+
+            gasto.Detalle = Detalle;
+            gasto.Importe = Importe;            
+            context.SaveChanges();
+        }
+
         public void ActualizarTotalGastosEvOrdinarios(decimal idExpensa)
         {
             //obtener la suma de los gastos ev. ordinarios
@@ -247,6 +256,15 @@ namespace Servicios
             detalle.Importe = Importe;
 
             context.AddToGastosExtDetalle(detalle);
+            context.SaveChanges();
+        }
+
+        public void ModificarGastoExtraordinario(int IdExpensaDetalle, string Detalle, decimal Importe)
+        {
+            var detalle = context.GastosExtDetalle.Where(x => x.ID == IdExpensaDetalle).FirstOrDefault();
+            detalle.Detalle = Detalle;
+            detalle.Importe = Importe;
+
             context.SaveChanges();
         }
 
@@ -375,9 +393,9 @@ namespace Servicios
                         pago.ImporteGastoParticular = Convert.ToDecimal("0");
 
                         var Coeficiente = item.Coeficiente.Value;
-                        var GastosExtraordinarios = Convert.ToDecimal(gastosExtraordinarios);
+                        var GastosExtraordinarios = Constantes.GetDecimalFromCurrency(gastosExtraordinarios);
                         var ImporteExtraordinario = GastosExtraordinarios * Coeficiente / 100;
-                        var TotalGastosOrdinarios = Convert.ToDecimal(totalGastosOrdinarios) + pago.ImporteGastoParticular;
+                        var TotalGastosOrdinarios = Constantes.GetDecimalFromCurrency(totalGastosOrdinarios) + pago.ImporteGastoParticular;
                         var TotalVencimiento1 = ((TotalGastosOrdinarios - GastosExtraordinarios) * Coeficiente / 100) + ImporteExtraordinario;
 
                         pago.Coeficiente = item.Coeficiente.Value;
@@ -391,9 +409,9 @@ namespace Servicios
                     else
                     {
                         var Coeficiente = item.Coeficiente.Value;
-                        var GastosExtraordinarios = Convert.ToDecimal(gastosExtraordinarios);
+                        var GastosExtraordinarios = Constantes.GetDecimalFromCurrency(gastosExtraordinarios);
                         var ImporteExtraordinario = GastosExtraordinarios * Coeficiente / 100;
-                        var TotalGastosOrdinarios = Convert.ToDecimal(totalGastosOrdinarios) + pago.ImporteGastoParticular;
+                        var TotalGastosOrdinarios = Constantes.GetDecimalFromCurrency(totalGastosOrdinarios) + pago.ImporteGastoParticular;
                         var TotalVencimiento1 = ((TotalGastosOrdinarios - GastosExtraordinarios) * Coeficiente / 100) + ImporteExtraordinario;
 
                         pago.Coeficiente = item.Coeficiente.Value;

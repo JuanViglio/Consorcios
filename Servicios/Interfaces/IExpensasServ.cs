@@ -12,11 +12,13 @@ namespace Servicios.Interfaces
 
         void ModificarExpensaDetalle(int IdExpensaDetalle, string Detalle, Decimal Importe);
 
-        bool ActualizarCheckSumar(int idExpensaDetalle, bool sumar);
-
         void AgregarGastoEvOrdinario(int IdExpensa, string Detalle, decimal Importe, int TipoGasto);
 
+        void ModificarGastoEvOrdinario(int IdGasto, string Detalle, decimal Importe);
+
         void AgregarGastoExtraordinario(int IdExpensa, string Detalle, decimal Importe);
+
+        void ModificarGastoExtraordinario(int IdExpensaDetalle, string Detalle, decimal Importe);
 
         void ActualizarTotalGastosEvOrdinarios(decimal idExpensa);
 
@@ -27,5 +29,8 @@ namespace Servicios.Interfaces
         IEnumerable<GastosOrdinariosModel> GetGastosOrdinarios(int ExpensaID);
 
         decimal GetTotalGastosExtraordinarios(int IdExpensa);
+
+        bool ActualizarCheckSumar(int idExpensaDetalle, bool sumar);
+
     }
 }
