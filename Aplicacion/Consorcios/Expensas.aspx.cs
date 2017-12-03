@@ -14,7 +14,7 @@ namespace WebSistemmas.Consorcios
         private const int col_Coeficiente = 2;
         private const int col_Expensa_ID = 3;
         private const int col_Periodo = 6;
-        private const int col_Pago_ID = 3;
+        private const int col_Pago_ID = 4;
 
         protected void Page_Load(object sender, EventArgs e)
         {
