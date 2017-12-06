@@ -12,7 +12,7 @@
             &nbsp;
         </p>
         <p>
-            <asp:gridview id="grdGastos" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" onrowcommand="grdGastos_RowCommand" style="margin-top: 0px; margin-left: 0px; margin-right: 30px;" width="578px" OnRowDataBound="grdGastos_RowDataBound">
+            <asp:gridview id="grdGastos" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" onrowcommand="grdGastos_RowCommand" style="margin-top: 0px; margin-left: 0px; margin-right: 30px;" width="564px" OnRowDataBound="grdGastos_RowDataBound">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
                         <asp:BoundField DataField="detalle" HeaderText="Detalle">
@@ -27,7 +27,13 @@
                                     <asp:ImageButton ID="Eliminar" runat="server" CausesValidation="False" CommandName="Eliminar" ImageUrl="~/css/img/ico_eliminar.png" ToolTip="Eliminar" />
                                 </div>
                             </ItemTemplate>
-                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <div class="div_parent">                                 
+                                    <asp:ImageButton ID="CargarGasto" runat="server" CausesValidation="False" CommandName="CargarGasto" ImageUrl="~/css/img/ico_mas.jpg" ToolTip="Cargar Gasto" />
+                                </div>
+                            </ItemTemplate>
                         </asp:TemplateField>                                        
                     </Columns>
                     <EditRowStyle BackColor="#999999" />
@@ -51,7 +57,7 @@
                     <asp:label id="Label1" runat="server" text="Tipo"></asp:label>
                 </td>
                 <td style="width: 239px; height: 21px">
-                    <asp:dropdownlist id="ddlTipoGastos" runat="server" height="17px" width="217px" autopostback="True" onselectedindexchanged="ddlTipoGastos_SelectedIndexChanged" style="margin-right: 24px; margin-left: 0px;">
+                    <asp:dropdownlist id="ddlTipoGastos" runat="server" height="22px" width="217px" autopostback="True" onselectedindexchanged="ddlTipoGastos_SelectedIndexChanged" style="margin-right: 24px; margin-left: 0px;">
                     </asp:dropdownlist>
                 </td>
                 <td colspan="2">

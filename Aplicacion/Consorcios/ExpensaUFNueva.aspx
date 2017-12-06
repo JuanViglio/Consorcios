@@ -59,18 +59,6 @@
                                             <SortedDescendingCellStyle BackColor="#FFFDF8" />
                                             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                                         </asp:gridview>
-                                        <br />
-                                        <table>
-                                            <tr>
-                                                <td>
-                                                    <asp:label id="Label1" runat="server" font-size="Large" style="color: #003399" text="Previsión para gastos Extraordinarios     $" width="335px"></asp:label>
-                                                </td>
-                                                <td>
-                                                    <asp:label id="txtGastosExtraordinarios" runat="server" font-size="Large" style="color: #003399" width="154px"></asp:label>
-                                                </td>
-                                                <td align="right" style="width: 100px">&nbsp;</td>
-                                            </tr>
-                                        </table>
                                     </td>
                                 </tr>
                             </table>
@@ -106,18 +94,6 @@
                                             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                                         </asp:gridview>
                                         <br />
-                                        <br />
-                                        <table>
-                                            <tr>
-                                                <td>
-                                                    <asp:label id="Label8" runat="server" text="Total:   $" font-size="Large" style="color: #003399; font-size: medium;"></asp:label>
-                                                </td>
-                                                <td style="width: 97px">
-                                                    <asp:label id="lblTotalGastosEventuales" runat="server" font-size="Large" style="color: #003399; font-size: medium;"></asp:label>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        <br />
                                     </td>
                                 </tr>
                             </table>
@@ -152,18 +128,8 @@
                                 <SortedDescendingCellStyle BackColor="#FFFDF8" />
                                 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                             </asp:gridview>
-                                        <br />
-                                        <br />
-                                        <table>
-                                            <tr>
-                                                <td>&nbsp;</td>
-                                                <td style="width: 97px">
-                                                    <asp:label id="lblTotalGastosExtraordinarios" runat="server" font-size="Large" style="color: #003399; font-size: medium;"></asp:label>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        <br />
-                                    </td>
+                                <br />
+                                </td>
                                 </tr>
                             </table>
                         </div>

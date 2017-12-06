@@ -23,6 +23,13 @@ namespace Servicios
             return expensas;
         }
 
+        public Expensas GetUltimaExpensa(string IdConsorcio)
+        {
+            var expensas = context.Expensas.Where(x => x.Consorcios.ID == IdConsorcio).OrderByDescending(x => x.PeriodoNumerico).FirstOrDefault();
+
+            return expensas;
+        }
+
         public decimal AgregarExpensa(string IdConsorcio)
         {
             if (context.Expensas.Where(x => x.Consorcios.ID == IdConsorcio).Count() == 0)

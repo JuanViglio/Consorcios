@@ -8,14 +8,15 @@ using System.Web.UI.WebControls;
 
 namespace WebSistemmas.Consorcios
 {
-    public partial class Gastos : System.Web.UI.Page
+    public partial class Gastos : Page
     {
-        private gastosServ serv;
+        private gastosServ _gastosServ;
+        private const int col_NombreGasto = 0;
         private const int col_IdGasto = 1;
 
         public Gastos()
         {
-            serv = new gastosServ();
+            _gastosServ = new gastosServ();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -30,7 +31,7 @@ namespace WebSistemmas.Consorcios
 
         private void CargarComboTipos()
         {            
-            ddlTipoGastos.DataSource = serv.GetTipoGastos();
+            ddlTipoGastos.DataSource = _gastosServ.GetTipoGastos();
             ddlTipoGastos.DataTextField = "Detalle";
             ddlTipoGastos.DataValueField = "Id";
             ddlTipoGastos.DataBind();
@@ -55,9 +56,15 @@ namespace WebSistemmas.Consorcios
                     {
                         case "ELIMINAR":
                             var idGasto = Convert.ToInt32(GridViewrow.Cells[col_IdGasto].Text);
-                            grdGastos.DataSource = serv.DeleteGasto(idGasto, Convert.ToInt32(ddlTipoGastos.SelectedValue));
+                            grdGastos.DataSource = _gastosServ.DeleteGasto(idGasto, Convert.ToInt32(ddlTipoGastos.SelectedValue));
                             grdGastos.DataBind();
-                            break;                        
+                            break;
+
+                        case "CARGARGASTO":
+                            Session["IdGasto"] = Convert.ToInt32(GridViewrow.Cells[col_IdGasto].Text);
+                            Session["NombreGasto"] = GridViewrow.Cells[col_NombreGasto].Text;
+                            Response.Redirect("CargarGastos.aspx#gastos");
+                            break;
 
                         default:
                             break;
@@ -72,7 +79,7 @@ namespace WebSistemmas.Consorcios
 
         private void CargarGrillaTipos(string idTipoGasto)
         {
-            grdGastos.DataSource = serv.GetDetalleGastos(Convert.ToInt32(idTipoGasto));
+            grdGastos.DataSource = _gastosServ.GetDetalleGastos(Convert.ToInt32(idTipoGasto));
             grdGastos.DataBind();
         }
 
@@ -85,9 +92,10 @@ namespace WebSistemmas.Consorcios
         {
 
         }
+
         protected void btnAceptarNuevoGasto_Click(object sender, EventArgs e)
         {
-            grdGastos.DataSource = serv.AddGasto(Convert.ToInt32(ddlTipoGastos.SelectedValue), txtDetalleGasto.Text.ToUpper());
+            grdGastos.DataSource = _gastosServ.AddGasto(Convert.ToInt32(ddlTipoGastos.SelectedValue), txtDetalleGasto.Text.ToUpper());
             grdGastos.DataBind();
         }
 

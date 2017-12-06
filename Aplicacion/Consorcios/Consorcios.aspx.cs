@@ -9,7 +9,7 @@ namespace WebSistemmas.Consorcios
     {
         private const int colIdConsorcio = 0;
         private const int colDireccionConsorcio = 1;
-        IConsorcios serv;
+        IConsorciosServ serv;
 
         public Consorcios()
         {

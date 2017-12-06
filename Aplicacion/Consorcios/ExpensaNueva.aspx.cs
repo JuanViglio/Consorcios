@@ -14,17 +14,11 @@ namespace WebSistemmas.Consorcios
 {
     public partial class ExpensaNueva : Page
     {
-        private const int GastoTipoOrdinario = 1;
-        private const int GastoTipoEvOrdinario = 2;
-        private const int GastoTipoEvExtraordinario = 3;
         private const int ColDetalle = 0;
         private const int ColImporte = 1;
         private const int ColIdExpensaDetalle = 2;
         private const int ColModificar = 4;
         private const int ColEliminar = 5;
-        private const string EstadoAceptado = "Aceptado";
-        private const string ErrorFaltaDetalle = "No se ingreso el Detalle";
-        private const string ErrorFaltaImporte = "No se ingreso el Importe correctamente";
         readonly IExpensasServ _expensasServ;
         readonly IGastosServ _gastosServ;
 
@@ -114,7 +108,7 @@ namespace WebSistemmas.Consorcios
                 if (Session["Periodo"] != null)                
                     lblTitulo.Text = "Expensa de " + Session["direccionConsorcio"] + " del Periodo " + Session["Periodo"].ToString();
 
-                if (Session["Estado"] != null && Session["Estado"].ToString() == EstadoAceptado)
+                if (Session["Estado"] != null && Session["Estado"].ToString() == Constantes.EstadoAceptado)
                     btnAceptar.Enabled = false;
             }
             else
@@ -328,13 +322,13 @@ namespace WebSistemmas.Consorcios
             if (txtDetalleGastoEventual.Text == "")
             {
                 divError.Visible = true;
-                lblError.Text = ErrorFaltaDetalle;
+                lblError.Text = Constantes.ErrorFaltaDetalle;
                 return;
             }
             else if (!txtImporteGastoEventual.Text.IsNumeric())
             {
                 divError.Visible = true;
-                lblError.Text = ErrorFaltaImporte;
+                lblError.Text = Constantes.ErrorFaltaImporte;
                 return;
             }
             #endregion
@@ -347,7 +341,7 @@ namespace WebSistemmas.Consorcios
 
             if (btnAgregarGastoEventual.Text == "Agregar")
             {
-                _expensasServ.AgregarGastoEvOrdinario(expensaId, txtDetalleGastoEventual.Text.ToUpper(), Convert.ToDecimal(txtImporteGastoEventual.Text), GastoTipoEvOrdinario);
+                _expensasServ.AgregarGastoEvOrdinario(expensaId, txtDetalleGastoEventual.Text.ToUpper(), Convert.ToDecimal(txtImporteGastoEventual.Text), Constantes.GastoTipoEvOrdinario);
             }
             else
             {
@@ -372,13 +366,13 @@ namespace WebSistemmas.Consorcios
             if (txtDetalleGastoExtraordinario.Text == "")
             {
                 divError.Visible = true;
-                lblError.Text = ErrorFaltaDetalle;
+                lblError.Text = Constantes.ErrorFaltaDetalle;
                 return;
             }
             else if (!txtImporteGastoExtraordinario.Text.IsNumeric())
             {
                 divError.Visible = true;
-                lblError.Text = ErrorFaltaImporte;
+                lblError.Text = Constantes.ErrorFaltaImporte;
                 return;
             }
             #endregion
@@ -421,20 +415,20 @@ namespace WebSistemmas.Consorcios
                 if (txtDetalle.Text == "")
                 {
                     divError.Visible = true;
-                    lblError.Text = ErrorFaltaDetalle;
+                    lblError.Text = Constantes.ErrorFaltaDetalle;
                     return;
                 }
                 else if (!txtImporte.Text.IsNumeric())
                 {
                     divError.Visible = true;
-                    lblError.Text = ErrorFaltaImporte;
+                    lblError.Text = Constantes.ErrorFaltaImporte;
                     return;
                 }
                 #endregion
 
                 if (btnAgregarGastoOrdinario.Text == "Agregar")
                 {
-                    _expensasServ.AgregarExpensaDetalle(idExpensa, txtDetalle.Text.ToUpper(), Convert.ToDecimal(txtImporte.Text), GastoTipoOrdinario);
+                    _expensasServ.AgregarExpensaDetalle(idExpensa, txtDetalle.Text.ToUpper(), Convert.ToDecimal(txtImporte.Text), Constantes.GastoTipoOrdinario);
                 }
                 else
                 {

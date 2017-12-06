@@ -58,24 +58,6 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.GridView grdGastosOrdinarios;
         
         /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-        
-        /// <summary>
-        /// txtGastosExtraordinarios control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtGastosExtraordinarios;
-        
-        /// <summary>
         /// grdGastosEventuales control.
         /// </summary>
         /// <remarks>
@@ -85,24 +67,6 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.GridView grdGastosEventuales;
         
         /// <summary>
-        /// Label8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label8;
-        
-        /// <summary>
-        /// lblTotalGastosEventuales control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalGastosEventuales;
-        
-        /// <summary>
         /// grdGastosExtraordinarios control.
         /// </summary>
         /// <remarks>
@@ -110,15 +74,6 @@ namespace WebSistemmas.Consorcios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grdGastosExtraordinarios;
-        
-        /// <summary>
-        /// lblTotalGastosExtraordinarios control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalGastosExtraordinarios;
         
         /// <summary>
         /// txtCoeficiente control.

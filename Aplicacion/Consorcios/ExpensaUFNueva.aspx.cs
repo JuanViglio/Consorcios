@@ -1,52 +1,45 @@
 ﻿using Servicios;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace WebSistemmas.Consorcios
 {
-    public partial class ExpensaUFNueva : System.Web.UI.Page
+    public partial class ExpensaUFNueva : Page
     {
         private int col_ID_Expensa = 2;
+        private expensasServ _expensasServ;
+
+        public ExpensaUFNueva()
+        {
+            _expensasServ = new expensasServ();
+        }
 
         private void CargarGrillaGastosOrdinarios()
         {
-            expensasServ expensasServ = new expensasServ();
             gastosServ gastosServ = new gastosServ();
 
             int expensaID = Convert.ToInt32(Session["ExpensaId"]);
 
-            grdGastosOrdinarios.DataSource = expensasServ.GetGastosOrdinarios(expensaID);
+            grdGastosOrdinarios.DataSource = _expensasServ.GetGastosOrdinarios(expensaID);
             grdGastosOrdinarios.DataBind();
 
-            lblTotalGastosOrdinarios.Text = expensasServ.GetTotalGastosOrdinarios(expensaID).ToString();
+            lblTotalGastosOrdinarios.Text = _expensasServ.GetTotalGastosOrdinarios(expensaID).ToString();
         }
 
         private void CargarGrillaGastosEventuales()
         {
-            expensasServ expensasServ = new expensasServ();
-
             int expensaID = Convert.ToInt32(Session["ExpensaId"]);
 
-            grdGastosEventuales.DataSource = expensasServ.GetGastosEvOrdinarios(expensaID);
+            grdGastosEventuales.DataSource = _expensasServ.GetGastosEvOrdinarios(expensaID);
             grdGastosEventuales.DataBind();
-
-            lblTotalGastosEventuales.Text = expensasServ.GetTotalGastosEvOrdinarios(expensaID).ToString();
         }
 
         private void CargarGrillaGastosExtraordinarios()
         {
-            expensasServ expensasServ = new expensasServ();
-
             int expensaID = Convert.ToInt32(Session["ExpensaId"]);
 
-            var totalGastosExtraordinarios = expensasServ.GetTotalGastosExtraordinarios(expensaID);
-            txtGastosExtraordinarios.Text = totalGastosExtraordinarios.ToString();
-
-            grdGastosExtraordinarios.DataSource = expensasServ.GetGastosEvExtraordinarios(expensaID);
+            grdGastosExtraordinarios.DataSource = _expensasServ.GetGastosEvExtraordinarios(expensaID);
             grdGastosExtraordinarios.DataBind();
         }
 
@@ -56,8 +49,8 @@ namespace WebSistemmas.Consorcios
 
             var PagoId = Session["PagoId"].ToString();
             var Pago = serv.GetPago(PagoId);
+            int expensaID = Convert.ToInt32(Session["ExpensaId"]);
 
-            
             if (Pago.ImporteGastoParticular.ToString().IsNumeric())
             {
                 txtImporteGastoParticular.Text = Pago.ImporteGastoParticular.ToString();
@@ -65,13 +58,13 @@ namespace WebSistemmas.Consorcios
                 lblTotalGastosOrdinarios.Text = (Convert.ToDecimal(lblTotalGastosOrdinarios.Text) + Pago.ImporteGastoParticular).ToString();                    
             }
 
-            Decimal Coeficiente = Pago.Coeficiente;
+            decimal Coeficiente = Pago.Coeficiente;
             txtCoeficiente.Text = Coeficiente.ToString();
-            Decimal GastosExtraordinarios = Convert.ToDecimal(txtGastosExtraordinarios.Text);
-            Decimal ImporteExtraordinario = GastosExtraordinarios * Coeficiente / 100;
+            decimal GastosExtraordinarios = _expensasServ.GetTotalGastosExtraordinarios(expensaID);
+            decimal ImporteExtraordinario = GastosExtraordinarios * Coeficiente / 100;
             txtImporteExtraordinario.Text = ImporteExtraordinario.ToString("#.##");
-            Decimal TotalGastosOrdinarios = Convert.ToDecimal(lblTotalGastosOrdinarios.Text);
-            Decimal TotalVencimiento1 = ((TotalGastosOrdinarios - GastosExtraordinarios) * Coeficiente / 100) + ImporteExtraordinario;
+            decimal TotalGastosOrdinarios = Convert.ToDecimal(lblTotalGastosOrdinarios.Text);
+            decimal TotalVencimiento1 = ((TotalGastosOrdinarios - GastosExtraordinarios) * Coeficiente / 100) + ImporteExtraordinario;
             txtVencimiento1.Text = TotalVencimiento1.ToString("#.##");
         }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Servicios.Interfaces
 {
-    public interface IConsorcios
+    public interface IConsorciosServ
     {
         List<Consorcios> GetConsorcios();
 

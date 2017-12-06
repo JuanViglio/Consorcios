@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Servicios
 {
-    public class consorciosServ : IConsorcios
+    public class consorciosServ : IConsorciosServ
     { 
         private ExpensasEntities  context = new ExpensasEntities();
 

@@ -37,7 +37,6 @@
                                         <asp:ImageButton ID="UnidadesFuncionales" runat="server" CausesValidation="False" CommandName="UnidadesFuncionales" ImageUrl="~/css/img/home.png" ToolTip="Unidades Funcionales" />                                   
                                     </div>
                                 </ItemTemplate>
-                                <ItemStyle HorizontalAlign="Center" />
                             </asp:TemplateField>
                             <asp:TemplateField>
                                 <ItemTemplate>
