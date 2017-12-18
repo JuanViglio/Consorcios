@@ -40,13 +40,13 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.Label lblPeriodo;
         
         /// <summary>
-        /// txtGasto control.
+        /// lblGasto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGasto;
+        protected global::System.Web.UI.WebControls.Label lblGasto;
         
         /// <summary>
         /// txtDetalle control.
@@ -76,13 +76,13 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.Button btnGuardar;
         
         /// <summary>
-        /// btnCancelar control.
+        /// btnVolver control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelar;
+        protected global::System.Web.UI.WebControls.Button btnVolver;
         
         /// <summary>
         /// lblError control.

@@ -29,7 +29,7 @@
             <tr>
                 <td style="height: 39px; width: 109px;">Gasto</td>
                 <td style="height: 39px">
-                    <asp:TextBox ID="txtGasto" runat="server" Height="20px" Width="352px"></asp:TextBox>
+                    <asp:Label ID="lblGasto" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -49,7 +49,7 @@
                     <asp:Button ID="btnGuardar" runat="server" Height="32px" Text="Guardar" Width="90px" OnClick="btnGuardar_Click" />
                 </td>
                 <td style="height: 80px">
-                    <asp:Button ID="btnCancelar" runat="server" Height="32px" Text="Cancelar" Width="90px" />
+                    <asp:Button ID="btnVolver" runat="server" Height="32px" Text="Volver" Width="90px" OnClick="btnVolver_Click" />
                 </td>
             </tr>
         </table>

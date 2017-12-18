@@ -7,6 +7,8 @@ namespace Servicios.Interfaces
     {
         List<Consorcios> GetConsorcios();
 
+        List<ConsorciosModel> GetConsorciosCombo();
+
         List<Consorcios> UpdateConsorcios(string id, string direccion, string vencimiento1, string vencimiento2, string interes);
 
         List<Consorcios> AddConsorcio(string id, string direccion, string vencimiento1, string vencimiento2, string interes);

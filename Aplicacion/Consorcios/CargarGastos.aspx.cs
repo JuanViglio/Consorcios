@@ -9,17 +9,19 @@ namespace WebSistemmas.Consorcios
     {
         readonly IConsorciosServ _consorciosServ;
         readonly expensasServ _expensasServ;
+        readonly IDetallesServ _detallesServ;
 
         public CargarGastos()
         {
             _consorciosServ = new consorciosServ();
             _expensasServ = new expensasServ();
+            _detallesServ = new detallesServ();
         }
 
         #region Private methods
         private void CargarComboConsorcios()
         {
-            ddlConsorcios.DataSource = _consorciosServ.GetConsorcios();
+            ddlConsorcios.DataSource = _consorciosServ.GetConsorciosCombo();
             ddlConsorcios.DataTextField = "Direccion";
             ddlConsorcios.DataValueField = "Id";
             ddlConsorcios.DataBind();
@@ -28,15 +30,19 @@ namespace WebSistemmas.Consorcios
         private void CargarPeriodo()
         {
             var expensa = _expensasServ.GetUltimaExpensa(ddlConsorcios.SelectedValue);
+            var idConsorcio = ddlConsorcios.SelectedValue;
+            var idGasto = Convert.ToDecimal(Session["IdGasto"].ToString());
 
             if (expensa != null)
             {
                 lblPeriodo.Text = expensa.Periodo;
                 Session["idExpensa"] = expensa.ID;
+                txtDetalle.Text = _detallesServ.GetDetalle(idConsorcio, idGasto);
             }
             else
             {
                 lblPeriodo.Text = "";
+                txtDetalle.Text = "";
                 Session["idExpensa"] = 0;
             }
         }
@@ -47,7 +53,7 @@ namespace WebSistemmas.Consorcios
             if (!IsPostBack)
             {
                 CargarComboConsorcios();
-                txtGasto.Text = Session["NombreGasto"].ToString();
+                lblGasto.Text = Session["NombreGasto"].ToString();
                 CargarPeriodo();
             }
         }
@@ -75,12 +81,17 @@ namespace WebSistemmas.Consorcios
             #endregion
 
             var idExpensa = Convert.ToInt32(Session["idExpensa"].ToString());
-            _expensasServ.AgregarExpensaDetalle(idExpensa, txtGasto.Text.ToUpper(), Convert.ToDecimal(txtImporte.Text), Constantes.GastoTipoOrdinario);
+            _expensasServ.AgregarExpensaDetalle(idExpensa, lblGasto.Text.ToUpper(), Convert.ToDecimal(txtImporte.Text), Constantes.GastoTipoOrdinario);
 
             var total = _expensasServ.GetTotalGastosOrdinarios(idExpensa);
             _expensasServ.GuardarUltimoTotal(idExpensa, total);
 
             txtImporte.Text = "";
+        }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Gastos.aspx#gastos");
         }
     }
 }

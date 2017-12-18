@@ -18,6 +18,27 @@ namespace Servicios
             return consorcios;
         }
 
+        public List<ConsorciosModel> GetConsorciosCombo()
+        {
+            var consorciosModel = new List<ConsorciosModel>() {
+                new ConsorciosModel() {
+                    Id = "0",
+                    Direccion = "Seleccione un Consorcio" }
+            };
+            var consorcios = context.Consorcios.ToList();
+
+            foreach (var item in consorcios)
+            {
+                consorciosModel.Add(new ConsorciosModel()
+                {
+                    Id = item.ID,
+                    Direccion = item.Direccion
+                });
+            }
+
+            return consorciosModel;
+        }
+
         public List<Consorcios> UpdateConsorcios(string id, string direccion, string vencimiento1, string vencimiento2, string interes)
         {
             var consorcio = context.Consorcios.Where(x => x.ID == id).FirstOrDefault();

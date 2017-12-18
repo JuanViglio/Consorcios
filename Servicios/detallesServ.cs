@@ -12,6 +12,12 @@ namespace Servicios
         {
             var consorcio = context.Consorcios.Where(x => x.ID == idConsorcio).FirstOrDefault();
             var gasto = context.Gastos.Where(x => x.ID == idGasto).FirstOrDefault();
+            var detalles = context.Detalles.Where(x => x.Consorcios.ID == consorcio.ID && x.Gastos.ID == gasto.ID).FirstOrDefault();
+
+            if (detalles != null)
+            {
+                context.DeleteObject(detalles);
+            }
 
             context.AddToDetalles(new Detalles
             {

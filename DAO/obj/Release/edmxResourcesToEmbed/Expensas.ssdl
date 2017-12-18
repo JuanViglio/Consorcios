@@ -11,6 +11,15 @@
     <Property Name="SegundoVencimiento" Type="int" />
     <Property Name="InteresSegundoVencimiento" Type="decimal" Precision="18" Scale="2" />
   </EntityType>
+  <EntityType Name="Detalles">
+    <Key>
+      <PropertyRef Name="Consorcios_ID" />
+      <PropertyRef Name="Gastos_ID" />
+    </Key>
+    <Property Name="Consorcios_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Gastos_ID" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Detalle" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="Expensas">
     <Key>
       <PropertyRef Name="ID" />
@@ -100,6 +109,30 @@
     <Property Name="Nombre" Type="nchar" MaxLength="10" />
     <Property Name="Departamento" Type="nvarchar" MaxLength="5" />
   </EntityType>
+  <Association Name="FK_Detalles_Consorcios">
+    <End Role="Consorcios" Type="Self.Consorcios" Multiplicity="1" />
+    <End Role="Detalles" Type="Self.Detalles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consorcios">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Detalles">
+        <PropertyRef Name="Consorcios_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Detalles_Gastos">
+    <End Role="Gastos" Type="Self.Gastos" Multiplicity="1" />
+    <End Role="Detalles" Type="Self.Detalles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gastos">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Detalles">
+        <PropertyRef Name="Gastos_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Expensas_Consorcios">
     <End Role="Consorcios" Type="Self.Consorcios" Multiplicity="1" />
     <End Role="Expensas" Type="Self.Expensas" Multiplicity="*" />
@@ -186,6 +219,7 @@
   </Association>
   <EntityContainer Name="ExpensasModelStoreContainer">
     <EntitySet Name="Consorcios" EntityType="Self.Consorcios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Detalles" EntityType="Self.Detalles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Expensas" EntityType="Self.Expensas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ExpensasDetalle" EntityType="Self.ExpensasDetalle" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Gastos" EntityType="Self.Gastos" Schema="dbo" store:Type="Tables" />
@@ -194,6 +228,14 @@
     <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoGastos" EntityType="Self.TipoGastos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UnidadesFuncionales" EntityType="Self.UnidadesFuncionales" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Detalles_Consorcios" Association="Self.FK_Detalles_Consorcios">
+      <End Role="Consorcios" EntitySet="Consorcios" />
+      <End Role="Detalles" EntitySet="Detalles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Detalles_Gastos" Association="Self.FK_Detalles_Gastos">
+      <End Role="Gastos" EntitySet="Gastos" />
+      <End Role="Detalles" EntitySet="Detalles" />
+    </AssociationSet>
     <AssociationSet Name="FK_Expensas_Consorcios" Association="Self.FK_Expensas_Consorcios">
       <End Role="Consorcios" EntitySet="Consorcios" />
       <End Role="Expensas" EntitySet="Expensas" />
