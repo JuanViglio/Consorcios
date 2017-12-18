@@ -95,6 +95,7 @@
   <ItemGroup>
     <Content Include="Consorcios\CargarGastos.aspx" />
     <Content Include="Cobranza\Cobros.aspx" />
+    <Content Include="Consorcios\Detalles.aspx" />
     <Content Include="Consorcios\ExpensaUFNueva.aspx" />
     <Content Include="Consorcios\Privado.aspx" />
     <Content Include="css\img\ico_mas.jpg" />
@@ -159,6 +160,13 @@
     </Compile>
     <Compile Include="Consorcios\Consorcios.aspx.designer.cs">
       <DependentUpon>Consorcios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\Detalles.aspx.cs">
+      <DependentUpon>Detalles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\Detalles.aspx.designer.cs">
+      <DependentUpon>Detalles.aspx</DependentUpon>
     </Compile>
     <Compile Include="Consorcios\ExpensaNueva.aspx.cs">
       <DependentUpon>ExpensaNueva.aspx</DependentUpon>

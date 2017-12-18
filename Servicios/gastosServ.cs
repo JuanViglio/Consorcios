@@ -1,9 +1,7 @@
 ﻿using DAO;
 using Servicios.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Servicios
 {
@@ -26,6 +24,21 @@ namespace Servicios
         public List<Gastos> GetDetalleGastos(int tipoGasto)
         {
             return context.Gastos.Where(x => x.TipoGastos.ID == tipoGasto).OrderBy(x => x.Detalle).ToList();
+        }
+
+        public List<GastosOrdinariosModel> GetDetalleGastosCombo (int tipoGasto)
+        {
+            var gastos = context.Gastos.Where(x => x.TipoGastos.ID == tipoGasto).OrderBy(x => x.Detalle).ToList();
+            var gastosModel = new List<GastosOrdinariosModel>();
+
+            gastosModel.Add(new GastosOrdinariosModel() { Detalle = "Seleccione un Gasto", ID = 0 });
+
+            foreach (var item in gastos)
+            {
+                gastosModel.Add(new GastosOrdinariosModel() { Detalle = item.Detalle, ID = item.ID });
+            }
+
+            return gastosModel;
         }
 
         public void DeleteDetalle(decimal idExpensaDetalle)
@@ -70,6 +83,6 @@ namespace Servicios
             context.SaveChanges();
 
             return GetDetalleGastos(tipoGasto);
-        }
+        }        
     }
 }

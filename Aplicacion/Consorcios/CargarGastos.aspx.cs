@@ -23,14 +23,22 @@ namespace WebSistemmas.Consorcios
             ddlConsorcios.DataTextField = "Direccion";
             ddlConsorcios.DataValueField = "Id";
             ddlConsorcios.DataBind();
-
         }
 
         private void CargarPeriodo()
         {
             var expensa = _expensasServ.GetUltimaExpensa(ddlConsorcios.SelectedValue);
-            lblPeriodo.Text = expensa.Periodo;
-            Session["idExpensa"] = expensa.ID;
+
+            if (expensa != null)
+            {
+                lblPeriodo.Text = expensa.Periodo;
+                Session["idExpensa"] = expensa.ID;
+            }
+            else
+            {
+                lblPeriodo.Text = "";
+                Session["idExpensa"] = 0;
+            }
         }
         #endregion
 

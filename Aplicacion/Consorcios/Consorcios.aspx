@@ -13,7 +13,7 @@
                             Consorcios<br />
                         </span>
                         <br />
-                        <asp:GridView ID="grdConsorcios" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" OnRowCommand="grdConsorcios_RowCommand" Style="margin-top: 0px; margin-left: 0px; margin-right: 21px;" Width="655px">
+                        <asp:GridView ID="grdConsorcios" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" OnRowCommand="grdConsorcios_RowCommand" Style="margin-top: 0px; margin-left: 0px; margin-right: 21px;" Width="691px">
                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                             <Columns>
                                 <asp:BoundField DataField="ID" HeaderText="Codigo">
@@ -35,6 +35,7 @@
                                     <ItemTemplate>
                                         <div class="div_parent">
                                             <asp:ImageButton ID="Modificar" runat="server" CausesValidation="False" CommandName="Modificar" ImageUrl="~/css/img/ico_modificar.gif" ToolTip="Modificar" />
+                                            <asp:ImageButton ID="Detalles" runat="server" CausesValidation="False" CommandName="Detalles" ImageUrl="~/css/img/ico_mas.jpg" ToolTip="Detalles" />
                                             <asp:ImageButton ID="UnidadesFuncionales" runat="server" CausesValidation="False" CommandName="UnidadesFuncionales" ImageUrl="~/css/img/home.png" ToolTip="Unidades Funcionales" />
                                             <asp:ImageButton ID="Expensas" runat="server" CausesValidation="False" CommandName="Expensas" ImageUrl="~/css/img/ico_pesos.png" ToolTip="Expensas" />
                                         </div>

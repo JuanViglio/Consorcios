@@ -77,6 +77,12 @@ namespace WebSistemmas.Consorcios
                             Response.Redirect("Expensas.aspx", false);
                             break;
 
+                        case "DETALLES":
+                            Session["idConsorcio"] = GridViewrow.Cells[colIdConsorcio].Text;
+                            Session["addressConsorcio"] = GridViewrow.Cells[colDireccionConsorcio].Text;
+                            Response.Redirect("Detalles.aspx#consorcios", false);
+                            break;
+
                         default:
                             break;
                     }

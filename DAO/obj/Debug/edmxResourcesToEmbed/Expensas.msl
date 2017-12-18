@@ -162,5 +162,32 @@
       </EndProperty>
       <Condition ColumnName="Expensas_ID" IsNull="false" />
     </AssociationSetMapping>
+    <EntitySetMapping Name="Detalles">
+      <EntityTypeMapping TypeName="ExpensasModel.Detalles">
+        <MappingFragment StoreEntitySet="Detalles">
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+          <ScalarProperty Name="Gastos_ID" ColumnName="Gastos_ID" />
+          <ScalarProperty Name="Consorcios_ID" ColumnName="Consorcios_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_Detalles_Consorcios" TypeName="ExpensasModel.FK_Detalles_Consorcios" StoreEntitySet="Detalles">
+      <EndProperty Name="Detalles">
+        <ScalarProperty Name="Gastos_ID" ColumnName="Gastos_ID" />
+        <ScalarProperty Name="Consorcios_ID" ColumnName="Consorcios_ID" />
+      </EndProperty>
+      <EndProperty Name="Consorcios">
+        <ScalarProperty Name="ID" ColumnName="Consorcios_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Detalles_Gastos" TypeName="ExpensasModel.FK_Detalles_Gastos" StoreEntitySet="Detalles">
+      <EndProperty Name="Detalles">
+        <ScalarProperty Name="Gastos_ID" ColumnName="Gastos_ID" />
+        <ScalarProperty Name="Consorcios_ID" ColumnName="Consorcios_ID" />
+      </EndProperty>
+      <EndProperty Name="Gastos">
+        <ScalarProperty Name="ID" ColumnName="Gastos_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

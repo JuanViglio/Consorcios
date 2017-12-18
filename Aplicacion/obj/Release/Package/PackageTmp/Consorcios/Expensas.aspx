@@ -37,7 +37,6 @@
                                         <asp:ImageButton ID="UnidadesFuncionales" runat="server" CausesValidation="False" CommandName="UnidadesFuncionales" ImageUrl="~/css/img/home.png" ToolTip="Unidades Funcionales" />                                   
                                     </div>
                                 </ItemTemplate>
-                                <ItemStyle HorizontalAlign="Center" />
                             </asp:TemplateField>
                             <asp:TemplateField>
                                 <ItemTemplate>
@@ -73,7 +72,10 @@
                     <asp:BoundField DataField="ID" HeaderText="Numero">
                     <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="Dueño" HeaderText="Dueño">
+                    <asp:BoundField DataField="Apellido" HeaderText="Apellido">
+                    <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Nombre" HeaderText="Nombre">
                     <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
                     </asp:BoundField>
                     <asp:BoundField DataField="Coeficiente" HeaderText="Coeficiente">

@@ -16,9 +16,11 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ExpensasModel", "FK_UnidadesFuncionales_Consorcios", "Consorcios", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.Consorcios), "UnidadesFuncionales", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.UnidadesFuncionales))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ExpensasModel", "FK_Pagos_UF", "UnidadesFuncionales", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.UnidadesFuncionales), "Pagos", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.Pagos))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ExpensasModel", "FK_GastosEvOrdinariosDetalle_Expensas", "Expensas", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.Expensas), "GastosEvOrdinariosDetalle", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.GastosEvOrdinariosDetalle))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ExpensasModel", "FK_Detalles_Consorcios", "Consorcios", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.Consorcios), "Detalles", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.Detalles))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ExpensasModel", "FK_Detalles_Gastos", "Gastos", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.Gastos), "Detalles", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.Detalles))]
 
 // Original file name:
-// Generation date: 11/5/2017 6:32:59 PM
+// Generation date: 12/12/2017 6:29:54 PM
 namespace DAO
 {
     
@@ -249,6 +251,28 @@ namespace DAO
                 if ((value != null))
                 {
                     ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<UnidadesFuncionales>("ExpensasModel.FK_UnidadesFuncionales_Consorcios", "UnidadesFuncionales", value);
+                }
+            }
+        }
+        /// <summary>
+        /// There are no comments for Detalles in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_Detalles_Consorcios", "Detalles")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityCollection<Detalles> Detalles
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Detalles>("ExpensasModel.FK_Detalles_Consorcios", "Detalles");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Detalles>("ExpensasModel.FK_Detalles_Consorcios", "Detalles", value);
                 }
             }
         }
@@ -881,6 +905,28 @@ namespace DAO
                 if ((value != null))
                 {
                     ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<TipoGastos>("ExpensasModel.FK_Gastos_TipoGastos", "TipoGastos", value);
+                }
+            }
+        }
+        /// <summary>
+        /// There are no comments for Detalles in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_Detalles_Gastos", "Detalles")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityCollection<Detalles> Detalles
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Detalles>("ExpensasModel.FK_Detalles_Gastos", "Detalles");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Detalles>("ExpensasModel.FK_Detalles_Gastos", "Detalles", value);
                 }
             }
         }
@@ -1761,6 +1807,23 @@ namespace DAO
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         private global::System.Data.Objects.ObjectQuery<GastosEvOrdinariosDetalle> _GastosEvOrdinariosDetalle;
         /// <summary>
+        /// There are no comments for Detalles in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Data.Objects.ObjectQuery<Detalles> Detalles
+        {
+            get
+            {
+                if ((this._Detalles == null))
+                {
+                    this._Detalles = base.CreateQuery<Detalles>("[Detalles]");
+                }
+                return this._Detalles;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Data.Objects.ObjectQuery<Detalles> _Detalles;
+        /// <summary>
         /// There are no comments for Consorcios in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
@@ -1831,6 +1894,14 @@ namespace DAO
         public void AddToGastosEvOrdinariosDetalle(GastosEvOrdinariosDetalle gastosEvOrdinariosDetalle)
         {
             base.AddObject("GastosEvOrdinariosDetalle", gastosEvOrdinariosDetalle);
+        }
+        /// <summary>
+        /// There are no comments for Detalles in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public void AddToDetalles(Detalles detalles)
+        {
+            base.AddObject("Detalles", detalles);
         }
     }
     /// <summary>
@@ -2220,6 +2291,191 @@ namespace DAO
                 if ((value != null))
                 {
                     ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Expensas>("ExpensasModel.FK_GastosEvOrdinariosDetalle_Expensas", "Expensas", value);
+                }
+            }
+        }
+    }
+    /// <summary>
+    /// There are no comments for ExpensasModel.Detalles in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Consorcios_ID
+    /// Gastos_ID
+    /// </KeyProperties>
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="ExpensasModel", Name="Detalles")]
+    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
+    [global::System.Serializable()]
+    public partial class Detalles : global::System.Data.Objects.DataClasses.EntityObject
+    {
+        /// <summary>
+        /// Create a new Detalles object.
+        /// </summary>
+        /// <param name="consorcios_ID">Initial value of Consorcios_ID.</param>
+        /// <param name="gastos_ID">Initial value of Gastos_ID.</param>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public static Detalles CreateDetalles(string consorcios_ID, decimal gastos_ID)
+        {
+            Detalles detalles = new Detalles();
+            detalles.Consorcios_ID = consorcios_ID;
+            detalles.Gastos_ID = gastos_ID;
+            return detalles;
+        }
+        /// <summary>
+        /// There are no comments for property Consorcios_ID in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string Consorcios_ID
+        {
+            get
+            {
+                return this._Consorcios_ID;
+            }
+            set
+            {
+                this.OnConsorcios_IDChanging(value);
+                this.ReportPropertyChanging("Consorcios_ID");
+                this._Consorcios_ID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Consorcios_ID");
+                this.OnConsorcios_IDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _Consorcios_ID;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnConsorcios_IDChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnConsorcios_IDChanged();
+        /// <summary>
+        /// There are no comments for property Gastos_ID in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public decimal Gastos_ID
+        {
+            get
+            {
+                return this._Gastos_ID;
+            }
+            set
+            {
+                this.OnGastos_IDChanging(value);
+                this.ReportPropertyChanging("Gastos_ID");
+                this._Gastos_ID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Gastos_ID");
+                this.OnGastos_IDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private decimal _Gastos_ID;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnGastos_IDChanging(decimal value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnGastos_IDChanged();
+        /// <summary>
+        /// There are no comments for property Detalle in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string Detalle
+        {
+            get
+            {
+                return this._Detalle;
+            }
+            set
+            {
+                this.OnDetalleChanging(value);
+                this.ReportPropertyChanging("Detalle");
+                this._Detalle = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Detalle");
+                this.OnDetalleChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _Detalle;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDetalleChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDetalleChanged();
+        /// <summary>
+        /// There are no comments for Consorcios in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_Detalles_Consorcios", "Consorcios")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public Consorcios Consorcios
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Consorcios>("ExpensasModel.FK_Detalles_Consorcios", "Consorcios").Value;
+            }
+            set
+            {
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Consorcios>("ExpensasModel.FK_Detalles_Consorcios", "Consorcios").Value = value;
+            }
+        }
+        /// <summary>
+        /// There are no comments for Consorcios in the schema.
+        /// </summary>
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityReference<Consorcios> ConsorciosReference
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Consorcios>("ExpensasModel.FK_Detalles_Consorcios", "Consorcios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Consorcios>("ExpensasModel.FK_Detalles_Consorcios", "Consorcios", value);
+                }
+            }
+        }
+        /// <summary>
+        /// There are no comments for Gastos in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_Detalles_Gastos", "Gastos")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public Gastos Gastos
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Gastos>("ExpensasModel.FK_Detalles_Gastos", "Gastos").Value;
+            }
+            set
+            {
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Gastos>("ExpensasModel.FK_Detalles_Gastos", "Gastos").Value = value;
+            }
+        }
+        /// <summary>
+        /// There are no comments for Gastos in the schema.
+        /// </summary>
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityReference<Gastos> GastosReference
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Gastos>("ExpensasModel.FK_Detalles_Gastos", "Gastos");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Gastos>("ExpensasModel.FK_Detalles_Gastos", "Gastos", value);
                 }
             }
         }

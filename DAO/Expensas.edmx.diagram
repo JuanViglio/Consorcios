@@ -21,6 +21,9 @@
         <AssociationConnector Association="ExpensasModel.FK_Pagos_UF" />
         <EntityTypeShape EntityType="ExpensasModel.GastosEvOrdinariosDetalle" Width="1.5" PointX="5.25" PointY="11.75" />
         <AssociationConnector Association="ExpensasModel.FK_GastosEvOrdinariosDetalle_Expensas" />
+        <EntityTypeShape EntityType="ExpensasModel.Detalles" Width="1.5" PointX="7.75" PointY="3.625" />
+        <AssociationConnector Association="ExpensasModel.FK_Detalles_Consorcios" />
+        <AssociationConnector Association="ExpensasModel.FK_Detalles_Gastos" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
