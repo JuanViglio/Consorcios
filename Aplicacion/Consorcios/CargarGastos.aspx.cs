@@ -81,12 +81,19 @@ namespace WebSistemmas.Consorcios
             #endregion
 
             var idExpensa = Convert.ToInt32(Session["idExpensa"].ToString());
-            _expensasServ.AgregarExpensaDetalle(idExpensa, lblGasto.Text.ToUpper(), Convert.ToDecimal(txtImporte.Text), Constantes.GastoTipoOrdinario);
+            var gastoDetalle = lblGasto.Text.ToUpper() + " " + txtDetalle.Text.ToUpper();
+
+            _expensasServ.AgregarExpensaDetalle(idExpensa, gastoDetalle, Convert.ToDecimal(txtImporte.Text), Constantes.GastoTipoOrdinario);
 
             var total = _expensasServ.GetTotalGastosOrdinarios(idExpensa);
             _expensasServ.GuardarUltimoTotal(idExpensa, total);
 
+            lblPeriodo.Text = "";
             txtImporte.Text = "";
+            txtDetalle.Text = "";
+            ddlConsorcios.SelectedIndex = 0;
+
+            ClientScript.RegisterStartupScript(GetType(), "Atencion", "alert('El Gasto se guardo correctamente')", true);
         }
 
         protected void btnVolver_Click(object sender, EventArgs e)

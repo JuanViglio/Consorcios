@@ -44,6 +44,8 @@ namespace WebSistemmas.Consorcios
             _detallesServ.GuardarDetalle(txtDetalle.Text, idConsorcio, Convert.ToDecimal(ddlGastos.SelectedValue));
             txtDetalle.Text = "";
             ddlGastos.SelectedIndex = 0;
+
+            ClientScript.RegisterStartupScript(GetType(), "Atencion", "alert('El Detalle se guardo correctamente')", true);
         }
 
         protected void ddlGastos_SelectedIndexChanged(object sender, EventArgs e)
