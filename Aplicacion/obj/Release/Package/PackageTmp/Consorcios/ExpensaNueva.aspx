@@ -85,36 +85,71 @@
                                 </asp:GridView>
                             </td>
                             <td style="width: 530px; height: 156px;" valign="top">
-                            <div id="divExpensaNueva" style="margin-top: 17px;  ">
-                                <table style="margin-top: 0px; width: 500px;">
-                                    <tr>
-                                        <td style="width: 100px">
-                                            <asp:Label ID="Label2" runat="server" Text="Detalle"></asp:Label>
-                                        </td>
-                                        <td>
-                                            <asp:TextBox ID="txtDetalle" runat="server" style="margin-left: 0px" Width="379px"></asp:TextBox>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 100px; height: 23px;">
-                                            <asp:Label ID="Label4" runat="server" Text="Importe"></asp:Label>
-                                        </td>
-                                        <td style="height: 23px">
-                                            <asp:TextBox ID="txtImporte" runat="server" Width="380px"></asp:TextBox>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <table>
-                                    <tr>
-                                        <td style="width: 100px; height: 51px">
-                                            <asp:Button ID="btnAgregarGastoOrdinario" runat="server" Height="30px" OnClick="btnAgregarGastoOrdinario_Click" Text="Agregar" Width="90px" />
-                                        </td>
-                                        <td style="height: 51px; width: 100px;">
-                                            <asp:Button ID="btnCancelarGastoOrdinario" runat="server" Height="30px" OnClick="btnCancelarGastoOrdinario_Click" Text="Cancelar" Width="90px" />
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
+
+                                    <div id="divExpensaNueva" style="margin-top: 7px;  ">
+                                        <table style="margin-top: 0px; width: 500px; height: 29px;">
+                                            <tr>
+                                                <td style="width: 99px">
+                                                    <asp:RadioButton ID="btnGuardado" runat="server" AutoPostBack="True" Checked="True" GroupName="groupGastosOrdinarios" OnCheckedChanged="btnGuardado_CheckedChanged" Text="Guardado" />
+                                                </td>
+                                                <td>
+                                                    <asp:RadioButton ID="btnNuevo" runat="server" AutoPostBack="True" GroupName="groupGastosOrdinarios" OnCheckedChanged="btnNuevo_CheckedChanged" Text="Nuevo" />
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <div id="divGastoOrdnarioGuardado" runat ="server">
+                                        <table style="margin-top: 0px; width: 500px;">
+                                            <tr>
+                                                <td style="width: 77px; height: 23px;">Gasto&nbsp;&nbsp; </td>
+                                                <td style="height: 23px">
+                                                    <asp:DropDownList autopostback="true" ID="ddlGastos" runat="server" Height="23px" Width="380px" OnSelectedIndexChanged="ddlGastos_SelectedIndexChanged">
+                                                    </asp:DropDownList>
+                                                </td>                               
+                                            </tr>
+                                            <tr>
+                                                <td style="height: 22px">Detalle</td><td style="height: 22px">
+                                                    <asp:TextBox ID="txtDetalle" runat="server" Width="379px" Height="20px"></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                        </table>  
+                                        </div>
+
+                                        <div id="divGastoOrdnarioNuevo" runat ="server">
+                                        <table>
+                                            <tr>
+                                                <td style="width: 78px">
+                                                    <asp:Label ID="Label2" runat="server" Text="Gasto"></asp:Label>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtGasto" runat="server" style="margin-left: 0px" Width="379px"></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        </div>
+
+                                        <table>
+                                            <tr>
+                                                <td style="width: 77px; height: 23px;">
+                                                    <asp:Label ID="Label4" runat="server" Text="Importe"></asp:Label>
+                                                </td>
+                                                <td style="height: 23px">
+                                                    <asp:TextBox ID="txtImporte" runat="server" Width="380px" BorderStyle="Solid"></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table>
+                                            <tr>
+                                                <td style="width: 100px; height: 51px">
+                                                    <asp:Button ID="btnAgregarGastoOrdinario" runat="server" Height="30px" OnClick="btnAgregarGastoOrdinario_Click" Text="Agregar" Width="90px" />
+                                                </td>
+                                                <td style="height: 51px; width: 100px;">
+                                                    <asp:Button ID="btnCancelarGastoOrdinario" runat="server" Height="30px" OnClick="btnCancelarGastoOrdinario_Click" Text="Cancelar" Width="90px" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
                         </td>
                         </tr>                        
                     </table>
@@ -123,7 +158,7 @@
             </div>
 
 
-            <h3>Ingreso de Gastos Eventuales Ordinarios</h3>
+            <h3>Ingreso de Gastos Eventuales Ordinariososs</h3>
             <asp:updatepanel id="UpdatePanel2" runat="server">
             <ContentTemplate>
                 <div>
@@ -199,7 +234,7 @@
                                 <asp:Label ID="Label7" runat="server" Text="Importe"></asp:Label>
                             </td>
                             <td style="height: 23px">
-                                <asp:TextBox ID="txtImporteGastoEventual" runat="server" Width="380px"></asp:TextBox>
+                                <asp:TextBox ID="txtImporteGastoEventual" runat="server" Width="380px" BorderStyle="Solid"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -285,7 +320,7 @@
                                 <asp:Label ID="Label9" runat="server" Text="Importe"></asp:Label>
                             </td>
                             <td style="height: 23px">
-                                <asp:TextBox ID="txtImporteGastoExtraordinario" runat="server" Width="380px"></asp:TextBox>
+                                <asp:TextBox ID="txtImporteGastoExtraordinario" runat="server" Width="380px" BorderStyle="Solid"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>

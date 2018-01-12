@@ -8,7 +8,7 @@ namespace WebSistemmas.Consorcios
     public partial class CargarGastos : System.Web.UI.Page
     {
         readonly IConsorciosServ _consorciosServ;
-        readonly expensasServ _expensasServ;
+        readonly IExpensasServ _expensasServ;
         readonly IDetallesServ _detallesServ;
 
         public CargarGastos()
@@ -31,13 +31,21 @@ namespace WebSistemmas.Consorcios
         {
             var expensa = _expensasServ.GetUltimaExpensa(ddlConsorcios.SelectedValue);
             var idConsorcio = ddlConsorcios.SelectedValue;
-            var idGasto = Convert.ToDecimal(Session["IdGasto"].ToString());
+            var idGasto = Convert.ToInt32(Session["IdGasto"].ToString());
 
             if (expensa != null)
             {
                 lblPeriodo.Text = expensa.Periodo;
                 Session["idExpensa"] = expensa.ID;
                 txtDetalle.Text = _detallesServ.GetDetalle(idConsorcio, idGasto);
+
+                //Get Importe de gasto ordinario previamente guardado
+                var expensaDetalle = _expensasServ.GetExpensaDetalle(int.Parse(expensa.ID.ToString()),idGasto);
+
+                if (expensaDetalle != null)
+                    txtImporte.Text = expensaDetalle.Importe.Value.ToString();
+                else
+                    txtImporte.Text = "";
             }
             else
             {
@@ -78,20 +86,44 @@ namespace WebSistemmas.Consorcios
                 lblError.Text = Constantes.ErrorFaltaImporte;
                 return;
             }
+            else if (txtImporte.Text == "0")
+            {
+                lblError.Text = Constantes.ErrorImporteCero;
+                return;
+            }
             #endregion
 
             var idExpensa = Convert.ToInt32(Session["idExpensa"].ToString());
             var gastoDetalle = lblGasto.Text.ToUpper() + " " + txtDetalle.Text.ToUpper();
+            var idGasto = Convert.ToInt32(Session["IdGasto"].ToString());
 
-            _expensasServ.AgregarExpensaDetalle(idExpensa, gastoDetalle, Convert.ToDecimal(txtImporte.Text), Constantes.GastoTipoOrdinario);
+            //Consultar si el gasto esta ya guardado
+            var expensaDetalle = _expensasServ.GetExpensaDetalle(idExpensa, idGasto);
+            decimal importe = decimal.Parse(txtImporte.Text);
+
+            if (expensaDetalle != null && expensaDetalle.Importe.Value != 0)
+            {
+                //si esta guardado actualizar el importe
+                string detalle = string.Concat(lblGasto.Text, " ", txtDetalle.Text);                
+                int expensaDetalleId = int.Parse(expensaDetalle.ID.ToString());
+
+                _expensasServ.ModificarExpensaDetalle(expensaDetalleId, detalle, importe);
+            }
+            else
+            {
+                //si no esta guardado agregar un detalle nuevo
+                _expensasServ.AgregarExpensaDetalle(idExpensa, gastoDetalle, importe, Constantes.GastoTipoOrdinario, idGasto);
+            }
 
             var total = _expensasServ.GetTotalGastosOrdinarios(idExpensa);
             _expensasServ.GuardarUltimoTotal(idExpensa, total);
 
+            #region LimpiarPantalla
             lblPeriodo.Text = "";
             txtImporte.Text = "";
             txtDetalle.Text = "";
             ddlConsorcios.SelectedIndex = 0;
+            #endregion
 
             ClientScript.RegisterStartupScript(GetType(), "Atencion", "alert('El Gasto se guardo correctamente')", true);
         }

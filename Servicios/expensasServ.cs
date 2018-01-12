@@ -186,7 +186,7 @@ namespace Servicios
                 return Convert.ToInt32(periodoActual) + 1;
         }
 
-        public void AgregarExpensaDetalle(int IdExpensa, string Detalle, Decimal Importe, int TipoGasto)
+        public void AgregarExpensaDetalle(int IdExpensa, string Detalle, decimal Importe, int TipoGasto, decimal IdGasto)
         {
             ExpensasDetalle detalle = new ExpensasDetalle();
 
@@ -195,6 +195,7 @@ namespace Servicios
             detalle.Importe = Importe;
             detalle.TipoGasto_ID = TipoGasto;
             detalle.Sumar = true;
+            detalle.Gastos_ID = IdGasto;
 
             context.AddToExpensasDetalle(detalle);
             context.SaveChanges();
@@ -289,6 +290,13 @@ namespace Servicios
             var gastosOrdinarios = AutoMapper.MapToGastosOrdinarios(expensasDetalles);
 
             return gastosOrdinarios;
+        }
+
+        public ExpensasDetalle GetExpensaDetalle(int ExpensaID, int GastoID)
+        {
+            var expensaDetalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == ExpensaID && x.TipoGasto_ID.Value == GastoTipoOrdinario && x.Gastos_ID == GastoID).FirstOrDefault();
+
+            return expensaDetalle;
         }
 
         public List<GastosEvOrdinariosDetalle> GetGastosEvOrdinarios(int IdExpensa)

@@ -24,31 +24,9 @@
     <Property Name="PeriodoNumerico" Type="Int32" />
     <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Consorcios" Relationship="Self.FK_Expensas_Consorcios" FromRole="Expensas" ToRole="Consorcios" />
-    <NavigationProperty Name="ExpensasDetalle" Relationship="Self.FK_ExpensasDetalle_Expensas" FromRole="Expensas" ToRole="ExpensasDetalle" />
     <NavigationProperty Name="GastosExtDetalle" Relationship="Self.FK_GastosExtDetalle_Expensas" FromRole="Expensas" ToRole="GastosExtDetalle" />
     <NavigationProperty Name="GastosEvOrdinariosDetalle" Relationship="ExpensasModel.FK_GastosEvOrdinariosDetalle_Expensas" FromRole="Expensas" ToRole="GastosEvOrdinariosDetalle" />
-  </EntityType>
-  <EntityType Name="ExpensasDetalle">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="TipoGasto_ID" Type="Int32" />
-    <NavigationProperty Name="Expensas" Relationship="Self.FK_ExpensasDetalle_Expensas" FromRole="ExpensasDetalle" ToRole="Expensas" />
-    <Property Name="Sumar" Type="Boolean" />
-    <Property Name="Orden" Type="Int32" />
-  </EntityType>
-  <EntityType Name="Gastos">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" />
-    <NavigationProperty Name="TipoGastos" Relationship="Self.FK_Gastos_TipoGastos" FromRole="Gastos" ToRole="TipoGastos" />
-    <NavigationProperty Name="Detalles" Relationship="ExpensasModel.FK_Detalles_Gastos" FromRole="Gastos" ToRole="Detalles" />
+    <NavigationProperty Name="ExpensasDetalle" Relationship="ExpensasModel.FK_ExpensasDetalle_Expensas" FromRole="Expensas" ToRole="ExpensasDetalle" />
   </EntityType>
   <EntityType Name="GastosExtDetalle">
     <Key>
@@ -85,29 +63,19 @@
     </Key>
     <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Gastos" Relationship="Self.FK_Gastos_TipoGastos" FromRole="TipoGastos" ToRole="Gastos" />
+    <NavigationProperty Name="Gastos" Relationship="ExpensasModel.FK_Gastos_TipoGastos" FromRole="TipoGastos" ToRole="Gastos" />
   </EntityType>
   <Association Name="FK_Expensas_Consorcios">
     <End Role="Consorcios" Type="Self.Consorcios" Multiplicity="1" />
     <End Role="Expensas" Type="Self.Expensas" Multiplicity="*" />
   </Association>
-  <Association Name="FK_ExpensasDetalle_Expensas">
-    <End Role="Expensas" Type="Self.Expensas" Multiplicity="0..1" />
-    <End Role="ExpensasDetalle" Type="Self.ExpensasDetalle" Multiplicity="*" />
-  </Association>
   <Association Name="FK_GastosExtDetalle_Expensas">
     <End Role="Expensas" Type="Self.Expensas" Multiplicity="0..1" />
     <End Role="GastosExtDetalle" Type="Self.GastosExtDetalle" Multiplicity="*" />
   </Association>
-  <Association Name="FK_Gastos_TipoGastos">
-    <End Role="TipoGastos" Type="Self.TipoGastos" Multiplicity="1" />
-    <End Role="Gastos" Type="Self.Gastos" Multiplicity="*" />
-  </Association>
   <EntityContainer Name="ExpensasEntities">
     <EntitySet Name="Consorcios" EntityType="Self.Consorcios" />
     <EntitySet Name="Expensas" EntityType="Self.Expensas" />
-    <EntitySet Name="ExpensasDetalle" EntityType="Self.ExpensasDetalle" />
-    <EntitySet Name="Gastos" EntityType="Self.Gastos" />
     <EntitySet Name="GastosExtDetalle" EntityType="Self.GastosExtDetalle" />
     <EntitySet Name="Pagos" EntityType="Self.Pagos" />
     <EntitySet Name="TipoGastos" EntityType="Self.TipoGastos" />
@@ -115,17 +83,9 @@
       <End Role="Consorcios" EntitySet="Consorcios" />
       <End Role="Expensas" EntitySet="Expensas" />
     </AssociationSet>
-    <AssociationSet Name="FK_ExpensasDetalle_Expensas" Association="Self.FK_ExpensasDetalle_Expensas">
-      <End Role="Expensas" EntitySet="Expensas" />
-      <End Role="ExpensasDetalle" EntitySet="ExpensasDetalle" />
-    </AssociationSet>
     <AssociationSet Name="FK_GastosExtDetalle_Expensas" Association="Self.FK_GastosExtDetalle_Expensas">
       <End Role="Expensas" EntitySet="Expensas" />
       <End Role="GastosExtDetalle" EntitySet="GastosExtDetalle" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Gastos_TipoGastos" Association="Self.FK_Gastos_TipoGastos">
-      <End Role="TipoGastos" EntitySet="TipoGastos" />
-      <End Role="Gastos" EntitySet="Gastos" />
     </AssociationSet>
     <EntitySet Name="UnidadesFuncionales" EntityType="ExpensasModel.UnidadesFuncionales" />
     <AssociationSet Name="FK_UnidadesFuncionales_Consorcios" Association="ExpensasModel.FK_UnidadesFuncionales_Consorcios">
@@ -146,9 +106,19 @@
       <End Role="Consorcios" EntitySet="Consorcios" />
       <End Role="Detalles" EntitySet="Detalles" />
     </AssociationSet>
+    <EntitySet Name="Gastos" EntityType="ExpensasModel.Gastos" />
     <AssociationSet Name="FK_Detalles_Gastos" Association="ExpensasModel.FK_Detalles_Gastos">
       <End Role="Gastos" EntitySet="Gastos" />
       <End Role="Detalles" EntitySet="Detalles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gastos_TipoGastos" Association="ExpensasModel.FK_Gastos_TipoGastos">
+      <End Role="TipoGastos" EntitySet="TipoGastos" />
+      <End Role="Gastos" EntitySet="Gastos" />
+    </AssociationSet>
+    <EntitySet Name="ExpensasDetalle" EntityType="ExpensasModel.ExpensasDetalle" />
+    <AssociationSet Name="FK_ExpensasDetalle_Expensas" Association="ExpensasModel.FK_ExpensasDetalle_Expensas">
+      <End Role="Expensas" EntitySet="Expensas" />
+      <End Role="ExpensasDetalle" EntitySet="ExpensasDetalle" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="UnidadesFuncionales">
@@ -208,6 +178,16 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Gastos">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="Detalles" Relationship="ExpensasModel.FK_Detalles_Gastos" FromRole="Gastos" ToRole="Detalles" />
+    <NavigationProperty Name="TipoGastos" Relationship="ExpensasModel.FK_Gastos_TipoGastos" FromRole="Gastos" ToRole="TipoGastos" />
+  </EntityType>
   <Association Name="FK_Detalles_Gastos">
     <End Type="ExpensasModel.Gastos" Role="Gastos" Multiplicity="1" />
     <End Type="ExpensasModel.Detalles" Role="Detalles" Multiplicity="*" />
@@ -219,5 +199,26 @@
         <PropertyRef Name="Gastos_ID" />
       </Dependent>
     </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Gastos_TipoGastos">
+    <End Type="ExpensasModel.TipoGastos" Role="TipoGastos" Multiplicity="1" />
+    <End Type="ExpensasModel.Gastos" Role="Gastos" Multiplicity="*" />
+  </Association>
+  <EntityType Name="ExpensasDetalle">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TipoGasto_ID" Type="Int32" />
+    <Property Name="Sumar" Type="Boolean" />
+    <Property Name="Orden" Type="Int32" />
+    <Property Name="Gastos_ID" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="Expensas" Relationship="ExpensasModel.FK_ExpensasDetalle_Expensas" FromRole="ExpensasDetalle" ToRole="Expensas" />
+  </EntityType>
+  <Association Name="FK_ExpensasDetalle_Expensas">
+    <End Type="ExpensasModel.Expensas" Role="Expensas" Multiplicity="0..1" />
+    <End Type="ExpensasModel.ExpensasDetalle" Role="ExpensasDetalle" Multiplicity="*" />
   </Association>
 </Schema>

@@ -8,9 +8,9 @@ namespace Servicios.Interfaces
     {
         void AceptarExpensa(int expensaID, string gastosExtraordinarios, string totalGastosOrdinarios);
 
-        void AgregarExpensaDetalle(int IdExpensa, string Detalle, Decimal Importe, int TipoGasto);
+        void AgregarExpensaDetalle(int IdExpensa, string Detalle, decimal Importe, int TipoGasto, decimal IdGasto);
 
-        void ModificarExpensaDetalle(int IdExpensaDetalle, string Detalle, Decimal Importe);
+        void ModificarExpensaDetalle(int IdExpensaDetalle, string Detalle, decimal Importe);
 
         void AgregarGastoEvOrdinario(int IdExpensa, string Detalle, decimal Importe, int TipoGasto);
 
@@ -32,5 +32,10 @@ namespace Servicios.Interfaces
 
         bool ActualizarCheckSumar(int idExpensaDetalle, bool sumar);
 
+        ExpensasDetalle GetExpensaDetalle(int ExpensaID, int GastoID);
+
+        Expensas GetUltimaExpensa(string IdConsorcio);
+
+        void GuardarUltimoTotal(int idExpensa, decimal total);
     }
 }

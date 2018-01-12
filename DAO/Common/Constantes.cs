@@ -15,6 +15,8 @@ namespace WebSistemmas.Common
         public const string ErrorFaltaDetalle = "No se ingreso el Detalle";
         public const string ErrorFaltaImporte = "No se ingreso el Importe correctamente";
         public const string ErrorFaltaPeriodo = "No existe el Periodo";
+        public const string ErrorFaltaGasto = "No se selecciono el Gasto";
+        public const string ErrorImporteCero = "No se puede guardar el Importe 0";
 
         public static decimal GetDecimalFromCurrency (string valor)
         {
