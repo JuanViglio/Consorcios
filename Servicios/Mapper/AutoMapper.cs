@@ -18,7 +18,8 @@ namespace Servicios.Mapper
                                          ID = e.ID,
                                          Importe = e.Importe,
                                          Sumar = e.Sumar.GetValueOrDefault(),
-                                         Orden = e.Orden.GetValueOrDefault()
+                                         Orden = e.Orden.GetValueOrDefault(),
+                                         GastoID = e.Gastos_ID.ToString()
                                      };
         }
     }

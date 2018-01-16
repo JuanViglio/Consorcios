@@ -43,6 +43,9 @@
                                         <asp:BoundField DataField="ID" HeaderText="ID">
                                         <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
                                         </asp:BoundField>
+                                        <asp:BoundField DataField="GastoID" HeaderText="GastoID">
+                                        <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
+                                        </asp:BoundField>
                                         <asp:TemplateField HeaderText="Sumar">  
                                             <HeaderTemplate>
                                                 Sumar
@@ -94,7 +97,7 @@
                                                 </td>
                                                 <td>
                                                     <asp:RadioButton ID="btnNuevo" runat="server" AutoPostBack="True" GroupName="groupGastosOrdinarios" OnCheckedChanged="btnNuevo_CheckedChanged" Text="Nuevo" />
-                                                </td>
+                                                    &nbsp;</td>
                                             </tr>
                                         </table>
 
@@ -145,7 +148,7 @@
                                                 </td>
                                                 <td style="height: 51px; width: 100px;">
                                                     <asp:Button ID="btnCancelarGastoOrdinario" runat="server" Height="30px" OnClick="btnCancelarGastoOrdinario_Click" Text="Cancelar" Width="90px" />
-                                                </td>
+                                                    &nbsp;</td>
                                             </tr>
                                         </table>
                                     </div>

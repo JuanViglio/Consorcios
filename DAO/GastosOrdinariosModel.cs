@@ -11,5 +11,7 @@
         public bool Sumar { get; set; }
 
         public int Orden { get; set; }
+
+        public string GastoID { get; set; }
     }
 }

@@ -17,8 +17,9 @@ namespace WebSistemmas.Consorcios
         private const int ColDetalle = 0;
         private const int ColImporte = 1;
         private const int ColIdExpensaDetalle = 2;
-        private const int ColModificar = 4;
-        private const int ColEliminar = 5;
+        private const int ColIdGasto = 3;
+        private const int ColModificar = 5;
+        private const int ColEliminar = 6;
         readonly IExpensasServ _expensasServ;
         readonly IGastosServ _gastosServ;
         readonly IDetallesServ _detallesServ;
@@ -166,7 +167,29 @@ namespace WebSistemmas.Consorcios
                             txtGasto.Text = Server.HtmlDecode(gridViewrow.Cells[ColDetalle].Text);
                             txtImporte.Text = gridViewrow.Cells[ColImporte].Text;
                             btnAgregarGastoOrdinario.Text = "Modificar";
-                            CargarTotalGastos();
+                            var gastoId = gridViewrow.Cells[ColIdGasto].Text;
+
+                            if (gastoId == "0")
+                            {
+                                btnNuevo.Checked = true;
+                                btnGuardado.Checked = false;
+                                divGastoOrdnarioGuardado.Visible = false;
+                                divGastoOrdnarioNuevo.Visible = true;
+                            }
+                            else
+                            {
+                                btnGuardado.Checked = true;
+                                btnNuevo.Checked = false;
+                                divGastoOrdnarioGuardado.Visible = true;
+                                divGastoOrdnarioNuevo.Visible = false;
+                                ddlGastos.SelectedValue = gastoId;
+
+                                var idConsorcio = Session["idConsorcio"].ToString();
+                                txtDetalle.Text = _detallesServ.GetDetalle(idConsorcio, decimal.Parse(gastoId));
+                            }
+
+                            btnNuevo.Enabled = false;
+                            btnGuardado.Enabled = false;
                             break;
                     }
                 }
@@ -180,6 +203,7 @@ namespace WebSistemmas.Consorcios
         protected void grdGastosOrdinarios_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             e.Row.Cells[ColIdExpensaDetalle].Visible = false;
+            e.Row.Cells[ColIdGasto].Visible = false;
 
             if (e.Row.Cells[0].Text == Constantes.TotalGastoEvOrdinarios || e.Row.Cells[0].Text == Constantes.TotalGastoEvExtraordinarios)
             {
@@ -459,6 +483,8 @@ namespace WebSistemmas.Consorcios
                     {
                         detalle = txtGasto.Text;
                         idGasto = 0;
+                        //cargar el gasto en la tabla Gastos
+                        _gastosServ.AddGasto(Constantes.GastoTipoOrdinario, txtGasto.Text.ToUpper());
                     }
 
                     _expensasServ.AgregarExpensaDetalle(idExpensa, detalle.ToUpper(), Convert.ToDecimal(txtImporte.Text), Constantes.GastoTipoOrdinario, idGasto);
@@ -466,7 +492,17 @@ namespace WebSistemmas.Consorcios
                 else
                 {
                     int idExpensaDetalle = Convert.ToInt32(Session["idExpensaDetalle"].ToString());
-                    _expensasServ.ModificarExpensaDetalle(idExpensaDetalle, txtGasto.Text.ToUpper(), Convert.ToDecimal(txtImporte.Text));
+                    if (btnNuevo.Checked)
+                    {
+                        //Modificar el Gasto Nuevo
+                        _expensasServ.ModificarExpensaDetalle(idExpensaDetalle, txtGasto.Text.ToUpper(), Convert.ToDecimal(txtImporte.Text));
+                    }
+                    else
+                    {
+                        //Modificar el Gasto Gardado
+                        var detalle = ddlGastos.SelectedItem.ToString() + " " + txtDetalle.Text;
+                        _expensasServ.ModificarExpensaDetalle(idExpensaDetalle, detalle.ToUpper(), Convert.ToDecimal(txtImporte.Text));
+                    }
                     btnAgregarGastoOrdinario.Text = "Agregar";
                     CargarGrillaGastosEvOrdinarios();
                 }
@@ -479,7 +515,8 @@ namespace WebSistemmas.Consorcios
                 CargarGrillaGastosEvExtraordinarios();
                 CargarTotalGastos();
                 GuardarUltimoTotal(expensaId, Constantes.GetDecimalFromCurrency(lblTotalGastosOrdinarios.Text));
-
+                btnNuevo.Enabled = true;
+                btnGuardado.Enabled = true;
             }
             catch
             {
@@ -508,8 +545,12 @@ namespace WebSistemmas.Consorcios
         {
             txtGasto.Text = "";
             txtImporte.Text = "";
+            txtDetalle.Text = "";
+            ddlGastos.SelectedValue  = "0";
             btnAgregarGastoOrdinario.Text = "Agregar";
             divError.Visible = false;
+            btnNuevo.Enabled = true;
+            btnGuardado.Enabled = true;
         }
 
         protected void btnCancelarGastoEvOrdinario_Click(object sender, EventArgs e)

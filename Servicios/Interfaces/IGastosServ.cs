@@ -14,5 +14,7 @@ namespace Servicios.Interfaces
         List<Gastos> GetDetalleGastos(int tipoGasto);
 
         List<GastosOrdinariosModel> GetDetalleGastosCombo(int tipoGasto);
+
+        List<Gastos> AddGasto(int idTipoGasto, string detalleGasto);
     }
 }
