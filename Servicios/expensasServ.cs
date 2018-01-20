@@ -23,6 +23,17 @@ namespace Servicios
             return expensas;
         }
 
+        public string GetConsorcio(decimal IdExpensa)
+        {
+            var IdConsorcio = from E in context.Expensas
+                          join C in context.Consorcios
+                          on E.Consorcios.ID equals C.ID 
+                          where E.ID == IdExpensa 
+                          select C.ID;
+
+            return IdConsorcio.FirstOrDefault().ToString();
+        }
+
         public Expensas GetUltimaExpensa(string IdConsorcio)
         {
             var expensas = context.Expensas.Where(x => x.Consorcios.ID == IdConsorcio).OrderByDescending(x => x.PeriodoNumerico).FirstOrDefault();
@@ -32,7 +43,9 @@ namespace Servicios
 
         public decimal AgregarExpensa(string IdConsorcio)
         {
-            if (context.Expensas.Where(x => x.Consorcios.ID == IdConsorcio).Count() == 0)
+            var expensas = context.Expensas.Where(x => x.Consorcios.ID == IdConsorcio);
+
+            if (expensas.Count() == 0)
             {
                 Expensas expensa = new Expensas();
                 Consorcios consorcio = context.Consorcios.Where(x => x.ID == IdConsorcio).FirstOrDefault();
@@ -49,7 +62,7 @@ namespace Servicios
                 return context.Expensas.OrderByDescending(x => x.PeriodoNumerico).FirstOrDefault().ID;
 
             }
-            else if (context.Expensas.OrderByDescending(x => x.ID).FirstOrDefault().Estado == "Finalizado")
+            else if (expensas.OrderByDescending(x => x.ID).FirstOrDefault().Estado == "Finalizado")
             {
                 Expensas expensa = new Expensas();
 
@@ -372,77 +385,6 @@ namespace Servicios
         public void CancelarExpensaUF()
         {
 
-        }
-
-        public void AceptarExpensa(int expensaID, string gastosExtraordinarios, string totalGastosOrdinarios)
-        {
-            try
-            {
-               /*var e = from exp in context.Expensas
-                        select new
-                        {
-                            exp.Estado,
-                            exp.Consorcios.UnidadesFuncionales
-                        };*/
-
-                Pagos pago;
-                var expensa = context.Expensas.Where(x => x.ID == expensaID).FirstOrDefault();
-                var consorcios = context.Consorcios.ToList();
-                var unidadesFuncionales = context.UnidadesFuncionales.ToList();
-
-                expensa.Estado = "Aceptado";
-
-                //buscar las UF de consorcio
-                foreach (var item in expensa.Consorcios.UnidadesFuncionales)
-                {
-                    //Buscar los pagos y sobreescribirlos. Si no los encuentra los creo
-                    pago = context.Pagos.Where(x => x.UnidadesFuncionales.UF == item.UF && x.Periodo == expensa.PeriodoNumerico).FirstOrDefault();
-
-                    if (pago == null)
-                    {
-                        pago = new Pagos();
-                        pago.UnidadesFuncionales = new UnidadesFuncionales();
-                        pago.UnidadesFuncionales = context.UnidadesFuncionales.Where(x => x.UF == item.UF).FirstOrDefault();
-                        //pago.FechaPago1 = new DateTime(17,10,06);
-                        //pago.FechaPago2 = new DateTime(17,10,20);
-                        pago.ImporteGastoParticular = Convert.ToDecimal("0");
-
-                        var Coeficiente = item.Coeficiente.Value;
-                        var GastosExtraordinarios = Constantes.GetDecimalFromCurrency(gastosExtraordinarios);
-                        var ImporteExtraordinario = GastosExtraordinarios * Coeficiente / 100;
-                        var TotalGastosOrdinarios = Constantes.GetDecimalFromCurrency(totalGastosOrdinarios) + pago.ImporteGastoParticular;
-                        var TotalVencimiento1 = ((TotalGastosOrdinarios - GastosExtraordinarios) * Coeficiente / 100) + ImporteExtraordinario;
-
-                        pago.Coeficiente = item.Coeficiente.Value;
-                        pago.ImportePago1 = TotalVencimiento1;
-                        pago.ImportePago2 = TotalVencimiento1 + 10;
-                        pago.ImporteExtraordinario = ImporteExtraordinario;
-                        pago.Periodo = expensa.PeriodoNumerico;
-
-                        context.AddToPagos(pago);
-                    }
-                    else
-                    {
-                        var Coeficiente = item.Coeficiente.Value;
-                        var GastosExtraordinarios = Constantes.GetDecimalFromCurrency(gastosExtraordinarios);
-                        var ImporteExtraordinario = GastosExtraordinarios * Coeficiente / 100;
-                        var TotalGastosOrdinarios = Constantes.GetDecimalFromCurrency(totalGastosOrdinarios) + pago.ImporteGastoParticular;
-                        var TotalVencimiento1 = ((TotalGastosOrdinarios - GastosExtraordinarios) * Coeficiente / 100) + ImporteExtraordinario;
-
-                        pago.Coeficiente = item.Coeficiente.Value;
-                        pago.ImportePago1 = TotalVencimiento1;
-                        pago.ImportePago2 = TotalVencimiento1 + 10;
-                        pago.ImporteExtraordinario = ImporteExtraordinario;
-                        pago.Periodo = expensa.PeriodoNumerico;
-                    }
-                }
-
-                context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
         }
 
         public bool ActualizarCheckSumar(int idExpensaDetalle, bool sumar)

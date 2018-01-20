@@ -9,6 +9,8 @@ using System.Web.Script.Services;
 using Servicios.Interfaces;
 using System.Globalization;
 using WebSistemmas.Common;
+using DAO;
+using Negocio;
 
 namespace WebSistemmas.Consorcios
 {
@@ -23,6 +25,7 @@ namespace WebSistemmas.Consorcios
         readonly IExpensasServ _expensasServ;
         readonly IGastosServ _gastosServ;
         readonly IDetallesServ _detallesServ;
+        readonly expensasNeg _expensaNeg;
 
         #region Funciones Privadas
         private void GuardarUltimoTotal(int expensaId, decimal total)
@@ -89,16 +92,19 @@ namespace WebSistemmas.Consorcios
 
         public ExpensaNueva()
         {
+            ExpensasEntities context = new ExpensasEntities();
             _expensasServ = new expensasServ();
-            _gastosServ = new gastosServ();
+            _gastosServ = new gastosServ(context);
             _detallesServ = new detallesServ();
+            _expensaNeg = new expensasNeg();
         }
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static List<string> OnSubmit(string tipoGastoID)
         {
-            gastosServ gastosServ = new gastosServ();
+            ExpensasEntities context = new ExpensasEntities();
+            gastosServ gastosServ = new gastosServ(context);
 
             var gastos = gastosServ.GetDetalleGastos(Convert.ToInt32(tipoGastoID)).ToList();
 
@@ -341,11 +347,12 @@ namespace WebSistemmas.Consorcios
             {
                 try
                 {
-                    _expensasServ.AceptarExpensa(Convert.ToInt32(Session["ExpensaId"]), lblTotalGastosExtraordinarios.Text, lblTotalGastosOrdinarios.Text);
+                    _expensaNeg.AceptarExpensa(Convert.ToInt32(Session["ExpensaId"]), lblTotalGastosExtraordinarios.Text, lblTotalGastosOrdinarios.Text);
                 }
                 catch (Exception ex)
                 {
-                    lblError.Text = ex.InnerException.Message;
+                    divError.Visible = true;
+                    lblError.Text = ex.Message;
                     return;
                 }
 

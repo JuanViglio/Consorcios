@@ -224,6 +224,10 @@
       <Project>{7C34FDD6-D1C3-46F9-9885-2C8D3F9C4DE6}</Project>
       <Name>DAO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Negocio\Negocio.csproj">
+      <Project>{93d4b900-a83c-40b8-bce9-00aae3128856}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Servicios\Servicios.csproj">
       <Project>{C685E1F7-2804-49A0-B823-BA24A914BF43}</Project>
       <Name>Servicios</Name>

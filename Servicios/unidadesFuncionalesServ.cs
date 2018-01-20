@@ -18,6 +18,13 @@ namespace Servicios
             return unidadesFuncionales;
         }
 
+        public UnidadesFuncionales GetUnidadFuncional(string consorciosID, string UF)
+        {
+            var unidadesFuncionales = context.UnidadesFuncionales.Where(x => x.Consorcios.ID == consorciosID && x.UF == UF).FirstOrDefault();
+
+            return unidadesFuncionales;
+        }
+
         public void CancelarPagos(string consorciosID, int Periodo)
         {
             var consorcio = context.Consorcios.Where(x => x.ID == consorciosID).FirstOrDefault();
@@ -38,22 +45,26 @@ namespace Servicios
 
         public List<UnidadesFuncionalesModel> GetPagos(string consorciosID, int Periodo)
         {            
-            var UF = context.UnidadesFuncionales.Where(x => x.Consorcios.ID == consorciosID).ToList();
-            var pagos = context.Pagos.Where(x => x.Periodo == Periodo).ToList();
+            //var UF = context.UnidadesFuncionales.Where(x => x.Consorcios.ID == consorciosID).ToList();
+            var pagos = from P in context.Pagos
+                        join UF in context.UnidadesFuncionales
+                        on P.UnidadesFuncionales.ID equals UF.ID
+                        where P.Periodo == Periodo
+                            && UF.Consorcios.ID == consorciosID
+                        select new { P.UnidadesFuncionales.UF, UF.Apellido, UF.Nombre, P.Coeficiente, P.ID };
+
             List<UnidadesFuncionalesModel> UFlist = new List<UnidadesFuncionalesModel>();
-            UnidadesFuncionalesModel UFmodel;
 
             foreach (var item in pagos)
             {
-                UFmodel = new UnidadesFuncionalesModel();
-
-                UFmodel.ID = Convert.ToDecimal(item.UnidadesFuncionales.UF);
-                UFmodel.Apellido = item.UnidadesFuncionales.Apellido;
-                UFmodel.Nombre = item.UnidadesFuncionales.Nombre;
-                UFmodel.Coeficiente = item.Coeficiente.ToString();
-                UFmodel.PagoId = item.ID.ToString();
-
-                UFlist.Add(UFmodel);
+                UFlist.Add(new UnidadesFuncionalesModel()
+                {
+                    ID = Convert.ToDecimal(item.UF),
+                    Apellido = item.Apellido,
+                    Nombre = item.Nombre,
+                    Coeficiente = item.Coeficiente.ToString(),
+                    PagoId = item.ID.ToString(),
+                });                
             }
 
             return UFlist;

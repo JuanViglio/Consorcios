@@ -1,4 +1,5 @@
-﻿using Servicios;
+﻿using DAO;
+using Servicios;
 using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -9,15 +10,17 @@ namespace WebSistemmas.Consorcios
     {
         private int col_ID_Expensa = 2;
         private expensasServ _expensasServ;
+        private gastosServ gastosServ;
 
         public ExpensaUFNueva()
         {
+            ExpensasEntities context = new ExpensasEntities();
             _expensasServ = new expensasServ();
+            gastosServ = new gastosServ(context);
         }
 
         private void CargarGrillaGastosOrdinarios()
         {
-            gastosServ gastosServ = new gastosServ();
 
             int expensaID = Convert.ToInt32(Session["ExpensaId"]);
 

@@ -1,8 +1,6 @@
-﻿using Servicios;
+﻿using DAO;
+using Servicios;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -16,7 +14,8 @@ namespace WebSistemmas.Consorcios
 
         public Gastos()
         {
-            _gastosServ = new gastosServ();
+            ExpensasEntities context = new ExpensasEntities();
+            _gastosServ = new gastosServ(context);
         }
 
         protected void Page_Load(object sender, EventArgs e)

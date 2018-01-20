@@ -1,4 +1,5 @@
-﻿using Servicios;
+﻿using DAO;
+using Servicios;
 using Servicios.Interfaces;
 using System;
 using WebSistemmas.Common;
@@ -12,7 +13,8 @@ namespace WebSistemmas.Consorcios
 
         public Detalles()
         {
-            _gastosServ = new gastosServ();
+            ExpensasEntities context = new ExpensasEntities();
+            _gastosServ = new gastosServ(context);
             _detallesServ = new detallesServ();
         }
 

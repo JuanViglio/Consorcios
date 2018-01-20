@@ -6,8 +6,6 @@ namespace Servicios.Interfaces
 {
     public interface IExpensasServ
     {
-        void AceptarExpensa(int expensaID, string gastosExtraordinarios, string totalGastosOrdinarios);
-
         void AgregarExpensaDetalle(int IdExpensa, string Detalle, decimal Importe, int TipoGasto, decimal IdGasto);
 
         void ModificarExpensaDetalle(int IdExpensaDetalle, string Detalle, decimal Importe);
@@ -37,5 +35,7 @@ namespace Servicios.Interfaces
         Expensas GetUltimaExpensa(string IdConsorcio);
 
         void GuardarUltimoTotal(int idExpensa, decimal total);
+
+        string GetConsorcio(decimal IdExpensa);
     }
 }

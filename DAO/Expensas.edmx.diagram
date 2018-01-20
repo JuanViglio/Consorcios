@@ -14,7 +14,6 @@
         <AssociationConnector Association="ExpensasModel.FK_GastosExtDetalle_Expensas" ManuallyRouted="false" />
         <EntityTypeShape EntityType="ExpensasModel.UnidadesFuncionales" Width="1.5" PointX="3" PointY="5.75" />
         <AssociationConnector Association="ExpensasModel.FK_UnidadesFuncionales_Consorcios" />
-        <AssociationConnector Association="ExpensasModel.FK_Pagos_UF" />
         <EntityTypeShape EntityType="ExpensasModel.GastosEvOrdinariosDetalle" Width="1.5" PointX="5.125" PointY="6.375" />
         <AssociationConnector Association="ExpensasModel.FK_GastosEvOrdinariosDetalle_Expensas" />
         <EntityTypeShape EntityType="ExpensasModel.Detalles" Width="1.5" PointX="7.75" PointY="3.625" />
@@ -24,6 +23,7 @@
         <AssociationConnector Association="ExpensasModel.FK_Gastos_TipoGastos" />
         <EntityTypeShape EntityType="ExpensasModel.ExpensasDetalle" Width="1.5" PointX="5.125" PointY="0.75" />
         <AssociationConnector Association="ExpensasModel.FK_ExpensasDetalle_Expensas" />
+        <AssociationConnector Association="ExpensasModel.FK_Pagos_UF" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
