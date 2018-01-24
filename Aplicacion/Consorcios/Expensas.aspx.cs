@@ -1,4 +1,5 @@
-﻿using Servicios;
+﻿using DAO;
+using Servicios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace WebSistemmas.Consorcios
         private const int col_Expensa_ID = 3;
         private const int col_Periodo = 6;
         private const int col_Pago_ID = 4;
+        private ExpensasEntities context = new ExpensasEntities();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,7 +31,7 @@ namespace WebSistemmas.Consorcios
 
         private void CargarGrillaExpensas()
         {
-            expensasServ serv = new expensasServ();
+            expensasServ serv = new expensasServ(context);
 
             grdExpensas.DataSource = serv.GetExpensas(Session["idConsorcio"].ToString());
             grdExpensas.DataBind();
@@ -120,7 +122,7 @@ namespace WebSistemmas.Consorcios
 
         protected void btnNuevaExpensa_Click(object sender, EventArgs e)
         {
-            expensasServ serv = new expensasServ();
+            expensasServ serv = new expensasServ(context);
 
             var ExpensaId = serv.AgregarExpensa(Session["idConsorcio"].ToString());
             Session["Periodo"] = null;

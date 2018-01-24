@@ -14,41 +14,57 @@ namespace Servicios
         private const int GastoTipoEvOrdinario = 2;
         private const int GastoTipoEvExtraordinario = 3;
 
-        private ExpensasEntities context = new ExpensasEntities();
+        private ExpensasEntities _context; 
+
+        public expensasServ(ExpensasEntities context)
+        {
+            _context = context;
+        }
 
         public List<Expensas> GetExpensas(string IdConsorcio)
         {
-            var expensas = context.Expensas.Where(x => x.Consorcios.ID == IdConsorcio).OrderByDescending(x => x.PeriodoNumerico).ToList();
+            var expensas = _context.Expensas.Where(x => x.Consorcios.ID == IdConsorcio).OrderByDescending(x => x.PeriodoNumerico).ToList();
 
             return expensas;
         }
 
-        public string GetConsorcio(decimal IdExpensa)
+        public string GetConsorcioId(decimal IdExpensa)
         {
-            var IdConsorcio = from E in context.Expensas
-                          join C in context.Consorcios
-                          on E.Consorcios.ID equals C.ID 
-                          where E.ID == IdExpensa 
-                          select C.ID;
+            var ConsorcioId = from E in _context.Expensas
+                              join C in _context.Consorcios
+                              on E.Consorcios.ID equals C.ID 
+                              where E.ID == IdExpensa 
+                              select C.ID;
 
-            return IdConsorcio.FirstOrDefault().ToString();
+            return ConsorcioId.FirstOrDefault().ToString();
+        }
+
+        public List<UnidadesFuncionales> GetUnidadesFuncionales (string ConsorcioId)
+        {
+            var uf = from U in _context.UnidadesFuncionales
+                     join C in _context.Consorcios
+                     on U.Consorcios.ID equals C.ID
+                     where C.ID == ConsorcioId
+                     select U;
+
+            return uf.ToList();
         }
 
         public Expensas GetUltimaExpensa(string IdConsorcio)
         {
-            var expensas = context.Expensas.Where(x => x.Consorcios.ID == IdConsorcio).OrderByDescending(x => x.PeriodoNumerico).FirstOrDefault();
+            var expensas = _context.Expensas.Where(x => x.Consorcios.ID == IdConsorcio).OrderByDescending(x => x.PeriodoNumerico).FirstOrDefault();
 
             return expensas;
         }
 
         public decimal AgregarExpensa(string IdConsorcio)
         {
-            var expensas = context.Expensas.Where(x => x.Consorcios.ID == IdConsorcio);
+            var expensas = _context.Expensas.Where(x => x.Consorcios.ID == IdConsorcio);
 
             if (expensas.Count() == 0)
             {
                 Expensas expensa = new Expensas();
-                Consorcios consorcio = context.Consorcios.Where(x => x.ID == IdConsorcio).FirstOrDefault();
+                Consorcios consorcio = _context.Consorcios.Where(x => x.ID == IdConsorcio).FirstOrDefault();
 
                 expensa.Consorcios = consorcio;
                 expensa.PeriodoNumerico = Convert.ToInt32(DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString().PadLeft(2, '0'));
@@ -56,10 +72,10 @@ namespace Servicios
                 expensa.Estado = "En Proceso";
 
                 AddNewExpensaDetalle(expensa);
-                context.AddToExpensas(expensa);
-                context.SaveChanges();
+                _context.AddToExpensas(expensa);
+                _context.SaveChanges();
 
-                return context.Expensas.OrderByDescending(x => x.PeriodoNumerico).FirstOrDefault().ID;
+                return _context.Expensas.OrderByDescending(x => x.PeriodoNumerico).FirstOrDefault().ID;
 
             }
             else if (expensas.OrderByDescending(x => x.ID).FirstOrDefault().Estado == "Finalizado")
@@ -67,7 +83,7 @@ namespace Servicios
                 Expensas expensa = new Expensas();
 
                 List<ExpensasDetalle> expensaDetalle;
-                Consorcios consorcio = context.Consorcios.Where(x => x.ID == IdConsorcio).FirstOrDefault();
+                Consorcios consorcio = _context.Consorcios.Where(x => x.ID == IdConsorcio).FirstOrDefault();
 
                 expensa.Consorcios = consorcio;
                 expensa.PeriodoNumerico = GetNuevoPeriodo();
@@ -82,10 +98,10 @@ namespace Servicios
                 }
 
                 AddNewExpensaDetalle(expensa);
-                context.AddToExpensas(expensa);
-                context.SaveChanges();
+                _context.AddToExpensas(expensa);
+                _context.SaveChanges();
 
-                return context.Expensas.OrderByDescending(x => x.PeriodoNumerico).FirstOrDefault().ID;
+                return _context.Expensas.OrderByDescending(x => x.PeriodoNumerico).FirstOrDefault().ID;
             }
             else
             {
@@ -97,31 +113,31 @@ namespace Servicios
         {
             try
             {
-                var detalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == idExpensa).ToList();
+                var detalle = _context.ExpensasDetalle.Where(x => x.Expensas.ID == idExpensa).ToList();
 
                 if (detalle != null)
                 {
                     foreach (var item in detalle)
                     {
-                        context.DeleteObject(item);
+                        _context.DeleteObject(item);
                     }                    
                 }
 
-                var extraordinarios = context.GastosExtDetalle.Where(x => x.Expensas.ID == idExpensa).ToList();
+                var extraordinarios = _context.GastosExtDetalle.Where(x => x.Expensas.ID == idExpensa).ToList();
 
                 if (extraordinarios != null)
                 {
                     foreach (var item in extraordinarios)
                     {
-                        context.DeleteObject(item);
+                        _context.DeleteObject(item);
                     }                    
                 }
 
-                var expensa = context.Expensas.Where(x => x.ID == idExpensa).FirstOrDefault();
+                var expensa = _context.Expensas.Where(x => x.ID == idExpensa).FirstOrDefault();
 
-                context.DeleteObject(expensa);
+                _context.DeleteObject(expensa);
 
-                context.SaveChanges();
+                _context.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -133,9 +149,9 @@ namespace Servicios
 
         private List<ExpensasDetalle> GetUltimoDetalle()
         {
-            decimal idExpensa = Convert.ToDecimal(context.Expensas.OrderByDescending(x => x.PeriodoNumerico).FirstOrDefault().ID.ToString());
+            decimal idExpensa = Convert.ToDecimal(_context.Expensas.OrderByDescending(x => x.PeriodoNumerico).FirstOrDefault().ID.ToString());
 
-            return context.ExpensasDetalle.Where(x => x.Expensas.ID == idExpensa).ToList();
+            return _context.ExpensasDetalle.Where(x => x.Expensas.ID == idExpensa).ToList();
         }
 
         private List<ExpensasDetalle> GetUltimoDetallePorTipo(int tipoGasto)
@@ -191,7 +207,7 @@ namespace Servicios
 
         private int GetNuevoPeriodo()
         {
-            string periodoActual = context.Expensas.OrderByDescending(x => x.PeriodoNumerico).FirstOrDefault().PeriodoNumerico.Value.ToString();
+            string periodoActual = _context.Expensas.OrderByDescending(x => x.PeriodoNumerico).FirstOrDefault().PeriodoNumerico.Value.ToString();
 
             if (periodoActual.Substring(4, 2) == "12")
                 return (Convert.ToInt32(periodoActual.Substring(0, 4)) + 1) * 100 + 1;
@@ -203,95 +219,95 @@ namespace Servicios
         {
             ExpensasDetalle detalle = new ExpensasDetalle();
 
-            detalle.Expensas = context.Expensas.FirstOrDefault(x => x.ID == IdExpensa);
+            detalle.Expensas = _context.Expensas.FirstOrDefault(x => x.ID == IdExpensa);
             detalle.Detalle = Detalle;
             detalle.Importe = Importe;
             detalle.TipoGasto_ID = TipoGasto;
             detalle.Sumar = true;
             detalle.Gastos_ID = IdGasto;
 
-            context.AddToExpensasDetalle(detalle);
-            context.SaveChanges();
+            _context.AddToExpensasDetalle(detalle);
+            _context.SaveChanges();
         }
 
         public void AgregarGastoEvOrdinario(int IdExpensa, string Detalle, decimal Importe, int TipoGasto)
         {
             GastosEvOrdinariosDetalle detalle = new GastosEvOrdinariosDetalle();
 
-            detalle.Expensas = context.Expensas.FirstOrDefault(x => x.ID == IdExpensa);
+            detalle.Expensas = _context.Expensas.FirstOrDefault(x => x.ID == IdExpensa);
             detalle.Detalle = Detalle;
             detalle.Importe = Importe;
 
-            context.AddToGastosEvOrdinariosDetalle(detalle);
-            context.SaveChanges();
+            _context.AddToGastosEvOrdinariosDetalle(detalle);
+            _context.SaveChanges();
         }
 
         public void ModificarGastoEvOrdinario(int IdGasto, string Detalle, decimal Importe)
         {
-            var gasto = context.GastosEvOrdinariosDetalle.Where(x => x.ID == IdGasto).FirstOrDefault();
+            var gasto = _context.GastosEvOrdinariosDetalle.Where(x => x.ID == IdGasto).FirstOrDefault();
 
             gasto.Detalle = Detalle;
             gasto.Importe = Importe;            
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public void ActualizarTotalGastosEvOrdinarios(decimal idExpensa)
         {
             //obtener la suma de los gastos ev. ordinarios
-            var gastosEvOrdinarios = context.GastosEvOrdinariosDetalle.Where(x => x.Expensas.ID == idExpensa).Sum(x => x.Importe).GetValueOrDefault();
+            var gastosEvOrdinarios = _context.GastosEvOrdinariosDetalle.Where(x => x.Expensas.ID == idExpensa).Sum(x => x.Importe).GetValueOrDefault();
 
             //actualizar la tabla GastosDetalles
-            var expensaDetalle = context.ExpensasDetalle.Where(x => x.Detalle == Constantes.TotalGastoEvOrdinarios && x.Expensas.ID == idExpensa).FirstOrDefault();
+            var expensaDetalle = _context.ExpensasDetalle.Where(x => x.Detalle == Constantes.TotalGastoEvOrdinarios && x.Expensas.ID == idExpensa).FirstOrDefault();
             expensaDetalle.Importe = gastosEvOrdinarios;
 
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public void ActualizarTotalGastosEvExtraordinarios(decimal idExpensa)
         {
             //obtener la suma de los gastos ev. ordinarios
-            var gastosEvExtraordinarios = context.GastosExtDetalle.Where(x => x.Expensas.ID == idExpensa).Sum(x => x.Importe).GetValueOrDefault();
+            var gastosEvExtraordinarios = _context.GastosExtDetalle.Where(x => x.Expensas.ID == idExpensa).Sum(x => x.Importe).GetValueOrDefault();
 
             //actualizar la tabla GastosDetalles
-            var expensaDetalle = context.ExpensasDetalle.Where(x => x.Detalle == Constantes.TotalGastoEvExtraordinarios && x.Expensas.ID == idExpensa).FirstOrDefault();
+            var expensaDetalle = _context.ExpensasDetalle.Where(x => x.Detalle == Constantes.TotalGastoEvExtraordinarios && x.Expensas.ID == idExpensa).FirstOrDefault();
             expensaDetalle.Importe = gastosEvExtraordinarios;
 
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public void ModificarExpensaDetalle(int IdExpensaDetalle, string Detalle, decimal Importe)
         {
-            ExpensasDetalle detalle = context.ExpensasDetalle.Where(x => x.ID == IdExpensaDetalle).FirstOrDefault();
+            ExpensasDetalle detalle = _context.ExpensasDetalle.Where(x => x.ID == IdExpensaDetalle).FirstOrDefault();
 
             detalle.Detalle = Detalle;
             detalle.Importe = Importe;
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public void AgregarGastoExtraordinario(int IdExpensa, string Detalle, decimal Importe)
         {
             GastosExtDetalle detalle = new GastosExtDetalle();
 
-            detalle.Expensas = context.Expensas.Where(x => x.ID == IdExpensa).FirstOrDefault();
+            detalle.Expensas = _context.Expensas.Where(x => x.ID == IdExpensa).FirstOrDefault();
             detalle.Detalle = Detalle;
             detalle.Importe = Importe;
 
-            context.AddToGastosExtDetalle(detalle);
-            context.SaveChanges();
+            _context.AddToGastosExtDetalle(detalle);
+            _context.SaveChanges();
         }
 
         public void ModificarGastoExtraordinario(int IdExpensaDetalle, string Detalle, decimal Importe)
         {
-            var detalle = context.GastosExtDetalle.Where(x => x.ID == IdExpensaDetalle).FirstOrDefault();
+            var detalle = _context.GastosExtDetalle.Where(x => x.ID == IdExpensaDetalle).FirstOrDefault();
             detalle.Detalle = Detalle;
             detalle.Importe = Importe;
 
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public List<ExpensasDetalle> GetGastosByTipo(int IdExpensa, int TipoGasto)
         {
-            return context.ExpensasDetalle.Where(x => x.Expensas.ID == IdExpensa && x.TipoGasto_ID.Value == TipoGasto).ToList();
+            return _context.ExpensasDetalle.Where(x => x.Expensas.ID == IdExpensa && x.TipoGasto_ID.Value == TipoGasto).ToList();
         }
 
         public IEnumerable<GastosOrdinariosModel> GetGastosOrdinarios(int ExpensaID)
@@ -307,79 +323,79 @@ namespace Servicios
 
         public ExpensasDetalle GetExpensaDetalle(int ExpensaID, int GastoID)
         {
-            var expensaDetalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == ExpensaID && x.TipoGasto_ID.Value == GastoTipoOrdinario && x.Gastos_ID == GastoID).FirstOrDefault();
+            var expensaDetalle = _context.ExpensasDetalle.Where(x => x.Expensas.ID == ExpensaID && x.TipoGasto_ID.Value == GastoTipoOrdinario && x.Gastos_ID == GastoID).FirstOrDefault();
 
             return expensaDetalle;
         }
 
         public List<GastosEvOrdinariosDetalle> GetGastosEvOrdinarios(int IdExpensa)
         {
-            return context.GastosEvOrdinariosDetalle.Where(x => x.Expensas.ID == IdExpensa).ToList();
+            return _context.GastosEvOrdinariosDetalle.Where(x => x.Expensas.ID == IdExpensa).ToList();
         }
 
         public List<GastosExtDetalle> GetGastosEvExtraordinarios(int IdExpensa)
         {
-            return context.GastosExtDetalle.Where(x => x.Expensas.ID == IdExpensa).ToList();
+            return _context.GastosExtDetalle.Where(x => x.Expensas.ID == IdExpensa).ToList();
         }
 
         public decimal GetTotalGastosExtraordinarios(int IdExpensa)
         {
-            return context.ExpensasDetalle.Where(x => x.Expensas.ID == IdExpensa && x.Sumar == true && x.TipoGasto_ID == GastoTipoEvExtraordinario).Sum(x => x.Importe).GetValueOrDefault();
+            return _context.ExpensasDetalle.Where(x => x.Expensas.ID == IdExpensa && x.Sumar == true && x.TipoGasto_ID == GastoTipoEvExtraordinario).Sum(x => x.Importe).GetValueOrDefault();
         }
 
         public decimal GetUltimoTotal()
         {
-            return context.Expensas.OrderByDescending(x => x.PeriodoNumerico).FirstOrDefault().Total_Gastos.Value;
+            return _context.Expensas.OrderByDescending(x => x.PeriodoNumerico).FirstOrDefault().Total_Gastos.Value;
         }
 
         public decimal GetTotalGastosOrdinarios(int idExpensa)
         {
-            var detalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == idExpensa && x.Sumar == true && x.TipoGasto_ID != GastoTipoEvExtraordinario).Sum(x => x.Importe);
+            var detalle = _context.ExpensasDetalle.Where(x => x.Expensas.ID == idExpensa && x.Sumar == true && x.TipoGasto_ID != GastoTipoEvExtraordinario).Sum(x => x.Importe);
 
             return detalle ?? 0;
         }
 
         public decimal GetTotalGastosEvOrdinarios(int idExpensa)
         {
-            var detalle = context.GastosEvOrdinariosDetalle.Where(x => x.Expensas.ID == idExpensa).Sum(x => x.Importe);
+            var detalle = _context.GastosEvOrdinariosDetalle.Where(x => x.Expensas.ID == idExpensa).Sum(x => x.Importe);
 
             return (detalle == null) ? 0 : detalle.Value;
         }
 
         public decimal GetTotalGastosEvExtraordinarios(int idExpensa)
         {
-            var detalle = context.GastosExtDetalle.Where(x => x.Expensas.ID == idExpensa).Sum(x => x.Importe);
+            var detalle = _context.GastosExtDetalle.Where(x => x.Expensas.ID == idExpensa).Sum(x => x.Importe);
 
             return (detalle == null) ? 0 : detalle.Value;
         }
 
         public void GuardarUltimoTotal(int idExpensa, decimal total)
         {
-            var expensa = context.Expensas.Where(x => x.ID == idExpensa).FirstOrDefault();
+            var expensa = _context.Expensas.Where(x => x.ID == idExpensa).FirstOrDefault();
 
             expensa.Total_Gastos = total;
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public void ActualizarGastosExtraordinario(int IdExpensa, decimal Importe)
         {
-            var detalle = context.ExpensasDetalle.Where(x => x.Expensas.ID == IdExpensa && x.TipoGasto_ID == GastoTipoEvExtraordinario).FirstOrDefault();
+            var detalle = _context.ExpensasDetalle.Where(x => x.Expensas.ID == IdExpensa && x.TipoGasto_ID == GastoTipoEvExtraordinario).FirstOrDefault();
 
             if (detalle == null)
             {
                 ExpensasDetalle nuevoDetalle = new ExpensasDetalle();
-                nuevoDetalle.Expensas = context.Expensas.Where(x => x.ID == IdExpensa).FirstOrDefault();
+                nuevoDetalle.Expensas = _context.Expensas.Where(x => x.ID == IdExpensa).FirstOrDefault();
                 nuevoDetalle.Importe = Importe;
                 nuevoDetalle.TipoGasto_ID = GastoTipoEvExtraordinario;
                 nuevoDetalle.Detalle = Constantes.FondoPrevisionExtraordinario;
-                context.AddToExpensasDetalle(nuevoDetalle);
+                _context.AddToExpensasDetalle(nuevoDetalle);
             }
             else
             {
                 detalle.Importe = Importe;
             }
 
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public void CancelarExpensaUF()
@@ -389,16 +405,37 @@ namespace Servicios
 
         public bool ActualizarCheckSumar(int idExpensaDetalle, bool sumar)
         {
-            var detalle = context.ExpensasDetalle.FirstOrDefault(x => x.ID == idExpensaDetalle);
+            var detalle = _context.ExpensasDetalle.FirstOrDefault(x => x.ID == idExpensaDetalle);
 
             if (detalle != null)
             {
                 detalle.Sumar = sumar;
-                context.SaveChanges();
+                _context.SaveChanges();
                 return true;
             }
 
             return false;
+        }
+
+        public void AceptarExpensa(decimal expensaID)
+        {
+            var expensa = _context.Expensas.Where(x => x.ID == expensaID).FirstOrDefault();
+
+            if (expensa != null)
+            {
+                expensa.Estado = "Aceptado";
+                _context.SaveChanges();
+            }
+        }
+
+        public Expensas GetExpensa(decimal expensaID)
+        {
+            return _context.Expensas.Where(x => x.ID == expensaID).FirstOrDefault();
+        }
+
+        public int GetPeriodoNumerico(decimal expensaID)
+        {
+            return _context.Expensas.Where(x => x.ID == expensaID).FirstOrDefault().PeriodoNumerico.Value;
         }
 
         #region Private Methods

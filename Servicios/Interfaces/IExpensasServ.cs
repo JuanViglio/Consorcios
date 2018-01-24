@@ -36,6 +36,14 @@ namespace Servicios.Interfaces
 
         void GuardarUltimoTotal(int idExpensa, decimal total);
 
-        string GetConsorcio(decimal IdExpensa);
+        string GetConsorcioId(decimal IdExpensa);
+
+        void AceptarExpensa(decimal expensaID);
+
+        Expensas GetExpensa(decimal expensaID);
+
+        List<UnidadesFuncionales> GetUnidadesFuncionales(string IdExpensa);
+
+        int GetPeriodoNumerico(decimal expensaID);
     }
 }

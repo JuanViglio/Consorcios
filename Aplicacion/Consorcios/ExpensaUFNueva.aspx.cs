@@ -15,7 +15,7 @@ namespace WebSistemmas.Consorcios
         public ExpensaUFNueva()
         {
             ExpensasEntities context = new ExpensasEntities();
-            _expensasServ = new expensasServ();
+            _expensasServ = new expensasServ(context);
             gastosServ = new gastosServ(context);
         }
 

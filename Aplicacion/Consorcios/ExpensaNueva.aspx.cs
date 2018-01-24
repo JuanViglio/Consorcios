@@ -26,11 +26,15 @@ namespace WebSistemmas.Consorcios
         readonly IGastosServ _gastosServ;
         readonly IDetallesServ _detallesServ;
         readonly expensasNeg _expensaNeg;
+        readonly IUnidadesServ _unidadesServ;
+        readonly IPagosServ _pagosServ;
+        readonly IConsorciosServ _consorciosServ;
+        private ExpensasEntities context = new ExpensasEntities();
 
         #region Funciones Privadas
         private void GuardarUltimoTotal(int expensaId, decimal total)
         {
-            expensasServ expensasServ = new expensasServ();
+            expensasServ expensasServ = new expensasServ(context);
 
             expensasServ.GuardarUltimoTotal(expensaId, total);
 
@@ -55,7 +59,7 @@ namespace WebSistemmas.Consorcios
 
         private void CargarGrillaGastosEvOrdinarios()
         {
-            expensasServ expensasServ = new expensasServ();
+            expensasServ expensasServ = new expensasServ(context);
 
             int expensaId = Convert.ToInt32(Session["ExpensaId"]);
 
@@ -67,7 +71,7 @@ namespace WebSistemmas.Consorcios
 
         private void CargarGrillaGastosEvExtraordinarios()
         {
-            expensasServ expensasServ = new expensasServ();
+            expensasServ expensasServ = new expensasServ(context);
 
             int expensaId = Convert.ToInt32(Session["ExpensaId"]);
 
@@ -93,10 +97,14 @@ namespace WebSistemmas.Consorcios
         public ExpensaNueva()
         {
             ExpensasEntities context = new ExpensasEntities();
-            _expensasServ = new expensasServ();
+            _expensasServ = new expensasServ(context);
+            _pagosServ = new pagosServ(context);
             _gastosServ = new gastosServ(context);
             _detallesServ = new detallesServ();
-            _expensaNeg = new expensasNeg();
+            _unidadesServ = new unidadesFuncionalesServ();
+            _consorciosServ = new consorciosServ();
+
+            _expensaNeg = new expensasNeg(_expensasServ, _pagosServ);
         }
 
         [WebMethod]

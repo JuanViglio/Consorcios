@@ -18,6 +18,11 @@ namespace Servicios
             return unidadesFuncionales;
         }
 
+        public List<UnidadesFuncionales> GetAllUnidadesFuncionales()
+        {
+            return context.UnidadesFuncionales.ToList();
+        }
+
         public UnidadesFuncionales GetUnidadFuncional(string consorciosID, string UF)
         {
             var unidadesFuncionales = context.UnidadesFuncionales.Where(x => x.Consorcios.ID == consorciosID && x.UF == UF).FirstOrDefault();

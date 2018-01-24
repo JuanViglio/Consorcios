@@ -7,6 +7,8 @@ namespace Servicios.Interfaces
     {
         List<UnidadesFuncionales> GetUnidadesFuncionales(string consorciosID);
 
+        List<UnidadesFuncionales> GetAllUnidadesFuncionales();
+
         List<UnidadesFuncionales> ModificarUnidades(string idConsorcio, int idUF, string departamento, string idUf, string apellido, string nombre, decimal coeficiente);
 
         List<UnidadesFuncionales> AgregarUnidad(string idConsorcio, string idUf, string departamento, string apellido, string nombre, decimal coeficiente);

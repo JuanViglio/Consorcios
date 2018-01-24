@@ -1,4 +1,5 @@
-﻿using Servicios;
+﻿using DAO;
+using Servicios;
 using System;
 using System.Web.UI.WebControls;
 
@@ -6,6 +7,8 @@ namespace WebSistemmas.Consorcios
 {
     public partial class Privado : System.Web.UI.Page
     {
+        private ExpensasEntities context = new ExpensasEntities();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -16,7 +19,7 @@ namespace WebSistemmas.Consorcios
 
         private void CargarGrillaExpensas()
         {
-            expensasServ serv = new expensasServ();
+            expensasServ serv = new expensasServ(context);
 
             grdExpensas.DataSource = serv.GetExpensas(Session["idConsorcio"].ToString());
             grdExpensas.DataBind();
@@ -39,7 +42,7 @@ namespace WebSistemmas.Consorcios
                     switch (Tipo)
                     {
                         case "ELIMINAR":
-                            expensasServ serv = new expensasServ();
+                            expensasServ serv = new expensasServ(context);
                             serv.DeleteExpensa(int.Parse(GridViewrow.Cells[3].Text));
                             CargarGrillaExpensas();
                             break;
