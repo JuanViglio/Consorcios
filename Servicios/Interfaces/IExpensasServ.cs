@@ -36,9 +36,9 @@ namespace Servicios.Interfaces
 
         void GuardarUltimoTotal(int idExpensa, decimal total);
 
-        string GetConsorcioId(decimal IdExpensa);
+        ExpensaModel GetDatosExpensa(decimal IdExpensa);
 
-        void AceptarExpensa(decimal expensaID);
+        bool CambiarEstadoExpensa(decimal expensaID, string estado);
 
         Expensas GetExpensa(decimal expensaID);
 

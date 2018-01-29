@@ -133,6 +133,7 @@
     <NavigationProperty Name="Consorcios" Relationship="ExpensasModel.FK_UnidadesFuncionales_Consorcios" FromRole="UnidadesFuncionales" ToRole="Consorcios" />
     <Property Name="Departamento" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Pagos" Relationship="ExpensasModel.FK_Pagos_UF" FromRole="UnidadesFuncionales" ToRole="Pagos" />
+    <Property Name="Cochera" Type="Boolean" />
   </EntityType>
   <Association Name="FK_UnidadesFuncionales_Consorcios">
     <End Type="ExpensasModel.Consorcios" Role="Consorcios" Multiplicity="1" />

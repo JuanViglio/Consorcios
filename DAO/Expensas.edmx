@@ -114,6 +114,7 @@
           <Property Name="Apellido" Type="nchar" MaxLength="50" />
           <Property Name="Nombre" Type="nchar" MaxLength="10" />
           <Property Name="Departamento" Type="nvarchar" MaxLength="5" />
+          <Property Name="Cochera" Type="bit" />
         </EntityType>
         <Association Name="FK_Detalles_Consorcios">
           <End Role="Consorcios" Type="Self.Consorcios" Multiplicity="1" />
@@ -408,6 +409,7 @@
           <NavigationProperty Name="Consorcios" Relationship="ExpensasModel.FK_UnidadesFuncionales_Consorcios" FromRole="UnidadesFuncionales" ToRole="Consorcios" />
           <Property Name="Departamento" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Pagos" Relationship="ExpensasModel.FK_Pagos_UF" FromRole="UnidadesFuncionales" ToRole="Pagos" />
+          <Property Name="Cochera" Type="Boolean" />
         </EntityType>
         <Association Name="FK_UnidadesFuncionales_Consorcios">
           <End Type="ExpensasModel.Consorcios" Role="Consorcios" Multiplicity="1" />
@@ -584,6 +586,7 @@
           <EntitySetMapping Name="UnidadesFuncionales">
             <EntityTypeMapping TypeName="ExpensasModel.UnidadesFuncionales">
               <MappingFragment StoreEntitySet="UnidadesFuncionales">
+                <ScalarProperty Name="Cochera" ColumnName="Cochera" />
                 <ScalarProperty Name="Departamento" ColumnName="Departamento" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Apellido" ColumnName="Apellido" />

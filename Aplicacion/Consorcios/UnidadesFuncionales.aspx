@@ -12,7 +12,7 @@
             <table>
                 <tr>
                     <td colspan="2" style="height: 131px">
-                        <asp:gridview id="grdUnidades" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" onrowcommand="grdUnidades_RowCommand" style="margin-top: 0px; margin-left: 0px; margin-right: 32px;" width="622px" OnRowDataBound="grdUnidades_RowDataBound">
+                        <asp:gridview id="grdUnidades" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" onrowcommand="grdUnidades_RowCommand" style="margin-top: 0px; margin-left: 0px; margin-right: 32px;" width="637px" OnRowDataBound="grdUnidades_RowDataBound">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
                     <asp:BoundField DataField="UF" HeaderText="Numero">
@@ -25,6 +25,9 @@
                     <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
                     </asp:BoundField>
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre">
+                    <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Cochera" HeaderText="Cochera">
                     <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
                     </asp:BoundField>
                     <asp:BoundField DataField="Coeficiente" HeaderText="Coeficiente">
@@ -58,7 +61,7 @@
                     <td valign="top" style="width: 525px; height: 131px;">
                         <div id="divUFModificar" style="margin-top: 30px; display: none">
                             <table style="margin-top: 47px; width: 375px;">
-                                <tr style ="visibility:hidden">
+                                <tr>
                                     <td style="width: 130px">
                                         <asp:label id="Label2" runat="server" text="ID"></asp:label>
                                     </td>
@@ -107,6 +110,17 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td style="width: 130px; height: 23px;">
+                                        <asp:label id="Label12" runat="server" text="Cochera"></asp:label>
+                                    </td>
+                                    <td style="height: 23px" colspan="2">
+                                        <asp:dropdownlist  runat="server" ID="ddlCochera">
+                                            <asp:ListItem>NO</asp:ListItem>
+                                            <asp:ListItem>SI</asp:ListItem>
+                                        </asp:dropdownlist>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td style="width: 130px; height: 53px">
                                         <asp:button id="btnAceptarModificar" runat="server" height="30px" onclick="btnAceptarModificar_Click" text="Modificar" width="90px" />
                                     </td>
@@ -121,9 +135,9 @@
                 <tr>
                     <td>
                         <asp:Button ID="btnNuevoUF" runat="server" Height="35px" OnClientClick="SlideDivUFDatos(); return false;" Text="Nuevo" Width="107px" />
-                        <asp:Button ID="btnVolver" runat="server" Height="35px" Text="Vovler" Width="107px" OnClick="btnVolver_Click" style="margin-left: 26px" />
+                        <asp:Button ID="btnVolver" runat="server" Height="35px" Text="Vovler" Width="107px" OnClick="btnVolver_Click" style="margin-left: 26px; margin-right: 18px;" />
                     </td>
-                    <td style="width: 470px">
+                    <td style="width: 442px">
                         <div id="divUFDatos" style="margin-top: 30px; display: none">
                             <table style="margin-top: 47px; width: 375px;">
                                 <tr>
@@ -166,7 +180,17 @@
                                         <asp:textbox id="txtCoeficienteNuevo" runat="server" width="156px"></asp:textbox>
                                     </td>
                                 </tr>
-    
+                                    <tr>
+                                    <td style="width: 130px; height: 23px;">
+                                        <asp:label id="Label13" runat="server" text="Cochera"></asp:label>
+                                    </td>
+                                    <td style="height: 23px" colspan="2">
+                                        <asp:dropdownlist  runat="server" ID="ddlCocheraNueva">
+                                            <asp:ListItem>NO</asp:ListItem>
+                                            <asp:ListItem>SI</asp:ListItem>
+                                        </asp:dropdownlist>
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td style="width: 130px; height: 53px">
                                         <asp:Button ID="btnAceptarUFConsorcio" runat="server" Height="30px" OnClick="btnAceptarNuevoUF_Click" Text="Agregar" Width="90px" />

@@ -12,8 +12,9 @@ namespace WebSistemmas.Consorcios
         private const int col_departamento = 1;
         private const int col_apellido = 2;
         private const int col_nombre = 3;
-        private const int col_coeficiente = 4;
-        private const int col_idUF = 5;
+        private const int col_cochera = 4;
+        private const int col_coeficiente = 5;
+        private const int col_idUF = 6;
 
         public UnidadesFuncionales()
         {
@@ -58,6 +59,7 @@ namespace WebSistemmas.Consorcios
                             txtApellido.Text = GridViewrow.Cells[col_apellido].Text;
                             txtCoeficiente.Text = GridViewrow.Cells[col_coeficiente].Text;
                             txtID.Text = GridViewrow.Cells[col_idUF].Text;
+                            ddlCochera.SelectedValue = GridViewrow.Cells[col_cochera].Text;
                             break;
 
                         default:
@@ -109,7 +111,7 @@ namespace WebSistemmas.Consorcios
                 string idConsorcio = Session["idConsorcio"].ToString();
                 string departamento = txtDepartamento.Text;
                 decimal coeficiente = decimal.Parse(txtCoeficiente.Text);
-                grdUnidades.DataSource = _serv.ModificarUnidades(idConsorcio, Convert.ToInt32(txtID.Text), departamento, txtNumero.Text, txtApellido.Text.ToUpper(), txtNombre.Text.ToUpper(), coeficiente);
+                grdUnidades.DataSource = _serv.ModificarUnidades(idConsorcio, Convert.ToInt32(txtID.Text), departamento, txtNumero.Text, txtApellido.Text.ToUpper(), txtNombre.Text.ToUpper(), coeficiente, ddlCochera.SelectedValue);
                 grdUnidades.DataBind();
             }
             catch (Exception ex)
@@ -155,9 +157,11 @@ namespace WebSistemmas.Consorcios
             try
             {
                 string idConsorcio = Session["idConsorcio"].ToString();
-                grdUnidades.DataSource = _serv.AgregarUnidad(idConsorcio, txtNumeroNuevo.Text, txtDepartamentoNuevo.Text, txtApellidoNuevo.Text.ToUpper(), txtNombreNuevo.Text.ToUpper(), Convert.ToDecimal(txtCoeficienteNuevo.Text));
+                grdUnidades.DataSource = _serv.AgregarUnidad(idConsorcio, txtNumeroNuevo.Text, txtDepartamentoNuevo.Text, txtApellidoNuevo.Text.ToUpper(), txtNombreNuevo.Text.ToUpper(), Convert.ToDecimal(txtCoeficienteNuevo.Text), ddlCocheraNueva.SelectedValue);
                 grdUnidades.DataBind();
 
+                txtNumeroNuevo.Text = "";
+                txtDepartamento.Text = "";
                 txtNombreNuevo.Text = "";
                 txtApellidoNuevo.Text = "";
                 txtNombreNuevo.Text = "";

@@ -22,5 +22,22 @@ namespace Servicios.Mapper
                                          GastoID = e.Gastos_ID.ToString()
                                      };
         }
+
+        public static IEnumerable <UnidadesFuncionalesModel> MaptToUnidadesFuncionalesModel(List<UnidadesFuncionales> unidadesFuncionales)
+        {
+            IEnumerable<UnidadesFuncionalesModel> ufModel;
+
+            return ufModel = from u in unidadesFuncionales
+                             select new UnidadesFuncionalesModel()
+                             {
+                                 Departamento = u.Departamento,
+                                 ID = u.ID,
+                                 Apellido = u.Apellido,
+                                 Nombre = u.Nombre,
+                                 UF = u.UF,
+                                 Cochera = u.Cochera == true ? "SI" : "NO",
+                                 Coeficiente = u.Coeficiente.ToString()                           
+                             };
+        }
     }
 }

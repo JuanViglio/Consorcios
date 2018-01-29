@@ -3,6 +3,7 @@ using Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using WebSistemmas.Common;
 
 namespace Negocio
 {
@@ -18,35 +19,59 @@ namespace Negocio
             _pagosServ = pagosServ;
         }
 
-        public List<decimal> AceptarExpensa(int expensaID, string gastosExtraordinarios, string totalGastosOrdinarios)
+        public decimal AceptarExpensa(int expensaID, string gastosExtraordinarios, string totalGastosOrdinarios)
         {
             try
             {
-                var consorcioId = _expensasServ.GetConsorcioId(expensaID);                
-                var periodoNumerico = _expensasServ.GetPeriodoNumerico(expensaID);
-                var unidadesFuncionales = _expensasServ.GetUnidadesFuncionales(consorcioId);
-
-                //buscar los pagos del consorcio
-                var cantPagos = _pagosServ.GetPagos(periodoNumerico, consorcioId).Count();
-
+                var expensa = GetDatosExpensa(expensaID);
+                var unidadesFuncionales = GetUnidadesFuncionales(expensa.ConsorcioId);
+                var cantPagos = _pagosServ.GetPagos(expensa.PeriodoNumerico, expensa.ConsorcioId).Count();
+    
                 foreach (var item in unidadesFuncionales)
                 {
-                    //Buscar los pagos y los sobreescribe. Si no los encuentra los crea
-
+                    //Busca los pagos y los sobreescribe. Si no los encuentra los crea
                     if (cantPagos == 0)
-                        _pagosServ.AddPagos(consorcioId, item, gastosExtraordinarios, totalGastosOrdinarios, periodoNumerico);
+                        _pagosServ.AddPagos(expensa.ConsorcioId, item, gastosExtraordinarios, totalGastosOrdinarios, expensa.PeriodoNumerico);
                     else
-                        _pagosServ.UpdatePagos(consorcioId, item, gastosExtraordinarios, totalGastosOrdinarios, periodoNumerico);
-
+                        _pagosServ.UpdatePagos(expensa.ConsorcioId, item, gastosExtraordinarios, totalGastosOrdinarios, expensa.PeriodoNumerico);
                 }
-                _expensasServ.AceptarExpensa(expensaID);
 
-                return _pagosServ.GetPagos(periodoNumerico, consorcioId);
+                CambiarEstadoExpensa(expensaID, Constantes.EstadoAceptado);
+
+                return unidadesFuncionales.Count();
             }
             catch (Exception ex)
             {
                 throw ex;
-            }
+            }                    
         }
+
+        #region Metodos Privados
+        private ExpensaModel GetDatosExpensa(int expensaID)
+        {
+            var expensa = _expensasServ.GetDatosExpensa(expensaID);
+
+            if (expensa != null)
+                return expensa;
+            else
+                throw new Exception("No se encontro la Expensa");
+        }
+
+        private List<UnidadesFuncionales> GetUnidadesFuncionales(string ConsorcioId)
+        {
+            var unidadesFuncionales = _expensasServ.GetUnidadesFuncionales(ConsorcioId);
+
+            if (unidadesFuncionales != null)
+                return unidadesFuncionales;
+            else
+                throw new Exception("No existen Unidades Funcionales para este Consorcio");
+        }
+
+        private void CambiarEstadoExpensa(decimal expensaID, string estado)
+        {
+            if (!_expensasServ.CambiarEstadoExpensa(expensaID, estado))
+                throw new Exception("No se pudo actualizar el Estado de la expensa");
+        }
+        #endregion
     }
 }

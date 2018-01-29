@@ -81,6 +81,7 @@
     <EntitySetMapping Name="UnidadesFuncionales">
       <EntityTypeMapping TypeName="ExpensasModel.UnidadesFuncionales">
         <MappingFragment StoreEntitySet="UnidadesFuncionales">
+          <ScalarProperty Name="Cochera" ColumnName="Cochera" />
           <ScalarProperty Name="Departamento" ColumnName="Departamento" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Apellido" ColumnName="Apellido" />

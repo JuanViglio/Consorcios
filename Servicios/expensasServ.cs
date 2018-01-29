@@ -28,15 +28,15 @@ namespace Servicios
             return expensas;
         }
 
-        public string GetConsorcioId(decimal IdExpensa)
+        public ExpensaModel GetDatosExpensa(decimal IdExpensa)
         {
-            var ConsorcioId = from E in _context.Expensas
+            var expensa = from E in _context.Expensas
                               join C in _context.Consorcios
                               on E.Consorcios.ID equals C.ID 
                               where E.ID == IdExpensa 
-                              select C.ID;
+                              select new ExpensaModel { ConsorcioId = C.ID, PeriodoNumerico = E.PeriodoNumerico.Value };
 
-            return ConsorcioId.FirstOrDefault().ToString();
+            return expensa.FirstOrDefault();
         }
 
         public List<UnidadesFuncionales> GetUnidadesFuncionales (string ConsorcioId)
@@ -417,14 +417,19 @@ namespace Servicios
             return false;
         }
 
-        public void AceptarExpensa(decimal expensaID)
-        {
+        public bool CambiarEstadoExpensa(decimal expensaID, string estado)
+        {            
             var expensa = _context.Expensas.Where(x => x.ID == expensaID).FirstOrDefault();
 
             if (expensa != null)
             {
-                expensa.Estado = "Aceptado";
+                expensa.Estado = estado;
                 _context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
@@ -435,7 +440,12 @@ namespace Servicios
 
         public int GetPeriodoNumerico(decimal expensaID)
         {
-            return _context.Expensas.Where(x => x.ID == expensaID).FirstOrDefault().PeriodoNumerico.Value;
+            var expensa = _context.Expensas.Where(x => x.ID == expensaID).FirstOrDefault();
+
+            if (expensa != null)
+                return expensa.PeriodoNumerico.Value;
+            else
+                throw new Exception("No se encontro la Expensa en la base de datos");
         }
 
         #region Private Methods

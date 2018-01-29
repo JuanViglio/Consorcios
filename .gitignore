@@ -3,3 +3,7 @@
 ################################################################################
 
 /DAO/obj/Debug
+/Servicios.Mock/obj/Debug
+/ServiciosTest/bin/Debug
+/ServiciosTests/obj/Debug
+/ServiciosTest/obj/Debug

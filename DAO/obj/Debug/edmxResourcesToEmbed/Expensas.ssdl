@@ -109,6 +109,7 @@
     <Property Name="Apellido" Type="nchar" MaxLength="50" />
     <Property Name="Nombre" Type="nchar" MaxLength="10" />
     <Property Name="Departamento" Type="nvarchar" MaxLength="5" />
+    <Property Name="Cochera" Type="bit" />
   </EntityType>
   <Association Name="FK_Detalles_Consorcios">
     <End Role="Consorcios" Type="Self.Consorcios" Multiplicity="1" />
