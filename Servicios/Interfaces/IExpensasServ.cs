@@ -45,5 +45,7 @@ namespace Servicios.Interfaces
         List<UnidadesFuncionales> GetUnidadesFuncionales(string IdExpensa);
 
         int GetPeriodoNumerico(decimal expensaID);
+
+        decimal AgregarExpensa(string IdConsorcio);
     }
 }

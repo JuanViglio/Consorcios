@@ -81,6 +81,7 @@
     <EntitySetMapping Name="UnidadesFuncionales">
       <EntityTypeMapping TypeName="ExpensasModel.UnidadesFuncionales">
         <MappingFragment StoreEntitySet="UnidadesFuncionales">
+          <ScalarProperty Name="Cochera" ColumnName="Cochera" />
           <ScalarProperty Name="Departamento" ColumnName="Departamento" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Apellido" ColumnName="Apellido" />
@@ -96,14 +97,6 @@
       </EndProperty>
       <EndProperty Name="Consorcios">
         <ScalarProperty Name="ID" ColumnName="Consorcios_ID" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Pagos_UF" TypeName="ExpensasModel.FK_Pagos_UF" StoreEntitySet="Pagos">
-      <EndProperty Name="Pagos">
-        <ScalarProperty Name="ID" ColumnName="ID" />
-      </EndProperty>
-      <EndProperty Name="UnidadesFuncionales">
-        <ScalarProperty Name="ID" ColumnName="UnidadesFuncionales_ID" />
       </EndProperty>
     </AssociationSetMapping>
     <EntitySetMapping Name="GastosEvOrdinariosDetalle">
@@ -189,6 +182,14 @@
         <ScalarProperty Name="ID" ColumnName="Expensas_ID" />
       </EndProperty>
       <Condition ColumnName="Expensas_ID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Pagos_UF" TypeName="ExpensasModel.FK_Pagos_UF" StoreEntitySet="Pagos">
+      <EndProperty Name="Pagos">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <EndProperty Name="UnidadesFuncionales">
+        <ScalarProperty Name="ID" ColumnName="UnidadesFuncionales_ID" />
+      </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

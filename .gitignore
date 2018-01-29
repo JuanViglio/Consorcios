@@ -7,3 +7,8 @@
 /ServiciosTest/bin/Debug
 /ServiciosTests/obj/Debug
 /ServiciosTest/obj/Debug
+/Negocio.Test/obj/Debug
+/ServiciosTests/obj/Release
+/Servicios.Mock/obj/Release
+/Servicios/obj/Debug
+/Negocio.Test/obj/Release

@@ -86,7 +86,7 @@ namespace Servicios
                 Consorcios consorcio = _context.Consorcios.Where(x => x.ID == IdConsorcio).FirstOrDefault();
 
                 expensa.Consorcios = consorcio;
-                expensa.PeriodoNumerico = GetNuevoPeriodo();
+                expensa.PeriodoNumerico = GetNuevoPeriodo(IdConsorcio);
                 expensa.Periodo = GetDescripcionPeriodo(expensa.PeriodoNumerico.Value);
                 expensa.Estado = "En Proceso";
 
@@ -205,9 +205,9 @@ namespace Servicios
             }
         }
 
-        private int GetNuevoPeriodo()
+        private int GetNuevoPeriodo(string IdConsorcio)
         {
-            string periodoActual = _context.Expensas.OrderByDescending(x => x.PeriodoNumerico).FirstOrDefault().PeriodoNumerico.Value.ToString();
+            string periodoActual = _context.Expensas.OrderByDescending(x => x.PeriodoNumerico).Where(x => x.Consorcios.ID == IdConsorcio).FirstOrDefault().PeriodoNumerico.Value.ToString();
 
             if (periodoActual.Substring(4, 2) == "12")
                 return (Convert.ToInt32(periodoActual.Substring(0, 4)) + 1) * 100 + 1;

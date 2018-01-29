@@ -111,3 +111,5 @@ D:\Sistemmas\Working Copy\Consorcios\Aplicacion\obj\Release\WebSistemmas.pdb
 D:\Sistemmas\Working Copy\Consorcios\Aplicacion\bin\Microsoft.WindowsAzure.Storage.dll
 D:\Sistemmas\Working Copy\Consorcios\Aplicacion\bin\Microsoft.Data.Services.Client.dll
 D:\Sistemmas\Working Copy\Consorcios\Aplicacion\bin\Newtonsoft.Json.dll
+D:\Sistemmas\Working Copy\Consorcios\Aplicacion\bin\Negocio.dll
+D:\Sistemmas\Working Copy\Consorcios\Aplicacion\bin\Negocio.pdb
