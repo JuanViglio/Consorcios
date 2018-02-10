@@ -16,3 +16,5 @@ D:\Sistemmas\Consorcios\Negocio\bin\Debug\Servicios.pdb
 D:\Sistemmas\Consorcios\Negocio\obj\Debug\Negocio.csprojResolveAssemblyReference.cache
 D:\Sistemmas\Consorcios\Negocio\obj\Debug\Negocio.dll
 D:\Sistemmas\Consorcios\Negocio\obj\Debug\Negocio.pdb
+D:\Sistemmas\Consorcios\Negocio\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Sistemmas\Consorcios\Negocio\bin\Debug\System.Threading.Tasks.Extensions.xml
