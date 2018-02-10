@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="ExpensasModelStoreContainer" CdmEntityContainer="ExpensasEntities">
     <EntitySetMapping Name="Consorcios">
       <EntityTypeMapping TypeName="ExpensasModel.Consorcios">
@@ -190,6 +190,46 @@
       <EndProperty Name="UnidadesFuncionales">
         <ScalarProperty Name="ID" ColumnName="UnidadesFuncionales_ID" />
       </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="GastosEvOrdinariosUFDetalle">
+      <EntityTypeMapping TypeName="ExpensasModel.GastosEvOrdinariosUFDetalle">
+        <MappingFragment StoreEntitySet="GastosEvOrdinariosUFDetalle">
+          <ScalarProperty Name="Importe" ColumnName="Importe" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_GastosEvOrdinariosUFDetalle_Expensas" TypeName="ExpensasModel.FK_GastosEvOrdinariosUFDetalle_Expensas" StoreEntitySet="GastosEvOrdinariosUFDetalle">
+      <EndProperty Name="GastosEvOrdinariosUFDetalle">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <EndProperty Name="Pagos">
+        <ScalarProperty Name="ID" ColumnName="Pagos_ID" />
+      </EndProperty>
+      <Condition ColumnName="Pagos_ID" IsNull="false" />
+    </AssociationSetMapping>
+    <EntitySetMapping Name="ExpensasUFDetalle">
+      <EntityTypeMapping TypeName="ExpensasModel.ExpensasUFDetalle">
+        <MappingFragment StoreEntitySet="ExpensasUFDetalle">
+          <ScalarProperty Name="Gastos_ID" ColumnName="Gastos_ID" />
+          <ScalarProperty Name="Orden" ColumnName="Orden" />
+          <ScalarProperty Name="Sumar" ColumnName="Sumar" />
+          <ScalarProperty Name="TipoGasto_ID" ColumnName="TipoGasto_ID" />
+          <ScalarProperty Name="Importe" ColumnName="Importe" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_ExpensasUFDetalle_Pagos" TypeName="ExpensasModel.FK_ExpensasUFDetalle_Pagos" StoreEntitySet="ExpensasUFDetalle">
+      <EndProperty Name="ExpensasUFDetalle">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <EndProperty Name="Pagos">
+        <ScalarProperty Name="ID" ColumnName="Pagos_ID" />
+      </EndProperty>
+      <Condition ColumnName="Pagos_ID" IsNull="false" />
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

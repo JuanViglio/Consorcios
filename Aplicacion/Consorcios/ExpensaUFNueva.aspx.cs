@@ -1,5 +1,6 @@
 ﻿using DAO;
 using Servicios;
+using Servicios.Interfaces;
 using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -10,16 +11,18 @@ namespace WebSistemmas.Consorcios
     {
         private int col_ID_Expensa = 2;
         private expensasServ _expensasServ;
-        private gastosServ gastosServ;
+        private gastosServ _gastosServ;
+        private IPagosServ _pagosServ;
 
         public ExpensaUFNueva()
         {
             ExpensasEntities context = new ExpensasEntities();
             _expensasServ = new expensasServ(context);
-            gastosServ = new gastosServ(context);
+            _gastosServ = new gastosServ(context);
+            _pagosServ = new pagosServ(context);
         }
 
-        private void CargarGrillaGastosOrdinarios()
+        private void CargarGrillaGastosFijos()
         {
 
             int expensaID = Convert.ToInt32(Session["ExpensaId"]);
@@ -30,15 +33,15 @@ namespace WebSistemmas.Consorcios
             lblTotalGastosOrdinarios.Text = _expensasServ.GetTotalGastosOrdinarios(expensaID).ToString();
         }
 
-        private void CargarGrillaGastosEventuales()
+        private void CargarGrillaGastosEvOrdinarios()
         {
-            int expensaID = Convert.ToInt32(Session["ExpensaId"]);
+            var PagoId = int.Parse(Session["PagoId"].ToString());
 
-            grdGastosEventuales.DataSource = _expensasServ.GetGastosEvOrdinarios(expensaID);
+            grdGastosEventuales.DataSource = _pagosServ.GetGastosEvOrdinariosUF(PagoId);
             grdGastosEventuales.DataBind();
         }
 
-        private void CargarGrillaGastosExtraordinarios()
+        private void CargarGrillaGastosEvExtraordinarios()
         {
             int expensaID = Convert.ToInt32(Session["ExpensaId"]);
 
@@ -77,9 +80,9 @@ namespace WebSistemmas.Consorcios
             {
                 divError.Visible = false;
 
-                CargarGrillaGastosOrdinarios();
-                CargarGrillaGastosEventuales();
-                CargarGrillaGastosExtraordinarios();
+                CargarGrillaGastosFijos();
+                CargarGrillaGastosEvOrdinarios();
+                CargarGrillaGastosEvExtraordinarios();
 
                 CalcularTotales();
 
@@ -133,11 +136,6 @@ namespace WebSistemmas.Consorcios
             Response.Redirect("Expensas.aspx#consorcios");
         }
 
-        protected void btnVolver_Click1(object sender, EventArgs e)
-        {
-            Response.Redirect("Expensas.aspx#consorcios");
-        }
-
         protected void btnActualizar_Click(object sender, EventArgs e)
         {            
             if (txtImporteGastoParticular.Text.IsNumeric() == false)
@@ -156,7 +154,7 @@ namespace WebSistemmas.Consorcios
                 decimal importe = Convert.ToDecimal(txtImporteGastoParticular.Text);
                 serv.GuardarGastoParticular(PagoId, importe, txtDetalleGastoParticular.Text.ToUpper());
 
-                CargarGrillaGastosOrdinarios();
+                CargarGrillaGastosFijos();
                 CalcularTotales();
             }
         }

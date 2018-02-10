@@ -11,5 +11,6 @@
         public string Direccion { get; set; }
         public string UF { get; set; }
         public string Cochera { get; set; }
+        public bool Aplicar { get; set; }
     }
 }

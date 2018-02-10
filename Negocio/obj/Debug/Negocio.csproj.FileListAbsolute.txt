@@ -7,3 +7,12 @@ D:\Sistemmas\Working Copy\Consorcios\Negocio\bin\Debug\DAO.pdb
 D:\Sistemmas\Working Copy\Consorcios\Negocio\bin\Debug\Servicios.pdb
 D:\Sistemmas\Working Copy\Consorcios\Negocio\obj\Debug\Negocio.dll
 D:\Sistemmas\Working Copy\Consorcios\Negocio\obj\Debug\Negocio.pdb
+D:\Sistemmas\Consorcios\Negocio\bin\Debug\Negocio.dll
+D:\Sistemmas\Consorcios\Negocio\bin\Debug\Negocio.pdb
+D:\Sistemmas\Consorcios\Negocio\bin\Debug\DAO.dll
+D:\Sistemmas\Consorcios\Negocio\bin\Debug\Servicios.dll
+D:\Sistemmas\Consorcios\Negocio\bin\Debug\DAO.pdb
+D:\Sistemmas\Consorcios\Negocio\bin\Debug\Servicios.pdb
+D:\Sistemmas\Consorcios\Negocio\obj\Debug\Negocio.csprojResolveAssemblyReference.cache
+D:\Sistemmas\Consorcios\Negocio\obj\Debug\Negocio.dll
+D:\Sistemmas\Consorcios\Negocio\obj\Debug\Negocio.pdb

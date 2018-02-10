@@ -12,3 +12,6 @@
 /Servicios.Mock/obj/Release
 /Servicios/obj/Debug
 /Negocio.Test/obj/Release
+/Aplicacion/bin
+/Negocio/obj/Debug
+/Aplicacion/obj/Debug

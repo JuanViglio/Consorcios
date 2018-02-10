@@ -14,5 +14,9 @@ namespace Servicios.Interfaces
         IEnumerable<UnidadesFuncionalesModel> AgregarUnidad(string idConsorcio, string idUf, string departamento, string apellido, string nombre, decimal coeficiente, string cochera);
 
         UnidadesFuncionales GetUnidadFuncional(string consorciosID, string UF);
+
+        List<UnidadesFuncionalesModel> GetPagos(string consorciosID, int Periodo);
+
+        List<UnidadesFuncionalesModel> GetPagosConCochera(string consorciosID, int Periodo, bool agregarValorCochera);
     }
 }

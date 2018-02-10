@@ -32,6 +32,8 @@ namespace Servicios.Interfaces
 
         ExpensasDetalle GetExpensaDetalle(int ExpensaID, int GastoID);
 
+        List<ExpensasDetalle> GetExpensaDetalle(int ExpensaID);
+
         Expensas GetUltimaExpensa(string IdConsorcio);
 
         void GuardarUltimoTotal(int idExpensa, decimal total);
@@ -47,5 +49,7 @@ namespace Servicios.Interfaces
         int GetPeriodoNumerico(decimal expensaID);
 
         decimal AgregarExpensa(string IdConsorcio);
+
+        List<GastosEvOrdinariosDetalle> GetGastosEvOrdinarios(int IdExpensa);
     }
 }

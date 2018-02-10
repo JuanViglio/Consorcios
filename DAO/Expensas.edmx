@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ExpensasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+    <Schema Namespace="ExpensasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Consorcios">
           <Key>
             <PropertyRef Name="ID" />
@@ -49,6 +49,19 @@
           <Property Name="Orden" Type="int" />
           <Property Name="Gastos_ID" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
+        <EntityType Name="ExpensasUFDetalle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Detalle" Type="nvarchar" MaxLength="50" />
+          <Property Name="Importe" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TipoGasto_ID" Type="int" />
+          <Property Name="Pagos_ID" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Sumar" Type="bit" />
+          <Property Name="Orden" Type="int" />
+          <Property Name="Gastos_ID" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
         <EntityType Name="Gastos">
           <Key>
             <PropertyRef Name="ID" />
@@ -66,6 +79,15 @@
           <Property Name="Detalle" Type="nvarchar" MaxLength="50" />
           <Property Name="Importe" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Expensas_ID" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="GastosEvOrdinariosUFDetalle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Detalle" Type="nvarchar" MaxLength="50" />
+          <Property Name="Importe" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Pagos_ID" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="GastosExtDetalle">
           <Key>
@@ -164,6 +186,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ExpensasUFDetalle_Pagos">
+          <End Role="Pagos" Type="Self.Pagos" Multiplicity="0..1" />
+          <End Role="ExpensasUFDetalle" Type="Self.ExpensasUFDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pagos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ExpensasUFDetalle">
+              <PropertyRef Name="Pagos_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Gastos_TipoGastos">
           <End Role="TipoGastos" Type="Self.TipoGastos" Multiplicity="1" />
           <End Role="Gastos" Type="Self.Gastos" Multiplicity="*" />
@@ -185,6 +219,18 @@
             </Principal>
             <Dependent Role="GastosEvOrdinariosDetalle">
               <PropertyRef Name="Expensas_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GastosEvOrdinariosUFDetalle_Expensas">
+          <End Role="Pagos" Type="Self.Pagos" Multiplicity="0..1" />
+          <End Role="GastosEvOrdinariosUFDetalle" Type="Self.GastosEvOrdinariosUFDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pagos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GastosEvOrdinariosUFDetalle">
+              <PropertyRef Name="Pagos_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -225,16 +271,18 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ExpensasModelStoreContainer">
-          <EntitySet Name="Consorcios" EntityType="Self.Consorcios" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Detalles" EntityType="Self.Detalles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Expensas" EntityType="Self.Expensas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ExpensasDetalle" EntityType="Self.ExpensasDetalle" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Gastos" EntityType="Self.Gastos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="GastosEvOrdinariosDetalle" EntityType="Self.GastosEvOrdinariosDetalle" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="GastosExtDetalle" EntityType="Self.GastosExtDetalle" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TipoGastos" EntityType="Self.TipoGastos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UnidadesFuncionales" EntityType="Self.UnidadesFuncionales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Consorcios" EntityType="Self.Consorcios" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Detalles" EntityType="Self.Detalles" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Expensas" EntityType="Self.Expensas" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ExpensasDetalle" EntityType="Self.ExpensasDetalle" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ExpensasUFDetalle" EntityType="Self.ExpensasUFDetalle" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Gastos" EntityType="Self.Gastos" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="GastosEvOrdinariosDetalle" EntityType="Self.GastosEvOrdinariosDetalle" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="GastosEvOrdinariosUFDetalle" EntityType="Self.GastosEvOrdinariosUFDetalle" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="GastosExtDetalle" EntityType="Self.GastosExtDetalle" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="TipoGastos" EntityType="Self.TipoGastos" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="UnidadesFuncionales" EntityType="Self.UnidadesFuncionales" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <AssociationSet Name="FK_Detalles_Consorcios" Association="Self.FK_Detalles_Consorcios">
             <End Role="Consorcios" EntitySet="Consorcios" />
             <End Role="Detalles" EntitySet="Detalles" />
@@ -251,6 +299,10 @@
             <End Role="Expensas" EntitySet="Expensas" />
             <End Role="ExpensasDetalle" EntitySet="ExpensasDetalle" />
           </AssociationSet>
+          <AssociationSet Name="FK_ExpensasUFDetalle_Pagos" Association="Self.FK_ExpensasUFDetalle_Pagos">
+            <End Role="Pagos" EntitySet="Pagos" />
+            <End Role="ExpensasUFDetalle" EntitySet="ExpensasUFDetalle" />
+          </AssociationSet>
           <AssociationSet Name="FK_Gastos_TipoGastos" Association="Self.FK_Gastos_TipoGastos">
             <End Role="TipoGastos" EntitySet="TipoGastos" />
             <End Role="Gastos" EntitySet="Gastos" />
@@ -258,6 +310,10 @@
           <AssociationSet Name="FK_GastosEvOrdinariosDetalle_Expensas" Association="Self.FK_GastosEvOrdinariosDetalle_Expensas">
             <End Role="Expensas" EntitySet="Expensas" />
             <End Role="GastosEvOrdinariosDetalle" EntitySet="GastosEvOrdinariosDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GastosEvOrdinariosUFDetalle_Expensas" Association="Self.FK_GastosEvOrdinariosUFDetalle_Expensas">
+            <End Role="Pagos" EntitySet="Pagos" />
+            <End Role="GastosEvOrdinariosUFDetalle" EntitySet="GastosEvOrdinariosUFDetalle" />
           </AssociationSet>
           <AssociationSet Name="FK_GastosExtDetalle_Expensas" Association="Self.FK_GastosExtDetalle_Expensas">
             <End Role="Expensas" EntitySet="Expensas" />
@@ -275,7 +331,7 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ExpensasModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+      <Schema Namespace="ExpensasModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntityType Name="Consorcios">
           <Key>
             <PropertyRef Name="ID" />
@@ -294,7 +350,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Periodo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Total_Gastos" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="PeriodoNumerico" Type="Int32" />
@@ -308,7 +364,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="Expensas" Relationship="Self.FK_GastosExtDetalle_Expensas" FromRole="GastosExtDetalle" ToRole="Expensas" />
@@ -317,7 +373,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Coeficiente" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="ImportePago1" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="FechaPago1" Type="DateTime" Precision="7" />
@@ -332,12 +388,14 @@
           <Property Name="DetalleGastoParticular" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PeriodoDetalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="UnidadesFuncionales" Relationship="ExpensasModel.FK_Pagos_UF" FromRole="Pagos" ToRole="UnidadesFuncionales" />
+          <NavigationProperty Name="GastosEvOrdinariosUFDetalle" Relationship="ExpensasModel.FK_GastosEvOrdinariosUFDetalle_Expensas" FromRole="Pagos" ToRole="GastosEvOrdinariosUFDetalle" />
+          <NavigationProperty Name="ExpensasUFDetalle" Relationship="ExpensasModel.FK_ExpensasUFDetalle_Pagos" FromRole="Pagos" ToRole="ExpensasUFDetalle" />
         </EntityType>
         <EntityType Name="TipoGastos">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Gastos" Relationship="ExpensasModel.FK_Gastos_TipoGastos" FromRole="TipoGastos" ToRole="Gastos" />
         </EntityType>
@@ -396,6 +454,16 @@
             <End Role="UnidadesFuncionales" EntitySet="UnidadesFuncionales" />
             <End Role="Pagos" EntitySet="Pagos" />
           </AssociationSet>
+          <EntitySet Name="GastosEvOrdinariosUFDetalle" EntityType="ExpensasModel.GastosEvOrdinariosUFDetalle" />
+          <AssociationSet Name="FK_GastosEvOrdinariosUFDetalle_Expensas" Association="ExpensasModel.FK_GastosEvOrdinariosUFDetalle_Expensas">
+            <End Role="Pagos" EntitySet="Pagos" />
+            <End Role="GastosEvOrdinariosUFDetalle" EntitySet="GastosEvOrdinariosUFDetalle" />
+          </AssociationSet>
+          <EntitySet Name="ExpensasUFDetalle" EntityType="ExpensasModel.ExpensasUFDetalle" />
+          <AssociationSet Name="FK_ExpensasUFDetalle_Pagos" Association="ExpensasModel.FK_ExpensasUFDetalle_Pagos">
+            <End Role="Pagos" EntitySet="Pagos" />
+            <End Role="ExpensasUFDetalle" EntitySet="ExpensasUFDetalle" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="UnidadesFuncionales">
           <Key>
@@ -403,7 +471,7 @@
           </Key>
           <Property Name="UF" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="Coeficiente" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="Nombre" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Consorcios" Relationship="ExpensasModel.FK_UnidadesFuncionales_Consorcios" FromRole="UnidadesFuncionales" ToRole="Consorcios" />
@@ -419,7 +487,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="Expensas" Relationship="ExpensasModel.FK_GastosEvOrdinariosDetalle_Expensas" FromRole="GastosEvOrdinariosDetalle" ToRole="Expensas" />
@@ -456,7 +524,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="Detalles" Relationship="ExpensasModel.FK_Detalles_Gastos" FromRole="Gastos" ToRole="Detalles" />
@@ -483,7 +551,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="TipoGasto_ID" Type="Int32" />
@@ -500,11 +568,41 @@
           <End Type="ExpensasModel.UnidadesFuncionales" Role="UnidadesFuncionales" Multiplicity="1" />
           <End Type="ExpensasModel.Pagos" Role="Pagos" Multiplicity="*" />
         </Association>
+        <EntityType Name="GastosEvOrdinariosUFDetalle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Pagos" Relationship="ExpensasModel.FK_GastosEvOrdinariosUFDetalle_Expensas" FromRole="GastosEvOrdinariosUFDetalle" ToRole="Pagos" />
+        </EntityType>
+        <Association Name="FK_GastosEvOrdinariosUFDetalle_Expensas">
+          <End Type="ExpensasModel.Pagos" Role="Pagos" Multiplicity="0..1" />
+          <End Type="ExpensasModel.GastosEvOrdinariosUFDetalle" Role="GastosEvOrdinariosUFDetalle" Multiplicity="*" />
+        </Association>
+        <EntityType Name="ExpensasUFDetalle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TipoGasto_ID" Type="Int32" />
+          <Property Name="Sumar" Type="Boolean" />
+          <Property Name="Orden" Type="Int32" />
+          <Property Name="Gastos_ID" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Pagos" Relationship="ExpensasModel.FK_ExpensasUFDetalle_Pagos" FromRole="ExpensasUFDetalle" ToRole="Pagos" />
+        </EntityType>
+        <Association Name="FK_ExpensasUFDetalle_Pagos">
+          <End Type="ExpensasModel.Pagos" Role="Pagos" Multiplicity="0..1" />
+          <End Type="ExpensasModel.ExpensasUFDetalle" Role="ExpensasUFDetalle" Multiplicity="*" />
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ExpensasModelStoreContainer" CdmEntityContainer="ExpensasEntities">
           <EntitySetMapping Name="Consorcios">
             <EntityTypeMapping TypeName="ExpensasModel.Consorcios">
@@ -696,12 +794,52 @@
               <ScalarProperty Name="ID" ColumnName="UnidadesFuncionales_ID" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="GastosEvOrdinariosUFDetalle">
+            <EntityTypeMapping TypeName="ExpensasModel.GastosEvOrdinariosUFDetalle">
+              <MappingFragment StoreEntitySet="GastosEvOrdinariosUFDetalle">
+                <ScalarProperty Name="Importe" ColumnName="Importe" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_GastosEvOrdinariosUFDetalle_Expensas" TypeName="ExpensasModel.FK_GastosEvOrdinariosUFDetalle_Expensas" StoreEntitySet="GastosEvOrdinariosUFDetalle">
+            <EndProperty Name="GastosEvOrdinariosUFDetalle">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <EndProperty Name="Pagos">
+              <ScalarProperty Name="ID" ColumnName="Pagos_ID" />
+            </EndProperty>
+            <Condition ColumnName="Pagos_ID" IsNull="false" />
+          </AssociationSetMapping>
+          <EntitySetMapping Name="ExpensasUFDetalle">
+            <EntityTypeMapping TypeName="ExpensasModel.ExpensasUFDetalle">
+              <MappingFragment StoreEntitySet="ExpensasUFDetalle">
+                <ScalarProperty Name="Gastos_ID" ColumnName="Gastos_ID" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="Sumar" ColumnName="Sumar" />
+                <ScalarProperty Name="TipoGasto_ID" ColumnName="TipoGasto_ID" />
+                <ScalarProperty Name="Importe" ColumnName="Importe" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_ExpensasUFDetalle_Pagos" TypeName="ExpensasModel.FK_ExpensasUFDetalle_Pagos" StoreEntitySet="ExpensasUFDetalle">
+            <EndProperty Name="ExpensasUFDetalle">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <EndProperty Name="Pagos">
+              <ScalarProperty Name="ID" ColumnName="Pagos_ID" />
+            </EndProperty>
+            <Condition ColumnName="Pagos_ID" IsNull="false" />
+          </AssociationSetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
@@ -716,6 +854,6 @@
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
+    <Diagrams />
   </Designer>
 </edmx:Edmx>

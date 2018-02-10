@@ -54,10 +54,10 @@
                                             <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
                                             <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                                             <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                                            <SortedAscendingCellStyle BackColor="#E9E7E2" />
+<%--                                            <SortedAscendingCellStyle BackColor="#E9E7E2" />
                                             <SortedAscendingHeaderStyle BackColor="#506C8C" />
                                             <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                                            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                                            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />--%>
                                         </asp:gridview>
                                     </td>
                                 </tr>
@@ -88,10 +88,10 @@
                                             <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
                                             <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                                             <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                                            <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                                            <%--<SortedAscendingCellStyle BackColor="#E9E7E2" />
                                             <SortedAscendingHeaderStyle BackColor="#506C8C" />
                                             <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                                            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                                            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />--%>
                                         </asp:gridview>
                                         <br />
                                     </td>
@@ -123,10 +123,10 @@
                                 <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
                                 <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                                 <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                                <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                                <%--<SortedAscendingCellStyle BackColor="#E9E7E2" />
                                 <SortedAscendingHeaderStyle BackColor="#506C8C" />
                                 <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />--%>
                             </asp:gridview>
                                 <br />
                                 </td>
@@ -202,7 +202,7 @@
                     <asp:label id="lblTotalGastosOrdinarios" runat="server" font-size="Large" style="color: #003399"></asp:label>
                 </td>
                 <td style="width: 173px">
-                    <asp:button runat="server" text="Volver" id="btnVolver" height="35px" width="150px" onclick="btnVolver_Click1"></asp:button>
+                    <asp:button runat="server" text="Volver" id="btnVolver" height="35px" width="150px" onclick="btnVolver_Click"></asp:button>
                 </td>
                 <td style="width: 190px">&nbsp;</td>
 

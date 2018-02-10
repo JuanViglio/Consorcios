@@ -328,6 +328,13 @@ namespace Servicios
             return expensaDetalle;
         }
 
+        public List<ExpensasDetalle> GetExpensaDetalle(int ExpensaID)
+        {
+            var expensaDetalle = _context.ExpensasDetalle.Where(x => x.Expensas.ID == ExpensaID && x.TipoGasto_ID.Value == GastoTipoOrdinario).ToList();
+
+            return expensaDetalle;
+        }
+
         public List<GastosEvOrdinariosDetalle> GetGastosEvOrdinarios(int IdExpensa)
         {
             return _context.GastosEvOrdinariosDetalle.Where(x => x.Expensas.ID == IdExpensa).ToList();

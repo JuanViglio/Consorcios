@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="ExpensasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+<Schema Namespace="ExpensasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Consorcios">
     <Key>
       <PropertyRef Name="ID" />
@@ -44,6 +44,19 @@
     <Property Name="Orden" Type="int" />
     <Property Name="Gastos_ID" Type="decimal" Precision="18" Scale="0" />
   </EntityType>
+  <EntityType Name="ExpensasUFDetalle">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Detalle" Type="nvarchar" MaxLength="50" />
+    <Property Name="Importe" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TipoGasto_ID" Type="int" />
+    <Property Name="Pagos_ID" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Sumar" Type="bit" />
+    <Property Name="Orden" Type="int" />
+    <Property Name="Gastos_ID" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
   <EntityType Name="Gastos">
     <Key>
       <PropertyRef Name="ID" />
@@ -61,6 +74,15 @@
     <Property Name="Detalle" Type="nvarchar" MaxLength="50" />
     <Property Name="Importe" Type="decimal" Precision="18" Scale="2" />
     <Property Name="Expensas_ID" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="GastosEvOrdinariosUFDetalle">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Detalle" Type="nvarchar" MaxLength="50" />
+    <Property Name="Importe" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Pagos_ID" Type="decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="GastosExtDetalle">
     <Key>
@@ -159,6 +181,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ExpensasUFDetalle_Pagos">
+    <End Role="Pagos" Type="Self.Pagos" Multiplicity="0..1" />
+    <End Role="ExpensasUFDetalle" Type="Self.ExpensasUFDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pagos">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ExpensasUFDetalle">
+        <PropertyRef Name="Pagos_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Gastos_TipoGastos">
     <End Role="TipoGastos" Type="Self.TipoGastos" Multiplicity="1" />
     <End Role="Gastos" Type="Self.Gastos" Multiplicity="*" />
@@ -180,6 +214,18 @@
       </Principal>
       <Dependent Role="GastosEvOrdinariosDetalle">
         <PropertyRef Name="Expensas_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GastosEvOrdinariosUFDetalle_Expensas">
+    <End Role="Pagos" Type="Self.Pagos" Multiplicity="0..1" />
+    <End Role="GastosEvOrdinariosUFDetalle" Type="Self.GastosEvOrdinariosUFDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pagos">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GastosEvOrdinariosUFDetalle">
+        <PropertyRef Name="Pagos_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -220,16 +266,18 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="ExpensasModelStoreContainer">
-    <EntitySet Name="Consorcios" EntityType="Self.Consorcios" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Detalles" EntityType="Self.Detalles" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Expensas" EntityType="Self.Expensas" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ExpensasDetalle" EntityType="Self.ExpensasDetalle" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Gastos" EntityType="Self.Gastos" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="GastosEvOrdinariosDetalle" EntityType="Self.GastosEvOrdinariosDetalle" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="GastosExtDetalle" EntityType="Self.GastosExtDetalle" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TipoGastos" EntityType="Self.TipoGastos" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="UnidadesFuncionales" EntityType="Self.UnidadesFuncionales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Consorcios" EntityType="Self.Consorcios" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="Detalles" EntityType="Self.Detalles" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="Expensas" EntityType="Self.Expensas" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="ExpensasDetalle" EntityType="Self.ExpensasDetalle" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="ExpensasUFDetalle" EntityType="Self.ExpensasUFDetalle" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="Gastos" EntityType="Self.Gastos" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="GastosEvOrdinariosDetalle" EntityType="Self.GastosEvOrdinariosDetalle" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="GastosEvOrdinariosUFDetalle" EntityType="Self.GastosEvOrdinariosUFDetalle" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="GastosExtDetalle" EntityType="Self.GastosExtDetalle" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="TipoGastos" EntityType="Self.TipoGastos" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="UnidadesFuncionales" EntityType="Self.UnidadesFuncionales" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
     <AssociationSet Name="FK_Detalles_Consorcios" Association="Self.FK_Detalles_Consorcios">
       <End Role="Consorcios" EntitySet="Consorcios" />
       <End Role="Detalles" EntitySet="Detalles" />
@@ -246,6 +294,10 @@
       <End Role="Expensas" EntitySet="Expensas" />
       <End Role="ExpensasDetalle" EntitySet="ExpensasDetalle" />
     </AssociationSet>
+    <AssociationSet Name="FK_ExpensasUFDetalle_Pagos" Association="Self.FK_ExpensasUFDetalle_Pagos">
+      <End Role="Pagos" EntitySet="Pagos" />
+      <End Role="ExpensasUFDetalle" EntitySet="ExpensasUFDetalle" />
+    </AssociationSet>
     <AssociationSet Name="FK_Gastos_TipoGastos" Association="Self.FK_Gastos_TipoGastos">
       <End Role="TipoGastos" EntitySet="TipoGastos" />
       <End Role="Gastos" EntitySet="Gastos" />
@@ -253,6 +305,10 @@
     <AssociationSet Name="FK_GastosEvOrdinariosDetalle_Expensas" Association="Self.FK_GastosEvOrdinariosDetalle_Expensas">
       <End Role="Expensas" EntitySet="Expensas" />
       <End Role="GastosEvOrdinariosDetalle" EntitySet="GastosEvOrdinariosDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GastosEvOrdinariosUFDetalle_Expensas" Association="Self.FK_GastosEvOrdinariosUFDetalle_Expensas">
+      <End Role="Pagos" EntitySet="Pagos" />
+      <End Role="GastosEvOrdinariosUFDetalle" EntitySet="GastosEvOrdinariosUFDetalle" />
     </AssociationSet>
     <AssociationSet Name="FK_GastosExtDetalle_Expensas" Association="Self.FK_GastosExtDetalle_Expensas">
       <End Role="Expensas" EntitySet="Expensas" />

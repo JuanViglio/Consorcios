@@ -36,8 +36,11 @@ namespace Servicios.Mapper
                                  Nombre = u.Nombre,
                                  UF = u.UF,
                                  Cochera = u.Cochera == true ? "SI" : "NO",
-                                 Coeficiente = u.Coeficiente.ToString()                           
+                                 Coeficiente = u.Coeficiente.ToString(),
+                                 Aplicar = false                        
                              };
         }
+
+        
     }
 }

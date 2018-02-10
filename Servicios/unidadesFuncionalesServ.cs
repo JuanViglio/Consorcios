@@ -57,6 +57,7 @@ namespace Servicios
                         on P.UnidadesFuncionales.ID equals UF.ID
                         where P.Periodo == Periodo
                             && UF.Consorcios.ID == consorciosID
+                        orderby UF.Departamento
                         select new { P.UnidadesFuncionales.UF, UF.Apellido, UF.Nombre, P.Coeficiente, P.ID };
 
             List<UnidadesFuncionalesModel> UFlist = new List<UnidadesFuncionalesModel>();
@@ -74,6 +75,42 @@ namespace Servicios
             }
 
             return UFlist;
+        }
+
+        public List<UnidadesFuncionalesModel> GetPagosConCochera(string consorciosID, int Periodo, bool agregarValorCochera)
+        {
+            var pagos = from P in context.Pagos
+                        join UF in context.UnidadesFuncionales
+                        on P.UnidadesFuncionales.ID equals UF.ID
+                        where P.Periodo == Periodo
+                            && UF.Consorcios.ID == consorciosID                     
+                        orderby UF.Departamento   
+                        select new { P.UnidadesFuncionales.UF, UF.Apellido, UF.Nombre, P.Coeficiente, P.ID, UF.Cochera };
+
+            List<UnidadesFuncionalesModel> UFlist = new List<UnidadesFuncionalesModel>();
+
+            foreach (var item in pagos)
+            {
+                UFlist.Add(new UnidadesFuncionalesModel()
+                {
+                    ID = Convert.ToDecimal(item.UF),
+                    Apellido = item.Apellido,
+                    Nombre = item.Nombre,
+                    Coeficiente = item.Coeficiente.ToString(),
+                    PagoId = item.ID.ToString(),
+                    Aplicar = GetValorCochera(item.Cochera, agregarValorCochera)
+                });
+            }
+
+            return UFlist;
+        }
+
+        private bool GetValorCochera(bool? valorCochera, bool agregarValorCochera)
+        {
+            if (agregarValorCochera)
+                return valorCochera.GetValueOrDefault();
+            else
+                return false;
         }
 
         public IQueryable<PagosModel> GetPagosByFilter(decimal id)

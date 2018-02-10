@@ -11,7 +11,6 @@ namespace Negocio
     {
         readonly IExpensasServ _expensasServ;
         readonly IPagosServ _pagosServ;
-        private ExpensasEntities context = new ExpensasEntities();
 
         public expensasNeg(IExpensasServ expensasServ, IPagosServ pagosServ)
         {
@@ -26,12 +25,14 @@ namespace Negocio
                 var expensa = GetDatosExpensa(expensaID);
                 var unidadesFuncionales = GetUnidadesFuncionales(expensa.ConsorcioId);
                 var cantPagos = _pagosServ.GetPagos(expensa.PeriodoNumerico, expensa.ConsorcioId).Count();
-    
+                var gastosEvOrd = _expensasServ.GetGastosEvOrdinarios(expensaID);
+                var gastosOrdinarios = _expensasServ.GetExpensaDetalle(expensaID);
+
                 foreach (var item in unidadesFuncionales)
                 {
                     //Busca los pagos y los sobreescribe. Si no los encuentra los crea
                     if (cantPagos == 0)
-                        _pagosServ.AddPagos(expensa.ConsorcioId, item, gastosExtraordinarios, totalGastosOrdinarios, expensa.PeriodoNumerico);
+                        _pagosServ.AddPagos(expensa.ConsorcioId, item, gastosExtraordinarios, totalGastosOrdinarios, expensa.PeriodoNumerico, gastosEvOrd, gastosOrdinarios);
                     else
                         _pagosServ.UpdatePagos(expensa.ConsorcioId, item, gastosExtraordinarios, totalGastosOrdinarios, expensa.PeriodoNumerico);
                 }
