@@ -18,6 +18,7 @@
         <p style="color: #003399; font-size: large">
             Nueva Expensa
             de la Unidad Funcional
+            <asp:Label ID="lblNombreUF" runat="server"></asp:Label>
         </p>
         <p style="color: #003399; font-size: large">
             &nbsp;&nbsp;
@@ -184,7 +185,17 @@
                                 <asp:textbox id="txtImporteGastoParticular" runat="server" width="108px"></asp:textbox>
                             </td>
                             <td style="width: 233px; height: 38px;">
-                                <asp:button id="btnActualizar" runat="server" text="Actualizar" height="29px" width="99px" onclick="btnActualizar_Click" />
+                                <asp:button id="btnActualizar" runat="server" text="Actualizar" height="29px" width="99px" onclick="btnActualizar_Click" UseSubmitBehavior="False" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="height: 51px">
+
+                                <asp:Button ID="btnAnterior" runat="server" Height="28px" OnClick="btnAnterior_Click" Text="Anterior" UseSubmitBehavior="False" Width="95px" style="margin-right: 15px" />
+
+                            </td>
+                            <td style="height: 51px">
+                                <asp:Button ID="btnProximo" runat="server" Height="28px" OnClick="btnProximo_Click" Text="Proximo" UseSubmitBehavior="False" Width="95px" />
                             </td>
                         </tr>
                     </table>

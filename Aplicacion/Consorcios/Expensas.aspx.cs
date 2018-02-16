@@ -1,6 +1,7 @@
 ﻿using DAO;
 using Servicios;
 using System;
+using System.Collections.Generic;
 using System.Web.UI.WebControls;
 
 namespace WebSistemmas.Consorcios
@@ -12,6 +13,9 @@ namespace WebSistemmas.Consorcios
         private const int col_Expensa_ID = 3;
         private const int col_Periodo = 6;
         private const int col_Pago_ID = 4;
+        private const int gridUF_col_Apellido = 1;
+        private const int gridUF_col_Nombre = 2;
+
         private ExpensasEntities context = new ExpensasEntities();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -60,19 +64,28 @@ namespace WebSistemmas.Consorcios
                     {
                         case "UNIDADESFUNCIONALES":
                             unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
-
+                            Dictionary<decimal, UnidadesFuncionalesModel> map = new Dictionary<decimal, UnidadesFuncionalesModel>();
+                            
                             if (GridViewrow.Cells[2].Text == "Aceptado" || GridViewrow.Cells[2].Text == "Finalizado")
                             {
                                 Session["Estado"] = GridViewrow.Cells[2].Text;
                                 Session["ExpensaId"] = GridViewrow.Cells[col_Expensa_ID].Text;
                                 Session["PeriodoNumerico"] = GridViewrow.Cells[col_Periodo].Text;
-                                grdUnidades.DataSource = serv.GetPagos(Session["idConsorcio"].ToString(), Convert.ToInt32(GridViewrow.Cells[col_Periodo].Text));
+                                var pagos = serv.GetPagos(Session["idConsorcio"].ToString(), Convert.ToInt32(GridViewrow.Cells[col_Periodo].Text));
+                                grdUnidades.DataSource = pagos;
                                 grdUnidades.DataBind();
 
                                 if (GridViewrow.Cells[2].Text == "Aceptado")
                                 {
                                     divBotonesUF.Visible = true;
                                     Session["MostrarDivUF"] = true;
+
+                                    for (int i = 1; i <= pagos.Count; i++)
+                                    {
+                                        map.Add(i, pagos[i-1]);
+                                    }
+
+                                    Session["MapPagoId"] = map;
                                 }
                             }
                             else
@@ -124,6 +137,7 @@ namespace WebSistemmas.Consorcios
 
             Session["Coeficiente"] = GridViewrow.Cells[col_Coeficiente].Text;
             Session["PagoId"] = GridViewrow.Cells[col_Pago_ID].Text;
+            Session["NobreUF"] = GridViewrow.Cells[gridUF_col_Apellido].Text + " " + GridViewrow.Cells[gridUF_col_Nombre].Text;
             Response.Redirect("ExpensaUFNueva.aspx", false);
         }
 

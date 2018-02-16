@@ -2,6 +2,8 @@
 using Servicios;
 using Servicios.Interfaces;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -74,30 +76,37 @@ namespace WebSistemmas.Consorcios
             txtVencimiento1.Text = TotalVencimiento1.ToString("#.##");
         }
 
+        private void CargaInicial()
+        {
+            divError.Visible = false;
+
+            CargarGrillaGastosFijos();
+            CargarGrillaGastosEvOrdinarios();
+            CargarGrillaGastosEvExtraordinarios();
+
+            CalcularTotales();
+
+            if (Session["Estado"].ToString() == "Finalizado")
+            {
+                txtDetalleGastoParticular.Enabled = false;
+                txtImporteGastoParticular.Enabled = false;
+                btnActualizar.Visible = false;
+            }
+            else
+            {
+                txtDetalleGastoParticular.Enabled = true;
+                txtImporteGastoParticular.Enabled = true;
+                btnActualizar.Visible = true;
+            }
+        }
+        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                divError.Visible = false;
-
-                CargarGrillaGastosFijos();
-                CargarGrillaGastosEvOrdinarios();
-                CargarGrillaGastosEvExtraordinarios();
-
-                CalcularTotales();
-
-                if (Session["Estado"].ToString() == "Finalizado")
-                {
-                    txtDetalleGastoParticular.Enabled = false;
-                    txtImporteGastoParticular.Enabled = false;
-                    btnActualizar.Visible = false;
-                }
-                else
-                {
-                    txtDetalleGastoParticular.Enabled = true;
-                    txtImporteGastoParticular.Enabled = true;
-                    btnActualizar.Visible = true;
-                }
+                lblNombreUF.Text = Session["NobreUF"].ToString();
+                CargaInicial();
             }        
         }
 
@@ -156,6 +165,52 @@ namespace WebSistemmas.Consorcios
 
                 CargarGrillaGastosFijos();
                 CalcularTotales();
+            }
+        }
+
+        protected void btnProximo_Click(object sender, EventArgs e)
+        {
+            Dictionary<decimal, UnidadesFuncionalesModel> map = (Dictionary <decimal, UnidadesFuncionalesModel>)Session["MapPagoId"];
+            string pagoID = Session["PagoId"].ToString();
+            var key = map.FirstOrDefault(x => x.Value.PagoId == pagoID).Key;
+            divError.Visible = false;
+            lblError.Text = "";
+            key++;
+
+            if (key <= map.Count)
+            {
+                var pago = map.FirstOrDefault(x => x.Key == key).Value;
+                Session["PagoId"] = pago.PagoId;
+                lblNombreUF.Text = pago.Apellido + pago.Nombre;
+                CargaInicial();
+            }
+            else
+            {
+                divError.Visible = true;
+                lblError.Text = "No existen mas UF para mostrar";
+            }            
+        }
+
+        protected void btnAnterior_Click(object sender, EventArgs e)
+        {
+            Dictionary<decimal, UnidadesFuncionalesModel> map = (Dictionary<decimal, UnidadesFuncionalesModel>)Session["MapPagoId"];
+            string pagoID = Session["PagoId"].ToString();
+            var key = map.FirstOrDefault(x => x.Value.PagoId == pagoID).Key;
+            divError.Visible = false;
+            lblError.Text = "";
+            key--;
+
+            if (key > 0)
+            {
+                var pago = map.FirstOrDefault(x => x.Key == key).Value;
+                Session["PagoId"] = pago.PagoId;
+                lblNombreUF.Text = pago.Apellido + pago.Nombre;
+                CargaInicial();
+            }
+            else
+            {
+                divError.Visible = true;
+                lblError.Text = "No existen mas UF para mostrar";
             }
         }
     }

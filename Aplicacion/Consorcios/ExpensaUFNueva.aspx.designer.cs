@@ -31,6 +31,15 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.ScriptManager scrActualizarGastos;
         
         /// <summary>
+        /// lblNombreUF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNombreUF;
+        
+        /// <summary>
         /// divError control.
         /// </summary>
         /// <remarks>
@@ -128,6 +137,24 @@ namespace WebSistemmas.Consorcios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnActualizar;
+        
+        /// <summary>
+        /// btnAnterior control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAnterior;
+        
+        /// <summary>
+        /// btnProximo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnProximo;
         
         /// <summary>
         /// Label5 control.
