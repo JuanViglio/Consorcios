@@ -28,6 +28,7 @@ namespace Servicios
             GastosEvOrdinariosUFDetalle gastosEvOrdUFDetalle;
             ExpensasUFDetalle expensaDetalleUF;
 
+            #region Add Pagos
             var pago = new Pagos()
             {
                 ImporteGastoParticular = Convert.ToDecimal("0"),
@@ -42,7 +43,9 @@ namespace Servicios
             _context.AddToPagos(pago);
             _context.SaveChanges();
             pago = _context.Pagos.OrderByDescending(x => x.ID).FirstOrDefault();
+            #endregion
 
+            #region Add Gastos Eventuales
             //Agregar Gastos Eventuales Ordinarios a la tabla GastosEvOrdinariosUF
             foreach (var item in gastosEvOrd)
             {
@@ -55,7 +58,9 @@ namespace Servicios
 
                 _context.AddToGastosEvOrdinariosUFDetalle(gastosEvOrdUFDetalle);
             }
+            #endregion
 
+            #region Add Gastos Fijos
             //Agregar Gastos Fijos a la tabla ExpensasDetalleUF
             foreach (var item in expensaDetalle)
             {
@@ -72,6 +77,7 @@ namespace Servicios
 
                 _context.AddToExpensasUFDetalle(expensaDetalleUF);
             }
+            #endregion
 
             _context.SaveChanges();
         }

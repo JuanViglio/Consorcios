@@ -18,10 +18,19 @@ namespace WebSistemmas.Consorcios
         {
             if (!IsPostBack)
             {
+                unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
+
                 CargarGrillaExpensas();
 
                 if (Session["direccionConsorcio"] != null)
                     lblTitulo.Text = "Expensas de " + Session["direccionConsorcio"].ToString();
+
+                if (bool.Parse(Session["MostrarDivUF"].ToString()))
+                {
+                    grdUnidades.DataSource = serv.GetPagos(Session["idConsorcio"].ToString(), Convert.ToInt32(Session["PeriodoNumerico"].ToString()));
+                    grdUnidades.DataBind();
+                    divBotonesUF.Visible = true;
+                }
             }
         }
 
@@ -61,8 +70,10 @@ namespace WebSistemmas.Consorcios
                                 grdUnidades.DataBind();
 
                                 if (GridViewrow.Cells[2].Text == "Aceptado")
+                                {
                                     divBotonesUF.Visible = true;
-
+                                    Session["MostrarDivUF"] = true;
+                                }
                             }
                             else
                             {

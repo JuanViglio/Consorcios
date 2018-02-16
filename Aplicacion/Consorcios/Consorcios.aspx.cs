@@ -74,6 +74,7 @@ namespace WebSistemmas.Consorcios
                         case "EXPENSAS":
                             Session["idConsorcio"] = GridViewrow.Cells[colIdConsorcio].Text;
                             Session["direccionConsorcio"] = GridViewrow.Cells[colDireccionConsorcio].Text;
+                            Session["MostrarDivUF"] = false;
                             Response.Redirect("Expensas.aspx", false);
                             break;
 

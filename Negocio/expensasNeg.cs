@@ -22,24 +22,11 @@ namespace Negocio
         {
             try
             {
-                var expensa = GetDatosExpensa(expensaID);
-                var unidadesFuncionales = GetUnidadesFuncionales(expensa.ConsorcioId);
-                var cantPagos = _pagosServ.GetPagos(expensa.PeriodoNumerico, expensa.ConsorcioId).Count();
-                var gastosEvOrd = _expensasServ.GetGastosEvOrdinarios(expensaID);
-                var gastosOrdinarios = _expensasServ.GetExpensaDetalle(expensaID);
-
-                foreach (var item in unidadesFuncionales)
-                {
-                    //Busca los pagos y los sobreescribe. Si no los encuentra los crea
-                    if (cantPagos == 0)
-                        _pagosServ.AddPagos(expensa.ConsorcioId, item, gastosExtraordinarios, totalGastosOrdinarios, expensa.PeriodoNumerico, gastosEvOrd, gastosOrdinarios);
-                    else
-                        _pagosServ.UpdatePagos(expensa.ConsorcioId, item, gastosExtraordinarios, totalGastosOrdinarios, expensa.PeriodoNumerico);
-                }
+                var cantUF = AddOrUpdatePagos(expensaID, gastosExtraordinarios, totalGastosOrdinarios);
 
                 CambiarEstadoExpensa(expensaID, Constantes.EstadoAceptado);
 
-                return unidadesFuncionales.Count();
+                return cantUF;
             }
             catch (Exception ex)
             {
@@ -48,6 +35,26 @@ namespace Negocio
         }
 
         #region Metodos Privados
+        private int AddOrUpdatePagos(int expensaID, string gastosExtraordinarios, string totalGastosOrdinarios)
+        {
+            var expensa = GetDatosExpensa(expensaID);
+            var unidadesFuncionales = GetUnidadesFuncionales(expensa.ConsorcioId);
+            var cantPagos = _pagosServ.GetPagos(expensa.PeriodoNumerico, expensa.ConsorcioId).Count();
+            var gastosEvOrd = _expensasServ.GetGastosEvOrdinarios(expensaID);
+            var gastosOrdinarios = _expensasServ.GetExpensaDetalle(expensaID);
+
+            foreach (var item in unidadesFuncionales)
+            {
+                //Busca los pagos y los sobreescribe. Si no los encuentra los crea
+                if (cantPagos == 0)
+                    _pagosServ.AddPagos(expensa.ConsorcioId, item, gastosExtraordinarios, totalGastosOrdinarios, expensa.PeriodoNumerico, gastosEvOrd, gastosOrdinarios);
+                else
+                    _pagosServ.UpdatePagos(expensa.ConsorcioId, item, gastosExtraordinarios, totalGastosOrdinarios, expensa.PeriodoNumerico);
+            }
+
+            return unidadesFuncionales.Count();
+        }
+
         private ExpensaModel GetDatosExpensa(int expensaID)
         {
             var expensa = _expensasServ.GetDatosExpensa(expensaID);

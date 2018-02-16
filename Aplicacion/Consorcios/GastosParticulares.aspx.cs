@@ -12,6 +12,7 @@ namespace WebSistemmas.Consorcios
     public partial class GastosParticulares : System.Web.UI.Page
     {
         private const int col_Unidades_Pago_ID = 3;
+        private const int col_Apllicar = 4;
         private IUnidadesServ unidadesServ = new unidadesFuncionalesServ();
         unidadesFuncionaesNeg unidadesNeg;
         readonly IExpensasServ _expensasServ;
@@ -22,7 +23,54 @@ namespace WebSistemmas.Consorcios
             ExpensasEntities context = new ExpensasEntities();
             _expensasServ = new expensasServ(context);
             _pagosServ = new pagosServ(context);
+            unidadesNeg = new unidadesFuncionaesNeg(unidadesServ, _pagosServ, _expensasServ);
         }
+
+        #region Metodos Privados
+
+        private void CargarGrillaUnidades(bool cochera)
+        {
+            
+            var periodoNumerico = int.Parse(Session["PeriodoNumerico"].ToString());
+            grdUnidades.DataSource = unidadesNeg.GetPagosConCochera(Session["idConsorcio"].ToString(), periodoNumerico, cochera);
+            grdUnidades.DataBind();
+        }
+
+        private void GetTotalPorUF()
+        {
+            decimal importe = 0;
+            int cantAplicar = GetCantAplicar();
+
+            decimal.TryParse(txtImporte.Text, out importe);
+
+            lblImportePorUF.Text = DividirImportePorUfChequeada(importe, cantAplicar);           
+        }            
+
+        private string DividirImportePorUfChequeada(decimal importe, int cantAplicar)
+        {
+            if (cantAplicar > 0)
+                return (importe / cantAplicar).ToString("#.##");
+            else
+                return "0";
+        }
+
+        private int GetCantAplicar()
+        {
+            int cantAplicar = 0;
+
+            foreach (GridViewRow getRowItems in grdUnidades.Rows)
+            {
+                var chkBox = (CheckBox)(getRowItems.Cells[0].FindControl("chkAplicar"));
+
+                if (chkBox.Checked)
+                {
+                    cantAplicar++;
+                }
+            }
+
+            return cantAplicar;
+        }
+        #endregion
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,22 +87,13 @@ namespace WebSistemmas.Consorcios
 
         protected void chkAplicar_CheckedChanged(object sender, EventArgs e)
         {
+            GetTotalPorUF();
         }
-
-
-        #region Metodos Privados
-        private void CargarGrillaUnidades(bool cochera)
-        {
-            unidadesNeg = new unidadesFuncionaesNeg(unidadesServ);
-            var periodoNumerico = int.Parse(Session["PeriodoNumerico"].ToString());
-            grdUnidades.DataSource = unidadesNeg.GetPagosConCochera(Session["idConsorcio"].ToString(), periodoNumerico, cochera);
-            grdUnidades.DataBind();
-        }
-        #endregion
 
         protected void btnAplicarCocheras_Click(object sender, EventArgs e)
         {
             CargarGrillaUnidades(true);
+            GetTotalPorUF();
         }
 
         protected void grdUnidades_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -69,22 +108,21 @@ namespace WebSistemmas.Consorcios
 
         protected void btnGuardarGasto_Click(object sender, EventArgs e)
         {
-            int expensaId = Convert.ToInt32(Session["ExpensaId"]);
-
-            foreach (GridViewRow row in grdUnidades.Rows)
+            try
             {
-                CheckBox chk = row.Cells[4].Controls[1] as CheckBox;
-                if (chk != null && chk.Checked)
-                {
-                    var idPago = int.Parse(row.Cells[3].Text);
-                    _pagosServ.AddGastosEvOrdinariosEFDetalle(idPago, txtDetalle.Text.ToUpper(), Convert.ToDecimal(txtImporte.Text));
-                    //_expensasServ.ActualizarTotalGastosEvOrdinarios(expensaId);
-                }
+                unidadesNeg.ActualizarGastosParticulares(grdUnidades.Rows, txtImporte.Text, txtDetalle.Text, lblImportePorUF.Text);
+                Response.Redirect("Expensas.aspx#consorcios");
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
             }
 
-            txtDetalle.Text = "";
-            txtImporte.Text = "";
+        }
 
+        protected void btnActualizar_Click(object sender, EventArgs e)
+        {
+            GetTotalPorUF();
         }
     }
 }

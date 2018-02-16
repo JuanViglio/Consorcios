@@ -25,12 +25,12 @@ namespace WebSistemmas.Consorcios
         private void CargarGrillaGastosFijos()
         {
 
-            int expensaID = Convert.ToInt32(Session["ExpensaId"]);
+            int pagoID = Convert.ToInt32(Session["PagoId"]);
 
-            grdGastosOrdinarios.DataSource = _expensasServ.GetGastosOrdinarios(expensaID);
+            grdGastosOrdinarios.DataSource = _expensasServ.GetGastosOrdinariosUF(pagoID);
             grdGastosOrdinarios.DataBind();
 
-            lblTotalGastosOrdinarios.Text = _expensasServ.GetTotalGastosOrdinarios(expensaID).ToString();
+            lblTotalGastosOrdinarios.Text = _expensasServ.GetTotalGastosOrdinariosUF(pagoID).ToString();
         }
 
         private void CargarGrillaGastosEvOrdinarios()

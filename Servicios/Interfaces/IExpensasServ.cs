@@ -51,5 +51,13 @@ namespace Servicios.Interfaces
         decimal AgregarExpensa(string IdConsorcio);
 
         List<GastosEvOrdinariosDetalle> GetGastosEvOrdinarios(int IdExpensa);
+
+        void ActualizarTotalGastosEvOrdinariosUF(decimal idPago);
+
+        IEnumerable<GastosOrdinariosModel> GetGastosOrdinariosUF(int PagoID);
+
+        List<ExpensasUFDetalle> GetGastosByTipoUF(int IdPago, int TipoGasto);
+
+        decimal GetTotalGastosOrdinariosUF(int idPago);
     }
 }
