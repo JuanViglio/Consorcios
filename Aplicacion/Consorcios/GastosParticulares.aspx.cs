@@ -103,7 +103,7 @@ namespace WebSistemmas.Consorcios
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Expensas.aspx#consorcios"); 
+            Response.Redirect("Expensas.aspx#consorcios", false); 
         }
 
         protected void btnGuardarGasto_Click(object sender, EventArgs e)
@@ -111,7 +111,7 @@ namespace WebSistemmas.Consorcios
             try
             {
                 unidadesNeg.ActualizarGastosParticulares(grdUnidades.Rows, txtImporte.Text, txtDetalle.Text, lblImportePorUF.Text);
-                Response.Redirect("Expensas.aspx#consorcios");
+                Response.Redirect("Expensas.aspx#consorcios",false);
             }
             catch (Exception ex)
             {

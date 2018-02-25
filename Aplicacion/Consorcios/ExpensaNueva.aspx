@@ -199,10 +199,6 @@
                     <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
                     <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                     <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-<%--                    <SortedAscendingCellStyle BackColor="#E9E7E2" />
-                    <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                    <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                    <SortedDescendingHeaderStyle BackColor="#6F8DAE" />--%>
                 </asp:GridView>
                 <br />
                 <table>
@@ -344,36 +340,38 @@
         <asp:updatepanel id="UpdatePanel4" runat="server">
         <ContentTemplate>
 
-        <table style="width: 844px">
+        <table style="width: 879px">
             <tr>
-                <td style="height: 45px; text-align: left; width: 182px;">
-                    <asp:Label ID="Label5" runat="server" Text="Total Ordinarios:" Font-Size="Large" style="color: #003399"></asp:Label>
+                <td style="height: 45px; text-align: left; width: 168px;">
+                    <asp:Label ID="Label5" runat="server" Text="Subtotal Ord.:" Font-Size="Large" style="color: #003399"></asp:Label>
                 </td>
-                <td style="width: 293px; height: 45px;">
+                <td style="width: 28px; height: 45px;" align="right">
                     <asp:Label ID="lblTotalGastosOrdinarios" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
                 </td>
                 <td style="width: 157px; height: 45px;">
-                    <asp:Button runat="server" Text="Volver" ID="btnVolver" Height="30px" OnClick="btnVolver_Click" Width="120px"></asp:Button>
+                    <asp:Button runat="server" Text="Volver" ID="btnVolver" Height="30px" OnClick="btnVolver_Click" Width="120px" style="margin-left: 96px"></asp:Button>
                 </td>
-                <td style="width: 190px; height: 45px;">
+                <td style="width: 295px; height: 45px;">
                     <asp:Button runat="server" Text="Aceptar Expensa" ID="btnAceptar" Height="30px" OnClientClick = "Confirm('¿Esta seguro que quiere ACEPTAR las Expensas?')" OnClick="btnAceptar_Click" Width="120px"></asp:Button>
                 </td>
             </tr>
             <tr>
-                <td style="width: 182px; height: 40px;">
-                    <asp:Label ID="Label1" runat="server" Text="Total Extraordinarios:" Font-Size="Large" style="color: #003399"></asp:Label>
+                <td style="width: 168px; height: 40px;">
+                    <asp:Label ID="Label1" runat="server" Text="Subtotal Extraord." Font-Size="Large" style="color: #003399"></asp:Label>
                 </td>
-                <td colspan ="3" style="height: 40px">
+                <td style="height: 40px; width: 28px;" align="right">
                     <asp:Label ID="lblTotalGastosExtraordinarios" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
                 </td>
+                <td colspan ="2" style="height: 40px"></td>
             </tr>
             <tr>
-                <td style="width: 182px; height: 38px;">
+                <td style="width: 168px; height: 38px;">
                     <asp:Label ID="Label10" runat="server" Text="Total Gastos:" Font-Size="Large" style="color: #003399"></asp:Label>
                 </td>
-                <td colspan ="3" style="height: 38px">
+                <td  style="height: 38px; width: 28px;" align="right">
                     <asp:Label ID="lblTotalGastos" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
                 </td>
+                <td colspan ="2"></td>
             </tr>
         </table>
 

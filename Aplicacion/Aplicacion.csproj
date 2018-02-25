@@ -87,6 +87,7 @@
     <Content Include="css\jquery-ui-1.8.16.custom.css" />
     <Content Include="css\jquery-ui.css" />
     <Content Include="css\menuCobranza.css" />
+    <Content Include="css\Paginas.css" />
     <Content Include="css\styles.css" />
     <Content Include="css\img\bg_tile.jpg" />
     <Content Include="css\img\bg_vert.jpg" />

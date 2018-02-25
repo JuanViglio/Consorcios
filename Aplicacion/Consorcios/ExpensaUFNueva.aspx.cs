@@ -3,9 +3,11 @@ using Servicios;
 using Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebSistemmas.Common;
 
 namespace WebSistemmas.Consorcios
 {
@@ -15,6 +17,7 @@ namespace WebSistemmas.Consorcios
         private expensasServ _expensasServ;
         private gastosServ _gastosServ;
         private IPagosServ _pagosServ;
+        private unidadesFuncionalesServ _unidadesFuncServ;
 
         public ExpensaUFNueva()
         {
@@ -22,25 +25,34 @@ namespace WebSistemmas.Consorcios
             _expensasServ = new expensasServ(context);
             _gastosServ = new gastosServ(context);
             _pagosServ = new pagosServ(context);
+            _unidadesFuncServ = new unidadesFuncionalesServ();
         }
 
         private void CargarGrillaGastosFijos()
         {
+            int expensaID = Convert.ToInt32(Session["ExpensaId"]);
+            bool soloSumaChequeada = true;
 
+            grdGastosOrdinarios.DataSource = _expensasServ.GetGastosOrdinarios(expensaID, soloSumaChequeada);
+            grdGastosOrdinarios.DataBind();
+        }
+
+        private void CargaGrillaGastosParticularesOrd()
+        {
             int pagoID = Convert.ToInt32(Session["PagoId"]);
 
-            grdGastosOrdinarios.DataSource = _expensasServ.GetGastosOrdinariosUF(pagoID);
-            grdGastosOrdinarios.DataBind();
-
-            lblTotalGastosOrdinarios.Text = _expensasServ.GetTotalGastosOrdinariosUF(pagoID).ToString();
+            grdGastosParticularesOrd.DataSource = _pagosServ.GetGastosEvOrdinariosUF(pagoID);
+            grdGastosParticularesOrd.DataBind();
         }
 
         private void CargarGrillaGastosEvOrdinarios()
         {
-            var PagoId = int.Parse(Session["PagoId"].ToString());
+            int expensaID = Convert.ToInt32(Session["ExpensaId"]);
 
-            grdGastosEventuales.DataSource = _pagosServ.GetGastosEvOrdinariosUF(PagoId);
+            grdGastosEventuales.DataSource = _expensasServ.GetGastosEvOrdinarios(expensaID);
             grdGastosEventuales.DataBind();
+
+            lblTotalGastosEventuales.Text = _expensasServ.GetTotalGastosEvOrdinarios(expensaID).ToString("C", new CultureInfo("en-US"));
         }
 
         private void CargarGrillaGastosEvExtraordinarios()
@@ -51,29 +63,40 @@ namespace WebSistemmas.Consorcios
             grdGastosExtraordinarios.DataBind();
         }
 
+        private void CargarTotalesGastos()
+        {
+            int expensaId = Convert.ToInt32(Session["ExpensaId"]);
+
+            lblTotalGastosOrdinarios.Text = _expensasServ.GetTotalGastosOrdinarios(expensaId).ToString("C", new CultureInfo("en-US"));
+            lblTotalGastosExtraordinarios.Text = _expensasServ.GetTotalGastosExtraordinarios(expensaId).ToString("C", new CultureInfo("en-US"));
+            lblTotalGastos.Text = (Constantes.GetDecimalFromCurrency(lblTotalGastosOrdinarios.Text) + Constantes.GetDecimalFromCurrency(lblTotalGastosExtraordinarios.Text)).ToString("C", new CultureInfo("en-US"));
+        }
+
         private void CalcularTotales()
         {
-            unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
-
-            var PagoId = Session["PagoId"].ToString();
-            var Pago = serv.GetPago(PagoId);
             int expensaID = Convert.ToInt32(Session["ExpensaId"]);
+            var PagoId = Session["PagoId"].ToString();
+            var Pago = _unidadesFuncServ.GetPago(PagoId);
+            decimal coeficiente = Pago.Coeficiente;
+            decimal gastosOrdinarios = _expensasServ.GetTotalGastosOrdinarios(expensaID);
+            decimal gastosExtraordinarios = _expensasServ.GetTotalGastosExtraordinarios(expensaID);
+            decimal subtotalGastoOrdinario = gastosOrdinarios * coeficiente /100;
+            decimal subtotalGastoExtraordinario = gastosExtraordinarios * coeficiente / 100;
+            decimal subtotalGastoCocheraOrd = _pagosServ.GetTotalGastosEvOrdinariosUF(int.Parse(PagoId));
+            decimal subtotalGastoCocheraExt = 0;
+            decimal importeGastoParticular = Pago.ImporteGastoParticular;
 
-            if (Pago.ImporteGastoParticular.ToString().IsNumeric())
-            {
-                txtImporteGastoParticular.Text = Pago.ImporteGastoParticular.ToString();
-                txtDetalleGastoParticular.Text = string.IsNullOrEmpty(Pago.DetalleGastoParticular) ? "" : Pago.DetalleGastoParticular.ToString();
-                lblTotalGastosOrdinarios.Text = (Convert.ToDecimal(lblTotalGastosOrdinarios.Text) + Pago.ImporteGastoParticular).ToString();                    
-            }
+            lblCoeficiente.Text = coeficiente.ToString();
+            lblSubtotalGastoOrdinario.Text = subtotalGastoOrdinario.ToString("0.00");
+            lblSubtotalGastoExt.Text = subtotalGastoExtraordinario.ToString("0.00");
+            lblSubtotalGastoCocherarOrd.Text = subtotalGastoCocheraOrd.ToString("0.00");  
+            //falta subtotal gastos cochera extr
+            lblSubtotalGastoParicular.Text = importeGastoParticular.ToString("0.00");
 
-            decimal Coeficiente = Pago.Coeficiente;
-            txtCoeficiente.Text = Coeficiente.ToString();
-            decimal GastosExtraordinarios = _expensasServ.GetTotalGastosExtraordinarios(expensaID);
-            decimal ImporteExtraordinario = GastosExtraordinarios * Coeficiente / 100;
-            txtImporteExtraordinario.Text = ImporteExtraordinario.ToString("#.##");
-            decimal TotalGastosOrdinarios = Convert.ToDecimal(lblTotalGastosOrdinarios.Text);
-            decimal TotalVencimiento1 = ((TotalGastosOrdinarios - GastosExtraordinarios) * Coeficiente / 100) + ImporteExtraordinario;
-            txtVencimiento1.Text = TotalVencimiento1.ToString("#.##");
+            txtImporteGastoParticular.Text = importeGastoParticular.ToString("0.00");
+            txtDetalleGastoParticular.Text = Pago.DetalleGastoParticular;
+
+            lblVencimiento1.Text = (subtotalGastoOrdinario + subtotalGastoExtraordinario + subtotalGastoCocheraOrd + subtotalGastoCocheraExt + importeGastoParticular).ToString("0.00");
         }
 
         private void CargaInicial()
@@ -83,7 +106,8 @@ namespace WebSistemmas.Consorcios
             CargarGrillaGastosFijos();
             CargarGrillaGastosEvOrdinarios();
             CargarGrillaGastosEvExtraordinarios();
-
+            CargaGrillaGastosParticularesOrd();
+            CargarTotalesGastos();
             CalcularTotales();
 
             if (Session["Estado"].ToString() == "Finalizado")
@@ -151,7 +175,7 @@ namespace WebSistemmas.Consorcios
             {
                 divError.Visible = true;
                 lblError.Text = "No se ingreso un Importe correcto";
-                txtImporteExtraordinario.Text = "0";
+                lblSubtotalGastoExt.Text = "0";
             }
             else
             {
@@ -163,7 +187,6 @@ namespace WebSistemmas.Consorcios
                 decimal importe = Convert.ToDecimal(txtImporteGastoParticular.Text);
                 serv.GuardarGastoParticular(PagoId, importe, txtDetalleGastoParticular.Text.ToUpper());
 
-                CargarGrillaGastosFijos();
                 CalcularTotales();
             }
         }
@@ -187,7 +210,7 @@ namespace WebSistemmas.Consorcios
             else
             {
                 divError.Visible = true;
-                lblError.Text = "No existen mas UF para mostrar";
+                lblError.Text = "No existen mas Unidades Funcionales para mostrar";
             }            
         }
 
@@ -210,7 +233,7 @@ namespace WebSistemmas.Consorcios
             else
             {
                 divError.Visible = true;
-                lblError.Text = "No existen mas UF para mostrar";
+                lblError.Text = "No existen Unidades Funcionales previas para mostrar";
             }
         }
     }

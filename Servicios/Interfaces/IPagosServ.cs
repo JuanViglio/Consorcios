@@ -15,6 +15,8 @@ namespace Servicios.Interfaces
 
         List<GastosEvOrdinariosUFDetalle> GetGastosEvOrdinariosUF(int IdPago);
 
-        void AddGastosEvOrdinariosEFDetalle(int idPago, string detalle, decimal importe);
+        void AddGastosEvOrdinariosUFDetalle(int idPago, string detalle, decimal importe);
+
+        decimal GetTotalGastosEvOrdinariosUF(int IdPago);
     }
 }

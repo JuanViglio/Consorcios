@@ -76,6 +76,24 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.GridView grdGastosEventuales;
         
         /// <summary>
+        /// Label8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label8;
+        
+        /// <summary>
+        /// lblTotalGastosEventuales control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalGastosEventuales;
+        
+        /// <summary>
         /// grdGastosExtraordinarios control.
         /// </summary>
         /// <remarks>
@@ -85,31 +103,67 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.GridView grdGastosExtraordinarios;
         
         /// <summary>
-        /// txtCoeficiente control.
+        /// lblCoeficiente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtCoeficiente;
+        protected global::System.Web.UI.WebControls.Label lblCoeficiente;
         
         /// <summary>
-        /// txtVencimiento1 control.
+        /// lblSubtotalGastoOrdinario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtVencimiento1;
+        protected global::System.Web.UI.WebControls.Label lblSubtotalGastoOrdinario;
         
         /// <summary>
-        /// txtImporteExtraordinario control.
+        /// lblSubtotalGastoExt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtImporteExtraordinario;
+        protected global::System.Web.UI.WebControls.Label lblSubtotalGastoExt;
+        
+        /// <summary>
+        /// lblSubtotalGastoCocherarOrd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSubtotalGastoCocherarOrd;
+        
+        /// <summary>
+        /// lblSubtotalGastoCocheraExt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSubtotalGastoCocheraExt;
+        
+        /// <summary>
+        /// lblSubtotalGastoParicular control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSubtotalGastoParicular;
+        
+        /// <summary>
+        /// lblVencimiento1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblVencimiento1;
         
         /// <summary>
         /// txtDetalleGastoParticular control.
@@ -157,6 +211,24 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.Button btnProximo;
         
         /// <summary>
+        /// grdGastosParticularesOrd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdGastosParticularesOrd;
+        
+        /// <summary>
+        /// grdGastosParticularesEv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdGastosParticularesEv;
+        
+        /// <summary>
         /// Label5 control.
         /// </summary>
         /// <remarks>
@@ -182,5 +254,41 @@ namespace WebSistemmas.Consorcios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnVolver;
+        
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
+        /// lblTotalGastosExtraordinarios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalGastosExtraordinarios;
+        
+        /// <summary>
+        /// Label10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label10;
+        
+        /// <summary>
+        /// lblTotalGastos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalGastos;
     }
 }

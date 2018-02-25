@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="ExpensasModel.Consorcios" Width="1.5" PointX="10.5" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ExpensasModel.Expensas" Width="1.625" PointX="5" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ExpensasModel.GastosExtDetalle" Width="1.75" PointX="1" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ExpensasModel.Pagos" Width="1.875" PointX="4.75" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ExpensasModel.TipoGastos" Width="1.5" PointX="11" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="ExpensasModel.FK_Expensas_Consorcios" ManuallyRouted="false" />
         <AssociationConnector Association="ExpensasModel.FK_GastosExtDetalle_Expensas" ManuallyRouted="false" >
@@ -24,11 +23,12 @@
         <AssociationConnector Association="ExpensasModel.FK_Gastos_TipoGastos" />
         <EntityTypeShape EntityType="ExpensasModel.ExpensasDetalle" Width="1.75" PointX="1" PointY="0.5" />
         <AssociationConnector Association="ExpensasModel.FK_ExpensasDetalle_Expensas" />
+        <EntityTypeShape EntityType="ExpensasModel.Pagos" Width="1.5" PointX="4.875" PointY="7.25" />
         <AssociationConnector Association="ExpensasModel.FK_Pagos_UF" />
-        <EntityTypeShape EntityType="ExpensasModel.GastosEvOrdinariosUFDetalle" Width="1.875" PointX="1" PointY="10.375" />
-        <AssociationConnector Association="ExpensasModel.FK_GastosEvOrdinariosUFDetalle_Expensas" />
-        <EntityTypeShape EntityType="ExpensasModel.ExpensasUFDetalle" Width="1.875" PointX="1" PointY="7.375" />
+        <EntityTypeShape EntityType="ExpensasModel.ExpensasUFDetalle" Width="1.5" PointX="1" PointY="7.5" />
         <AssociationConnector Association="ExpensasModel.FK_ExpensasUFDetalle_Pagos" />
+        <EntityTypeShape EntityType="ExpensasModel.GastosEvOrdinariosUFDetalle" Width="1.5" PointX="1" PointY="10.75" />
+        <AssociationConnector Association="ExpensasModel.FK_GastosEvOrdinariosUFDetalle_Pagos" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

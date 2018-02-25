@@ -28,8 +28,7 @@ namespace Negocio
         {
             var idPago = int.Parse(row.Cells[3].Text);
             var detalleTotal = " (Total $" + importe + ")";
-            _pagosServ.AddGastosEvOrdinariosEFDetalle(idPago, detalle.ToUpper() + detalleTotal.ToUpper(), Convert.ToDecimal(importePorUF));
-            _expensasServ.ActualizarTotalGastosEvOrdinariosUF(idPago);
+            _pagosServ.AddGastosEvOrdinariosUFDetalle(idPago, detalle.ToUpper() + detalleTotal.ToUpper(), Convert.ToDecimal(importePorUF));
         }
 
         public void ActualizarGastosParticulares(GridViewRowCollection rows, string importe, string detalle, string importePorUF)

@@ -317,9 +317,16 @@ namespace Servicios
             _context.SaveChanges();
         }
 
-        public List<ExpensasDetalle> GetGastosByTipo(int IdExpensa, int TipoGasto)
+        public List<ExpensasDetalle> GetGastosByTipo(int IdExpensa, int TipoGasto, bool SoloSumarChequeada = false)
         {
-            return _context.ExpensasDetalle.Where(x => x.Expensas.ID == IdExpensa && x.TipoGasto_ID.Value == TipoGasto).ToList();
+            List<ExpensasDetalle> expensasDetalle;
+
+            if (SoloSumarChequeada)
+                expensasDetalle = _context.ExpensasDetalle.Where(x => x.Expensas.ID == IdExpensa && x.TipoGasto_ID.Value == TipoGasto && x.Sumar == true).ToList();
+            else
+                expensasDetalle = _context.ExpensasDetalle.Where(x => x.Expensas.ID == IdExpensa && x.TipoGasto_ID.Value == TipoGasto).ToList();
+
+            return expensasDetalle;
         }
 
         public List<ExpensasUFDetalle> GetGastosByTipoUF(int IdPago, int TipoGasto)
@@ -327,11 +334,11 @@ namespace Servicios
             return _context.ExpensasUFDetalle.Where(x => x.Pagos.ID == IdPago && x.TipoGasto_ID.Value == TipoGasto).ToList();
         }
 
-        public IEnumerable<GastosOrdinariosModel> GetGastosOrdinarios(int ExpensaID)
+        public IEnumerable<GastosOrdinariosModel> GetGastosOrdinarios(int ExpensaID, bool SoloSumarChequeada = false)
         {
-            var expensasDetalles = GetGastosByTipo(ExpensaID, GastoTipoOrdinario);
-            expensasDetalles.AddRange(GetGastosByTipo(ExpensaID, GastoTipoEvOrdinario));
-            expensasDetalles.AddRange(GetGastosByTipo(ExpensaID, GastoTipoEvExtraordinario));
+            var expensasDetalles = GetGastosByTipo(ExpensaID, GastoTipoOrdinario, SoloSumarChequeada);
+            expensasDetalles.AddRange(GetGastosByTipo(ExpensaID, GastoTipoEvOrdinario, SoloSumarChequeada));
+            expensasDetalles.AddRange(GetGastosByTipo(ExpensaID, GastoTipoEvExtraordinario, SoloSumarChequeada));
 
             var gastosOrdinarios = AutoMapper.MapToGastosOrdinarios(expensasDetalles);
 

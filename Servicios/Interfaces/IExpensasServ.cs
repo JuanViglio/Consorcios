@@ -24,7 +24,7 @@ namespace Servicios.Interfaces
 
         decimal GetTotalGastosOrdinarios(int idExpensa);
 
-        IEnumerable<GastosOrdinariosModel> GetGastosOrdinarios(int ExpensaID);
+        IEnumerable<GastosOrdinariosModel> GetGastosOrdinarios(int ExpensaID, bool SoloSumarChequeada = false);
 
         decimal GetTotalGastosExtraordinarios(int IdExpensa);
 

@@ -21,21 +21,20 @@ namespace Servicios
         {
             unidadesFuncionalesServ _unidadesFuncServ = new unidadesFuncionalesServ();
             var Coeficiente = unidadFuncional.Coeficiente.Value;
-            var GastosExtraordinarios = Constantes.GetDecimalFromCurrency(gastosExtraordinarios);
-            var ImporteExtraordinario = GastosExtraordinarios * Coeficiente / 100;
-            var TotalGastosOrdinarios = Constantes.GetDecimalFromCurrency(totalGastosOrdinarios);  //CONTROLAR !!!!
-            var TotalVencimiento1 = ((TotalGastosOrdinarios - GastosExtraordinarios) * Coeficiente / 100) + ImporteExtraordinario;
-            GastosEvOrdinariosUFDetalle gastosEvOrdUFDetalle;
-            ExpensasUFDetalle expensaDetalleUF;
+            //var GastosExtraordinarios = Constantes.GetDecimalFromCurrency(gastosExtraordinarios);
+            //var ImporteExtraordinario = GastosExtraordinarios * Coeficiente / 100;
+            //var GastosOrdinarios = Constantes.GetDecimalFromCurrency(totalGastosOrdinarios);  //CONTROLAR !!!!
+            //var ImporteOrdinario = GastosOrdinarios * Coeficiente / 100;
+            //var TotalVencimiento1 = ImporteOrdinario + ImporteExtraordinario;
 
             #region Add Pagos
             var pago = new Pagos()
             {
                 ImporteGastoParticular = Convert.ToDecimal("0"),
                 Coeficiente = Coeficiente,
-                ImportePago1 = TotalVencimiento1,
-                ImportePago2 = TotalVencimiento1 + 10,
-                ImporteExtraordinario = ImporteExtraordinario,
+                //ImportePago1 = TotalVencimiento1,
+                //ImportePago2 = TotalVencimiento1 + 10,
+                //ImporteExtraordinario = ImporteExtraordinario,
                 Periodo = periodoNumerico,
                 UnidadesFuncionales = unidadFuncional
             };
@@ -45,44 +44,10 @@ namespace Servicios
             pago = _context.Pagos.OrderByDescending(x => x.ID).FirstOrDefault();
             #endregion
 
-            #region Add Gastos Eventuales
-            //Agregar Gastos Eventuales Ordinarios a la tabla GastosEvOrdinariosUF
-            foreach (var item in gastosEvOrd)
-            {
-                gastosEvOrdUFDetalle = new GastosEvOrdinariosUFDetalle()
-                {
-                    Detalle = item.Detalle,
-                    Importe = item.Importe,
-                    Pagos = pago
-                };
-
-                _context.AddToGastosEvOrdinariosUFDetalle(gastosEvOrdUFDetalle);
-            }
-            #endregion
-
-            #region Add Gastos Fijos
-            //Agregar Gastos Fijos a la tabla ExpensasDetalleUF
-            foreach (var item in expensaDetalle)
-            {
-                expensaDetalleUF = new ExpensasUFDetalle()
-                {
-                    Detalle = item.Detalle,
-                    Importe = item.Importe,
-                    TipoGasto_ID = item.TipoGasto_ID,
-                    Sumar = item.Sumar,
-                    Orden = item.Orden,
-                    Gastos_ID = item.Gastos_ID,
-                    Pagos = pago
-                };
-
-                _context.AddToExpensasUFDetalle(expensaDetalleUF);
-            }
-            #endregion
-
             _context.SaveChanges();
         }
 
-        public void AddGastosEvOrdinariosEFDetalle(int idPago, string detalle, decimal importe)
+        public void AddGastosEvOrdinariosUFDetalle(int idPago, string detalle, decimal importe)
         {
             var pago = _context.Pagos.Where(x => x.ID == idPago).FirstOrDefault();
 
@@ -111,8 +76,9 @@ namespace Servicios
             var Coeficiente = item.Coeficiente.Value;
             var GastosExtraordinarios = Constantes.GetDecimalFromCurrency(gastosExtraordinarios);
             var ImporteExtraordinario = GastosExtraordinarios * Coeficiente / 100;
-            var TotalGastosOrdinarios = Constantes.GetDecimalFromCurrency(totalGastosOrdinarios) + pago.ImporteGastoParticular;
-            var TotalVencimiento1 = ((TotalGastosOrdinarios - GastosExtraordinarios) * Coeficiente / 100) + ImporteExtraordinario;
+            var GastosOrdinarios = Constantes.GetDecimalFromCurrency(totalGastosOrdinarios);  //CONTROLAR !!!!
+            var ImporteOrdinario = GastosOrdinarios * Coeficiente / 100;
+            var TotalVencimiento1 = GastosOrdinarios + GastosExtraordinarios;
 
             pago.ImportePago1 = TotalVencimiento1;
             pago.ImportePago2 = TotalVencimiento1 + 10;
@@ -138,5 +104,9 @@ namespace Servicios
             return _context.GastosEvOrdinariosUFDetalle.Where(x => x.Pagos.ID == IdPago).ToList();
         }
 
+        public decimal GetTotalGastosEvOrdinariosUF(int IdPago)
+        {
+            return _context.GastosEvOrdinariosUFDetalle.Where(x => x.Pagos.ID == IdPago).Sum(x => x.Importe) ?? 0;
+        }
     }
 }
