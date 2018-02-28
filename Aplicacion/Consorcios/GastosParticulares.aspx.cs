@@ -110,7 +110,7 @@ namespace WebSistemmas.Consorcios
         {
             try
             {
-                unidadesNeg.ActualizarGastosParticulares(grdUnidades.Rows, txtImporte.Text, txtDetalle.Text, lblImportePorUF.Text);
+                unidadesNeg.ActualizarGastosParticulares(grdUnidades.Rows, txtImporte.Text, txtDetalle.Text, lblImportePorUF.Text, ddlTipoGasto.Text);
                 Response.Redirect("Expensas.aspx#consorcios",false);
             }
             catch (Exception ex)

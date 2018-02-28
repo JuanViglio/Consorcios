@@ -17,8 +17,7 @@
             &nbsp;
         </p>
         <p style="color: #003399; font-size: large">
-            Nueva Expensa
-            de la Unidad Funcional
+            Nueva Expensa de la Unidad Funcional
             <asp:Label ID="lblNombreUF" runat="server"></asp:Label>
         </p>
         <div id="divError" runat="server" style="color: #003399; font-size: large; height: 45px;" align="left">
@@ -27,7 +26,7 @@
         </div>
         <table style="margin-top: 24px">
             <tr>
-                <td style="width: 641px">
+                <td style="width: 641px;vertical-align:top;">
                     <div id="accordion" style="width: 631px">
                         <h3>Gastos Fijos</h3>
                         <div>
@@ -132,6 +131,39 @@
                             <br />
                         </div>
                     </div>
+
+                    <br />
+                    <table style="width: 615px">
+                        <tr>
+                            <td style="height: 45px; text-align: left; width: 142px;">
+                                <asp:Label ID="Label5" runat="server" Text="Subtotal Ord.:" Font-Size="Large" style="color: #003399"></asp:Label>
+                            </td>
+                            <td style="width: 85px; height: 45px;" align="right">
+                                <asp:Label ID="lblTotalGastosOrdinarios" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
+                            </td>
+                            <td style="width: 157px; height: 45px;">
+                                <asp:button runat="server" text="Volver" id="btnVolver" height="35px" width="137px" onclick="btnVolver_Click" style="margin-top: 8px; margin-left: 55px;"></asp:button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 142px; height: 40px;">
+                                <asp:Label ID="Label1" runat="server" Text="Subtotal Extraord." Font-Size="Large" style="color: #003399"></asp:Label>
+                            </td>
+                            <td style="height: 40px; width: 85px;" align="right">
+                                <asp:Label ID="lblTotalGastosExtraordinarios" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
+                            </td>
+                            <td style="height: 40px"></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 142px; height: 38px;">
+                                <asp:Label ID="Label10" runat="server" Text="Total Gastos:" Font-Size="Large" style="color: #003399"></asp:Label>
+                            </td>
+                            <td  style="height: 38px; width: 85px;" align="right">
+                                <asp:Label ID="lblTotalGastos" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
                 </td>
                 <td style="width: 14px"></td>
                 <td style="width: 504px">
@@ -224,87 +256,48 @@
                         </tr>
                     </table>
                     <br />
-                                        <asp:gridview id="grdGastosParticularesOrd" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" style="margin-top: 0px; margin-left: 0px;" width="582px" onrowcommand="grdGastosEventuales_RowCommand" onrowdatabound="grdGastosEventuales_RowDataBound">
-                                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                                            <Columns>
-                                                <asp:BoundField DataField="Detalle" HeaderText="Detalle">
-                                                <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="Importe" HeaderText="Importe">
-                                                <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="ID" HeaderText="ID">
-                                                <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
-                                                </asp:BoundField>
-                                            </Columns>
-                                            <EditRowStyle BackColor="#999999" />
-                                            <FooterStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
-                                            <HeaderStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
-                                            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                                            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-                                            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                                        </asp:gridview>
-                                        <br />
-                                        <asp:gridview id="grdGastosParticularesEv" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" style="margin-top: 0px; margin-left: 0px;" width="582px" onrowcommand="grdGastosEventuales_RowCommand" onrowdatabound="grdGastosEventuales_RowDataBound">
-                                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                                            <Columns>
-                                                <asp:BoundField DataField="Detalle" HeaderText="Detalle">
-                                                <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="Importe" HeaderText="Importe">
-                                                <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="ID" HeaderText="ID">
-                                                <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
-                                                </asp:BoundField>
-                                            </Columns>
-                                            <EditRowStyle BackColor="#999999" />
-                                            <FooterStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
-                                            <HeaderStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
-                                            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                                            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-                                            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                                            <%--<SortedAscendingCellStyle BackColor="#E9E7E2" />
-                                            <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                                            <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                                            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />--%>
-                                        </asp:gridview>
+                    <asp:gridview id="grdGastosParticularesOrd" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" style="margin-top: 0px; margin-left: 0px;" width="582px" onrowcommand="grdGastosEventuales_RowCommand" onrowdatabound="grdGastosEventuales_RowDataBound">
+                        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                        <Columns>
+                            <asp:BoundField DataField="Detalle" HeaderText="Detalle">
+                            <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Importe" HeaderText="Importe">
+                            <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ID" HeaderText="ID">
+                            <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
+                            </asp:BoundField>
+                        </Columns>
+                        <EditRowStyle BackColor="#999999" />
+                        <FooterStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
+                        <HeaderStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                    </asp:gridview>
+                    <br />
+                    <asp:gridview id="grdGastosParticularesExt" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" style="margin-top: 0px; margin-left: 0px;" width="582px" onrowcommand="grdGastosEventuales_RowCommand" onrowdatabound="grdGastosEventuales_RowDataBound">
+                        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                        <Columns>
+                            <asp:BoundField DataField="Detalle" HeaderText="Detalle">
+                            <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Importe" HeaderText="Importe">
+                            <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ID" HeaderText="ID">
+                            <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
+                            </asp:BoundField>
+                        </Columns>
+                        <EditRowStyle BackColor="#999999" />
+                        <FooterStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
+                        <HeaderStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                    </asp:gridview>
                 </td>
-            </tr>
-        </table>
-        <br />
-        <table style="width: 615px">
-            <tr>
-                <td style="height: 45px; text-align: left; width: 142px;">
-                    <asp:Label ID="Label5" runat="server" Text="Subtotal Ord.:" Font-Size="Large" style="color: #003399"></asp:Label>
-                </td>
-                <td style="width: 85px; height: 45px;" align="right">
-                    <asp:Label ID="lblTotalGastosOrdinarios" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
-                </td>
-                <td style="width: 157px; height: 45px;">
-
-        <asp:button runat="server" text="Volver" id="btnVolver" height="35px" width="137px" onclick="btnVolver_Click" style="margin-top: 8px; margin-left: 55px;"></asp:button>
-
-                </td>
-
-            </tr>
-            <tr>
-                <td style="width: 142px; height: 40px;">
-                    <asp:Label ID="Label1" runat="server" Text="Subtotal Extraord." Font-Size="Large" style="color: #003399"></asp:Label>
-                </td>
-                <td style="height: 40px; width: 85px;" align="right">
-                    <asp:Label ID="lblTotalGastosExtraordinarios" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
-                </td>
-                <td style="height: 40px"></td>
-            </tr>
-            <tr>
-                <td style="width: 142px; height: 38px;">
-                    <asp:Label ID="Label10" runat="server" Text="Total Gastos:" Font-Size="Large" style="color: #003399"></asp:Label>
-                </td>
-                <td  style="height: 38px; width: 85px;" align="right">
-                    <asp:Label ID="lblTotalGastos" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
-                </td>
-                <td></td>
             </tr>
         </table>
 

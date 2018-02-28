@@ -12,6 +12,17 @@ namespace Negocio
         readonly IPagosServ _pagosServ;
         readonly IExpensasServ _expensasServ;
 
+        private void GuardarGastosParticulares(GridViewRow row, string importe, string detalle, string importePorUF, string tipoGasto)
+        {
+            var idPago = int.Parse(row.Cells[3].Text);
+            var detalleTotal = " (Total $" + importe + ")";
+
+            if (tipoGasto == "Eventual Ordinario")
+                _pagosServ.AddGastosEvOrdinariosUFDetalle(idPago, detalle.ToUpper() + detalleTotal.ToUpper(), Convert.ToDecimal(importePorUF));
+            else
+                _pagosServ.AddGastosEvExtUFDetalle(idPago, detalle.ToUpper() + detalleTotal.ToUpper(), Convert.ToDecimal(importePorUF));
+        }
+
         public unidadesFuncionaesNeg (IUnidadesServ unidadesServ, IPagosServ pagosServ, IExpensasServ expensasServ)
         {
             _unidadesServ = unidadesServ;
@@ -24,14 +35,7 @@ namespace Negocio
             return _unidadesServ.GetPagosConCochera(idConsorcio, periodoNumerico, agregarValorCochera);
         }        
 
-        public void GuardarGastosParticulares(GridViewRow row, string importe, string detalle, string importePorUF)
-        {
-            var idPago = int.Parse(row.Cells[3].Text);
-            var detalleTotal = " (Total $" + importe + ")";
-            _pagosServ.AddGastosEvOrdinariosUFDetalle(idPago, detalle.ToUpper() + detalleTotal.ToUpper(), Convert.ToDecimal(importePorUF));
-        }
-
-        public void ActualizarGastosParticulares(GridViewRowCollection rows, string importe, string detalle, string importePorUF)
+        public void ActualizarGastosParticulares(GridViewRowCollection rows, string importe, string detalle, string importePorUF, string tipoGasto)
         {
             int col_Apllicar = 4;
 
@@ -55,7 +59,7 @@ namespace Negocio
                 CheckBox chk = row.Cells[col_Apllicar].Controls[1] as CheckBox;
                 if (chk != null && chk.Checked)
                 {
-                    GuardarGastosParticulares(row, importe, detalle, importePorUF);
+                    GuardarGastosParticulares(row, importe, detalle, importePorUF, tipoGasto);
                 }
             }
         }

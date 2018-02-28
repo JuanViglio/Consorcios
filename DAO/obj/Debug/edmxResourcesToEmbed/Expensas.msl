@@ -231,5 +231,23 @@
       </EndProperty>
       <Condition ColumnName="Pagos_ID" IsNull="false" />
     </AssociationSetMapping>
+    <EntitySetMapping Name="GastosEvExtUFDetalle">
+      <EntityTypeMapping TypeName="ExpensasModel.GastosEvExtUFDetalle">
+        <MappingFragment StoreEntitySet="GastosEvExtUFDetalle">
+          <ScalarProperty Name="Importe" ColumnName="Importe" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_GastosEvExtUFDetalle_Pagos" TypeName="ExpensasModel.FK_GastosEvExtUFDetalle_Pagos" StoreEntitySet="GastosEvExtUFDetalle">
+      <EndProperty Name="GastosEvExtUFDetalle">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <EndProperty Name="Pagos">
+        <ScalarProperty Name="ID" ColumnName="Pagos_ID" />
+      </EndProperty>
+      <Condition ColumnName="Pagos_ID" IsNull="false" />
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

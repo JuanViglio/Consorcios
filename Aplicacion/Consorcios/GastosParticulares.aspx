@@ -47,7 +47,7 @@
                     <asp:Label ID="Label2" runat="server" Text="Tipo de Gasto"></asp:Label>
                 </td>
                 <td style="width: 320px; height: 40px;">
-                    <asp:DropDownList ID="DropDownList1" runat="server" Height="24px" Width="180px">
+                    <asp:DropDownList ID="ddlTipoGasto" runat="server" Height="24px" Width="180px">
                         <asp:ListItem>Eventual Ordinario</asp:ListItem>
                         <asp:ListItem>Eventual Extraordinario</asp:ListItem>
                     </asp:DropDownList>

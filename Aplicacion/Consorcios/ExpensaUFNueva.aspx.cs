@@ -45,6 +45,14 @@ namespace WebSistemmas.Consorcios
             grdGastosParticularesOrd.DataBind();
         }
 
+        private void CargaGrillaGastosParticularesExt()
+        {
+            int pagoID = Convert.ToInt32(Session["PagoId"]);
+
+            grdGastosParticularesExt.DataSource = _pagosServ.GetGastosEvExtUF(pagoID);
+            grdGastosParticularesExt.DataBind();
+        }
+
         private void CargarGrillaGastosEvOrdinarios()
         {
             int expensaID = Convert.ToInt32(Session["ExpensaId"]);
@@ -83,14 +91,14 @@ namespace WebSistemmas.Consorcios
             decimal subtotalGastoOrdinario = gastosOrdinarios * coeficiente /100;
             decimal subtotalGastoExtraordinario = gastosExtraordinarios * coeficiente / 100;
             decimal subtotalGastoCocheraOrd = _pagosServ.GetTotalGastosEvOrdinariosUF(int.Parse(PagoId));
-            decimal subtotalGastoCocheraExt = 0;
+            decimal subtotalGastoCocheraExt = _pagosServ.GetTotalGastosEvExtUF(int.Parse(PagoId));
             decimal importeGastoParticular = Pago.ImporteGastoParticular;
 
             lblCoeficiente.Text = coeficiente.ToString();
             lblSubtotalGastoOrdinario.Text = subtotalGastoOrdinario.ToString("0.00");
             lblSubtotalGastoExt.Text = subtotalGastoExtraordinario.ToString("0.00");
-            lblSubtotalGastoCocherarOrd.Text = subtotalGastoCocheraOrd.ToString("0.00");  
-            //falta subtotal gastos cochera extr
+            lblSubtotalGastoCocherarOrd.Text = subtotalGastoCocheraOrd.ToString("0.00");
+            lblSubtotalGastoCocheraExt.Text = subtotalGastoCocheraExt.ToString("0.00");
             lblSubtotalGastoParicular.Text = importeGastoParticular.ToString("0.00");
 
             txtImporteGastoParticular.Text = importeGastoParticular.ToString("0.00");
@@ -107,6 +115,7 @@ namespace WebSistemmas.Consorcios
             CargarGrillaGastosEvOrdinarios();
             CargarGrillaGastosEvExtraordinarios();
             CargaGrillaGastosParticularesOrd();
+            CargaGrillaGastosParticularesExt();
             CargarTotalesGastos();
             CalcularTotales();
 

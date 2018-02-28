@@ -62,6 +62,21 @@ namespace Servicios
             _context.SaveChanges();
         }
 
+        public void AddGastosEvExtUFDetalle(int idPago, string detalle, decimal importe)
+        {
+            var pago = _context.Pagos.Where(x => x.ID == idPago).FirstOrDefault();
+
+            var gastosEvExtUFDetalle = new GastosEvExtUFDetalle()
+            {
+                Detalle = detalle,
+                Importe = importe,
+                Pagos = pago
+            };
+
+            _context.AddToGastosEvExtUFDetalle(gastosEvExtUFDetalle);
+            _context.SaveChanges();
+        }
+
         public bool UpdatePagos(string consorcioId, UnidadesFuncionales item, string gastosExtraordinarios,
             string totalGastosOrdinarios, int periodoNumerico)
         {
@@ -104,9 +119,19 @@ namespace Servicios
             return _context.GastosEvOrdinariosUFDetalle.Where(x => x.Pagos.ID == IdPago).ToList();
         }
 
+        public List<GastosEvExtUFDetalle> GetGastosEvExtUF(int IdPago)
+        {
+            return _context.GastosEvExtUFDetalle.Where(x => x.Pagos.ID == IdPago).ToList();
+        }
+
         public decimal GetTotalGastosEvOrdinariosUF(int IdPago)
         {
             return _context.GastosEvOrdinariosUFDetalle.Where(x => x.Pagos.ID == IdPago).Sum(x => x.Importe) ?? 0;
+        }
+
+        public decimal GetTotalGastosEvExtUF(int IdPago)
+        {
+            return _context.GastosEvExtUFDetalle.Where(x => x.Pagos.ID == IdPago).Sum(x => x.Importe) ?? 0;
         }
     }
 }

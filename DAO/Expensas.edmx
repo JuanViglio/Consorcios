@@ -71,6 +71,15 @@
           <Property Name="Importe" Type="decimal" Precision="18" Scale="2" />
           <Property Name="TipoGastos_ID" Type="decimal" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
+        <EntityType Name="GastosEvExtUFDetalle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Detalle" Type="nvarchar" MaxLength="50" />
+          <Property Name="Importe" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Pagos_ID" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
         <EntityType Name="GastosEvOrdinariosDetalle">
           <Key>
             <PropertyRef Name="ID" />
@@ -210,6 +219,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_GastosEvExtUFDetalle_Pagos">
+          <End Role="Pagos" Type="Self.Pagos" Multiplicity="0..1" />
+          <End Role="GastosEvExtUFDetalle" Type="Self.GastosEvExtUFDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pagos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GastosEvExtUFDetalle">
+              <PropertyRef Name="Pagos_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_GastosEvOrdinariosDetalle_Expensas">
           <End Role="Expensas" Type="Self.Expensas" Multiplicity="0..1" />
           <End Role="GastosEvOrdinariosDetalle" Type="Self.GastosEvOrdinariosDetalle" Multiplicity="*" />
@@ -277,6 +298,7 @@
           <EntitySet Name="ExpensasDetalle" EntityType="Self.ExpensasDetalle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExpensasUFDetalle" EntityType="Self.ExpensasUFDetalle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gastos" EntityType="Self.Gastos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GastosEvExtUFDetalle" EntityType="Self.GastosEvExtUFDetalle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GastosEvOrdinariosDetalle" EntityType="Self.GastosEvOrdinariosDetalle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GastosEvOrdinariosUFDetalle" EntityType="Self.GastosEvOrdinariosUFDetalle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GastosExtDetalle" EntityType="Self.GastosExtDetalle" Schema="dbo" store:Type="Tables" />
@@ -306,6 +328,10 @@
           <AssociationSet Name="FK_Gastos_TipoGastos" Association="Self.FK_Gastos_TipoGastos">
             <End Role="TipoGastos" EntitySet="TipoGastos" />
             <End Role="Gastos" EntitySet="Gastos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GastosEvExtUFDetalle_Pagos" Association="Self.FK_GastosEvExtUFDetalle_Pagos">
+            <End Role="Pagos" EntitySet="Pagos" />
+            <End Role="GastosEvExtUFDetalle" EntitySet="GastosEvExtUFDetalle" />
           </AssociationSet>
           <AssociationSet Name="FK_GastosEvOrdinariosDetalle_Expensas" Association="Self.FK_GastosEvOrdinariosDetalle_Expensas">
             <End Role="Expensas" EntitySet="Expensas" />
@@ -442,6 +468,11 @@
             <End Role="Pagos" EntitySet="Pagos" />
             <End Role="GastosEvOrdinariosUFDetalle" EntitySet="GastosEvOrdinariosUFDetalle" />
           </AssociationSet>
+          <EntitySet Name="GastosEvExtUFDetalle" EntityType="ExpensasModel.GastosEvExtUFDetalle" />
+          <AssociationSet Name="FK_GastosEvExtUFDetalle_Pagos" Association="ExpensasModel.FK_GastosEvExtUFDetalle_Pagos">
+            <End Role="Pagos" EntitySet="Pagos" />
+            <End Role="GastosEvExtUFDetalle" EntitySet="GastosEvExtUFDetalle" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="UnidadesFuncionales">
           <Key>
@@ -563,6 +594,7 @@
           <NavigationProperty Name="UnidadesFuncionales" Relationship="ExpensasModel.FK_Pagos_UF" FromRole="Pagos" ToRole="UnidadesFuncionales" />
           <NavigationProperty Name="ExpensasUFDetalle" Relationship="ExpensasModel.FK_ExpensasUFDetalle_Pagos" FromRole="Pagos" ToRole="ExpensasUFDetalle" />
           <NavigationProperty Name="GastosEvOrdinariosUFDetalle" Relationship="ExpensasModel.FK_GastosEvOrdinariosUFDetalle_Pagos" FromRole="Pagos" ToRole="GastosEvOrdinariosUFDetalle" />
+          <NavigationProperty Name="GastosEvExtUFDetalle" Relationship="ExpensasModel.FK_GastosEvExtUFDetalle_Pagos" FromRole="Pagos" ToRole="GastosEvExtUFDetalle" />
         </EntityType>
         <Association Name="FK_Pagos_UF">
           <End Type="ExpensasModel.UnidadesFuncionales" Role="UnidadesFuncionales" Multiplicity="1" />
@@ -597,6 +629,19 @@
         <Association Name="FK_GastosEvOrdinariosUFDetalle_Pagos">
           <End Type="ExpensasModel.Pagos" Role="Pagos" Multiplicity="0..1" />
           <End Type="ExpensasModel.GastosEvOrdinariosUFDetalle" Role="GastosEvOrdinariosUFDetalle" Multiplicity="*" />
+        </Association>
+        <EntityType Name="GastosEvExtUFDetalle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Pagos" Relationship="ExpensasModel.FK_GastosEvExtUFDetalle_Pagos" FromRole="GastosEvExtUFDetalle" ToRole="Pagos" />
+        </EntityType>
+        <Association Name="FK_GastosEvExtUFDetalle_Pagos">
+          <End Type="ExpensasModel.Pagos" Role="Pagos" Multiplicity="0..1" />
+          <End Type="ExpensasModel.GastosEvExtUFDetalle" Role="GastosEvExtUFDetalle" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -827,6 +872,24 @@
           </EntitySetMapping>
           <AssociationSetMapping Name="FK_GastosEvOrdinariosUFDetalle_Pagos" TypeName="ExpensasModel.FK_GastosEvOrdinariosUFDetalle_Pagos" StoreEntitySet="GastosEvOrdinariosUFDetalle">
             <EndProperty Name="GastosEvOrdinariosUFDetalle">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <EndProperty Name="Pagos">
+              <ScalarProperty Name="ID" ColumnName="Pagos_ID" />
+            </EndProperty>
+            <Condition ColumnName="Pagos_ID" IsNull="false" />
+          </AssociationSetMapping>
+          <EntitySetMapping Name="GastosEvExtUFDetalle">
+            <EntityTypeMapping TypeName="ExpensasModel.GastosEvExtUFDetalle">
+              <MappingFragment StoreEntitySet="GastosEvExtUFDetalle">
+                <ScalarProperty Name="Importe" ColumnName="Importe" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_GastosEvExtUFDetalle_Pagos" TypeName="ExpensasModel.FK_GastosEvExtUFDetalle_Pagos" StoreEntitySet="GastosEvExtUFDetalle">
+            <EndProperty Name="GastosEvExtUFDetalle">
               <ScalarProperty Name="ID" ColumnName="ID" />
             </EndProperty>
             <EndProperty Name="Pagos">
