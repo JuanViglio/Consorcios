@@ -133,5 +133,21 @@ namespace Servicios
         {
             return _context.GastosEvExtUFDetalle.Where(x => x.Pagos.ID == IdPago).Sum(x => x.Importe) ?? 0;
         }
+
+        public void DeleteGastosEvOrdinariosUF(int IdGasto)
+        {
+            var gasto = _context.GastosEvOrdinariosUFDetalle.Where(x => x.ID == IdGasto).FirstOrDefault();
+
+            _context.DeleteObject(gasto);
+            _context.SaveChanges();
+        }
+
+        public void DeleteGastosEvExtUF(int IdGasto)
+        {
+            var gasto = _context.GastosEvExtUFDetalle.Where(x => x.ID == IdGasto).FirstOrDefault();
+
+            _context.DeleteObject(gasto);
+            _context.SaveChanges();
+        }
     }
 }

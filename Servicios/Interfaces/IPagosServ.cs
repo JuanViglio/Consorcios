@@ -24,5 +24,9 @@ namespace Servicios.Interfaces
         decimal GetTotalGastosEvOrdinariosUF(int IdPago);
 
         decimal GetTotalGastosEvExtUF(int IdPago);
+
+        void DeleteGastosEvOrdinariosUF(int IdGasto);
+
+        void DeleteGastosEvExtUF(int IdGasto);
     }
 }

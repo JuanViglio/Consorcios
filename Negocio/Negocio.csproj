@@ -49,6 +49,8 @@
   <ItemGroup>
     <Compile Include="expensasNeg.cs" />
     <Compile Include="Interfaces\IExpensasNeg.cs" />
+    <Compile Include="Interfaces\IPagosNeg.cs" />
+    <Compile Include="pagosNeg.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="unidadesFuncionaesNeg.cs" />
   </ItemGroup>

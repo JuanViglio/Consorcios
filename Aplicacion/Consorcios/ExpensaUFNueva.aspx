@@ -256,7 +256,7 @@
                         </tr>
                     </table>
                     <br />
-                    <asp:gridview id="grdGastosParticularesOrd" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" style="margin-top: 0px; margin-left: 0px;" width="582px" onrowcommand="grdGastosEventuales_RowCommand" onrowdatabound="grdGastosEventuales_RowDataBound">
+                    <asp:gridview id="grdGastosParticularesOrd" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" style="margin-top: 0px; margin-left: 0px;" width="582px" onrowcommand="grdGastosParticularesOrd_RowCommand" onrowdatabound="grdGastosParticularesOrd_RowDataBound" Caption="Gastos Particulares Ordinarios">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
                             <asp:BoundField DataField="Detalle" HeaderText="Detalle">
@@ -268,6 +268,14 @@
                             <asp:BoundField DataField="ID" HeaderText="ID">
                             <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
                             </asp:BoundField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <div class="div_parent">
+                                        <asp:ImageButton ID="EliminarGastoOrd" runat="server" CausesValidation="False" CommandName="Eliminar" ImageUrl="~/css/img/ico_eliminar.png" ToolTip="Eliminar" />
+                                    </div>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" />
+                            </asp:TemplateField>
                         </Columns>
                         <EditRowStyle BackColor="#999999" />
                         <FooterStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
@@ -277,7 +285,7 @@
                         <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
                     </asp:gridview>
                     <br />
-                    <asp:gridview id="grdGastosParticularesExt" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" style="margin-top: 0px; margin-left: 0px;" width="582px" onrowcommand="grdGastosEventuales_RowCommand" onrowdatabound="grdGastosEventuales_RowDataBound">
+                    <asp:gridview id="grdGastosParticularesExt" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" style="margin-top: 0px; margin-left: 0px;" width="582px" onrowcommand="grdGastosParticularesExt_RowCommand" onrowdatabound="grdGastosParticularesExt_RowDataBound" Caption="Gastos Particulares Extraordinarios">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
                             <asp:BoundField DataField="Detalle" HeaderText="Detalle">
@@ -289,6 +297,14 @@
                             <asp:BoundField DataField="ID" HeaderText="ID">
                             <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
                             </asp:BoundField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <div class="div_parent">
+                                        <asp:ImageButton ID="EliminarGastoExt" runat="server" CausesValidation="False" CommandName="Eliminar" ImageUrl="~/css/img/ico_eliminar.png" ToolTip="Eliminar" />
+                                    </div>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" />
+                            </asp:TemplateField>
                         </Columns>
                         <EditRowStyle BackColor="#999999" />
                         <FooterStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
