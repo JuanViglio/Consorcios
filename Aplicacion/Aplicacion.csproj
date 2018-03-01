@@ -82,6 +82,9 @@
     <Content Include="Consorcios\Detalles.aspx" />
     <Content Include="Consorcios\ExpensaUFNueva.aspx" />
     <Content Include="Consorcios\GastosParticulares.aspx" />
+    <Content Include="Consorcios\UserControls\ExpensasUF\GridGastosEvExtUF.ascx" />
+    <Content Include="Consorcios\UserControls\ExpensasUF\GridGastosEvOrdUF.ascx" />
+    <Content Include="Consorcios\UserControls\ExpensasUF\GridGastosFijosUF.ascx" />
     <Content Include="Consorcios\Privado.aspx" />
     <Content Include="css\img\ico_mas.jpg" />
     <Content Include="css\jquery-ui-1.8.16.custom.css" />
@@ -195,6 +198,27 @@
     </Compile>
     <Compile Include="Consorcios\MenuConsorcios.Master.designer.cs">
       <DependentUpon>MenuConsorcios.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\ExpensasUF\GridGastosEvExtUF.ascx.cs">
+      <DependentUpon>GridGastosEvExtUF.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\ExpensasUF\GridGastosEvExtUF.ascx.designer.cs">
+      <DependentUpon>GridGastosEvExtUF.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\ExpensasUF\GridGastosEvOrdUF.ascx.cs">
+      <DependentUpon>GridGastosEvOrdUF.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\ExpensasUF\GridGastosEvOrdUF.ascx.designer.cs">
+      <DependentUpon>GridGastosEvOrdUF.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\ExpensasUF\GridGastosFijosUF.ascx.cs">
+      <DependentUpon>GridGastosFijosUF.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\ExpensasUF\GridGastosFijosUF.ascx.designer.cs">
+      <DependentUpon>GridGastosFijosUF.ascx</DependentUpon>
     </Compile>
     <Compile Include="Consorcios\Privado.aspx.cs">
       <DependentUpon>Privado.aspx</DependentUpon>

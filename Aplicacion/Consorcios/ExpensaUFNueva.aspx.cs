@@ -29,16 +29,7 @@ namespace WebSistemmas.Consorcios
         {
             divError.Visible = (error != string.Empty);
             lblError.Text = error;
-        }
-        
-        private void CargarGrillaGastosFijos()
-        {
-            int expensaID = Convert.ToInt32(Session["ExpensaId"]);
-            bool soloSumaChequeada = true;
-
-            grdGastosOrdinarios.DataSource = _expensasServ.GetGastosOrdinarios(expensaID, soloSumaChequeada);
-            grdGastosOrdinarios.DataBind();
-        }
+        }        
 
         private void CargaGrillaGastosParticularesOrd()
         {
@@ -54,24 +45,6 @@ namespace WebSistemmas.Consorcios
 
             grdGastosParticularesExt.DataSource = _pagosServ.GetGastosEvExtUF(pagoID);
             grdGastosParticularesExt.DataBind();
-        }
-
-        private void CargarGrillaGastosEvOrdinarios()
-        {
-            int expensaID = Convert.ToInt32(Session["ExpensaId"]);
-
-            grdGastosEventuales.DataSource = _expensasServ.GetGastosEvOrdinarios(expensaID);
-            grdGastosEventuales.DataBind();
-
-            lblTotalGastosEventuales.Text = _expensasServ.GetTotalGastosEvOrdinarios(expensaID).ToString("C", new CultureInfo("en-US"));
-        }
-
-        private void CargarGrillaGastosEvExtraordinarios()
-        {
-            int expensaID = Convert.ToInt32(Session["ExpensaId"]);
-
-            grdGastosExtraordinarios.DataSource = _expensasServ.GetGastosEvExtraordinarios(expensaID);
-            grdGastosExtraordinarios.DataBind();
         }
 
         private void CargarTotalesGastos()
@@ -114,9 +87,6 @@ namespace WebSistemmas.Consorcios
         {
             divError.Visible = false;
 
-            CargarGrillaGastosFijos();
-            CargarGrillaGastosEvOrdinarios();
-            CargarGrillaGastosEvExtraordinarios();
             CargaGrillaGastosParticularesOrd();
             CargaGrillaGastosParticularesExt();
             CargarTotalesGastos();
@@ -156,26 +126,6 @@ namespace WebSistemmas.Consorcios
                 lblNombreUF.Text = Session["NobreUF"].ToString();
                 CargaInicial();
             }        
-        }
-
-        protected void grdGastosOrdinarios_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-
-        }
-
-        protected void grdGastosOrdinarios_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            e.Row.Cells[col_ID_Expensa].Visible = false;
-        }
-
-        protected void grdGastosEventuales_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-
-        }
-
-        protected void grdGastosEventuales_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            e.Row.Cells[col_ID_Expensa].Visible = false;
         }
 
         protected void grdGastosExtraordinarios_RowCommand(object sender, GridViewCommandEventArgs e)

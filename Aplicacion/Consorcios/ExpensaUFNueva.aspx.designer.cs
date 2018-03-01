@@ -58,49 +58,31 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.Label lblError;
         
         /// <summary>
-        /// grdGastosOrdinarios control.
+        /// MyPartialView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdGastosOrdinarios;
+        protected global::WebSistemmas.Consorcios.PaginasParciales.GridGastosFijosUF MyPartialView;
         
         /// <summary>
-        /// grdGastosEventuales control.
+        /// GridGastosEvOrdUF control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdGastosEventuales;
+        protected global::WebSistemmas.Consorcios.UserControls.ExpensasUF.GridGastosEvOrdUF GridGastosEvOrdUF;
         
         /// <summary>
-        /// Label8 control.
+        /// GridGastosEvExtUF control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label8;
-        
-        /// <summary>
-        /// lblTotalGastosEventuales control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalGastosEventuales;
-        
-        /// <summary>
-        /// grdGastosExtraordinarios control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdGastosExtraordinarios;
+        protected global::WebSistemmas.Consorcios.UserControls.ExpensasUF.GridGastosEvExtUF GridGastosEvExtUF;
         
         /// <summary>
         /// Label5 control.
