@@ -86,6 +86,8 @@
     <Content Include="Consorcios\UserControls\ExpensasUF\GridGastosEvOrdUF.ascx" />
     <Content Include="Consorcios\UserControls\ExpensasUF\GridGastosFijosUF.ascx" />
     <Content Include="Consorcios\Privado.aspx" />
+    <Content Include="Consorcios\UserControls\ExpensasUF\SubtotalesUF.ascx" />
+    <Content Include="Consorcios\UserControls\ExpensasUF\TotalesUF.ascx" />
     <Content Include="css\img\ico_mas.jpg" />
     <Content Include="css\jquery-ui-1.8.16.custom.css" />
     <Content Include="css\jquery-ui.css" />
@@ -233,6 +235,20 @@
     </Compile>
     <Compile Include="Consorcios\UnidadesFuncionales.aspx.designer.cs">
       <DependentUpon>UnidadesFuncionales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\ExpensasUF\SubtotalesUF.ascx.cs">
+      <DependentUpon>SubtotalesUF.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\ExpensasUF\SubtotalesUF.ascx.designer.cs">
+      <DependentUpon>SubtotalesUF.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\ExpensasUF\TotalesUF.ascx.cs">
+      <DependentUpon>TotalesUF.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\ExpensasUF\TotalesUF.ascx.designer.cs">
+      <DependentUpon>TotalesUF.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

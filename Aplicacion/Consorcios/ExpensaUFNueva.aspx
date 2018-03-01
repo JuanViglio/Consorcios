@@ -2,6 +2,8 @@
 <%@ Register TagPrefix="uc" TagName="gridGastosFijosUF" Src="~/Consorcios/UserControls/ExpensasUF/GridGastosFijosUF.ascx" %>
 <%@ Register TagPrefix="uc" TagName="gridGastosEvOrdUF" Src="~/Consorcios/UserControls/ExpensasUF/GridGastosEvOrdUF.ascx" %>
 <%@ Register TagPrefix="uc" TagName="gridGastosEvExtUF" Src="~/Consorcios/UserControls/ExpensasUF/GridGastosEvExtUF.ascx" %>
+<%@ Register TagPrefix="uc" TagName="subtotalesUF" Src="~/Consorcios/UserControls/ExpensasUF/SubtotalesUF.ascx" %>
+<%@ Register TagPrefix="uc" TagName="totalesUF" Src="~/Consorcios/UserControls/ExpensasUF/TotalesUF.ascx" %>
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
 
@@ -31,129 +33,31 @@
             <tr>
                 <td style="width: 641px;vertical-align:top;">
                     <div id="accordion" style="width: 631px">
+
                         <h3>Gastos Fijos</h3>
                         <div>
-                            <table style="width: 579px">
-                                <tr>
-                                    <td style="width: 643px; height: 226px;">
-                                        <uc:gridGastosFijosUF id="MyPartialView" runat="server" />
-                                    </td>
-                                </tr>
-                            </table>
+                            <uc:gridGastosFijosUF id="MyPartialView" runat="server" />
                         </div>
 
                         <h3>Gastos Eventuales Ordinarios</h3>
                         <div>
-                            <table>
-                                <tr>
-                                    <td style="width: 643px; height: 196px;">
-                                        <uc:gridGastosEvOrdUF id="GridGastosEvOrdUF" runat="server" />
-                                    </td>
-                                </tr>
-                            </table>
+                            <uc:gridGastosEvOrdUF id="GridGastosEvOrdUF" runat="server" />
                         </div>
 
                         <h3>Gastos Eventuales Extraordinarios</h3>
                         <div style="height: 169px;">
-                            <table>
-                                <tr>
-                                    <td style="width: 625px">
-                                        <uc:gridGastosEvExtUF id="GridGastosEvExtUF" runat="server" />
-                                    </td>
-                                </tr>
-                            </table>
-                            <br />
+                            <uc:gridGastosEvExtUF id="GridGastosEvExtUF" runat="server" />
                         </div>
                     </div>
 
                     <br />
-                    <table style="width: 615px">
-                        <tr>
-                            <td style="height: 45px; text-align: left; width: 142px;">
-                                <asp:Label ID="Label5" runat="server" Text="Subtotal Ord.:" Font-Size="Large" style="color: #003399"></asp:Label>
-                            </td>
-                            <td style="width: 85px; height: 45px;" align="right">
-                                <asp:Label ID="lblTotalGastosOrdinarios" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
-                            </td>
-                            <td style="width: 157px; height: 45px;">
-                                <asp:button runat="server" text="Volver" id="btnVolver" height="35px" width="137px" onclick="btnVolver_Click" style="margin-top: 8px; margin-left: 55px;"></asp:button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 142px; height: 40px;">
-                                <asp:Label ID="Label1" runat="server" Text="Subtotal Extraord." Font-Size="Large" style="color: #003399"></asp:Label>
-                            </td>
-                            <td style="height: 40px; width: 85px;" align="right">
-                                <asp:Label ID="lblTotalGastosExtraordinarios" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
-                            </td>
-                            <td style="height: 40px"></td>
-                        </tr>
-                        <tr>
-                            <td style="width: 142px; height: 38px;">
-                                <asp:Label ID="Label10" runat="server" Text="Total Gastos:" Font-Size="Large" style="color: #003399"></asp:Label>
-                            </td>
-                            <td  style="height: 38px; width: 85px;" align="right">
-                                <asp:Label ID="lblTotalGastos" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
+                    <uc:subtotalesUF id="SubtotalesUF" runat="server" />
                 </td>
                 <td style="width: 14px"></td>
                 <td style="width: 504px">
-                    <table>
-                        <tr>
-                            <td style="width: 201px; height: 28px;">Coeficiente    
-                            </td>
-                            <td align="right" style="width: 70px; height: 28px">
-                                <asp:label id="lblCoeficiente" runat="server" style="color: #003399" width="60px"></asp:label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 201px">
-                                Subtotal Gastos Ordinario
-                            </td>
-                            <td align="right" style="width: 70px">
-                                <asp:label id="lblSubtotalGastoOrdinario" runat="server" style="color: #003399" width="60px"></asp:label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 201px; height: 20px;">Subtotal Gastos Extraordinario
-                            </td>
-                            <td align="right" style="width: 70px; height: 20px">
-                                <asp:label id="lblSubtotalGastoExt" runat="server" style="color: #003399" width="60px"></asp:label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 201px; height: 20px;">Subtotal Gastos Cochera Ord.</td>
-                            <td style="height: 20px; width: 70px;" align="right">
-                                <asp:label id="lblSubtotalGastoCocherarOrd" runat="server" style="color: #003399" width="60px"></asp:label>
-                            </td>
-                        </tr>                        
-                        <tr>
-                            <td style="width: 201px">Subtotal Gastos Cochera Ext.
-                            </td>
-                            <td align="right" style="width: 70px">
-                                <asp:label id="lblSubtotalGastoCocheraExt" runat="server" style="color: #003399" width="60px"></asp:label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 201px">Subtotal Gasto Particular</td>
-                            <td align="right" style="width: 70px">
-                                <asp:label id="lblSubtotalGastoParicular" runat="server" style="color: #003399" width="60px"></asp:label>
-                            </td>
-                        </tr>
-                        <tr style="font-weight: bold">
-                            <td style="width: 201px; height: 30px;">Importe 1 Vencimietno
-                            </td>
-                            <td align="right" style="width: 70px; height: 30px">
-                                <asp:label id="lblVencimiento1" runat="server" style="color: #003399" width="60px"></asp:label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" style="height: 29px"></td>
-                        </tr>
-                    </table>
+                    <uc:totalesUF id="totalesUF" runat="server" />
+
+
                     <table>
                         <tr>
                             <td colspan="3" style="height: 43px">Gastos Particulares

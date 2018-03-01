@@ -47,50 +47,18 @@ namespace WebSistemmas.Consorcios
             grdGastosParticularesExt.DataBind();
         }
 
-        private void CargarTotalesGastos()
-        {
-            int expensaId = Convert.ToInt32(Session["ExpensaId"]);
-
-            lblTotalGastosOrdinarios.Text = _expensasServ.GetTotalGastosOrdinarios(expensaId).ToString("C", new CultureInfo("en-US"));
-            lblTotalGastosExtraordinarios.Text = _expensasServ.GetTotalGastosExtraordinarios(expensaId).ToString("C", new CultureInfo("en-US"));
-            lblTotalGastos.Text = (Constantes.GetDecimalFromCurrency(lblTotalGastosOrdinarios.Text) + Constantes.GetDecimalFromCurrency(lblTotalGastosExtraordinarios.Text)).ToString("C", new CultureInfo("en-US"));
-        }
-
-        private void CalcularTotales()
-        {
-            int expensaID = Convert.ToInt32(Session["ExpensaId"]);
-            var PagoId = Session["PagoId"].ToString();
-            var Pago = _unidadesFuncServ.GetPago(PagoId);
-            decimal coeficiente = Pago.Coeficiente;
-            decimal gastosOrdinarios = _expensasServ.GetTotalGastosOrdinarios(expensaID);
-            decimal gastosExtraordinarios = _expensasServ.GetTotalGastosExtraordinarios(expensaID);
-            decimal subtotalGastoOrdinario = gastosOrdinarios * coeficiente /100;
-            decimal subtotalGastoExtraordinario = gastosExtraordinarios * coeficiente / 100;
-            decimal subtotalGastoCocheraOrd = _pagosServ.GetTotalGastosEvOrdinariosUF(int.Parse(PagoId));
-            decimal subtotalGastoCocheraExt = _pagosServ.GetTotalGastosEvExtUF(int.Parse(PagoId));
-            decimal importeGastoParticular = Pago.ImporteGastoParticular;
-
-            lblCoeficiente.Text = coeficiente.ToString();
-            lblSubtotalGastoOrdinario.Text = subtotalGastoOrdinario.ToString("0.00");
-            lblSubtotalGastoExt.Text = subtotalGastoExtraordinario.ToString("0.00");
-            lblSubtotalGastoCocherarOrd.Text = subtotalGastoCocheraOrd.ToString("0.00");
-            lblSubtotalGastoCocheraExt.Text = subtotalGastoCocheraExt.ToString("0.00");
-            lblSubtotalGastoParicular.Text = importeGastoParticular.ToString("0.00");
-
-            txtImporteGastoParticular.Text = importeGastoParticular.ToString("0.00");
-            txtDetalleGastoParticular.Text = Pago.DetalleGastoParticular;
-
-            lblVencimiento1.Text = (subtotalGastoOrdinario + subtotalGastoExtraordinario + subtotalGastoCocheraOrd + subtotalGastoCocheraExt + importeGastoParticular).ToString("0.00");
-        }
-
         private void CargaInicial()
         {
             divError.Visible = false;
 
             CargaGrillaGastosParticularesOrd();
             CargaGrillaGastosParticularesExt();
-            CargarTotalesGastos();
-            CalcularTotales();
+            var pago = _unidadesFuncServ.GetPago(Session["PagoId"].ToString());
+
+            totalesUF.CalcularTotales(pago);
+            txtImporteGastoParticular.Text = pago.ImporteGastoParticular.ToString("0.00");
+            txtDetalleGastoParticular.Text = pago.DetalleGastoParticular;
+
 
             if (Session["Estado"].ToString() == "Finalizado")
             {
@@ -138,17 +106,11 @@ namespace WebSistemmas.Consorcios
             e.Row.Cells[col_ID_Expensa].Visible = false;
         }
 
-        protected void btnVolver_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Expensas.aspx#consorcios");
-        }
-
         protected void btnActualizar_Click(object sender, EventArgs e)
         {            
             if (txtImporteGastoParticular.Text.IsNumeric() == false)
             {
                 MostrarError("No se ingreso un Importe correcto");
-                lblSubtotalGastoExt.Text = "0";
             }
             else
             {
@@ -158,8 +120,12 @@ namespace WebSistemmas.Consorcios
                 int PagoId = Convert.ToInt32(Session["PagoId"].ToString());
                 decimal importe = Convert.ToDecimal(txtImporteGastoParticular.Text);
                 serv.GuardarGastoParticular(PagoId, importe, txtDetalleGastoParticular.Text.ToUpper());
+                var pago = _unidadesFuncServ.GetPago(PagoId.ToString());
 
-                CalcularTotales();
+                totalesUF.CalcularTotales(pago);
+                txtImporteGastoParticular.Text = pago.ImporteGastoParticular.ToString("0.00");
+                txtDetalleGastoParticular.Text = pago.DetalleGastoParticular;
+
             }
         }
 
@@ -228,7 +194,12 @@ namespace WebSistemmas.Consorcios
                             _pagosNeg.DeleteGastosEvOrdinariosUF(idGasto);
 
                             CargaGrillaGastosParticularesOrd();
-                            CalcularTotales();
+                            var pago = _unidadesFuncServ.GetPago(Session["PagoId"].ToString());
+
+                            totalesUF.CalcularTotales(pago);
+                            txtImporteGastoParticular.Text = pago.ImporteGastoParticular.ToString("0.00");
+                            txtDetalleGastoParticular.Text = pago.DetalleGastoParticular;
+
                             break;
                     }
                 }
@@ -272,7 +243,11 @@ namespace WebSistemmas.Consorcios
                             _pagosNeg.DeleteGastosEvExtUF(idGasto);
 
                             CargaGrillaGastosParticularesExt();
-                            CalcularTotales();
+                            var pago = _unidadesFuncServ.GetPago(Session["PagoId"].ToString());
+
+                            totalesUF.CalcularTotales(pago);
+                            txtImporteGastoParticular.Text = pago.ImporteGastoParticular.ToString("0.00");
+                            txtDetalleGastoParticular.Text = pago.DetalleGastoParticular;
                             break;
                     }
                 }
