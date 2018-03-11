@@ -42,10 +42,6 @@
                     <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
                     <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                     <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-<%--                    <SortedAscendingCellStyle BackColor="#E9E7E2" />
-                    <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                    <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                    <SortedDescendingHeaderStyle BackColor="#6F8DAE" />--%>
                 </asp:gridview>
         </p>
         <p>
@@ -79,7 +75,7 @@
                             </tr>
                             <tr>
                                 <td style="width: 120px; height: 53px">
-                                    <asp:button id="btnAceptarNuevoConsorcio" runat="server" height="30px" onclick="btnAceptarNuevoGasto_Click" text="Agregar" width="90px" />
+                                    <asp:button id="btnAceptarNuevoGasto" runat="server" height="30px" onclick="btnAceptarNuevoGasto_Click" text="Agregar" width="90px" />
                                 </td>
                                 <td style="height: 53px; width: 200px;" colspan="2">
                                     <asp:button id="btnCancelarDatos" runat="server" height="30px" text="Cancelar" width="90px" onclientclick="CerrarDivConsorcioDatos(); return false;" />

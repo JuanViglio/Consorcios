@@ -127,6 +127,17 @@
           <Property Name="UnidadesFuncionales_ID" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="PeriodoDetalle" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Proveedores">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Saldo" Type="numeric" Precision="18" Scale="2" />
+        </EntityType>
         <EntityType Name="TipoGastos">
           <Key>
             <PropertyRef Name="ID" />
@@ -303,6 +314,7 @@
           <EntitySet Name="GastosEvOrdinariosUFDetalle" EntityType="Self.GastosEvOrdinariosUFDetalle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GastosExtDetalle" EntityType="Self.GastosExtDetalle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoGastos" EntityType="Self.TipoGastos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnidadesFuncionales" EntityType="Self.UnidadesFuncionales" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Detalles_Consorcios" Association="Self.FK_Detalles_Consorcios">
@@ -473,6 +485,7 @@
             <End Role="Pagos" EntitySet="Pagos" />
             <End Role="GastosEvExtUFDetalle" EntitySet="GastosEvExtUFDetalle" />
           </AssociationSet>
+          <EntitySet Name="Proveedores" EntityType="ExpensasModel.Proveedores" />
           </EntityContainer>
         <EntityType Name="UnidadesFuncionales">
           <Key>
@@ -643,6 +656,17 @@
           <End Type="ExpensasModel.Pagos" Role="Pagos" Multiplicity="0..1" />
           <End Type="ExpensasModel.GastosEvExtUFDetalle" Role="GastosEvExtUFDetalle" Multiplicity="*" />
         </Association>
+        <EntityType Name="Proveedores">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Saldo" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -897,6 +921,18 @@
             </EndProperty>
             <Condition ColumnName="Pagos_ID" IsNull="false" />
           </AssociationSetMapping>
+          <EntitySetMapping Name="Proveedores">
+            <EntityTypeMapping TypeName="ExpensasModel.Proveedores">
+              <MappingFragment StoreEntitySet="Proveedores">
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

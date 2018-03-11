@@ -5,11 +5,11 @@ using Servicios;
 using Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebSistemmas.Common;
+using WebSistemmas.Consorcios.UserControls;
 
 namespace WebSistemmas.Consorcios
 {
@@ -24,12 +24,6 @@ namespace WebSistemmas.Consorcios
         private IPagosNeg _pagosNeg;
 
         #region Metodos Privados
-
-        private void MostrarError(string error)
-        {
-            divError.Visible = (error != string.Empty);
-            lblError.Text = error;
-        }        
 
         private void CargaGrillaGastosParticularesOrd()
         {
@@ -49,7 +43,8 @@ namespace WebSistemmas.Consorcios
 
         private void CargaInicial()
         {
-            divError.Visible = false;
+            bool MostrarDatosParticulares;
+            ConstantesWeb.MostrarError(string.Empty, this.Page);
 
             CargaGrillaGastosParticularesOrd();
             CargaGrillaGastosParticularesExt();
@@ -60,18 +55,11 @@ namespace WebSistemmas.Consorcios
             txtDetalleGastoParticular.Text = pago.DetalleGastoParticular;
 
 
-            if (Session["Estado"].ToString() == "Finalizado")
-            {
-                txtDetalleGastoParticular.Enabled = false;
-                txtImporteGastoParticular.Enabled = false;
-                btnActualizar.Visible = false;
-            }
-            else
-            {
-                txtDetalleGastoParticular.Enabled = true;
-                txtImporteGastoParticular.Enabled = true;
-                btnActualizar.Visible = true;
-            }
+            MostrarDatosParticulares = Session["Estado"].ToString() != "Finalizado";
+
+            txtDetalleGastoParticular.Enabled = MostrarDatosParticulares;
+            txtImporteGastoParticular.Enabled = MostrarDatosParticulares;
+            btnActualizar.Visible = MostrarDatosParticulares;
         }
 
         #endregion
@@ -85,7 +73,6 @@ namespace WebSistemmas.Consorcios
             _unidadesFuncServ = new unidadesFuncionalesServ();
             _pagosNeg = new pagosNeg(_pagosServ);
         }
-
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -110,11 +97,11 @@ namespace WebSistemmas.Consorcios
         {            
             if (txtImporteGastoParticular.Text.IsNumeric() == false)
             {
-                MostrarError("No se ingreso un Importe correcto");
+                ConstantesWeb.MostrarError("No se ingreso un Importe correcto", this.Page);
             }
             else
             {
-                MostrarError(string.Empty);
+                ConstantesWeb.MostrarError(string.Empty, this.Page);
 
                 unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
                 int PagoId = Convert.ToInt32(Session["PagoId"].ToString());
@@ -134,7 +121,7 @@ namespace WebSistemmas.Consorcios
             Dictionary<decimal, UnidadesFuncionalesModel> map = (Dictionary <decimal, UnidadesFuncionalesModel>)Session["MapPagoId"];
             string pagoID = Session["PagoId"].ToString();
             var key = map.FirstOrDefault(x => x.Value.PagoId == pagoID).Key;
-            MostrarError(string.Empty);
+            ConstantesWeb.MostrarError(string.Empty, this.Page);
 
             key++;
 
@@ -147,7 +134,7 @@ namespace WebSistemmas.Consorcios
             }
             else
             {
-                MostrarError("No existen mas Unidades Funcionales para mostrar");
+                ConstantesWeb.MostrarError("No existen mas Unidades Funcionales para mostrar", this.Page);
             }            
         }
 
@@ -156,7 +143,7 @@ namespace WebSistemmas.Consorcios
             Dictionary<decimal, UnidadesFuncionalesModel> map = (Dictionary<decimal, UnidadesFuncionalesModel>)Session["MapPagoId"];
             string pagoID = Session["PagoId"].ToString();
             var key = map.FirstOrDefault(x => x.Value.PagoId == pagoID).Key;
-            MostrarError(string.Empty);
+            ConstantesWeb.MostrarError(string.Empty, this.Page);
 
             key--;
 
@@ -169,14 +156,14 @@ namespace WebSistemmas.Consorcios
             }
             else
             {
-                MostrarError("No existen Unidades Funcionales previas para mostrar");
+                ConstantesWeb.MostrarError("No existen Unidades Funcionales previas para mostrar", this.Page);
             }
         }
 
         protected void grdGastosParticularesOrd_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             GridViewRow gridViewrow;
-            MostrarError(string.Empty);
+            ConstantesWeb.MostrarError(string.Empty, this.Page);
 
             try
             {
@@ -206,7 +193,7 @@ namespace WebSistemmas.Consorcios
             }
             catch (Exception ex)
             {
-                MostrarError("No se pudo Eliminar el Gasto Particular");
+                ConstantesWeb.MostrarError("No se pudo Eliminar el Gasto Particular", this.Page);
             }
         }
 
@@ -225,7 +212,7 @@ namespace WebSistemmas.Consorcios
         protected void grdGastosParticularesExt_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             GridViewRow gridViewrow;
-            MostrarError(string.Empty);
+            ConstantesWeb.MostrarError(string.Empty, this.Page);
 
             try
             {
@@ -255,7 +242,7 @@ namespace WebSistemmas.Consorcios
             }
             catch (Exception ex)
             {
-                MostrarError("No se pudo Eliminar el Gasto");
+                ConstantesWeb.MostrarError("No se pudo Eliminar el Gasto", this.Page);
             }
         }
 

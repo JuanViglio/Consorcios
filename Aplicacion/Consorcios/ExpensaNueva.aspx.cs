@@ -11,6 +11,7 @@ using System.Globalization;
 using WebSistemmas.Common;
 using DAO;
 using Negocio;
+using Negocio.Interfaces;
 
 namespace WebSistemmas.Consorcios
 {
@@ -29,6 +30,8 @@ namespace WebSistemmas.Consorcios
         readonly IUnidadesServ _unidadesServ;
         readonly IPagosServ _pagosServ;
         readonly IConsorciosServ _consorciosServ;
+        readonly IProveedoresServ _proveedoresServ;
+        readonly IProveedoresNeg _proveedoresNeg;
         private ExpensasEntities context = new ExpensasEntities();
 
         public ExpensaNueva()
@@ -40,8 +43,10 @@ namespace WebSistemmas.Consorcios
             _detallesServ = new detallesServ();
             _unidadesServ = new unidadesFuncionalesServ();
             _consorciosServ = new consorciosServ();
+            _proveedoresServ = new proveedoresServ(context);
 
             _expensaNeg = new expensasNeg(_expensasServ, _pagosServ);
+            _proveedoresNeg = new proveedoresNeg(_proveedoresServ);
         }
 
         [WebMethod]
@@ -66,6 +71,7 @@ namespace WebSistemmas.Consorcios
                 CargarGrillaGastosEvExtraordinarios();
                 CargarTotalGastos();
                 CargarComboGastosOrdinarios();
+                CargarComboProveedores();
                 ClientScript.RegisterStartupScript(GetType(), "TipoGastos", "cambioTipoGastos()", true);
 
                 if (Session["Periodo"] != null)                
@@ -518,14 +524,6 @@ namespace WebSistemmas.Consorcios
             expensasServ expensasServ = new expensasServ(context);
 
             expensasServ.GuardarUltimoTotal(expensaId, total);
-
-            //si el estado es "Aceptado" se recalcula el total para cada UF
-            //if (btnAceptar.Enabled == false)
-            //{
-            //    expensasServ serv = new expensasServ();
-
-            //    serv.AceptarExpensa(Convert.ToInt32(Session["ExpensaId"]), txtGastosExtraordinarios.Text, lblTotalGastosOrdinarios.Text);
-            //}
         }
 
         private void CargarGrillaGastosOrdinarios()
@@ -572,6 +570,14 @@ namespace WebSistemmas.Consorcios
             ddlGastos.DataTextField = "Detalle";
             ddlGastos.DataValueField = "Id";
             ddlGastos.DataBind();
+        }
+
+        private void CargarComboProveedores()
+        {
+            ddlProveedores.DataSource = _proveedoresNeg.GetProveedores();
+            ddlProveedores.DataTextField = "Nombre";
+            ddlProveedores.DataValueField = "Id";
+            ddlProveedores.DataBind();
         }
 
         private void AgregarGastoOrdinario(int idExpensa)

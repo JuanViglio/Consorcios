@@ -286,6 +286,22 @@ namespace DAO
             }
         }
         private ObjectSet<GastosEvExtUFDetalle> _GastosEvExtUFDetalle;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Proveedores> Proveedores
+        {
+            get
+            {
+                if ((_Proveedores == null))
+                {
+                    _Proveedores = base.CreateObjectSet<Proveedores>("Proveedores");
+                }
+                return _Proveedores;
+            }
+        }
+        private ObjectSet<Proveedores> _Proveedores;
 
         #endregion
 
@@ -393,6 +409,14 @@ namespace DAO
         public void AddToGastosEvExtUFDetalle(GastosEvExtUFDetalle gastosEvExtUFDetalle)
         {
             base.AddObject("GastosEvExtUFDetalle", gastosEvExtUFDetalle);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Proveedores EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToProveedores(Proveedores proveedores)
+        {
+            base.AddObject("Proveedores", proveedores);
         }
 
         #endregion
@@ -2819,6 +2843,182 @@ namespace DAO
                 }
             }
         }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="ExpensasModel", Name="Proveedores")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Proveedores : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Proveedores object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        public static Proveedores CreateProveedores(global::System.Decimal id)
+        {
+            Proveedores proveedores = new Proveedores();
+            proveedores.ID = id;
+            return proveedores;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value, "ID");
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Decimal _ID;
+        partial void OnIDChanging(global::System.Decimal value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Nombre
+        {
+            get
+            {
+                return _Nombre;
+            }
+            set
+            {
+                OnNombreChanging(value);
+                ReportPropertyChanging("Nombre");
+                _Nombre = StructuralObject.SetValidValue(value, true, "Nombre");
+                ReportPropertyChanged("Nombre");
+                OnNombreChanged();
+            }
+        }
+        private global::System.String _Nombre;
+        partial void OnNombreChanging(global::System.String value);
+        partial void OnNombreChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Direccion
+        {
+            get
+            {
+                return _Direccion;
+            }
+            set
+            {
+                OnDireccionChanging(value);
+                ReportPropertyChanging("Direccion");
+                _Direccion = StructuralObject.SetValidValue(value, true, "Direccion");
+                ReportPropertyChanged("Direccion");
+                OnDireccionChanged();
+            }
+        }
+        private global::System.String _Direccion;
+        partial void OnDireccionChanging(global::System.String value);
+        partial void OnDireccionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Telefono
+        {
+            get
+            {
+                return _Telefono;
+            }
+            set
+            {
+                OnTelefonoChanging(value);
+                ReportPropertyChanging("Telefono");
+                _Telefono = StructuralObject.SetValidValue(value, true, "Telefono");
+                ReportPropertyChanged("Telefono");
+                OnTelefonoChanged();
+            }
+        }
+        private global::System.String _Telefono;
+        partial void OnTelefonoChanging(global::System.String value);
+        partial void OnTelefonoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Mail
+        {
+            get
+            {
+                return _Mail;
+            }
+            set
+            {
+                OnMailChanging(value);
+                ReportPropertyChanging("Mail");
+                _Mail = StructuralObject.SetValidValue(value, true, "Mail");
+                ReportPropertyChanged("Mail");
+                OnMailChanged();
+            }
+        }
+        private global::System.String _Mail;
+        partial void OnMailChanging(global::System.String value);
+        partial void OnMailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> Saldo
+        {
+            get
+            {
+                return _Saldo;
+            }
+            set
+            {
+                OnSaldoChanging(value);
+                ReportPropertyChanging("Saldo");
+                _Saldo = StructuralObject.SetValidValue(value, "Saldo");
+                ReportPropertyChanged("Saldo");
+                OnSaldoChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _Saldo;
+        partial void OnSaldoChanging(Nullable<global::System.Decimal> value);
+        partial void OnSaldoChanged();
 
         #endregion
 

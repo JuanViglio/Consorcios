@@ -6,22 +6,22 @@
     <edmx:Diagrams>
       <Diagram DiagramId="2072206f10404698a1d5c642d639046b" Name="Diagram1">
         <EntityTypeShape EntityType="ExpensasModel.Consorcios" Width="1.5" PointX="10.5" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ExpensasModel.Expensas" Width="1.625" PointX="5" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ExpensasModel.GastosExtDetalle" Width="1.75" PointX="1" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExpensasModel.Expensas" Width="1.625" PointX="6.375" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExpensasModel.GastosExtDetalle" Width="1.75" PointX="3.5" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ExpensasModel.TipoGastos" Width="1.5" PointX="11" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="ExpensasModel.FK_Expensas_Consorcios" ManuallyRouted="false" />
         <AssociationConnector Association="ExpensasModel.FK_GastosExtDetalle_Expensas" ManuallyRouted="false" >
         </AssociationConnector>
         <EntityTypeShape EntityType="ExpensasModel.UnidadesFuncionales" Width="1.5" PointX="7.75" PointY="6.875" />
         <AssociationConnector Association="ExpensasModel.FK_UnidadesFuncionales_Consorcios" />
-        <EntityTypeShape EntityType="ExpensasModel.GastosEvOrdinariosDetalle" Width="2.125" PointX="1" PointY="3.375" />
+        <EntityTypeShape EntityType="ExpensasModel.GastosEvOrdinariosDetalle" Width="2.125" PointX="3.5" PointY="3.25" />
         <AssociationConnector Association="ExpensasModel.FK_GastosEvOrdinariosDetalle_Expensas" />
-        <EntityTypeShape EntityType="ExpensasModel.Detalles" Width="1.5" PointX="7.75" PointY="4.375" />
+        <EntityTypeShape EntityType="ExpensasModel.Detalles" Width="1.5" PointX="8.375" PointY="4.375" />
         <AssociationConnector Association="ExpensasModel.FK_Detalles_Consorcios" />
-        <EntityTypeShape EntityType="ExpensasModel.Gastos" Width="1.5" PointX="8" PointY="0.75" />
+        <EntityTypeShape EntityType="ExpensasModel.Gastos" Width="1.5" PointX="8.375" PointY="0.625" />
         <AssociationConnector Association="ExpensasModel.FK_Detalles_Gastos" />
         <AssociationConnector Association="ExpensasModel.FK_Gastos_TipoGastos" />
-        <EntityTypeShape EntityType="ExpensasModel.ExpensasDetalle" Width="1.75" PointX="1" PointY="0.5" />
+        <EntityTypeShape EntityType="ExpensasModel.ExpensasDetalle" Width="1.75" PointX="3.5" PointY="0.5" />
         <AssociationConnector Association="ExpensasModel.FK_ExpensasDetalle_Expensas" />
         <EntityTypeShape EntityType="ExpensasModel.Pagos" Width="1.5" PointX="4.875" PointY="7.25" />
         <AssociationConnector Association="ExpensasModel.FK_Pagos_UF" />
@@ -31,6 +31,7 @@
         <AssociationConnector Association="ExpensasModel.FK_GastosEvOrdinariosUFDetalle_Pagos" />
         <EntityTypeShape EntityType="ExpensasModel.GastosEvExtUFDetalle" Width="1.5" PointX="1" PointY="12.375" />
         <AssociationConnector Association="ExpensasModel.FK_GastosEvExtUFDetalle_Pagos" />
+        <EntityTypeShape EntityType="ExpensasModel.Proveedores" Width="1.5" PointX="0.75" PointY="0.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

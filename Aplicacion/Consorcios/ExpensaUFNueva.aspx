@@ -4,6 +4,7 @@
 <%@ Register TagPrefix="uc" TagName="gridGastosEvExtUF" Src="~/Consorcios/UserControls/ExpensasUF/GridGastosEvExtUF.ascx" %>
 <%@ Register TagPrefix="uc" TagName="subtotalesUF" Src="~/Consorcios/UserControls/ExpensasUF/SubtotalesUF.ascx" %>
 <%@ Register TagPrefix="uc" TagName="totalesUF" Src="~/Consorcios/UserControls/ExpensasUF/TotalesUF.ascx" %>
+<%@ Register src="~/Consorcios/UserControls/Error.ascx" tagname="UserControl2" tagprefix="uc6" %>
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
 
@@ -25,10 +26,7 @@
             Nueva Expensa de la Unidad Funcional
             <asp:Label ID="lblNombreUF" runat="server"></asp:Label>
         </p>
-        <div id="divError" runat="server" style="color: #003399; font-size: large; height: 45px;" align="left">
-            <br />
-            <asp:label id="lblError" runat="server" forecolor="Red" style="text-align: left; font-size: large;"></asp:label>
-        </div>
+        <uc6:UserControl2 ID="UserControl2ID" runat="server" />
         <table style="margin-top: 24px">
             <tr>
                 <td style="width: 641px;vertical-align:top;">

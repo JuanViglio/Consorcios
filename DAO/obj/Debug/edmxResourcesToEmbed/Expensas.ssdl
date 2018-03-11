@@ -122,6 +122,17 @@
     <Property Name="UnidadesFuncionales_ID" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="PeriodoDetalle" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="Proveedores">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+    <Property Name="Saldo" Type="numeric" Precision="18" Scale="2" />
+  </EntityType>
   <EntityType Name="TipoGastos">
     <Key>
       <PropertyRef Name="ID" />
@@ -298,6 +309,7 @@
     <EntitySet Name="GastosEvOrdinariosUFDetalle" EntityType="Self.GastosEvOrdinariosUFDetalle" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GastosExtDetalle" EntityType="Self.GastosExtDetalle" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoGastos" EntityType="Self.TipoGastos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UnidadesFuncionales" EntityType="Self.UnidadesFuncionales" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Detalles_Consorcios" Association="Self.FK_Detalles_Consorcios">

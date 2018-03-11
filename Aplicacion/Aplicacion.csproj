@@ -82,12 +82,17 @@
     <Content Include="Consorcios\Detalles.aspx" />
     <Content Include="Consorcios\ExpensaUFNueva.aspx" />
     <Content Include="Consorcios\GastosParticulares.aspx" />
+    <Content Include="Consorcios\Proveedores.aspx" />
+    <Content Include="Consorcios\UserControls\Error.ascx" />
     <Content Include="Consorcios\UserControls\ExpensasUF\GridGastosEvExtUF.ascx" />
     <Content Include="Consorcios\UserControls\ExpensasUF\GridGastosEvOrdUF.ascx" />
     <Content Include="Consorcios\UserControls\ExpensasUF\GridGastosFijosUF.ascx" />
     <Content Include="Consorcios\Privado.aspx" />
     <Content Include="Consorcios\UserControls\ExpensasUF\SubtotalesUF.ascx" />
     <Content Include="Consorcios\UserControls\ExpensasUF\TotalesUF.ascx" />
+    <Content Include="Consorcios\UserControls\Proveedores\AgregarProveedores.ascx" />
+    <Content Include="Consorcios\UserControls\Proveedores\GridProveedores.ascx" />
+    <Content Include="Consorcios\UserControls\Titulo.ascx" />
     <Content Include="css\img\ico_mas.jpg" />
     <Content Include="css\jquery-ui-1.8.16.custom.css" />
     <Content Include="css\jquery-ui.css" />
@@ -108,6 +113,7 @@
     <Content Include="css\img\iconback.gif" />
     <Content Include="js\Cobranza.js" />
     <Content Include="js\Confirm.js" />
+    <Content Include="js\Proveedores.js" />
     <Content Include="js\Gastos.js" />
     <Content Include="js\UnidadesFuncionales.js" />
     <Content Include="js\Consorcios.js" />
@@ -127,6 +133,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Constantes.cs" />
     <Compile Include="Consorcios\CargarGastos.aspx.cs">
       <DependentUpon>CargarGastos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -201,6 +208,20 @@
     <Compile Include="Consorcios\MenuConsorcios.Master.designer.cs">
       <DependentUpon>MenuConsorcios.Master</DependentUpon>
     </Compile>
+    <Compile Include="Consorcios\Proveedores.aspx.cs">
+      <DependentUpon>Proveedores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\Proveedores.aspx.designer.cs">
+      <DependentUpon>Proveedores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Error.ascx.cs">
+      <DependentUpon>Error.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Error.ascx.designer.cs">
+      <DependentUpon>Error.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Consorcios\UserControls\ExpensasUF\GridGastosEvExtUF.ascx.cs">
       <DependentUpon>GridGastosEvExtUF.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -249,6 +270,27 @@
     </Compile>
     <Compile Include="Consorcios\UserControls\ExpensasUF\TotalesUF.ascx.designer.cs">
       <DependentUpon>TotalesUF.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Proveedores\AgregarProveedores.ascx.cs">
+      <DependentUpon>AgregarProveedores.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Proveedores\AgregarProveedores.ascx.designer.cs">
+      <DependentUpon>AgregarProveedores.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Proveedores\GridProveedores.ascx.cs">
+      <DependentUpon>GridProveedores.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Proveedores\GridProveedores.ascx.designer.cs">
+      <DependentUpon>GridProveedores.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Titulo.ascx.cs">
+      <DependentUpon>Titulo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Titulo.ascx.designer.cs">
+      <DependentUpon>Titulo.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

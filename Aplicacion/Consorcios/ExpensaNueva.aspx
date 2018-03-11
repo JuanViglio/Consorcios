@@ -133,7 +133,7 @@
                                                     <asp:Label ID="Label4" runat="server" Text="Importe"></asp:Label>
                                                 </td>
                                                 <td style="height: 23px">
-                                                    <asp:TextBox ID="txtImporte" runat="server" Width="380px" BorderStyle="Solid"></asp:TextBox>
+                                                    <asp:TextBox ID="txtImporte" runat="server" Width="149px" BorderStyle="Solid"></asp:TextBox>
                                                 </td>
                                             </tr>
                                         </table>
@@ -229,7 +229,7 @@
                                 <asp:Label ID="Label7" runat="server" Text="Importe"></asp:Label>
                             </td>
                             <td style="height: 23px">
-                                <asp:TextBox ID="txtImporteGastoEventual" runat="server" Width="380px" BorderStyle="Solid"></asp:TextBox>
+                                <asp:TextBox ID="txtImporteGastoEventual" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -299,7 +299,7 @@
                 <div id="div2" style="margin-top: 17px;  " >
                     <table style="margin-top: 0px; width: 500px;">
                         <tr>
-                            <td style="width: 100px">
+                            <td style="width: 203px">
                                 <asp:Label ID="Label3" runat="server" Text="Detalle"></asp:Label>
                             </td>
                             <td>
@@ -307,15 +307,32 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 100px; height: 23px;">
-                                <asp:Label ID="Label9" runat="server" Text="Importe"></asp:Label>
+                            <td style="width: 203px">
+                                <asp:Label ID="Label11" runat="server" Text="Proveedor"></asp:Label>
                             </td>
-                            <td style="height: 23px">
-                                <asp:TextBox ID="txtImporteGastoExtraordinario" runat="server" Width="380px" BorderStyle="Solid"></asp:TextBox>
+                            <td>
+                                <asp:DropDownList ID="ddlProveedores" runat="server" autopostback="true" Height="23px" Width="380px">
+                                </asp:DropDownList>
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 100px; height: 53px">
+                            <td style="width: 203px">
+                                <asp:Label ID="Label12" runat="server" Text="Importe Compra"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtImporteVentaGastoExt" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 203px; height: 23px;">
+                                <asp:Label ID="Label9" runat="server" Text="Importe Venta"></asp:Label>
+                            </td>
+                            <td style="height: 23px">
+                                <asp:TextBox ID="txtImporteGastoExtraordinario" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 203px; height: 53px">
                                 <asp:Button ID="btnAgregarGastoExt" runat="server" Height="30px" OnClick="btnAgregarGastoExt_Click" Text="Agregar" Width="90px" />
                             </td>
                             <td style="height: 53px">
