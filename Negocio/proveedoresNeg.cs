@@ -1,4 +1,5 @@
 ﻿using DAO;
+using DAO.Models;
 using Negocio.Interfaces;
 using Servicios.Interfaces;
 using System;
@@ -37,6 +38,18 @@ namespace Negocio
             try
             {
                 _proveedoresServ.EliminarProveedor(idProveedor);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void ModificarProveedor(ProveedoresModel proveedorModel)
+        {
+            try
+            {
+                _proveedoresServ.ModificarProveedor(proveedorModel);
             }
             catch (Exception ex)
             {

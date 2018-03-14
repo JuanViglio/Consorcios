@@ -1,4 +1,5 @@
 ﻿using DAO;
+using DAO.Models;
 using Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -45,8 +46,29 @@ namespace Servicios
             }
             catch
             {
-                throw new Exception("No se pudo eliminar el Proveedor");
+                throw new Exception("No se pudo Eliminar el Proveedor");
             }
+        }
+
+        public void ModificarProveedor(ProveedoresModel proveedorModel)
+        {
+            try
+            {
+                var proveedor = _context.Proveedores.Where(x => x.ID == proveedorModel.Codigo).FirstOrDefault();
+
+                proveedor.Nombre = proveedorModel.Nombre;
+                proveedor.Direccion = proveedorModel.Direccion;
+                proveedor.Mail = proveedorModel.Mail;
+                proveedor.Telefono = proveedorModel.Telefono;
+
+                _context.SaveChanges();
+            }
+            catch 
+            {
+                throw new Exception ("No se pudo Modificar el Proveedor") ;
+            }
+
+
         }
     }
 }

@@ -92,6 +92,7 @@
     <Content Include="Consorcios\UserControls\ExpensasUF\TotalesUF.ascx" />
     <Content Include="Consorcios\UserControls\Proveedores\AgregarProveedores.ascx" />
     <Content Include="Consorcios\UserControls\Proveedores\GridProveedores.ascx" />
+    <Content Include="Consorcios\UserControls\Proveedores\ModificarProveedores.ascx" />
     <Content Include="Consorcios\UserControls\Titulo.ascx" />
     <Content Include="css\img\ico_mas.jpg" />
     <Content Include="css\jquery-ui-1.8.16.custom.css" />
@@ -284,6 +285,13 @@
     </Compile>
     <Compile Include="Consorcios\UserControls\Proveedores\GridProveedores.ascx.designer.cs">
       <DependentUpon>GridProveedores.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Proveedores\ModificarProveedores.ascx.cs">
+      <DependentUpon>ModificarProveedores.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Proveedores\ModificarProveedores.ascx.designer.cs">
+      <DependentUpon>ModificarProveedores.ascx</DependentUpon>
     </Compile>
     <Compile Include="Consorcios\UserControls\Titulo.ascx.cs">
       <DependentUpon>Titulo.ascx</DependentUpon>

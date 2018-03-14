@@ -40,6 +40,15 @@ namespace WebSistemmas.Consorcios {
         protected global::WebSistemmas.Consorcios.UserControls.Proveedores.GridProveedores UserControlGridProveedoresID;
         
         /// <summary>
+        /// UserControlModificarProveedoresID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebSistemmas.Consorcios.UserControls.Proveedores.ModificarProveedores UserControlModificarProveedoresID;
+        
+        /// <summary>
         /// btnNuevoProveedor control.
         /// </summary>
         /// <remarks>

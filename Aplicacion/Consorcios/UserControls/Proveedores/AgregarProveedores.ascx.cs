@@ -51,7 +51,7 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
             MostrarError(string.Empty);
             try
             {
-               _proveedoresNeg.AgregarProveedor(txtNombreNuevo.Text, txtDireccionNuevo.Text, txtMail.Text);
+               _proveedoresNeg.AgregarProveedor(txtNombreNuevo.Text, txtDireccionNuevo.Text.ToUpper(), txtMail.Text);
                 LlenarGrillaProveedores();
 
                 txtNombreNuevo.Text = "";

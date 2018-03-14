@@ -1,9 +1,6 @@
 ﻿using DAO;
-using System;
+using DAO.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Servicios.Interfaces
 {
@@ -14,5 +11,7 @@ namespace Servicios.Interfaces
         void AgregarProveedor(string nombre, string direccion, string mail);
 
         void EliminarProveedor(int idProveedor);
+
+        void ModificarProveedor(ProveedoresModel proveedorModel);
     }
 }

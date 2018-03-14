@@ -3,12 +3,12 @@
 
 <style type="text/css">
     .auto-style1 {
-        margin-right: 34px;
+        margin-right: 25px;
         margin-bottom: 23px;
     }
 </style>
 
-<asp:GridView ID="grdProveedores" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" OnRowCommand="grdProveedores_RowCommand" Style="margin-top: 0px; margin-left: 0px; " Width="691px" CssClass="auto-style1" OnRowDataBound="grdProveedores_RowDataBound">
+<asp:GridView ID="grdProveedores" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" OnRowCommand="grdProveedores_RowCommand" Style="margin-top: 0px; margin-left: 0px; " Width="807px" CssClass="auto-style1" OnRowDataBound="grdProveedores_RowDataBound">
     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
     <Columns>
         <asp:BoundField DataField="ID" HeaderText="Codigo">
@@ -22,7 +22,10 @@
         </asp:BoundField>
         <asp:BoundField DataField="Mail" HeaderText="Mail">
             <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
-        </asp:BoundField>        
+        </asp:BoundField> 
+        <asp:BoundField DataField="Telefono" HeaderText="Telefono">
+            <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
+        </asp:BoundField>                
         <asp:BoundField DataField="Saldo" HeaderText="Saldo">
             <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
         </asp:BoundField>

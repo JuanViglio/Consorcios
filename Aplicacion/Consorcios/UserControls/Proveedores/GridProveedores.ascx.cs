@@ -14,6 +14,10 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
         private IProveedoresNeg _proveedoresNeg;
         private IProveedoresServ _proveedresServ;
         private const int col_IdProveedor = 0;
+        private const int col_Nombre = 1;
+        private const int col_Direccion = 2;
+        private const int col_Mail = 3;
+        private const int col_Telefono = 4;
 
         #region Metodos Privados
         private void MostrarError(string error)
@@ -25,12 +29,37 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
             errorUc.MostrarError(error);
         }
 
+        private void EliminarProveedor(GridViewRow row)
+        {
+            var idGasto = Convert.ToInt32(row.Cells[col_IdProveedor].Text);
+            _proveedoresNeg.EliminarProveedor(idGasto);
+            LlenarGrillaProveedores();
+        }
+
+        private void ModificarProveedor(GridViewRow row)
+        {
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "showDiv", "$('#divProveedorModificar').slideDown();", true);
+
+            ContentPlaceHolder placeHolder = Page.Master.FindControl("ContentPlaceHolder1") as ContentPlaceHolder;
+            Control control = placeHolder.FindControl("UserControlModificarProveedoresID");
+            ModificarProveedores errorUc = (ModificarProveedores)control;
+
+            string codigo = row.Cells[col_IdProveedor].Text;
+            string nombre = row.Cells[col_Nombre].Text;
+            string direccion = row.Cells[col_Direccion].Text;
+            string mail = row.Cells[col_Mail].Text;
+            string telefono = row.Cells[col_Telefono].Text;
+
+            errorUc.MostrarDatosParaModificar(codigo, nombre, direccion, mail, telefono);
+
+        }
+        #endregion
+
         public void LlenarGrillaProveedores()
         {
             grdProveedores.DataSource = _proveedoresNeg.GetProveedores();
             grdProveedores.DataBind();
         }
-        #endregion
 
         public GridProveedores()
         {
@@ -63,10 +92,11 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
                     switch (Tipo)
                     {
                         case "ELIMINAR":
-                            var idGasto = Convert.ToInt32(GridViewrow.Cells[col_IdProveedor].Text);
-                            _proveedoresNeg.EliminarProveedor(idGasto);
-                            grdProveedores.DataSource = _proveedoresNeg.GetProveedores();
-                            grdProveedores.DataBind();
+                            EliminarProveedor(GridViewrow);
+                            break;
+
+                        case "MODIFICAR":
+                            ModificarProveedor(GridViewrow);
                             break;
 
                         default:

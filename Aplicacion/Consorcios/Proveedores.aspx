@@ -3,6 +3,7 @@
 <%@ Register src="~/Consorcios/UserControls/Error.ascx" tagname="errorUC" tagprefix="uc2" %>
 <%@ Register src="~/Consorcios/UserControls/Proveedores/GridProveedores.ascx" tagname="UserControlGridProveedores" tagprefix="uc3" %>
 <%@ Register src="~/Consorcios/UserControls/Proveedores/AgregarProveedores.ascx" tagname="UserControlAgregarProveedores" tagprefix="uc4" %>
+<%@ Register src="~/Consorcios/UserControls/Proveedores/ModificarProveedores.ascx" tagname="UserControlModificarProveedores" tagprefix="uc5" %>
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
     <script src="../js/Proveedores.js"></script>
@@ -17,6 +18,7 @@
                      <uc3:UserControlGridProveedores ID="UserControlGridProveedoresID" runat="server" />
                 </td>
                 <td style="width: 195px">
+                    <uc5:UserControlModificarProveedores ID="UserControlModificarProveedoresID" runat="server" />
                 </td>
             </tr>
             <tr>
