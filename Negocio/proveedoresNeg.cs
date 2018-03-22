@@ -16,16 +16,16 @@ namespace Negocio
             _proveedoresServ = proveedoresServ;
         }
 
-        public IEnumerable<Proveedores> GetProveedores()
+        public IEnumerable<ProveedoresModel> GetProveedores(bool ninguno = false)
         {
-            return _proveedoresServ.GetProveedores();
+            return _proveedoresServ.GetProveedores(ninguno);
         }
 
-        public void AgregarProveedor(string nombre, string direccion, string mail)
+        public void AgregarProveedor(string nombre, string direccion, string mail, string tipo)
         {
             try
             {
-                _proveedoresServ.AgregarProveedor(nombre, direccion, mail);    
+                _proveedoresServ.AgregarProveedor(nombre, direccion, mail, tipo);    
             }
             catch (Exception ex)
             {
@@ -55,6 +55,11 @@ namespace Negocio
             {
                 throw ex;
             }
+        }
+
+        public string GetTipo (decimal id)
+        {
+            return _proveedoresServ.GetTipo(id);
         }
     }
 }

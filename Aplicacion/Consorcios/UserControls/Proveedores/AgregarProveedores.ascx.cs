@@ -6,6 +6,7 @@ using Servicios.Interfaces;
 using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebSistemmas.Common;
 
 namespace WebSistemmas.Consorcios.UserControls.Proveedores
 {
@@ -32,6 +33,13 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
 
             gridProveedoresUc.LlenarGrillaProveedores();
         }
+
+        private void LlenarComboTipo()
+        {
+            ddlTipoNuevo.Items.Add(Constantes.PrecioComprayVentaDistintos);
+            ddlTipoNuevo.Items.Add(Constantes.PrecioComprayVentaIguales);
+            ddlTipoNuevo.Items.Add(Constantes.PrecioCompraEs0);
+        }
         #endregion
 
         public AgregarProveedores()
@@ -43,7 +51,10 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                LlenarComboTipo();
+            }
         }
 
         protected void btnAceptarNuevoProveedor_Click(object sender, EventArgs e)
@@ -51,7 +62,7 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
             MostrarError(string.Empty);
             try
             {
-               _proveedoresNeg.AgregarProveedor(txtNombreNuevo.Text, txtDireccionNuevo.Text.ToUpper(), txtMail.Text);
+               _proveedoresNeg.AgregarProveedor(txtNombreNuevo.Text, txtDireccionNuevo.Text.ToUpper(), txtMail.Text, ddlTipoNuevo.SelectedItem.Text);
                 LlenarGrillaProveedores();
 
                 txtNombreNuevo.Text = "";

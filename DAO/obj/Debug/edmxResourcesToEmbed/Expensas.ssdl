@@ -132,6 +132,7 @@
     <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
     <Property Name="Mail" Type="nvarchar" MaxLength="50" />
     <Property Name="Saldo" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="Tipo" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="TipoGastos">
     <Key>

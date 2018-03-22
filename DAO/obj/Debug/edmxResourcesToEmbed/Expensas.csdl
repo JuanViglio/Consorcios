@@ -294,5 +294,6 @@
     <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Saldo" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

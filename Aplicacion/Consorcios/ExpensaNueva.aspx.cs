@@ -574,9 +574,9 @@ namespace WebSistemmas.Consorcios
 
         private void CargarComboProveedores()
         {
-            ddlProveedores.DataSource = _proveedoresNeg.GetProveedores();
+            ddlProveedores.DataSource = _proveedoresNeg.GetProveedores(true);
             ddlProveedores.DataTextField = "Nombre";
-            ddlProveedores.DataValueField = "Id";
+            ddlProveedores.DataValueField = "Codigo";
             ddlProveedores.DataBind();
         }
 
@@ -619,6 +619,45 @@ namespace WebSistemmas.Consorcios
             btnAgregarGastoOrdinario.Text = "Agregar";
             CargarGrillaGastosEvOrdinarios();
         }
+
+        private void GetTipoProveedor()
+        {
+            var tipo = _proveedoresNeg.GetTipo(decimal.Parse(ddlProveedores.SelectedValue));
+
+            switch (tipo)
+            {
+                case Constantes.PrecioCompraEs0:
+                    txtImporteCompraGastoExt.Text = "0";
+                    txtImporteCompraGastoExt.Enabled = false;
+                    break;
+
+                case Constantes.PrecioComprayVentaDistintos:
+                    txtImporteCompraGastoExt.Text = "";
+                    txtImporteCompraGastoExt.Enabled = true;
+                    break;
+
+                case Constantes.PrecioComprayVentaIguales:
+                    txtImporteCompraGastoExt.Text = "";
+                    txtImporteCompraGastoExt.Enabled = false;
+                    break;
+
+                default:
+                    break;
+            }
+        }
         #endregion
+
+        protected void ddlProveedores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlProveedores.SelectedValue == "0")
+            {
+                txtImporteCompraGastoExt.Text = "";
+                txtImporteCompraGastoExt.Enabled = true;
+            }
+            else
+            {
+                GetTipoProveedor();
+            }
+        }
     }
 }

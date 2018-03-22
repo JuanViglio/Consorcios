@@ -25,6 +25,13 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
             gridProveedoresUc.LlenarGrillaProveedores();
         }
 
+        private void LlenarComboTipo()
+        {
+            ddlTipoModificar.Items.Add(Constantes.PrecioComprayVentaDistintos);
+            ddlTipoModificar.Items.Add(Constantes.PrecioComprayVentaIguales);
+            ddlTipoModificar.Items.Add(Constantes.PrecioCompraEs0);
+        }
+
         public ModificarProveedores()
         {
             ExpensasEntities context = new ExpensasEntities();
@@ -34,6 +41,10 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                LlenarComboTipo();
+            }
         }
 
         protected void btnAceptarModificar_Click(object sender, EventArgs e)
@@ -47,7 +58,8 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
                     Nombre = txtNombreModificar.Text,
                     Direccion = txtDireccionModificar.Text,
                     Mail = txtMailModificar.Text,
-                    Telefono = txtTelefonoModificar.Text 
+                    Telefono = txtTelefonoModificar.Text,
+                    Tipo = ddlTipoModificar.Text
                 };
 
                 _proveedoresNeg.ModificarProveedor(proveedor);
@@ -59,13 +71,14 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
             }
         }
 
-        public void MostrarDatosParaModificar(string codigo, string nombre, string direccion, string mail, string telefono)
+        public void MostrarDatosParaModificar(string codigo, string nombre, string direccion, string mail, string telefono, string tipo)
         {
             txtCodigoModificar.Text = codigo;
             txtNombreModificar.Text = nombre;
             txtDireccionModificar.Text = direccion == "&nbsp;" ? "" : direccion;
             txtMailModificar.Text = mail == "&nbsp;" ? "" : mail;
             txtTelefonoModificar.Text = telefono == "&nbsp;" ? "" : telefono;
+            if (tipo != "&nbsp;") ddlTipoModificar.Text = tipo ;
         }
 
     }

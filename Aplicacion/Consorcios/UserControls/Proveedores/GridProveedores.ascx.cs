@@ -18,6 +18,7 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
         private const int col_Direccion = 2;
         private const int col_Mail = 3;
         private const int col_Telefono = 4;
+        private const int col_Tipo = 5;
 
         #region Metodos Privados
         private void MostrarError(string error)
@@ -49,8 +50,9 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
             string direccion = row.Cells[col_Direccion].Text;
             string mail = row.Cells[col_Mail].Text;
             string telefono = row.Cells[col_Telefono].Text;
+            string tipo = row.Cells[col_Tipo].Text;
 
-            errorUc.MostrarDatosParaModificar(codigo, nombre, direccion, mail, telefono);
+            errorUc.MostrarDatosParaModificar(codigo, nombre, direccion, mail, telefono, tipo);
 
         }
         #endregion

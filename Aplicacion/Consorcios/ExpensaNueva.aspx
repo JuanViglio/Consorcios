@@ -311,7 +311,7 @@
                                 <asp:Label ID="Label11" runat="server" Text="Proveedor"></asp:Label>
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlProveedores" runat="server" autopostback="true" Height="23px" Width="380px">
+                                <asp:DropDownList ID="ddlProveedores" runat="server" autopostback="true" Height="23px" Width="380px" OnSelectedIndexChanged="ddlProveedores_SelectedIndexChanged">
                                 </asp:DropDownList>
                             </td>
                         </tr>
@@ -320,7 +320,7 @@
                                 <asp:Label ID="Label12" runat="server" Text="Importe Compra"></asp:Label>
                             </td>
                             <td>
-                                <asp:TextBox ID="txtImporteVentaGastoExt" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
+                                <asp:TextBox ID="txtImporteCompraGastoExt" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>

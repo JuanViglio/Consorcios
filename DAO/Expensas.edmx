@@ -137,6 +137,7 @@
           <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
           <Property Name="Mail" Type="nvarchar" MaxLength="50" />
           <Property Name="Saldo" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="TipoGastos">
           <Key>
@@ -666,6 +667,7 @@
           <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Saldo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -924,6 +926,7 @@
           <EntitySetMapping Name="Proveedores">
             <EntityTypeMapping TypeName="ExpensasModel.Proveedores">
               <MappingFragment StoreEntitySet="Proveedores">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
                 <ScalarProperty Name="Saldo" ColumnName="Saldo" />
                 <ScalarProperty Name="Mail" ColumnName="Mail" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />

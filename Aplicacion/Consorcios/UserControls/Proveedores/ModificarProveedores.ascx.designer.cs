@@ -103,6 +103,24 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores {
         protected global::System.Web.UI.WebControls.TextBox txtTelefonoModificar;
         
         /// <summary>
+        /// Label4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label4;
+        
+        /// <summary>
+        /// ddlTipoModificar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoModificar;
+        
+        /// <summary>
         /// btnAceptarModificar control.
         /// </summary>
         /// <remarks>

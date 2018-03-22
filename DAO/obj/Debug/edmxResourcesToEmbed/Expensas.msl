@@ -252,6 +252,7 @@
     <EntitySetMapping Name="Proveedores">
       <EntityTypeMapping TypeName="ExpensasModel.Proveedores">
         <MappingFragment StoreEntitySet="Proveedores">
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
           <ScalarProperty Name="Saldo" ColumnName="Saldo" />
           <ScalarProperty Name="Mail" ColumnName="Mail" />
           <ScalarProperty Name="Telefono" ColumnName="Telefono" />

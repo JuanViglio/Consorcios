@@ -8,7 +8,7 @@ namespace DAO.Models
 {
     public class ProveedoresModel
     {
-        public int Codigo { get; set; }
+        public decimal Codigo { get; set; }
 
         public string Nombre { get; set; }
 
@@ -17,6 +17,8 @@ namespace DAO.Models
         public string Mail { get; set; }
 
         public string Telefono { get; set; }
+
+        public string Tipo { get; set; }
 
         public decimal Saldo { get; set; }
     }

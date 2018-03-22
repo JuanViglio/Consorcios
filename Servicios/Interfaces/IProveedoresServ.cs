@@ -6,12 +6,14 @@ namespace Servicios.Interfaces
 {
     public interface IProveedoresServ
     {
-        IEnumerable<Proveedores> GetProveedores();
+        IEnumerable<ProveedoresModel> GetProveedores(bool ninguno = false);
 
-        void AgregarProveedor(string nombre, string direccion, string mail);
+        void AgregarProveedor(string nombre, string direccion, string mail, string tipo);
 
         void EliminarProveedor(int idProveedor);
 
         void ModificarProveedor(ProveedoresModel proveedorModel);
+
+        string GetTipo(decimal id);
     }
 }

@@ -18,16 +18,35 @@ namespace Servicios
             _context = context;
         }
 
-        public IEnumerable<Proveedores> GetProveedores()
+        public IEnumerable<ProveedoresModel> GetProveedores(bool ninguno = false)
         {
-            return _context.Proveedores.ToList();
+            List<ProveedoresModel> proveedores = new List<ProveedoresModel>();
+
+            if (ninguno)
+            {
+                proveedores.Add(new ProveedoresModel() { Codigo = 0, Nombre = "Ninguno" });
+            }
+
+            foreach (var item in _context.Proveedores.ToList())
+            {
+                proveedores.Add(new ProveedoresModel() {
+                    Codigo = item.ID,
+                    Nombre = item.Nombre,
+                    Direccion = item.Direccion,
+                    Mail = item.Mail,
+                    Saldo = item.Saldo.Value,
+                    Telefono = item.Telefono,
+                    Tipo = item.Tipo });
+            } 
+
+            return proveedores; 
         }
 
-        public void AgregarProveedor(string nombre, string direccion, string mail)
+        public void AgregarProveedor(string nombre, string direccion, string mail, string tipo)
         {
             try
             {
-                _context.AddToProveedores(new Proveedores { Nombre = nombre, Direccion = direccion, Mail = mail, Saldo = 0 });
+                _context.AddToProveedores(new Proveedores { Nombre = nombre, Direccion = direccion, Mail = mail, Tipo = tipo, Saldo = 0 });
                 _context.SaveChanges();
             }
             catch
@@ -60,6 +79,7 @@ namespace Servicios
                 proveedor.Direccion = proveedorModel.Direccion;
                 proveedor.Mail = proveedorModel.Mail;
                 proveedor.Telefono = proveedorModel.Telefono;
+                proveedor.Tipo = proveedorModel.Tipo;
 
                 _context.SaveChanges();
             }
@@ -69,6 +89,11 @@ namespace Servicios
             }
 
 
+        }
+
+        public string GetTipo (decimal id)
+        {
+            return _context.Proveedores.Where(x => x.ID == id).FirstOrDefault().Tipo;
         }
     }
 }
