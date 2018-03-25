@@ -296,16 +296,19 @@ namespace Servicios
             _context.SaveChanges();
         }
 
-        public void AgregarGastoExtraordinario(int IdExpensa, string Detalle, decimal Importe)
+        public decimal AgregarGastoExtraordinario(int IdExpensa, string Detalle, decimal Importe, decimal ImporteCompra)
         {
             GastosExtDetalle detalle = new GastosExtDetalle();
 
             detalle.Expensas = _context.Expensas.Where(x => x.ID == IdExpensa).FirstOrDefault();
             detalle.Detalle = Detalle;
             detalle.Importe = Importe;
+            detalle.ImporteCompra = ImporteCompra;
 
             _context.AddToGastosExtDetalle(detalle);
             _context.SaveChanges();
+
+            return detalle.ID;
         }
 
         public void ModificarGastoExtraordinario(int IdExpensaDetalle, string Detalle, decimal Importe)

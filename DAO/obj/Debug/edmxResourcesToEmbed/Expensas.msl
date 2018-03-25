@@ -27,6 +27,7 @@
     <EntitySetMapping Name="GastosExtDetalle">
       <EntityTypeMapping TypeName="ExpensasModel.GastosExtDetalle">
         <MappingFragment StoreEntitySet="GastosExtDetalle">
+          <ScalarProperty Name="ImporteCompra" ColumnName="ImporteCompra" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Detalle" ColumnName="Detalle" />
           <ScalarProperty Name="Importe" ColumnName="Importe" />
@@ -262,5 +263,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ProveedoresCtaCte">
+      <EntityTypeMapping TypeName="ExpensasModel.ProveedoresCtaCte">
+        <MappingFragment StoreEntitySet="ProveedoresCtaCte">
+          <ScalarProperty Name="TipoGasto" ColumnName="TipoGasto" />
+          <ScalarProperty Name="Gasto_ID" ColumnName="Gasto_ID" />
+          <ScalarProperty Name="Haber" ColumnName="Haber" />
+          <ScalarProperty Name="Debe" ColumnName="Debe" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_ProveedoresCtaCte_Proveedores" TypeName="ExpensasModel.FK_ProveedoresCtaCte_Proveedores" StoreEntitySet="ProveedoresCtaCte">
+      <EndProperty Name="ProveedoresCtaCte">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <EndProperty Name="Proveedores">
+        <ScalarProperty Name="ID" ColumnName="Proveedores_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

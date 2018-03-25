@@ -101,6 +101,7 @@
     <Property Name="Detalle" Type="nvarchar" MaxLength="50" />
     <Property Name="Importe" Type="decimal" Precision="18" Scale="2" />
     <Property Name="Expensas_ID" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ImporteCompra" Type="decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="Pagos">
     <Key>
@@ -133,6 +134,17 @@
     <Property Name="Mail" Type="nvarchar" MaxLength="50" />
     <Property Name="Saldo" Type="numeric" Precision="18" Scale="2" />
     <Property Name="Tipo" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ProveedoresCtaCte">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Proveedores_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Debe" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="Haber" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="Gasto_ID" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="TipoGasto" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="TipoGastos">
     <Key>
@@ -286,6 +298,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ProveedoresCtaCte_Proveedores">
+    <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
+    <End Role="ProveedoresCtaCte" Type="Self.ProveedoresCtaCte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedores">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProveedoresCtaCte">
+        <PropertyRef Name="Proveedores_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_UnidadesFuncionales_Consorcios">
     <End Role="Consorcios" Type="Self.Consorcios" Multiplicity="1" />
     <End Role="UnidadesFuncionales" Type="Self.UnidadesFuncionales" Multiplicity="*" />
@@ -311,6 +335,7 @@
     <EntitySet Name="GastosExtDetalle" EntityType="Self.GastosExtDetalle" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProveedoresCtaCte" EntityType="Self.ProveedoresCtaCte" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoGastos" EntityType="Self.TipoGastos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UnidadesFuncionales" EntityType="Self.UnidadesFuncionales" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Detalles_Consorcios" Association="Self.FK_Detalles_Consorcios">
@@ -356,6 +381,10 @@
     <AssociationSet Name="FK_Pagos_UF" Association="Self.FK_Pagos_UF">
       <End Role="UnidadesFuncionales" EntitySet="UnidadesFuncionales" />
       <End Role="Pagos" EntitySet="Pagos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProveedoresCtaCte_Proveedores" Association="Self.FK_ProveedoresCtaCte_Proveedores">
+      <End Role="Proveedores" EntitySet="Proveedores" />
+      <End Role="ProveedoresCtaCte" EntitySet="ProveedoresCtaCte" />
     </AssociationSet>
     <AssociationSet Name="FK_UnidadesFuncionales_Consorcios" Association="Self.FK_UnidadesFuncionales_Consorcios">
       <End Role="Consorcios" EntitySet="Consorcios" />

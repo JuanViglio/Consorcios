@@ -31,6 +31,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_ExpensasUFDetalle_Pagos", "Pagos", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.Pagos), "ExpensasUFDetalle", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.ExpensasUFDetalle))]
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_GastosEvOrdinariosUFDetalle_Pagos", "Pagos", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.Pagos), "GastosEvOrdinariosUFDetalle", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.GastosEvOrdinariosUFDetalle))]
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_GastosEvExtUFDetalle_Pagos", "Pagos", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.Pagos), "GastosEvExtUFDetalle", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.GastosEvExtUFDetalle))]
+[assembly: EdmRelationshipAttribute("ExpensasModel", "FK_ProveedoresCtaCte_Proveedores", "Proveedores", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.Proveedores), "ProveedoresCtaCte", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.ProveedoresCtaCte))]
 
 #endregion
 
@@ -302,6 +303,22 @@ namespace DAO
             }
         }
         private ObjectSet<Proveedores> _Proveedores;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ProveedoresCtaCte> ProveedoresCtaCte
+        {
+            get
+            {
+                if ((_ProveedoresCtaCte == null))
+                {
+                    _ProveedoresCtaCte = base.CreateObjectSet<ProveedoresCtaCte>("ProveedoresCtaCte");
+                }
+                return _ProveedoresCtaCte;
+            }
+        }
+        private ObjectSet<ProveedoresCtaCte> _ProveedoresCtaCte;
 
         #endregion
 
@@ -417,6 +434,14 @@ namespace DAO
         public void AddToProveedores(Proveedores proveedores)
         {
             base.AddObject("Proveedores", proveedores);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ProveedoresCtaCte EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToProveedoresCtaCte(ProveedoresCtaCte proveedoresCtaCte)
+        {
+            base.AddObject("ProveedoresCtaCte", proveedoresCtaCte);
         }
 
         #endregion
@@ -2315,6 +2340,30 @@ namespace DAO
         private Nullable<global::System.Decimal> _Importe;
         partial void OnImporteChanging(Nullable<global::System.Decimal> value);
         partial void OnImporteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> ImporteCompra
+        {
+            get
+            {
+                return _ImporteCompra;
+            }
+            set
+            {
+                OnImporteCompraChanging(value);
+                ReportPropertyChanging("ImporteCompra");
+                _ImporteCompra = StructuralObject.SetValidValue(value, "ImporteCompra");
+                ReportPropertyChanged("ImporteCompra");
+                OnImporteCompraChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _ImporteCompra;
+        partial void OnImporteCompraChanging(Nullable<global::System.Decimal> value);
+        partial void OnImporteCompraChanged();
 
         #endregion
 
@@ -3043,6 +3092,226 @@ namespace DAO
         private global::System.String _Tipo;
         partial void OnTipoChanging(global::System.String value);
         partial void OnTipoChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_ProveedoresCtaCte_Proveedores", "ProveedoresCtaCte")]
+        public EntityCollection<ProveedoresCtaCte> ProveedoresCtaCte
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProveedoresCtaCte>("ExpensasModel.FK_ProveedoresCtaCte_Proveedores", "ProveedoresCtaCte");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProveedoresCtaCte>("ExpensasModel.FK_ProveedoresCtaCte_Proveedores", "ProveedoresCtaCte", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="ExpensasModel", Name="ProveedoresCtaCte")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ProveedoresCtaCte : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ProveedoresCtaCte object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        public static ProveedoresCtaCte CreateProveedoresCtaCte(global::System.Decimal id)
+        {
+            ProveedoresCtaCte proveedoresCtaCte = new ProveedoresCtaCte();
+            proveedoresCtaCte.ID = id;
+            return proveedoresCtaCte;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value, "ID");
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Decimal _ID;
+        partial void OnIDChanging(global::System.Decimal value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> Debe
+        {
+            get
+            {
+                return _Debe;
+            }
+            set
+            {
+                OnDebeChanging(value);
+                ReportPropertyChanging("Debe");
+                _Debe = StructuralObject.SetValidValue(value, "Debe");
+                ReportPropertyChanged("Debe");
+                OnDebeChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _Debe;
+        partial void OnDebeChanging(Nullable<global::System.Decimal> value);
+        partial void OnDebeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> Haber
+        {
+            get
+            {
+                return _Haber;
+            }
+            set
+            {
+                OnHaberChanging(value);
+                ReportPropertyChanging("Haber");
+                _Haber = StructuralObject.SetValidValue(value, "Haber");
+                ReportPropertyChanged("Haber");
+                OnHaberChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _Haber;
+        partial void OnHaberChanging(Nullable<global::System.Decimal> value);
+        partial void OnHaberChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> Gasto_ID
+        {
+            get
+            {
+                return _Gasto_ID;
+            }
+            set
+            {
+                OnGasto_IDChanging(value);
+                ReportPropertyChanging("Gasto_ID");
+                _Gasto_ID = StructuralObject.SetValidValue(value, "Gasto_ID");
+                ReportPropertyChanged("Gasto_ID");
+                OnGasto_IDChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _Gasto_ID;
+        partial void OnGasto_IDChanging(Nullable<global::System.Decimal> value);
+        partial void OnGasto_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TipoGasto
+        {
+            get
+            {
+                return _TipoGasto;
+            }
+            set
+            {
+                OnTipoGastoChanging(value);
+                ReportPropertyChanging("TipoGasto");
+                _TipoGasto = StructuralObject.SetValidValue(value, true, "TipoGasto");
+                ReportPropertyChanged("TipoGasto");
+                OnTipoGastoChanged();
+            }
+        }
+        private global::System.String _TipoGasto;
+        partial void OnTipoGastoChanging(global::System.String value);
+        partial void OnTipoGastoChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_ProveedoresCtaCte_Proveedores", "Proveedores")]
+        public Proveedores Proveedores
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Proveedores>("ExpensasModel.FK_ProveedoresCtaCte_Proveedores", "Proveedores").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Proveedores>("ExpensasModel.FK_ProveedoresCtaCte_Proveedores", "Proveedores").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Proveedores> ProveedoresReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Proveedores>("ExpensasModel.FK_ProveedoresCtaCte_Proveedores", "Proveedores");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Proveedores>("ExpensasModel.FK_ProveedoresCtaCte_Proveedores", "Proveedores", value);
+                }
+            }
+        }
 
         #endregion
 

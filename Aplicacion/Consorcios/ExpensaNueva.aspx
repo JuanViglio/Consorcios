@@ -263,7 +263,10 @@
                         <asp:BoundField DataField="Detalle" HeaderText="Detalle">
                         <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
                         </asp:BoundField>
-                        <asp:BoundField DataField="Importe" HeaderText="Importe">
+                        <asp:BoundField DataField="ImporteCompra" HeaderText="Importe Compra">
+                        <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="Importe" HeaderText="Importe Venta">
                         <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
                         </asp:BoundField>
                         <asp:BoundField DataField="ID" HeaderText="ID">

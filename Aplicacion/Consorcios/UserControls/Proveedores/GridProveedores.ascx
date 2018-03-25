@@ -47,6 +47,13 @@
                 </div>
             </ItemTemplate>
         </asp:TemplateField>
+        <asp:TemplateField>
+            <ItemTemplate>
+                <div class="div_parent">
+                    <asp:ImageButton ID="CtaCte" runat="server" CausesValidation="False" CommandName="CtaCte" ImageUrl="~/css/img/ico_pesos.png" ToolTip="Cta. Corriente" />
+                </div>
+            </ItemTemplate>
+        </asp:TemplateField>
     </Columns>
     <EditRowStyle BackColor="#999999" />
     <FooterStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />

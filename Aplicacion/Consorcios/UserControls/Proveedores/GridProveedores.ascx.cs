@@ -101,6 +101,12 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
                             ModificarProveedor(GridViewrow);
                             break;
 
+                        case "CTACTE":
+                            Session["ProveedorId"] = GridViewrow.Cells[col_IdProveedor].Text;
+                            Session["NombreProveedor"] = GridViewrow.Cells[col_Nombre].Text;                            
+                            Response.Redirect("CtaCteProveedor.aspx", false);
+                            break;
+
                         default:
                             break;
                     }

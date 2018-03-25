@@ -79,6 +79,7 @@
   <ItemGroup>
     <Content Include="Consorcios\CargarGastos.aspx" />
     <Content Include="Cobranza\Cobros.aspx" />
+    <Content Include="Consorcios\CtaCteProveedor.aspx" />
     <Content Include="Consorcios\Detalles.aspx" />
     <Content Include="Consorcios\ExpensaUFNueva.aspx" />
     <Content Include="Consorcios\GastosParticulares.aspx" />
@@ -159,6 +160,13 @@
     </Compile>
     <Compile Include="Consorcios\Consorcios.aspx.designer.cs">
       <DependentUpon>Consorcios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\CtaCteProveedor.aspx.cs">
+      <DependentUpon>CtaCteProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\CtaCteProveedor.aspx.designer.cs">
+      <DependentUpon>CtaCteProveedor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Consorcios\Detalles.aspx.cs">
       <DependentUpon>Detalles.aspx</DependentUpon>

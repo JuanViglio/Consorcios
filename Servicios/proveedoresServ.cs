@@ -4,8 +4,6 @@ using Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Servicios
 {
@@ -94,6 +92,37 @@ namespace Servicios
         public string GetTipo (decimal id)
         {
             return _context.Proveedores.Where(x => x.ID == id).FirstOrDefault().Tipo;
+        }
+
+        public void AddHaber (decimal importe, int idProveedor, decimal idGasto, string tipoGasto)
+        {
+            ProveedoresCtaCte registro = new ProveedoresCtaCte();
+
+            registro.Proveedores = _context.Proveedores.Where(x => x.ID == idProveedor).FirstOrDefault();
+            registro.Haber = importe;
+            registro.Gasto_ID = idGasto;
+            registro.TipoGasto = tipoGasto;
+
+            _context.AddToProveedoresCtaCte(registro);
+            _context.SaveChanges();
+        }
+
+        public void AddDebe(decimal importe, int idProveedor, decimal idGasto, string tipoGasto)
+        {
+            ProveedoresCtaCte registro = new ProveedoresCtaCte();
+
+            registro.Proveedores = _context.Proveedores.Where(x => x.ID == idProveedor).FirstOrDefault();
+            registro.Debe = importe;
+            registro.Gasto_ID = idGasto;
+            registro.TipoGasto = tipoGasto;
+
+            _context.AddToProveedoresCtaCte(registro);
+            _context.SaveChanges();
+        }
+
+        public IEnumerable<ProveedoresCtaCte> GetCtaCte(decimal idProveedor)
+        {
+            return _context.ProveedoresCtaCte.Where(x => x.Proveedores.ID == idProveedor).ToList().OrderByDescending(x => x.ID);
         }
     }
 }

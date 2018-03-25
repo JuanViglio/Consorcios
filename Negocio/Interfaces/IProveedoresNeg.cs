@@ -15,5 +15,11 @@ namespace Negocio.Interfaces
         void ModificarProveedor(ProveedoresModel proveedorModel);
 
         string GetTipo(decimal id);
+
+        void AddDebe(decimal importe, int idProveedor, decimal idGasto, string tipoGasto);
+
+        void AddHaber(decimal importe, int idProveedor, decimal idGasto, string tipoGasto);
+
+        IEnumerable<ProveedoresCtaCte> GetCtaCte(decimal idProveedor);
     }
 }

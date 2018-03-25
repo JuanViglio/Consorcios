@@ -106,6 +106,7 @@
           <Property Name="Detalle" Type="nvarchar" MaxLength="50" />
           <Property Name="Importe" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Expensas_ID" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ImporteCompra" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Pagos">
           <Key>
@@ -138,6 +139,17 @@
           <Property Name="Mail" Type="nvarchar" MaxLength="50" />
           <Property Name="Saldo" Type="numeric" Precision="18" Scale="2" />
           <Property Name="Tipo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProveedoresCtaCte">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Proveedores_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Debe" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Haber" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Gasto_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="TipoGasto" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="TipoGastos">
           <Key>
@@ -291,6 +303,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ProveedoresCtaCte_Proveedores">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
+          <End Role="ProveedoresCtaCte" Type="Self.ProveedoresCtaCte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProveedoresCtaCte">
+              <PropertyRef Name="Proveedores_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UnidadesFuncionales_Consorcios">
           <End Role="Consorcios" Type="Self.Consorcios" Multiplicity="1" />
           <End Role="UnidadesFuncionales" Type="Self.UnidadesFuncionales" Multiplicity="*" />
@@ -316,6 +340,7 @@
           <EntitySet Name="GastosExtDetalle" EntityType="Self.GastosExtDetalle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProveedoresCtaCte" EntityType="Self.ProveedoresCtaCte" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoGastos" EntityType="Self.TipoGastos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnidadesFuncionales" EntityType="Self.UnidadesFuncionales" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Detalles_Consorcios" Association="Self.FK_Detalles_Consorcios">
@@ -362,6 +387,10 @@
             <End Role="UnidadesFuncionales" EntitySet="UnidadesFuncionales" />
             <End Role="Pagos" EntitySet="Pagos" />
           </AssociationSet>
+          <AssociationSet Name="FK_ProveedoresCtaCte_Proveedores" Association="Self.FK_ProveedoresCtaCte_Proveedores">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="ProveedoresCtaCte" EntitySet="ProveedoresCtaCte" />
+          </AssociationSet>
           <AssociationSet Name="FK_UnidadesFuncionales_Consorcios" Association="Self.FK_UnidadesFuncionales_Consorcios">
             <End Role="Consorcios" EntitySet="Consorcios" />
             <End Role="UnidadesFuncionales" EntitySet="UnidadesFuncionales" />
@@ -407,6 +436,7 @@
           <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="Expensas" Relationship="Self.FK_GastosExtDetalle_Expensas" FromRole="GastosExtDetalle" ToRole="Expensas" />
+          <Property Name="ImporteCompra" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="TipoGastos">
           <Key>
@@ -487,6 +517,11 @@
             <End Role="GastosEvExtUFDetalle" EntitySet="GastosEvExtUFDetalle" />
           </AssociationSet>
           <EntitySet Name="Proveedores" EntityType="ExpensasModel.Proveedores" />
+          <EntitySet Name="ProveedoresCtaCte" EntityType="ExpensasModel.ProveedoresCtaCte" />
+          <AssociationSet Name="FK_ProveedoresCtaCte_Proveedores" Association="ExpensasModel.FK_ProveedoresCtaCte_Proveedores">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="ProveedoresCtaCte" EntitySet="ProveedoresCtaCte" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="UnidadesFuncionales">
           <Key>
@@ -668,7 +703,23 @@
           <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Saldo" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProveedoresCtaCte" Relationship="ExpensasModel.FK_ProveedoresCtaCte_Proveedores" FromRole="Proveedores" ToRole="ProveedoresCtaCte" />
         </EntityType>
+        <EntityType Name="ProveedoresCtaCte">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Debe" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Haber" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Gasto_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TipoGasto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Proveedores" Relationship="ExpensasModel.FK_ProveedoresCtaCte_Proveedores" FromRole="ProveedoresCtaCte" ToRole="Proveedores" />
+        </EntityType>
+        <Association Name="FK_ProveedoresCtaCte_Proveedores">
+          <End Type="ExpensasModel.Proveedores" Role="Proveedores" Multiplicity="1" />
+          <End Type="ExpensasModel.ProveedoresCtaCte" Role="ProveedoresCtaCte" Multiplicity="*" />
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -701,6 +752,7 @@
           <EntitySetMapping Name="GastosExtDetalle">
             <EntityTypeMapping TypeName="ExpensasModel.GastosExtDetalle">
               <MappingFragment StoreEntitySet="GastosExtDetalle">
+                <ScalarProperty Name="ImporteCompra" ColumnName="ImporteCompra" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Detalle" ColumnName="Detalle" />
                 <ScalarProperty Name="Importe" ColumnName="Importe" />
@@ -936,6 +988,25 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ProveedoresCtaCte">
+            <EntityTypeMapping TypeName="ExpensasModel.ProveedoresCtaCte">
+              <MappingFragment StoreEntitySet="ProveedoresCtaCte">
+                <ScalarProperty Name="TipoGasto" ColumnName="TipoGasto" />
+                <ScalarProperty Name="Gasto_ID" ColumnName="Gasto_ID" />
+                <ScalarProperty Name="Haber" ColumnName="Haber" />
+                <ScalarProperty Name="Debe" ColumnName="Debe" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_ProveedoresCtaCte_Proveedores" TypeName="ExpensasModel.FK_ProveedoresCtaCte_Proveedores" StoreEntitySet="ProveedoresCtaCte">
+            <EndProperty Name="ProveedoresCtaCte">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <EndProperty Name="Proveedores">
+              <ScalarProperty Name="ID" ColumnName="Proveedores_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
