@@ -20,7 +20,6 @@ namespace WebSistemmas.Common
         public const string ErrorImporteCero = "No se puede guardar el Importe 0";
         public const string PrecioComprayVentaDistintos = "Precio de Compra y Venta distintos";
         public const string PrecioComprayVentaIguales = "Precio de Compra y Venta iguales";
-        public const string PrecioCompraEs0 = "Precio Compra es 0";
 
         public static decimal GetDecimalFromCurrency (string valor)
         {

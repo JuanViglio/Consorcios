@@ -11,6 +11,21 @@ namespace Servicios
     {
         private ExpensasEntities _context;
 
+        private decimal GetSaldo(decimal idProveeedor)
+        {
+            var debe = _context.ProveedoresCtaCte.Where(x => x.Proveedores.ID == idProveeedor).Sum(x=> x.Debe).GetValueOrDefault();
+            var haber = _context.ProveedoresCtaCte.Where(x => x.Proveedores.ID == idProveeedor).Sum(x => x.Haber).GetValueOrDefault();
+            return debe - haber;
+        }
+
+        private void ActualizarSaldo(decimal saldo, decimal idProveedor)
+        {
+            var proveedor = _context.Proveedores.Where(x => x.ID == idProveedor).FirstOrDefault();
+
+            proveedor.Saldo = saldo;
+            _context.SaveChanges();
+        }
+
         public proveedoresServ(ExpensasEntities context)
         {
             _context = context;
@@ -94,7 +109,7 @@ namespace Servicios
             return _context.Proveedores.Where(x => x.ID == id).FirstOrDefault().Tipo;
         }
 
-        public void AddHaber (decimal importe, int idProveedor, decimal idGasto, string tipoGasto)
+        public void AddHaber (decimal importe, decimal idProveedor, decimal idGasto, string tipoGasto, string detalle)
         {
             ProveedoresCtaCte registro = new ProveedoresCtaCte();
 
@@ -102,12 +117,17 @@ namespace Servicios
             registro.Haber = importe;
             registro.Gasto_ID = idGasto;
             registro.TipoGasto = tipoGasto;
+            registro.Detalle = detalle;
+            registro.Fecha = DateTime.Now;
 
             _context.AddToProveedoresCtaCte(registro);
             _context.SaveChanges();
+
+            var saldo = GetSaldo(idProveedor);
+            ActualizarSaldo(saldo, idProveedor);            
         }
 
-        public void AddDebe(decimal importe, int idProveedor, decimal idGasto, string tipoGasto)
+        public void AddDebe(decimal importe, decimal idProveedor, decimal idGasto, string tipoGasto, string detalle)
         {
             ProveedoresCtaCte registro = new ProveedoresCtaCte();
 
@@ -115,9 +135,13 @@ namespace Servicios
             registro.Debe = importe;
             registro.Gasto_ID = idGasto;
             registro.TipoGasto = tipoGasto;
+            registro.Detalle = detalle;
 
             _context.AddToProveedoresCtaCte(registro);
             _context.SaveChanges();
+
+            var saldo = GetSaldo(idProveedor);
+            ActualizarSaldo(saldo, idProveedor);
         }
 
         public IEnumerable<ProveedoresCtaCte> GetCtaCte(decimal idProveedor)

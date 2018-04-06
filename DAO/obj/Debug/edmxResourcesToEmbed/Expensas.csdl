@@ -37,6 +37,7 @@
     <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" />
     <NavigationProperty Name="Expensas" Relationship="Self.FK_GastosExtDetalle_Expensas" FromRole="GastosExtDetalle" ToRole="Expensas" />
     <Property Name="ImporteCompra" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Proveedores_ID" Type="Decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="TipoGastos">
     <Key>
@@ -313,6 +314,9 @@
     <Property Name="Gasto_ID" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="TipoGasto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Proveedores" Relationship="ExpensasModel.FK_ProveedoresCtaCte_Proveedores" FromRole="ProveedoresCtaCte" ToRole="Proveedores" />
+    <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="OrdenDeCompra" Type="Decimal" Precision="18" Scale="0" />
   </EntityType>
   <Association Name="FK_ProveedoresCtaCte_Proveedores">
     <End Type="ExpensasModel.Proveedores" Role="Proveedores" Multiplicity="1" />

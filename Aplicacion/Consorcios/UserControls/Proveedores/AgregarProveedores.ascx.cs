@@ -38,7 +38,6 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
         {
             ddlTipoNuevo.Items.Add(Constantes.PrecioComprayVentaDistintos);
             ddlTipoNuevo.Items.Add(Constantes.PrecioComprayVentaIguales);
-            ddlTipoNuevo.Items.Add(Constantes.PrecioCompraEs0);
         }
         #endregion
 

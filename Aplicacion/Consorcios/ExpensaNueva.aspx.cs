@@ -80,7 +80,7 @@ namespace WebSistemmas.Consorcios
                 ClientScript.RegisterStartupScript(GetType(), "TipoGastos", "cambioTipoGastos()", true);
 
                 if (Session["Periodo"] != null)                
-                    lblTitulo.Text = "Expensa de " + Session["direccionConsorcio"] + " del Periodo " + Session["Periodo"].ToString();
+                    lblTitulo.Text = "Expensa de " + Session["direccionConsorcio"] + " del Periodo " + Session["Periodo"];
 
                 if (Session["Estado"] != null && Session["Estado"].ToString() == Constantes.EstadoAceptado)
                     btnAceptar.Enabled = false;
@@ -387,6 +387,9 @@ namespace WebSistemmas.Consorcios
             int gastoEvExtraordinarioId = Convert.ToInt32(Session["gastoEvExtraordinarioId"]);
             decimal importeVenta = Convert.ToDecimal(txtImporteGastoExtraordinario.Text);
             decimal importeCompra = 0;
+            decimal proveedorId = Convert.ToInt32(ddlProveedores.SelectedValue);
+            string detalle = txtDetalleGastoExtraordinario.Text + " - " + Session["direccionConsorcio"] + " - " + Session["Periodo"];
+
             if (btnAgregarGastoExt.Text == "Agregar")
             {
                 if (txtImporteCompraGastoExt.Enabled == true)
@@ -394,8 +397,8 @@ namespace WebSistemmas.Consorcios
                 else if (txtImporteCompraGastoExt.Text == "")
                     importeCompra = importeVenta;
 
-                var idGasto = _expensasServ.AgregarGastoExtraordinario(expensaId, txtDetalleGastoExtraordinario.Text.ToUpper(), importeVenta, importeCompra);
-               _proveedoresNeg.AddHaber(importeCompra, Convert.ToInt32(ddlProveedores.SelectedValue), idGasto, "EvExt");
+                var idGasto = _expensasServ.AgregarGastoExtraordinario(expensaId, txtDetalleGastoExtraordinario.Text.ToUpper(), importeVenta, importeCompra, proveedorId);
+               _proveedoresNeg.AddHaber(importeCompra, proveedorId, idGasto, "EvExt", detalle);
             }
             else
             {
@@ -512,6 +515,8 @@ namespace WebSistemmas.Consorcios
         {
             txtDetalleGastoExtraordinario.Text = "";
             txtImporteGastoExtraordinario.Text = "";
+            txtImporteCompraGastoExt.Text = "";
+            ddlProveedores.SelectedIndex = 0;
             btnAgregarGastoExt.Text = "Agregar";
             divError.Visible = false;
         }
@@ -642,11 +647,6 @@ namespace WebSistemmas.Consorcios
 
             switch (tipo)
             {
-                case Constantes.PrecioCompraEs0:
-                    txtImporteCompraGastoExt.Text = "0";
-                    txtImporteCompraGastoExt.Enabled = false;
-                    break;
-
                 case Constantes.PrecioComprayVentaDistintos:
                     txtImporteCompraGastoExt.Text = "";
                     txtImporteCompraGastoExt.Enabled = true;

@@ -2364,6 +2364,30 @@ namespace DAO
         private Nullable<global::System.Decimal> _ImporteCompra;
         partial void OnImporteCompraChanging(Nullable<global::System.Decimal> value);
         partial void OnImporteCompraChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> Proveedores_ID
+        {
+            get
+            {
+                return _Proveedores_ID;
+            }
+            set
+            {
+                OnProveedores_IDChanging(value);
+                ReportPropertyChanging("Proveedores_ID");
+                _Proveedores_ID = StructuralObject.SetValidValue(value, "Proveedores_ID");
+                ReportPropertyChanged("Proveedores_ID");
+                OnProveedores_IDChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _Proveedores_ID;
+        partial void OnProveedores_IDChanging(Nullable<global::System.Decimal> value);
+        partial void OnProveedores_IDChanged();
 
         #endregion
 
@@ -3270,6 +3294,78 @@ namespace DAO
         private global::System.String _TipoGasto;
         partial void OnTipoGastoChanging(global::System.String value);
         partial void OnTipoGastoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Detalle
+        {
+            get
+            {
+                return _Detalle;
+            }
+            set
+            {
+                OnDetalleChanging(value);
+                ReportPropertyChanging("Detalle");
+                _Detalle = StructuralObject.SetValidValue(value, true, "Detalle");
+                ReportPropertyChanged("Detalle");
+                OnDetalleChanged();
+            }
+        }
+        private global::System.String _Detalle;
+        partial void OnDetalleChanging(global::System.String value);
+        partial void OnDetalleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> Fecha
+        {
+            get
+            {
+                return _Fecha;
+            }
+            set
+            {
+                OnFechaChanging(value);
+                ReportPropertyChanging("Fecha");
+                _Fecha = StructuralObject.SetValidValue(value, "Fecha");
+                ReportPropertyChanged("Fecha");
+                OnFechaChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _Fecha;
+        partial void OnFechaChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> OrdenDeCompra
+        {
+            get
+            {
+                return _OrdenDeCompra;
+            }
+            set
+            {
+                OnOrdenDeCompraChanging(value);
+                ReportPropertyChanging("OrdenDeCompra");
+                _OrdenDeCompra = StructuralObject.SetValidValue(value, "OrdenDeCompra");
+                ReportPropertyChanged("OrdenDeCompra");
+                OnOrdenDeCompraChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _OrdenDeCompra;
+        partial void OnOrdenDeCompraChanging(Nullable<global::System.Decimal> value);
+        partial void OnOrdenDeCompraChanged();
 
         #endregion
 

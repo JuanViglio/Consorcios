@@ -62,14 +62,14 @@ namespace Negocio
             return _proveedoresServ.GetTipo(id);
         }
 
-        public void AddDebe (decimal importe, int idProveedor, decimal idGasto, string tipoGasto)
+        public void AddDebe (decimal importe, decimal idProveedor, decimal idGasto, string tipoGasto, string detalle)
         {
-            _proveedoresServ.AddDebe(importe, idProveedor, idGasto, tipoGasto);
+            _proveedoresServ.AddDebe(importe, idProveedor, idGasto, tipoGasto, detalle);
         }
 
-        public void AddHaber(decimal importe, int idProveedor, decimal idGasto, string tipoGasto)
+        public void AddHaber(decimal importe, decimal idProveedor, decimal idGasto, string tipoGasto, string detalle)
         {
-            _proveedoresServ.AddHaber(importe, idProveedor, idGasto, tipoGasto);
+            _proveedoresServ.AddHaber(importe, idProveedor, idGasto, tipoGasto, detalle);
         }
 
         public IEnumerable<ProveedoresCtaCte> GetCtaCte(decimal idProveedor)

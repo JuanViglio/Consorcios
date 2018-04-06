@@ -29,7 +29,6 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
         {
             ddlTipoModificar.Items.Add(Constantes.PrecioComprayVentaDistintos);
             ddlTipoModificar.Items.Add(Constantes.PrecioComprayVentaIguales);
-            ddlTipoModificar.Items.Add(Constantes.PrecioCompraEs0);
         }
 
         public ModificarProveedores()
