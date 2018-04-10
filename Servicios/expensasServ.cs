@@ -296,7 +296,7 @@ namespace Servicios
             _context.SaveChanges();
         }
 
-        public decimal AgregarGastoExtraordinario(int IdExpensa, string Detalle, decimal Importe, decimal ImporteCompra, decimal ProveedorId)
+        public decimal AgregarGastoExtraordinario(int IdExpensa, string Detalle, decimal Importe, decimal ImporteCompra, decimal ProveedorId, decimal CtaCteId)
         {
             GastosExtDetalle detalle = new GastosExtDetalle();
 
@@ -305,6 +305,7 @@ namespace Servicios
             detalle.Importe = Importe;
             detalle.ImporteCompra = ImporteCompra;
             detalle.Proveedores_ID = ProveedorId;
+            detalle.ProveedoresCtaCte_ID = CtaCteId;
 
             _context.AddToGastosExtDetalle(detalle);
             _context.SaveChanges();

@@ -257,6 +257,7 @@ namespace WebSistemmas.Consorcios
                             var idGasto = Convert.ToDecimal(gridViewrow.Cells[GrdEvExt_ColIdExpensaDetalle].Text);
                             int expensaId = Convert.ToInt32(Session["ExpensaId"]);
 
+                            _proveedoresNeg.DeleteHaber(idGasto);
                             _gastosServ.DeleteGastoEvExtraordinario(idGasto);
                             _expensasServ.ActualizarTotalGastosEvExtraordinarios(expensaId);
                             CargarGrillaGastosOrdinarios();
@@ -397,8 +398,17 @@ namespace WebSistemmas.Consorcios
                 else if (txtImporteCompraGastoExt.Text == "")
                     importeCompra = importeVenta;
 
-                var idGasto = _expensasServ.AgregarGastoExtraordinario(expensaId, txtDetalleGastoExtraordinario.Text.ToUpper(), importeVenta, importeCompra, proveedorId);
-               _proveedoresNeg.AddHaber(importeCompra, proveedorId, idGasto, "EvExt", detalle);
+                var ctaCteId = _proveedoresNeg.AddHaber(importeCompra, proveedorId, "EvExt", detalle);
+
+                try
+                {
+                    _expensasServ.AgregarGastoExtraordinario(expensaId, txtDetalleGastoExtraordinario.Text.ToUpper(), importeVenta, importeCompra, proveedorId, ctaCteId);
+                }
+                catch (Exception)
+                {
+                    lblError.Text = "No se agrego el gasto en la Cta Cte del Proveedor";
+                }
+                
             }
             else
             {

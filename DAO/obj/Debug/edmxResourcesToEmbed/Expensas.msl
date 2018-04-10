@@ -24,17 +24,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="GastosExtDetalle">
-      <EntityTypeMapping TypeName="ExpensasModel.GastosExtDetalle">
-        <MappingFragment StoreEntitySet="GastosExtDetalle">
-          <ScalarProperty Name="Proveedores_ID" ColumnName="Proveedores_ID" />
-          <ScalarProperty Name="ImporteCompra" ColumnName="ImporteCompra" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
-          <ScalarProperty Name="Importe" ColumnName="Importe" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="TipoGastos">
       <EntityTypeMapping TypeName="ExpensasModel.TipoGastos">
         <MappingFragment StoreEntitySet="TipoGastos">
@@ -50,15 +39,6 @@
       <EndProperty Name="Expensas">
         <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_GastosExtDetalle_Expensas" TypeName="ExpensasModel.FK_GastosExtDetalle_Expensas" StoreEntitySet="GastosExtDetalle">
-      <EndProperty Name="Expensas">
-        <ScalarProperty Name="ID" ColumnName="Expensas_ID" />
-      </EndProperty>
-      <EndProperty Name="GastosExtDetalle">
-        <ScalarProperty Name="ID" ColumnName="ID" />
-      </EndProperty>
-      <Condition IsNull="false" ColumnName="Expensas_ID" />
     </AssociationSetMapping>
     <EntitySetMapping Name="UnidadesFuncionales">
       <EntityTypeMapping TypeName="ExpensasModel.UnidadesFuncionales">
@@ -233,24 +213,6 @@
       </EndProperty>
       <Condition ColumnName="Pagos_ID" IsNull="false" />
     </AssociationSetMapping>
-    <EntitySetMapping Name="GastosEvExtUFDetalle">
-      <EntityTypeMapping TypeName="ExpensasModel.GastosEvExtUFDetalle">
-        <MappingFragment StoreEntitySet="GastosEvExtUFDetalle">
-          <ScalarProperty Name="Importe" ColumnName="Importe" />
-          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="FK_GastosEvExtUFDetalle_Pagos" TypeName="ExpensasModel.FK_GastosEvExtUFDetalle_Pagos" StoreEntitySet="GastosEvExtUFDetalle">
-      <EndProperty Name="GastosEvExtUFDetalle">
-        <ScalarProperty Name="ID" ColumnName="ID" />
-      </EndProperty>
-      <EndProperty Name="Pagos">
-        <ScalarProperty Name="ID" ColumnName="Pagos_ID" />
-      </EndProperty>
-      <Condition ColumnName="Pagos_ID" IsNull="false" />
-    </AssociationSetMapping>
     <EntitySetMapping Name="Proveedores">
       <EntityTypeMapping TypeName="ExpensasModel.Proveedores">
         <MappingFragment StoreEntitySet="Proveedores">
@@ -267,6 +229,7 @@
     <EntitySetMapping Name="ProveedoresCtaCte">
       <EntityTypeMapping TypeName="ExpensasModel.ProveedoresCtaCte">
         <MappingFragment StoreEntitySet="ProveedoresCtaCte">
+          <ScalarProperty Name="OrdenDePago" ColumnName="OrdenDePago" />
           <ScalarProperty Name="OrdenDeCompra" ColumnName="OrdenDeCompra" />
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
           <ScalarProperty Name="Detalle" ColumnName="Detalle" />
@@ -285,6 +248,45 @@
       <EndProperty Name="Proveedores">
         <ScalarProperty Name="ID" ColumnName="Proveedores_ID" />
       </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="GastosEvExtUFDetalle">
+      <EntityTypeMapping TypeName="ExpensasModel.GastosEvExtUFDetalle">
+        <MappingFragment StoreEntitySet="GastosEvExtUFDetalle">
+          <ScalarProperty Name="Importe" ColumnName="Importe" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GastosExtDetalle">
+      <EntityTypeMapping TypeName="ExpensasModel.GastosExtDetalle">
+        <MappingFragment StoreEntitySet="GastosExtDetalle">
+          <ScalarProperty Name="ProveedoresCtaCte_ID" ColumnName="ProveedoresCtaCte_ID" />
+          <ScalarProperty Name="Proveedores_ID" ColumnName="Proveedores_ID" />
+          <ScalarProperty Name="ImporteCompra" ColumnName="ImporteCompra" />
+          <ScalarProperty Name="Importe" ColumnName="Importe" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_GastosExtDetalle_Expensas" TypeName="ExpensasModel.FK_GastosExtDetalle_Expensas" StoreEntitySet="GastosExtDetalle">
+      <EndProperty Name="GastosExtDetalle">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <EndProperty Name="Expensas">
+        <ScalarProperty Name="ID" ColumnName="Expensas_ID" />
+      </EndProperty>
+      <Condition ColumnName="Expensas_ID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_GastosEvExtUFDetalle_Pagos" TypeName="ExpensasModel.FK_GastosEvExtUFDetalle_Pagos" StoreEntitySet="GastosEvExtUFDetalle">
+      <EndProperty Name="GastosEvExtUFDetalle">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <EndProperty Name="Pagos">
+        <ScalarProperty Name="ID" ColumnName="Pagos_ID" />
+      </EndProperty>
+      <Condition ColumnName="Pagos_ID" IsNull="false" />
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

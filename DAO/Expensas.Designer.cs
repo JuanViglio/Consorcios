@@ -20,7 +20,6 @@ using System.Xml.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_Expensas_Consorcios", "Consorcios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.Consorcios), "Expensas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.Expensas))]
-[assembly: EdmRelationshipAttribute("ExpensasModel", "FK_GastosExtDetalle_Expensas", "Expensas", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.Expensas), "GastosExtDetalle", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.GastosExtDetalle))]
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_UnidadesFuncionales_Consorcios", "Consorcios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.Consorcios), "UnidadesFuncionales", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.UnidadesFuncionales))]
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_GastosEvOrdinariosDetalle_Expensas", "Expensas", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.Expensas), "GastosEvOrdinariosDetalle", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.GastosEvOrdinariosDetalle))]
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_Detalles_Consorcios", "Consorcios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.Consorcios), "Detalles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.Detalles), true)]
@@ -30,8 +29,9 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_Pagos_UF", "UnidadesFuncionales", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.UnidadesFuncionales), "Pagos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.Pagos))]
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_ExpensasUFDetalle_Pagos", "Pagos", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.Pagos), "ExpensasUFDetalle", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.ExpensasUFDetalle))]
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_GastosEvOrdinariosUFDetalle_Pagos", "Pagos", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.Pagos), "GastosEvOrdinariosUFDetalle", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.GastosEvOrdinariosUFDetalle))]
-[assembly: EdmRelationshipAttribute("ExpensasModel", "FK_GastosEvExtUFDetalle_Pagos", "Pagos", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.Pagos), "GastosEvExtUFDetalle", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.GastosEvExtUFDetalle))]
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_ProveedoresCtaCte_Proveedores", "Proveedores", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.Proveedores), "ProveedoresCtaCte", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.ProveedoresCtaCte))]
+[assembly: EdmRelationshipAttribute("ExpensasModel", "FK_GastosExtDetalle_Expensas", "Expensas", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.Expensas), "GastosExtDetalle", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.GastosExtDetalle))]
+[assembly: EdmRelationshipAttribute("ExpensasModel", "FK_GastosEvExtUFDetalle_Pagos", "Pagos", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.Pagos), "GastosEvExtUFDetalle", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.GastosEvExtUFDetalle))]
 
 #endregion
 
@@ -111,22 +111,6 @@ namespace DAO
             }
         }
         private ObjectSet<Expensas> _Expensas;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<GastosExtDetalle> GastosExtDetalle
-        {
-            get
-            {
-                if ((_GastosExtDetalle == null))
-                {
-                    _GastosExtDetalle = base.CreateObjectSet<GastosExtDetalle>("GastosExtDetalle");
-                }
-                return _GastosExtDetalle;
-            }
-        }
-        private ObjectSet<GastosExtDetalle> _GastosExtDetalle;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -275,22 +259,6 @@ namespace DAO
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<GastosEvExtUFDetalle> GastosEvExtUFDetalle
-        {
-            get
-            {
-                if ((_GastosEvExtUFDetalle == null))
-                {
-                    _GastosEvExtUFDetalle = base.CreateObjectSet<GastosEvExtUFDetalle>("GastosEvExtUFDetalle");
-                }
-                return _GastosEvExtUFDetalle;
-            }
-        }
-        private ObjectSet<GastosEvExtUFDetalle> _GastosEvExtUFDetalle;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<Proveedores> Proveedores
         {
             get
@@ -319,6 +287,38 @@ namespace DAO
             }
         }
         private ObjectSet<ProveedoresCtaCte> _ProveedoresCtaCte;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<GastosEvExtUFDetalle> GastosEvExtUFDetalle
+        {
+            get
+            {
+                if ((_GastosEvExtUFDetalle == null))
+                {
+                    _GastosEvExtUFDetalle = base.CreateObjectSet<GastosEvExtUFDetalle>("GastosEvExtUFDetalle");
+                }
+                return _GastosEvExtUFDetalle;
+            }
+        }
+        private ObjectSet<GastosEvExtUFDetalle> _GastosEvExtUFDetalle;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<GastosExtDetalle> GastosExtDetalle
+        {
+            get
+            {
+                if ((_GastosExtDetalle == null))
+                {
+                    _GastosExtDetalle = base.CreateObjectSet<GastosExtDetalle>("GastosExtDetalle");
+                }
+                return _GastosExtDetalle;
+            }
+        }
+        private ObjectSet<GastosExtDetalle> _GastosExtDetalle;
 
         #endregion
 
@@ -338,14 +338,6 @@ namespace DAO
         public void AddToExpensas(Expensas expensas)
         {
             base.AddObject("Expensas", expensas);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the GastosExtDetalle EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToGastosExtDetalle(GastosExtDetalle gastosExtDetalle)
-        {
-            base.AddObject("GastosExtDetalle", gastosExtDetalle);
         }
     
         /// <summary>
@@ -421,14 +413,6 @@ namespace DAO
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the GastosEvExtUFDetalle EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToGastosEvExtUFDetalle(GastosEvExtUFDetalle gastosEvExtUFDetalle)
-        {
-            base.AddObject("GastosEvExtUFDetalle", gastosEvExtUFDetalle);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the Proveedores EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToProveedores(Proveedores proveedores)
@@ -442,6 +426,22 @@ namespace DAO
         public void AddToProveedoresCtaCte(ProveedoresCtaCte proveedoresCtaCte)
         {
             base.AddObject("ProveedoresCtaCte", proveedoresCtaCte);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the GastosEvExtUFDetalle EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToGastosEvExtUFDetalle(GastosEvExtUFDetalle gastosEvExtUFDetalle)
+        {
+            base.AddObject("GastosEvExtUFDetalle", gastosEvExtUFDetalle);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the GastosExtDetalle EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToGastosExtDetalle(GastosExtDetalle gastosExtDetalle)
+        {
+            base.AddObject("GastosExtDetalle", gastosExtDetalle);
         }
 
         #endregion
@@ -1087,28 +1087,6 @@ namespace DAO
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_GastosExtDetalle_Expensas", "GastosExtDetalle")]
-        public EntityCollection<GastosExtDetalle> GastosExtDetalle
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GastosExtDetalle>("ExpensasModel.FK_GastosExtDetalle_Expensas", "GastosExtDetalle");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GastosExtDetalle>("ExpensasModel.FK_GastosExtDetalle_Expensas", "GastosExtDetalle", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_GastosEvOrdinariosDetalle_Expensas", "GastosEvOrdinariosDetalle")]
         public EntityCollection<GastosEvOrdinariosDetalle> GastosEvOrdinariosDetalle
         {
@@ -1143,6 +1121,28 @@ namespace DAO
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ExpensasDetalle>("ExpensasModel.FK_ExpensasDetalle_Expensas", "ExpensasDetalle", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_GastosExtDetalle_Expensas", "GastosExtDetalle")]
+        public EntityCollection<GastosExtDetalle> GastosExtDetalle
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GastosExtDetalle>("ExpensasModel.FK_GastosExtDetalle_Expensas", "GastosExtDetalle");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GastosExtDetalle>("ExpensasModel.FK_GastosExtDetalle_Expensas", "GastosExtDetalle", value);
                 }
             }
         }
@@ -2388,6 +2388,30 @@ namespace DAO
         private Nullable<global::System.Decimal> _Proveedores_ID;
         partial void OnProveedores_IDChanging(Nullable<global::System.Decimal> value);
         partial void OnProveedores_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> ProveedoresCtaCte_ID
+        {
+            get
+            {
+                return _ProveedoresCtaCte_ID;
+            }
+            set
+            {
+                OnProveedoresCtaCte_IDChanging(value);
+                ReportPropertyChanging("ProveedoresCtaCte_ID");
+                _ProveedoresCtaCte_ID = StructuralObject.SetValidValue(value, "ProveedoresCtaCte_ID");
+                ReportPropertyChanged("ProveedoresCtaCte_ID");
+                OnProveedoresCtaCte_IDChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _ProveedoresCtaCte_ID;
+        partial void OnProveedoresCtaCte_IDChanging(Nullable<global::System.Decimal> value);
+        partial void OnProveedoresCtaCte_IDChanged();
 
         #endregion
 
@@ -3366,6 +3390,30 @@ namespace DAO
         private Nullable<global::System.Decimal> _OrdenDeCompra;
         partial void OnOrdenDeCompraChanging(Nullable<global::System.Decimal> value);
         partial void OnOrdenDeCompraChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> OrdenDePago
+        {
+            get
+            {
+                return _OrdenDePago;
+            }
+            set
+            {
+                OnOrdenDePagoChanging(value);
+                ReportPropertyChanging("OrdenDePago");
+                _OrdenDePago = StructuralObject.SetValidValue(value, "OrdenDePago");
+                ReportPropertyChanged("OrdenDePago");
+                OnOrdenDePagoChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _OrdenDePago;
+        partial void OnOrdenDePagoChanging(Nullable<global::System.Decimal> value);
+        partial void OnOrdenDePagoChanged();
 
         #endregion
 

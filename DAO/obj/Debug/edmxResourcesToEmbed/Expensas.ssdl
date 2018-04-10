@@ -52,10 +52,10 @@
     <Property Name="Detalle" Type="nvarchar" MaxLength="50" />
     <Property Name="Importe" Type="decimal" Precision="18" Scale="2" />
     <Property Name="TipoGasto_ID" Type="int" />
-    <Property Name="Pagos_ID" Type="decimal" Precision="18" Scale="0" />
     <Property Name="Sumar" Type="bit" />
     <Property Name="Orden" Type="int" />
     <Property Name="Gastos_ID" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Pagos_ID" Type="decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="Gastos">
     <Key>
@@ -103,6 +103,7 @@
     <Property Name="Expensas_ID" Type="decimal" Precision="18" Scale="0" />
     <Property Name="ImporteCompra" Type="decimal" Precision="18" Scale="2" />
     <Property Name="Proveedores_ID" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ProveedoresCtaCte_ID" Type="decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="Pagos">
     <Key>
@@ -149,6 +150,7 @@
     <Property Name="Detalle" Type="nvarchar" MaxLength="50" />
     <Property Name="Fecha" Type="date" />
     <Property Name="OrdenDeCompra" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="OrdenDePago" Type="numeric" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="TipoGastos">
     <Key>

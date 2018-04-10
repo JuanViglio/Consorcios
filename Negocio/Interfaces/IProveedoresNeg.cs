@@ -18,8 +18,12 @@ namespace Negocio.Interfaces
 
         void AddDebe(decimal importe, decimal idProveedor, decimal idGasto, string tipoGasto, string detalle);
 
-        void AddHaber(decimal importe, decimal idProveedor, decimal idGasto, string tipoGasto, string detalle);
+        void DeleteHaber(decimal idGasto);
+
+        decimal AddHaber(decimal importe, decimal idProveedor, string tipoGasto, string detalle);
 
         IEnumerable<ProveedoresCtaCte> GetCtaCte(decimal idProveedor);
+
+        void ActualizarSaldo(decimal idProveedor);
     }
 }

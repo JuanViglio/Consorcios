@@ -16,10 +16,14 @@ namespace Servicios.Interfaces
 
         string GetTipo(decimal id);
 
-        void AddHaber(decimal importe, decimal idProveedor, decimal idGasto, string tipoGasto, string detalle);
+        decimal AddHaber(decimal importe, decimal idProveedor, string tipoGasto, string detalle);
+
+        void DeleteHaber(decimal idGasto);
 
         void AddDebe(decimal importe, decimal idProveedor, decimal idGasto, string tipoGasto, string detalle);
 
         IEnumerable<ProveedoresCtaCte> GetCtaCte(decimal idProveedor);
+
+        void ActualizarSaldo(decimal idProveedor);
     }
 }
