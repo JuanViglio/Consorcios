@@ -30,9 +30,9 @@ namespace Servicios.Interfaces
 
         bool ActualizarCheckSumar(int idExpensaDetalle, bool sumar);
 
-        ExpensasDetalle GetExpensaDetalle(int ExpensaID, int GastoID);
+        GastosFijos GetExpensaDetalle(int ExpensaID, int GastoID);
 
-        List<ExpensasDetalle> GetExpensaDetalle(int ExpensaID);
+        List<GastosFijos> GetExpensaDetalle(int ExpensaID);
 
         Expensas GetUltimaExpensa(string IdConsorcio);
 
@@ -50,7 +50,7 @@ namespace Servicios.Interfaces
 
         decimal AgregarExpensa(string IdConsorcio);
 
-        List<GastosEvOrdinariosDetalle> GetGastosEvOrdinarios(int IdExpensa);
+        List<GastosEvOrd> GetGastosEvOrdinarios(int IdExpensa);
 
         void ActualizarTotalGastosEvOrdinariosUF(decimal idPago);
 

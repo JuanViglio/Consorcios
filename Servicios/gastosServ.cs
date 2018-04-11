@@ -48,21 +48,21 @@ namespace Servicios
 
         public void DeleteDetalle(decimal idExpensaDetalle)
         {
-            ExpensasDetalle expensaDetalle = _context.ExpensasDetalle.Where(x => x.ID == idExpensaDetalle).FirstOrDefault();
+            GastosFijos expensaDetalle = _context.GastosFijos.Where(x => x.ID == idExpensaDetalle).FirstOrDefault();
             _context.DeleteObject(expensaDetalle);
             _context.SaveChanges();            
         }
 
         public void DeleteGastoEvOrdinario(decimal idGasto)
         {
-            GastosEvOrdinariosDetalle gastosEvOrdinariosDetalle = _context.GastosEvOrdinariosDetalle.Where(x => x.ID == idGasto).FirstOrDefault();
+            GastosEvOrd gastosEvOrdinariosDetalle = _context.GastosEvOrd.Where(x => x.ID == idGasto).FirstOrDefault();
             _context.DeleteObject(gastosEvOrdinariosDetalle);
             _context.SaveChanges();
         }
 
         public void DeleteGastoEvExtraordinario(decimal idGasto)
         {
-            GastosExtDetalle gastoExtDetalle = _context.GastosExtDetalle.Where(x => x.ID == idGasto).FirstOrDefault();
+            GastosEvExt gastoExtDetalle = _context.GastosEvExt.Where(x => x.ID == idGasto).FirstOrDefault();
             _context.DeleteObject(gastoExtDetalle);
             _context.SaveChanges();
         }

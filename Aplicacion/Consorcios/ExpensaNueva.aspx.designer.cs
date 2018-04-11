@@ -220,6 +220,42 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.TextBox txtDetalleGastoEventual;
         
         /// <summary>
+        /// Label13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label13;
+        
+        /// <summary>
+        /// ddlProveedoresEvOrd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlProveedoresEvOrd;
+        
+        /// <summary>
+        /// Label14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label14;
+        
+        /// <summary>
+        /// txtImporteCompraGastoEventual control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtImporteCompraGastoEventual;
+        
+        /// <summary>
         /// Label7 control.
         /// </summary>
         /// <remarks>
@@ -301,13 +337,13 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.Label Label11;
         
         /// <summary>
-        /// ddlProveedores control.
+        /// ddlProveedoresEvExt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProveedores;
+        protected global::System.Web.UI.WebControls.DropDownList ddlProveedoresEvExt;
         
         /// <summary>
         /// Label12 control.

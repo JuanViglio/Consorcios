@@ -452,10 +452,10 @@ namespace Servicios
         private void AddNewExpensaDetalle(Expensas expensa)
         {
             //Agregar las filas de Totales a ExpensasDetalles
-            expensa.ExpensasDetalle.Add(new ExpensasDetalle { Detalle = Constantes.TotalGastoEvOrdinarios, Importe = 0, TipoGasto_ID = GastoTipoEvOrdinario, Sumar = true, Orden = 1 });
-            expensa.ExpensasDetalle.Add(new ExpensasDetalle { Detalle = Constantes.TotalGastoEvExtraordinarios, Importe = 0, TipoGasto_ID = GastoTipoEvExtraordinario, Sumar = true, Orden = 1 });
-            expensa.ExpensasDetalle.Add(new ExpensasDetalle { Detalle = Constantes.FondoPrevisionOrdinario, Importe = 0, TipoGasto_ID = GastoTipoOrdinario, Sumar = true, Orden = 2 });
-            expensa.ExpensasDetalle.Add(new ExpensasDetalle { Detalle = Constantes.FondoPrevisionExtraordinario, Importe = 0, TipoGasto_ID = GastoTipoEvExtraordinario, Sumar = true, Orden = 2 });
+            expensa.GastosFijos.Add(new GastosFijos { Detalle = Constantes.TotalGastoEvOrdinarios, Importe = 0, TipoGasto_ID = GastoTipoEvOrdinario, Sumar = true, Orden = 1 });
+            expensa.GastosFijos.Add(new GastosFijos { Detalle = Constantes.TotalGastoEvExtraordinarios, Importe = 0, TipoGasto_ID = GastoTipoEvExtraordinario, Sumar = true, Orden = 1 });
+            expensa.GastosFijos.Add(new GastosFijos { Detalle = Constantes.FondoPrevisionOrdinario, Importe = 0, TipoGasto_ID = GastoTipoOrdinario, Sumar = true, Orden = 2 });
+            expensa.GastosFijos.Add(new GastosFijos { Detalle = Constantes.FondoPrevisionExtraordinario, Importe = 0, TipoGasto_ID = GastoTipoEvExtraordinario, Sumar = true, Orden = 2 });
         }
         #endregion
     }

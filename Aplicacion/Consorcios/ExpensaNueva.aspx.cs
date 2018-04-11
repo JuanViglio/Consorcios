@@ -388,7 +388,7 @@ namespace WebSistemmas.Consorcios
             int gastoEvExtraordinarioId = Convert.ToInt32(Session["gastoEvExtraordinarioId"]);
             decimal importeVenta = Convert.ToDecimal(txtImporteGastoExtraordinario.Text);
             decimal importeCompra = 0;
-            decimal proveedorId = Convert.ToInt32(ddlProveedores.SelectedValue);
+            decimal proveedorId = Convert.ToInt32(ddlProveedoresEvExt.SelectedValue);
             string detalle = txtDetalleGastoExtraordinario.Text + " - " + Session["direccionConsorcio"] + " - " + Session["Periodo"];
 
             if (btnAgregarGastoExt.Text == "Agregar")
@@ -526,7 +526,7 @@ namespace WebSistemmas.Consorcios
             txtDetalleGastoExtraordinario.Text = "";
             txtImporteGastoExtraordinario.Text = "";
             txtImporteCompraGastoExt.Text = "";
-            ddlProveedores.SelectedIndex = 0;
+            ddlProveedoresEvExt.SelectedIndex = 0;
             btnAgregarGastoExt.Text = "Agregar";
             divError.Visible = false;
         }
@@ -605,10 +605,10 @@ namespace WebSistemmas.Consorcios
 
         private void CargarComboProveedores()
         {
-            ddlProveedores.DataSource = _proveedoresNeg.GetProveedores(true);
-            ddlProveedores.DataTextField = "Nombre";
-            ddlProveedores.DataValueField = "Codigo";
-            ddlProveedores.DataBind();
+            ddlProveedoresEvExt.DataSource = _proveedoresNeg.GetProveedores(true);
+            ddlProveedoresEvExt.DataTextField = "Nombre";
+            ddlProveedoresEvExt.DataValueField = "Codigo";
+            ddlProveedoresEvExt.DataBind();
         }
 
         private void AgregarGastoOrdinario(int idExpensa)
@@ -653,7 +653,7 @@ namespace WebSistemmas.Consorcios
 
         private void GetTipoProveedor()
         {
-            var tipo = _proveedoresNeg.GetTipo(decimal.Parse(ddlProveedores.SelectedValue));
+            var tipo = _proveedoresNeg.GetTipo(decimal.Parse(ddlProveedoresEvExt.SelectedValue));
 
             switch (tipo)
             {
@@ -675,7 +675,7 @@ namespace WebSistemmas.Consorcios
 
         protected void ddlProveedores_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlProveedores.SelectedValue == "0")
+            if (ddlProveedoresEvExt.SelectedValue == "0")
             {
                 txtImporteCompraGastoExt.Text = "";
                 txtImporteCompraGastoExt.Enabled = true;

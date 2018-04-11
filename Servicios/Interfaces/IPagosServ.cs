@@ -6,7 +6,7 @@ namespace Servicios.Interfaces
     public interface IPagosServ
     {
         void AddPagos(string consorcioId, UnidadesFuncionales item, string gastosExtraordinarios,
-            string totalGastosOrdinarios, int periodoNumerico, List<GastosEvOrdinariosDetalle> gastosEvOrd, List<ExpensasDetalle> expensaDetalle);
+            string totalGastosOrdinarios, int periodoNumerico, List<GastosEvOrd> gastosEvOrd, List<GastosFijos> expensaDetalle);
 
         bool UpdatePagos(string consorcioId, UnidadesFuncionales item, string gastosExtraordinarios,
             string totalGastosOrdinarios, int periodoNumerico);
@@ -15,7 +15,7 @@ namespace Servicios.Interfaces
 
         List<GastosEvOrdinariosUFDetalle> GetGastosEvOrdinariosUF(int IdPago);
 
-        List<GastosEvExtUFDetalle> GetGastosEvExtUF(int IdPago);
+        List<GastosParticularesExt> GetGastosEvExtUF(int IdPago);
 
         void AddGastosEvOrdinariosUFDetalle(int idPago, string detalle, decimal importe);
 

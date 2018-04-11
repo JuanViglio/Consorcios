@@ -41,8 +41,8 @@ namespace Negocio.Test
                 Coeficiente = 5
             };
             List<UnidadesFuncionales> unidadesFuncionales = new List<UnidadesFuncionales>();
-            List<GastosEvOrdinariosDetalle> gastosOrdinarios = new List<GastosEvOrdinariosDetalle>();
-            List<ExpensasDetalle> expensasDetalle = new List<ExpensasDetalle>();
+            List<GastosEvOrd> gastosOrdinarios = new List<GastosEvOrd>();
+            List<GastosFijos> expensasDetalle = new List<GastosFijos>();
 
             unidadesFuncionales.Add(uf);
 

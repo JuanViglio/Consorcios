@@ -6,7 +6,7 @@ namespace Servicios.Mapper
 {
     public static class AutoMapper
     {
-        public static IEnumerable<GastosOrdinariosModel> MapToGastosOrdinarios(List<ExpensasDetalle> expensasDetalles)
+        public static IEnumerable<GastosOrdinariosModel> MapToGastosOrdinarios(List<GastosFijos> expensasDetalles)
         {
             IEnumerable<GastosOrdinariosModel> gastosOdinarios;
 

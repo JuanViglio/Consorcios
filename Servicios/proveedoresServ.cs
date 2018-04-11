@@ -144,7 +144,7 @@ namespace Servicios
 
         public void DeleteHaber(decimal idGasto)
         {
-            var ctaCteId = _context.GastosExtDetalle.Where(x => x.ID == idGasto).FirstOrDefault().ProveedoresCtaCte_ID.Value;
+            var ctaCteId = _context.GastosEvExt.Where(x => x.ID == idGasto).FirstOrDefault().ProveedoresCtaCte_ID.Value;
             var haber = _context.ProveedoresCtaCte.Where(x => x.ID == ctaCteId).FirstOrDefault();
 
             var idProveedor = (from C in _context.ProveedoresCtaCte

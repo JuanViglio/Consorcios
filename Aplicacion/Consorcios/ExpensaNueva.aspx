@@ -217,7 +217,7 @@
                 <div id="div1" style="margin-top: 17px;  " >
                     <table style="margin-top: 0px; width: 500px;">
                         <tr>
-                            <td style="width: 100px">
+                            <td style="width: 207px">
                                 <asp:Label ID="Label6" runat="server" Text="Detalle"></asp:Label>
                             </td>
                             <td>
@@ -225,15 +225,32 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 100px; height: 23px;">
-                                <asp:Label ID="Label7" runat="server" Text="Importe"></asp:Label>
+                            <td style="width: 207px">
+                                <asp:Label ID="Label13" runat="server" Text="Proveedor"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="ddlProveedoresEvOrd" runat="server" autopostback="true" Height="23px" Width="380px" OnSelectedIndexChanged="ddlProveedores_SelectedIndexChanged">
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 207px; height: 23px;">
+                                <asp:Label ID="Label14" runat="server" Text="Importe Compra"></asp:Label>
+                            </td>
+                            <td style="height: 23px">
+                                <asp:TextBox ID="txtImporteCompraGastoEventual" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 207px; height: 23px;">
+                                <asp:Label ID="Label7" runat="server" Text="Importe Venta"></asp:Label>
                             </td>
                             <td style="height: 23px">
                                 <asp:TextBox ID="txtImporteGastoEventual" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 100px; height: 53px">
+                            <td style="width: 207px; height: 53px">
                                 <asp:Button ID="btnAgregarGastoEventual" runat="server" Height="30px" OnClick="btnAgregarGastoEventual_Click" Text="Agregar" Width="90px" />
                             </td>
                             <td style="height: 53px">
@@ -314,7 +331,7 @@
                                 <asp:Label ID="Label11" runat="server" Text="Proveedor"></asp:Label>
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlProveedores" runat="server" autopostback="true" Height="23px" Width="380px" OnSelectedIndexChanged="ddlProveedores_SelectedIndexChanged">
+                                <asp:DropDownList ID="ddlProveedoresEvExt" runat="server" autopostback="true" Height="23px" Width="380px" OnSelectedIndexChanged="ddlProveedores_SelectedIndexChanged">
                                 </asp:DropDownList>
                             </td>
                         </tr>
