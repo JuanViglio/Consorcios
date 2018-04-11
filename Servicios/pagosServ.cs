@@ -47,22 +47,22 @@ namespace Servicios
             _context.SaveChanges();
         }
 
-        public void AddGastosEvOrdinariosUFDetalle(int idPago, string detalle, decimal importe)
+        public void AddGastoParticularOrdinario(int idPago, string detalle, decimal importe)
         {
             var pago = _context.Pagos.Where(x => x.ID == idPago).FirstOrDefault();
 
-            var gastosEvOrdUFDetalle = new GastosEvOrdinariosUFDetalle()
+            var gastosEvOrdUFDetalle = new GastosParticularesOrd()
             {
                 Detalle = detalle,
                 Importe = importe,
                 Pagos = pago
             };
 
-            _context.AddToGastosEvOrdinariosUFDetalle(gastosEvOrdUFDetalle);
+            _context.AddToGastosParticularesOrd(gastosEvOrdUFDetalle);
             _context.SaveChanges();
         }
 
-        public void AddGastosEvExtUFDetalle(int idPago, string detalle, decimal importe)
+        public void AddGastoParticularExtraordinario(int idPago, string detalle, decimal importe)
         {
             var pago = _context.Pagos.Where(x => x.ID == idPago).FirstOrDefault();
 
@@ -114,9 +114,9 @@ namespace Servicios
                         select P.ID).ToList();            
         }
 
-        public List<GastosEvOrdinariosUFDetalle> GetGastosEvOrdinariosUF(int IdPago)
+        public List<GastosParticularesOrd> GetGastosEvOrdinariosUF(int IdPago)
         {
-            return _context.GastosEvOrdinariosUFDetalle.Where(x => x.Pagos.ID == IdPago).ToList();
+            return _context.GastosParticularesOrd.Where(x => x.Pagos.ID == IdPago).ToList();
         }
 
         public List<GastosParticularesExt> GetGastosEvExtUF(int IdPago)
@@ -126,7 +126,7 @@ namespace Servicios
 
         public decimal GetTotalGastosEvOrdinariosUF(int IdPago)
         {
-            return _context.GastosEvOrdinariosUFDetalle.Where(x => x.Pagos.ID == IdPago).Sum(x => x.Importe) ?? 0;
+            return _context.GastosParticularesOrd.Where(x => x.Pagos.ID == IdPago).Sum(x => x.Importe) ?? 0;
         }
 
         public decimal GetTotalGastosEvExtUF(int IdPago)
@@ -136,7 +136,7 @@ namespace Servicios
 
         public void DeleteGastosEvOrdinariosUF(int IdGasto)
         {
-            var gasto = _context.GastosEvOrdinariosUFDetalle.Where(x => x.ID == IdGasto).FirstOrDefault();
+            var gasto = _context.GastosParticularesOrd.Where(x => x.ID == IdGasto).FirstOrDefault();
 
             _context.DeleteObject(gasto);
             _context.SaveChanges();

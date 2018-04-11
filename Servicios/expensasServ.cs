@@ -263,18 +263,6 @@ namespace Servicios
             _context.SaveChanges();
         }
 
-        public void ActualizarTotalGastosEvOrdinariosUF(decimal idPago)
-        {
-            //obtener la suma de los gastos ev. ordinarios
-            var gastosEvOrdinarios = _context.GastosEvOrdinariosUFDetalle.Where(x => x.Pagos.ID == idPago).Sum(x => x.Importe).GetValueOrDefault();
-
-            //actualizar la tabla GastosDetalles
-            var expensaDetalle = _context.ExpensasUFDetalle.Where(x => x.Detalle == Constantes.TotalGastoEvOrdinarios && x.Pagos.ID == idPago).FirstOrDefault();
-            expensaDetalle.Importe = gastosEvOrdinarios;
-
-            _context.SaveChanges();
-        }
-
         public void ActualizarTotalGastosEvExtraordinarios(decimal idExpensa)
         {
             //obtener la suma de los gastos ev. ordinarios
@@ -334,10 +322,6 @@ namespace Servicios
             return expensasDetalle;
         }
 
-        public List<ExpensasUFDetalle> GetGastosByTipoUF(int IdPago, int TipoGasto)
-        {
-            return _context.ExpensasUFDetalle.Where(x => x.Pagos.ID == IdPago && x.TipoGasto_ID.Value == TipoGasto).ToList();
-        }
 
         public IEnumerable<GastosOrdinariosModel> GetGastosOrdinarios(int ExpensaID, bool SoloSumarChequeada = false)
         {
@@ -346,17 +330,6 @@ namespace Servicios
             expensasDetalles.AddRange(GetGastosByTipo(ExpensaID, GastoTipoEvExtraordinario, SoloSumarChequeada));
 
             var gastosOrdinarios = AutoMapper.MapToGastosOrdinarios(expensasDetalles);
-
-            return gastosOrdinarios;
-        }
-
-        public IEnumerable<GastosOrdinariosModel> GetGastosOrdinariosUF(int PagoID)
-        {
-            var expensasDetalles = GetGastosByTipoUF(PagoID, GastoTipoOrdinario);
-            expensasDetalles.AddRange(GetGastosByTipoUF(PagoID, GastoTipoEvOrdinario));
-            expensasDetalles.AddRange(GetGastosByTipoUF(PagoID, GastoTipoEvExtraordinario));
-
-            var gastosOrdinarios = AutoMapper.MapToGastosOrdinariosUF(expensasDetalles);
 
             return gastosOrdinarios;
         }
@@ -398,13 +371,6 @@ namespace Servicios
         public decimal GetTotalGastosOrdinarios(int idExpensa)
         {
             var detalle = _context.GastosFijos.Where(x => x.Expensas.ID == idExpensa && x.Sumar == true && x.TipoGasto_ID != GastoTipoEvExtraordinario).Sum(x => x.Importe);
-
-            return detalle ?? 0;
-        }
-
-        public decimal GetTotalGastosOrdinariosUF(int idPago)
-        {
-            var detalle = _context.ExpensasUFDetalle.Where(x => x.Pagos.ID == idPago && x.Sumar == true && x.TipoGasto_ID != GastoTipoEvExtraordinario).Sum(x => x.Importe);
 
             return detalle ?? 0;
         }

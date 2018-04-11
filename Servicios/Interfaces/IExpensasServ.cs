@@ -52,12 +52,5 @@ namespace Servicios.Interfaces
 
         List<GastosEvOrd> GetGastosEvOrdinarios(int IdExpensa);
 
-        void ActualizarTotalGastosEvOrdinariosUF(decimal idPago);
-
-        IEnumerable<GastosOrdinariosModel> GetGastosOrdinariosUF(int PagoID);
-
-        List<ExpensasUFDetalle> GetGastosByTipoUF(int IdPago, int TipoGasto);
-
-        decimal GetTotalGastosOrdinariosUF(int idPago);
     }
 }

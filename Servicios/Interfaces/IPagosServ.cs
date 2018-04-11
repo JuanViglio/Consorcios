@@ -13,13 +13,13 @@ namespace Servicios.Interfaces
 
         List<decimal> GetPagos(int periodo, string consorcioId);
 
-        List<GastosEvOrdinariosUFDetalle> GetGastosEvOrdinariosUF(int IdPago);
+        List<GastosParticularesOrd> GetGastosEvOrdinariosUF(int IdPago);
 
         List<GastosParticularesExt> GetGastosEvExtUF(int IdPago);
 
-        void AddGastosEvOrdinariosUFDetalle(int idPago, string detalle, decimal importe);
+        void AddGastoParticularOrdinario(int idPago, string detalle, decimal importe);
 
-        void AddGastosEvExtUFDetalle(int idPago, string detalle, decimal importe);
+        void AddGastoParticularExtraordinario(int idPago, string detalle, decimal importe);
 
         decimal GetTotalGastosEvOrdinariosUF(int IdPago);
 

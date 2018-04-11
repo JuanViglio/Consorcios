@@ -18,9 +18,9 @@ namespace Negocio
             var detalleTotal = " (Total $" + importe + ")";
 
             if (tipoGasto == "Eventual Ordinario")
-                _pagosServ.AddGastosEvOrdinariosUFDetalle(idPago, detalle.ToUpper() + detalleTotal.ToUpper(), Convert.ToDecimal(importePorUF));
+                _pagosServ.AddGastoParticularOrdinario(idPago, detalle.ToUpper() + detalleTotal.ToUpper(), Convert.ToDecimal(importePorUF));
             else
-                _pagosServ.AddGastosEvExtUFDetalle(idPago, detalle.ToUpper() + detalleTotal.ToUpper(), Convert.ToDecimal(importePorUF));
+                _pagosServ.AddGastoParticularExtraordinario(idPago, detalle.ToUpper() + detalleTotal.ToUpper(), Convert.ToDecimal(importePorUF));
         }
 
         public unidadesFuncionaesNeg (IUnidadesServ unidadesServ, IPagosServ pagosServ, IExpensasServ expensasServ)

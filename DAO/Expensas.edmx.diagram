@@ -5,25 +5,21 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="2072206f10404698a1d5c642d639046b" Name="Diagram1">
-        <EntityTypeShape EntityType="ExpensasModel.Consorcios" Width="1.5" PointX="10.5" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExpensasModel.Consorcios" Width="1.5" PointX="9" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ExpensasModel.Expensas" Width="1.625" PointX="6.375" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ExpensasModel.TipoGastos" Width="1.5" PointX="11" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExpensasModel.TipoGastos" Width="1.5" PointX="9" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="ExpensasModel.FK_Expensas_Consorcios" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ExpensasModel.UnidadesFuncionales" Width="1.75" PointX="7.75" PointY="6.875" />
+        <EntityTypeShape EntityType="ExpensasModel.UnidadesFuncionales" Width="1.875" PointX="9" PointY="7" />
         <AssociationConnector Association="ExpensasModel.FK_UnidadesFuncionales_Consorcios" />
-        <EntityTypeShape EntityType="ExpensasModel.Detalles" Width="1.5" PointX="8.375" PointY="4.375" />
+        <EntityTypeShape EntityType="ExpensasModel.Detalles" Width="1.5" PointX="11.625" PointY="3.5" />
         <AssociationConnector Association="ExpensasModel.FK_Detalles_Consorcios" />
-        <EntityTypeShape EntityType="ExpensasModel.Gastos" Width="1.5" PointX="8.375" PointY="0.625" />
+        <EntityTypeShape EntityType="ExpensasModel.Gastos" Width="1.5" PointX="11.625" PointY="0.875" />
         <AssociationConnector Association="ExpensasModel.FK_Detalles_Gastos" />
         <AssociationConnector Association="ExpensasModel.FK_Gastos_TipoGastos" />
-        <EntityTypeShape EntityType="ExpensasModel.Pagos" Width="1.5" PointX="4.875" PointY="7.875" />
+        <EntityTypeShape EntityType="ExpensasModel.Pagos" Width="1.875" PointX="6.25" PointY="7.875" />
         <AssociationConnector Association="ExpensasModel.FK_Pagos_UF" />
-        <EntityTypeShape EntityType="ExpensasModel.ExpensasUFDetalle" Width="2" PointX="1" PointY="6.875" />
-        <AssociationConnector Association="ExpensasModel.FK_ExpensasUFDetalle_Pagos" />
-        <EntityTypeShape EntityType="ExpensasModel.GastosEvOrdinariosUFDetalle" Width="2" PointX="1" PointY="11.875" />
-        <AssociationConnector Association="ExpensasModel.FK_GastosEvOrdinariosUFDetalle_Pagos" />
         <EntityTypeShape EntityType="ExpensasModel.Proveedores" Width="1.5" PointX="1" PointY="0.5" />
-        <EntityTypeShape EntityType="ExpensasModel.ProveedoresCtaCte" Width="1.5" PointX="1" PointY="3.5" />
+        <EntityTypeShape EntityType="ExpensasModel.ProveedoresCtaCte" Width="1.875" PointX="1" PointY="3.5" />
         <AssociationConnector Association="ExpensasModel.FK_ProveedoresCtaCte_Proveedores" />
         <EntityTypeShape EntityType="ExpensasModel.GastosEvExt" Width="1.75" PointX="3.5" PointY="5.25" />
         <AssociationConnector Association="ExpensasModel.FK_GastosExtDetalle_Expensas" />
@@ -31,8 +27,10 @@
         <AssociationConnector Association="ExpensasModel.FK_GastosEvOrdinariosDetalle_Expensas" />
         <EntityTypeShape EntityType="ExpensasModel.GastosFijos" Width="1.75" PointX="3.5" PointY="0.5" />
         <AssociationConnector Association="ExpensasModel.FK_ExpensasDetalle_Expensas" />
-        <EntityTypeShape EntityType="ExpensasModel.GastosParticularesExt" Width="2" PointX="1" PointY="9.625" />
+        <EntityTypeShape EntityType="ExpensasModel.GastosParticularesExt" Width="1.875" PointX="3.5" PointY="10.375" />
         <AssociationConnector Association="ExpensasModel.FK_GastosEvExtUFDetalle_Pagos" />
+        <EntityTypeShape EntityType="ExpensasModel.GastosParticularesOrd" Width="1.875" PointX="3.5" PointY="8.375" />
+        <AssociationConnector Association="ExpensasModel.FK_GastosEvOrdinariosUFDetalle_Pagos" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
