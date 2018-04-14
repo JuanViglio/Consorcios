@@ -31,6 +31,8 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_ExpensasDetalle_Expensas", "Expensas", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.Expensas), "GastosFijos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.GastosFijos))]
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_GastosEvExtUFDetalle_Pagos", "Pagos", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.Pagos), "GastosParticularesExt", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.GastosParticularesExt))]
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_GastosEvOrdinariosUFDetalle_Pagos", "Pagos", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.Pagos), "GastosParticularesOrd", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.GastosParticularesOrd))]
+[assembly: EdmRelationshipAttribute("ExpensasModel", "FK_Seguros_Consorcios", "Consorcios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.Consorcios), "Seguros", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.Seguros))]
+[assembly: EdmRelationshipAttribute("ExpensasModel", "FK_SegurosDetalle_Seguros", "Seguros", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.Seguros), "SegurosDetalle", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.SegurosDetalle))]
 
 #endregion
 
@@ -302,6 +304,38 @@ namespace DAO
             }
         }
         private ObjectSet<GastosParticularesOrd> _GastosParticularesOrd;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Seguros> Seguros
+        {
+            get
+            {
+                if ((_Seguros == null))
+                {
+                    _Seguros = base.CreateObjectSet<Seguros>("Seguros");
+                }
+                return _Seguros;
+            }
+        }
+        private ObjectSet<Seguros> _Seguros;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<SegurosDetalle> SegurosDetalle
+        {
+            get
+            {
+                if ((_SegurosDetalle == null))
+                {
+                    _SegurosDetalle = base.CreateObjectSet<SegurosDetalle>("SegurosDetalle");
+                }
+                return _SegurosDetalle;
+            }
+        }
+        private ObjectSet<SegurosDetalle> _SegurosDetalle;
 
         #endregion
 
@@ -417,6 +451,22 @@ namespace DAO
         public void AddToGastosParticularesOrd(GastosParticularesOrd gastosParticularesOrd)
         {
             base.AddObject("GastosParticularesOrd", gastosParticularesOrd);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Seguros EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSeguros(Seguros seguros)
+        {
+            base.AddObject("Seguros", seguros);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the SegurosDetalle EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSegurosDetalle(SegurosDetalle segurosDetalle)
+        {
+            base.AddObject("SegurosDetalle", segurosDetalle);
         }
 
         #endregion
@@ -667,6 +717,28 @@ namespace DAO
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Detalles>("ExpensasModel.FK_Detalles_Consorcios", "Detalles", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_Seguros_Consorcios", "Seguros")]
+        public EntityCollection<Seguros> Seguros
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Seguros>("ExpensasModel.FK_Seguros_Consorcios", "Seguros");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Seguros>("ExpensasModel.FK_Seguros_Consorcios", "Seguros", value);
                 }
             }
         }
@@ -3164,6 +3236,508 @@ namespace DAO
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Proveedores>("ExpensasModel.FK_ProveedoresCtaCte_Proveedores", "Proveedores", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="ExpensasModel", Name="Seguros")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Seguros : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Seguros object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="compañia">Initial value of the Compañia property.</param>
+        /// <param name="poliza">Initial value of the Poliza property.</param>
+        /// <param name="fechaInicio">Initial value of the FechaInicio property.</param>
+        /// <param name="fechaFin">Initial value of the FechaFin property.</param>
+        /// <param name="cantCuotas">Initial value of the CantCuotas property.</param>
+        /// <param name="cantCuotasEn0">Initial value of the CantCuotasEn0 property.</param>
+        /// <param name="estado">Initial value of the Estado property.</param>
+        public static Seguros CreateSeguros(global::System.Decimal id, global::System.String compañia, global::System.String poliza, global::System.DateTime fechaInicio, global::System.DateTime fechaFin, global::System.Int32 cantCuotas, global::System.Int32 cantCuotasEn0, global::System.String estado)
+        {
+            Seguros seguros = new Seguros();
+            seguros.ID = id;
+            seguros.Compañia = compañia;
+            seguros.Poliza = poliza;
+            seguros.FechaInicio = fechaInicio;
+            seguros.FechaFin = fechaFin;
+            seguros.CantCuotas = cantCuotas;
+            seguros.CantCuotasEn0 = cantCuotasEn0;
+            seguros.Estado = estado;
+            return seguros;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value, "ID");
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Decimal _ID;
+        partial void OnIDChanging(global::System.Decimal value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Compañia
+        {
+            get
+            {
+                return _Compañia;
+            }
+            set
+            {
+                OnCompañiaChanging(value);
+                ReportPropertyChanging("Compañia");
+                _Compañia = StructuralObject.SetValidValue(value, false, "Compañia");
+                ReportPropertyChanged("Compañia");
+                OnCompañiaChanged();
+            }
+        }
+        private global::System.String _Compañia;
+        partial void OnCompañiaChanging(global::System.String value);
+        partial void OnCompañiaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Poliza
+        {
+            get
+            {
+                return _Poliza;
+            }
+            set
+            {
+                OnPolizaChanging(value);
+                ReportPropertyChanging("Poliza");
+                _Poliza = StructuralObject.SetValidValue(value, false, "Poliza");
+                ReportPropertyChanged("Poliza");
+                OnPolizaChanged();
+            }
+        }
+        private global::System.String _Poliza;
+        partial void OnPolizaChanging(global::System.String value);
+        partial void OnPolizaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime FechaInicio
+        {
+            get
+            {
+                return _FechaInicio;
+            }
+            set
+            {
+                OnFechaInicioChanging(value);
+                ReportPropertyChanging("FechaInicio");
+                _FechaInicio = StructuralObject.SetValidValue(value, "FechaInicio");
+                ReportPropertyChanged("FechaInicio");
+                OnFechaInicioChanged();
+            }
+        }
+        private global::System.DateTime _FechaInicio;
+        partial void OnFechaInicioChanging(global::System.DateTime value);
+        partial void OnFechaInicioChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime FechaFin
+        {
+            get
+            {
+                return _FechaFin;
+            }
+            set
+            {
+                OnFechaFinChanging(value);
+                ReportPropertyChanging("FechaFin");
+                _FechaFin = StructuralObject.SetValidValue(value, "FechaFin");
+                ReportPropertyChanged("FechaFin");
+                OnFechaFinChanged();
+            }
+        }
+        private global::System.DateTime _FechaFin;
+        partial void OnFechaFinChanging(global::System.DateTime value);
+        partial void OnFechaFinChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CantCuotas
+        {
+            get
+            {
+                return _CantCuotas;
+            }
+            set
+            {
+                OnCantCuotasChanging(value);
+                ReportPropertyChanging("CantCuotas");
+                _CantCuotas = StructuralObject.SetValidValue(value, "CantCuotas");
+                ReportPropertyChanged("CantCuotas");
+                OnCantCuotasChanged();
+            }
+        }
+        private global::System.Int32 _CantCuotas;
+        partial void OnCantCuotasChanging(global::System.Int32 value);
+        partial void OnCantCuotasChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CantCuotasEn0
+        {
+            get
+            {
+                return _CantCuotasEn0;
+            }
+            set
+            {
+                OnCantCuotasEn0Changing(value);
+                ReportPropertyChanging("CantCuotasEn0");
+                _CantCuotasEn0 = StructuralObject.SetValidValue(value, "CantCuotasEn0");
+                ReportPropertyChanged("CantCuotasEn0");
+                OnCantCuotasEn0Changed();
+            }
+        }
+        private global::System.Int32 _CantCuotasEn0;
+        partial void OnCantCuotasEn0Changing(global::System.Int32 value);
+        partial void OnCantCuotasEn0Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Estado
+        {
+            get
+            {
+                return _Estado;
+            }
+            set
+            {
+                OnEstadoChanging(value);
+                ReportPropertyChanging("Estado");
+                _Estado = StructuralObject.SetValidValue(value, false, "Estado");
+                ReportPropertyChanged("Estado");
+                OnEstadoChanged();
+            }
+        }
+        private global::System.String _Estado;
+        partial void OnEstadoChanging(global::System.String value);
+        partial void OnEstadoChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_Seguros_Consorcios", "Consorcios")]
+        public Consorcios Consorcios
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Consorcios>("ExpensasModel.FK_Seguros_Consorcios", "Consorcios").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Consorcios>("ExpensasModel.FK_Seguros_Consorcios", "Consorcios").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Consorcios> ConsorciosReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Consorcios>("ExpensasModel.FK_Seguros_Consorcios", "Consorcios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Consorcios>("ExpensasModel.FK_Seguros_Consorcios", "Consorcios", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_SegurosDetalle_Seguros", "SegurosDetalle")]
+        public EntityCollection<SegurosDetalle> SegurosDetalle
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SegurosDetalle>("ExpensasModel.FK_SegurosDetalle_Seguros", "SegurosDetalle");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SegurosDetalle>("ExpensasModel.FK_SegurosDetalle_Seguros", "SegurosDetalle", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="ExpensasModel", Name="SegurosDetalle")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SegurosDetalle : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new SegurosDetalle object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="cuota">Initial value of the Cuota property.</param>
+        /// <param name="periodo">Initial value of the Periodo property.</param>
+        /// <param name="importe">Initial value of the Importe property.</param>
+        public static SegurosDetalle CreateSegurosDetalle(global::System.Decimal id, global::System.Int32 cuota, global::System.Int32 periodo, global::System.Decimal importe)
+        {
+            SegurosDetalle segurosDetalle = new SegurosDetalle();
+            segurosDetalle.ID = id;
+            segurosDetalle.Cuota = cuota;
+            segurosDetalle.Periodo = periodo;
+            segurosDetalle.Importe = importe;
+            return segurosDetalle;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value, "ID");
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Decimal _ID;
+        partial void OnIDChanging(global::System.Decimal value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Cuota
+        {
+            get
+            {
+                return _Cuota;
+            }
+            set
+            {
+                OnCuotaChanging(value);
+                ReportPropertyChanging("Cuota");
+                _Cuota = StructuralObject.SetValidValue(value, "Cuota");
+                ReportPropertyChanged("Cuota");
+                OnCuotaChanged();
+            }
+        }
+        private global::System.Int32 _Cuota;
+        partial void OnCuotaChanging(global::System.Int32 value);
+        partial void OnCuotaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Periodo
+        {
+            get
+            {
+                return _Periodo;
+            }
+            set
+            {
+                OnPeriodoChanging(value);
+                ReportPropertyChanging("Periodo");
+                _Periodo = StructuralObject.SetValidValue(value, "Periodo");
+                ReportPropertyChanged("Periodo");
+                OnPeriodoChanged();
+            }
+        }
+        private global::System.Int32 _Periodo;
+        partial void OnPeriodoChanging(global::System.Int32 value);
+        partial void OnPeriodoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal Importe
+        {
+            get
+            {
+                return _Importe;
+            }
+            set
+            {
+                OnImporteChanging(value);
+                ReportPropertyChanging("Importe");
+                _Importe = StructuralObject.SetValidValue(value, "Importe");
+                ReportPropertyChanged("Importe");
+                OnImporteChanged();
+            }
+        }
+        private global::System.Decimal _Importe;
+        partial void OnImporteChanging(global::System.Decimal value);
+        partial void OnImporteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaPago
+        {
+            get
+            {
+                return _FechaPago;
+            }
+            set
+            {
+                OnFechaPagoChanging(value);
+                ReportPropertyChanging("FechaPago");
+                _FechaPago = StructuralObject.SetValidValue(value, "FechaPago");
+                ReportPropertyChanged("FechaPago");
+                OnFechaPagoChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaPago;
+        partial void OnFechaPagoChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaPagoChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_SegurosDetalle_Seguros", "Seguros")]
+        public Seguros Seguros
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Seguros>("ExpensasModel.FK_SegurosDetalle_Seguros", "Seguros").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Seguros>("ExpensasModel.FK_SegurosDetalle_Seguros", "Seguros").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Seguros> SegurosReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Seguros>("ExpensasModel.FK_SegurosDetalle_Seguros", "Seguros");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Seguros>("ExpensasModel.FK_SegurosDetalle_Seguros", "Seguros", value);
                 }
             }
         }

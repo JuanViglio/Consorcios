@@ -84,6 +84,7 @@
     <Content Include="Consorcios\ExpensaUFNueva.aspx" />
     <Content Include="Consorcios\GastosParticulares.aspx" />
     <Content Include="Consorcios\Proveedores.aspx" />
+    <Content Include="Consorcios\Seguros.aspx" />
     <Content Include="Consorcios\UserControls\Error.ascx" />
     <Content Include="Consorcios\UserControls\ExpensasUF\GridGastosEvExtUF.ascx" />
     <Content Include="Consorcios\UserControls\ExpensasUF\GridGastosEvOrdUF.ascx" />
@@ -94,6 +95,7 @@
     <Content Include="Consorcios\UserControls\Proveedores\AgregarProveedores.ascx" />
     <Content Include="Consorcios\UserControls\Proveedores\GridProveedores.ascx" />
     <Content Include="Consorcios\UserControls\Proveedores\ModificarProveedores.ascx" />
+    <Content Include="Consorcios\UserControls\Seguros\GridSeguros.ascx" />
     <Content Include="Consorcios\UserControls\Titulo.ascx" />
     <Content Include="css\img\ico_mas.jpg" />
     <Content Include="css\jquery-ui-1.8.16.custom.css" />
@@ -224,6 +226,13 @@
     <Compile Include="Consorcios\Proveedores.aspx.designer.cs">
       <DependentUpon>Proveedores.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Consorcios\Seguros.aspx.cs">
+      <DependentUpon>Seguros.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\Seguros.aspx.designer.cs">
+      <DependentUpon>Seguros.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Consorcios\UserControls\Error.ascx.cs">
       <DependentUpon>Error.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -300,6 +309,13 @@
     </Compile>
     <Compile Include="Consorcios\UserControls\Proveedores\ModificarProveedores.ascx.designer.cs">
       <DependentUpon>ModificarProveedores.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Seguros\GridSeguros.ascx.cs">
+      <DependentUpon>GridSeguros.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Seguros\GridSeguros.ascx.designer.cs">
+      <DependentUpon>GridSeguros.ascx</DependentUpon>
     </Compile>
     <Compile Include="Consorcios\UserControls\Titulo.ascx.cs">
       <DependentUpon>Titulo.ascx</DependentUpon>

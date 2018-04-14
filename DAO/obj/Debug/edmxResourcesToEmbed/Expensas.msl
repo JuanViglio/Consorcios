@@ -266,5 +266,45 @@
       </EndProperty>
       <Condition ColumnName="Pagos_ID" IsNull="false" />
     </AssociationSetMapping>
+    <EntitySetMapping Name="Seguros">
+      <EntityTypeMapping TypeName="ExpensasModel.Seguros">
+        <MappingFragment StoreEntitySet="Seguros">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="CantCuotasEn0" ColumnName="CantCuotasEn0" />
+          <ScalarProperty Name="CantCuotas" ColumnName="CantCuotas" />
+          <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="Compañia" ColumnName="Compañia" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SegurosDetalle">
+      <EntityTypeMapping TypeName="ExpensasModel.SegurosDetalle">
+        <MappingFragment StoreEntitySet="SegurosDetalle">
+          <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+          <ScalarProperty Name="Importe" ColumnName="Importe" />
+          <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+          <ScalarProperty Name="Cuota" ColumnName="Cuota" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_Seguros_Consorcios" TypeName="ExpensasModel.FK_Seguros_Consorcios" StoreEntitySet="Seguros">
+      <EndProperty Name="Seguros">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <EndProperty Name="Consorcios">
+        <ScalarProperty Name="ID" ColumnName="Consorcios_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_SegurosDetalle_Seguros" TypeName="ExpensasModel.FK_SegurosDetalle_Seguros" StoreEntitySet="SegurosDetalle">
+      <EndProperty Name="SegurosDetalle">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <EndProperty Name="Seguros">
+        <ScalarProperty Name="ID" ColumnName="Seguros_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

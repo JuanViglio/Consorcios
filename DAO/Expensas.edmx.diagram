@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2072206f10404698a1d5c642d639046b" Name="Diagram1">
+      <Diagram DiagramId="2072206f10404698a1d5c642d639046b" Name="Diagram1" ZoomLevel="85">
         <EntityTypeShape EntityType="ExpensasModel.Consorcios" Width="1.5" PointX="9" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ExpensasModel.Expensas" Width="1.625" PointX="6.375" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ExpensasModel.TipoGastos" Width="1.5" PointX="9" PointY="0.875" IsExpanded="true" />
@@ -31,6 +31,10 @@
         <AssociationConnector Association="ExpensasModel.FK_GastosEvExtUFDetalle_Pagos" />
         <EntityTypeShape EntityType="ExpensasModel.GastosParticularesOrd" Width="1.875" PointX="3.5" PointY="8.375" />
         <AssociationConnector Association="ExpensasModel.FK_GastosEvOrdinariosUFDetalle_Pagos" />
+        <EntityTypeShape EntityType="ExpensasModel.Seguros" Width="1.5" PointX="13.75" PointY="3.125" />
+        <EntityTypeShape EntityType="ExpensasModel.SegurosDetalle" Width="1.5" PointX="13.75" PointY="0.5" />
+        <AssociationConnector Association="ExpensasModel.FK_Seguros_Consorcios" />
+        <AssociationConnector Association="ExpensasModel.FK_SegurosDetalle_Seguros" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

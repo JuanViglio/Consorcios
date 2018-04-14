@@ -1,4 +1,5 @@
 ﻿using DAO;
+using DAO.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -40,5 +41,22 @@ namespace Servicios.Mapper
                                  Aplicar = false                        
                              };
         }        
+
+        public static  IEnumerable<SegurosModel> MapToSegurosModel(List<Seguros> seguros)
+        {
+            IEnumerable<SegurosModel> segurosModel;
+
+            return segurosModel = from s in seguros
+                                  select new SegurosModel()
+                                  {
+                                      ID = s.ID,
+                                      Compañia = s.Compañia,
+                                      Poliza = s.Poliza,
+                                      CantCuotas = s.CantCuotas,
+                                      CantCuotas0 = s.CantCuotasEn0,
+                                      Consorcio = s.Consorcios.Direccion,
+                                      Estado = s.Estado
+                                  };
+        }
     }
 }

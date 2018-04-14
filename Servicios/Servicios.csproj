@@ -73,6 +73,7 @@
     <Compile Include="pagosServ.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="proveedoresServ.cs" />
+    <Compile Include="segurosServ.cs" />
     <Compile Include="unidadesFuncionalesServ.cs" />
   </ItemGroup>
   <ItemGroup>

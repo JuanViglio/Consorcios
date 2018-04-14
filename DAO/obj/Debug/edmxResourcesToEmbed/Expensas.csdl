@@ -13,6 +13,7 @@
     <NavigationProperty Name="Expensas" Relationship="Self.FK_Expensas_Consorcios" FromRole="Consorcios" ToRole="Expensas" />
     <NavigationProperty Name="UnidadesFuncionales" Relationship="ExpensasModel.FK_UnidadesFuncionales_Consorcios" FromRole="Consorcios" ToRole="UnidadesFuncionales" />
     <NavigationProperty Name="Detalles" Relationship="ExpensasModel.FK_Detalles_Consorcios" FromRole="Consorcios" ToRole="Detalles" />
+    <NavigationProperty Name="Seguros" Relationship="ExpensasModel.FK_Seguros_Consorcios" FromRole="Consorcios" ToRole="Seguros" />
   </EntityType>
   <EntityType Name="Expensas">
     <Key>
@@ -102,6 +103,16 @@
     <AssociationSet Name="FK_GastosEvOrdinariosUFDetalle_Pagos" Association="ExpensasModel.FK_GastosEvOrdinariosUFDetalle_Pagos">
       <End Role="Pagos" EntitySet="Pagos" />
       <End Role="GastosParticularesOrd" EntitySet="GastosParticularesOrd" />
+    </AssociationSet>
+    <EntitySet Name="Seguros" EntityType="ExpensasModel.Seguros" />
+    <EntitySet Name="SegurosDetalle" EntityType="ExpensasModel.SegurosDetalle" />
+    <AssociationSet Name="FK_Seguros_Consorcios" Association="ExpensasModel.FK_Seguros_Consorcios">
+      <End Role="Consorcios" EntitySet="Consorcios" />
+      <End Role="Seguros" EntitySet="Seguros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SegurosDetalle_Seguros" Association="ExpensasModel.FK_SegurosDetalle_Seguros">
+      <End Role="Seguros" EntitySet="Seguros" />
+      <End Role="SegurosDetalle" EntitySet="SegurosDetalle" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="UnidadesFuncionales">
@@ -300,5 +311,38 @@
   <Association Name="FK_GastosEvOrdinariosUFDetalle_Pagos">
     <End Type="ExpensasModel.Pagos" Role="Pagos" Multiplicity="0..1" />
     <End Type="ExpensasModel.GastosParticularesOrd" Role="GastosParticularesOrd" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Seguros">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Compañia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CantCuotas" Type="Int32" Nullable="false" />
+    <Property Name="CantCuotasEn0" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Consorcios" Relationship="ExpensasModel.FK_Seguros_Consorcios" FromRole="Seguros" ToRole="Consorcios" />
+    <NavigationProperty Name="SegurosDetalle" Relationship="ExpensasModel.FK_SegurosDetalle_Seguros" FromRole="Seguros" ToRole="SegurosDetalle" />
+  </EntityType>
+  <EntityType Name="SegurosDetalle">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Cuota" Type="Int32" Nullable="false" />
+    <Property Name="Periodo" Type="Int32" Nullable="false" />
+    <Property Name="Importe" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="FechaPago" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Seguros" Relationship="ExpensasModel.FK_SegurosDetalle_Seguros" FromRole="SegurosDetalle" ToRole="Seguros" />
+  </EntityType>
+  <Association Name="FK_Seguros_Consorcios">
+    <End Type="ExpensasModel.Consorcios" Role="Consorcios" Multiplicity="1" />
+    <End Type="ExpensasModel.Seguros" Role="Seguros" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_SegurosDetalle_Seguros">
+    <End Type="ExpensasModel.Seguros" Role="Seguros" Multiplicity="1" />
+    <End Type="ExpensasModel.SegurosDetalle" Role="SegurosDetalle" Multiplicity="*" />
   </Association>
 </Schema>

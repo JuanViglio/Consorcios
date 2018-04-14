@@ -139,6 +139,30 @@
     <Property Name="OrdenDeCompra" Type="numeric" Precision="18" Scale="0" />
     <Property Name="OrdenDePago" Type="numeric" Precision="18" Scale="0" />
   </EntityType>
+  <EntityType Name="Seguros">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Compañia" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaInicio" Type="date" Nullable="false" />
+    <Property Name="FechaFin" Type="date" Nullable="false" />
+    <Property Name="CantCuotas" Type="int" Nullable="false" />
+    <Property Name="CantCuotasEn0" Type="int" Nullable="false" />
+    <Property Name="Consorcios_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Estado" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SegurosDetalle">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Seguros_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Cuota" Type="int" Nullable="false" />
+    <Property Name="Periodo" Type="int" Nullable="false" />
+    <Property Name="Importe" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="FechaPago" Type="date" />
+  </EntityType>
   <EntityType Name="TipoGastos">
     <Key>
       <PropertyRef Name="ID" />
@@ -291,6 +315,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Seguros_Consorcios">
+    <End Role="Consorcios" Type="Self.Consorcios" Multiplicity="1" />
+    <End Role="Seguros" Type="Self.Seguros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consorcios">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Seguros">
+        <PropertyRef Name="Consorcios_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SegurosDetalle_Seguros">
+    <End Role="Seguros" Type="Self.Seguros" Multiplicity="1" />
+    <End Role="SegurosDetalle" Type="Self.SegurosDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seguros">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SegurosDetalle">
+        <PropertyRef Name="Seguros_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_UnidadesFuncionales_Consorcios">
     <End Role="Consorcios" Type="Self.Consorcios" Multiplicity="1" />
     <End Role="UnidadesFuncionales" Type="Self.UnidadesFuncionales" Multiplicity="*" />
@@ -316,6 +364,8 @@
     <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProveedoresCtaCte" EntityType="Self.ProveedoresCtaCte" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Seguros" EntityType="Self.Seguros" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SegurosDetalle" EntityType="Self.SegurosDetalle" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoGastos" EntityType="Self.TipoGastos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UnidadesFuncionales" EntityType="Self.UnidadesFuncionales" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Detalles_Consorcios" Association="Self.FK_Detalles_Consorcios">
@@ -361,6 +411,14 @@
     <AssociationSet Name="FK_ProveedoresCtaCte_Proveedores" Association="Self.FK_ProveedoresCtaCte_Proveedores">
       <End Role="Proveedores" EntitySet="Proveedores" />
       <End Role="ProveedoresCtaCte" EntitySet="ProveedoresCtaCte" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Seguros_Consorcios" Association="Self.FK_Seguros_Consorcios">
+      <End Role="Consorcios" EntitySet="Consorcios" />
+      <End Role="Seguros" EntitySet="Seguros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SegurosDetalle_Seguros" Association="Self.FK_SegurosDetalle_Seguros">
+      <End Role="Seguros" EntitySet="Seguros" />
+      <End Role="SegurosDetalle" EntitySet="SegurosDetalle" />
     </AssociationSet>
     <AssociationSet Name="FK_UnidadesFuncionales_Consorcios" Association="Self.FK_UnidadesFuncionales_Consorcios">
       <End Role="Consorcios" EntitySet="Consorcios" />
