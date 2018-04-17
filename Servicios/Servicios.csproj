@@ -68,6 +68,7 @@
     <Compile Include="Interfaces\IPagosServ.cs" />
     <Compile Include="Interfaces\IProveedoresServ.cs" />
     <Compile Include="Interfaces\IPruebaServ.cs" />
+    <Compile Include="Interfaces\ISegurosServ.cs" />
     <Compile Include="Interfaces\IUnidadesServ.cs" />
     <Compile Include="Mapper\AutoMapper.cs" />
     <Compile Include="pagosServ.cs" />

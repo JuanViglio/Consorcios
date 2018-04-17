@@ -40,6 +40,15 @@ namespace WebSistemmas.Consorcios {
         protected global::WebSistemmas.Consorcios.UserControls.Seguros.GridSeguros UserControlGridSegurosID;
         
         /// <summary>
+        /// btnNuevoSeguro control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNuevoSeguro;
+        
+        /// <summary>
         /// UserControl2ID control.
         /// </summary>
         /// <remarks>

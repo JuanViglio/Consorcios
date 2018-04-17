@@ -14,6 +14,11 @@
                      <uc3:UserControlGridSeguros ID="UserControlGridSegurosID" runat="server" />
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <asp:button runat="server" text="Nuevo" ID="btnNuevoSeguro" Height="34px" OnClick="NuevoSeguro_Click" Width="109px" />
+                </td>
+            </tr>
         </table>
 
         <uc2:erroruc ID="UserControl2ID" runat="server" />

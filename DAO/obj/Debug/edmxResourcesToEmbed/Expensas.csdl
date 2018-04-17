@@ -316,8 +316,9 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Compañia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Poliza" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="CantCuotas" Type="Int32" Nullable="false" />
@@ -330,7 +331,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Cuota" Type="Int32" Nullable="false" />
     <Property Name="Periodo" Type="Int32" Nullable="false" />
     <Property Name="Importe" Type="Decimal" Nullable="false" Precision="18" Scale="2" />

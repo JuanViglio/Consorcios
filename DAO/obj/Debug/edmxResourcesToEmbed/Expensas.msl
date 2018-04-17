@@ -274,6 +274,7 @@
           <ScalarProperty Name="CantCuotas" ColumnName="CantCuotas" />
           <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
           <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="Poliza" ColumnName="Poliza" />
           <ScalarProperty Name="Compañia" ColumnName="Compañia" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>

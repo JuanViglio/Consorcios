@@ -2,13 +2,13 @@
 
 namespace WebSistemmas.Consorcios
 {
-    public partial class Proveedores : System.Web.UI.Page
+    public partial class SeguroNuevo : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                tituloPaginaID.TituloPagina = "Proveedores";
+                tituloPaginaID.TituloPagina = "Seguro Nuevo";
             }
         }
     }

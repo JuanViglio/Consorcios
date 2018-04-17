@@ -51,9 +51,11 @@
     <Compile Include="Interfaces\IExpensasNeg.cs" />
     <Compile Include="Interfaces\IPagosNeg.cs" />
     <Compile Include="Interfaces\IProveedoresNeg.cs" />
+    <Compile Include="Interfaces\ISegurosNeg.cs" />
     <Compile Include="pagosNeg.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="proveedoresNeg.cs" />
+    <Compile Include="SegurosNeg.cs" />
     <Compile Include="unidadesFuncionaesNeg.cs" />
   </ItemGroup>
   <ItemGroup>

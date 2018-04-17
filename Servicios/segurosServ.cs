@@ -1,15 +1,13 @@
 ﻿using DAO;
 using DAO.Models;
+using Servicios.Interfaces;
 using Servicios.Mapper;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Servicios
 {
-    public class segurosServ
+    public class segurosServ : ISegurosServ
     {
         private ExpensasEntities _context;
 
@@ -20,9 +18,22 @@ namespace Servicios
 
         public IEnumerable<SegurosModel> GetSeguros()
         {
-            var proveedores = _context.Seguros.ToList();
+            var seguros = from s in _context.Seguros
+                              join c in _context.Consorcios 
+                              on s.Consorcios.ID equals c.ID 
+                              select new SegurosModel {
+                                  ID = s.ID,
+                                  Compañia = s.Compañia,
+                                  Poliza = s.Poliza, 
+                                  FechaInicio = s.FechaInicio,
+                                  FechaFin = s.FechaFin,
+                                  CantCuotas = s.CantCuotas,
+                                  CantCuotas0 = s.CantCuotasEn0,
+                                  Estado = s.Estado,
+                                  Consorcio = c.Direccion
+                              };
 
-            return AutoMapper.MapToSegurosModel(proveedores);
+            return seguros;
         }
     }
 }

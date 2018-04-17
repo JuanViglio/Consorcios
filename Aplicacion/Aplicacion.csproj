@@ -84,6 +84,7 @@
     <Content Include="Consorcios\ExpensaUFNueva.aspx" />
     <Content Include="Consorcios\GastosParticulares.aspx" />
     <Content Include="Consorcios\Proveedores.aspx" />
+    <Content Include="Consorcios\SeguroNuevo.aspx" />
     <Content Include="Consorcios\Seguros.aspx" />
     <Content Include="Consorcios\UserControls\Error.ascx" />
     <Content Include="Consorcios\UserControls\ExpensasUF\GridGastosEvExtUF.ascx" />
@@ -225,6 +226,13 @@
     </Compile>
     <Compile Include="Consorcios\Proveedores.aspx.designer.cs">
       <DependentUpon>Proveedores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\SeguroNuevo.aspx.cs">
+      <DependentUpon>SeguroNuevo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\SeguroNuevo.aspx.designer.cs">
+      <DependentUpon>SeguroNuevo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Consorcios\Seguros.aspx.cs">
       <DependentUpon>Seguros.aspx</DependentUpon>

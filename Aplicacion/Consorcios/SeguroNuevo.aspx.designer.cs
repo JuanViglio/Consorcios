@@ -7,18 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebSistemmas.Consorcios.UserControls.Seguros {
+namespace WebSistemmas.Consorcios {
     
     
-    public partial class GridSeguros {
+    public partial class SeguroNuevo {
         
         /// <summary>
-        /// grdSeguros control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdSeguros;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        
+        /// <summary>
+        /// tituloPaginaID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebSistemmas.Consorcios.UserControls.Titulo tituloPaginaID;
     }
 }
