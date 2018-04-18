@@ -11,5 +11,15 @@ namespace WebSistemmas.Consorcios
                 tituloPaginaID.TituloPagina = "Seguro Nuevo";
             }
         }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Seguros.aspx#seguros");
+        }
+
+        protected void btnGenerar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
