@@ -55,7 +55,7 @@
     <Compile Include="pagosNeg.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="proveedoresNeg.cs" />
-    <Compile Include="SegurosNeg.cs" />
+    <Compile Include="segurosNeg.cs" />
     <Compile Include="unidadesFuncionaesNeg.cs" />
   </ItemGroup>
   <ItemGroup>

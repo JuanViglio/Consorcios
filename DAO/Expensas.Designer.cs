@@ -308,22 +308,6 @@ namespace DAO
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Seguros> Seguros
-        {
-            get
-            {
-                if ((_Seguros == null))
-                {
-                    _Seguros = base.CreateObjectSet<Seguros>("Seguros");
-                }
-                return _Seguros;
-            }
-        }
-        private ObjectSet<Seguros> _Seguros;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<SegurosDetalle> SegurosDetalle
         {
             get
@@ -336,6 +320,22 @@ namespace DAO
             }
         }
         private ObjectSet<SegurosDetalle> _SegurosDetalle;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Seguros> Seguros
+        {
+            get
+            {
+                if ((_Seguros == null))
+                {
+                    _Seguros = base.CreateObjectSet<Seguros>("Seguros");
+                }
+                return _Seguros;
+            }
+        }
+        private ObjectSet<Seguros> _Seguros;
 
         #endregion
 
@@ -454,19 +454,19 @@ namespace DAO
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Seguros EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToSeguros(Seguros seguros)
-        {
-            base.AddObject("Seguros", seguros);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the SegurosDetalle EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToSegurosDetalle(SegurosDetalle segurosDetalle)
         {
             base.AddObject("SegurosDetalle", segurosDetalle);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Seguros EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSeguros(Seguros seguros)
+        {
+            base.AddObject("Seguros", seguros);
         }
 
         #endregion
@@ -3477,6 +3477,30 @@ namespace DAO
         private global::System.String _Estado;
         partial void OnEstadoChanging(global::System.String value);
         partial void OnEstadoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Tipo
+        {
+            get
+            {
+                return _Tipo;
+            }
+            set
+            {
+                OnTipoChanging(value);
+                ReportPropertyChanging("Tipo");
+                _Tipo = StructuralObject.SetValidValue(value, true, "Tipo");
+                ReportPropertyChanged("Tipo");
+                OnTipoChanged();
+            }
+        }
+        private global::System.String _Tipo;
+        partial void OnTipoChanging(global::System.String value);
+        partial void OnTipoChanged();
 
         #endregion
 

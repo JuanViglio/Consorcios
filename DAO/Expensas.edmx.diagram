@@ -11,7 +11,7 @@
         <AssociationConnector Association="ExpensasModel.FK_Expensas_Consorcios" ManuallyRouted="false" />
         <EntityTypeShape EntityType="ExpensasModel.UnidadesFuncionales" Width="1.875" PointX="9" PointY="7" />
         <AssociationConnector Association="ExpensasModel.FK_UnidadesFuncionales_Consorcios" />
-        <EntityTypeShape EntityType="ExpensasModel.Detalles" Width="1.5" PointX="11.625" PointY="3.5" />
+        <EntityTypeShape EntityType="ExpensasModel.Detalles" Width="1.5" PointX="11.625" PointY="3.625" />
         <AssociationConnector Association="ExpensasModel.FK_Detalles_Consorcios" />
         <EntityTypeShape EntityType="ExpensasModel.Gastos" Width="1.5" PointX="11.625" PointY="0.875" />
         <AssociationConnector Association="ExpensasModel.FK_Detalles_Gastos" />
@@ -31,8 +31,8 @@
         <AssociationConnector Association="ExpensasModel.FK_GastosEvExtUFDetalle_Pagos" />
         <EntityTypeShape EntityType="ExpensasModel.GastosParticularesOrd" Width="1.875" PointX="3.5" PointY="8.375" />
         <AssociationConnector Association="ExpensasModel.FK_GastosEvOrdinariosUFDetalle_Pagos" />
-        <EntityTypeShape EntityType="ExpensasModel.Seguros" Width="1.5" PointX="13.75" PointY="3.125" />
         <EntityTypeShape EntityType="ExpensasModel.SegurosDetalle" Width="1.5" PointX="13.75" PointY="0.5" />
+        <EntityTypeShape EntityType="ExpensasModel.Seguros" Width="1.5" PointX="13.75" PointY="3.25" />
         <AssociationConnector Association="ExpensasModel.FK_Seguros_Consorcios" />
         <AssociationConnector Association="ExpensasModel.FK_SegurosDetalle_Seguros" />
         </Diagram>

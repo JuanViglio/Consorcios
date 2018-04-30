@@ -266,20 +266,6 @@
       </EndProperty>
       <Condition ColumnName="Pagos_ID" IsNull="false" />
     </AssociationSetMapping>
-    <EntitySetMapping Name="Seguros">
-      <EntityTypeMapping TypeName="ExpensasModel.Seguros">
-        <MappingFragment StoreEntitySet="Seguros">
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-          <ScalarProperty Name="CantCuotasEn0" ColumnName="CantCuotasEn0" />
-          <ScalarProperty Name="CantCuotas" ColumnName="CantCuotas" />
-          <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
-          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
-          <ScalarProperty Name="Poliza" ColumnName="Poliza" />
-          <ScalarProperty Name="Compañia" ColumnName="Compañia" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="SegurosDetalle">
       <EntityTypeMapping TypeName="ExpensasModel.SegurosDetalle">
         <MappingFragment StoreEntitySet="SegurosDetalle">
@@ -287,6 +273,21 @@
           <ScalarProperty Name="Importe" ColumnName="Importe" />
           <ScalarProperty Name="Periodo" ColumnName="Periodo" />
           <ScalarProperty Name="Cuota" ColumnName="Cuota" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seguros">
+      <EntityTypeMapping TypeName="ExpensasModel.Seguros">
+        <MappingFragment StoreEntitySet="Seguros">
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="CantCuotasEn0" ColumnName="CantCuotasEn0" />
+          <ScalarProperty Name="CantCuotas" ColumnName="CantCuotas" />
+          <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="Poliza" ColumnName="Poliza" />
+          <ScalarProperty Name="Compañia" ColumnName="Compañia" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

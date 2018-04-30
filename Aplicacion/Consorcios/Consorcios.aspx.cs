@@ -1,4 +1,5 @@
-﻿using Servicios;
+﻿using DAO;
+using Servicios;
 using Servicios.Interfaces;
 using System;
 using System.Web.UI.WebControls;
@@ -10,10 +11,11 @@ namespace WebSistemmas.Consorcios
         private const int colIdConsorcio = 0;
         private const int colDireccionConsorcio = 1;
         IConsorciosServ serv;
+        private ExpensasEntities context = new ExpensasEntities();
 
         public Consorcios()
         {
-            serv = new consorciosServ();
+            serv = new consorciosServ(context);
         }
 
         protected void Page_Load(object sender, EventArgs e)

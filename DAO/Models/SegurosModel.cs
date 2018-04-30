@@ -10,6 +10,8 @@ namespace DAO.Models
 
         public string Poliza { get; set; }
 
+        public string Tipo { get; set; }
+
         public DateTime FechaInicio { get; set; }
 
         public DateTime FechaFin { get; set; }

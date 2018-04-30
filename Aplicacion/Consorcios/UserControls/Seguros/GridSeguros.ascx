@@ -7,7 +7,7 @@
     }
 </style>
 
-<asp:GridView ID="grdSeguros" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" Style="margin-top: 0px; margin-left: 0px; " Width="1158px" CssClass="auto-style1">
+<asp:GridView ID="grdSeguros" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" Style="margin-top: 0px; margin-left: 0px; " Width="1226px" CssClass="auto-style1">
     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
     <Columns>
         <asp:BoundField DataField="ID" HeaderText="ID">
@@ -17,6 +17,9 @@
             <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
         </asp:BoundField>        
         <asp:BoundField DataField="Poliza" HeaderText="Poliza">
+            <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
+        </asp:BoundField>
+        <asp:BoundField DataField="Tipo" HeaderText="Tipo">
             <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
         </asp:BoundField>
         <asp:BoundField DataField="FechaInicio" HeaderText="Fecha Inicio" DataFormatString="{0:d}">

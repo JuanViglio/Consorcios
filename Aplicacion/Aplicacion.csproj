@@ -96,6 +96,7 @@
     <Content Include="Consorcios\UserControls\Proveedores\AgregarProveedores.ascx" />
     <Content Include="Consorcios\UserControls\Proveedores\GridProveedores.ascx" />
     <Content Include="Consorcios\UserControls\Proveedores\ModificarProveedores.ascx" />
+    <Content Include="Consorcios\UserControls\Seguros\GridSeguroDetalle.ascx" />
     <Content Include="Consorcios\UserControls\Seguros\GridSeguros.ascx" />
     <Content Include="Consorcios\UserControls\Titulo.ascx" />
     <Content Include="css\img\ico_mas.jpg" />
@@ -120,6 +121,7 @@
     <Content Include="js\Confirm.js" />
     <Content Include="js\Proveedores.js" />
     <Content Include="js\Gastos.js" />
+    <Content Include="js\Consorcios\Seguros.js" />
     <Content Include="js\UnidadesFuncionales.js" />
     <Content Include="js\Consorcios.js" />
     <Content Include="js\Expensas.js" />
@@ -317,6 +319,13 @@
     </Compile>
     <Compile Include="Consorcios\UserControls\Proveedores\ModificarProveedores.ascx.designer.cs">
       <DependentUpon>ModificarProveedores.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Seguros\GridSeguroDetalle.ascx.cs">
+      <DependentUpon>GridSeguroDetalle.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Seguros\GridSeguroDetalle.ascx.designer.cs">
+      <DependentUpon>GridSeguroDetalle.ascx</DependentUpon>
     </Compile>
     <Compile Include="Consorcios\UserControls\Seguros\GridSeguros.ascx.cs">
       <DependentUpon>GridSeguros.ascx</DependentUpon>

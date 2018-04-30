@@ -9,13 +9,24 @@ namespace Servicios
 {
     public class consorciosServ : IConsorciosServ
     { 
-        private ExpensasEntities  context = new ExpensasEntities();
+        private ExpensasEntities  _context;
+
+        public consorciosServ(ExpensasEntities context)
+        {
+            _context = context;
+        }
 
         public List<Consorcios> GetConsorcios()
         {
-            var consorcios = context.Consorcios.ToList();
+            var consorcios = _context.Consorcios.ToList();
 
             return consorcios;
+        }
+
+        public Consorcios GetConsorcioById(string id)
+        {
+            var consorcio = _context.Consorcios.Where(x => x.ID == id).FirstOrDefault();
+            return consorcio;
         }
 
         public List<ConsorciosModel> GetConsorciosCombo()
@@ -25,7 +36,7 @@ namespace Servicios
                     Id = "0",
                     Direccion = "Seleccione un Consorcio" }
             };
-            var consorcios = context.Consorcios.ToList();
+            var consorcios = _context.Consorcios.ToList();
 
             foreach (var item in consorcios)
             {
@@ -41,7 +52,7 @@ namespace Servicios
 
         public List<Consorcios> UpdateConsorcios(string id, string direccion, string vencimiento1, string vencimiento2, string interes)
         {
-            var consorcio = context.Consorcios.Where(x => x.ID == id).FirstOrDefault();
+            var consorcio = _context.Consorcios.Where(x => x.ID == id).FirstOrDefault();
 
             if (consorcio != null)
             {
@@ -49,7 +60,7 @@ namespace Servicios
                 consorcio.PrimerVencimiento = Convert.ToInt32(vencimiento1);
                 consorcio.SegundoVencimiento = Convert.ToInt32(vencimiento2);
                 consorcio.InteresSegundoVencimiento = Convert.ToDecimal(interes);
-                context.SaveChanges();
+                _context.SaveChanges();
             }
 
             return GetConsorcios();
@@ -66,8 +77,8 @@ namespace Servicios
                 consorcio.PrimerVencimiento = Convert.ToInt32(vencimiento1);
                 consorcio.SegundoVencimiento = Convert.ToInt32(vencimiento2);
                 consorcio.InteresSegundoVencimiento = Convert.ToDecimal(interes);
-                context.AddToConsorcios(consorcio);
-                context.SaveChanges();
+                _context.AddToConsorcios(consorcio);
+                _context.SaveChanges();
 
                 return GetConsorcios();
             }

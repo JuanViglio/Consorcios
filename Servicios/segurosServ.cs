@@ -1,7 +1,6 @@
 ﻿using DAO;
 using DAO.Models;
 using Servicios.Interfaces;
-using Servicios.Mapper;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -24,6 +23,7 @@ namespace Servicios
                               select new SegurosModel {
                                   ID = s.ID,
                                   Compañia = s.Compañia,
+                                  Tipo = s.Tipo,
                                   Poliza = s.Poliza, 
                                   FechaInicio = s.FechaInicio,
                                   FechaFin = s.FechaFin,
@@ -34,6 +34,12 @@ namespace Servicios
                               };
 
             return seguros;
+        }
+
+        public void GuardarSeguros(Seguros seguro)
+        {
+            _context.AddToSeguros(seguro);
+            _context.SaveChanges();
         }
     }
 }

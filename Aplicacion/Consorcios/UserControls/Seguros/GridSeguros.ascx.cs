@@ -4,9 +4,6 @@ using Negocio.Interfaces;
 using Servicios;
 using Servicios.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -16,6 +13,7 @@ namespace WebSistemmas.Consorcios.UserControls.Seguros
     {
         private ISegurosNeg _segurosNeg;
         private ISegurosServ _segurosServ;
+        private IConsorciosServ _consorciosServ;
 
         #region Metodos Privados
         private void MostrarError(string error)
@@ -39,8 +37,8 @@ namespace WebSistemmas.Consorcios.UserControls.Seguros
         {
             ExpensasEntities context = new ExpensasEntities();
             _segurosServ = new segurosServ(context);
-            _segurosNeg = new SegurosNeg(_segurosServ);
-
+            _consorciosServ = new consorciosServ(context);
+            _segurosNeg = new segurosNeg(_segurosServ, _consorciosServ);
         }
 
         protected void Page_Load(object sender, EventArgs e)

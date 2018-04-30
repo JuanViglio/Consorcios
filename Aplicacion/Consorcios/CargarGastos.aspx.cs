@@ -15,7 +15,7 @@ namespace WebSistemmas.Consorcios
 
         public CargarGastos()
         {
-            _consorciosServ = new consorciosServ();
+            _consorciosServ = new consorciosServ(context);
             _expensasServ = new expensasServ(context);
             _detallesServ = new detallesServ();
         }

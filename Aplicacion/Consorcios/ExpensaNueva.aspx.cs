@@ -47,7 +47,7 @@ namespace WebSistemmas.Consorcios
             _gastosServ = new gastosServ(context);
             _detallesServ = new detallesServ();
             _unidadesServ = new unidadesFuncionalesServ();
-            _consorciosServ = new consorciosServ();
+            _consorciosServ = new consorciosServ(context);
             _proveedoresServ = new proveedoresServ(context);
 
             _expensaNeg = new expensasNeg(_expensasServ, _pagosServ);

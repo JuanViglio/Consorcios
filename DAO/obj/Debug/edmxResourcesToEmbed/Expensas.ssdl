@@ -152,6 +152,7 @@
     <Property Name="CantCuotasEn0" Type="int" Nullable="false" />
     <Property Name="Consorcios_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Estado" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="SegurosDetalle">
     <Key>
