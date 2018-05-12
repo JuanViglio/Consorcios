@@ -9,5 +9,7 @@ namespace Servicios.Interfaces
         IEnumerable<SegurosModel> GetSeguros();
 
         void GuardarSeguros(Seguros seguro);
+
+        bool GetSeguroActivo(string idConsorcio, string tipo);
     }
 }

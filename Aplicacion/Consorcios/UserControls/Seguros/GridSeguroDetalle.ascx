@@ -6,6 +6,7 @@
     .auto-style1 {
         margin-right: 0px;
         margin-bottom: 23px;
+        margin-left: 40px;
     }
     .auto-style2 {
         width: 98px;
@@ -20,15 +21,12 @@
     .auto-style5 {
         margin-left: 1px;
     }
-    .auto-style6 {
-        margin-top: 0px;
-    }
     .auto-style7 {
         height: 91px;
     }
 </style>
 
-<asp:GridView ID="grdSeguros" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" Style="margin-top: 0px; margin-left: 0px; " Width="346px" CssClass="auto-style1" OnRowCommand="grdSeguros_RowCommand">
+<asp:GridView ID="grdSeguros" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" Style="margin-top: 0px; " Width="346px" CssClass="auto-style1" OnRowCommand="grdSeguros_RowCommand">
     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
     <Columns>
         <asp:BoundField DataField="Cuota" HeaderText="Cuota">
@@ -76,7 +74,4 @@
             </td>
         </tr>
     </table>
-</div>
-<div id="divGuardarSeguro" style="display: none">
-    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="auto-style6" Height="34px" Width="92px" OnClick="btnGuardar_Click" />
 </div>

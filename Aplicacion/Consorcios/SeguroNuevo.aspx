@@ -8,6 +8,10 @@
 
     <form id="form1" runat="server">
         <style>
+            .botonSeguro{
+                height: 38px;
+                width: 120px;
+            }
             .trSeguroNuevo {
                 height: 40px;
             }
@@ -38,9 +42,6 @@
             .auto-style5 {
                 width: 134px;
                 text-align: right;
-            }
-            .auto-style6 {
-                width: 749px;
             }
             .auto-style7 {
                 margin-left: 0px;
@@ -94,7 +95,7 @@
                             <td class="auto-style5">Fecha Fin&nbsp;&nbsp;&nbsp;
                             </td>
                             <td class="auto-style2">
-                                <asp:calendar id="dteFechaFin" runat="server" backcolor="White" bordercolor="#3366CC" borderwidth="1px" cellpadding="1" daynameformat="Shortest" font-names="Verdana" font-size="8pt" forecolor="#003399" height="180px" width="230px" CssClass="auto-style3">
+                                <asp:calendar id="dteFechaFin" runat="server" backcolor="White" bordercolor="#3366CC" borderwidth="1px" cellpadding="1" daynameformat="Shortest" font-names="Verdana" font-size="8pt" forecolor="#003399" height="180px" width="205px">
                                 <DayHeaderStyle BackColor="#99CCCC" ForeColor="#336666" Height="1px" />
                                 <NextPrevStyle Font-Size="8pt" ForeColor="#CCCCFF" />
                                 <OtherMonthDayStyle ForeColor="#999999" />
@@ -144,10 +145,15 @@
         <table>
             <tr>
                 <td class="auto-style1">
-                    <asp:button runat="server" text="Generar Cuotas" ID="btnGenerar" Height="38px" OnClick="btnGenerar_Click" style="margin-left: 0px" Width="120px" />
+                    <asp:button runat="server" text="Generar Cuotas" ID="btnGenerar" OnClick="btnGenerar_Click" class="botonSeguro" />
                 </td>                
                 <td class="auto-style1">
-                    <asp:button runat="server" text="Cancelar" ID="btnVolver" Height="38px" OnClick="btnVolver_Click" style="margin-left: 0px" Width="120px" />
+                    <asp:button runat="server" text="Cancelar" ID="btnVolver" OnClick="btnVolver_Click" class="botonSeguro" />
+                </td>
+                <td>
+                    <div id="divGuardarSeguro" style="display: none">
+                        <asp:Button ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click" class="botonSeguro"/>
+                    </div>
                 </td>
             </tr>
         </table>

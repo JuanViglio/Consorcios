@@ -96,23 +96,5 @@ namespace WebSistemmas.Consorcios.UserControls.Seguros
                 ScriptManager.RegisterStartupScript(Page, Page.GetType(), "ImporteSeguros", "$('#divGuardarSeguro').slideDown();", true);
             }
         }
-
-        protected void btnGuardar_Click(object sender, EventArgs e)
-        {
-            try
-            {            
-                MostrarError(string.Empty);
-                var seguroModelo = (SegurosModel)Session["Seguro"];
-                var segurosDetalleModelo = (List<SeguroDetalleModel>)Session["SegurosDetalle"]; 
-                           
-                _segurosNeg.GuardarSeguro(seguroModelo, segurosDetalleModelo);
-
-                Response.Redirect("Seguros.aspx#seguros");
-            }
-            catch (Exception)
-            {
-                MostrarError("No se pudo Guardar el Seguro");
-            }
-        }
     }
 }
