@@ -16,5 +16,7 @@ namespace Negocio.Interfaces
         SegurosModel GetSeguroModelo(string compañia, string poliza, string idConsorcios, string cantCuotas, string cuotasDeGracia, string importe, DateTime dteFechaInicio, DateTime dteFechaFin, string tipo);
 
         List<SeguroDetalleModel> GetSeguroDetalleModelo(string cantCuotas, DateTime dteFechaInicio, string cuotasDeGracia, string importe);
+
+        SeguroActivoModel GetSeguroByConsorcio(int idExpensa, string idConsorcio, string tipo);
     }
 }

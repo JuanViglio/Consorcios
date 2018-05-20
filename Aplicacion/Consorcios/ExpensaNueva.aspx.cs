@@ -37,6 +37,8 @@ namespace WebSistemmas.Consorcios
         readonly IConsorciosServ _consorciosServ;
         readonly IProveedoresServ _proveedoresServ;
         readonly IProveedoresNeg _proveedoresNeg;
+        readonly ISegurosServ _segurosServ;
+        readonly ISegurosNeg _segurosNeg;
         private ExpensasEntities context = new ExpensasEntities();
 
         public ExpensaNueva()
@@ -49,7 +51,9 @@ namespace WebSistemmas.Consorcios
             _unidadesServ = new unidadesFuncionalesServ();
             _consorciosServ = new consorciosServ(context);
             _proveedoresServ = new proveedoresServ(context);
+            _segurosServ = new segurosServ(context);
 
+            _segurosNeg = new segurosNeg(_segurosServ,_consorciosServ, _expensasServ);
             _expensaNeg = new expensasNeg(_expensasServ, _pagosServ);
             _proveedoresNeg = new proveedoresNeg(_proveedoresServ);
         }
@@ -534,7 +538,17 @@ namespace WebSistemmas.Consorcios
         protected void ddlGastos_SelectedIndexChanged(object sender, EventArgs e)
         {
             var idConsorcio = Session["idConsorcio"].ToString();
-            txtDetalle.Text = _detallesServ.GetDetalle(idConsorcio, Convert.ToDecimal(ddlGastos.SelectedValue.ToString()));
+
+            if (ddlGastos.SelectedItem.ToString() == "SEGURO AP" || ddlGastos.SelectedItem.ToString() == "SEGURO IC")
+            {                
+                var seguroModel = _segurosNeg.GetSeguroByConsorcio(int.Parse(Session["ExpensaId"].ToString()), idConsorcio, ddlGastos.SelectedItem.ToString());
+                txtDetalle.Text = seguroModel != null ? "Cuota " + seguroModel.Cuota + " de " + seguroModel.CantCuota : string.Empty;
+                txtImporte.Text = seguroModel != null ? seguroModel.Importe.ToString() : string.Empty;
+            }
+            else
+            {
+                txtDetalle.Text = _detallesServ.GetDetalle(idConsorcio, Convert.ToDecimal(ddlGastos.SelectedValue.ToString()));
+            }
         }
 
         protected void btnGuardado_CheckedChanged(object sender, EventArgs e)

@@ -15,6 +15,7 @@ namespace WebSistemmas.Consorcios.UserControls.Seguros
     {
         ISegurosNeg _segurosNeg;
         ISegurosServ _segurosServ;
+        IExpensasServ _expensasServ;
         IConsorciosServ _consorciosServ;
 
         public GridSeguroDetalle()
@@ -22,7 +23,8 @@ namespace WebSistemmas.Consorcios.UserControls.Seguros
             ExpensasEntities context = new ExpensasEntities();
             _segurosServ = new segurosServ(context);
             _consorciosServ = new consorciosServ(context);
-            _segurosNeg = new segurosNeg(_segurosServ, _consorciosServ);
+            _expensasServ = new expensasServ(context);
+            _segurosNeg = new segurosNeg(_segurosServ, _consorciosServ, _expensasServ);
         }
 
         #region Metodos Privados

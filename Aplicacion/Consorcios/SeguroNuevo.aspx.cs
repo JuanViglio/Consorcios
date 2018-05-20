@@ -15,7 +15,8 @@ namespace WebSistemmas.Consorcios
     public partial class SeguroNuevo : System.Web.UI.Page
     {
         ISegurosServ _segurosServ;
-        ISegurosNeg _segurosNeg;
+        IExpensasServ _expensasServ;
+        ISegurosNeg _segurosNeg;    
         readonly IConsorciosServ _consorciosServ;
         private ExpensasEntities context = new ExpensasEntities();
 
@@ -44,7 +45,8 @@ namespace WebSistemmas.Consorcios
         {
             _segurosServ = new segurosServ(context);
             _consorciosServ = new consorciosServ(context);
-            _segurosNeg = new segurosNeg(_segurosServ, _consorciosServ);
+            _expensasServ = new expensasServ(context);
+            _segurosNeg = new segurosNeg(_segurosServ, _consorciosServ, _expensasServ);
 
         }
 

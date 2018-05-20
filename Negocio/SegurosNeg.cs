@@ -12,6 +12,7 @@ namespace Negocio
     {
         readonly ISegurosServ _segurosServ;
         readonly IConsorciosServ _consorciosServ;
+        readonly IExpensasServ _expensasServ;
 
         #region Metodos Privados
         private bool BuscarSeguroActivo(string idConsorcio, string tipo)
@@ -46,10 +47,11 @@ namespace Negocio
         }
         #endregion
 
-        public segurosNeg(ISegurosServ segurosServ, IConsorciosServ consorciosServ)
+        public segurosNeg(ISegurosServ segurosServ, IConsorciosServ consorciosServ, IExpensasServ expensasServ)
         {
             _segurosServ = segurosServ;
             _consorciosServ = consorciosServ;
+            _expensasServ = expensasServ;
         }
 
         public IEnumerable<SegurosModel> GetSeguros()
@@ -176,6 +178,19 @@ namespace Negocio
             }
 
             return detalle;
+        }
+
+        public SeguroActivoModel GetSeguroByConsorcio(int idExpensa, string idConsorcio, string tipo)
+        {
+            var periodo =_expensasServ.GetDatosExpensa(idExpensa).PeriodoNumerico;
+            string tipoSeguro;
+
+            if (tipo == "SEGURO AP")
+                tipoSeguro = "AP";
+            else
+                tipoSeguro = "IC";
+
+            return _segurosServ.GetSeguroByConsorcio(idConsorcio, periodo, tipoSeguro);
         }
     }
 }

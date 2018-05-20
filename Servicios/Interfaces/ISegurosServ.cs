@@ -11,5 +11,7 @@ namespace Servicios.Interfaces
         void GuardarSeguros(Seguros seguro);
 
         bool GetSeguroActivo(string idConsorcio, string tipo);
+
+        SeguroActivoModel GetSeguroByConsorcio(string idConsorcio, int periodo, string tipo);
     }
 }

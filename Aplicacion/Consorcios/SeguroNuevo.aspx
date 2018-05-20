@@ -46,6 +46,9 @@
             .auto-style7 {
                 margin-left: 0px;
             }
+            .auto-style8 {
+                width: 432px;
+            }
         </style>
 
         <uc1:tituloPagina ID="tituloPaginaID" runat="server" />
@@ -71,7 +74,7 @@
                             <td class="auto-style5">Tipo&nbsp;&nbsp;&nbsp;&nbsp; </td>
                             <td class="auto-style2">
                                 <asp:DropDownList ID="ddlTipo" runat="server" CssClass="auto-style7" Height="30px">
-                                    <asp:ListItem>AC</asp:ListItem>
+                                    <asp:ListItem>AP</asp:ListItem>
                                     <asp:ListItem>IC</asp:ListItem>
                                 </asp:DropDownList>
                             </td>
@@ -136,7 +139,7 @@
                         </tr>
                     </table>
                 </td>
-                <td valign="top">
+                <td valign="top" class="auto-style8">
                     <ucgridsegurodetalle:gridSeguroDetalle ID="gridSeguroDetalleID" runat="server" />
                 </td>
             </tr>

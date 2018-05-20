@@ -30,8 +30,8 @@ namespace Servicios
 
         public string GetDetalle(string idConsorcio, decimal idGasto)
         {
-            var consorcio = context.Consorcios.Where(x => x.ID == idConsorcio).FirstOrDefault();
-            var gasto = context.Gastos.Where(x => x.ID == idGasto).FirstOrDefault();
+            //var consorcio = context.Consorcios.Where(x => x.ID == idConsorcio).FirstOrDefault();
+            //var gasto = context.Gastos.Where(x => x.ID == idGasto).FirstOrDefault();
             var detalle = context.Detalles.Where(x => x.Consorcios_ID == idConsorcio && x.Gastos_ID == idGasto).FirstOrDefault();
             
             return detalle == null ? string.Empty : detalle.Detalle;            

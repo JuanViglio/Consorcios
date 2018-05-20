@@ -13,6 +13,7 @@ namespace WebSistemmas.Consorcios.UserControls.Seguros
     {
         private ISegurosNeg _segurosNeg;
         private ISegurosServ _segurosServ;
+        private IExpensasServ _expensasServ;
         private IConsorciosServ _consorciosServ;
 
         #region Metodos Privados
@@ -38,7 +39,8 @@ namespace WebSistemmas.Consorcios.UserControls.Seguros
             ExpensasEntities context = new ExpensasEntities();
             _segurosServ = new segurosServ(context);
             _consorciosServ = new consorciosServ(context);
-            _segurosNeg = new segurosNeg(_segurosServ, _consorciosServ);
+            _expensasServ = new expensasServ(context);
+            _segurosNeg = new segurosNeg(_segurosServ, _consorciosServ, _expensasServ);
         }
 
         protected void Page_Load(object sender, EventArgs e)

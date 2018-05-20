@@ -89,5 +89,10 @@ namespace Servicios
 
             return GetDetalleGastos(tipoGasto);
         }        
+
+        public Gastos GetGastoByNombre (string nombre)
+        {
+            return _context.Gastos.Where(x => x.Detalle == nombre).FirstOrDefault();
+        }
     }
 }
