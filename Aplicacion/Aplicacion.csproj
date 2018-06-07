@@ -86,6 +86,8 @@
     <Content Include="Consorcios\Proveedores.aspx" />
     <Content Include="Consorcios\SeguroNuevo.aspx" />
     <Content Include="Consorcios\Seguros.aspx" />
+    <Content Include="Consorcios\UserControls\CtaCteProveedor\AgregarPagoProveedor.ascx" />
+    <Content Include="Consorcios\UserControls\CtaCteProveedor\GridCtaCteProveedor.ascx" />
     <Content Include="Consorcios\UserControls\Error.ascx" />
     <Content Include="Consorcios\UserControls\ExpensasUF\GridGastosEvExtUF.ascx" />
     <Content Include="Consorcios\UserControls\ExpensasUF\GridGastosEvOrdUF.ascx" />
@@ -242,6 +244,20 @@
     </Compile>
     <Compile Include="Consorcios\Seguros.aspx.designer.cs">
       <DependentUpon>Seguros.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\CtaCteProveedor\AgregarPagoProveedor.ascx.cs">
+      <DependentUpon>AgregarPagoProveedor.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\CtaCteProveedor\AgregarPagoProveedor.ascx.designer.cs">
+      <DependentUpon>AgregarPagoProveedor.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\CtaCteProveedor\GridCtaCteProveedor.ascx.cs">
+      <DependentUpon>GridCtaCteProveedor.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\CtaCteProveedor\GridCtaCteProveedor.ascx.designer.cs">
+      <DependentUpon>GridCtaCteProveedor.ascx</DependentUpon>
     </Compile>
     <Compile Include="Consorcios\UserControls\Error.ascx.cs">
       <DependentUpon>Error.ascx</DependentUpon>

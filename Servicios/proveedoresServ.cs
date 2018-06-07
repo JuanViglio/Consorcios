@@ -126,15 +126,15 @@ namespace Servicios
             return registro.ID;        
         }
 
-        public void AddDebe(decimal importe, decimal idProveedor, decimal idGasto, string tipoGasto, string detalle)
+        public void AddDebe(DateTime fecha, decimal importe, decimal idProveedor, decimal? ordenDePago, string detalle)
         {
             ProveedoresCtaCte registro = new ProveedoresCtaCte();
 
             registro.Proveedores = _context.Proveedores.Where(x => x.ID == idProveedor).FirstOrDefault();
             registro.Debe = importe;
-            registro.Gasto_ID = idGasto;
-            registro.TipoGasto = tipoGasto;
+            registro.OrdenDePago = ordenDePago;
             registro.Detalle = detalle;
+            registro.Fecha = fecha;
 
             _context.AddToProveedoresCtaCte(registro);
             _context.SaveChanges();

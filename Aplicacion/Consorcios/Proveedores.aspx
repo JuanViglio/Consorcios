@@ -6,8 +6,6 @@
 <%@ Register src="~/Consorcios/UserControls/Proveedores/ModificarProveedores.ascx" tagname="UserControlModificarProveedores" tagprefix="uc5" %>
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
-    <script src="../js/Proveedores.js"></script>
-
     <form id="form1" runat="server">
 
         <uc1:tituloPagina ID="tituloPaginaID" runat="server" />

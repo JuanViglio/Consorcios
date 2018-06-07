@@ -62,9 +62,30 @@ namespace Negocio
             return _proveedoresServ.GetTipo(id);
         }
 
-        public void AddDebe (decimal importe, decimal idProveedor, decimal idGasto, string tipoGasto, string detalle)
+        public void AddDebe (string fecha, string importe, decimal idProveedor, string ordenDePago, string detalle)
         {
-            _proveedoresServ.AddDebe(importe, idProveedor, idGasto, tipoGasto, detalle);
+            DateTime dteFecha;
+            decimal dcmImporte;
+            decimal dcmOrdenDePago;
+
+            if (!DateTime.TryParse(fecha, out dteFecha))
+            {
+                throw new Exception("No se ingreso la Fecha correctamente");
+            }
+            else if (!Decimal.TryParse(importe, out dcmImporte))
+            {
+                throw new Exception("No se ingreso el Importe correctamente");
+            }
+            else if(detalle == string.Empty)
+            {
+                throw new Exception("No se ingreso el Detalle");
+            }
+            else if (!Decimal.TryParse(ordenDePago, out dcmOrdenDePago))
+            {
+                throw new Exception("No se ingreso la Orden de Pago correctamente");
+            }
+
+            _proveedoresServ.AddDebe(dteFecha, dcmImporte, idProveedor, dcmOrdenDePago, detalle);
         }
 
         public decimal AddHaber(decimal importe, decimal idProveedor, string tipoGasto, string detalle)

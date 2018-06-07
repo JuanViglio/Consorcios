@@ -1,5 +1,6 @@
 ﻿using DAO;
 using DAO.Models;
+using System;
 using System.Collections.Generic;
 
 namespace Negocio.Interfaces
@@ -16,7 +17,7 @@ namespace Negocio.Interfaces
 
         string GetTipo(decimal id);
 
-        void AddDebe(decimal importe, decimal idProveedor, decimal idGasto, string tipoGasto, string detalle);
+        void AddDebe(string fecha, string importe, decimal idProveedor, string ordenDePago, string detalle);
 
         void DeleteHaber(decimal idGasto);
 

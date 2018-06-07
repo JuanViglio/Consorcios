@@ -1,4 +1,16 @@
-﻿function SlideDivProveedorDatos() {
+﻿function SlideDivNuevoPago() {
+    $('#divBotonPagoNuevo').toggle();
+    $('#divNuevoPago').slideDown();
+    $('#ctl00_ContentPlaceHolder1_UserControl2ID_lblError').text("");
+    $('#ctl00_ContentPlaceHolder1_UserControl2ID_divError').slideUp();
+}
+
+function CerrarDivNuevoPago() {
+    $('#divBotonPagoNuevo').toggle();
+    $('#divNuevoPago').slideUp();
+}
+
+function SlideDivProveedorDatos() {
     $('#divProveedorNuevo').toggle();
     $('#divProveedorDatos').slideDown();
     $('#divProveedorModificar').slideUp();

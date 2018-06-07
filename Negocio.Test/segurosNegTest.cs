@@ -12,13 +12,14 @@ namespace Negocio.Test
         private segurosNeg _segurosNeg;
         private Mock<ISegurosServ> _mockSegurosServ;
         private Mock<IConsorciosServ> mockConsorciosServ;
+        private Mock<IExpensasServ> _mockExpensasServ;
 
         [TestInitialize]
         public void TestInitialize()
         {
             _mockSegurosServ = new Mock<ISegurosServ>();
             mockConsorciosServ = new Mock<IConsorciosServ>();
-            _segurosNeg = new segurosNeg(_mockSegurosServ.Object, mockConsorciosServ.Object);
+            _segurosNeg = new segurosNeg(_mockSegurosServ.Object, mockConsorciosServ.Object, _mockExpensasServ.Object);
         }
 
         [TestMethod]

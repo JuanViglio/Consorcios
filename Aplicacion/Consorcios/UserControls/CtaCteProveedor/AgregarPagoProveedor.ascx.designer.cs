@@ -7,63 +7,63 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebSistemmas.Consorcios {
+namespace WebSistemmas.Consorcios.UserControls.CtaCteProveedor {
     
     
-    public partial class CtaCteProveedor {
+    public partial class AgregarPagoProveedor {
         
         /// <summary>
-        /// form1 control.
+        /// txtFecha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.TextBox txtFecha;
         
         /// <summary>
-        /// tituloPaginaID control.
+        /// txtImporte control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebSistemmas.Consorcios.UserControls.Titulo tituloPaginaID;
+        protected global::System.Web.UI.WebControls.TextBox txtImporte;
         
         /// <summary>
-        /// UserControl2ID control.
+        /// txtDetalle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebSistemmas.Consorcios.UserControls.Error UserControl2ID;
+        protected global::System.Web.UI.WebControls.TextBox txtDetalle;
         
         /// <summary>
-        /// gridCtaCteProveedoresID control.
+        /// txtOrdenDePago control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebSistemmas.Consorcios.UserControls.CtaCteProveedor.GridCtaCteProveedor gridCtaCteProveedoresID;
+        protected global::System.Web.UI.WebControls.TextBox txtOrdenDePago;
         
         /// <summary>
-        /// btnIngresarPago control.
+        /// btnAgrgarPago control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnIngresarPago;
+        protected global::System.Web.UI.WebControls.Button btnAgrgarPago;
         
         /// <summary>
-        /// agregarPagoProveedorID control.
+        /// btnCancelarPago control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebSistemmas.Consorcios.UserControls.CtaCteProveedor.AgregarPagoProveedor agregarPagoProveedorID;
+        protected global::System.Web.UI.WebControls.Button btnCancelarPago;
     }
 }

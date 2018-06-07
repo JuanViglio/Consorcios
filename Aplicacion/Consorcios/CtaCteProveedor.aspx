@@ -1,38 +1,28 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CtaCteProveedor.aspx.cs" Inherits="WebSistemmas.Consorcios.CtaCteProveedor" MasterPageFile="~/Consorcios/MenuConsorcios.Master" %>
 <%@ Register TagPrefix="uc1" TagName="tituloPagina" Src="~/Consorcios/UserControls/Titulo.ascx" %>
+<%@ Register TagPrefix="ucGridCtaCteProveedores" TagName="gridCtaCteProveedores" Src="~/Consorcios/UserControls/CtaCteProveedor/GridCtaCteProveedor.ascx" %>
+<%@ Register TagPrefix="ucAgregarPagoProveedor" TagName="agregarPagoProveedor" Src="~/Consorcios/UserControls/CtaCteProveedor/AgregarPagoProveedor.ascx" %>
+<%@ Register src="~/Consorcios/UserControls/Error.ascx" tagname="errorUC" tagprefix="uc2" %>
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
+    <script src="../js/Proveedores.js"></script>
+
     <form id="form1" runat="server">
         <uc1:tituloPagina ID="tituloPaginaID" runat="server" />
+        <uc2:errorUC ID="UserControl2ID" runat="server" />
+        <ucGridCtaCteProveedores:gridCtaCteProveedores ID="gridCtaCteProveedoresID" runat="server" />
 
-        <asp:GridView ID="grdCtaCteProveedores" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="140px" style="margin-top: 0px; margin-left: 0px;" Width="969px">
-            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-            <Columns>
-                <asp:BoundField DataField="Fecha" HeaderText="Fecha" DataFormatString="{0:d}" >
-                    <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
-                </asp:BoundField>                
-                <asp:BoundField DataField="Debe" HeaderText="Debe">
-                    <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
-                </asp:BoundField>
-                <asp:BoundField DataField="Haber" HeaderText="Haber">
-                    <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
-                </asp:BoundField>
-                <asp:BoundField DataField="Detalle" HeaderText="Detalle">
-                    <ControlStyle Width="35%" />
-                    <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
-                </asp:BoundField>
-                <asp:BoundField DataField="OrdenDeCompra" HeaderText="Ord. Compra">
-                    <ControlStyle Width="40%" />
-                    <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
-                </asp:BoundField>
-
-            </Columns>
-            <EditRowStyle BackColor="#999999" />
-            <FooterStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-        </asp:GridView>
+        <table style="height: 134px; margin-top: 14px">
+            <tr>
+                <td style="height: 135px; width: 151px" valign="top">
+                    <div id="divBotonPagoNuevo" style="height: 61px; width: 151px;">
+                        <asp:Button ID="btnIngresarPago" runat="server" Height="39px" Text="Nuevo Pago" Width="114px" OnClientClick="SlideDivNuevoPago(); return false;" UseSubmitBehavior="False"/>
+                    </div>
+                </td>
+                <td style="height: 135px; width: 128px">
+                    <ucAgregarPagoProveedor:agregarPagoProveedor ID="agregarPagoProveedorID" runat="server" />
+                </td>                
+            </tr>
+        </table>
     </form>
 </asp:Content>

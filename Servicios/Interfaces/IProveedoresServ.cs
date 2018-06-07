@@ -1,5 +1,6 @@
 ﻿using DAO;
 using DAO.Models;
+using System;
 using System.Collections.Generic;
 
 namespace Servicios.Interfaces
@@ -20,7 +21,7 @@ namespace Servicios.Interfaces
 
         void DeleteHaber(decimal idGasto);
 
-        void AddDebe(decimal importe, decimal idProveedor, decimal idGasto, string tipoGasto, string detalle);
+        void AddDebe(DateTime fecha, decimal importe, decimal idProveedor, decimal? ordenDePago, string detalle);
 
         IEnumerable<ProveedoresCtaCte> GetCtaCte(decimal idProveedor);
 
