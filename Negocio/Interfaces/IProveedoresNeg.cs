@@ -13,6 +13,8 @@ namespace Negocio.Interfaces
 
         void EliminarProveedor(int idProveedor);
 
+        void EliminarProveedorCtaCte(int idProveedorCtaCte);
+
         void ModificarProveedor(ProveedoresModel proveedorModel);
 
         string GetTipo(decimal id);

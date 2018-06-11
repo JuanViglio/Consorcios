@@ -81,6 +81,25 @@ namespace Servicios
             }
         }
 
+        public void EliminarProveedorCtaCte(int idProveedorCtaCte)
+        {
+            try
+            {
+                List<Proveedores> proveedores = _context.Proveedores.ToList();
+                ProveedoresCtaCte proveedorCtaCte = _context.ProveedoresCtaCte.Where(x => x.ID == idProveedorCtaCte).FirstOrDefault();                
+
+                var idProveedor = proveedorCtaCte.Proveedores.ID;
+                _context.DeleteObject(proveedorCtaCte);
+                _context.SaveChanges();
+
+                ActualizarSaldo(idProveedor);
+            }
+            catch
+            {
+                throw new Exception("No se pudo Eliminar el Movimiento del Proveedor");
+            }
+        }
+
         public void ModificarProveedor(ProveedoresModel proveedorModel)
         {
             try

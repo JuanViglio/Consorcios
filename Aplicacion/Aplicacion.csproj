@@ -101,6 +101,7 @@
     <Content Include="Consorcios\UserControls\Seguros\GridSeguroDetalle.ascx" />
     <Content Include="Consorcios\UserControls\Seguros\GridSeguros.ascx" />
     <Content Include="Consorcios\UserControls\Titulo.ascx" />
+    <Content Include="css\img\Cruz-roja.jpg" />
     <Content Include="css\img\ico_mas.jpg" />
     <Content Include="css\jquery-ui-1.8.16.custom.css" />
     <Content Include="css\jquery-ui.css" />

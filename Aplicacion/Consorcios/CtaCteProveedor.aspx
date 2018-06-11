@@ -15,6 +15,11 @@
         <table style="height: 134px; margin-top: 14px">
             <tr>
                 <td style="height: 135px; width: 151px" valign="top">
+                    <div style="height: 61px; width: 151px;">
+                        <asp:Button ID="btnVolver" runat="server" Height="39px" Text="Volver" Width="114px" UseSubmitBehavior="False" OnClick="btnVolver_Click"/>
+                    </div>
+                </td>
+                <td style="height: 135px; width: 151px" valign="top">
                     <div id="divBotonPagoNuevo" style="height: 61px; width: 151px;">
                         <asp:Button ID="btnIngresarPago" runat="server" Height="39px" Text="Nuevo Pago" Width="114px" OnClientClick="SlideDivNuevoPago(); return false;" UseSubmitBehavior="False"/>
                     </div>

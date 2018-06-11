@@ -45,6 +45,18 @@ namespace Negocio
             }
         }
 
+        public void EliminarProveedorCtaCte(int idProveedorCtaCte)
+        {
+            try
+            {
+                _proveedoresServ.EliminarProveedorCtaCte(idProveedorCtaCte);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void ModificarProveedor(ProveedoresModel proveedorModel)
         {
             try

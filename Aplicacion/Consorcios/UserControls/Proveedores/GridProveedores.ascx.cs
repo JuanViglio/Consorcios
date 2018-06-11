@@ -104,7 +104,7 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
                         case "CTACTE":
                             Session["ProveedorId"] = GridViewrow.Cells[col_IdProveedor].Text;
                             Session["NombreProveedor"] = GridViewrow.Cells[col_Nombre].Text;                            
-                            Response.Redirect("CtaCteProveedor.aspx", false);
+                            Response.Redirect("CtaCteProveedor.aspx#proveedores", false);
                             break;
 
                         default:

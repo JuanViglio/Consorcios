@@ -12,5 +12,10 @@ namespace WebSistemmas.Consorcios
                 tituloPaginaID.TituloPagina = "Cuenta Corriente del Proveedor " + Session["NombreProveedor"].ToString() ?? "" ;
             }
         }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Proveedores.aspx#proveedores");
+        }
     }
 }

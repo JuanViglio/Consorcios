@@ -36,3 +36,7 @@ function CerrarDivProveedorModificar() {
 function ConfirmarBajaProveedor() {
     return confirm("¿Esta seguro que quiere Eliminar el Proveedor?")
 }
+
+function ConfirmarBajaProveedorCtaCte() {
+    return confirm("¿Esta seguro que quiere Eliminar el Movimiento del Proveedor?")
+}
