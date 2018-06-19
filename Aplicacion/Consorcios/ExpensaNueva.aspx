@@ -221,7 +221,7 @@
                                 <asp:Label ID="Label6" runat="server" Text="Detalle"></asp:Label>
                             </td>
                             <td>
-                                <asp:TextBox ID="txtDetalleGastoEventual" runat="server" Width="380px" style="margin-left: 0px"></asp:TextBox>
+                                <asp:TextBox ID="txtDetalleEvOrd" runat="server" Width="380px" style="margin-left: 0px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -238,7 +238,7 @@
                                 <asp:Label ID="Label14" runat="server" Text="Importe Compra"></asp:Label>
                             </td>
                             <td style="height: 23px">
-                                <asp:TextBox ID="txtImporteCompraGastoEventual" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
+                                <asp:TextBox ID="txtImporteCompraEvOrd" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -246,12 +246,12 @@
                                 <asp:Label ID="Label7" runat="server" Text="Importe Venta"></asp:Label>
                             </td>
                             <td style="height: 23px">
-                                <asp:TextBox ID="txtImporteGastoEventual" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
+                                <asp:TextBox ID="txtImporteEvOrd" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
                             <td style="width: 207px; height: 53px">
-                                <asp:Button ID="btnAgregarGastoEventual" runat="server" Height="30px" OnClick="btnAgregarGastoEventual_Click" Text="Agregar" Width="90px" />
+                                <asp:Button ID="btnAgregarGastoEvOrd" runat="server" Height="30px" OnClick="btnAgregarGastoEvOrd_Click" Text="Agregar" Width="90px" />
                             </td>
                             <td style="height: 53px">
                                 <asp:Button ID="btnCancelarGastoEvOrdinario" runat="server" Height="30px" OnClick="btnCancelarGastoEvOrdinario_Click" Text="Cancelar" Width="90px" />

@@ -19,3 +19,10 @@ D:\Sistemmas\Working Copy\Consorcios\Servicios\bin\Release\DAO.pdb
 D:\Sistemmas\Working Copy\Consorcios\Servicios\obj\Release\Servicios.csprojResolveAssemblyReference.cache
 D:\Sistemmas\Working Copy\Consorcios\Servicios\obj\Release\Servicios.dll
 D:\Sistemmas\Working Copy\Consorcios\Servicios\obj\Release\Servicios.pdb
+D:\Sistemmas\Consorcios\Servicios\bin\Release\Servicios.dll
+D:\Sistemmas\Consorcios\Servicios\bin\Release\Servicios.pdb
+D:\Sistemmas\Consorcios\Servicios\bin\Release\DAO.dll
+D:\Sistemmas\Consorcios\Servicios\bin\Release\DAO.pdb
+D:\Sistemmas\Consorcios\Servicios\obj\Release\Servicios.csprojResolveAssemblyReference.cache
+D:\Sistemmas\Consorcios\Servicios\obj\Release\Servicios.dll
+D:\Sistemmas\Consorcios\Servicios\obj\Release\Servicios.pdb

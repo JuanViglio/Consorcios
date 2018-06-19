@@ -50,10 +50,10 @@
                         <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
                         <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                         <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                        <SortedAscendingCellStyle BackColor="#E9E7E2" />
+<%--                        <SortedAscendingCellStyle BackColor="#E9E7E2" />
                         <SortedAscendingHeaderStyle BackColor="#506C8C" />
                         <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                        <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                        <SortedDescendingHeaderStyle BackColor="#6F8DAE" />--%>
                     </asp:gridview>
     
     </div>

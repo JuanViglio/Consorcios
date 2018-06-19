@@ -301,11 +301,12 @@ namespace Servicios
             return detalle.ID;
         }
 
-        public void ModificarGastoExtraordinario(int IdExpensaDetalle, string Detalle, decimal Importe)
+        public void ModificarGastoExtraordinario(int IdExpensaDetalle, string Detalle, decimal Importe, decimal ImporteCompra)
         {
             var detalle = _context.GastosEvExt.Where(x => x.ID == IdExpensaDetalle).FirstOrDefault();
             detalle.Detalle = Detalle;
             detalle.Importe = Importe;
+            detalle.ImporteCompra = ImporteCompra;
 
             _context.SaveChanges();
         }
@@ -418,11 +419,6 @@ namespace Servicios
             _context.SaveChanges();
         }
 
-        public void CancelarExpensaUF()
-        {
-
-        }
-
         public bool ActualizarCheckSumar(int idExpensaDetalle, bool sumar)
         {
             var detalle = _context.GastosFijos.FirstOrDefault(x => x.ID == idExpensaDetalle);
@@ -466,6 +462,18 @@ namespace Servicios
                 return expensa.PeriodoNumerico.Value;
             else
                 throw new Exception("No se encontro la Expensa en la base de datos");
+        }
+
+        public decimal GetProveedorCtaCteId(string tipo, decimal GastoId)
+        {
+            if (tipo == Constantes.GastoEvExt)
+            {
+                return _context.GastosEvExt.FirstOrDefault(x => x.ID == GastoId).ProveedoresCtaCte_ID.Value;
+            }
+            else
+            {
+                return 0;
+            }            
         }
 
         #region Private Methods

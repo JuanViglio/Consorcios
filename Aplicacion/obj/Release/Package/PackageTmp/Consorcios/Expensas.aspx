@@ -58,10 +58,10 @@
                         <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
                         <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                         <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                        <SortedAscendingCellStyle BackColor="#E9E7E2" />
+<%--                        <SortedAscendingCellStyle BackColor="#E9E7E2" />
                         <SortedAscendingHeaderStyle BackColor="#506C8C" />
                         <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                        <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                        <SortedDescendingHeaderStyle BackColor="#6F8DAE" />--%>
                     </asp:gridview>
                 </td>
                 <td>
@@ -99,10 +99,10 @@
                 <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
                 <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                 <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                <SortedAscendingCellStyle BackColor="#E9E7E2" />
+<%--                <SortedAscendingCellStyle BackColor="#E9E7E2" />
                 <SortedAscendingHeaderStyle BackColor="#506C8C" />
                 <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />--%>
             </asp:gridview>
                     </div>
                 </td>
@@ -122,6 +122,9 @@
                                 </td>
                                 <td style="width: 148px">
                                     <asp:button id="btnAnularExpensasUF" runat="server" height="35px" onclientclick="Confirm('¿Esta seguro que quiere ANULAR las Expensas?')" onclick="btnAnularExpensasUF_Click" text="Anular Expensas" width="128px" />
+                                </td>
+                                <td style="width: 148px">
+                                    <asp:button id="btnGastosParticulares" runat="server" height="35px" onclick="btnAGastosParticulares_Click" text="Gastos Particulares" width="128px" />
                                 </td>
                             </tr>
                         </table>

@@ -113,3 +113,17 @@ D:\Sistemmas\Working Copy\Consorcios\Aplicacion\bin\Microsoft.Data.Services.Clie
 D:\Sistemmas\Working Copy\Consorcios\Aplicacion\bin\Newtonsoft.Json.dll
 D:\Sistemmas\Working Copy\Consorcios\Aplicacion\bin\Negocio.dll
 D:\Sistemmas\Working Copy\Consorcios\Aplicacion\bin\Negocio.pdb
+D:\Sistemmas\Consorcios\Aplicacion\bin\WebSistemmas.dll.config
+D:\Sistemmas\Consorcios\Aplicacion\bin\WebSistemmas.dll
+D:\Sistemmas\Consorcios\Aplicacion\bin\WebSistemmas.pdb
+D:\Sistemmas\Consorcios\Aplicacion\bin\DAO.dll
+D:\Sistemmas\Consorcios\Aplicacion\bin\Negocio.dll
+D:\Sistemmas\Consorcios\Aplicacion\bin\Servicios.dll
+D:\Sistemmas\Consorcios\Aplicacion\bin\System.Data.Entity.dll
+D:\Sistemmas\Consorcios\Aplicacion\bin\System.Web.Entity.dll
+D:\Sistemmas\Consorcios\Aplicacion\bin\DAO.pdb
+D:\Sistemmas\Consorcios\Aplicacion\bin\Negocio.pdb
+D:\Sistemmas\Consorcios\Aplicacion\bin\Servicios.pdb
+D:\Sistemmas\Consorcios\Aplicacion\obj\Release\Aplicacion.csprojResolveAssemblyReference.cache
+D:\Sistemmas\Consorcios\Aplicacion\obj\Release\WebSistemmas.dll
+D:\Sistemmas\Consorcios\Aplicacion\obj\Release\WebSistemmas.pdb

@@ -81,10 +81,6 @@
                                     <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
                                     <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                                     <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                                    <SortedAscendingCellStyle BackColor="#E9E7E2" />
-                                    <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                                    <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                                    <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                                 </asp:GridView>
                             </td>
                             <td style="width: 530px; height: 156px;" valign="top">
@@ -137,7 +133,7 @@
                                                     <asp:Label ID="Label4" runat="server" Text="Importe"></asp:Label>
                                                 </td>
                                                 <td style="height: 23px">
-                                                    <asp:TextBox ID="txtImporte" runat="server" Width="380px" BorderStyle="Solid"></asp:TextBox>
+                                                    <asp:TextBox ID="txtImporte" runat="server" Width="149px" BorderStyle="Solid"></asp:TextBox>
                                                 </td>
                                             </tr>
                                         </table>
@@ -161,7 +157,7 @@
             </div>
 
 
-            <h3>Ingreso de Gastos Eventuales Ordinariososs</h3>
+            <h3>Ingreso de Gastos Eventuales Ordinarios</h3>
             <asp:updatepanel id="UpdatePanel2" runat="server">
             <ContentTemplate>
                 <div>
@@ -203,10 +199,6 @@
                     <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
                     <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                     <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                    <SortedAscendingCellStyle BackColor="#E9E7E2" />
-                    <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                    <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                    <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                 </asp:GridView>
                 <br />
                 <table>
@@ -225,7 +217,7 @@
                 <div id="div1" style="margin-top: 17px;  " >
                     <table style="margin-top: 0px; width: 500px;">
                         <tr>
-                            <td style="width: 100px">
+                            <td style="width: 207px">
                                 <asp:Label ID="Label6" runat="server" Text="Detalle"></asp:Label>
                             </td>
                             <td>
@@ -233,15 +225,32 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 100px; height: 23px;">
-                                <asp:Label ID="Label7" runat="server" Text="Importe"></asp:Label>
+                            <td style="width: 207px">
+                                <asp:Label ID="Label13" runat="server" Text="Proveedor"></asp:Label>
                             </td>
-                            <td style="height: 23px">
-                                <asp:TextBox ID="txtImporteGastoEventual" runat="server" Width="380px" BorderStyle="Solid"></asp:TextBox>
+                            <td>
+                                <asp:DropDownList ID="ddlProveedoresEvOrd" runat="server" autopostback="true" Height="23px" Width="380px" OnSelectedIndexChanged="ddlProveedores_SelectedIndexChanged">
+                                </asp:DropDownList>
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 100px; height: 53px">
+                            <td style="width: 207px; height: 23px;">
+                                <asp:Label ID="Label14" runat="server" Text="Importe Compra"></asp:Label>
+                            </td>
+                            <td style="height: 23px">
+                                <asp:TextBox ID="txtImporteCompraGastoEventual" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 207px; height: 23px;">
+                                <asp:Label ID="Label7" runat="server" Text="Importe Venta"></asp:Label>
+                            </td>
+                            <td style="height: 23px">
+                                <asp:TextBox ID="txtImporteGastoEventual" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 207px; height: 53px">
                                 <asp:Button ID="btnAgregarGastoEventual" runat="server" Height="30px" OnClick="btnAgregarGastoEventual_Click" Text="Agregar" Width="90px" />
                             </td>
                             <td style="height: 53px">
@@ -271,7 +280,10 @@
                         <asp:BoundField DataField="Detalle" HeaderText="Detalle">
                         <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
                         </asp:BoundField>
-                        <asp:BoundField DataField="Importe" HeaderText="Importe">
+                        <asp:BoundField DataField="ImporteCompra" HeaderText="Importe Compra">
+                        <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="Importe" HeaderText="Importe Venta">
                         <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
                         </asp:BoundField>
                         <asp:BoundField DataField="ID" HeaderText="ID">
@@ -300,10 +312,6 @@
                     <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
                     <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                     <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                    <SortedAscendingCellStyle BackColor="#E9E7E2" />
-                    <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                    <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                    <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                 </asp:GridView>
                 <br />
             </td>
@@ -311,7 +319,7 @@
                 <div id="div2" style="margin-top: 17px;  " >
                     <table style="margin-top: 0px; width: 500px;">
                         <tr>
-                            <td style="width: 100px">
+                            <td style="width: 203px">
                                 <asp:Label ID="Label3" runat="server" Text="Detalle"></asp:Label>
                             </td>
                             <td>
@@ -319,15 +327,32 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 100px; height: 23px;">
-                                <asp:Label ID="Label9" runat="server" Text="Importe"></asp:Label>
+                            <td style="width: 203px">
+                                <asp:Label ID="Label11" runat="server" Text="Proveedor"></asp:Label>
                             </td>
-                            <td style="height: 23px">
-                                <asp:TextBox ID="txtImporteGastoExtraordinario" runat="server" Width="380px" BorderStyle="Solid"></asp:TextBox>
+                            <td>
+                                <asp:DropDownList ID="ddlProveedoresEvExt" runat="server" autopostback="true" Height="23px" Width="380px" OnSelectedIndexChanged="ddlProveedores_SelectedIndexChanged">
+                                </asp:DropDownList>
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 100px; height: 53px">
+                            <td style="width: 203px">
+                                <asp:Label ID="Label12" runat="server" Text="Importe Compra"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtImporteCompraGastoExt" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 203px; height: 23px;">
+                                <asp:Label ID="Label9" runat="server" Text="Importe Venta"></asp:Label>
+                            </td>
+                            <td style="height: 23px">
+                                <asp:TextBox ID="txtImporteGastoExtraordinario" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 203px; height: 53px">
                                 <asp:Button ID="btnAgregarGastoExt" runat="server" Height="30px" OnClick="btnAgregarGastoExt_Click" Text="Agregar" Width="90px" />
                             </td>
                             <td style="height: 53px">
@@ -348,36 +373,38 @@
         <asp:updatepanel id="UpdatePanel4" runat="server">
         <ContentTemplate>
 
-        <table style="width: 844px">
+        <table style="width: 879px">
             <tr>
-                <td style="height: 45px; text-align: left; width: 182px;">
-                    <asp:Label ID="Label5" runat="server" Text="Total Ordinarios:" Font-Size="Large" style="color: #003399"></asp:Label>
+                <td style="height: 45px; text-align: left; width: 168px;">
+                    <asp:Label ID="Label5" runat="server" Text="Subtotal Ord.:" Font-Size="Large" style="color: #003399"></asp:Label>
                 </td>
-                <td style="width: 293px; height: 45px;">
+                <td style="width: 28px; height: 45px;" align="right">
                     <asp:Label ID="lblTotalGastosOrdinarios" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
                 </td>
                 <td style="width: 157px; height: 45px;">
-                    <asp:Button runat="server" Text="Volver" ID="btnVolver" Height="30px" OnClick="btnVolver_Click" Width="120px"></asp:Button>
+                    <asp:Button runat="server" Text="Volver" ID="btnVolver" Height="30px" OnClick="btnVolver_Click" Width="120px" style="margin-left: 96px"></asp:Button>
                 </td>
-                <td style="width: 190px; height: 45px;">
+                <td style="width: 295px; height: 45px;">
                     <asp:Button runat="server" Text="Aceptar Expensa" ID="btnAceptar" Height="30px" OnClientClick = "Confirm('¿Esta seguro que quiere ACEPTAR las Expensas?')" OnClick="btnAceptar_Click" Width="120px"></asp:Button>
                 </td>
             </tr>
             <tr>
-                <td style="width: 182px; height: 40px;">
-                    <asp:Label ID="Label1" runat="server" Text="Total Extraordinarios:" Font-Size="Large" style="color: #003399"></asp:Label>
+                <td style="width: 168px; height: 40px;">
+                    <asp:Label ID="Label1" runat="server" Text="Subtotal Extraord." Font-Size="Large" style="color: #003399"></asp:Label>
                 </td>
-                <td colspan ="3" style="height: 40px">
+                <td style="height: 40px; width: 28px;" align="right">
                     <asp:Label ID="lblTotalGastosExtraordinarios" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
                 </td>
+                <td colspan ="2" style="height: 40px"></td>
             </tr>
             <tr>
-                <td style="width: 182px; height: 38px;">
+                <td style="width: 168px; height: 38px;">
                     <asp:Label ID="Label10" runat="server" Text="Total Gastos:" Font-Size="Large" style="color: #003399"></asp:Label>
                 </td>
-                <td colspan ="3" style="height: 38px">
+                <td  style="height: 38px; width: 28px;" align="right">
                     <asp:Label ID="lblTotalGastos" runat="server" Font-Size="Large" style="color: #003399"></asp:Label>
                 </td>
+                <td colspan ="2"></td>
             </tr>
         </table>
 

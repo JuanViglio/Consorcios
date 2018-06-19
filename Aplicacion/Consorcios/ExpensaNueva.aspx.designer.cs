@@ -211,13 +211,13 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.Label Label6;
         
         /// <summary>
-        /// txtDetalleGastoEventual control.
+        /// txtDetalleEvOrd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDetalleGastoEventual;
+        protected global::System.Web.UI.WebControls.TextBox txtDetalleEvOrd;
         
         /// <summary>
         /// Label13 control.
@@ -247,13 +247,13 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.Label Label14;
         
         /// <summary>
-        /// txtImporteCompraGastoEventual control.
+        /// txtImporteCompraEvOrd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtImporteCompraGastoEventual;
+        protected global::System.Web.UI.WebControls.TextBox txtImporteCompraEvOrd;
         
         /// <summary>
         /// Label7 control.
@@ -265,22 +265,22 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.Label Label7;
         
         /// <summary>
-        /// txtImporteGastoEventual control.
+        /// txtImporteEvOrd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtImporteGastoEventual;
+        protected global::System.Web.UI.WebControls.TextBox txtImporteEvOrd;
         
         /// <summary>
-        /// btnAgregarGastoEventual control.
+        /// btnAgregarGastoEvOrd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarGastoEventual;
+        protected global::System.Web.UI.WebControls.Button btnAgregarGastoEvOrd;
         
         /// <summary>
         /// btnCancelarGastoEvOrdinario control.

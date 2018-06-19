@@ -16,7 +16,7 @@ namespace Servicios.Interfaces
 
         decimal AgregarGastoExtraordinario(int IdExpensa, string Detalle, decimal Importe, decimal ImporteCompra, decimal ProveedorId, decimal CtaCteId);
 
-        void ModificarGastoExtraordinario(int IdExpensaDetalle, string Detalle, decimal Importe);
+        void ModificarGastoExtraordinario(int IdExpensaDetalle, string Detalle, decimal Importe, decimal ImporteCompra);
 
         void ActualizarTotalGastosEvOrdinarios(decimal idExpensa);
 
@@ -51,6 +51,8 @@ namespace Servicios.Interfaces
         decimal AgregarExpensa(string IdConsorcio);
 
         List<GastosEvOrd> GetGastosEvOrdinarios(int IdExpensa);
+
+        decimal GetProveedorCtaCteId(string tipo, decimal GastoId);
 
     }
 }

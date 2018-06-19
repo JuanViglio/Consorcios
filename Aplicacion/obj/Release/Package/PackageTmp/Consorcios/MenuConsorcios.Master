@@ -23,6 +23,9 @@
             <ul class="fancyNav">
                 <li id="consorcios"><a href="../Consorcios/Consorcios.aspx#consorcios">Consorcios</a></li>
                 <li id="gastos"><a href="../Consorcios/Gastos.aspx#gastos">Gastos</a></li>
+                <li id="proveedores"><a href="../Consorcios/Proveedores.aspx#proveedores">Proveedores</a></li>
+                <li id="seguros"><a href="../Consorcios/Seguros.aspx#seguros">Seguros</a></li>
+
             </ul>
         </nav>
 

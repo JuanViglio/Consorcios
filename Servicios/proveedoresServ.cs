@@ -131,7 +131,7 @@ namespace Servicios
         {
             ProveedoresCtaCte registro = new ProveedoresCtaCte();
 
-            registro.Proveedores = _context.Proveedores.Where(x => x.ID == idProveedor).FirstOrDefault();
+            _context.Proveedores.Where(x => x.ID == idProveedor).FirstOrDefault();
             registro.Haber = importe;
             registro.TipoGasto = tipoGasto;
             registro.Detalle = detalle;
@@ -183,5 +183,6 @@ namespace Servicios
         {
             return _context.ProveedoresCtaCte.Where(x => x.Proveedores.ID == idProveedor).ToList().OrderByDescending(x => x.ID);
         }
+
     }
 }

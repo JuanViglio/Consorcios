@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\Juan\Desktop\Consorcios</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/DAO.dll">
+      <publishTime>06/12/2018 19:08:04</publishTime>
+    </File>
+    <File Include="bin/Negocio.dll">
+      <publishTime>06/12/2018 19:08:05</publishTime>
+    </File>
+    <File Include="bin/Servicios.dll">
+      <publishTime>06/12/2018 19:08:05</publishTime>
+    </File>
+    <File Include="bin/System.Data.Entity.dll">
+      <publishTime>09/26/2012 03:16:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.Entity.dll">
+      <publishTime>05/15/2018 13:45:39</publishTime>
+    </File>
+    <File Include="bin/WebSistemmas.dll">
+      <publishTime>06/12/2018 19:08:05</publishTime>
+    </File>
+    <File Include="Cobranza/Cobros.aspx">
+      <publishTime>02/05/2018 23:52:17</publishTime>
+    </File>
+    <File Include="Cobranza/MenuCobranza.Master">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="Consorcios/CargarGastos.aspx">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="Consorcios/Consorcios.aspx">
+      <publishTime>03/07/2018 08:30:40</publishTime>
+    </File>
+    <File Include="Consorcios/CtaCteProveedor.aspx">
+      <publishTime>06/09/2018 17:27:04</publishTime>
+    </File>
+    <File Include="Consorcios/Detalles.aspx">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="Consorcios/ExpensaNueva.aspx">
+      <publishTime>04/11/2018 08:53:03</publishTime>
+    </File>
+    <File Include="Consorcios/Expensas.aspx">
+      <publishTime>02/07/2018 23:23:08</publishTime>
+    </File>
+    <File Include="Consorcios/ExpensaUFNueva.aspx">
+      <publishTime>03/08/2018 19:45:20</publishTime>
+    </File>
+    <File Include="Consorcios/Gastos.aspx">
+      <publishTime>03/07/2018 08:27:53</publishTime>
+    </File>
+    <File Include="Consorcios/GastosParticulares.aspx">
+      <publishTime>02/28/2018 19:59:05</publishTime>
+    </File>
+    <File Include="Consorcios/MenuConsorcios.Master">
+      <publishTime>04/13/2018 17:09:48</publishTime>
+    </File>
+    <File Include="Consorcios/Privado.aspx">
+      <publishTime>02/05/2018 23:56:35</publishTime>
+    </File>
+    <File Include="Consorcios/Proveedores.aspx">
+      <publishTime>06/07/2018 00:04:49</publishTime>
+    </File>
+    <File Include="Consorcios/SeguroNuevo.aspx">
+      <publishTime>05/20/2018 17:58:56</publishTime>
+    </File>
+    <File Include="Consorcios/Seguros.aspx">
+      <publishTime>04/17/2018 00:32:46</publishTime>
+    </File>
+    <File Include="Consorcios/UnidadesFuncionales.aspx">
+      <publishTime>02/05/2018 23:56:34</publishTime>
+    </File>
+    <File Include="Consorcios/UserControls/CtaCteProveedor/AgregarPagoProveedor.ascx">
+      <publishTime>06/06/2018 23:39:17</publishTime>
+    </File>
+    <File Include="Consorcios/UserControls/CtaCteProveedor/GridCtaCteProveedor.ascx">
+      <publishTime>06/09/2018 16:59:35</publishTime>
+    </File>
+    <File Include="Consorcios/UserControls/Error.ascx">
+      <publishTime>06/10/2018 20:07:52</publishTime>
+    </File>
+    <File Include="Consorcios/UserControls/ExpensasUF/GridGastosEvExtUF.ascx">
+      <publishTime>03/01/2018 17:14:23</publishTime>
+    </File>
+    <File Include="Consorcios/UserControls/ExpensasUF/GridGastosEvOrdUF.ascx">
+      <publishTime>03/01/2018 17:12:17</publishTime>
+    </File>
+    <File Include="Consorcios/UserControls/ExpensasUF/GridGastosFijosUF.ascx">
+      <publishTime>03/01/2018 17:06:23</publishTime>
+    </File>
+    <File Include="Consorcios/UserControls/ExpensasUF/SubtotalesUF.ascx">
+      <publishTime>03/01/2018 17:24:33</publishTime>
+    </File>
+    <File Include="Consorcios/UserControls/ExpensasUF/TotalesUF.ascx">
+      <publishTime>03/01/2018 17:52:26</publishTime>
+    </File>
+    <File Include="Consorcios/UserControls/Proveedores/AgregarProveedores.ascx">
+      <publishTime>03/21/2018 16:55:04</publishTime>
+    </File>
+    <File Include="Consorcios/UserControls/Proveedores/GridProveedores.ascx">
+      <publishTime>03/23/2018 12:28:40</publishTime>
+    </File>
+    <File Include="Consorcios/UserControls/Proveedores/ModificarProveedores.ascx">
+      <publishTime>03/21/2018 16:57:27</publishTime>
+    </File>
+    <File Include="Consorcios/UserControls/Seguros/GridSeguroDetalle.ascx">
+      <publishTime>05/01/2018 02:13:23</publishTime>
+    </File>
+    <File Include="Consorcios/UserControls/Seguros/GridSeguros.ascx">
+      <publishTime>04/21/2018 05:12:46</publishTime>
+    </File>
+    <File Include="Consorcios/UserControls/Titulo.ascx">
+      <publishTime>03/07/2018 09:03:02</publishTime>
+    </File>
+    <File Include="css/img/bg_tile.jpg">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="css/img/bg_vert.jpg">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="css/img/Cruz-roja.jpg">
+      <publishTime>06/10/2018 19:49:20</publishTime>
+    </File>
+    <File Include="css/img/home.png">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="css/img/iconback.gif">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="css/img/ico_eliminar.png">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="css/img/ico_mas.jpg">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="css/img/ico_modificar.gif">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="css/img/ico_pesos.png">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="css/jquery-ui-1.8.16.custom.css">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="css/jquery-ui.css">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="css/menuCobranza.css">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="css/Paginas.css">
+      <publishTime>02/25/2018 16:05:59</publishTime>
+    </File>
+    <File Include="css/styles.css">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/Cobranza.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/Confirm.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/Consorcios.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/Consorcios/Seguros.js">
+      <publishTime>04/29/2018 16:27:01</publishTime>
+    </File>
+    <File Include="js/Default.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/Expensas.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/Gastos.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/jquery-1.10.2.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/jquery-1.2.6.min.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/jquery-1.6.2.min.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/jquery-ui-1.8.16.custom.min.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/jquery-ui.min.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/jquery.blockUI.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/jquery.corner.pack.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/jquery.easing.1.3.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/jquery.galleryview-3.0-dev.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/jquery.jqChart.min.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/jquery.jqRangeSlider.min.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/jquery.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/jquery.min.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/jquery.timers-1.2.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/jquery.ui.accordion.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/jquery.ui.core.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/jquery.ui.widget.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/jquery1-2-6-min.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/json2.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/Proveedores.js">
+      <publishTime>06/09/2018 16:59:22</publishTime>
+    </File>
+    <File Include="js/tabs.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="js/UnidadesFuncionales.js">
+      <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>02/10/2018 14:56:37</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>05/12/2018 00:11:49</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
