@@ -131,7 +131,7 @@ namespace Servicios
         {
             ProveedoresCtaCte registro = new ProveedoresCtaCte();
 
-            _context.Proveedores.Where(x => x.ID == idProveedor).FirstOrDefault();
+            registro.Proveedores = _context.Proveedores.Where(x => x.ID == idProveedor).FirstOrDefault();
             registro.Haber = importe;
             registro.TipoGasto = tipoGasto;
             registro.Detalle = detalle;
@@ -163,20 +163,24 @@ namespace Servicios
 
         public void DeleteHaber(decimal idGasto)
         {
-            var ctaCteId = _context.GastosEvExt.Where(x => x.ID == idGasto).FirstOrDefault().ProveedoresCtaCte_ID.Value;
-            var haber = _context.ProveedoresCtaCte.Where(x => x.ID == ctaCteId).FirstOrDefault();
+            var ProveedorCtaCteId = _context.GastosEvExt.Where(x => x.ID == idGasto).FirstOrDefault().ProveedoresCtaCte_ID.Value;
 
-            var idProveedor = (from C in _context.ProveedoresCtaCte
-                                join P in _context.Proveedores
-                                on C.Proveedores.ID equals P.ID
-                                where C.ID == ctaCteId
-                                select C.Proveedores.ID).FirstOrDefault();
+            if (ProveedorCtaCteId > 0)
+            {
+                var haber = _context.ProveedoresCtaCte.Where(x => x.ID == ProveedorCtaCteId).FirstOrDefault();
+
+                var idProveedor = (from C in _context.ProveedoresCtaCte
+                                    join P in _context.Proveedores
+                                    on C.Proveedores.ID equals P.ID
+                                    where C.ID == ProveedorCtaCteId
+                                   select C.Proveedores.ID).FirstOrDefault();
 
 
-            _context.DeleteObject(haber);
-            _context.SaveChanges();
+                _context.DeleteObject(haber);
+                _context.SaveChanges();
 
-            ActualizarSaldo(idProveedor);
+                ActualizarSaldo(idProveedor);
+            }
         }
 
         public IEnumerable<ProveedoresCtaCte> GetCtaCte(decimal idProveedor)
