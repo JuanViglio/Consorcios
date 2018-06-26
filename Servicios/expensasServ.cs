@@ -5,20 +5,23 @@ using System.Collections.Generic;
 using System.Linq;
 using Servicios.Mapper;
 using WebSistemmas.Common;
+using Servicios;
 
 namespace Servicios
 {
     public class expensasServ : IExpensasServ
     {
-        private const int GastoTipoOrdinario = 1;
+        private const int GastoTipoFijo = 1;
         private const int GastoTipoEvOrdinario = 2;
         private const int GastoTipoEvExtraordinario = 3;
+        readonly ISegurosServ _segurosServ;
 
         private ExpensasEntities _context; 
 
         public expensasServ(ExpensasEntities context)
         {
             _context = context;
+            _segurosServ = new segurosServ(context);
         }
 
         public List<Expensas> GetExpensas(string IdConsorcio)
@@ -81,7 +84,6 @@ namespace Servicios
             else if (expensas.OrderByDescending(x => x.ID).FirstOrDefault().Estado == "Finalizado")
             {
                 Expensas expensa = new Expensas();
-
                 List<GastosFijos> expensaDetalle;
                 Consorcios consorcio = _context.Consorcios.Where(x => x.ID == IdConsorcio).FirstOrDefault();
 
@@ -90,10 +92,36 @@ namespace Servicios
                 expensa.Periodo = GetDescripcionPeriodo(expensa.PeriodoNumerico.Value);
                 expensa.Estado = "En Proceso";
 
-                expensaDetalle = GetUltimoDetallePorTipo(GastoTipoOrdinario);
+                expensaDetalle = GetUltimoDetallePorTipo(GastoTipoFijo);
                 foreach (var item in expensaDetalle)
                 {
-                    expensa.GastosFijos.Add(new GastosFijos { Detalle = item.Detalle, Importe = item.Importe, TipoGasto_ID = item.TipoGasto_ID, Sumar = item.Sumar });
+                    if (item.Detalle.Contains(Constantes.SeguroAP))
+                    {
+                        var seguroModel = _segurosServ.GetSeguroByConsorcio(IdConsorcio, expensa.PeriodoNumerico.Value, "AP");
+                        if (seguroModel != null)
+                        {
+                            var detalle = seguroModel != null ? "SEGURO AP CUOTA " + seguroModel.Cuota + " DE " + seguroModel.CantCuota : string.Empty;
+                            var importe = seguroModel != null ? seguroModel.Importe : 0;
+                            expensa.GastosFijos.Add(new GastosFijos { Detalle = detalle, Importe = importe, TipoGasto_ID = item.TipoGasto_ID, Sumar = item.Sumar });
+                        }
+                    }
+                    else if (item.Detalle.Contains(Constantes.SeguroIC))
+                    {
+                        var seguroModel = _segurosServ.GetSeguroByConsorcio(IdConsorcio, expensa.PeriodoNumerico.Value, "IC");
+                        if (seguroModel != null)
+                        {
+                            var detalle = seguroModel != null ? "SEGURO IC CUOTA " + seguroModel.Cuota + " DE " + seguroModel.CantCuota : string.Empty;
+                            var importe = seguroModel != null ? seguroModel.Importe : 0;
+                            expensa.GastosFijos.Add(new GastosFijos { Detalle = detalle, Importe = importe, TipoGasto_ID = item.TipoGasto_ID, Sumar = item.Sumar });
+                        }
+                    }
+                    else
+                    {
+                        if (item.Detalle != Constantes.FondoPrevisionOrdinario)
+                        {
+                            expensa.GastosFijos.Add(new GastosFijos { Detalle = item.Detalle, Importe = item.Importe, TipoGasto_ID = item.TipoGasto_ID, Sumar = item.Sumar });
+                        }
+                    }
                     expensa.Total_Gastos = +item.Importe;
                 }
 
@@ -326,7 +354,7 @@ namespace Servicios
 
         public IEnumerable<GastosOrdinariosModel> GetGastosOrdinarios(int ExpensaID, bool SoloSumarChequeada = false)
         {
-            var expensasDetalles = GetGastosByTipo(ExpensaID, GastoTipoOrdinario, SoloSumarChequeada);
+            var expensasDetalles = GetGastosByTipo(ExpensaID, GastoTipoFijo, SoloSumarChequeada);
             expensasDetalles.AddRange(GetGastosByTipo(ExpensaID, GastoTipoEvOrdinario, SoloSumarChequeada));
             expensasDetalles.AddRange(GetGastosByTipo(ExpensaID, GastoTipoEvExtraordinario, SoloSumarChequeada));
 
@@ -337,7 +365,7 @@ namespace Servicios
 
         public GastosFijos GetExpensaDetalle(int ExpensaID, int GastoID)
         {
-            var expensaDetalle = _context.GastosFijos.Where(x => x.Expensas.ID == ExpensaID && x.TipoGasto_ID.Value == GastoTipoOrdinario && x.Gastos_ID == GastoID).FirstOrDefault();
+            var expensaDetalle = _context.GastosFijos.Where(x => x.Expensas.ID == ExpensaID && x.TipoGasto_ID.Value == GastoTipoFijo && x.Gastos_ID == GastoID).FirstOrDefault();
 
             return expensaDetalle;
         }
@@ -482,7 +510,7 @@ namespace Servicios
             //Agregar las filas de Totales a ExpensasDetalles
             expensa.GastosFijos.Add(new GastosFijos { Detalle = Constantes.TotalGastoEvOrdinarios, Importe = 0, TipoGasto_ID = GastoTipoEvOrdinario, Sumar = true, Orden = 1 });
             expensa.GastosFijos.Add(new GastosFijos { Detalle = Constantes.TotalGastoEvExtraordinarios, Importe = 0, TipoGasto_ID = GastoTipoEvExtraordinario, Sumar = true, Orden = 1 });
-            expensa.GastosFijos.Add(new GastosFijos { Detalle = Constantes.FondoPrevisionOrdinario, Importe = 0, TipoGasto_ID = GastoTipoOrdinario, Sumar = true, Orden = 2 });
+            expensa.GastosFijos.Add(new GastosFijos { Detalle = Constantes.FondoPrevisionOrdinario, Importe = 0, TipoGasto_ID = GastoTipoFijo, Sumar = true, Orden = 2 });
             expensa.GastosFijos.Add(new GastosFijos { Detalle = Constantes.FondoPrevisionExtraordinario, Importe = 0, TipoGasto_ID = GastoTipoEvExtraordinario, Sumar = true, Orden = 2 });
         }
         #endregion

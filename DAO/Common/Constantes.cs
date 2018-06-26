@@ -22,6 +22,10 @@ namespace WebSistemmas.Common
         public const string PrecioComprayVentaIguales = "Precio de Compra y Venta iguales";
         public const string GastoEvOrd = "EvOrd";
         public const string GastoEvExt = "EvExt";
+        public const string SeguroIC = "SEGURO IC";
+        public const string SeguroAP = "SEGURO AP";
+        public const string TipoSeguroAP = "AP";
+        public const string TipoSeguroIC = "IC";
 
         public static decimal GetDecimalFromCurrency (string valor)
         {

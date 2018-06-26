@@ -5,6 +5,7 @@ using Servicios;
 using Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
+using WebSistemmas.Common;
 
 namespace Negocio
 {
@@ -185,10 +186,10 @@ namespace Negocio
             var periodo =_expensasServ.GetDatosExpensa(idExpensa).PeriodoNumerico;
             string tipoSeguro;
 
-            if (tipo == "SEGURO AP")
-                tipoSeguro = "AP";
+            if (tipo == Constantes.SeguroAP)
+                tipoSeguro = Constantes.TipoSeguroAP;
             else
-                tipoSeguro = "IC";
+                tipoSeguro = Constantes.TipoSeguroIC;
 
             return _segurosServ.GetSeguroByConsorcio(idConsorcio, periodo, tipoSeguro);
         }

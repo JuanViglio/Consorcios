@@ -63,6 +63,7 @@ namespace WebSistemmas.Consorcios
                     switch (Tipo)
                     {
                         case "UNIDADESFUNCIONALES":
+                            divBotonesUF.Visible = false;
                             unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
                             Dictionary<decimal, UnidadesFuncionalesModel> map = new Dictionary<decimal, UnidadesFuncionalesModel>();
                             
@@ -186,6 +187,12 @@ namespace WebSistemmas.Consorcios
 
                 CargarGrillaExpensas();
             }
+
+            expensasServ expensasServ = new expensasServ(context);
+
+            var ExpensaId = expensasServ.AgregarExpensa(Session["idConsorcio"].ToString());
+
+            CargarGrillaExpensas();
         }
 
         protected void btnAnularExpensasUF_Click(object sender, EventArgs e)
