@@ -15,7 +15,7 @@ namespace Servicios
         {
             var debe = _context.ProveedoresCtaCte.Where(x => x.Proveedores.ID == idProveedor).Sum(x=> x.Debe).GetValueOrDefault();
             var haber = _context.ProveedoresCtaCte.Where(x => x.Proveedores.ID == idProveedor).Sum(x => x.Haber).GetValueOrDefault();
-            return debe - haber;
+            return haber - debe;
         }
 
         public void ActualizarSaldo(decimal idProveedor)

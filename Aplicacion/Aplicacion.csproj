@@ -89,6 +89,7 @@
     <Content Include="Consorcios\UserControls\CtaCteProveedor\AgregarPagoProveedor.ascx" />
     <Content Include="Consorcios\UserControls\CtaCteProveedor\GridCtaCteProveedor.ascx" />
     <Content Include="Consorcios\UserControls\Error.ascx" />
+    <Content Include="Consorcios\UserControls\ExpensaNueva\GastosFijos.ascx" />
     <Content Include="Consorcios\UserControls\ExpensasUF\GridGastosEvExtUF.ascx" />
     <Content Include="Consorcios\UserControls\ExpensasUF\GridGastosEvOrdUF.ascx" />
     <Content Include="Consorcios\UserControls\ExpensasUF\GridGastosFijosUF.ascx" />
@@ -266,6 +267,13 @@
     </Compile>
     <Compile Include="Consorcios\UserControls\Error.ascx.designer.cs">
       <DependentUpon>Error.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\ExpensaNueva\GastosFijos.ascx.cs">
+      <DependentUpon>GastosFijos.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\ExpensaNueva\GastosFijos.ascx.designer.cs">
+      <DependentUpon>GastosFijos.ascx</DependentUpon>
     </Compile>
     <Compile Include="Consorcios\UserControls\ExpensasUF\GridGastosEvExtUF.ascx.cs">
       <DependentUpon>GridGastosEvExtUF.ascx</DependentUpon>
