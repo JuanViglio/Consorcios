@@ -8,7 +8,7 @@ namespace WebSistemmas.Consorcios
         {
             if (!IsPostBack)
             {
-                tituloPaginaID.TituloPagina = "Seguros";
+                tituloPaginaID.CargarTitulo("Seguros");
             }
         }
 

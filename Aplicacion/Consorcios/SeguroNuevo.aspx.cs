@@ -54,7 +54,7 @@ namespace WebSistemmas.Consorcios
         {
             if (!IsPostBack)
             {
-                tituloPaginaID.TituloPagina = "Seguro Nuevo";
+                tituloPaginaID.CargarTitulo("Seguro Nuevo");
                 dteFechaInicio.SelectedDate = DateTime.Now;
                 dteFechaFin.SelectedDate = DateTime.Now;
                 CargarComboConsorcios();

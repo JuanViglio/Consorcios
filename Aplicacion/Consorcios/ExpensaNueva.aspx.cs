@@ -74,7 +74,7 @@ namespace WebSistemmas.Consorcios
         {
             if (!IsPostBack)
             {
-                lblError.Text = "";
+                ConstantesWeb.MostrarError(string.Empty, this.Page);
                 CargarGrillaGastosOrdinarios();
                 CargarGrillaGastosEvOrdinarios();
                 CargarGrillaGastosEvExtraordinarios();
@@ -101,7 +101,7 @@ namespace WebSistemmas.Consorcios
         {
             GridViewRow gridViewrow;
 
-            lblError.Text = "";
+            ConstantesWeb.MostrarError(string.Empty, this.Page);
 
             try
             {
@@ -112,7 +112,6 @@ namespace WebSistemmas.Consorcios
 
                     string tipo = e.CommandName.ToUpper();
                     int expensaId;
-                    divError.Visible = false;
 
                     switch (tipo)
                     {
@@ -162,7 +161,7 @@ namespace WebSistemmas.Consorcios
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ConstantesWeb.MostrarError(ex.Message, this.Page);
             }
         }
 
@@ -212,7 +211,7 @@ namespace WebSistemmas.Consorcios
                     var gridViewrow = (GridViewRow)imgButton.NamingContainer;
 
                     string tipo = e.CommandName.ToUpper();
-                    lblError.Text = "";
+                    ConstantesWeb.MostrarError(string.Empty, this.Page);
 
                     switch (tipo)
                     {
@@ -239,7 +238,7 @@ namespace WebSistemmas.Consorcios
             }
             catch (Exception ex)
             {
-                lblError.Text = "No se pudo realizar la operacion";
+                ConstantesWeb.MostrarError("No se pudo realizar la operacion", this.Page);
             }
         }
 
@@ -252,8 +251,8 @@ namespace WebSistemmas.Consorcios
                     ImageButton imgButton = (ImageButton)e.CommandSource;
                     var gridViewrow = (GridViewRow)imgButton.NamingContainer;
 
-                    string tipo = e.CommandName.ToUpper();
-                    lblError.Text = "";
+                    string tipo = e.CommandName.ToUpper();                    
+                    ConstantesWeb.MostrarError(string.Empty, this.Page);
 
                     switch (tipo)
                     {
@@ -281,7 +280,7 @@ namespace WebSistemmas.Consorcios
             }
             catch
             {
-                lblError.Text = "No se pudo realizar la operacion";
+                ConstantesWeb.MostrarError("No se pudo realizar la operacion", this.Page);
             }
         }
 
@@ -313,8 +312,7 @@ namespace WebSistemmas.Consorcios
                 }
                 catch (Exception ex)
                 {
-                    divError.Visible = true;
-                    lblError.Text = ex.Message;
+                    ConstantesWeb.MostrarError(ex.Message, this.Page);
                     return;
                 }
 
@@ -327,20 +325,17 @@ namespace WebSistemmas.Consorcios
             #region Validar
             if (txtDetalleGastoExtraordinario.Text == "")
             {
-                divError.Visible = true;
-                lblError.Text = Constantes.ErrorFaltaDetalle;
+                ConstantesWeb.MostrarError(Constantes.ErrorFaltaDetalle, this.Page);
                 return;
             }
             else if (!txtImporteGastoExtraordinario.Text.IsNumeric())
             {
-                divError.Visible = true;
-                lblError.Text = Constantes.ErrorFaltaImporte;
+                ConstantesWeb.MostrarError(Constantes.ErrorFaltaImporte, this.Page);
                 return;
             }
             #endregion
 
-            divError.Visible = false;
-            lblError.Text = "";
+            ConstantesWeb.MostrarError(string.Empty, this.Page);
 
             int expensaId = Convert.ToInt32(Session["ExpensaId"]);
             int gastoEvExtraordinarioId = Convert.ToInt32(Session["gastoEvExtraordinarioId"]);
@@ -389,20 +384,19 @@ namespace WebSistemmas.Consorcios
             #region Validar
             if (txtDetalleEvOrd.Text == "")
             {
-                divError.Visible = true;
-                lblError.Text = Constantes.ErrorFaltaDetalle;
+
+                ConstantesWeb.MostrarError(Constantes.ErrorFaltaDetalle, this.Page);
                 return;
             }
             else if (!txtImporteEvOrd.Text.IsNumeric())
             {
-                divError.Visible = true;
-                lblError.Text = Constantes.ErrorFaltaImporte;
+                ConstantesWeb.MostrarError(Constantes.ErrorFaltaImporte, this.Page);
                 return;
             }
             #endregion
 
-            divError.Visible = false;
-            lblError.Text = "";
+            ConstantesWeb.MostrarError(string.Empty, this.Page);
+
 
             int expensaId = Convert.ToInt32(Session["ExpensaId"]);
             int gastoEvOrdinarioId = Convert.ToInt32(Session["gastoEvOrdinarioId"]);
@@ -425,9 +419,9 @@ namespace WebSistemmas.Consorcios
                 }
                 catch (Exception)
                 {
-                    lblError.Text = "No se agrego el gasto en la Cta Cte del Proveedor";
+                    ConstantesWeb.MostrarError("No se agrego el gasto en la Cta Cte del Proveedor", this.Page);
                 }
-                
+
             }
             else
             {
@@ -453,7 +447,7 @@ namespace WebSistemmas.Consorcios
         protected void btnAgregarGastoOrdinario_Click(object sender, EventArgs e)
         {
             int expensaId = Convert.ToInt32(Session["ExpensaId"]);
-            divError.Visible = false;
+            ConstantesWeb.MostrarError(string.Empty, this.Page);
 
             try
             {
@@ -462,20 +456,17 @@ namespace WebSistemmas.Consorcios
                 #region Validar
                 if (btnNuevo.Checked && txtDetalleEvOrd.Text == "")
                 {
-                    divError.Visible = true;
-                    lblError.Text = Constantes.ErrorFaltaDetalle;
+                    ConstantesWeb.MostrarError(Constantes.ErrorFaltaDetalle, this.Page);
                     return;
                 }
                 else if (!txtImporte.Text.IsNumeric())
                 {
-                    divError.Visible = true;
-                    lblError.Text = Constantes.ErrorFaltaImporte;
+                    ConstantesWeb.MostrarError(Constantes.ErrorFaltaImporte, this.Page);
                     return;
                 }
                 else if (btnGuardado.Checked && ddlGastos.SelectedValue == "0")
                 {
-                    divError.Visible = true;
-                    lblError.Text = Constantes.ErrorFaltaGasto;
+                    ConstantesWeb.MostrarError(Constantes.ErrorFaltaGasto, this.Page);
                     return;
                 }
                 #endregion
@@ -504,8 +495,7 @@ namespace WebSistemmas.Consorcios
             }
             catch
             {
-                divError.Visible = true;
-                lblError.Text = "No se pudo guardar los cambios";
+                ConstantesWeb.MostrarError("No se pudo guardar los cambios", this.Page);
             }
         }
 
@@ -532,7 +522,7 @@ namespace WebSistemmas.Consorcios
             txtDetalle.Text = "";
             ddlGastos.SelectedValue  = "0";
             btnAgregarGastoOrdinario.Text = "Agregar";
-            divError.Visible = false;
+            ConstantesWeb.MostrarError(string.Empty, this.Page);
             btnNuevo.Enabled = true;
             btnGuardado.Enabled = true;
         }
@@ -542,7 +532,7 @@ namespace WebSistemmas.Consorcios
             txtDetalleEvOrd.Text = "";
             txtImporteEvOrd.Text = "";
             btnAgregarGastoEvOrd.Text = "Agregar";
-            divError.Visible = false;
+            ConstantesWeb.MostrarError(string.Empty, this.Page);
         }
 
         protected void btnCancelarGastoEvExt_Click(object sender, EventArgs e)
@@ -552,7 +542,7 @@ namespace WebSistemmas.Consorcios
             txtImporteCompraGastoExt.Text = "";
             ddlProveedoresEvExt.SelectedIndex = 0;
             btnAgregarGastoExt.Text = "Agregar";
-            divError.Visible = false;
+            ConstantesWeb.MostrarError(string.Empty, this.Page);
         }
 
         protected void ddlGastos_SelectedIndexChanged(object sender, EventArgs e)

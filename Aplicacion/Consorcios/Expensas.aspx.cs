@@ -80,14 +80,14 @@ namespace WebSistemmas.Consorcios
                                 {
                                     divBotonesUF.Visible = true;
                                     Session["MostrarDivUF"] = true;
-
-                                    for (int i = 1; i <= pagos.Count; i++)
-                                    {
-                                        map.Add(i, pagos[i-1]);
-                                    }
-
-                                    Session["MapPagoId"] = map;
                                 }
+
+                                for (int i = 1; i <= pagos.Count; i++)
+                                {
+                                    map.Add(i, pagos[i-1]);
+                                }
+
+                                Session["MapPagoId"] = map;                                
                             }
                             else
                             {

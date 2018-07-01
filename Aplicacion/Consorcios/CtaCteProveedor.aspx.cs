@@ -9,7 +9,7 @@ namespace WebSistemmas.Consorcios
         {
             if (!IsPostBack)
             {
-                tituloPaginaID.TituloPagina = "Cuenta Corriente del Proveedor " + Session["NombreProveedor"].ToString() ?? "" ;
+                tituloPaginaID.CargarTitulo("Cuenta Corriente del Proveedor " + Session["NombreProveedor"].ToString() ?? "");
             }
         }
 

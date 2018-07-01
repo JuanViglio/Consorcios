@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ExpensaNueva.aspx.cs" Inherits="WebSistemmas.Consorcios.ExpensaNueva" MasterPageFile="~/Consorcios/MenuConsorcios.Master" %>
+<%@ Register src="~/Consorcios/UserControls/Error.ascx" tagname="UserControl2" tagprefix="uc6" %>
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.3/jquery-confirm.min.css">
@@ -15,7 +16,6 @@
             <asp:scriptmanager id="Scriptmanager1" runat="server">
             </asp:scriptmanager>
         </p>
-
         <p style="color: #003399; font-size: large">
             &nbsp;
         </p>
@@ -23,6 +23,12 @@
             <asp:Label ID="lblTitulo" runat="server" Text="Nueva Expensa"></asp:Label>
         </p>
 
+        <asp:updatepanel id="UpdatePanel5" runat="server">
+            <ContentTemplate>
+                <uc6:UserControl2 ID="UserControl2ID" runat="server" />
+            </ContentTemplate>
+        </asp:updatepanel>        
+        
         <div id="accordion">
             <h3>Ingreso de Gastos Fijos</h3>
             <div style="height: 159px">
@@ -408,9 +414,6 @@
             </tr>
         </table>
 
-        <div id="divError" runat="server" style="color: #003399; font-size: large; height: 36px;">
-            <asp:label id="lblError" runat="server" forecolor="Red" style="text-align: left">miError</asp:label>
-        </div>
         </ContentTemplate>
         </asp:updatepanel>
     </form>

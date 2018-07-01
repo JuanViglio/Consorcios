@@ -78,7 +78,7 @@ namespace WebSistemmas.Consorcios
         {
             if (!IsPostBack)
             {
-                lblNombreUF.Text = Session["NobreUF"].ToString();
+                tituloPaginaID.CargarTitulo("Expensa de la Unidad Funcional de " + Session["NobreUF"].ToString());
                 CargaInicial();
             }        
         }
@@ -118,43 +118,57 @@ namespace WebSistemmas.Consorcios
 
         protected void btnProximo_Click(object sender, EventArgs e)
         {
-            Dictionary<decimal, UnidadesFuncionalesModel> map = (Dictionary <decimal, UnidadesFuncionalesModel>)Session["MapPagoId"];
-            string pagoID = Session["PagoId"].ToString();
-            var key = map.FirstOrDefault(x => x.Value.PagoId == pagoID).Key;
-            ConstantesWeb.MostrarError(string.Empty, this.Page);
-
-            key++;
-
-            if (key <= map.Count)
+            try
             {
-                var pago = map.FirstOrDefault(x => x.Key == key).Value;
-                Session["PagoId"] = pago.PagoId;
-                lblNombreUF.Text = pago.Apellido + pago.Nombre;
-                CargaInicial();
+                Dictionary<decimal, UnidadesFuncionalesModel> map = (Dictionary <decimal, UnidadesFuncionalesModel>)Session["MapPagoId"];
+                string pagoID = Session["PagoId"].ToString();
+                var key = map.FirstOrDefault(x => x.Value.PagoId == pagoID).Key;
+                ConstantesWeb.MostrarError(string.Empty, this.Page);
+
+                key++;
+
+                if (key <= map.Count)
+                {
+                    var pago = map.FirstOrDefault(x => x.Key == key).Value;
+                    Session["PagoId"] = pago.PagoId;
+                    tituloPaginaID.CargarTitulo("Expensa de la Unidad Funcional de " + pago.Apellido + pago.Nombre);
+                    CargaInicial();
+                }
+                else
+                {
+                    ConstantesWeb.MostrarError("No existen mas Unidades Funcionales para mostrar", this.Page);
+                }
             }
-            else
+            catch (Exception)
             {
                 ConstantesWeb.MostrarError("No existen mas Unidades Funcionales para mostrar", this.Page);
-            }            
+            }
         }
 
         protected void btnAnterior_Click(object sender, EventArgs e)
         {
-            Dictionary<decimal, UnidadesFuncionalesModel> map = (Dictionary<decimal, UnidadesFuncionalesModel>)Session["MapPagoId"];
-            string pagoID = Session["PagoId"].ToString();
-            var key = map.FirstOrDefault(x => x.Value.PagoId == pagoID).Key;
-            ConstantesWeb.MostrarError(string.Empty, this.Page);
-
-            key--;
-
-            if (key > 0)
+            try
             {
-                var pago = map.FirstOrDefault(x => x.Key == key).Value;
-                Session["PagoId"] = pago.PagoId;
-                lblNombreUF.Text = pago.Apellido + pago.Nombre;
-                CargaInicial();
+                Dictionary<decimal, UnidadesFuncionalesModel> map = (Dictionary<decimal, UnidadesFuncionalesModel>)Session["MapPagoId"];
+                string pagoID = Session["PagoId"].ToString();
+                var key = map.FirstOrDefault(x => x.Value.PagoId == pagoID).Key;
+                ConstantesWeb.MostrarError(string.Empty, this.Page);
+
+                key--;
+
+                if (key > 0)
+                {
+                    var pago = map.FirstOrDefault(x => x.Key == key).Value;
+                    Session["PagoId"] = pago.PagoId;
+                    tituloPaginaID.CargarTitulo("Expensa de la Unidad Funcional de " + pago.Apellido + pago.Nombre);
+                    CargaInicial();
+                }
+                else
+                {
+                    ConstantesWeb.MostrarError("No existen Unidades Funcionales previas para mostrar", this.Page);
+                }
             }
-            else
+            catch (Exception)
             {
                 ConstantesWeb.MostrarError("No existen Unidades Funcionales previas para mostrar", this.Page);
             }

@@ -31,13 +31,13 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.ScriptManager scrActualizarGastos;
         
         /// <summary>
-        /// lblNombreUF control.
+        /// tituloPaginaID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNombreUF;
+        protected global::WebSistemmas.Consorcios.UserControls.Titulo tituloPaginaID;
         
         /// <summary>
         /// UserControl2ID control.

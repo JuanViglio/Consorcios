@@ -8,7 +8,7 @@ namespace WebSistemmas.Consorcios
         {
             if (!IsPostBack)
             {
-                tituloPaginaID.TituloPagina = "Proveedores";
+                tituloPaginaID.CargarTitulo("Proveedores");
             }
         }
     }
