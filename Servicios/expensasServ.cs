@@ -258,7 +258,7 @@ namespace Servicios
             _context.SaveChanges();
         }
 
-        public void AgregarGastoEvOrdinario(int IdExpensa, string Detalle, decimal Importe, int TipoGasto)
+        public void AgregarGastoEvOrdinario(int IdExpensa, string Detalle, decimal Importe)
         {
             GastosEvOrd detalle = new GastosEvOrd();
 

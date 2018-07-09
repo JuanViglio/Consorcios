@@ -31,7 +31,7 @@
         
         <div id="accordion">
             <h3>Ingreso de Gastos Fijos</h3>
-            <div style="height: 159px">
+            <div style="height: 202px">
                 <asp:updatepanel id="UpdatePanel1" runat="server">
                     <ContentTemplate>
                     <table style="height: 149px; width: 1179px">
@@ -227,7 +227,7 @@
                                 <asp:Label ID="Label6" runat="server" Text="Detalle"></asp:Label>
                             </td>
                             <td>
-                                <asp:TextBox ID="txtDetalleEvOrd" runat="server" Width="380px" style="margin-left: 0px"></asp:TextBox>
+                                <asp:TextBox ID="txtDetalleGastoEvOrd" runat="server" Width="380px" style="margin-left: 0px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -276,7 +276,7 @@
             <h3>Ingreso de Gastos Eventuales Extraordinarios</h3>
             <asp:updatepanel id="UpdatePanel3" runat="server">
             <ContentTemplate>
-                <div>        
+                <div style="height: 182px">        
                     <table>
         <tr>
             <td style="width: 643px; height: 109px;">
@@ -329,7 +329,7 @@
                                 <asp:Label ID="Label3" runat="server" Text="Detalle"></asp:Label>
                             </td>
                             <td>
-                                <asp:TextBox ID="txtDetalleGastoExtraordinario" runat="server" Width="380px" style="margin-left: 0px"></asp:TextBox>
+                                <asp:TextBox ID="txtDetalleGastoEvExt" runat="server" Width="380px" style="margin-left: 0px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>

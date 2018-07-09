@@ -10,7 +10,7 @@ namespace Servicios.Interfaces
 
         void ModificarExpensaDetalle(int IdExpensaDetalle, string Detalle, decimal Importe);
 
-        void AgregarGastoEvOrdinario(int IdExpensa, string Detalle, decimal Importe, int TipoGasto);
+        void AgregarGastoEvOrdinario(int IdExpensa, string Detalle, decimal Importe);
 
         void ModificarGastoEvOrdinario(int IdGasto, string Detalle, decimal Importe);
 

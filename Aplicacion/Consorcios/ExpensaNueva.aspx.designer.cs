@@ -229,13 +229,13 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.Label Label6;
         
         /// <summary>
-        /// txtDetalleEvOrd control.
+        /// txtDetalleGastoEvOrd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDetalleEvOrd;
+        protected global::System.Web.UI.WebControls.TextBox txtDetalleGastoEvOrd;
         
         /// <summary>
         /// Label13 control.
@@ -337,13 +337,13 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// txtDetalleGastoExtraordinario control.
+        /// txtDetalleGastoEvExt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDetalleGastoExtraordinario;
+        protected global::System.Web.UI.WebControls.TextBox txtDetalleGastoEvExt;
         
         /// <summary>
         /// Label11 control.
