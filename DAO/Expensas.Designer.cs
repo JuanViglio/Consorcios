@@ -1683,6 +1683,78 @@ namespace DAO
         private Nullable<global::System.Decimal> _Importe;
         partial void OnImporteChanging(Nullable<global::System.Decimal> value);
         partial void OnImporteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> ImporteCompra
+        {
+            get
+            {
+                return _ImporteCompra;
+            }
+            set
+            {
+                OnImporteCompraChanging(value);
+                ReportPropertyChanging("ImporteCompra");
+                _ImporteCompra = StructuralObject.SetValidValue(value, "ImporteCompra");
+                ReportPropertyChanged("ImporteCompra");
+                OnImporteCompraChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _ImporteCompra;
+        partial void OnImporteCompraChanging(Nullable<global::System.Decimal> value);
+        partial void OnImporteCompraChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> Proveedores_ID
+        {
+            get
+            {
+                return _Proveedores_ID;
+            }
+            set
+            {
+                OnProveedores_IDChanging(value);
+                ReportPropertyChanging("Proveedores_ID");
+                _Proveedores_ID = StructuralObject.SetValidValue(value, "Proveedores_ID");
+                ReportPropertyChanged("Proveedores_ID");
+                OnProveedores_IDChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _Proveedores_ID;
+        partial void OnProveedores_IDChanging(Nullable<global::System.Decimal> value);
+        partial void OnProveedores_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> ProveedoresCtaCte_ID
+        {
+            get
+            {
+                return _ProveedoresCtaCte_ID;
+            }
+            set
+            {
+                OnProveedoresCtaCte_IDChanging(value);
+                ReportPropertyChanging("ProveedoresCtaCte_ID");
+                _ProveedoresCtaCte_ID = StructuralObject.SetValidValue(value, "ProveedoresCtaCte_ID");
+                ReportPropertyChanged("ProveedoresCtaCte_ID");
+                OnProveedoresCtaCte_IDChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _ProveedoresCtaCte_ID;
+        partial void OnProveedoresCtaCte_IDChanging(Nullable<global::System.Decimal> value);
+        partial void OnProveedoresCtaCte_IDChanged();
 
         #endregion
 

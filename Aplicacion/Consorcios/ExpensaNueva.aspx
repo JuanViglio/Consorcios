@@ -176,7 +176,10 @@
                         <asp:BoundField DataField="Detalle" HeaderText="Detalle">
                         <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
                         </asp:BoundField>
-                        <asp:BoundField DataField="Importe" HeaderText="Importe">
+                        <asp:BoundField DataField="ImporteCompra" HeaderText="Importe Compra">
+                        <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="Importe" HeaderText="Importe Venta">
                         <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
                         </asp:BoundField>
                         <asp:BoundField DataField="ID" HeaderText="ID">
@@ -235,7 +238,7 @@
                                 <asp:Label ID="Label13" runat="server" Text="Proveedor"></asp:Label>
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlProveedoresEvOrd" runat="server" autopostback="true" Height="23px" Width="380px" OnSelectedIndexChanged="ddlProveedores_SelectedIndexChanged">
+                                <asp:DropDownList ID="ddlProveedoresEvOrd" runat="server" autopostback="true" Height="23px" Width="380px" OnSelectedIndexChanged="ddlProveedoresEvOrd_SelectedIndexChanged">
                                 </asp:DropDownList>
                             </td>
                         </tr>
@@ -244,7 +247,7 @@
                                 <asp:Label ID="Label14" runat="server" Text="Importe Compra"></asp:Label>
                             </td>
                             <td style="height: 23px">
-                                <asp:TextBox ID="txtImporteCompraEvOrd" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
+                                <asp:TextBox ID="txtImporteCompraGastoEvOrd" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -337,7 +340,7 @@
                                 <asp:Label ID="Label11" runat="server" Text="Proveedor"></asp:Label>
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlProveedoresEvExt" runat="server" autopostback="true" Height="23px" Width="380px" OnSelectedIndexChanged="ddlProveedores_SelectedIndexChanged">
+                                <asp:DropDownList ID="ddlProveedoresEvExt" runat="server" autopostback="true" Height="23px" Width="380px" OnSelectedIndexChanged="ddlProveedoresEvExt_SelectedIndexChanged">
                                 </asp:DropDownList>
                             </td>
                         </tr>
@@ -346,7 +349,7 @@
                                 <asp:Label ID="Label12" runat="server" Text="Importe Compra"></asp:Label>
                             </td>
                             <td>
-                                <asp:TextBox ID="txtImporteCompraGastoExt" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
+                                <asp:TextBox ID="txtImporteCompraGastoEvExt" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -359,7 +362,7 @@
                         </tr>
                         <tr>
                             <td style="width: 203px; height: 53px">
-                                <asp:Button ID="btnAgregarGastoExt" runat="server" Height="30px" OnClick="btnAgregarGastoExt_Click" Text="Agregar" Width="90px" />
+                                <asp:Button ID="btnAgregarGastoEvExt" runat="server" Height="30px" OnClick="btnAgregarGastoExt_Click" Text="Agregar" Width="90px" />
                             </td>
                             <td style="height: 53px">
                                 <asp:Button ID="btnCancelarGastoEvExt" runat="server" Height="30px" OnClick="btnCancelarGastoEvExt_Click" Text="Cancelar" Width="90px" />

@@ -265,13 +265,13 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.Label Label14;
         
         /// <summary>
-        /// txtImporteCompraEvOrd control.
+        /// txtImporteCompraGastoEvOrd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtImporteCompraEvOrd;
+        protected global::System.Web.UI.WebControls.TextBox txtImporteCompraGastoEvOrd;
         
         /// <summary>
         /// Label7 control.
@@ -373,13 +373,13 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.Label Label12;
         
         /// <summary>
-        /// txtImporteCompraGastoExt control.
+        /// txtImporteCompraGastoEvExt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtImporteCompraGastoExt;
+        protected global::System.Web.UI.WebControls.TextBox txtImporteCompraGastoEvExt;
         
         /// <summary>
         /// Label9 control.
@@ -400,13 +400,13 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.TextBox txtImporteGastoExtraordinario;
         
         /// <summary>
-        /// btnAgregarGastoExt control.
+        /// btnAgregarGastoEvExt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarGastoExt;
+        protected global::System.Web.UI.WebControls.Button btnAgregarGastoEvExt;
         
         /// <summary>
         /// btnCancelarGastoEvExt control.

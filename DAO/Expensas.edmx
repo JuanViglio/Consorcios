@@ -65,6 +65,9 @@
           <Property Name="Detalle" Type="nvarchar" MaxLength="50" />
           <Property Name="Importe" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Expensas_ID" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ImporteCompra" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Proveedores_ID" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ProveedoresCtaCte_ID" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="GastosFijos">
           <Key>
@@ -702,6 +705,9 @@
           <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="Expensas" Relationship="ExpensasModel.FK_GastosEvOrdinariosDetalle_Expensas" FromRole="GastosEvOrd" ToRole="Expensas" />
+          <Property Name="ImporteCompra" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Proveedores_ID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ProveedoresCtaCte_ID" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK_GastosEvOrdinariosDetalle_Expensas">
           <End Type="ExpensasModel.Expensas" Role="Expensas" Multiplicity="0..1" />
@@ -983,6 +989,9 @@
           <EntitySetMapping Name="GastosEvOrd">
             <EntityTypeMapping TypeName="ExpensasModel.GastosEvOrd">
               <MappingFragment StoreEntitySet="GastosEvOrd">
+                <ScalarProperty Name="ProveedoresCtaCte_ID" ColumnName="ProveedoresCtaCte_ID" />
+                <ScalarProperty Name="Proveedores_ID" ColumnName="Proveedores_ID" />
+                <ScalarProperty Name="ImporteCompra" ColumnName="ImporteCompra" />
                 <ScalarProperty Name="Importe" ColumnName="Importe" />
                 <ScalarProperty Name="Detalle" ColumnName="Detalle" />
                 <ScalarProperty Name="ID" ColumnName="ID" />

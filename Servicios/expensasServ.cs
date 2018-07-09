@@ -258,24 +258,29 @@ namespace Servicios
             _context.SaveChanges();
         }
 
-        public void AgregarGastoEvOrdinario(int IdExpensa, string Detalle, decimal Importe)
+        public void AgregarGastoEvOrdinario(int IdExpensa, string Detalle, decimal Importe, decimal ImporteCompra, decimal ProveedorId, decimal CtaCteId)
         {
             GastosEvOrd detalle = new GastosEvOrd();
 
             detalle.Expensas = _context.Expensas.FirstOrDefault(x => x.ID == IdExpensa);
             detalle.Detalle = Detalle;
             detalle.Importe = Importe;
+            detalle.ImporteCompra = ImporteCompra;
+            detalle.Proveedores_ID = ProveedorId;
+            detalle.ProveedoresCtaCte_ID = CtaCteId;
 
             _context.AddToGastosEvOrd(detalle);
             _context.SaveChanges();
         }
 
-        public void ModificarGastoEvOrdinario(int IdGasto, string Detalle, decimal Importe)
+        public void ModificarGastoEvOrdinario(int IdGasto, string Detalle, decimal Importe, decimal ImporteCompra)
         {
             var gasto = _context.GastosEvOrd.Where(x => x.ID == IdGasto).FirstOrDefault();
 
             gasto.Detalle = Detalle;
-            gasto.Importe = Importe;            
+            gasto.Importe = Importe;
+            gasto.ImporteCompra = ImporteCompra;
+
             _context.SaveChanges();
         }
 
