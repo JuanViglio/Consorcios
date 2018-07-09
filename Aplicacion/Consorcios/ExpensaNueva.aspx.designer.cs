@@ -67,13 +67,13 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// grdGastosOrdinarios control.
+        /// grdGastosFijos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdGastosOrdinarios;
+        protected global::System.Web.UI.WebControls.GridView grdGastosFijos;
         
         /// <summary>
         /// btnGuardado control.
@@ -112,13 +112,13 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.DropDownList ddlGastos;
         
         /// <summary>
-        /// txtDetalle control.
+        /// txtDetalleGastoFijo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDetalle;
+        protected global::System.Web.UI.WebControls.TextBox txtDetalleGastoFijo;
         
         /// <summary>
         /// divGastoOrdnarioNuevo control.
@@ -139,13 +139,13 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// txtGasto control.
+        /// txtGastoFijo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGasto;
+        protected global::System.Web.UI.WebControls.TextBox txtGastoFijo;
         
         /// <summary>
         /// Label4 control.

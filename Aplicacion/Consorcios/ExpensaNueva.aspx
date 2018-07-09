@@ -37,7 +37,7 @@
                     <table style="height: 149px; width: 1179px">
                         <tr>
                             <td style="width: 643px; height: 156px;" valign="top">
-                                <asp:GridView ID="grdGastosOrdinarios" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="140px" OnRowCommand="grdGastosOrdinarios_RowCommand" OnRowDataBound="grdGastosOrdinarios_RowDataBound" style="margin-top: 0px; margin-left: 0px;" Width="622px">
+                                <asp:GridView ID="grdGastosFijos" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="140px" OnRowCommand="grdGastosFijos_RowCommand" OnRowDataBound="grdGastosFijos_RowDataBound" style="margin-top: 0px; margin-left: 0px;" Width="622px">
                                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                     <Columns>
                                         <asp:BoundField DataField="Detalle" HeaderText="Detalle">
@@ -114,7 +114,7 @@
                                             </tr>
                                             <tr>
                                                 <td style="height: 22px">Detalle</td><td style="height: 22px">
-                                                    <asp:TextBox ID="txtDetalle" runat="server" Width="379px" Height="20px"></asp:TextBox>
+                                                    <asp:TextBox ID="txtDetalleGastoFijo" runat="server" Width="379px" Height="20px"></asp:TextBox>
                                                 </td>
                                             </tr>
                                         </table>  
@@ -127,7 +127,7 @@
                                                     <asp:Label ID="Label2" runat="server" Text="Gasto"></asp:Label>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="txtGasto" runat="server" style="margin-left: 0px" Width="379px"></asp:TextBox>
+                                                    <asp:TextBox ID="txtGastoFijo" runat="server" style="margin-left: 0px" Width="379px"></asp:TextBox>
                                                 </td>
                                             </tr>
                                         </table>
@@ -146,10 +146,10 @@
                                         <table>
                                             <tr>
                                                 <td style="width: 100px; height: 51px">
-                                                    <asp:Button ID="btnAgregarGastoOrdinario" runat="server" Height="30px" OnClick="btnAgregarGastoOrdinario_Click" Text="Agregar" Width="90px" />
+                                                    <asp:Button ID="btnAgregarGastoOrdinario" runat="server" Height="30px" OnClick="btnAgregarGastoFijo_Click" Text="Agregar" Width="90px" />
                                                 </td>
                                                 <td style="height: 51px; width: 100px;">
-                                                    <asp:Button ID="btnCancelarGastoOrdinario" runat="server" Height="30px" OnClick="btnCancelarGastoOrdinario_Click" Text="Cancelar" Width="90px" />
+                                                    <asp:Button ID="btnCancelarGastoOrdinario" runat="server" Height="30px" OnClick="btnCancelarGastoFijo_Click" Text="Cancelar" Width="90px" />
                                                     &nbsp;</td>
                                             </tr>
                                         </table>
