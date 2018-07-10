@@ -264,6 +264,9 @@
     <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" />
     <NavigationProperty Name="Expensas" Relationship="ExpensasModel.FK_GastosEvOrdinariosDetalle_Expensas" FromRole="GastosEvOrd" ToRole="Expensas" />
+    <Property Name="ImporteCompra" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Proveedores_ID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ProveedoresCtaCte_ID" Type="Decimal" Precision="18" Scale="0" />
   </EntityType>
   <Association Name="FK_GastosEvOrdinariosDetalle_Expensas">
     <End Type="ExpensasModel.Expensas" Role="Expensas" Multiplicity="0..1" />

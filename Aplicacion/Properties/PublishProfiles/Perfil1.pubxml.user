@@ -9,13 +9,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/DAO.dll">
-      <publishTime>06/26/2018 00:19:32</publishTime>
+      <publishTime>07/09/2018 18:44:38</publishTime>
     </File>
     <File Include="bin/Negocio.dll">
-      <publishTime>06/26/2018 00:19:34</publishTime>
+      <publishTime>07/09/2018 18:44:39</publishTime>
     </File>
     <File Include="bin/Servicios.dll">
-      <publishTime>06/26/2018 00:19:33</publishTime>
+      <publishTime>07/09/2018 18:44:39</publishTime>
     </File>
     <File Include="bin/System.Data.Entity.dll">
       <publishTime>09/26/2012 03:16:08</publishTime>
@@ -24,7 +24,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/15/2018 13:45:39</publishTime>
     </File>
     <File Include="bin/WebSistemmas.dll">
-      <publishTime>06/26/2018 00:19:34</publishTime>
+      <publishTime>07/09/2018 18:44:40</publishTime>
     </File>
     <File Include="Cobranza/Cobros.aspx">
       <publishTime>02/05/2018 23:52:17</publishTime>
@@ -45,13 +45,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/05/2018 19:25:30</publishTime>
     </File>
     <File Include="Consorcios/ExpensaNueva.aspx">
-      <publishTime>06/19/2018 00:36:36</publishTime>
+      <publishTime>07/09/2018 18:37:18</publishTime>
     </File>
     <File Include="Consorcios/Expensas.aspx">
       <publishTime>02/07/2018 23:23:08</publishTime>
     </File>
     <File Include="Consorcios/ExpensaUFNueva.aspx">
-      <publishTime>03/08/2018 19:45:20</publishTime>
+      <publishTime>07/01/2018 19:43:47</publishTime>
     </File>
     <File Include="Consorcios/Gastos.aspx">
       <publishTime>03/07/2018 08:27:53</publishTime>
@@ -84,7 +84,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/09/2018 16:59:35</publishTime>
     </File>
     <File Include="Consorcios/UserControls/Error.ascx">
-      <publishTime>06/10/2018 20:07:52</publishTime>
+      <publishTime>07/01/2018 19:51:13</publishTime>
+    </File>
+    <File Include="Consorcios/UserControls/ExpensaNueva/GastosFijos.ascx">
+      <publishTime>06/30/2018 12:00:15</publishTime>
     </File>
     <File Include="Consorcios/UserControls/ExpensasUF/GridGastosEvExtUF.ascx">
       <publishTime>03/01/2018 17:14:23</publishTime>
@@ -177,7 +180,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/05/2018 19:25:30</publishTime>
     </File>
     <File Include="js/Expensas.js">
-      <publishTime>02/05/2018 19:25:30</publishTime>
+      <publishTime>07/01/2018 19:45:13</publishTime>
     </File>
     <File Include="js/Gastos.js">
       <publishTime>02/05/2018 19:25:30</publishTime>

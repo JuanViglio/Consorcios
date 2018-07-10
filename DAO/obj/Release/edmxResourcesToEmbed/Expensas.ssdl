@@ -60,6 +60,9 @@
     <Property Name="Detalle" Type="nvarchar" MaxLength="50" />
     <Property Name="Importe" Type="decimal" Precision="18" Scale="2" />
     <Property Name="Expensas_ID" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ImporteCompra" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Proveedores_ID" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ProveedoresCtaCte_ID" Type="decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="GastosFijos">
     <Key>

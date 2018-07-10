@@ -193,6 +193,9 @@
     <EntitySetMapping Name="GastosEvOrd">
       <EntityTypeMapping TypeName="ExpensasModel.GastosEvOrd">
         <MappingFragment StoreEntitySet="GastosEvOrd">
+          <ScalarProperty Name="ProveedoresCtaCte_ID" ColumnName="ProveedoresCtaCte_ID" />
+          <ScalarProperty Name="Proveedores_ID" ColumnName="Proveedores_ID" />
+          <ScalarProperty Name="ImporteCompra" ColumnName="ImporteCompra" />
           <ScalarProperty Name="Importe" ColumnName="Importe" />
           <ScalarProperty Name="Detalle" ColumnName="Detalle" />
           <ScalarProperty Name="ID" ColumnName="ID" />

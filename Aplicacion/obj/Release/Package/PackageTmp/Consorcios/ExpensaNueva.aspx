@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ExpensaNueva.aspx.cs" Inherits="WebSistemmas.Consorcios.ExpensaNueva" MasterPageFile="~/Consorcios/MenuConsorcios.Master" %>
+<%@ Register src="~/Consorcios/UserControls/Error.ascx" tagname="UserControl2" tagprefix="uc6" %>
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.3/jquery-confirm.min.css">
@@ -15,7 +16,6 @@
             <asp:scriptmanager id="Scriptmanager1" runat="server">
             </asp:scriptmanager>
         </p>
-
         <p style="color: #003399; font-size: large">
             &nbsp;
         </p>
@@ -23,15 +23,21 @@
             <asp:Label ID="lblTitulo" runat="server" Text="Nueva Expensa"></asp:Label>
         </p>
 
+        <asp:updatepanel id="UpdatePanel5" runat="server">
+            <ContentTemplate>
+                <uc6:UserControl2 ID="UserControl2ID" runat="server" />
+            </ContentTemplate>
+        </asp:updatepanel>        
+        
         <div id="accordion">
             <h3>Ingreso de Gastos Fijos</h3>
-            <div style="height: 159px">
+            <div style="height: 202px">
                 <asp:updatepanel id="UpdatePanel1" runat="server">
                     <ContentTemplate>
                     <table style="height: 149px; width: 1179px">
                         <tr>
                             <td style="width: 643px; height: 156px;" valign="top">
-                                <asp:GridView ID="grdGastosOrdinarios" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="140px" OnRowCommand="grdGastosOrdinarios_RowCommand" OnRowDataBound="grdGastosOrdinarios_RowDataBound" style="margin-top: 0px; margin-left: 0px;" Width="622px">
+                                <asp:GridView ID="grdGastosFijos" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="140px" OnRowCommand="grdGastosFijos_RowCommand" OnRowDataBound="grdGastosFijos_RowDataBound" style="margin-top: 0px; margin-left: 0px;" Width="622px">
                                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                     <Columns>
                                         <asp:BoundField DataField="Detalle" HeaderText="Detalle">
@@ -108,7 +114,7 @@
                                             </tr>
                                             <tr>
                                                 <td style="height: 22px">Detalle</td><td style="height: 22px">
-                                                    <asp:TextBox ID="txtDetalle" runat="server" Width="379px" Height="20px"></asp:TextBox>
+                                                    <asp:TextBox ID="txtDetalleGastoFijo" runat="server" Width="379px" Height="20px"></asp:TextBox>
                                                 </td>
                                             </tr>
                                         </table>  
@@ -121,7 +127,7 @@
                                                     <asp:Label ID="Label2" runat="server" Text="Gasto"></asp:Label>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="txtGasto" runat="server" style="margin-left: 0px" Width="379px"></asp:TextBox>
+                                                    <asp:TextBox ID="txtGastoFijo" runat="server" style="margin-left: 0px" Width="379px"></asp:TextBox>
                                                 </td>
                                             </tr>
                                         </table>
@@ -140,10 +146,10 @@
                                         <table>
                                             <tr>
                                                 <td style="width: 100px; height: 51px">
-                                                    <asp:Button ID="btnAgregarGastoOrdinario" runat="server" Height="30px" OnClick="btnAgregarGastoOrdinario_Click" Text="Agregar" Width="90px" />
+                                                    <asp:Button ID="btnAgregarGastoOrdinario" runat="server" Height="30px" OnClick="btnAgregarGastoFijo_Click" Text="Agregar" Width="90px" />
                                                 </td>
                                                 <td style="height: 51px; width: 100px;">
-                                                    <asp:Button ID="btnCancelarGastoOrdinario" runat="server" Height="30px" OnClick="btnCancelarGastoOrdinario_Click" Text="Cancelar" Width="90px" />
+                                                    <asp:Button ID="btnCancelarGastoOrdinario" runat="server" Height="30px" OnClick="btnCancelarGastoFijo_Click" Text="Cancelar" Width="90px" />
                                                     &nbsp;</td>
                                             </tr>
                                         </table>
@@ -170,7 +176,10 @@
                         <asp:BoundField DataField="Detalle" HeaderText="Detalle">
                         <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
                         </asp:BoundField>
-                        <asp:BoundField DataField="Importe" HeaderText="Importe">
+                        <asp:BoundField DataField="ImporteCompra" HeaderText="Importe Compra">
+                        <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="Importe" HeaderText="Importe Venta">
                         <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
                         </asp:BoundField>
                         <asp:BoundField DataField="ID" HeaderText="ID">
@@ -221,7 +230,7 @@
                                 <asp:Label ID="Label6" runat="server" Text="Detalle"></asp:Label>
                             </td>
                             <td>
-                                <asp:TextBox ID="txtDetalleEvOrd" runat="server" Width="380px" style="margin-left: 0px"></asp:TextBox>
+                                <asp:TextBox ID="txtDetalleGastoEvOrd" runat="server" Width="380px" style="margin-left: 0px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -229,7 +238,7 @@
                                 <asp:Label ID="Label13" runat="server" Text="Proveedor"></asp:Label>
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlProveedoresEvOrd" runat="server" autopostback="true" Height="23px" Width="380px" OnSelectedIndexChanged="ddlProveedores_SelectedIndexChanged">
+                                <asp:DropDownList ID="ddlProveedoresEvOrd" runat="server" autopostback="true" Height="23px" Width="380px" OnSelectedIndexChanged="ddlProveedoresEvOrd_SelectedIndexChanged">
                                 </asp:DropDownList>
                             </td>
                         </tr>
@@ -238,7 +247,7 @@
                                 <asp:Label ID="Label14" runat="server" Text="Importe Compra"></asp:Label>
                             </td>
                             <td style="height: 23px">
-                                <asp:TextBox ID="txtImporteCompraEvOrd" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
+                                <asp:TextBox ID="txtImporteCompraGastoEvOrd" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -270,7 +279,7 @@
             <h3>Ingreso de Gastos Eventuales Extraordinarios</h3>
             <asp:updatepanel id="UpdatePanel3" runat="server">
             <ContentTemplate>
-                <div>        
+                <div style="height: 182px">        
                     <table>
         <tr>
             <td style="width: 643px; height: 109px;">
@@ -323,7 +332,7 @@
                                 <asp:Label ID="Label3" runat="server" Text="Detalle"></asp:Label>
                             </td>
                             <td>
-                                <asp:TextBox ID="txtDetalleGastoExtraordinario" runat="server" Width="380px" style="margin-left: 0px"></asp:TextBox>
+                                <asp:TextBox ID="txtDetalleGastoEvExt" runat="server" Width="380px" style="margin-left: 0px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -331,7 +340,7 @@
                                 <asp:Label ID="Label11" runat="server" Text="Proveedor"></asp:Label>
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlProveedoresEvExt" runat="server" autopostback="true" Height="23px" Width="380px" OnSelectedIndexChanged="ddlProveedores_SelectedIndexChanged">
+                                <asp:DropDownList ID="ddlProveedoresEvExt" runat="server" autopostback="true" Height="23px" Width="380px" OnSelectedIndexChanged="ddlProveedoresEvExt_SelectedIndexChanged">
                                 </asp:DropDownList>
                             </td>
                         </tr>
@@ -340,7 +349,7 @@
                                 <asp:Label ID="Label12" runat="server" Text="Importe Compra"></asp:Label>
                             </td>
                             <td>
-                                <asp:TextBox ID="txtImporteCompraGastoExt" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
+                                <asp:TextBox ID="txtImporteCompraGastoEvExt" runat="server" Width="140px" BorderStyle="Solid"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -353,7 +362,7 @@
                         </tr>
                         <tr>
                             <td style="width: 203px; height: 53px">
-                                <asp:Button ID="btnAgregarGastoExt" runat="server" Height="30px" OnClick="btnAgregarGastoExt_Click" Text="Agregar" Width="90px" />
+                                <asp:Button ID="btnAgregarGastoEvExt" runat="server" Height="30px" OnClick="btnAgregarGastoExt_Click" Text="Agregar" Width="90px" />
                             </td>
                             <td style="height: 53px">
                                 <asp:Button ID="btnCancelarGastoEvExt" runat="server" Height="30px" OnClick="btnCancelarGastoEvExt_Click" Text="Cancelar" Width="90px" />
@@ -408,9 +417,6 @@
             </tr>
         </table>
 
-        <div id="divError" runat="server" style="color: #003399; font-size: large; height: 36px;">
-            <asp:label id="lblError" runat="server" forecolor="Red" style="text-align: left">miError</asp:label>
-        </div>
         </ContentTemplate>
         </asp:updatepanel>
     </form>

@@ -77,11 +77,13 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Consorcios\Balances.aspx" />
     <Content Include="Consorcios\CargarGastos.aspx" />
     <Content Include="Cobranza\Cobros.aspx" />
     <Content Include="Consorcios\CtaCteProveedor.aspx" />
     <Content Include="Consorcios\Detalles.aspx" />
     <Content Include="Consorcios\ExpensaUFNueva.aspx" />
+    <Content Include="Consorcios\GastosOperativos.aspx" />
     <Content Include="Consorcios\GastosParticulares.aspx" />
     <Content Include="Consorcios\Proveedores.aspx" />
     <Content Include="Consorcios\SeguroNuevo.aspx" />
@@ -102,6 +104,7 @@
     <Content Include="Consorcios\UserControls\Seguros\GridSeguroDetalle.ascx" />
     <Content Include="Consorcios\UserControls\Seguros\GridSeguros.ascx" />
     <Content Include="Consorcios\UserControls\Titulo.ascx" />
+    <Content Include="Consorcios\Utilidades.aspx" />
     <Content Include="css\img\Cruz-roja.jpg" />
     <Content Include="css\img\ico_mas.jpg" />
     <Content Include="css\jquery-ui-1.8.16.custom.css" />
@@ -145,6 +148,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Constantes.cs" />
+    <Compile Include="Consorcios\Balances.aspx.cs">
+      <DependentUpon>Balances.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\Balances.aspx.designer.cs">
+      <DependentUpon>Balances.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Consorcios\CargarGastos.aspx.cs">
       <DependentUpon>CargarGastos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -211,6 +221,13 @@
     </Compile>
     <Compile Include="Consorcios\Gastos.aspx.designer.cs">
       <DependentUpon>Gastos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\GastosOperativos.aspx.cs">
+      <DependentUpon>GastosOperativos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\GastosOperativos.aspx.designer.cs">
+      <DependentUpon>GastosOperativos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Consorcios\GastosParticulares.aspx.cs">
       <DependentUpon>GastosParticulares.aspx</DependentUpon>
@@ -365,6 +382,13 @@
     </Compile>
     <Compile Include="Consorcios\UserControls\Titulo.ascx.designer.cs">
       <DependentUpon>Titulo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\Utilidades.aspx.cs">
+      <DependentUpon>Utilidades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\Utilidades.aspx.designer.cs">
+      <DependentUpon>Utilidades.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
