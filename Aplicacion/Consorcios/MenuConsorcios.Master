@@ -27,7 +27,7 @@
                 <li id="seguros"><a href="../Consorcios/Seguros.aspx#seguros">Seguros</a></li>
                 <li id="balances"><a href="../Consorcios/Balances.aspx#balances">Balances</a></li>
                 <li id="utilidades"><a href="../Consorcios/Utilidades.aspx#utilidades">Utilidades</a></li>
-                <li id="gastosoperativos"><a href="../Consorcios/gastosoperativos.aspx#gastosoperativos">Gastos Operativos</a></li>
+                <li id="caja"><a href="../Consorcios/Caja.aspx#caja">Caja</a></li>
             </ul>
         </nav>
 

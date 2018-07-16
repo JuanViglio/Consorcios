@@ -311,5 +311,24 @@
         <ScalarProperty Name="ID" ColumnName="Seguros_ID" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="UnidadesFuncionalesCtaCte">
+      <EntityTypeMapping TypeName="ExpensasModel.UnidadesFuncionalesCtaCte">
+        <MappingFragment StoreEntitySet="UnidadesFuncionalesCtaCte">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+          <ScalarProperty Name="Haber" ColumnName="Haber" />
+          <ScalarProperty Name="Debe" ColumnName="Debe" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_UnidadesFuncionalesCtaCte_UnidadesFuncionales" TypeName="ExpensasModel.FK_UnidadesFuncionalesCtaCte_UnidadesFuncionales" StoreEntitySet="UnidadesFuncionalesCtaCte">
+      <EndProperty Name="UnidadesFuncionalesCtaCte">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <EndProperty Name="UnidadesFuncionales">
+        <ScalarProperty Name="ID" ColumnName="UnidadesFuncionales_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

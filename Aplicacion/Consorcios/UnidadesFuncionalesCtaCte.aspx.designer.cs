@@ -10,7 +10,7 @@
 namespace WebSistemmas.Consorcios {
     
     
-    public partial class GastosOperativos {
+    public partial class UnidadesFuncionalesCtaCte {
         
         /// <summary>
         /// form1 control.
@@ -29,5 +29,14 @@ namespace WebSistemmas.Consorcios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::WebSistemmas.Consorcios.UserControls.Titulo tituloPaginaID;
+        
+        /// <summary>
+        /// gridUnidadesFuncionalesCtaCteID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UserControl gridUnidadesFuncionalesCtaCteID;
     }
 }

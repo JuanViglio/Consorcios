@@ -18,5 +18,7 @@ namespace Servicios.Interfaces
         List<UnidadesFuncionalesModel> GetPagos(string consorciosID, int Periodo);
 
         List<UnidadesFuncionalesModel> GetPagosConCochera(string consorciosID, int Periodo, bool agregarValorCochera);
+
+        List<UnidadesFuncionalesCtaCte> GetCtaCte(decimal idUF);
     }
 }

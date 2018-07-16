@@ -24,13 +24,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/15/2018 13:45:39</publishTime>
     </File>
     <File Include="bin/WebSistemmas.dll">
-      <publishTime>07/09/2018 18:44:40</publishTime>
+      <publishTime>07/09/2018 22:35:49</publishTime>
     </File>
     <File Include="Cobranza/Cobros.aspx">
       <publishTime>02/05/2018 23:52:17</publishTime>
     </File>
     <File Include="Cobranza/MenuCobranza.Master">
       <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="Consorcios/Balances.aspx">
+      <publishTime>07/09/2018 22:32:48</publishTime>
     </File>
     <File Include="Consorcios/CargarGastos.aspx">
       <publishTime>02/05/2018 19:25:30</publishTime>
@@ -56,11 +59,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Consorcios/Gastos.aspx">
       <publishTime>03/07/2018 08:27:53</publishTime>
     </File>
+    <File Include="Consorcios/GastosOperativos.aspx">
+      <publishTime>07/09/2018 22:32:54</publishTime>
+    </File>
     <File Include="Consorcios/GastosParticulares.aspx">
       <publishTime>02/28/2018 19:59:05</publishTime>
     </File>
     <File Include="Consorcios/MenuConsorcios.Master">
-      <publishTime>04/13/2018 17:09:48</publishTime>
+      <publishTime>07/09/2018 22:29:21</publishTime>
     </File>
     <File Include="Consorcios/Privado.aspx">
       <publishTime>02/05/2018 23:56:35</publishTime>
@@ -121,6 +127,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Consorcios/UserControls/Titulo.ascx">
       <publishTime>03/07/2018 09:03:02</publishTime>
+    </File>
+    <File Include="Consorcios/Utilidades.aspx">
+      <publishTime>07/09/2018 22:32:23</publishTime>
     </File>
     <File Include="css/img/bg_tile.jpg">
       <publishTime>02/05/2018 19:25:30</publishTime>

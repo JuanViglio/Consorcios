@@ -7,13 +7,13 @@ using System.Web.UI.WebControls;
 
 namespace WebSistemmas.Consorcios
 {
-    public partial class GastosOperativos : System.Web.UI.Page
+    public partial class Caja : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                tituloPaginaID.CargarTitulo("Gastos Opertivos");
+                tituloPaginaID.CargarTitulo("Caja");
             }
         }
     }

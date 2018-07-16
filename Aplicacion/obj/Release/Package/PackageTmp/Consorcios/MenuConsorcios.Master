@@ -25,7 +25,9 @@
                 <li id="gastos"><a href="../Consorcios/Gastos.aspx#gastos">Gastos</a></li>
                 <li id="proveedores"><a href="../Consorcios/Proveedores.aspx#proveedores">Proveedores</a></li>
                 <li id="seguros"><a href="../Consorcios/Seguros.aspx#seguros">Seguros</a></li>
-
+                <li id="balances"><a href="../Consorcios/Balances.aspx#balances">Balances</a></li>
+                <li id="utilidades"><a href="../Consorcios/Utilidades.aspx#utilidades">Utilidades</a></li>
+                <li id="gastosoperativos"><a href="../Consorcios/gastosoperativos.aspx#gastosoperativos">Gastos Operativos</a></li>
             </ul>
         </nav>
 

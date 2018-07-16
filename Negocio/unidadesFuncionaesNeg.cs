@@ -1,4 +1,5 @@
 ﻿using DAO;
+using Negocio.Interfaces;
 using Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Negocio
 {
-    public class unidadesFuncionaesNeg
+    public class unidadesFuncionaesNeg : IUnidadesFuncionalesNeg
     {
         readonly IUnidadesServ _unidadesServ;
         readonly IPagosServ _pagosServ;
@@ -62,6 +63,11 @@ namespace Negocio
                     GuardarGastosParticulares(row, importe, detalle, importePorUF, tipoGasto);
                 }
             }
+        }
+
+        public List<UnidadesFuncionalesCtaCte> GetCtaCte(decimal idUF)
+        {
+            return _unidadesServ.GetCtaCte(idUF);
         }
     }
 }

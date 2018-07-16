@@ -36,6 +36,8 @@
         <EntityTypeShape EntityType="ExpensasModel.Seguros" Width="1.5" PointX="13.75" PointY="3.25" />
         <AssociationConnector Association="ExpensasModel.FK_Seguros_Consorcios" />
         <AssociationConnector Association="ExpensasModel.FK_SegurosDetalle_Seguros" />
+        <EntityTypeShape EntityType="ExpensasModel.UnidadesFuncionalesCtaCte" Width="2.125" PointX="11.625" PointY="7.375" />
+        <AssociationConnector Association="ExpensasModel.FK_UnidadesFuncionalesCtaCte_UnidadesFuncionales" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

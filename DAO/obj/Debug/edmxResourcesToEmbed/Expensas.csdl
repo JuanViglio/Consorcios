@@ -114,6 +114,11 @@
       <End Role="Seguros" EntitySet="Seguros" />
       <End Role="SegurosDetalle" EntitySet="SegurosDetalle" />
     </AssociationSet>
+    <EntitySet Name="UnidadesFuncionalesCtaCte" EntityType="ExpensasModel.UnidadesFuncionalesCtaCte" />
+    <AssociationSet Name="FK_UnidadesFuncionalesCtaCte_UnidadesFuncionales" Association="ExpensasModel.FK_UnidadesFuncionalesCtaCte_UnidadesFuncionales">
+      <End Role="UnidadesFuncionales" EntitySet="UnidadesFuncionales" />
+      <End Role="UnidadesFuncionalesCtaCte" EntitySet="UnidadesFuncionalesCtaCte" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="UnidadesFuncionales">
     <Key>
@@ -128,6 +133,7 @@
     <Property Name="Departamento" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
     <Property Name="Cochera" Type="Boolean" />
     <NavigationProperty Name="Pagos" Relationship="ExpensasModel.FK_Pagos_UF" FromRole="UnidadesFuncionales" ToRole="Pagos" />
+    <NavigationProperty Name="UnidadesFuncionalesCtaCte" Relationship="ExpensasModel.FK_UnidadesFuncionalesCtaCte_UnidadesFuncionales" FromRole="UnidadesFuncionales" ToRole="UnidadesFuncionalesCtaCte" />
   </EntityType>
   <Association Name="FK_UnidadesFuncionales_Consorcios">
     <End Type="ExpensasModel.Consorcios" Role="Consorcios" Multiplicity="1" />
@@ -349,5 +355,20 @@
   <Association Name="FK_SegurosDetalle_Seguros">
     <End Type="ExpensasModel.Seguros" Role="Seguros" Multiplicity="1" />
     <End Type="ExpensasModel.SegurosDetalle" Role="SegurosDetalle" Multiplicity="*" />
+  </Association>
+  <EntityType Name="UnidadesFuncionalesCtaCte">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Debe" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Haber" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="UnidadesFuncionales" Relationship="ExpensasModel.FK_UnidadesFuncionalesCtaCte_UnidadesFuncionales" FromRole="UnidadesFuncionalesCtaCte" ToRole="UnidadesFuncionales" />
+  </EntityType>
+  <Association Name="FK_UnidadesFuncionalesCtaCte_UnidadesFuncionales">
+    <End Type="ExpensasModel.UnidadesFuncionales" Role="UnidadesFuncionales" Multiplicity="1" />
+    <End Type="ExpensasModel.UnidadesFuncionalesCtaCte" Role="UnidadesFuncionalesCtaCte" Multiplicity="*" />
   </Association>
 </Schema>

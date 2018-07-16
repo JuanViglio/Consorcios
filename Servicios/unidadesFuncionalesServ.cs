@@ -202,5 +202,10 @@ namespace Servicios
 
             return GetUnidadesFuncionales(idConsorcio);
         }
+
+        public List<UnidadesFuncionalesCtaCte> GetCtaCte(decimal idUF)
+        {
+            return context.UnidadesFuncionalesCtaCte.Where(x => x.ID == idUF).ToList();
+        }
     }
 }

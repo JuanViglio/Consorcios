@@ -62,6 +62,10 @@ namespace WebSistemmas.Consorcios
                             ddlCochera.SelectedValue = GridViewrow.Cells[col_cochera].Text;
                             break;
 
+                        case "CTACTE":
+                            Response.Redirect("UnidadesFuncionalesCtaCte.aspx#consorcios");
+                            break;
+
                         default:
                             break;
                     }
