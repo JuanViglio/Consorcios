@@ -72,6 +72,9 @@
                     <asp:BoundField DataField="ID" HeaderText="Numero">
                     <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
                     </asp:BoundField>
+                    <asp:BoundField DataField="UF" HeaderText="UF">
+                    <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
+                    </asp:BoundField>
                     <asp:BoundField DataField="Apellido" HeaderText="Apellido">
                     <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
                     </asp:BoundField>
@@ -132,6 +135,8 @@
                 </td>
             </tr>
         </table>
+        <br />
+        <asp:Label ID="lblError" runat="server" Font-Size="Large" ForeColor="Red"></asp:Label>
     </form>
 </asp:Content>
 

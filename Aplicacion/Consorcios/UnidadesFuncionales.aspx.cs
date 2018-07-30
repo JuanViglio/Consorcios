@@ -16,6 +16,7 @@ namespace WebSistemmas.Consorcios
         private const int col_coeficiente = 5;
         private const int col_idUF = 6;
 
+        #region Constructor y Page_Load
         public UnidadesFuncionales()
         {
             _serv = new unidadesFuncionalesServ();
@@ -30,8 +31,9 @@ namespace WebSistemmas.Consorcios
                 grdUnidades.DataBind();
             }
         }
+        #endregion
 
-
+        #region grdUnidades
         protected void grdUnidades_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             GridViewRow GridViewrow = null;
@@ -77,6 +79,13 @@ namespace WebSistemmas.Consorcios
             }
         }
 
+        protected void grdUnidades_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            e.Row.Cells[col_idUF].Visible = false;
+        }
+        #endregion
+
+        #region Botones
         protected void btnAceptarModificar_Click(object sender, EventArgs e)
         {
             lblError.Text = "";
@@ -177,14 +186,10 @@ namespace WebSistemmas.Consorcios
             }
         }
 
-        protected void grdUnidades_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            e.Row.Cells[col_idUF].Visible = false;
-        }
-
         protected void btnVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect("Consorcios.aspx#consorcios");
         }
+        #endregion
     }
 }

@@ -49,7 +49,8 @@ namespace Negocio.Test
             _mockExpensasServ.Setup(x => x.GetDatosExpensa(expensaId)).Returns(expensa);
             _mockExpensasServ.Setup(x => x.GetUnidadesFuncionales(expensa.ConsorcioId)).Returns(unidadesFuncionales);
             _mockPagosServ.Setup(x => x.GetPagos(expensa.PeriodoNumerico, expensa.ConsorcioId)).Returns(pagos);
-            _mockPagosServ.Setup(x => x.AddPagos(expensa.ConsorcioId, uf, gastosExtraordinarios, totalGastosOrdinarios, expensa.PeriodoNumerico, gastosOrdinarios, expensasDetalle));
+            _mockPagosServ.Setup(x => x.AddPagos(expensa.ConsorcioId, uf, gastosExtraordinarios, totalGastosOrdinarios, expensa.PeriodoNumerico, 
+                gastosOrdinarios, expensasDetalle, expensa.PeriodoDetalle));
             _mockExpensasServ.Setup(x => x.CambiarEstadoExpensa(expensaId, Constantes.EstadoAceptado)).Returns(true);
 
             var respuesta = _expensasNeg.AceptarExpensa(expensaId, "400", "50");
@@ -79,7 +80,7 @@ namespace Negocio.Test
             _mockExpensasServ.Setup(x => x.GetDatosExpensa(expensaId)).Returns(expensa);
             _mockExpensasServ.Setup(x => x.GetUnidadesFuncionales(expensa.ConsorcioId)).Returns(unidadesFuncionales);
             _mockPagosServ.Setup(x => x.GetPagos(expensa.PeriodoNumerico, expensa.ConsorcioId)).Returns(pagos);
-            _mockPagosServ.Setup(x => x.UpdatePagos(expensa.ConsorcioId, uf, gastosExtraordinarios, totalGastosOrdinarios, expensa.PeriodoNumerico));
+            _mockPagosServ.Setup(x => x.UpdatePagos(expensa.ConsorcioId, uf, gastosExtraordinarios, totalGastosOrdinarios, expensa.PeriodoNumerico, expensa.PeriodoDetalle));
             _mockExpensasServ.Setup(x => x.CambiarEstadoExpensa(expensaId, Constantes.EstadoAceptado)).Returns(true);
 
             var respuesta = _expensasNeg.AceptarExpensa(expensaId, "400", "50");
@@ -136,7 +137,7 @@ namespace Negocio.Test
             _mockExpensasServ.Setup(x => x.GetDatosExpensa(expensaId)).Returns(expensa);
             _mockExpensasServ.Setup(x => x.GetUnidadesFuncionales(expensa.ConsorcioId)).Returns(unidadesFuncionales);
             _mockPagosServ.Setup(x => x.GetPagos(expensa.PeriodoNumerico, expensa.ConsorcioId)).Returns(pagos);
-            _mockPagosServ.Setup(x => x.UpdatePagos(expensa.ConsorcioId, uf, gastosExtraordinarios, totalGastosOrdinarios, expensa.PeriodoNumerico));
+            _mockPagosServ.Setup(x => x.UpdatePagos(expensa.ConsorcioId, uf, gastosExtraordinarios, totalGastosOrdinarios, expensa.PeriodoNumerico, expensa.PeriodoDetalle));
             _mockExpensasServ.Setup(x => x.CambiarEstadoExpensa(expensaId, Constantes.EstadoAceptado)).Returns(false);
 
             var respuesta = _expensasNeg.AceptarExpensa(expensaId, "400", "50");

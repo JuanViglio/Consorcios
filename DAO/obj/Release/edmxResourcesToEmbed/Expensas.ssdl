@@ -188,6 +188,17 @@
     <Property Name="Departamento" Type="nvarchar" MaxLength="5" />
     <Property Name="Cochera" Type="bit" />
   </EntityType>
+  <EntityType Name="UnidadesFuncionalesCtaCte">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="UnidadesFuncionales_ID" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Debe" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="Haber" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="Detalle" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fecha" Type="date" />
+  </EntityType>
   <Association Name="FK_Detalles_Consorcios">
     <End Role="Consorcios" Type="Self.Consorcios" Multiplicity="1" />
     <End Role="Detalles" Type="Self.Detalles" Multiplicity="*" />
@@ -356,6 +367,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_UnidadesFuncionalesCtaCte_UnidadesFuncionales">
+    <End Role="UnidadesFuncionales" Type="Self.UnidadesFuncionales" Multiplicity="1" />
+    <End Role="UnidadesFuncionalesCtaCte" Type="Self.UnidadesFuncionalesCtaCte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UnidadesFuncionales">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UnidadesFuncionalesCtaCte">
+        <PropertyRef Name="UnidadesFuncionales_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="ExpensasModelStoreContainer">
     <EntitySet Name="Consorcios" EntityType="Self.Consorcios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Detalles" EntityType="Self.Detalles" Schema="dbo" store:Type="Tables" />
@@ -373,6 +396,7 @@
     <EntitySet Name="SegurosDetalle" EntityType="Self.SegurosDetalle" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoGastos" EntityType="Self.TipoGastos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UnidadesFuncionales" EntityType="Self.UnidadesFuncionales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UnidadesFuncionalesCtaCte" EntityType="Self.UnidadesFuncionalesCtaCte" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Detalles_Consorcios" Association="Self.FK_Detalles_Consorcios">
       <End Role="Consorcios" EntitySet="Consorcios" />
       <End Role="Detalles" EntitySet="Detalles" />
@@ -428,6 +452,10 @@
     <AssociationSet Name="FK_UnidadesFuncionales_Consorcios" Association="Self.FK_UnidadesFuncionales_Consorcios">
       <End Role="Consorcios" EntitySet="Consorcios" />
       <End Role="UnidadesFuncionales" EntitySet="UnidadesFuncionales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UnidadesFuncionalesCtaCte_UnidadesFuncionales" Association="Self.FK_UnidadesFuncionalesCtaCte_UnidadesFuncionales">
+      <End Role="UnidadesFuncionales" EntitySet="UnidadesFuncionales" />
+      <End Role="UnidadesFuncionalesCtaCte" EntitySet="UnidadesFuncionalesCtaCte" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

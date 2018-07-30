@@ -1,5 +1,6 @@
 ﻿using DAO;
 using Servicios;
+using Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
@@ -8,16 +9,64 @@ namespace WebSistemmas.Consorcios
 {
     public partial class Expensas : System.Web.UI.Page
     {
-        private const int col_PeriodoExpensa = 0;
-        private const int col_Coeficiente = 2;
+        private const int col_PeriodoExpensa = 0;        
         private const int col_Expensa_ID = 3;
         private const int col_Periodo = 6;
-        private const int col_Pago_ID = 4;
-        private const int gridUF_col_Apellido = 1;
-        private const int gridUF_col_Nombre = 2;
 
+        private const int gridUF_col_ID = 0;
+        private const int gridUF_col_Apellido = 2;
+        private const int gridUF_col_Nombre = 3;
+        private const int col_Coeficiente = 4;
+        private const int col_Pago_ID = 5;
         private ExpensasEntities context = new ExpensasEntities();
 
+        #region Metodos Privados
+        private void CargarGrillaExpensas()
+        {
+            expensasServ serv = new expensasServ(context);
+
+            grdExpensas.DataSource = serv.GetExpensas(Session["idConsorcio"].ToString());
+            grdExpensas.DataBind();
+        }
+
+        private void GuardarPagos_y_UnidadesFuncionaesCtaCte(unidadesFuncionalesServ _unidadesFuncionalesServ,
+            expensasServ _expensasServ, pagosServ _pagosServ)
+        {
+            Dictionary<decimal, UnidadesFuncionalesModel> map = (Dictionary<decimal, UnidadesFuncionalesModel>)Session["MapPagoId"];
+
+            foreach (var item in map)
+            {
+                var pago = _unidadesFuncionalesServ.GetPago(item.Value.PagoId);
+                int expensaID = Convert.ToInt32(Session["ExpensaId"]);
+                var PagoId = pago.ID.ToString();
+                decimal coeficiente = pago.Coeficiente;
+                decimal gastosOrdinarios = _expensasServ.GetTotalGastosOrdinarios(expensaID);
+                decimal gastosExtraordinarios = _expensasServ.GetTotalGastosExtraordinarios(expensaID);
+                decimal subtotalGastoOrdinario = gastosOrdinarios * coeficiente / 100;
+                decimal subtotalGastoExtraordinario = gastosExtraordinarios * coeficiente / 100;
+                decimal subtotalGastoCocheraOrd = _pagosServ.GetTotalGastosEvOrdinariosUF(int.Parse(PagoId));
+                decimal subtotalGastoCocheraExt = _pagosServ.GetTotalGastosEvExtUF(int.Parse(PagoId));
+                decimal importeGastoParticular = pago.ImporteGastoParticular;
+
+                //GARDAR en PAGOS y en UnidadFuncionalCtaCte
+                pago.ImportePago1 = subtotalGastoOrdinario + subtotalGastoExtraordinario + subtotalGastoCocheraOrd + subtotalGastoCocheraExt + importeGastoParticular;
+                _pagosServ.ActualizarImportePago1(pago);
+
+                DAO.UnidadesFuncionalesCtaCte ufCtaCte = new DAO.UnidadesFuncionalesCtaCte()
+                {
+                    UnidadesFuncionales = _unidadesFuncionalesServ.GetUnidadFuncional(Session["idConsorcio"].ToString(), item.Value.UF), 
+                    Haber = pago.ImportePago1,
+                    Fecha = DateTime.Now,               
+                    Detalle = "Expensa " + item.Value.PeriodoDetalle
+                };
+
+                _unidadesFuncionalesServ.AddHaber(ufCtaCte);
+
+            }
+        }
+        #endregion
+
+        #region Page_Load
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -37,15 +86,9 @@ namespace WebSistemmas.Consorcios
                 }
             }
         }
+        #endregion
 
-        private void CargarGrillaExpensas()
-        {
-            expensasServ serv = new expensasServ(context);
-
-            grdExpensas.DataSource = serv.GetExpensas(Session["idConsorcio"].ToString());
-            grdExpensas.DataBind();
-        }
-
+        #region Grilla grdExpensas
         protected void grdExpensas_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             GridViewRow GridViewrow = null;
@@ -58,7 +101,7 @@ namespace WebSistemmas.Consorcios
                     GridViewrow = (GridViewRow)_ImgButton.NamingContainer;
 
                     string Tipo = e.CommandName.ToUpper();
-                    //lblError.Text = "";
+                    lblError.Text = "";
 
                     switch (Tipo)
                     {
@@ -124,11 +167,24 @@ namespace WebSistemmas.Consorcios
             }
             catch (Exception ex)
             {
-                //lblError.Text = ex.Message;
+                lblError.Text = ex.Message;
             }
 
         }
 
+        protected void grdExpensas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void grdExpensas_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            e.Row.Cells[col_Expensa_ID].Visible = false;
+            e.Row.Cells[col_Periodo].Visible = false;
+        }
+        #endregion
+
+        #region Grilla grdUnidades
         protected void grdUnidades_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             ImageButton _ImgButton = (ImageButton)e.CommandSource;
@@ -142,6 +198,14 @@ namespace WebSistemmas.Consorcios
             Response.Redirect("ExpensaUFNueva.aspx", false);
         }
 
+        protected void grdUnidades_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            e.Row.Cells[col_Pago_ID].Visible = false;
+            e.Row.Cells[gridUF_col_ID].Visible = false;
+        }
+        #endregion
+
+        #region Botones
         protected void btnNuevaExpensa_Click(object sender, EventArgs e)
         {
             expensasServ serv = new expensasServ(context);
@@ -161,31 +225,22 @@ namespace WebSistemmas.Consorcios
             }
         }
 
-        protected void grdExpensas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void grdExpensas_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            e.Row.Cells[col_Expensa_ID].Visible = false;
-            e.Row.Cells[col_Periodo].Visible = false;
-        }
-
         protected void btnAceptarExpensasUF_Click(object sender, EventArgs e)
         {
             string confirmValue = Request.Form["confirm_value"];
             if (confirmValue == "Si")
             {
-                unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
+                unidadesFuncionalesServ _unidadesFuncionalesServ = new unidadesFuncionalesServ();
+                expensasServ _expensasServ = new expensasServ(context);
+                pagosServ _pagosServ = new pagosServ(context);
 
-                serv.FinalizarPagos(Session["idConsorcio"].ToString(), Convert.ToInt32(Session["PeriodoNumerico"].ToString()));
+                _unidadesFuncionalesServ.FinalizarPagos(Session["idConsorcio"].ToString(), Convert.ToInt32(Session["PeriodoNumerico"].ToString()));
+
+                GuardarPagos_y_UnidadesFuncionaesCtaCte(_unidadesFuncionalesServ, _expensasServ, _pagosServ);
 
                 grdUnidades.DataSource = "";
                 grdUnidades.DataBind();
                 divBotonesUF.Visible = false;
-
-                CargarGrillaExpensas();
             }
 
             expensasServ expensasServ = new expensasServ(context);
@@ -212,11 +267,6 @@ namespace WebSistemmas.Consorcios
             }
         }
 
-        protected void grdUnidades_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            e.Row.Cells[col_Pago_ID].Visible = false;
-        }
-
         protected void btnVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect("Consorcios.aspx#consorcios");
@@ -226,5 +276,6 @@ namespace WebSistemmas.Consorcios
         {
             Response.Redirect("GastosParticulares.aspx#consorcios");
         }
+        #endregion
     }
 }

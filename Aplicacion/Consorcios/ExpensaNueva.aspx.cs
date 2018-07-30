@@ -233,7 +233,19 @@ namespace WebSistemmas.Consorcios
 
         #endregion
 
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static List<string> OnSubmit(string tipoGastoID)
+        {
+            ExpensasEntities context = new ExpensasEntities();
+            gastosServ gastosServ = new gastosServ(context);
 
+            var gastos = gastosServ.GetDetalleGastos(Convert.ToInt32(tipoGastoID)).ToList();
+
+            return gastos.Select(i => i.Detalle).ToList();
+        }
+
+        #region Constructor y Page_Load
         public ExpensaNueva()
         {
             ExpensasEntities context = new ExpensasEntities();
@@ -249,18 +261,6 @@ namespace WebSistemmas.Consorcios
             _segurosNeg = new segurosNeg(_segurosServ,_consorciosServ, _expensasServ);
             _expensaNeg = new expensasNeg(_expensasServ, _pagosServ);
             _proveedoresNeg = new proveedoresNeg(_proveedoresServ);
-        }
-
-        [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static List<string> OnSubmit(string tipoGastoID)
-        {
-            ExpensasEntities context = new ExpensasEntities();
-            gastosServ gastosServ = new gastosServ(context);
-
-            var gastos = gastosServ.GetDetalleGastos(Convert.ToInt32(tipoGastoID)).ToList();
-
-            return gastos.Select(i => i.Detalle).ToList();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -289,6 +289,7 @@ namespace WebSistemmas.Consorcios
                 ScriptManager.RegisterStartupScript(this, GetType(), "TipoGastos", "cambioTipoGastos();", true);
             }
         }
+        #endregion
 
         #region Gastos Fijos
         protected void grdGastosFijos_RowCommand(object sender, GridViewCommandEventArgs e)

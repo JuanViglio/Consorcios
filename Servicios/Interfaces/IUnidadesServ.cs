@@ -20,5 +20,7 @@ namespace Servicios.Interfaces
         List<UnidadesFuncionalesModel> GetPagosConCochera(string consorciosID, int Periodo, bool agregarValorCochera);
 
         List<UnidadesFuncionalesCtaCte> GetCtaCte(decimal idUF);
+
+        void AddHaber(UnidadesFuncionalesCtaCte UFctaCte);
     }
 }

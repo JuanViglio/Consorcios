@@ -47,9 +47,10 @@ namespace Negocio
             {
                 //Busca los pagos y los sobreescribe. Si no los encuentra los crea
                 if (cantPagos == 0)
-                    _pagosServ.AddPagos(expensa.ConsorcioId, item, gastosExtraordinarios, totalGastosOrdinarios, expensa.PeriodoNumerico, gastosEvOrd, gastosOrdinarios);
+                    _pagosServ.AddPagos(expensa.ConsorcioId, item, gastosExtraordinarios, totalGastosOrdinarios, expensa.PeriodoNumerico, gastosEvOrd, 
+                        gastosOrdinarios, expensa.PeriodoDetalle);
                 else
-                    _pagosServ.UpdatePagos(expensa.ConsorcioId, item, gastosExtraordinarios, totalGastosOrdinarios, expensa.PeriodoNumerico);
+                    _pagosServ.UpdatePagos(expensa.ConsorcioId, item, gastosExtraordinarios, totalGastosOrdinarios, expensa.PeriodoNumerico, expensa.PeriodoDetalle);
             }
 
             return unidadesFuncionales.Count();

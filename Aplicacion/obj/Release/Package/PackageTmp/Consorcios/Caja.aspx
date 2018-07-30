@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GastosOperativos.aspx.cs" Inherits="WebSistemmas.Consorcios.GastosOperativos" MasterPageFile="~/Consorcios/MenuConsorcios.Master"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Caja.aspx.cs" Inherits="WebSistemmas.Consorcios.Caja" MasterPageFile="~/Consorcios/MenuConsorcios.Master"%>
 <%@ Register TagPrefix="uc1" TagName="tituloPagina" Src="~/Consorcios/UserControls/Titulo.ascx" %>
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">

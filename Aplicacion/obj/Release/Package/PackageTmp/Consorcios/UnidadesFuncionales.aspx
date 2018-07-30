@@ -12,7 +12,7 @@
             <table>
                 <tr>
                     <td colspan="2" style="height: 131px">
-                        <asp:gridview id="grdUnidades" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" onrowcommand="grdUnidades_RowCommand" style="margin-top: 0px; margin-left: 0px; margin-right: 32px;" width="637px" OnRowDataBound="grdUnidades_RowDataBound">
+                        <asp:gridview id="grdUnidades" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" onrowcommand="grdUnidades_RowCommand" style="margin-top: 0px; margin-left: 0px; margin-right: 32px;" width="698px" OnRowDataBound="grdUnidades_RowDataBound">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
                     <asp:BoundField DataField="UF" HeaderText="Numero">
@@ -40,6 +40,7 @@
                         <ItemTemplate>
                             <div class="div_parent">
                                 <asp:ImageButton ID="Modificar" runat="server" CausesValidation="False" CommandName="Modificar" ImageUrl="~/css/img/ico_modificar.gif" ToolTip="Modificar" />
+                                <asp:ImageButton ID="CtaCte" runat="server" CausesValidation="False" CommandName="CtaCte" ImageUrl="~/css/img/ico_pesos.png" ToolTip="Cuenta Cte" />
                             </div>
                         </ItemTemplate>
                         <ItemStyle HorizontalAlign="Center" />
@@ -51,10 +52,6 @@
                 <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
                 <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                 <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-<%--                <SortedAscendingCellStyle BackColor="#E9E7E2" />
-                <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />--%>
             </asp:gridview>
                         <br />
                     </td>

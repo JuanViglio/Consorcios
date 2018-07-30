@@ -48,7 +48,7 @@ namespace WebSistemmas.Consorcios
 
             CargaGrillaGastosParticularesOrd();
             CargaGrillaGastosParticularesExt();
-            var pago = _unidadesFuncServ.GetPago(Session["PagoId"].ToString());
+            var pago = _unidadesFuncServ.GetPago(Session["PagoId"].ToString().ToDecimal());
 
             totalesUF.CalcularTotales(pago);
             txtImporteGastoParticular.Text = pago.ImporteGastoParticular.ToString("0.00");
@@ -64,6 +64,7 @@ namespace WebSistemmas.Consorcios
 
         #endregion
 
+        #region Constructor y Page_Load
         public ExpensaUFNueva()
         {
             ExpensasEntities context = new ExpensasEntities();
@@ -82,7 +83,9 @@ namespace WebSistemmas.Consorcios
                 CargaInicial();
             }        
         }
+        #endregion
 
+        #region grdGastosExtraordinarios
         protected void grdGastosExtraordinarios_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
@@ -92,7 +95,111 @@ namespace WebSistemmas.Consorcios
         {
             e.Row.Cells[col_ID_Expensa].Visible = false;
         }
+        #endregion
 
+        #region grdGastosParticularesOrd
+        protected void grdGastosParticularesOrd_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            GridViewRow gridViewrow;
+            ConstantesWeb.MostrarError(string.Empty, this.Page);
+
+            try
+            {
+                if (e.CommandSource.GetType().ToString().ToUpper().Contains("IMAGEBUTTON"))
+                {
+                    ImageButton imgButton = (ImageButton)e.CommandSource;
+                    gridViewrow = (GridViewRow)imgButton.NamingContainer;
+                    string tipo = e.CommandName.ToUpper();
+
+                    switch (tipo)
+                    {
+                        case "ELIMINAR":
+                            var idGasto = int.Parse(gridViewrow.Cells[col_ID_GastoParticular].Text);
+
+                            _pagosNeg.DeleteGastosEvOrdinariosUF(idGasto);
+
+                            CargaGrillaGastosParticularesOrd();
+                            var pago = _unidadesFuncServ.GetPago(Session["PagoId"].ToString().ToDecimal());
+
+                            totalesUF.CalcularTotales(pago);
+                            txtImporteGastoParticular.Text = pago.ImporteGastoParticular.ToString("0.00");
+                            txtDetalleGastoParticular.Text = pago.DetalleGastoParticular;
+
+                            break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ConstantesWeb.MostrarError("No se pudo Eliminar el Gasto Particular", this.Page);
+            }
+        }
+
+        protected void grdGastosParticularesOrd_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            e.Row.Cells[col_ID_Expensa].Visible = false;
+
+            ImageButton imgBorrar;
+            imgBorrar = (ImageButton)(e.Row.FindControl("EliminarGastoOrd"));
+
+            if (imgBorrar != null)
+                imgBorrar.Attributes.Add("OnClick", "JavaScript:return ConfirmarBajaGastoOrdinario();");
+
+        }
+        #endregion
+
+        #region grdGastosParticularesExt
+        protected void grdGastosParticularesExt_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            GridViewRow gridViewrow;
+            ConstantesWeb.MostrarError(string.Empty, this.Page);
+
+            try
+            {
+                if (e.CommandSource.GetType().ToString().ToUpper().Contains("IMAGEBUTTON"))
+                {
+                    ImageButton imgButton = (ImageButton)e.CommandSource;
+                    gridViewrow = (GridViewRow)imgButton.NamingContainer;
+                    string tipo = e.CommandName.ToUpper();
+
+                    switch (tipo)
+                    {
+                        case "ELIMINAR":
+                            var idGasto = int.Parse(gridViewrow.Cells[col_ID_GastoParticular].Text);
+
+                            _pagosNeg.DeleteGastosEvExtUF(idGasto);
+
+                            CargaGrillaGastosParticularesExt();
+                            var pago = _unidadesFuncServ.GetPago(Session["PagoId"].ToString().ToDecimal());
+
+                            totalesUF.CalcularTotales(pago);
+                            txtImporteGastoParticular.Text = pago.ImporteGastoParticular.ToString("0.00");
+                            txtDetalleGastoParticular.Text = pago.DetalleGastoParticular;
+                            break;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ConstantesWeb.MostrarError("No se pudo Eliminar el Gasto", this.Page);
+            }
+        }
+
+        protected void grdGastosParticularesExt_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            e.Row.Cells[col_ID_Expensa].Visible = false;
+
+            ImageButton imgBorrar;
+            imgBorrar = (ImageButton)(e.Row.FindControl("EliminarGastoExt"));
+
+            if (imgBorrar != null)
+                imgBorrar.Attributes.Add("OnClick", "JavaScript:return ConfirmarBajaGastoOrdinario();");
+
+        }
+        #endregion
+
+        #region Botones
         protected void btnActualizar_Click(object sender, EventArgs e)
         {            
             if (txtImporteGastoParticular.Text.IsNumeric() == false)
@@ -104,10 +211,10 @@ namespace WebSistemmas.Consorcios
                 ConstantesWeb.MostrarError(string.Empty, this.Page);
 
                 unidadesFuncionalesServ serv = new unidadesFuncionalesServ();
-                int PagoId = Convert.ToInt32(Session["PagoId"].ToString());
+                decimal PagoId = Session["PagoId"].ToString().ToDecimal();
                 decimal importe = Convert.ToDecimal(txtImporteGastoParticular.Text);
                 serv.GuardarGastoParticular(PagoId, importe, txtDetalleGastoParticular.Text.ToUpper());
-                var pago = _unidadesFuncServ.GetPago(PagoId.ToString());
+                var pago = _unidadesFuncServ.GetPago(PagoId);
 
                 totalesUF.CalcularTotales(pago);
                 txtImporteGastoParticular.Text = pago.ImporteGastoParticular.ToString("0.00");
@@ -121,7 +228,7 @@ namespace WebSistemmas.Consorcios
             try
             {
                 Dictionary<decimal, UnidadesFuncionalesModel> map = (Dictionary <decimal, UnidadesFuncionalesModel>)Session["MapPagoId"];
-                string pagoID = Session["PagoId"].ToString();
+                decimal pagoID = Session["PagoId"].ToString().ToDecimal();
                 var key = map.FirstOrDefault(x => x.Value.PagoId == pagoID).Key;
                 ConstantesWeb.MostrarError(string.Empty, this.Page);
 
@@ -150,7 +257,7 @@ namespace WebSistemmas.Consorcios
             try
             {
                 Dictionary<decimal, UnidadesFuncionalesModel> map = (Dictionary<decimal, UnidadesFuncionalesModel>)Session["MapPagoId"];
-                string pagoID = Session["PagoId"].ToString();
+                decimal pagoID = Session["PagoId"].ToString().ToDecimal();
                 var key = map.FirstOrDefault(x => x.Value.PagoId == pagoID).Key;
                 ConstantesWeb.MostrarError(string.Empty, this.Page);
 
@@ -173,103 +280,7 @@ namespace WebSistemmas.Consorcios
                 ConstantesWeb.MostrarError("No existen Unidades Funcionales previas para mostrar", this.Page);
             }
         }
+        #endregion
 
-        protected void grdGastosParticularesOrd_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            GridViewRow gridViewrow;
-            ConstantesWeb.MostrarError(string.Empty, this.Page);
-
-            try
-            {
-                if (e.CommandSource.GetType().ToString().ToUpper().Contains("IMAGEBUTTON"))
-                {
-                    ImageButton imgButton = (ImageButton)e.CommandSource;
-                    gridViewrow = (GridViewRow)imgButton.NamingContainer;
-                    string tipo = e.CommandName.ToUpper();
-
-                    switch (tipo)
-                    {
-                        case "ELIMINAR":
-                            var idGasto = int.Parse(gridViewrow.Cells[col_ID_GastoParticular].Text);
-
-                            _pagosNeg.DeleteGastosEvOrdinariosUF(idGasto);
-
-                            CargaGrillaGastosParticularesOrd();
-                            var pago = _unidadesFuncServ.GetPago(Session["PagoId"].ToString());
-
-                            totalesUF.CalcularTotales(pago);
-                            txtImporteGastoParticular.Text = pago.ImporteGastoParticular.ToString("0.00");
-                            txtDetalleGastoParticular.Text = pago.DetalleGastoParticular;
-
-                            break;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                ConstantesWeb.MostrarError("No se pudo Eliminar el Gasto Particular", this.Page);
-            }
-        }
-
-        protected void grdGastosParticularesOrd_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            e.Row.Cells[col_ID_Expensa].Visible = false;
-
-            ImageButton imgBorrar;
-            imgBorrar = (ImageButton)(e.Row.FindControl("EliminarGastoOrd"));
-
-            if (imgBorrar != null)
-                imgBorrar.Attributes.Add("OnClick", "JavaScript:return ConfirmarBajaGastoOrdinario();");
-
-        }
-
-        protected void grdGastosParticularesExt_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            GridViewRow gridViewrow;
-            ConstantesWeb.MostrarError(string.Empty, this.Page);
-
-            try
-            {
-                if (e.CommandSource.GetType().ToString().ToUpper().Contains("IMAGEBUTTON"))
-                {
-                    ImageButton imgButton = (ImageButton)e.CommandSource;
-                    gridViewrow = (GridViewRow)imgButton.NamingContainer;
-                    string tipo = e.CommandName.ToUpper();
-
-                    switch (tipo)
-                    {
-                        case "ELIMINAR":
-                            var idGasto = int.Parse(gridViewrow.Cells[col_ID_GastoParticular].Text);
-
-                            _pagosNeg.DeleteGastosEvExtUF(idGasto);
-
-                            CargaGrillaGastosParticularesExt();
-                            var pago = _unidadesFuncServ.GetPago(Session["PagoId"].ToString());
-
-                            totalesUF.CalcularTotales(pago);
-                            txtImporteGastoParticular.Text = pago.ImporteGastoParticular.ToString("0.00");
-                            txtDetalleGastoParticular.Text = pago.DetalleGastoParticular;
-                            break;
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                ConstantesWeb.MostrarError("No se pudo Eliminar el Gasto", this.Page);
-            }
-        }
-
-        protected void grdGastosParticularesExt_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            e.Row.Cells[col_ID_Expensa].Visible = false;
-
-            ImageButton imgBorrar;
-            imgBorrar = (ImageButton)(e.Row.FindControl("EliminarGastoExt"));
-
-            if (imgBorrar != null)
-                imgBorrar.Attributes.Add("OnClick", "JavaScript:return ConfirmarBajaGastoOrdinario();");
-
-        }
     }
 }

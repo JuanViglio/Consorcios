@@ -37,7 +37,7 @@ namespace Servicios
                               join C in _context.Consorcios
                               on E.Consorcios.ID equals C.ID 
                               where E.ID == IdExpensa 
-                              select new ExpensaModel { ConsorcioId = C.ID, PeriodoNumerico = E.PeriodoNumerico.Value };
+                              select new ExpensaModel { ConsorcioId = C.ID, PeriodoNumerico = E.PeriodoNumerico.Value, PeriodoDetalle = E.Periodo };
 
             return expensa.FirstOrDefault();
         }
@@ -46,7 +46,8 @@ namespace Servicios
         {
             var uf = from U in _context.UnidadesFuncionales
                      join C in _context.Consorcios
-                     on U.Consorcios.ID equals C.ID
+                     on U.Consorcios.ID equals C.ID 
+                     orderby U.ID
                      where C.ID == ConsorcioId
                      select U;
 

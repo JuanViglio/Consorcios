@@ -17,10 +17,11 @@ namespace Servicios
         }
 
         public void AddPagos(string consorcioId, UnidadesFuncionales unidadFuncional, string gastosExtraordinarios,string totalGastosOrdinarios, 
-            int periodoNumerico, List<GastosEvOrd> gastosEvOrd, List<GastosFijos> expensaDetalle)
+            int periodoNumerico, List<GastosEvOrd> gastosEvOrd, List<GastosFijos> expensaDetalle, string periodoDetalle)
         {
             unidadesFuncionalesServ _unidadesFuncServ = new unidadesFuncionalesServ();
             var Coeficiente = unidadFuncional.Coeficiente.Value;
+
             //var GastosExtraordinarios = Constantes.GetDecimalFromCurrency(gastosExtraordinarios);
             //var ImporteExtraordinario = GastosExtraordinarios * Coeficiente / 100;
             //var GastosOrdinarios = Constantes.GetDecimalFromCurrency(totalGastosOrdinarios);  //CONTROLAR !!!!
@@ -36,7 +37,9 @@ namespace Servicios
                 //ImportePago2 = TotalVencimiento1 + 10,
                 //ImporteExtraordinario = ImporteExtraordinario,
                 Periodo = periodoNumerico,
-                UnidadesFuncionales = unidadFuncional
+                UnidadesFuncionales = unidadFuncional,
+                PeriodoDetalle = periodoDetalle,
+                Estado = Constantes.EstadoAdeudado
             };
 
             _context.AddToPagos(pago);
@@ -78,7 +81,7 @@ namespace Servicios
         }
 
         public bool UpdatePagos(string consorcioId, UnidadesFuncionales item, string gastosExtraordinarios,
-            string totalGastosOrdinarios, int periodoNumerico)
+            string totalGastosOrdinarios, int periodoNumerico, string periodoDetalle)
         {
             var pago = _context.Pagos.Where(x => x.UnidadesFuncionales.UF == item.UF && x.Periodo == periodoNumerico
                 && x.UnidadesFuncionales.Consorcios.ID == consorcioId).FirstOrDefault();
@@ -98,6 +101,7 @@ namespace Servicios
             pago.ImportePago1 = TotalVencimiento1;
             pago.ImportePago2 = TotalVencimiento1 + 10;
             pago.ImporteExtraordinario = ImporteExtraordinario;
+            pago.PeriodoDetalle = periodoDetalle;
 
             _context.SaveChanges();
 
@@ -148,6 +152,20 @@ namespace Servicios
 
             _context.DeleteObject(gasto);
             _context.SaveChanges();
+        }
+
+        public void ActualizarImportePago1(Pagos pagoNuevo)
+        {
+            try
+            {
+                var pago = _context.Pagos.Where(x => x.ID == pagoNuevo.ID).FirstOrDefault();
+                pago.ImportePago1 = pagoNuevo.ImportePago1;
+                _context.SaveChanges();
+            }
+            catch
+            {
+                throw new Exception("No se pudo guardar el Pago");
+            }
         }
     }
 }

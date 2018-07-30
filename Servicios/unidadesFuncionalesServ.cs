@@ -51,28 +51,22 @@ namespace Servicios
 
         public List<UnidadesFuncionalesModel> GetPagos(string consorciosID, int Periodo)
         {            
-            //var UF = context.UnidadesFuncionales.Where(x => x.Consorcios.ID == consorciosID).ToList();
-            var pagos = from P in context.Pagos
-                        join UF in context.UnidadesFuncionales
-                        on P.UnidadesFuncionales.ID equals UF.ID
+            var UFlist = (from P in context.Pagos
+                        join U in context.UnidadesFuncionales
+                        on P.UnidadesFuncionales.ID equals U.ID
                         where P.Periodo == Periodo
-                            && UF.Consorcios.ID == consorciosID
-                        orderby UF.Departamento
-                        select new { P.UnidadesFuncionales.UF, UF.Apellido, UF.Nombre, P.Coeficiente, P.ID };
-
-            List<UnidadesFuncionalesModel> UFlist = new List<UnidadesFuncionalesModel>();
-
-            foreach (var item in pagos)
-            {
-                UFlist.Add(new UnidadesFuncionalesModel()
-                {
-                    ID = Convert.ToDecimal(item.UF),
-                    Apellido = item.Apellido,
-                    Nombre = item.Nombre,
-                    Coeficiente = item.Coeficiente.ToString(),
-                    PagoId = item.ID.ToString(),
-                });                
-            }
+                            && U.Consorcios.ID == consorciosID
+                        orderby U.Departamento
+                        select new UnidadesFuncionalesModel
+                        {
+                            ID = P.UnidadesFuncionales.ID,
+                            Apellido = U.Apellido,
+                            Nombre = U.Nombre,
+                            Coeficiente = P.Coeficiente,
+                            PagoId = P.ID,
+                            UF = P.UnidadesFuncionales.UF,
+                            PeriodoDetalle = P.PeriodoDetalle
+                        }).ToList();
 
             return UFlist;
         }
@@ -93,12 +87,13 @@ namespace Servicios
             {
                 UFlist.Add(new UnidadesFuncionalesModel()
                 {
-                    ID = Convert.ToDecimal(item.UF),
+                    ID = item.ID,
                     Apellido = item.Apellido,
                     Nombre = item.Nombre,
-                    Coeficiente = item.Coeficiente.ToString(),
-                    PagoId = item.ID.ToString(),
-                    Aplicar = GetValorCochera(item.Cochera, agregarValorCochera)
+                    Coeficiente = item.Coeficiente,
+                    PagoId = item.ID,
+                    Aplicar = GetValorCochera(item.Cochera, agregarValorCochera),
+                    UF = item.UF
                 });
             }
 
@@ -136,13 +131,13 @@ namespace Servicios
             return model;
         }
         
-        public Pagos GetPago(string PagoId)
+        public Pagos GetPago(decimal PagoId)
         {
-            decimal decPagoId = Convert.ToDecimal(PagoId);
+            decimal decPagoId = PagoId;
             return context.Pagos.Where(x => x.ID == decPagoId).FirstOrDefault();
         }
 
-        public void GuardarGastoParticular(int UFid, decimal importe, string detalle)
+        public void GuardarGastoParticular(decimal UFid, decimal importe, string detalle)
         {
             Pagos pago = context.Pagos.Where(x => x.ID == UFid).FirstOrDefault();
             pago.ImporteGastoParticular = importe;
@@ -206,6 +201,21 @@ namespace Servicios
         public List<UnidadesFuncionalesCtaCte> GetCtaCte(decimal idUF)
         {
             return context.UnidadesFuncionalesCtaCte.Where(x => x.ID == idUF).ToList();
+        }
+
+        public void AddHaber (UnidadesFuncionalesCtaCte UFctaCte)
+        {
+            try
+            {
+                context.AddToUnidadesFuncionalesCtaCte(UFctaCte);
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("No se pude agregar el dato en la Cuenta Corriente de la UF");
+            }
+
         }
     }
 }
