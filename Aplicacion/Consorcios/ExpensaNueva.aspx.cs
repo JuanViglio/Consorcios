@@ -771,7 +771,7 @@ namespace WebSistemmas.Consorcios
                     ConstantesWeb.MostrarError(ex.Message, this.Page);
                     return;
                 }
-
+                 
                 Response.Redirect("Expensas.aspx#consorcios");
             }
         }
