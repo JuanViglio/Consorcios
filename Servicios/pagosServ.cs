@@ -167,5 +167,10 @@ namespace Servicios
                 throw new Exception("No se pudo guardar el Pago");
             }
         }
+
+        public List<Pagos> GetPagosAdeudados(decimal idUF)
+        {
+            return _context.Pagos.Where(x => x.Estado == Constantes.EstadoAdeudado && x.UnidadesFuncionales.ID == idUF).ToList();
+        }
     }
 }

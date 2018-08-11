@@ -27,7 +27,7 @@ namespace WebSistemmas.Consorcios.UserControls.UnidadesFuncionalesCtaCte
         #region Metodos Privados
         private void LlenarGrillaUnidadesFuncionalesCtaCte()
         {
-            var idUF = 1; // decimal.Parse(Session["UFId"].ToString()); //revisar el nombre de Session
+            var idUF = decimal.Parse(Session["idUF"].ToString()); 
             grdUnidadesFuncionalesCtaCte.DataSource = _unidadesFuncionalesNeg.GetCtaCte(idUF);
             grdUnidadesFuncionalesCtaCte.DataBind();
         }

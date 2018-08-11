@@ -200,7 +200,7 @@ namespace Servicios
 
         public List<UnidadesFuncionalesCtaCte> GetCtaCte(decimal idUF)
         {
-            return context.UnidadesFuncionalesCtaCte.Where(x => x.ID == idUF).ToList();
+            return context.UnidadesFuncionalesCtaCte.Where(x => x.UnidadesFuncionales.ID == idUF).ToList();
         }
 
         public void AddHaber (UnidadesFuncionalesCtaCte UFctaCte)

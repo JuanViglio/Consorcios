@@ -30,5 +30,7 @@ namespace Servicios.Interfaces
         void DeleteGastosEvExtUF(int IdGasto);
 
         void ActualizarImportePago1(Pagos pagoNuevo);
+
+        List<Pagos> GetPagosAdeudados(decimal idUF);
     }
 }

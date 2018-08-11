@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dueñosNeg.cs" />
     <Compile Include="expensasNeg.cs" />
     <Compile Include="Interfaces\IExpensasNeg.cs" />
     <Compile Include="Interfaces\IPagosNeg.cs" />

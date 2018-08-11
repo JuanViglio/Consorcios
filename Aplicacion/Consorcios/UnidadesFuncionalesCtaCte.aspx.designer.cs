@@ -37,6 +37,24 @@ namespace WebSistemmas.Consorcios {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl gridUnidadesFuncionalesCtaCteID;
+        protected global::WebSistemmas.Consorcios.UserControls.UnidadesFuncionalesCtaCte.GridUnidadesFuncionalesCtaCte gridUnidadesFuncionalesCtaCteID;
+        
+        /// <summary>
+        /// btnVerDeuda control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVerDeuda;
+        
+        /// <summary>
+        /// btnVolver control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVolver;
     }
 }

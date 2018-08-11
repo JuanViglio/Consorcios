@@ -20,11 +20,9 @@ using System.Xml.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_Expensas_Consorcios", "Consorcios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.Consorcios), "Expensas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.Expensas))]
-[assembly: EdmRelationshipAttribute("ExpensasModel", "FK_UnidadesFuncionales_Consorcios", "Consorcios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.Consorcios), "UnidadesFuncionales", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.UnidadesFuncionales))]
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_Detalles_Consorcios", "Consorcios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.Consorcios), "Detalles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.Detalles), true)]
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_Detalles_Gastos", "Gastos", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.Gastos), "Detalles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.Detalles), true)]
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_Gastos_TipoGastos", "TipoGastos", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.TipoGastos), "Gastos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.Gastos))]
-[assembly: EdmRelationshipAttribute("ExpensasModel", "FK_Pagos_UF", "UnidadesFuncionales", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.UnidadesFuncionales), "Pagos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.Pagos))]
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_ProveedoresCtaCte_Proveedores", "Proveedores", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.Proveedores), "ProveedoresCtaCte", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.ProveedoresCtaCte))]
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_GastosExtDetalle_Expensas", "Expensas", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.Expensas), "GastosEvExt", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.GastosEvExt))]
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_GastosEvOrdinariosDetalle_Expensas", "Expensas", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.Expensas), "GastosEvOrd", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.GastosEvOrd))]
@@ -33,7 +31,10 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_GastosEvOrdinariosUFDetalle_Pagos", "Pagos", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.Pagos), "GastosParticularesOrd", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.GastosParticularesOrd))]
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_Seguros_Consorcios", "Consorcios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.Consorcios), "Seguros", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.Seguros))]
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_SegurosDetalle_Seguros", "Seguros", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.Seguros), "SegurosDetalle", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.SegurosDetalle))]
+[assembly: EdmRelationshipAttribute("ExpensasModel", "FK_UnidadesFuncionales_Consorcios", "Consorcios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.Consorcios), "UnidadesFuncionales", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.UnidadesFuncionales))]
+[assembly: EdmRelationshipAttribute("ExpensasModel", "FK_UnidadesFuncionales_Dueños", "Dueños", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.Dueños), "UnidadesFuncionales", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.UnidadesFuncionales))]
 [assembly: EdmRelationshipAttribute("ExpensasModel", "FK_UnidadesFuncionalesCtaCte_UnidadesFuncionales", "UnidadesFuncionales", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.UnidadesFuncionales), "UnidadesFuncionalesCtaCte", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.UnidadesFuncionalesCtaCte))]
+[assembly: EdmRelationshipAttribute("ExpensasModel", "FK_Pagos_UnidadesFuncionales", "UnidadesFuncionales", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.UnidadesFuncionales), "Pagos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.Pagos))]
 
 #endregion
 
@@ -129,22 +130,6 @@ namespace DAO
             }
         }
         private ObjectSet<TipoGastos> _TipoGastos;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<UnidadesFuncionales> UnidadesFuncionales
-        {
-            get
-            {
-                if ((_UnidadesFuncionales == null))
-                {
-                    _UnidadesFuncionales = base.CreateObjectSet<UnidadesFuncionales>("UnidadesFuncionales");
-                }
-                return _UnidadesFuncionales;
-            }
-        }
-        private ObjectSet<UnidadesFuncionales> _UnidadesFuncionales;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -353,6 +338,38 @@ namespace DAO
             }
         }
         private ObjectSet<UnidadesFuncionalesCtaCte> _UnidadesFuncionalesCtaCte;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Dueños> Dueños
+        {
+            get
+            {
+                if ((_Dueños == null))
+                {
+                    _Dueños = base.CreateObjectSet<Dueños>("Dueños");
+                }
+                return _Dueños;
+            }
+        }
+        private ObjectSet<Dueños> _Dueños;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<UnidadesFuncionales> UnidadesFuncionales
+        {
+            get
+            {
+                if ((_UnidadesFuncionales == null))
+                {
+                    _UnidadesFuncionales = base.CreateObjectSet<UnidadesFuncionales>("UnidadesFuncionales");
+                }
+                return _UnidadesFuncionales;
+            }
+        }
+        private ObjectSet<UnidadesFuncionales> _UnidadesFuncionales;
 
         #endregion
 
@@ -380,14 +397,6 @@ namespace DAO
         public void AddToTipoGastos(TipoGastos tipoGastos)
         {
             base.AddObject("TipoGastos", tipoGastos);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the UnidadesFuncionales EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToUnidadesFuncionales(UnidadesFuncionales unidadesFuncionales)
-        {
-            base.AddObject("UnidadesFuncionales", unidadesFuncionales);
         }
     
         /// <summary>
@@ -492,6 +501,22 @@ namespace DAO
         public void AddToUnidadesFuncionalesCtaCte(UnidadesFuncionalesCtaCte unidadesFuncionalesCtaCte)
         {
             base.AddObject("UnidadesFuncionalesCtaCte", unidadesFuncionalesCtaCte);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Dueños EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToDueños(Dueños dueños)
+        {
+            base.AddObject("Dueños", dueños);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the UnidadesFuncionales EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToUnidadesFuncionales(UnidadesFuncionales unidadesFuncionales)
+        {
+            base.AddObject("UnidadesFuncionales", unidadesFuncionales);
         }
 
         #endregion
@@ -708,28 +733,6 @@ namespace DAO
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_UnidadesFuncionales_Consorcios", "UnidadesFuncionales")]
-        public EntityCollection<UnidadesFuncionales> UnidadesFuncionales
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UnidadesFuncionales>("ExpensasModel.FK_UnidadesFuncionales_Consorcios", "UnidadesFuncionales");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UnidadesFuncionales>("ExpensasModel.FK_UnidadesFuncionales_Consorcios", "UnidadesFuncionales", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_Detalles_Consorcios", "Detalles")]
         public EntityCollection<Detalles> Detalles
         {
@@ -764,6 +767,28 @@ namespace DAO
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Seguros>("ExpensasModel.FK_Seguros_Consorcios", "Seguros", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_UnidadesFuncionales_Consorcios", "UnidadesFuncionales")]
+        public EntityCollection<UnidadesFuncionales> UnidadesFuncionales
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UnidadesFuncionales>("ExpensasModel.FK_UnidadesFuncionales_Consorcios", "UnidadesFuncionales");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UnidadesFuncionales>("ExpensasModel.FK_UnidadesFuncionales_Consorcios", "UnidadesFuncionales", value);
                 }
             }
         }
@@ -953,6 +978,212 @@ namespace DAO
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Gastos>("ExpensasModel.FK_Detalles_Gastos", "Gastos", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="ExpensasModel", Name="Dueños")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Dueños : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Dueños object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="nombre">Initial value of the Nombre property.</param>
+        /// <param name="apellido">Initial value of the Apellido property.</param>
+        public static Dueños CreateDueños(global::System.Decimal id, global::System.String nombre, global::System.String apellido)
+        {
+            Dueños dueños = new Dueños();
+            dueños.ID = id;
+            dueños.Nombre = nombre;
+            dueños.Apellido = apellido;
+            return dueños;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value, "ID");
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Decimal _ID;
+        partial void OnIDChanging(global::System.Decimal value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Nombre
+        {
+            get
+            {
+                return _Nombre;
+            }
+            set
+            {
+                OnNombreChanging(value);
+                ReportPropertyChanging("Nombre");
+                _Nombre = StructuralObject.SetValidValue(value, false, "Nombre");
+                ReportPropertyChanged("Nombre");
+                OnNombreChanged();
+            }
+        }
+        private global::System.String _Nombre;
+        partial void OnNombreChanging(global::System.String value);
+        partial void OnNombreChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Apellido
+        {
+            get
+            {
+                return _Apellido;
+            }
+            set
+            {
+                OnApellidoChanging(value);
+                ReportPropertyChanging("Apellido");
+                _Apellido = StructuralObject.SetValidValue(value, false, "Apellido");
+                ReportPropertyChanged("Apellido");
+                OnApellidoChanged();
+            }
+        }
+        private global::System.String _Apellido;
+        partial void OnApellidoChanging(global::System.String value);
+        partial void OnApellidoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Telefono
+        {
+            get
+            {
+                return _Telefono;
+            }
+            set
+            {
+                OnTelefonoChanging(value);
+                ReportPropertyChanging("Telefono");
+                _Telefono = StructuralObject.SetValidValue(value, true, "Telefono");
+                ReportPropertyChanged("Telefono");
+                OnTelefonoChanged();
+            }
+        }
+        private global::System.String _Telefono;
+        partial void OnTelefonoChanging(global::System.String value);
+        partial void OnTelefonoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Direccion
+        {
+            get
+            {
+                return _Direccion;
+            }
+            set
+            {
+                OnDireccionChanging(value);
+                ReportPropertyChanging("Direccion");
+                _Direccion = StructuralObject.SetValidValue(value, true, "Direccion");
+                ReportPropertyChanged("Direccion");
+                OnDireccionChanged();
+            }
+        }
+        private global::System.String _Direccion;
+        partial void OnDireccionChanging(global::System.String value);
+        partial void OnDireccionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Mail
+        {
+            get
+            {
+                return _Mail;
+            }
+            set
+            {
+                OnMailChanging(value);
+                ReportPropertyChanging("Mail");
+                _Mail = StructuralObject.SetValidValue(value, true, "Mail");
+                ReportPropertyChanged("Mail");
+                OnMailChanged();
+            }
+        }
+        private global::System.String _Mail;
+        partial void OnMailChanging(global::System.String value);
+        partial void OnMailChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_UnidadesFuncionales_Dueños", "UnidadesFuncionales")]
+        public EntityCollection<UnidadesFuncionales> UnidadesFuncionales
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UnidadesFuncionales>("ExpensasModel.FK_UnidadesFuncionales_Dueños", "UnidadesFuncionales");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UnidadesFuncionales>("ExpensasModel.FK_UnidadesFuncionales_Dueños", "UnidadesFuncionales", value);
                 }
             }
         }
@@ -2745,44 +2976,6 @@ namespace DAO
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_Pagos_UF", "UnidadesFuncionales")]
-        public UnidadesFuncionales UnidadesFuncionales
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UnidadesFuncionales>("ExpensasModel.FK_Pagos_UF", "UnidadesFuncionales").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UnidadesFuncionales>("ExpensasModel.FK_Pagos_UF", "UnidadesFuncionales").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<UnidadesFuncionales> UnidadesFuncionalesReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UnidadesFuncionales>("ExpensasModel.FK_Pagos_UF", "UnidadesFuncionales");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<UnidadesFuncionales>("ExpensasModel.FK_Pagos_UF", "UnidadesFuncionales", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_GastosEvExtUFDetalle_Pagos", "GastosParticularesExt")]
         public EntityCollection<GastosParticularesExt> GastosParticularesExt
         {
@@ -2817,6 +3010,44 @@ namespace DAO
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GastosParticularesOrd>("ExpensasModel.FK_GastosEvOrdinariosUFDetalle_Pagos", "GastosParticularesOrd", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_Pagos_UnidadesFuncionales", "UnidadesFuncionales")]
+        public UnidadesFuncionales UnidadesFuncionales
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UnidadesFuncionales>("ExpensasModel.FK_Pagos_UnidadesFuncionales", "UnidadesFuncionales").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UnidadesFuncionales>("ExpensasModel.FK_Pagos_UnidadesFuncionales", "UnidadesFuncionales").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<UnidadesFuncionales> UnidadesFuncionalesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UnidadesFuncionales>("ExpensasModel.FK_Pagos_UnidadesFuncionales", "UnidadesFuncionales");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<UnidadesFuncionales>("ExpensasModel.FK_Pagos_UnidadesFuncionales", "UnidadesFuncionales", value);
                 }
             }
         }
@@ -4219,18 +4450,34 @@ namespace DAO
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_Pagos_UF", "Pagos")]
-        public EntityCollection<Pagos> Pagos
+        [EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_UnidadesFuncionales_Dueños", "Dueños")]
+        public Dueños Dueños
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Pagos>("ExpensasModel.FK_Pagos_UF", "Pagos");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Dueños>("ExpensasModel.FK_UnidadesFuncionales_Dueños", "Dueños").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Dueños>("ExpensasModel.FK_UnidadesFuncionales_Dueños", "Dueños").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Dueños> DueñosReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Dueños>("ExpensasModel.FK_UnidadesFuncionales_Dueños", "Dueños");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Pagos>("ExpensasModel.FK_Pagos_UF", "Pagos", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Dueños>("ExpensasModel.FK_UnidadesFuncionales_Dueños", "Dueños", value);
                 }
             }
         }
@@ -4253,6 +4500,28 @@ namespace DAO
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UnidadesFuncionalesCtaCte>("ExpensasModel.FK_UnidadesFuncionalesCtaCte_UnidadesFuncionales", "UnidadesFuncionalesCtaCte", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ExpensasModel", "FK_Pagos_UnidadesFuncionales", "Pagos")]
+        public EntityCollection<Pagos> Pagos
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Pagos>("ExpensasModel.FK_Pagos_UnidadesFuncionales", "Pagos");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Pagos>("ExpensasModel.FK_Pagos_UnidadesFuncionales", "Pagos", value);
                 }
             }
         }

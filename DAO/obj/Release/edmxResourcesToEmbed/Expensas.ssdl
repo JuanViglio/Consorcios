@@ -192,7 +192,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UnidadesFuncionales_ID" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="Debe" Type="numeric" Precision="18" Scale="2" />
     <Property Name="Haber" Type="numeric" Precision="18" Scale="2" />

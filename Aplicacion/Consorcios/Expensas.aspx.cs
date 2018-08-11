@@ -9,6 +9,7 @@ namespace WebSistemmas.Consorcios
 {
     public partial class Expensas : System.Web.UI.Page
     {
+        #region Constantes y Context
         private const int col_PeriodoExpensa = 0;        
         private const int col_Expensa_ID = 3;
         private const int col_Periodo = 6;
@@ -19,6 +20,7 @@ namespace WebSistemmas.Consorcios
         private const int col_Coeficiente = 4;
         private const int col_Pago_ID = 5;
         private ExpensasEntities context = new ExpensasEntities();
+        #endregion
 
         #region Metodos Privados
         private void CargarGrillaExpensas()

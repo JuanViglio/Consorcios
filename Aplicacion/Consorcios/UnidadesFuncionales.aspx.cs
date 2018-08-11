@@ -65,6 +65,9 @@ namespace WebSistemmas.Consorcios
                             break;
 
                         case "CTACTE":
+                            Session["idUF"] = GridViewrow.Cells[col_idUF].Text;
+                            Session["numeroUF"] = GridViewrow.Cells[col_numero].Text;
+                            Session["dueñoUF"] = GridViewrow.Cells[col_nombre].Text + " " + GridViewrow.Cells[col_apellido].Text;
                             Response.Redirect("UnidadesFuncionalesCtaCte.aspx#consorcios");
                             break;
 

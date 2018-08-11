@@ -11,10 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aplicacion", "Aplicacion\Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{93D4B900-A83C-40B8-BCE9-00AAE3128856}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicios.Tests", "ServiciosTests\Servicios.Tests.csproj", "{5C4BD23D-E417-4440-8564-56293114A5B3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicios.Mock", "Servicios.Mock\Servicios.Mock.csproj", "{82FD7064-4903-448C-8990-2E0B026DD8BC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio.Test", "Negocio.Test\Negocio.Test.csproj", "{552EC74D-BD93-4622-99DF-7547303A4936}"
 EndProject
 Global
@@ -39,14 +35,6 @@ Global
 		{93D4B900-A83C-40B8-BCE9-00AAE3128856}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93D4B900-A83C-40B8-BCE9-00AAE3128856}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93D4B900-A83C-40B8-BCE9-00AAE3128856}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5C4BD23D-E417-4440-8564-56293114A5B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C4BD23D-E417-4440-8564-56293114A5B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C4BD23D-E417-4440-8564-56293114A5B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C4BD23D-E417-4440-8564-56293114A5B3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{82FD7064-4903-448C-8990-2E0B026DD8BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82FD7064-4903-448C-8990-2E0B026DD8BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{82FD7064-4903-448C-8990-2E0B026DD8BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{82FD7064-4903-448C-8990-2E0B026DD8BC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{552EC74D-BD93-4622-99DF-7547303A4936}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{552EC74D-BD93-4622-99DF-7547303A4936}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{552EC74D-BD93-4622-99DF-7547303A4936}.Release|Any CPU.ActiveCfg = Release|Any CPU

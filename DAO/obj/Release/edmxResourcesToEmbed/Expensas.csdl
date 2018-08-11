@@ -360,7 +360,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Debe" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Haber" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />

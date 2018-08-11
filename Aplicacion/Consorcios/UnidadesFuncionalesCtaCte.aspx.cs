@@ -13,8 +13,18 @@ namespace WebSistemmas.Consorcios
         {
             if (!IsPostBack)
             {
-                tituloPaginaID.CargarTitulo("Cuenta Corriente de la Unidad Funcional");
+                tituloPaginaID.CargarTitulo("Cuenta Corriente de la Unidad Funcional " + Session["numeroUF"].ToString() + " de " + Session["dueñoUF"].ToString());
             }
+        }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("UnidadesFuncionales.aspx#consorcios");
+        }
+
+        protected void btnVerDeuda_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("UnidadesFuncionalesDeuda.aspx#consorcios");
         }
     }
 }

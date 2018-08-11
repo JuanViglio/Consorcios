@@ -82,6 +82,7 @@
     <Content Include="Cobranza\Cobros.aspx" />
     <Content Include="Consorcios\CtaCteProveedor.aspx" />
     <Content Include="Consorcios\Detalles.aspx" />
+    <Content Include="Consorcios\Dueños.aspx" />
     <Content Include="Consorcios\ExpensaUFNueva.aspx" />
     <Content Include="Consorcios\Caja.aspx" />
     <Content Include="Consorcios\GastosParticulares.aspx" />
@@ -89,8 +90,10 @@
     <Content Include="Consorcios\SeguroNuevo.aspx" />
     <Content Include="Consorcios\Seguros.aspx" />
     <Content Include="Consorcios\UnidadesFuncionalesCtaCte.aspx" />
+    <Content Include="Consorcios\UnidadesFuncionalesDeuda.aspx" />
     <Content Include="Consorcios\UserControls\CtaCteProveedor\AgregarPagoProveedor.ascx" />
     <Content Include="Consorcios\UserControls\CtaCteProveedor\GridCtaCteProveedor.ascx" />
+    <Content Include="Consorcios\UserControls\Dueños\GridDueños.ascx" />
     <Content Include="Consorcios\UserControls\Error.ascx" />
     <Content Include="Consorcios\UserControls\ExpensaNueva\GastosFijos.ascx" />
     <Content Include="Consorcios\UserControls\ExpensasUF\GridGastosEvExtUF.ascx" />
@@ -106,6 +109,7 @@
     <Content Include="Consorcios\UserControls\Seguros\GridSeguros.ascx" />
     <Content Include="Consorcios\UserControls\Titulo.ascx" />
     <Content Include="Consorcios\UserControls\UnidadesFuncionalesCtaCte\GridUnidadesFuncionalesCtaCte.ascx" />
+    <Content Include="Consorcios\UserControls\UnidadesFuncionalesDeuda\GridUnidadesFuncionalesDeuda.ascx" />
     <Content Include="Consorcios\Utilidades.aspx" />
     <Content Include="css\img\Cruz-roja.jpg" />
     <Content Include="css\img\ico_mas.jpg" />
@@ -196,6 +200,13 @@
     <Compile Include="Consorcios\Detalles.aspx.designer.cs">
       <DependentUpon>Detalles.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Consorcios\Dueños.aspx.cs">
+      <DependentUpon>Dueños.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\Dueños.aspx.designer.cs">
+      <DependentUpon>Dueños.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Consorcios\ExpensaNueva.aspx.cs">
       <DependentUpon>ExpensaNueva.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -273,6 +284,13 @@
     <Compile Include="Consorcios\UnidadesFuncionalesCtaCte.aspx.designer.cs">
       <DependentUpon>UnidadesFuncionalesCtaCte.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Consorcios\UnidadesFuncionalesDeuda.aspx.cs">
+      <DependentUpon>UnidadesFuncionalesDeuda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UnidadesFuncionalesDeuda.aspx.designer.cs">
+      <DependentUpon>UnidadesFuncionalesDeuda.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Consorcios\UserControls\CtaCteProveedor\AgregarPagoProveedor.ascx.cs">
       <DependentUpon>AgregarPagoProveedor.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -286,6 +304,13 @@
     </Compile>
     <Compile Include="Consorcios\UserControls\CtaCteProveedor\GridCtaCteProveedor.ascx.designer.cs">
       <DependentUpon>GridCtaCteProveedor.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Dueños\GridDueños.ascx.cs">
+      <DependentUpon>GridDueños.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Dueños\GridDueños.ascx.designer.cs">
+      <DependentUpon>GridDueños.ascx</DependentUpon>
     </Compile>
     <Compile Include="Consorcios\UserControls\Error.ascx.cs">
       <DependentUpon>Error.ascx</DependentUpon>
@@ -398,6 +423,13 @@
     </Compile>
     <Compile Include="Consorcios\UserControls\UnidadesFuncionalesCtaCte\GridUnidadesFuncionalesCtaCte.ascx.designer.cs">
       <DependentUpon>GridUnidadesFuncionalesCtaCte.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\UnidadesFuncionalesDeuda\GridUnidadesFuncionalesDeuda.ascx.cs">
+      <DependentUpon>GridUnidadesFuncionalesDeuda.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\UnidadesFuncionalesDeuda\GridUnidadesFuncionalesDeuda.ascx.designer.cs">
+      <DependentUpon>GridUnidadesFuncionalesDeuda.ascx</DependentUpon>
     </Compile>
     <Compile Include="Consorcios\Utilidades.aspx.cs">
       <DependentUpon>Utilidades.aspx</DependentUpon>
