@@ -1,6 +1,10 @@
 ﻿using Servicios;
 using Servicios.Interfaces;
 using System;
+using System.Collections.Generic;
+using System.Web.Script.Services;
+using System.Web.Services;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace WebSistemmas.Consorcios
@@ -29,6 +33,7 @@ namespace WebSistemmas.Consorcios
                 string idConsorcio = Session["idConsorcio"].ToString();
                 grdUnidades.DataSource = _serv.GetUnidadesFuncionales(idConsorcio);
                 grdUnidades.DataBind();
+                CargarComboDueños();
             }
         }
         #endregion
@@ -194,5 +199,18 @@ namespace WebSistemmas.Consorcios
             Response.Redirect("Consorcios.aspx#consorcios");
         }
         #endregion
+
+        #region Metodos Privados
+        private void CargarComboDueños()
+        {
+            dueñosServ dueñosServ = new dueñosServ();
+
+            ddlDueños.DataSource = dueñosServ.GetDueños();
+            ddlDueños.DataTextField = "Apellido_y_Nombre";
+            ddlDueños.DataValueField = "ID";
+            ddlDueños.DataBind();
+        }
+
+        #endregion  
     }
 }

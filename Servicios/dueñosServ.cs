@@ -1,4 +1,5 @@
 ﻿using DAO;
+using DAO.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,9 +14,25 @@ namespace Servicios
             _context = new ExpensasEntities();
         }
 
-        public List<Dueños> GetDueños ()
+        public List<DueñosModel> GetDueños ()
         {
-            return _context.Dueños.OrderBy(x => x.Apellido).ToList();
+            List<DueñosModel> dueñosModel = new List<DueñosModel>();
+            var dueños = _context.Dueños.OrderBy(x => x.Apellido).ToList();
+
+            foreach (var item in dueños)
+            {
+                dueñosModel.Add(new DueñosModel() {
+                    Apellido_y_Nombre = item.Apellido + " " + item.Nombre,
+                    Apellido = item.Apellido,
+                    Nombre = item.Nombre,
+                    Telefono = item.Telefono,
+                    Mail = item.Mail,
+                    Direccion = item.Direccion,
+                    ID = item.ID
+                });
+            }
+
+            return dueñosModel;
         }
     }
 }

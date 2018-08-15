@@ -1,4 +1,5 @@
 ﻿using DAO;
+using DAO.Models;
 using Servicios;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Negocio
             _dueñosServ = new dueñosServ();
         }
 
-        public List<Dueños> GetDueños()
+        public List<DueñosModel> GetDueños()
         {
             return _dueñosServ.GetDueños();
         }

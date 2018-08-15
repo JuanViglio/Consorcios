@@ -2,7 +2,6 @@
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
     <script src="../js/UnidadesFuncionales.js"></script>
-
     <form id="form1" runat="server">
         <div>
             <span style="color: #003399; font-size: large">
@@ -177,7 +176,7 @@
                                         <asp:textbox id="txtCoeficienteNuevo" runat="server" width="156px"></asp:textbox>
                                     </td>
                                 </tr>
-                                    <tr>
+                                <tr>
                                     <td style="width: 130px; height: 23px;">
                                         <asp:label id="Label13" runat="server" text="Cochera"></asp:label>
                                     </td>
@@ -186,6 +185,15 @@
                                             <asp:ListItem>NO</asp:ListItem>
                                             <asp:ListItem>SI</asp:ListItem>
                                         </asp:dropdownlist>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:label id="Label14" runat="server" text="Dueño"></asp:label>
+                                    </td>
+                                    <td>
+                                        <asp:dropdownlist  runat="server" ID="ddlDueños">
+                                        </asp:dropdownlist>                                        
                                     </td>
                                 </tr>
                                 <tr>

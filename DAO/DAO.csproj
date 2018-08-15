@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Constantes.cs" />
+    <Compile Include="Models\DueñosModel.cs" />
     <Compile Include="Models\ExpensaModel.cs" />
     <Compile Include="ExpensasDbMock.cs" />
     <Compile Include="Models\ConsorciosModel.cs" />

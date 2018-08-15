@@ -301,6 +301,24 @@ namespace WebSistemmas.Consorcios {
         protected global::System.Web.UI.WebControls.DropDownList ddlCocheraNueva;
         
         /// <summary>
+        /// Label14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label14;
+        
+        /// <summary>
+        /// ddlDueños control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlDueños;
+        
+        /// <summary>
         /// btnAceptarUFConsorcio control.
         /// </summary>
         /// <remarks>
