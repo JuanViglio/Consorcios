@@ -14,9 +14,24 @@ namespace Servicios
 
         public IEnumerable<UnidadesFuncionalesModel> GetUnidadesFuncionales(string consorciosID)
         {
-            var unidadesFuncionales = context.UnidadesFuncionales.Where(x => x.Consorcios.ID == consorciosID).OrderBy(x => x.UF).ToList();                        
-
-            return AutoMapper.MaptToUnidadesFuncionalesModel(unidadesFuncionales);
+            var dueños = context.Dueños;
+            return (from u in context.UnidadesFuncionales
+                    join d in context.Dueños
+                    on u.Dueños.ID equals d.ID
+                    where u.Consorcios.ID == consorciosID
+                    orderby u.UF
+                    select new UnidadesFuncionalesModel()
+                    {
+                        Departamento = u.Departamento,
+                        ID = u.ID,
+                        Apellido = d.Apellido,
+                        Nombre = d.Nombre,
+                        UF = u.UF,
+                        Cochera = u.Cochera == true ? "SI" : "NO",
+                        Coeficiente = u.Coeficiente,
+                        Aplicar = false,
+                        Dueños_Id = d.ID
+                    }).ToList();
         }
 
         public List<UnidadesFuncionales> GetAllUnidadesFuncionales()
@@ -165,34 +180,34 @@ namespace Servicios
             context.SaveChanges();
         }
 
-        public IEnumerable<UnidadesFuncionalesModel> ModificarUnidades(string idConsorcio, int idUF, string departamento, string numeroUF, string apellido, string nombre, decimal coeficiente, string cochera) 
+        public IEnumerable<UnidadesFuncionalesModel> ModificarUnidades(string idConsorcio, int idUF, string departamento, string numeroUF, decimal coeficiente, string cochera, decimal idDueño) 
         {
             var UF = context.UnidadesFuncionales.Where(x => x.Consorcios.ID == idConsorcio && x.ID == idUF).FirstOrDefault();
+            var dueño = context.Dueños.Where(x => x.ID == idDueño).FirstOrDefault();
+
             UF.UF = numeroUF;
             UF.Departamento = departamento;
-            UF.Apellido = apellido;
-            UF.Nombre = nombre;
             UF.Coeficiente = coeficiente;
             UF.Cochera = cochera == "SI" ? true : false;
+            UF.Dueños = dueño;
             context.SaveChanges();
 
             return GetUnidadesFuncionales(idConsorcio);
         }
 
-        public IEnumerable<UnidadesFuncionalesModel> AgregarUnidad(string idConsorcio, string idUf, string departamento, string apellido, string nombre, decimal coeficiente, string cochera)
+        public IEnumerable<UnidadesFuncionalesModel> AgregarUnidad(string idConsorcio, string idUf, string departamento, decimal coeficiente, string cochera, decimal idDueño)
         {
             var consorcio = context.Consorcios.Where(x => x.ID == idConsorcio).FirstOrDefault();
+            var dueño = context.Dueños.Where(x => x.ID == idDueño).FirstOrDefault();
 
             UnidadesFuncionales UF = new UnidadesFuncionales();
             UF.UF = idUf;
             UF.Departamento = departamento;
             UF.Consorcios = consorcio;
-            UF.Apellido = apellido;
-            UF.Nombre = nombre;
             UF.Coeficiente = coeficiente;
             context.AddToUnidadesFuncionales(UF);
             UF.Cochera = cochera == "SI" ? true : false;
-
+            UF.Dueños = dueño;
             context.SaveChanges();
 
             return GetUnidadesFuncionales(idConsorcio);

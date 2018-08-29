@@ -9,9 +9,9 @@ namespace Servicios.Interfaces
 
         List<UnidadesFuncionales> GetAllUnidadesFuncionales();
 
-        IEnumerable<UnidadesFuncionalesModel> ModificarUnidades(string idConsorcio, int idUF, string departamento, string idUf, string apellido, string nombre, decimal coeficiente, string cochera);
+        IEnumerable<UnidadesFuncionalesModel> ModificarUnidades(string idConsorcio, int idUF, string departamento, string idUf, decimal coeficiente, string cochera, decimal idDueño);
 
-        IEnumerable<UnidadesFuncionalesModel> AgregarUnidad(string idConsorcio, string idUf, string departamento, string apellido, string nombre, decimal coeficiente, string cochera);
+        IEnumerable<UnidadesFuncionalesModel> AgregarUnidad(string idConsorcio, string idUf, string departamento, decimal coeficiente, string cochera, decimal idDueño);
 
         UnidadesFuncionales GetUnidadFuncional(string consorciosID, string UF);
 

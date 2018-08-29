@@ -19,6 +19,7 @@ namespace WebSistemmas.Consorcios
         private const int col_cochera = 4;
         private const int col_coeficiente = 5;
         private const int col_idUF = 6;
+        private const int col_DueñoId = 7;
 
         #region Constructor y Page_Load
         public UnidadesFuncionales()
@@ -61,12 +62,10 @@ namespace WebSistemmas.Consorcios
 
                             txtNumero.Text = GridViewrow.Cells[col_numero].Text;
                             txtDepartamento.Text = GridViewrow.Cells[col_departamento].Text;
-                            txtApellido.Text = GridViewrow.Cells[col_apellido].Text;
-                            txtNombre.Text = GridViewrow.Cells[col_nombre].Text;
-                            txtApellido.Text = GridViewrow.Cells[col_apellido].Text;
                             txtCoeficiente.Text = GridViewrow.Cells[col_coeficiente].Text;
                             txtID.Text = GridViewrow.Cells[col_idUF].Text;
                             ddlCochera.SelectedValue = GridViewrow.Cells[col_cochera].Text;
+                            ddlDueños.SelectedValue = GridViewrow.Cells[col_DueñoId].Text;
                             break;
 
                         case "CTACTE":
@@ -90,6 +89,7 @@ namespace WebSistemmas.Consorcios
         protected void grdUnidades_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             e.Row.Cells[col_idUF].Visible = false;
+            e.Row.Cells[col_DueñoId].Visible = false;
         }
         #endregion
 
@@ -103,16 +103,6 @@ namespace WebSistemmas.Consorcios
             if (txtDepartamento.Text == "")
             {
                 lblError.Text = "No se ingreso el Departamento de la Unidad Funcional";
-                return;
-            }
-            if (txtApellido.Text == "")
-            {
-                lblError.Text = "No se ingreso el Apellido del dueño de la Unidad Funcional";
-                return;
-            }
-            if (txtNombre.Text == "")
-            {
-                lblError.Text = "No se ingreso el Nombre del dueño de la Unidad Funcional";
                 return;
             }
             else if (txtCoeficiente.Text == "")
@@ -132,7 +122,7 @@ namespace WebSistemmas.Consorcios
                 string idConsorcio = Session["idConsorcio"].ToString();
                 string departamento = txtDepartamento.Text;
                 decimal coeficiente = decimal.Parse(txtCoeficiente.Text);
-                grdUnidades.DataSource = _serv.ModificarUnidades(idConsorcio, Convert.ToInt32(txtID.Text), departamento, txtNumero.Text, txtApellido.Text.ToUpper(), txtNombre.Text.ToUpper(), coeficiente, ddlCochera.SelectedValue);
+                grdUnidades.DataSource = _serv.ModificarUnidades(idConsorcio, Convert.ToInt32(txtID.Text), departamento, txtNumero.Text, coeficiente, ddlCochera.SelectedValue, ddlDueños.SelectedValue.ToDecimal());
                 grdUnidades.DataBind();
             }
             catch (Exception ex)
@@ -153,16 +143,6 @@ namespace WebSistemmas.Consorcios
                 lblError.Text = "No se ingreso el Numero de la Unididad Funcional";
                 return;
             }
-            else if (txtApellidoNuevo.Text == "")
-            {
-                lblError.Text = "No se ingreso el Apellido del dueño de la Unidad Funcional";
-                return;
-            }
-            else if (txtNombreNuevo.Text == "")
-            {
-                lblError.Text = "No se ingreso el Nombre del dueño de la Unidad Funcional";
-                return;
-            }
             else if (txtCoeficienteNuevo.Text == "")
             {
                 lblError.Text = "No se ingreso el Coeficiente de la Unidad Funcional";
@@ -178,14 +158,11 @@ namespace WebSistemmas.Consorcios
             try
             {
                 string idConsorcio = Session["idConsorcio"].ToString();
-                grdUnidades.DataSource = _serv.AgregarUnidad(idConsorcio, txtNumeroNuevo.Text, txtDepartamentoNuevo.Text, txtApellidoNuevo.Text.ToUpper(), txtNombreNuevo.Text.ToUpper(), Convert.ToDecimal(txtCoeficienteNuevo.Text), ddlCocheraNueva.SelectedValue);
+                grdUnidades.DataSource = _serv.AgregarUnidad(idConsorcio, txtNumeroNuevo.Text, txtDepartamentoNuevo.Text, Convert.ToDecimal(txtCoeficienteNuevo.Text), ddlCocheraNueva.SelectedValue, ddlDueñosNuevo.SelectedValue.ToDecimal());
                 grdUnidades.DataBind();
 
                 txtNumeroNuevo.Text = "";
                 txtDepartamento.Text = "";
-                txtNombreNuevo.Text = "";
-                txtApellidoNuevo.Text = "";
-                txtNombreNuevo.Text = "";
                 txtCoeficienteNuevo.Text = "";
             }
             catch (Exception ex)
@@ -205,7 +182,13 @@ namespace WebSistemmas.Consorcios
         {
             dueñosServ dueñosServ = new dueñosServ();
 
-            ddlDueños.DataSource = dueñosServ.GetDueños();
+            var dueños = dueñosServ.GetDueños();
+            ddlDueñosNuevo.DataSource = dueños;
+            ddlDueñosNuevo.DataTextField = "Apellido_y_Nombre";
+            ddlDueñosNuevo.DataValueField = "ID";
+            ddlDueñosNuevo.DataBind();
+
+            ddlDueños.DataSource = dueños;
             ddlDueños.DataTextField = "Apellido_y_Nombre";
             ddlDueños.DataValueField = "ID";
             ddlDueños.DataBind();

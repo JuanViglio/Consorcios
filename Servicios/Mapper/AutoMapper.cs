@@ -28,13 +28,13 @@ namespace Servicios.Mapper
         {
             IEnumerable<UnidadesFuncionalesModel> ufModel;
 
-            return ufModel = from u in unidadesFuncionales
+            return ufModel = from u in unidadesFuncionales 
                              select new UnidadesFuncionalesModel()
                              {
                                  Departamento = u.Departamento,
                                  ID = u.ID,
-                                 Apellido = u.Apellido,
-                                 Nombre = u.Nombre,
+                                 Apellido = u.Dueños.Apellido,
+                                 Nombre = u.Dueños.Nombre,
                                  UF = u.UF,
                                  Cochera = u.Cochera == true ? "SI" : "NO",
                                  Coeficiente = u.Coeficiente,

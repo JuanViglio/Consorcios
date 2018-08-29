@@ -13,5 +13,6 @@
         public string Cochera { get; set; }
         public bool Aplicar { get; set; }
         public string PeriodoDetalle { get; set; }
+        public decimal Dueños_Id { get; set; }
     }
 }

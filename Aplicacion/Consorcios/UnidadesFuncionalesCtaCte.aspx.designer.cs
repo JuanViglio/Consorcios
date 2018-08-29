@@ -56,5 +56,23 @@ namespace WebSistemmas.Consorcios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnVolver;
+        
+        /// <summary>
+        /// btnPagar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPagar;
+        
+        /// <summary>
+        /// agregarPagoUFSID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebSistemmas.Consorcios.UserControls.UnidadesFuncionalesCtaCte.AgregarPagoUF agregarPagoUFSID;
     }
 }

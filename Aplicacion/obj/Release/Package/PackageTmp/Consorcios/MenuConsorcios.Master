@@ -28,6 +28,7 @@
                 <li id="balances"><a href="../Consorcios/Balances.aspx#balances">Balances</a></li>
                 <li id="utilidades"><a href="../Consorcios/Utilidades.aspx#utilidades">Utilidades</a></li>
                 <li id="caja"><a href="../Consorcios/Caja.aspx#caja">Caja</a></li>
+                <li id="dueños"><a href="../Consorcios/Dueños.aspx#dueños">Dueños</a></li>
             </ul>
         </nav>
 

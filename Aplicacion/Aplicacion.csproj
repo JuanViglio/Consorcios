@@ -108,6 +108,7 @@
     <Content Include="Consorcios\UserControls\Seguros\GridSeguroDetalle.ascx" />
     <Content Include="Consorcios\UserControls\Seguros\GridSeguros.ascx" />
     <Content Include="Consorcios\UserControls\Titulo.ascx" />
+    <Content Include="Consorcios\UserControls\UnidadesFuncionalesCtaCte\AgregarPagoUF.ascx" />
     <Content Include="Consorcios\UserControls\UnidadesFuncionalesCtaCte\GridUnidadesFuncionalesCtaCte.ascx" />
     <Content Include="Consorcios\UserControls\UnidadesFuncionalesDeuda\GridUnidadesFuncionalesDeuda.ascx" />
     <Content Include="Consorcios\Utilidades.aspx" />
@@ -416,6 +417,13 @@
     </Compile>
     <Compile Include="Consorcios\UserControls\Titulo.ascx.designer.cs">
       <DependentUpon>Titulo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\UnidadesFuncionalesCtaCte\AgregarPagoUF.ascx.cs">
+      <DependentUpon>AgregarPagoUF.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\UnidadesFuncionalesCtaCte\AgregarPagoUF.ascx.designer.cs">
+      <DependentUpon>AgregarPagoUF.ascx</DependentUpon>
     </Compile>
     <Compile Include="Consorcios\UserControls\UnidadesFuncionalesCtaCte\GridUnidadesFuncionalesCtaCte.ascx.cs">
       <DependentUpon>GridUnidadesFuncionalesCtaCte.ascx</DependentUpon>
