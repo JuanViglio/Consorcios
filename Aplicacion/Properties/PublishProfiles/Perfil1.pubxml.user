@@ -9,13 +9,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/DAO.dll">
-      <publishTime>08/28/2018 23:02:05</publishTime>
+      <publishTime>09/04/2018 23:39:06</publishTime>
     </File>
     <File Include="bin/Negocio.dll">
-      <publishTime>08/28/2018 23:02:06</publishTime>
+      <publishTime>09/04/2018 23:39:07</publishTime>
     </File>
     <File Include="bin/Servicios.dll">
-      <publishTime>08/28/2018 23:02:05</publishTime>
+      <publishTime>09/04/2018 23:39:07</publishTime>
     </File>
     <File Include="bin/System.Data.Entity.dll">
       <publishTime>09/26/2012 03:16:08</publishTime>
@@ -24,7 +24,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/15/2018 13:45:39</publishTime>
     </File>
     <File Include="bin/WebSistemmas.dll">
-      <publishTime>08/29/2018 00:30:53</publishTime>
+      <publishTime>09/04/2018 23:39:08</publishTime>
     </File>
     <File Include="Cobranza/Cobros.aspx">
       <publishTime>02/05/2018 23:52:17</publishTime>
@@ -40,6 +40,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Consorcios/CargarGastos.aspx">
       <publishTime>02/05/2018 19:25:30</publishTime>
+    </File>
+    <File Include="Consorcios/Cobranza.aspx">
+      <publishTime>09/04/2018 23:38:47</publishTime>
     </File>
     <File Include="Consorcios/Consorcios.aspx">
       <publishTime>03/07/2018 08:30:40</publishTime>
@@ -72,7 +75,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/28/2018 19:59:05</publishTime>
     </File>
     <File Include="Consorcios/MenuConsorcios.Master">
-      <publishTime>08/28/2018 22:54:43</publishTime>
+      <publishTime>09/04/2018 23:15:17</publishTime>
     </File>
     <File Include="Consorcios/Privado.aspx">
       <publishTime>02/05/2018 23:56:35</publishTime>
@@ -189,13 +192,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/05/2018 19:25:30</publishTime>
     </File>
     <File Include="css/menuCobranza.css">
-      <publishTime>02/05/2018 19:25:30</publishTime>
+      <publishTime>09/04/2018 23:15:07</publishTime>
     </File>
     <File Include="css/Paginas.css">
       <publishTime>02/25/2018 16:05:59</publishTime>
     </File>
     <File Include="css/styles.css">
-      <publishTime>02/05/2018 19:25:30</publishTime>
+      <publishTime>09/04/2018 23:17:39</publishTime>
     </File>
     <File Include="js/Cobranza.js">
       <publishTime>02/05/2018 19:25:30</publishTime>

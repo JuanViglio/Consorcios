@@ -34,6 +34,29 @@ namespace Servicios
                     }).ToList();
         }
 
+        public IEnumerable<UnidadesFuncionalesModel> GetUFByPropietarioId (decimal propietarioID)
+        {
+            var dueños = context.Dueños;
+            return (from u in context.UnidadesFuncionales
+                    join d in context.Dueños
+                    on u.Dueños.ID equals d.ID
+                    where u.Dueños.ID == propietarioID
+                    orderby u.UF
+                    select new UnidadesFuncionalesModel()
+                    {
+                        Departamento = u.Departamento,
+                        ID = u.ID,
+                        Apellido = d.Apellido,
+                        Nombre = d.Nombre,
+                        UF = u.UF,
+                        Cochera = u.Cochera == true ? "SI" : "NO",
+                        Coeficiente = u.Coeficiente,
+                        Aplicar = false,
+                        Dueños_Id = d.ID
+                    }).ToList();
+        }
+    
+
         public List<UnidadesFuncionales> GetAllUnidadesFuncionales()
         {
             return context.UnidadesFuncionales.ToList();

@@ -34,5 +34,27 @@ namespace Servicios
 
             return dueñosModel;
         }
+
+        public List<DueñosModel> GetDueñosCombo()
+        {
+            var dueñosModel = new List<DueñosModel>() {
+                new DueñosModel() {
+                    ID = 0,
+                    Apellido_y_Nombre = "Seleccione un Propietario" }
+            };
+
+            var consorcios = _context.Dueños.ToList();
+
+            foreach (var item in consorcios)
+            {
+                dueñosModel.Add(new DueñosModel()
+                {
+                    ID = item.ID,
+                    Apellido_y_Nombre = item.Apellido + " " + item.Nombre
+                });
+            }
+
+            return dueñosModel;
+        }
     }
 }

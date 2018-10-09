@@ -29,6 +29,7 @@
                 <li id="utilidades"><a href="../Consorcios/Utilidades.aspx#utilidades">Utilidades</a></li>
                 <li id="caja"><a href="../Consorcios/Caja.aspx#caja">Caja</a></li>
                 <li id="dueños"><a href="../Consorcios/Dueños.aspx#dueños">Dueños</a></li>
+                <li id="cobranza"><a href="../Consorcios/Cobranza.aspx#cobranza">Cobranza</a></li>
             </ul>
         </nav>
 

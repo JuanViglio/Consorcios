@@ -47,3 +47,4 @@ D:\Sistemmas\Consorcios\DAO\bin\Debug\EntityFramework.dll
 D:\Sistemmas\Consorcios\DAO\bin\Debug\EntityFramework.xml
 D:\Sistemmas\Consorcios\DAO\obj\Debug\DAO.dll
 D:\Sistemmas\Consorcios\DAO\obj\Debug\DAO.pdb
+D:\Sistemmas\Consorcios\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
