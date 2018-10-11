@@ -52,7 +52,8 @@ namespace Servicios
                         Cochera = u.Cochera == true ? "SI" : "NO",
                         Coeficiente = u.Coeficiente,
                         Aplicar = false,
-                        Dueños_Id = d.ID
+                        Dueños_Id = d.ID,
+                        Direccion = u.Consorcios.Direccion
                     }).ToList();
         }
     

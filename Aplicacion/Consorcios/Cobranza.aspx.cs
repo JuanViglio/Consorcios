@@ -65,7 +65,7 @@ namespace WebSistemmas.Consorcios
                 tituloPaginaID.CargarTitulo("Cobranza");
                 CargarComboConsorcios();
                 CargarComboPropietarios();
-                CargarGrillaUF(decimal.Parse(ddlPropietario.SelectedValue));
+                CargarGrillaUF(ddlPropietario.SelectedValue.ToDecimal());
             }
         }
         #endregion
@@ -77,7 +77,27 @@ namespace WebSistemmas.Consorcios
 
         protected void ddlPropietario_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CargarGrillaUF(Convert.ToDecimal(ddlPropietario.SelectedValue));
+            CargarGrillaUF(ddlPropietario.SelectedValue.ToDecimal());
+        }
+
+        protected void btnAceptarPropietario_Click(object sender, EventArgs e)
+        {
+            List<UnidadesFuncionalesModel> ufModel = new List<UnidadesFuncionalesModel>();
+
+            foreach (GridViewRow item in grdUF.Rows)
+            {
+                if (((CheckBox)item.FindControl("chkSumar")).Checked)
+                {
+                    ufModel.Add(new UnidadesFuncionalesModel() {
+                        Direccion = item.Cells[0].Text,
+                        UF = item.Cells[1].Text ,
+                        ID = item.Cells[2].Text.ToInt()
+                    });
+                }                
+            }
+
+            grdPagar.DataSource = ufModel;
+            grdPagar.DataBind();
         }
     }
 }

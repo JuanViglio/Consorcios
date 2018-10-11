@@ -37,7 +37,7 @@
                     <table style="height: 149px; width: 1179px">
                         <tr>
                             <td style="width: 643px; height: 156px;" valign="top">
-                                <asp:GridView ID="grdGastosFijos" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="140px" OnRowCommand="grdGastosFijos_RowCommand" OnRowDataBound="grdGastosFijos_RowDataBound" style="margin-top: 0px; margin-left: 0px;" Width="622px">
+                                <asp:GridView ID="grdGastosFijos" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="140px" OnRowCommand="grdGastosFijos_RowCommand" OnRowDataBound="grdGastosFijos_RowDataBound" style="margin-top: 0px; margin-left: 0px;" Width="622px" OnSelectedIndexChanged="grdGastosFijos_SelectedIndexChanged">
                                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                     <Columns>
                                         <asp:BoundField DataField="Detalle" HeaderText="Detalle">
@@ -394,7 +394,7 @@
                     <asp:Button runat="server" Text="Volver" ID="btnVolver" Height="30px" OnClick="btnVolver_Click" Width="120px" style="margin-left: 96px"></asp:Button>
                 </td>
                 <td style="width: 295px; height: 45px;">
-                    <asp:Button runat="server" Text="Aceptar Expensa" ID="btnAceptar" Height="30px" OnClientClick = "Confirm('¿Esta seguro que quiere ACEPTAR las Expensas?')" OnClick="btnAceptar_Click" Width="120px"></asp:Button>
+                    <asp:Button runat="server" Text="Aceptar Expensa" ID="btnAceptar" Height="30px" OnClientClick = "Confirm('¿Esta seguro que quiere ACEPTAR las Expensas?')" OnClick="btnAceptar_Click" Width="120px" style="margin-left: 10px"></asp:Button>
                 </td>
             </tr>
             <tr>
