@@ -92,6 +92,8 @@
     <Content Include="Consorcios\Seguros.aspx" />
     <Content Include="Consorcios\UnidadesFuncionalesCtaCte.aspx" />
     <Content Include="Consorcios\UnidadesFuncionalesDeuda.aspx" />
+    <Content Include="Consorcios\UserControls\Cobranza\AcordeonBuscar.ascx" />
+    <Content Include="Consorcios\UserControls\Cobranza\GridPagar.ascx" />
     <Content Include="Consorcios\UserControls\CtaCteProveedor\AgregarPagoProveedor.ascx" />
     <Content Include="Consorcios\UserControls\CtaCteProveedor\GridCtaCteProveedor.ascx" />
     <Content Include="Consorcios\UserControls\Dueños\GridDueños.ascx" />
@@ -299,6 +301,20 @@
     </Compile>
     <Compile Include="Consorcios\UnidadesFuncionalesDeuda.aspx.designer.cs">
       <DependentUpon>UnidadesFuncionalesDeuda.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Cobranza\AcordeonBuscar.ascx.cs">
+      <DependentUpon>AcordeonBuscar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Cobranza\AcordeonBuscar.ascx.designer.cs">
+      <DependentUpon>AcordeonBuscar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Cobranza\GridPagar.ascx.cs">
+      <DependentUpon>GridPagar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Cobranza\GridPagar.ascx.designer.cs">
+      <DependentUpon>GridPagar.ascx</DependentUpon>
     </Compile>
     <Compile Include="Consorcios\UserControls\CtaCteProveedor\AgregarPagoProveedor.ascx.cs">
       <DependentUpon>AgregarPagoProveedor.ascx</DependentUpon>
