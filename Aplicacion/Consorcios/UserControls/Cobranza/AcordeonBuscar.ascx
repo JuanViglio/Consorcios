@@ -4,6 +4,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link href="../css/jquery-ui.css" rel="stylesheet" />
 <link href="../css/Paginas.css" rel="Stylesheet" />
+<script src="../../../js/Cobranza.js"></script>
 
 <style type="text/css">
     .auto-style1 {
@@ -40,7 +41,7 @@
             <tr>
                 <td style="width: 93px; height: 40px">UF</td>
                 <td style="height: 40px">
-                    <asp:DropDownList ID="ddlUF" runat="server" Height="20px" Width="250px" OnSelectedIndexChanged="ddlUF_SelectedIndexChanged">
+                    <asp:DropDownList ID="ddlUF" runat="server" Height="20px" Width="250px" OnSelectedIndexChanged="ddlUF_SelectedIndexChanged" autopostback="True">
                     </asp:DropDownList>
                 </td>
             </tr>
@@ -114,6 +115,8 @@
                     </td>
                 </tr>
             </table>
+<div runat="server" id="divTest">test</div>        
+
         </ContentTemplate>
         </asp:updatepanel>  
 

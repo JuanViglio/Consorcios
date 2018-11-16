@@ -7,6 +7,8 @@ namespace Servicios.Interfaces
     {
         IEnumerable<UnidadesFuncionalesModel> GetUnidadesFuncionales(string consorciosID);
 
+        IEnumerable<UnidadesFuncionalesModel> GetUnidadesFuncionalesCombo(string consorciosID);
+
         IEnumerable<UnidadesFuncionalesModel> GetUFByPropietarioId(decimal propietarioID);
 
         List<UnidadesFuncionales> GetAllUnidadesFuncionales();

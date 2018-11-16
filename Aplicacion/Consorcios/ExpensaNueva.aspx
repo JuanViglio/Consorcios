@@ -37,7 +37,7 @@
                     <table style="height: 149px; width: 1179px">
                         <tr>
                             <td style="width: 643px; height: 156px;" valign="top">
-                                <asp:GridView ID="grdGastosFijos" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="140px" OnRowCommand="grdGastosFijos_RowCommand" OnRowDataBound="grdGastosFijos_RowDataBound" style="margin-top: 0px; margin-left: 0px;" Width="622px" OnSelectedIndexChanged="grdGastosFijos_SelectedIndexChanged">
+                                <asp:GridView ID="grdGastosFijos" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="140px" OnRowCommand="grdGastosFijos_RowCommand" OnRowDataBound="grdGastosFijos_RowDataBound" style="margin-top: 0px; margin-left: 0px;" Width="622px">
                                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                     <Columns>
                                         <asp:BoundField DataField="Detalle" HeaderText="Detalle">

@@ -3,8 +3,6 @@ using Servicios;
 using Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -15,6 +13,7 @@ namespace WebSistemmas.Consorcios.UserControls.Cobranza
         private IConsorciosServ _consorciosServ;
         private IUnidadesServ _unidadesServ;
         private dueñosServ _propietariosServ;
+        private pagosServ _pagosServ;
         private ExpensasEntities context = new ExpensasEntities();
 
         #region Metodos Privados
@@ -28,7 +27,7 @@ namespace WebSistemmas.Consorcios.UserControls.Cobranza
 
         private void CargarComboUF(string idConsorcio)
         {
-            ddlUF.DataSource = _unidadesServ.GetUnidadesFuncionales(idConsorcio);
+            ddlUF.DataSource = _unidadesServ.GetUnidadesFuncionalesCombo(idConsorcio);
             ddlUF.DataTextField = "UF";
             ddlUF.DataValueField = "Id";
             ddlUF.DataBind();
@@ -48,8 +47,13 @@ namespace WebSistemmas.Consorcios.UserControls.Cobranza
             grdUF.DataBind();
         }
 
-        private void CargarComboPeriodos()
+        private void CargarComboPeriodos(decimal idUF)
         {
+            var periodos = _pagosServ.GetPagosAdeudados(idUF);
+            ddlPeriodo.DataSource = periodos;
+            ddlPeriodo.DataTextField = "Periodo";
+            ddlPeriodo.DataValueField = "ID";
+            ddlPeriodo.DataBind();
 
         }
         #endregion
@@ -60,6 +64,7 @@ namespace WebSistemmas.Consorcios.UserControls.Cobranza
             _consorciosServ = new consorciosServ(context);
             _unidadesServ = new unidadesFuncionalesServ();
             _propietariosServ = new dueñosServ();
+            _pagosServ = new pagosServ(context);
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -83,12 +88,16 @@ namespace WebSistemmas.Consorcios.UserControls.Cobranza
         {
             CargarGrillaUF(ddlPropietario.SelectedValue.ToDecimal());
         }
+
         protected void ddlUF_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CargarComboPeriodos();
+            CargarComboPeriodos(ddlUF.SelectedValue.ToDecimal());
         }
+
+
         #endregion
 
+        #region Botones
         protected void btnAceptarPropietario_Click(object sender, EventArgs e)
         {
             List<UnidadesFuncionalesModel> ufModel = new List<UnidadesFuncionalesModel>();
@@ -113,7 +122,10 @@ namespace WebSistemmas.Consorcios.UserControls.Cobranza
             Session["ufModel"] = ufModel;
 
             GridPagarUC.CargarGrillaCobrar();
+
+            divTest.Visible = false;
         }
 
+        #endregion
     }
 }

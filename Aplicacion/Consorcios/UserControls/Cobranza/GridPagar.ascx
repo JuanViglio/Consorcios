@@ -1,7 +1,14 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="GridPagar.ascx.cs" Inherits="WebSistemmas.Consorcios.UserControls.Cobranza.GridPagar" %>
-<div style="margin-left:50px">
-    <asp:updatepanel id="UpdatePanel1" runat="server">
-    <ContentTemplate> 
+<script src="../../../js/Cobranza.js"></script>
+<style type="text/css">
+    .auto-style1 {
+        margin-left: 17px;
+    }
+</style>
+
+<div id="divPagar" style="margin-left:50px;" runat="server">
+<%--    <asp:updatepanel id="UpdatePanel1" runat="server">
+    <ContentTemplate> --%>
     <asp:GridView ID="grdPagar" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="51px" style="margin-top: 0px; margin-left: 0px; margin-right: 0px; margin-bottom: 25px;" Width="470px">
     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
     <Columns>
@@ -23,6 +30,7 @@
     <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
     </asp:GridView>        
         <asp:Button ID="btnCobrar" runat="server" Text="Cobrar" Height="33px" OnClick="btnCobrar_Click" Width="92px" />
-    </ContentTemplate>
-    </asp:updatepanel> 
+        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" Height="33px"  Width="92px" CssClass="auto-style1" OnClick="btnCancelar_Click"  /><%--OnClientClick="CerrarDivPagar(); return false;"--%>
+<%--    </ContentTemplate>
+    </asp:updatepanel> --%>
 </div>

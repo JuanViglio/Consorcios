@@ -56,7 +56,47 @@ namespace Servicios
                         Direccion = u.Consorcios.Direccion
                     }).ToList();
         }
-    
+
+        public IEnumerable<UnidadesFuncionalesModel> GetUnidadesFuncionalesCombo(string consorciosID)
+        {
+            List<UnidadesFuncionalesModel> ufModel = new List<UnidadesFuncionalesModel>();
+            var dueños = context.Dueños;
+
+            var UF = (from u in context.UnidadesFuncionales
+                      join d in context.Dueños
+                      on u.Dueños.ID equals d.ID
+                      where u.Consorcios.ID == consorciosID
+                      orderby u.UF
+                      select new UnidadesFuncionalesModel()
+                      {
+                          Departamento = u.Departamento,
+                          ID = u.ID,
+                          Apellido = d.Apellido,
+                          Nombre = d.Nombre,
+                          UF = u.UF,
+                          Cochera = u.Cochera == true ? "SI" : "NO",
+                          Coeficiente = u.Coeficiente,
+                          Aplicar = false,
+                          Dueños_Id = d.ID
+                      }).ToList();
+
+            ufModel.Add(new UnidadesFuncionalesModel()
+            {
+                ID = 0,
+                UF = "Seleccione una Unidad Funcional"
+            });
+
+            foreach (var item in UF)
+            {
+                ufModel.Add(new UnidadesFuncionalesModel()
+                {
+                    ID = item.ID,
+                    UF = item.UF
+                });
+            }
+
+            return ufModel;
+        }
 
         public List<UnidadesFuncionales> GetAllUnidadesFuncionales()
         {
