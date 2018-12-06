@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WebSistemmas.Common;
 
 namespace Servicios
 {
@@ -39,13 +40,16 @@ namespace Servicios
             var dueños = context.Dueños;
             return (from u in context.UnidadesFuncionales
                     join d in context.Dueños
-                    on u.Dueños.ID equals d.ID
-                    where u.Dueños.ID == propietarioID
+                        on u.Dueños.ID equals d.ID
+                    join p in context.Pagos 
+                        on u.ID equals p.UnidadesFuncionales.ID
+                    where d.ID == propietarioID 
+                        && p.Estado == Constantes.EstadoAdeudado
                     orderby u.UF
                     select new UnidadesFuncionalesModel()
                     {
                         Departamento = u.Departamento,
-                        ID = u.ID,
+                        ID = p.ID,
                         Apellido = d.Apellido,
                         Nombre = d.Nombre,
                         UF = u.UF,
@@ -53,7 +57,8 @@ namespace Servicios
                         Coeficiente = u.Coeficiente,
                         Aplicar = false,
                         Dueños_Id = d.ID,
-                        Direccion = u.Consorcios.Direccion
+                        Direccion = u.Consorcios.Direccion,
+                        PeriodoDetalle = p.PeriodoDetalle
                     }).ToList();
         }
 
@@ -238,8 +243,11 @@ namespace Servicios
         {
             Pagos pago = context.Pagos.Where(x => x.ID == idPago).FirstOrDefault();
 
-            pago.ImportePagado = importe;
+            pago.ImportePagado = pago.ImportePagado + importe;
             pago.FechaPagado = System.DateTime.Now;
+
+            if (pago.ImportePagado == pago.ImportePago1) //QUE PASA SI ES MAYOR A LA FECHA DE PAGO 1
+                pago.Estado = Constantes.EstadoPagado;
 
             context.SaveChanges();
         }

@@ -27,6 +27,7 @@ namespace WebSistemmas.Common
         public const string TipoSeguroAP = "AP";
         public const string TipoSeguroIC = "IC";
         public const string EstadoAdeudado = "ADEUDADO";
+        public const string EstadoPagado = "PAGADO";
 
         public static decimal GetDecimalFromCurrency (string valor)
         {

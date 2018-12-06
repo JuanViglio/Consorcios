@@ -7,8 +7,7 @@
 </style>
 
 <div id="divPagar" style="margin-left:50px;" runat="server">
-<%--    <asp:updatepanel id="UpdatePanel1" runat="server">
-    <ContentTemplate> --%>
+
     <asp:GridView ID="grdPagar" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="51px" style="margin-top: 0px; margin-left: 0px; margin-right: 0px; margin-bottom: 25px;" Width="470px">
     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
     <Columns>
@@ -31,6 +30,5 @@
     </asp:GridView>        
         <asp:Button ID="btnCobrar" runat="server" Text="Cobrar" Height="33px" OnClick="btnCobrar_Click" Width="92px" />
         <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" Height="33px"  Width="92px" CssClass="auto-style1" OnClick="btnCancelar_Click"  /><%--OnClientClick="CerrarDivPagar(); return false;"--%>
-<%--    </ContentTemplate>
-    </asp:updatepanel> --%>
+
 </div>

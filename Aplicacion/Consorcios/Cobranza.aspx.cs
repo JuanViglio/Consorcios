@@ -3,9 +3,7 @@ using Servicios;
 using Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using WebSistemmas.Consorcios.UserControls.Cobranza;
 
 namespace WebSistemmas.Consorcios
 {
@@ -38,7 +36,7 @@ namespace WebSistemmas.Consorcios
         {
             var periodos = _pagosServ.GetPagosAdeudados(idUF);
             ddlPeriodo.DataSource = periodos;
-            ddlPeriodo.DataTextField = "Periodo";
+            ddlPeriodo.DataTextField = "PeriodoDetalle";
             ddlPeriodo.DataValueField = "ID";
             ddlPeriodo.DataBind();
         }
@@ -75,7 +73,23 @@ namespace WebSistemmas.Consorcios
                 divPropietario.Visible = false;
                 CargarComboConsorcios();
                 CargarComboPropietarios();
+                divPagar.Visible = false;
+                tituloPaginaID.CargarTitulo("Cobranza");
             }
+        }
+        #endregion
+
+        #region Options Buttons
+        protected void UF_CheckedChanged(object sender, EventArgs e)
+        {
+            divUF.Visible = true;
+            divPropietario.Visible = false;
+        }
+
+        protected void Propietario_CheckedChanged(object sender, EventArgs e)
+        {
+            divUF.Visible = false;
+            divPropietario.Visible = true;
         }
         #endregion
 
@@ -92,6 +106,26 @@ namespace WebSistemmas.Consorcios
             CargarComboPeriodos(ddlUF.SelectedValue.ToDecimal());
         }
 
+        #endregion
+
+        #region Botones
+        protected void btnAceptarUF_Click(object sender, EventArgs e)
+        {
+            if (ddlUF.SelectedValue.ToString() != "0" && ddlUF.SelectedValue.ToString() != "" )
+            {
+                List<UnidadesFuncionalesModel> ufModel = new List<UnidadesFuncionalesModel>();
+                ufModel.Add(new UnidadesFuncionalesModel() 
+                {
+                    Direccion = ddlConsorcios.SelectedItem.ToString(),
+                    UF = ddlUF.SelectedItem.ToString(), 
+                    ID = ddlPeriodo.SelectedValue.ToString().ToDecimal(),
+                    PeriodoDetalle = ddlPeriodo.SelectedItem.ToString() 
+                });
+
+                CargarGrillaCobrar(ufModel);
+                divPagar.Visible = true;
+            }
+        }
         #endregion
 
         #endregion
@@ -118,65 +152,50 @@ namespace WebSistemmas.Consorcios
                     {
                         Direccion = item.Cells[0].Text,
                         UF = item.Cells[1].Text,
-                        ID = item.Cells[2].Text.ToInt()
+                        PeriodoDetalle = item.Cells[2].Text,
+                        ID = item.Cells[3].Text.ToInt()
                     });
                 }
             }
 
-            ContentPlaceHolder placeHolder = Page.Master.FindControl("ContentPlaceHolder1") as ContentPlaceHolder;
-            Control control = placeHolder.FindControl("gridPagarID");
-            GridPagar GridPagarUC = (GridPagar)control;
-
-            Session["ufModel"] = ufModel;
-
-            GridPagarUC.CargarGrillaCobrar();
-
-            //divTest.Visible = false;
+            if (ufModel.Count > 0)
+            {
+                CargarGrillaCobrar(ufModel);
+                divPagar.Visible = true;
+            }
         }
 
         #endregion
         #endregion
 
-        //private IConsorciosServ _consorciosServ;
-        //private IUnidadesServ _unidadesServ;
-        //private dueñosServ _propietariosServ;
-        //private ExpensasEntities context = new ExpensasEntities();
+        #region DivPagar
 
-        //public Cobranza()
-        //{
-        //    _consorciosServ = new consorciosServ(context);
-        //    _unidadesServ = new unidadesFuncionalesServ();
-        //    _propietariosServ = new dueñosServ();
-        //}
-
-        //protected void Page_Load(object sender, EventArgs e)
-        //{
-        //    if (!IsPostBack)
-        //    {
-        //        tituloPaginaID.CargarTitulo("Cobranza");
-        //        divPropietario.Visible = false;
-        //    }
-        //}
-
-        //#region Botones
-
-        //protected void btnCobrar_Click(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //#endregion
-
-        protected void UF_CheckedChanged(object sender, EventArgs e)
+        protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            divUF.Visible = true;
-            divPropietario.Visible = false;
+            divPagar.Visible = false;
         }
 
-        protected void Propietario_CheckedChanged(object sender, EventArgs e)
+        protected void btnCobrar_Click(object sender, EventArgs e)
         {
-            divUF.Visible = false;
-            divPropietario.Visible = true;
+            var pagoId = "";
+
+            foreach (GridViewRow item in grdPagar.Rows)
+            {
+                if (((CheckBox)item.FindControl("chkSumar")).Checked)
+                {
+                    pagoId = item.Cells[0].Text;
+                }
+            }
+
+            _unidadesServ.PagarExpensa(txtImporte.Text.ToDecimal(), 0);
         }
+
+        private void CargarGrillaCobrar(List<UnidadesFuncionalesModel> ufModel)
+        {
+            grdPagar.DataSource = ufModel;
+            grdPagar.DataBind();
+
+        }
+        #endregion
     }
 }

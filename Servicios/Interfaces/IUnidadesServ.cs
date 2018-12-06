@@ -26,5 +26,7 @@ namespace Servicios.Interfaces
         List<UnidadesFuncionalesCtaCte> GetCtaCte(decimal idUF);
 
         void AddHaber(UnidadesFuncionalesCtaCte UFctaCte);
+
+        void PagarExpensa(decimal importe, decimal idPago);
     }
 }

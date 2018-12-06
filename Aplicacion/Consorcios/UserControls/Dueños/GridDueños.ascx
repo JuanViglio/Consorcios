@@ -1,4 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="GridDueños.ascx.cs" Inherits="WebSistemmas.Consorcios.UserControls.Dueños.GridDueños" %>
+<script src="../../../js/Dueños.js"></script>
+
 <style type="text/css">
 
     .auto-style1 {

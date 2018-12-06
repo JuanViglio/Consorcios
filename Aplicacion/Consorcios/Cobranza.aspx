@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Cobranza.aspx.cs" Inherits="WebSistemmas.Consorcios.Cobranza"  MasterPageFile="~/Consorcios/MenuConsorcios.Master"%>
 <%@ Register TagPrefix="uc1" TagName="tituloPagina" Src="~/Consorcios/UserControls/Titulo.ascx" %>
-<%@ Register TagPrefix="uc3" TagName="gridPagar" Src="~/Consorcios/UserControls/Cobranza/GridPagar.ascx"%>
+<%--<%@ Register TagPrefix="uc3" TagName="gridPagar" Src="~/Consorcios/UserControls/Cobranza/GridPagar.ascx"%>--%>
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
     <form id="form1" runat="server" style="height: 814px">
@@ -14,7 +14,6 @@
     </asp:scriptmanager>
 
     <uc1:tituloPagina ID="tituloPaginaID" runat="server" />
-        <br />
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
                 <table>
@@ -28,9 +27,6 @@
 
                                 <div id="divUF" runat="server">  
                                     <table class="auto-style5">
-                                        <tr>
-                                            <td colspan="2" style="height: 20px"></td>
-                                        </tr>
                                         <tr>
                                             <td style="width: 93px; height: 40px">Consorcio</td>
                                             <td style="height: 40px">
@@ -55,7 +51,13 @@
                                         <tr>
                                             <td colspan="2"></td>
                                         </tr>
-                                    </table>                      
+                                        <tr>
+                                            <td style="height: 66px">
+                                                <asp:Button ID="btonCobrarPropietario" runat="server" Height="29px" OnClick="btnAceptarUF_Click" Text="Aceptar" Width="86px" />
+                                            </td>
+                                        </tr>
+                                    </table>                 
+                                         
                                 </div>
                                 <div id="divPropietario" runat="server" style="height: 253px">
                                 <table>
@@ -68,37 +70,40 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">
-                                <asp:GridView ID="grdUF" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="16px" style="margin-top: 0px; margin-left: 0px;" Width="574px">
-                                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                                <Columns>
-                                    <asp:BoundField DataField="Direccion" HeaderText="Direccion">
-                                    <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
-                                    </asp:BoundField>                
-                                    <asp:BoundField DataField="UF" HeaderText="UF">
-                                    <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="ID" HeaderText="ID">
-                                    <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
-                                    </asp:BoundField>
-                                    <asp:TemplateField HeaderText="Sumar">  
-                                        <HeaderTemplate>
-                                            Sumar
-                                        </HeaderTemplate>
-                                        <ItemTemplate>  
-                                            <asp:CheckBox runat="server" ID="chkSumar" />  
-                                        </ItemTemplate> 
-                                        <ItemStyle HorizontalAlign="Center" /> 
-                                    </asp:TemplateField>                                       
+                                            <asp:GridView ID="grdUF" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="16px" style="margin-top: 0px; margin-left: 0px;" Width="574px">
+                                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                            <Columns>
+                                                <asp:BoundField DataField="Direccion" HeaderText="Direccion">
+                                                <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
+                                                </asp:BoundField>                
+                                                <asp:BoundField DataField="UF" HeaderText="UF">
+                                                <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="PeriodoDetalle" HeaderText="Periodo">
+                                                <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="ID" HeaderText="ID">
+                                                <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
+                                                </asp:BoundField>
+                                                <asp:TemplateField HeaderText="Sumar">  
+                                                    <HeaderTemplate>
+                                                        Sumar
+                                                    </HeaderTemplate>
+                                                    <ItemTemplate>  
+                                                        <asp:CheckBox runat="server" ID="chkSumar" />  
+                                                    </ItemTemplate> 
+                                                    <ItemStyle HorizontalAlign="Center" /> 
+                                                </asp:TemplateField>                                       
 
-                                </Columns>
-                                <EditRowStyle BackColor="#999999" />
-                                <FooterStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
-                                <HeaderStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
-                                <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                                <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-                                <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                                </asp:GridView>
-                            </td>
+                                            </Columns>
+                                            <EditRowStyle BackColor="#999999" />
+                                            <FooterStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
+                                            <HeaderStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
+                                            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                                            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                                            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                                            </asp:GridView>
+                                        </td>
                                     </tr>
                                 </table>        
                                 <table>
@@ -108,12 +113,59 @@
                                         </td>
                                     </tr>
                                 </table>
-                                    <br />
+                                <br />
                                 </div>                    
                             </div>
                         </td>
-                        <td>
-                            <uc3:gridPagar ID="gridPagarID" runat="server" />
+                        <td style="vertical-align: top; width: 495px;" >
+                            <div runat="server" id="divPagar" style="padding-left:30px">
+                                <table>
+                                    <tr>
+                                        <td colspan="2">
+                                            <asp:GridView ID="grdPagar" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="51px" style="margin-top: 0px; margin-left: 0px; margin-right: 0px; margin-bottom: 25px;" Width="470px">
+                                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                            <Columns>
+                                                <asp:BoundField DataField="Direccion" HeaderText="Direccion">
+                                                <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
+                                                </asp:BoundField>                
+                                                <asp:BoundField DataField="UF" HeaderText="UF">
+                                                <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="PeriodoDetalle" HeaderText="Periodo">
+                                                <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="ID" HeaderText="ID">
+                                                <ItemStyle Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" HorizontalAlign="Center" />
+                                                </asp:BoundField>                                
+                                            </Columns>
+                                            <EditRowStyle BackColor="#999999" />
+                                            <FooterStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
+                                            <HeaderStyle BackColor="#2166a9" Font-Bold="True" ForeColor="White" />
+                                            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                                            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                                            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                                            </asp:GridView>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 26px">
+                                            Importe
+                                        </td>
+                                        <td style="width: 398px; height: 26px">
+
+                                            <asp:TextBox ID="txtImporte" runat="server"></asp:TextBox>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="height: 77px">
+                                            <asp:Button ID="btnCobrar" runat="server" Text="Cobrar" Height="33px" OnClick="btnCobrar_Click" Width="92px" />
+                                            <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" Height="33px"  Width="92px" CssClass="auto-style1" OnClick="btnCancelar_Click" style="margin-left: 18px"  />
+                                        </td>
+                                    </tr>
+                                </table>
+        
+                            </div>
                         </td>
                     </tr>
                 </table>
