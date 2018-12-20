@@ -1,4 +1,5 @@
 ﻿using DAO;
+using DAO.Models;
 using Negocio;
 using Negocio.Interfaces;
 using Servicios;
@@ -12,8 +13,7 @@ namespace WebSistemmas.Consorcios.UserControls.Dueños
 {
     public partial class AgregarDueños : System.Web.UI.UserControl
     {
-        private IProveedoresNeg _proveedoresNeg;
-        private IProveedoresServ _proveedresServ;
+        private dueñosServ _dueñosServ;
 
         #region Metodos Privados
         private void MostrarError(string error)
@@ -25,34 +25,28 @@ namespace WebSistemmas.Consorcios.UserControls.Dueños
             errorUc.MostrarError(error);
         }
 
-        private void LlenarGrillaProveedores()
+        private void LlenarGrillaDueños()
         {
             ContentPlaceHolder placeHolder = Page.Master.FindControl("ContentPlaceHolder1") as ContentPlaceHolder;
-            Control control = placeHolder.FindControl("UserControlGridProveedoresID");
+            Control control = placeHolder.FindControl("UserControlGridDueñosID");
             GridDueños gridDueñosUc = (GridDueños)control;
 
             gridDueñosUc.LlenarGrillaDueños();
         }
 
-        private void LlenarComboTipo()
-        {
-            //ddlTipoNuevo.Items.Add(Constantes.PrecioComprayVentaDistintos);
-            //ddlTipoNuevo.Items.Add(Constantes.PrecioComprayVentaIguales);
-        }
         #endregion
 
         public AgregarDueños()
         {
             ExpensasEntities context = new ExpensasEntities();
-            _proveedresServ = new proveedoresServ(context);
-            _proveedoresNeg = new proveedoresNeg(_proveedresServ);
+            _dueñosServ = new dueñosServ();
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                LlenarComboTipo();
+                
             }
         }
 
@@ -61,12 +55,22 @@ namespace WebSistemmas.Consorcios.UserControls.Dueños
             MostrarError(string.Empty);
             try
             {
-               //_proveedoresNeg.AgregarProveedor(txtNombreNuevo.Text, txtDireccionNuevo.Text.ToUpper(), txtMail.Text, ddlTipoNuevo.SelectedItem.Text);
-               // LlenarGrillaProveedores();
+                DueñosModel dueñoModel = new DueñosModel{
+                    Nombre = txtNombreNuevo.Text,
+                    Apellido = txtApellidoNuevo.Text,
+                    Direccion = txtDireccionNuevo.Text,
+                    Mail = txtMail.Text,
+                    Telefono = txtTelefonoNuevo.Text 
+                };
 
-               // txtNombreNuevo.Text = "";
-               // txtDireccionNuevo.Text = "";
-               // txtMail.Text = "";
+                _dueñosServ.AddDueño(dueñoModel);
+                LlenarGrillaDueños();
+
+                txtNombreNuevo.Text = "";
+                txtApellidoNuevo.Text = "";
+                txtDireccionNuevo.Text = "";
+                txtMail.Text = "";
+                txtTelefonoNuevo.Text = "";
             }
             catch (Exception ex)
             {

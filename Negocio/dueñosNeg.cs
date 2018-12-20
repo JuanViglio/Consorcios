@@ -22,5 +22,10 @@ namespace Negocio
         {
             return _dueñosServ.GetDueños();
         }
+
+        public void EliminarDueño(int idDueño)
+        {
+            _dueñosServ.EliminarDueño(idDueño);
+        }
     }
 }

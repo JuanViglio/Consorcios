@@ -19,6 +19,22 @@
         </tr>
         <tr>
             <td style="width: 130px; height: 23px;">
+                <asp:Label ID="Label2" runat="server" Text="Apellido"></asp:Label>
+            </td>
+            <td style="height: 23px" colspan="2">
+                <asp:TextBox ID="txtApellidoNuevo" runat="server" Width="230px"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 130px; height: 23px;">
+                <asp:Label ID="Label3" runat="server" Text="Telefono"></asp:Label>
+            </td>
+            <td style="height: 23px" colspan="2">
+                <asp:TextBox ID="txtTelefonoNuevo" runat="server" Width="230px"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 130px; height: 23px;">
                 <asp:Label ID="Label8" runat="server" Text="Direccion"></asp:Label>
             </td>
             <td style="height: 23px" colspan="2">
@@ -34,19 +50,11 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style6">
-                <asp:Label ID="Label4" runat="server" Text="Tipo"></asp:Label>
-            </td>
-            <td class="auto-style6">
-                <asp:DropDownList ID="ddlTipoNuevo" runat="server" Height="18px" Width="235px"></asp:DropDownList>
-            </td>
-        </tr> 
-        <tr>
             <td style="width: 130px; height: 53px">
                 <asp:Button ID="btnAceptarNuevoProveedor" runat="server" Height="30px" OnClick="btnAceptarNuevoProveedor_Click" Text="Agregar" Width="90px" />
             </td>
             <td style="height: 53px" colspan="2">
-                <asp:Button ID="btnCancelarDatos" runat="server" Height="30px" Text="Cancelar" Width="90px" OnClientClick="CerrarDivProveedorDatos(); return false;" />
+                <asp:Button ID="btnCancelarNuevoProveedor" runat="server" Height="30px" Text="Cancelar" Width="90px" OnClientClick="CerrarDivDueñoDatos(); return false;" />
             </td>
         </tr>
     </table>

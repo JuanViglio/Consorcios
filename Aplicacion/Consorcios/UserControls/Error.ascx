@@ -9,13 +9,21 @@
          height: 24px;
     }
 
+    .auto-style1 {
+        margin-bottom: 20px;
+        width: 880px;
+    }
+    .auto-style2 {
+        width: 749px;
+    }
+
 </style>
 
-<div id="divError" runat="server" style="color: #003399; font-size: large; " align="left" class="divError" >
+<div id="divError" runat="server" style="color: #003399; font-size: large; " align="left" class="auto-style1" >
     <div style="float:left;padding-right: 10px;">
         <img src="../../css/img/Cruz-roja.jpg" class="cruzRoja" />
     </div>
-    <div style="width: 500px">
+    <div class="auto-style2">
         <asp:label id="lblError" runat="server" forecolor="Red" style="text-align: left; font-size: large; width: 500px"></asp:label>
     </div>
 </div>

@@ -56,5 +56,36 @@ namespace Servicios
 
             return dueñosModel;
         }
+
+        public void AddDueño (DueñosModel dueñoModel)
+        {
+            _context.AddToDueños(new Dueños
+            {
+                Nombre = dueñoModel.Nombre,
+                Apellido = dueñoModel.Apellido,
+                Mail = dueñoModel.Mail,
+                Telefono = dueñoModel.Telefono,
+                Direccion = dueñoModel.Direccion
+            });
+
+            _context.SaveChanges();
+        }
+
+        public void EliminarDueño(int idDueño)
+        {
+            var dueño = _context.Dueños.Where(x => x.ID == idDueño).FirstOrDefault();
+            var uf = _context.UnidadesFuncionales.ToList();
+
+            if (dueño != null)
+            {
+                if (dueño.UnidadesFuncionales.Any())
+                {
+                    throw new System.Exception("No se puede eliminar un Dueño que posea Unidades Funcionales.");
+                }
+
+                _context.DeleteObject(dueño);
+                _context.SaveChanges();
+            } 
+        }
     }
 }

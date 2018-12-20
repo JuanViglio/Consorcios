@@ -15,3 +15,7 @@ function CerrarDivDueñoDatos() {
     $('#divDueñoDatos').slideUp();
     $('#ctl00_ContentPlaceHolder1_lblError').text("")
 }
+
+function ConfirmarBajaDueño() {
+    return confirm("¿Esta seguro que quiere Eliminar el Dueño?");
+}

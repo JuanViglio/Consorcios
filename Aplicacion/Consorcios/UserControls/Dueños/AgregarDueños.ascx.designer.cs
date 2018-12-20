@@ -31,6 +31,42 @@ namespace WebSistemmas.Consorcios.UserControls.Dueños {
         protected global::System.Web.UI.WebControls.TextBox txtNombreNuevo;
         
         /// <summary>
+        /// Label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
+        
+        /// <summary>
+        /// txtApellidoNuevo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtApellidoNuevo;
+        
+        /// <summary>
+        /// Label3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label3;
+        
+        /// <summary>
+        /// txtTelefonoNuevo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTelefonoNuevo;
+        
+        /// <summary>
         /// Label8 control.
         /// </summary>
         /// <remarks>
@@ -67,24 +103,6 @@ namespace WebSistemmas.Consorcios.UserControls.Dueños {
         protected global::System.Web.UI.WebControls.TextBox txtMail;
         
         /// <summary>
-        /// Label4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
-        
-        /// <summary>
-        /// ddlTipoNuevo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoNuevo;
-        
-        /// <summary>
         /// btnAceptarNuevoProveedor control.
         /// </summary>
         /// <remarks>
@@ -94,12 +112,12 @@ namespace WebSistemmas.Consorcios.UserControls.Dueños {
         protected global::System.Web.UI.WebControls.Button btnAceptarNuevoProveedor;
         
         /// <summary>
-        /// btnCancelarDatos control.
+        /// btnCancelarNuevoProveedor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelarDatos;
+        protected global::System.Web.UI.WebControls.Button btnCancelarNuevoProveedor;
     }
 }
