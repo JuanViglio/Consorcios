@@ -394,7 +394,7 @@
                     <asp:Button runat="server" Text="Volver" ID="btnVolver" Height="30px" OnClick="btnVolver_Click" Width="120px" style="margin-left: 96px"></asp:Button>
                 </td>
                 <td style="width: 295px; height: 45px;">
-                    <asp:Button runat="server" Text="Aceptar Expensa" ID="btnAceptar" Height="30px" OnClientClick = "Confirm('¿Esta seguro que quiere ACEPTAR las Expensas?')" OnClick="btnAceptar_Click" Width="120px"></asp:Button>
+                    <asp:Button runat="server" Text="Aceptar Expensa" ID="btnAceptar" Height="30px" OnClientClick = "Confirm('¿Esta seguro que quiere ACEPTAR las Expensas?')" OnClick="btnAceptar_Click" Width="120px" style="margin-left: 10px"></asp:Button>
                 </td>
             </tr>
             <tr>

@@ -96,6 +96,7 @@ namespace WebSistemmas.Consorcios
         {
             grdGastos.DataSource = _gastosServ.AddGasto(Convert.ToInt32(ddlTipoGastos.SelectedValue), txtDetalleGasto.Text.ToUpper());
             grdGastos.DataBind();
+            txtDetalleGasto.Text = string.Empty;
         }
 
         protected void grdGastos_RowDataBound(object sender, GridViewRowEventArgs e)

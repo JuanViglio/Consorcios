@@ -131,7 +131,7 @@ namespace WebSistemmas.Consorcios
                 CargarComboGastosOrdinarios();
             }
 
-            _expensasServ.AgregarExpensaDetalle(idExpensa, detalle.ToUpper(), Convert.ToDecimal(txtImporte.Text), Constantes.GastoTipoOrdinario, idGasto);
+            _expensasServ.AgregarExpensaDetalle(idExpensa, detalle.ToUpper(), txtImporte.Text.ToDecimal(), Constantes.GastoTipoOrdinario, idGasto);
         }
 
         private void ModificarGastoOrdinario()
@@ -140,13 +140,13 @@ namespace WebSistemmas.Consorcios
             if (btnNuevo.Checked)
             {
                 //Modificar el Gasto Nuevo
-                _expensasServ.ModificarExpensaDetalle(idExpensaDetalle, txtGastoFijo.Text.ToUpper(), Convert.ToDecimal(txtImporte.Text));
+                _expensasServ.ModificarExpensaDetalle(idExpensaDetalle, txtGastoFijo.Text.ToUpper(), txtImporte.Text.ToDecimal());
             }
             else
             {
                 //Modificar el Gasto Gardado
                 var detalle = ddlGastos.SelectedItem.ToString() + " " + txtDetalleGastoFijo.Text;
-                _expensasServ.ModificarExpensaDetalle(idExpensaDetalle, detalle.ToUpper(), Convert.ToDecimal(txtImporte.Text));
+                _expensasServ.ModificarExpensaDetalle(idExpensaDetalle, detalle.ToUpper(), txtImporte.Text.ToDecimal());
             }
             btnAgregarGastoOrdinario.Text = "Agregar";
             CargarGrillaGastosEvOrdinarios();
@@ -546,13 +546,13 @@ namespace WebSistemmas.Consorcios
 
             int expensaId = Convert.ToInt32(Session["ExpensaId"]);
             int gastoEvOrdinarioId = Convert.ToInt32(Session["gastoEvOrdinarioId"]);
-            decimal importeVenta = Convert.ToDecimal(txtImporteEvOrd.Text);
+            decimal importeVenta = txtImporteEvOrd.Text.ToDecimal();
             decimal importeCompra = 0;
             decimal proveedorId = Convert.ToInt32(ddlProveedoresEvOrd.SelectedValue);
             string detalle = txtDetalleGastoEvOrd.Text + " - " + Session["direccionConsorcio"] + " - " + Session["Periodo"];
 
             if (txtImporteCompraGastoEvOrd.Enabled == true)
-                importeCompra = Convert.ToDecimal(txtImporteCompraGastoEvOrd.Text);
+                importeCompra = txtImporteCompraGastoEvOrd.Text.ToDecimal();
             else if (txtImporteCompraGastoEvOrd.Text == "")
                 importeCompra = importeVenta;
 
@@ -570,7 +570,7 @@ namespace WebSistemmas.Consorcios
             }
             else
             {
-                _expensasServ.ModificarGastoEvOrdinario(gastoEvOrdinarioId, txtDetalleGastoEvOrd.Text.ToUpper(), Convert.ToDecimal(txtImporteEvOrd.Text), importeCompra);
+                _expensasServ.ModificarGastoEvOrdinario(gastoEvOrdinarioId, txtDetalleGastoEvOrd.Text.ToUpper(), txtImporteEvOrd.Text.ToDecimal(), importeCompra);
 
                 //get ProveedorCtaCte_id
                 //delete ProveedoreCtaCte
@@ -687,13 +687,13 @@ namespace WebSistemmas.Consorcios
 
             int expensaId = Convert.ToInt32(Session["ExpensaId"]);
             int gastoEvExtraordinarioId = Convert.ToInt32(Session["gastoEvExtraordinarioId"]);
-            decimal importeVenta = Convert.ToDecimal(txtImporteGastoExtraordinario.Text);
+            decimal importeVenta = txtImporteGastoExtraordinario.Text.ToDecimal();
             decimal importeCompra = 0;
             decimal proveedorId = Convert.ToInt32(ddlProveedoresEvExt.SelectedValue);
             string detalle = txtDetalleGastoEvExt.Text + " - " + Session["direccionConsorcio"] + " - " + Session["Periodo"];
 
             if (txtImporteCompraGastoEvExt.Enabled == true)
-                importeCompra = Convert.ToDecimal(txtImporteCompraGastoEvExt.Text);
+                importeCompra = txtImporteCompraGastoEvExt.Text.ToDecimal();
             else if (txtImporteCompraGastoEvExt.Text == "")
                 importeCompra = importeVenta;
 
