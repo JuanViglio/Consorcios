@@ -11,7 +11,7 @@
         public static decimal ToDecimal (this string s)
         {
             decimal output;
-            string valor = s.Replace(',', '.');
+            string valor = s.Replace('.',',');
             if (decimal.TryParse(valor, out output))
                 return output;
             else
