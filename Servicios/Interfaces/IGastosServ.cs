@@ -11,7 +11,7 @@ namespace Servicios.Interfaces
 
         void DeleteGastoEvExtraordinario(decimal idGasto);
 
-        List<Gastos> GetDetalleGastos(int tipoGasto);
+        List<Gastos> GetDetalleGastos(int tipoGasto, string detalle);
 
         List<GastosOrdinariosModel> GetDetalleGastosCombo(int tipoGasto);
 

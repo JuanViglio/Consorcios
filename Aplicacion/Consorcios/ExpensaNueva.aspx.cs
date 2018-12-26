@@ -240,7 +240,7 @@ namespace WebSistemmas.Consorcios
             ExpensasEntities context = new ExpensasEntities();
             gastosServ gastosServ = new gastosServ(context);
 
-            var gastos = gastosServ.GetDetalleGastos(Convert.ToInt32(tipoGastoID)).ToList();
+            var gastos = gastosServ.GetDetalleGastos(Convert.ToInt32(tipoGastoID), string.Empty).ToList();
 
             return gastos.Select(i => i.Detalle).ToList();
         }

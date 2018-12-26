@@ -23,8 +23,8 @@ namespace WebSistemmas.Consorcios
             
             if (!IsPostBack)
             {
-                CargarComboTipos();                
-                CargarGrillaTipos(ddlTipoGastos.SelectedValue);
+                CargarComboTipos();
+                CargarGrillaGastos();
             }
         }
 
@@ -57,6 +57,7 @@ namespace WebSistemmas.Consorcios
                             var idGasto = Convert.ToInt32(GridViewrow.Cells[col_IdGasto].Text);
                             grdGastos.DataSource = _gastosServ.DeleteGasto(idGasto, Convert.ToInt32(ddlTipoGastos.SelectedValue));
                             grdGastos.DataBind();
+                            txtDetalleBuscar.Text = string.Empty;
                             break;
 
                         case "CARGARGASTO":
@@ -76,15 +77,15 @@ namespace WebSistemmas.Consorcios
             }
         }
 
-        private void CargarGrillaTipos(string idTipoGasto)
+        private void CargarGrillaGastos()
         {
-            grdGastos.DataSource = _gastosServ.GetDetalleGastos(Convert.ToInt32(idTipoGasto));
+            grdGastos.DataSource = _gastosServ.GetDetalleGastos(Convert.ToInt32(ddlTipoGastos.SelectedValue), txtDetalleBuscar.Text);
             grdGastos.DataBind();
         }
 
         protected void ddlTipoGastos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CargarGrillaTipos(ddlTipoGastos.SelectedValue);
+            CargarGrillaGastos();
         }
 
         protected void btnNuevoGasto_Click(object sender, EventArgs e)
@@ -97,6 +98,7 @@ namespace WebSistemmas.Consorcios
             grdGastos.DataSource = _gastosServ.AddGasto(Convert.ToInt32(ddlTipoGastos.SelectedValue), txtDetalleGasto.Text.ToUpper());
             grdGastos.DataBind();
             txtDetalleGasto.Text = string.Empty;
+            txtDetalleBuscar.Text = string.Empty;
         }
 
         protected void grdGastos_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -107,12 +109,24 @@ namespace WebSistemmas.Consorcios
             if (imgBorrar != null)
                 imgBorrar.Attributes.Add("OnClick", "JavaScript:return ConfirmarBajaGasto();");
 
-            e.Row.Cells[col_IdGasto].Visible = false;
+            if (e.Row.Cells.Count > 1)
+                e.Row.Cells[col_IdGasto].Visible = false;
         }
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect("Consorcios.aspx#consorcios");
+        }
+
+        protected void grdGastos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdGastos.PageIndex = e.NewPageIndex;
+            CargarGrillaGastos();
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            CargarGrillaGastos();
         }
     }
 }

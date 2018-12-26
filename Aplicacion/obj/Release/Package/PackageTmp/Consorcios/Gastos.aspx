@@ -12,7 +12,7 @@
             &nbsp;
         </p>
         <p>
-            <asp:gridview id="grdGastos" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" onrowcommand="grdGastos_RowCommand" style="margin-top: 0px; margin-left: 0px; margin-right: 30px;" width="564px" OnRowDataBound="grdGastos_RowDataBound">
+            <asp:gridview id="grdGastos" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" onrowcommand="grdGastos_RowCommand" style="margin-top: 0px; margin-left: 0px; margin-right: 30px;" width="564px" OnRowDataBound="grdGastos_RowDataBound" AllowPaging="True" OnPageIndexChanging="grdGastos_PageIndexChanging">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
                         <asp:BoundField DataField="detalle" HeaderText="Detalle">

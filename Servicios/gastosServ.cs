@@ -26,9 +26,10 @@ namespace Servicios
             return tipoGastos;
         }
 
-        public List<Gastos> GetDetalleGastos(int tipoGasto)
+        public List<Gastos> GetDetalleGastos(int tipoGasto, string detalle)
         {
-            return _context.Gastos.Where(x => x.TipoGastos.ID == tipoGasto).OrderBy(x => x.Detalle).ToList();
+            return _context.Gastos.Where(x => x.TipoGastos.ID == tipoGasto).OrderBy(x => x.Detalle)
+                .Where(x => x.Detalle.Contains(detalle) || detalle == string.Empty).ToList();
         }
 
         public List<GastosOrdinariosModel> GetDetalleGastosCombo (int tipoGasto)
@@ -78,7 +79,7 @@ namespace Servicios
             _context.AddToGastos(gasto);
             _context.SaveChanges();
 
-            return GetDetalleGastos(idTipoGasto);
+            return GetDetalleGastos(idTipoGasto, string.Empty);
         }
 
         public List<Gastos> DeleteGasto(int idGasto, int tipoGasto)
@@ -87,7 +88,7 @@ namespace Servicios
             _context.DeleteObject(gasto);
             _context.SaveChanges();
 
-            return GetDetalleGastos(tipoGasto);
+            return GetDetalleGastos(tipoGasto, string.Empty);
         }        
 
         public Gastos GetGastoByNombre (string nombre)
