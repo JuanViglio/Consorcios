@@ -101,12 +101,12 @@ namespace WebSistemmas.Consorcios
 
         private void CargarCombosProveedores()
         {
-            ddlProveedoresEvExt.DataSource = _proveedoresNeg.GetProveedores(true);
+            ddlProveedoresEvExt.DataSource = _proveedoresNeg.GetProveedores(string.Empty, true);
             ddlProveedoresEvExt.DataTextField = "Nombre";
             ddlProveedoresEvExt.DataValueField = "Codigo";
             ddlProveedoresEvExt.DataBind();
 
-            ddlProveedoresEvOrd.DataSource = _proveedoresNeg.GetProveedores(true);
+            ddlProveedoresEvOrd.DataSource = _proveedoresNeg.GetProveedores(string.Empty, true);
             ddlProveedoresEvOrd.DataTextField = "Nombre";
             ddlProveedoresEvOrd.DataValueField = "Codigo";
             ddlProveedoresEvOrd.DataBind();

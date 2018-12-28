@@ -30,7 +30,7 @@ namespace Servicios
             _context = context;
         }
 
-        public IEnumerable<ProveedoresModel> GetProveedores(bool ninguno = false)
+        public IEnumerable<ProveedoresModel> GetProveedores(string nombre = "", bool ninguno = false)
         {
             List<ProveedoresModel> proveedores = new List<ProveedoresModel>();
 
@@ -39,7 +39,7 @@ namespace Servicios
                 proveedores.Add(new ProveedoresModel() { Codigo = 0, Nombre = "Ninguno" });
             }
 
-            foreach (var item in _context.Proveedores.ToList())
+            foreach (var item in _context.Proveedores.Where(x => x.Nombre.Contains(nombre) || nombre == string.Empty).ToList())
             {
                 proveedores.Add(new ProveedoresModel() {
                     Codigo = item.ID,

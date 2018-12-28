@@ -16,9 +16,9 @@ namespace Negocio
             _proveedoresServ = proveedoresServ;
         }
 
-        public IEnumerable<ProveedoresModel> GetProveedores(bool ninguno = false)
+        public IEnumerable<ProveedoresModel> GetProveedores(string nombre = "", bool ninguno = false)
         {
-            return _proveedoresServ.GetProveedores(ninguno);
+            return _proveedoresServ.GetProveedores(nombre, ninguno);
         }
 
         public void AgregarProveedor(string nombre, string direccion, string mail, string tipo)

@@ -8,9 +8,23 @@
             <br />
             <span style="font-size: large; color: #003399">Gastos</span>
         </p>
-        <p style="font-size: large">
-            &nbsp;
-        </p>
+        <table style="width: 563px; height: 55px">
+            <tr>
+                <td style="width: 81px">
+                    Detalle
+                </td>
+                <td style="width: 294px">
+
+                    <asp:TextBox ID="txtDetalleBuscar" runat="server" Width="266px"></asp:TextBox>
+
+                </td>
+                <td style="width: 172px">
+
+                    <asp:Button ID="btnBuscar" runat="server" Height="32px" OnClick="btnBuscar_Click" Text="Buscar" Width="88px" />
+
+                </td>
+            </tr>
+        </table>
         <p>
             <asp:gridview id="grdGastos" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" onrowcommand="grdGastos_RowCommand" style="margin-top: 0px; margin-left: 0px; margin-right: 30px;" width="564px" OnRowDataBound="grdGastos_RowDataBound" AllowPaging="True" OnPageIndexChanging="grdGastos_PageIndexChanging">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />

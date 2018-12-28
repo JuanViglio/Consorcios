@@ -7,7 +7,7 @@ namespace Negocio.Interfaces
 {
     public interface IProveedoresNeg
     {
-        IEnumerable<ProveedoresModel> GetProveedores(bool ninguno = false);
+        IEnumerable<ProveedoresModel> GetProveedores(string nombre = "",  bool ninguno = false);
 
         void AgregarProveedor(string Nombre, string Direccion, string Mail, string tipo);
 

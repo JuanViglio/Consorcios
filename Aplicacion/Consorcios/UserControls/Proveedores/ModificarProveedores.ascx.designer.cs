@@ -13,31 +13,13 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores {
     public partial class ModificarProveedores {
         
         /// <summary>
-        /// Label2 control.
+        /// Label3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
-        
-        /// <summary>
-        /// txtCodigoModificar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCodigoModificar;
-        
-        /// <summary>
-        /// Label7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label7;
+        protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
         /// txtNombreModificar control.
@@ -49,13 +31,13 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores {
         protected global::System.Web.UI.WebControls.TextBox txtNombreModificar;
         
         /// <summary>
-        /// Label8 control.
+        /// Label5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label8;
+        protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
         /// txtDireccionModificar control.
@@ -67,13 +49,13 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores {
         protected global::System.Web.UI.WebControls.TextBox txtDireccionModificar;
         
         /// <summary>
-        /// Label1 control.
+        /// Label6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label Label6;
         
         /// <summary>
         /// txtMailModificar control.
@@ -85,13 +67,13 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores {
         protected global::System.Web.UI.WebControls.TextBox txtMailModificar;
         
         /// <summary>
-        /// Label3 control.
+        /// Label9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label Label9;
         
         /// <summary>
         /// txtTelefonoModificar control.
@@ -103,13 +85,13 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores {
         protected global::System.Web.UI.WebControls.TextBox txtTelefonoModificar;
         
         /// <summary>
-        /// Label4 control.
+        /// Label10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.Label Label10;
         
         /// <summary>
         /// ddlTipoModificar control.
@@ -137,5 +119,23 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelarModificar;
+        
+        /// <summary>
+        /// Label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
+        
+        /// <summary>
+        /// txtCodigoModificar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCodigoModificar;
     }
 }

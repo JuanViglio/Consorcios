@@ -5,10 +5,31 @@
     .auto-style1 {
         margin-right: 13px;
         margin-bottom: 23px;
+        margin-top: 0px;
+    }
+    .auto-style2 {
+        width: 563px;
+        height: 14px;
+        margin-top: 0px;
+        margin-bottom: 20px;
     }
 </style>
 
-<asp:GridView ID="grdProveedores" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" OnRowCommand="grdProveedores_RowCommand" Style="margin-top: 0px; margin-left: 0px; " Width="1095px" CssClass="auto-style1" OnRowDataBound="grdProveedores_RowDataBound">
+<table class="auto-style2">
+    <tr>
+        <td style="width: 81px">
+            Nombre</td>
+        <td style="width: 294px">
+
+            <asp:TextBox ID="txtNombreBuscar" runat="server" Width="266px"></asp:TextBox>
+
+        </td>
+        <td style="width: 172px">
+            <asp:Button ID="btnBuscar" runat="server" Height="32px" OnClick="btnBuscar_Click" Text="Buscar" Width="88px" />
+        </td>
+    </tr>
+</table>
+<asp:GridView ID="grdProveedores" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="150px" OnRowCommand="grdProveedores_RowCommand" Style="margin-left: 0px; " Width="1317px" CssClass="auto-style1" OnRowDataBound="grdProveedores_RowDataBound" AllowPaging="True" OnPageIndexChanging="grdProveedores_PageIndexChanging">
     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
     <Columns>
         <asp:BoundField DataField="Codigo" HeaderText="Codigo">

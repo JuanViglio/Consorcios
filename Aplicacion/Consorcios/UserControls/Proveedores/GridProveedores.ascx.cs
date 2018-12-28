@@ -59,7 +59,7 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
 
         public void LlenarGrillaProveedores()
         {
-            grdProveedores.DataSource = _proveedoresNeg.GetProveedores();
+            grdProveedores.DataSource = _proveedoresNeg.GetProveedores(txtNombreBuscar.Text);
             grdProveedores.DataBind();
         }
 
@@ -94,6 +94,7 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
                     switch (Tipo)
                     {
                         case "ELIMINAR":
+                            txtNombreBuscar.Text = string.Empty;
                             EliminarProveedor(GridViewrow);
                             break;
 
@@ -127,6 +128,17 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
             if (imgBorrar != null)
                 imgBorrar.Attributes.Add("OnClick", "JavaScript:return ConfirmarBajaProveedor();");
 
+        }
+
+        protected void grdProveedores_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdProveedores.PageIndex = e.NewPageIndex;
+            LlenarGrillaProveedores();
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            LlenarGrillaProveedores();
         }
     }
 }

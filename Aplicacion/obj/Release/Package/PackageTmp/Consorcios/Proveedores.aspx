@@ -17,18 +17,18 @@
                 </td>
             </tr>
         </table>
-        <table>
+        <table style="width: 1317px">
             <tr>
-                <td style="text-align: left; vertical-align:top; width: 4px;">
+                <td style="text-align: left; vertical-align:top; width: 144px;">
                     <div id="divProveedorNuevo" style="height: 61px; width: 151px;">
                         <asp:Button ID="btnNuevoProveedor" runat="server" Height="36px" OnClientClick="SlideDivProveedorDatos(); return false;" Text="Nuevo" Width="115px" style="margin-top: 0px" />
                     </div>             
                 </td>
-                <td style="width: 453px">
+                <td style="width: 986px">
                     <uc4:UserControlAgregarProveedores ID="UserControlAgregarProveedoresID" runat="server" />
-                </td>
-                <td style="width: 437px">
                     <uc5:UserControlModificarProveedores ID="UserControlModificarProveedoresID" runat="server" />
+                </td>
+                <td style="width: 193px">
                 </td>
             </tr>
         </table>
