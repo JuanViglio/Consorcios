@@ -9,13 +9,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/DAO.dll">
-      <publishTime>12/28/2018 11:15:29</publishTime>
+      <publishTime>01/12/2019 19:48:55</publishTime>
     </File>
     <File Include="bin/Negocio.dll">
-      <publishTime>12/28/2018 11:15:30</publishTime>
+      <publishTime>01/12/2019 19:48:57</publishTime>
     </File>
     <File Include="bin/Servicios.dll">
-      <publishTime>12/28/2018 11:15:29</publishTime>
+      <publishTime>01/12/2019 19:48:56</publishTime>
     </File>
     <File Include="bin/System.Data.Entity.dll">
       <publishTime>09/26/2012 03:16:08</publishTime>
@@ -24,7 +24,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/15/2018 13:45:39</publishTime>
     </File>
     <File Include="bin/WebSistemmas.dll">
-      <publishTime>12/28/2018 11:15:30</publishTime>
+      <publishTime>01/12/2019 19:48:57</publishTime>
     </File>
     <File Include="Cobranza/Cobros.aspx">
       <publishTime>02/05/2018 23:52:17</publishTime>

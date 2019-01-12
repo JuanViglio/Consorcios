@@ -188,5 +188,10 @@ namespace Servicios
             return _context.ProveedoresCtaCte.Where(x => x.Proveedores.ID == idProveedor).ToList().OrderByDescending(x => x.ID);
         }
 
+        public Proveedores GetProveedorById (decimal idProveedor)
+        {
+            return _context.Proveedores.Where(x => x.ID == idProveedor).FirstOrDefault();
+        }
+
     }
 }

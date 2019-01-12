@@ -70,9 +70,17 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
             }
         }
 
-        public void MostrarDatosParaModificar(string codigo, string nombre, string direccion, string mail, string telefono, string tipo)
+        public void MostrarDatosParaModificar(string codigo)
         {
             txtCodigoModificar.Text = codigo;
+
+            var proveedor = _proveedresServ.GetProveedorById(codigo.ToDecimal());
+            var nombre = proveedor.Nombre;
+            var direccion = proveedor.Direccion;
+            var mail = proveedor.Mail;
+            var telefono = proveedor.Telefono;
+            var tipo = proveedor.Tipo;
+
             txtNombreModificar.Text = nombre;
             txtDireccionModificar.Text = direccion == "&nbsp;" ? "" : direccion;
             txtMailModificar.Text = mail == "&nbsp;" ? "" : mail;

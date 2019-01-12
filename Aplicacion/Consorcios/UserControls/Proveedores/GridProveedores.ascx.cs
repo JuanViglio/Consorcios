@@ -46,13 +46,8 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
             ModificarProveedores errorUc = (ModificarProveedores)control;
 
             string codigo = row.Cells[col_IdProveedor].Text;
-            string nombre = row.Cells[col_Nombre].Text;
-            string direccion = row.Cells[col_Direccion].Text;
-            string mail = row.Cells[col_Mail].Text;
-            string telefono = row.Cells[col_Telefono].Text;
-            string tipo = row.Cells[col_Tipo].Text;
 
-            errorUc.MostrarDatosParaModificar(codigo, nombre, direccion, mail, telefono, tipo);
+            errorUc.MostrarDatosParaModificar(codigo);
 
         }
         #endregion

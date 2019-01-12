@@ -28,5 +28,7 @@ namespace Servicios.Interfaces
         IEnumerable<ProveedoresCtaCte> GetCtaCte(decimal idProveedor);
 
         void ActualizarSaldo(decimal idProveedor);
+
+        Proveedores GetProveedorById(decimal idProveedor);
     }
 }
