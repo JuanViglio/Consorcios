@@ -56,6 +56,7 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
         {
             grdProveedores.DataSource = _proveedoresNeg.GetProveedores(txtNombreBuscar.Text);
             grdProveedores.DataBind();
+            lblPagina.Text = "Pagina " + (grdProveedores.PageIndex + 1);
         }
 
         public GridProveedores()
@@ -133,6 +134,12 @@ namespace WebSistemmas.Consorcios.UserControls.Proveedores
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
+            LlenarGrillaProveedores();
+        }
+
+        protected void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtNombreBuscar.Text = string.Empty;
             LlenarGrillaProveedores();
         }
     }

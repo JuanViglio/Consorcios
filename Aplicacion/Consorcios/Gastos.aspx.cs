@@ -81,6 +81,7 @@ namespace WebSistemmas.Consorcios
         {
             grdGastos.DataSource = _gastosServ.GetDetalleGastos(Convert.ToInt32(ddlTipoGastos.SelectedValue), txtDetalleBuscar.Text);
             grdGastos.DataBind();
+            lblPagina.Text = "Pagina " + (grdGastos.PageIndex + 1);
         }
 
         protected void ddlTipoGastos_SelectedIndexChanged(object sender, EventArgs e)
@@ -126,6 +127,12 @@ namespace WebSistemmas.Consorcios
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
+            CargarGrillaGastos();
+        }
+
+        protected void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtDetalleBuscar.Text = string.Empty;
             CargarGrillaGastos();
         }
     }

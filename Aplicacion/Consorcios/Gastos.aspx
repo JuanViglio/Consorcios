@@ -8,9 +8,9 @@
             <br />
             <span style="font-size: large; color: #003399">Gastos</span>
         </p>
-        <table style="width: 563px; height: 55px">
+        <table style="width: 561px; height: 55px">
             <tr>
-                <td style="width: 81px">
+                <td style="width: 59px">
                     Detalle
                 </td>
                 <td style="width: 294px">
@@ -18,15 +18,17 @@
                     <asp:TextBox ID="txtDetalleBuscar" runat="server" Width="266px"></asp:TextBox>
 
                 </td>
-                <td style="width: 172px">
+                <td style="width: 107px">
 
                     <asp:Button ID="btnBuscar" runat="server" Height="32px" OnClick="btnBuscar_Click" Text="Buscar" Width="88px" />
-
+                </td>
+                <td>
+                    <asp:Button ID="btnLimpiar" runat="server" Height="32px" OnClick="btnLimpiar_Click" Text="Limpiar" Width="88px" />
                 </td>
             </tr>
         </table>
         <p>
-            <asp:gridview id="grdGastos" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" onrowcommand="grdGastos_RowCommand" style="margin-top: 0px; margin-left: 0px; margin-right: 30px;" width="564px" OnRowDataBound="grdGastos_RowDataBound" AllowPaging="True" OnPageIndexChanging="grdGastos_PageIndexChanging">
+            <asp:gridview id="grdGastos" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" onrowcommand="grdGastos_RowCommand" style="margin-top: 0px; margin-left: 0px; margin-right: 30px; margin-bottom: 20px;" width="564px" OnRowDataBound="grdGastos_RowDataBound" AllowPaging="True" OnPageIndexChanging="grdGastos_PageIndexChanging">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
                         <asp:BoundField DataField="detalle" HeaderText="Detalle">
@@ -58,8 +60,9 @@
                     <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
                 </asp:gridview>
         </p>
-        <p>
+        <p style="height: 32px">
             &nbsp;
+            <asp:Label ID="lblPagina" runat="server" Text="Pagina 1"></asp:Label>
         </p>
         <table style="width: 618px; height: 37px">
             <tr>

@@ -8,24 +8,39 @@
         margin-top: 0px;
     }
     .auto-style2 {
-        width: 563px;
+        width: 639px;
         height: 14px;
         margin-top: 0px;
         margin-bottom: 20px;
+    }
+    .auto-style4 {
+        width: 122px;
+    }
+    .auto-style5 {
+        width: 90px;
+    }
+    .auto-style6 {
+        width: 58px;
+    }
+    .auto-style7 {
+        margin-left: 15px;
     }
 </style>
 
 <table class="auto-style2">
     <tr>
-        <td style="width: 81px">
+        <td class="auto-style6">
             Nombre</td>
-        <td style="width: 294px">
+        <td class="auto-style5">
 
-            <asp:TextBox ID="txtNombreBuscar" runat="server" Width="266px"></asp:TextBox>
+            <asp:TextBox ID="txtNombreBuscar" runat="server" Width="284px"></asp:TextBox>
 
         </td>
-        <td style="width: 172px">
-            <asp:Button ID="btnBuscar" runat="server" Height="32px" OnClick="btnBuscar_Click" Text="Buscar" Width="88px" />
+        <td class="auto-style4">
+            <asp:Button ID="btnBuscar" runat="server" Height="32px" OnClick="btnBuscar_Click" Text="Buscar" Width="88px" CssClass="auto-style7" />
+        </td>
+        <td>
+            <asp:Button ID="btnLimpiar" runat="server" Height="32px" OnClick="btnLimpiar_Click" Text="Limpiar" Width="88px" />
         </td>
     </tr>
 </table>
@@ -83,3 +98,6 @@
     <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
     <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
 </asp:GridView>
+<asp:Label ID="lblPagina" runat="server" Text="Pagina 1"></asp:Label>
+<p>
+    &nbsp;</p>

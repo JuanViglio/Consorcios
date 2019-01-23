@@ -9,13 +9,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/DAO.dll">
-      <publishTime>01/12/2019 19:48:55</publishTime>
+      <publishTime>01/23/2019 09:31:17</publishTime>
     </File>
     <File Include="bin/Negocio.dll">
-      <publishTime>01/12/2019 19:48:57</publishTime>
+      <publishTime>01/23/2019 09:31:18</publishTime>
     </File>
     <File Include="bin/Servicios.dll">
-      <publishTime>01/12/2019 19:48:56</publishTime>
+      <publishTime>01/23/2019 09:31:18</publishTime>
     </File>
     <File Include="bin/System.Data.Entity.dll">
       <publishTime>09/26/2012 03:16:08</publishTime>
@@ -24,7 +24,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/15/2018 13:45:39</publishTime>
     </File>
     <File Include="bin/WebSistemmas.dll">
-      <publishTime>01/12/2019 19:48:57</publishTime>
+      <publishTime>01/23/2019 09:57:13</publishTime>
     </File>
     <File Include="Cobranza/Cobros.aspx">
       <publishTime>02/05/2018 23:52:17</publishTime>
@@ -66,7 +66,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2018 17:02:05</publishTime>
     </File>
     <File Include="Consorcios/Gastos.aspx">
-      <publishTime>12/27/2018 09:57:24</publishTime>
+      <publishTime>01/23/2019 09:56:00</publishTime>
     </File>
     <File Include="Consorcios/GastosOperativos.aspx">
       <publishTime>07/09/2018 22:32:54</publishTime>
@@ -135,7 +135,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/28/2018 11:10:55</publishTime>
     </File>
     <File Include="Consorcios/UserControls/Proveedores/GridProveedores.ascx">
-      <publishTime>12/27/2018 10:11:05</publishTime>
+      <publishTime>01/23/2019 09:44:14</publishTime>
     </File>
     <File Include="Consorcios/UserControls/Proveedores/ModificarProveedores.ascx">
       <publishTime>12/28/2018 11:20:00</publishTime>
