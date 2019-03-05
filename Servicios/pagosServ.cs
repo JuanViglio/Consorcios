@@ -1,4 +1,5 @@
 ﻿using DAO;
+using DAO.Models;
 using Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Servicios
         }
 
         public void AddPagos(string consorcioId, UnidadesFuncionales unidadFuncional, string gastosExtraordinarios,string totalGastosOrdinarios, 
-            int periodoNumerico, List<GastosEvOrd> gastosEvOrd, List<GastosFijos> expensaDetalle, string periodoDetalle)
+            int periodoNumerico, List<GastosEvOrdModel> gastosEvOrd, List<GastosFijos> expensaDetalle, string periodoDetalle)
         {
             unidadesFuncionalesServ _unidadesFuncServ = new unidadesFuncionalesServ();
             var Coeficiente = unidadFuncional.Coeficiente.Value;

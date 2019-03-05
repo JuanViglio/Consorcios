@@ -1,4 +1,5 @@
 ﻿using DAO;
+using DAO.Models;
 using System;
 using System.Collections.Generic;
 
@@ -12,7 +13,7 @@ namespace Servicios.Interfaces
 
         void AgregarGastoEvOrdinario(int IdExpensa, string Detalle, decimal Importe, decimal ImporteCompra, decimal ProveedorId, decimal CtaCteId);
 
-        void ModificarGastoEvOrdinario(int IdGasto, string Detalle, decimal Importe, decimal ImporteCompra);
+        void ModificarGastoEvOrdinario(int IdGasto, string Detalle, decimal Importe, decimal ImporteCompra, decimal IdProveedores);
 
         decimal AgregarGastoExtraordinario(int IdExpensa, string Detalle, decimal Importe, decimal ImporteCompra, decimal ProveedorId, decimal CtaCteId);
 
@@ -50,7 +51,7 @@ namespace Servicios.Interfaces
 
         decimal AgregarExpensa(string IdConsorcio);
 
-        List<GastosEvOrd> GetGastosEvOrdinarios(int IdExpensa);
+        List<GastosEvOrdModel> GetGastosEvOrdinarios(int IdExpensa);
 
         decimal GetProveedorCtaCteId(string tipo, decimal GastoId);
 

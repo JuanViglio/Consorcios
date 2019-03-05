@@ -23,7 +23,8 @@ namespace WebSistemmas.Consorcios
         private const int ColImporteCompra = 1;
         private const int ColImporteVenta = 2;
         private const int GrdOrd_ColIdExpensaDetalle = 2;
-        private const int GrdEvOrd_ColIdExpensaDetalle = 3;
+        private const int GrdEvOrd_ColIdExpensaDetalle = 4;
+        private const int GrdEvOrd_ColIdProveedores = 5;
         private const int GrdEvExt_ColIdExpensaDetalle = 3;
         private const int ColIdGasto = 3;
         private const int ColModificar = 5;
@@ -475,6 +476,7 @@ namespace WebSistemmas.Consorcios
         protected void grdGastosEventuales_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             e.Row.Cells[GrdEvOrd_ColIdExpensaDetalle].Visible = false;
+            e.Row.Cells[GrdEvOrd_ColIdProveedores].Visible = false;            
 
             ImageButton imgBorrar;
             imgBorrar = (ImageButton)(e.Row.FindControl("ELIMINARGASTOEVORDINARIO"));
@@ -515,6 +517,7 @@ namespace WebSistemmas.Consorcios
                             txtDetalleGastoEvOrd.Text = gridViewrow.Cells[ColDetalle].Text;
                             txtImporteCompraGastoEvOrd.Text = gridViewrow.Cells[ColImporteCompra].Text;
                             txtImporteEvOrd.Text = gridViewrow.Cells[ColImporteVenta].Text;
+                            ddlProveedoresEvOrd.SelectedValue  = gridViewrow.Cells[GrdEvOrd_ColIdProveedores].Text;
                             btnAgregarGastoEvOrd.Text = "Modificar";
                             break;
                     }
@@ -570,7 +573,7 @@ namespace WebSistemmas.Consorcios
             }
             else
             {
-                _expensasServ.ModificarGastoEvOrdinario(gastoEvOrdinarioId, txtDetalleGastoEvOrd.Text.ToUpper(), txtImporteEvOrd.Text.ToDecimal(), importeCompra);
+                _expensasServ.ModificarGastoEvOrdinario(gastoEvOrdinarioId, txtDetalleGastoEvOrd.Text.ToUpper(), txtImporteEvOrd.Text.ToDecimal(), importeCompra, proveedorId);
 
                 //get ProveedorCtaCte_id
                 //delete ProveedoreCtaCte
@@ -593,6 +596,8 @@ namespace WebSistemmas.Consorcios
         {
             txtDetalleGastoEvOrd.Text = "";
             txtImporteEvOrd.Text = "";
+            txtImporteCompraGastoEvOrd.Text = "";
+            ddlProveedoresEvOrd.SelectedValue = "0";
             btnAgregarGastoEvOrd.Text = "Agregar";
             ConstantesWeb.MostrarError(string.Empty, this.Page);
         }

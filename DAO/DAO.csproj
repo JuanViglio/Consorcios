@@ -76,6 +76,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Expensas.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\GastosEvOrdModel.cs" />
     <Compile Include="Models\GastosOrdinariosModel.cs" />
     <Compile Include="Models\PagosModel.cs" />
     <Compile Include="Models\ProveedoresModel.cs" />

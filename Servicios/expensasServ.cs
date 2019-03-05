@@ -6,6 +6,7 @@ using System.Linq;
 using Servicios.Mapper;
 using WebSistemmas.Common;
 using Servicios;
+using DAO.Models;
 
 namespace Servicios
 {
@@ -274,10 +275,11 @@ namespace Servicios
             _context.SaveChanges();
         }
 
-        public void ModificarGastoEvOrdinario(int IdGasto, string Detalle, decimal Importe, decimal ImporteCompra)
+        public void ModificarGastoEvOrdinario(int IdGasto, string Detalle, decimal Importe, decimal ImporteCompra, decimal IdProveedores)
         {
             var gasto = _context.GastosEvOrd.Where(x => x.ID == IdGasto).FirstOrDefault();
 
+            gasto.Proveedores_ID = IdProveedores;
             gasto.Detalle = Detalle;
             gasto.Importe = Importe;
             gasto.ImporteCompra = ImporteCompra;
@@ -383,9 +385,21 @@ namespace Servicios
             return expensaDetalle;
         }
 
-        public List<GastosEvOrd> GetGastosEvOrdinarios(int IdExpensa)
+        public List<GastosEvOrdModel> GetGastosEvOrdinarios(int IdExpensa)
         {
-            return _context.GastosEvOrd.Where(x => x.Expensas.ID == IdExpensa).ToList();
+            var gastosModel = (from g in _context.GastosEvOrd
+            join p in _context.Proveedores
+            on g.Proveedores_ID equals p.ID
+            where g.Expensas.ID == IdExpensa
+            select new GastosEvOrdModel {
+                ID = g.ID,
+                Detalle = g.Detalle,
+                Importe = g.Importe,
+                ImporteCompra = g.ImporteCompra,
+                Proveedor = p.Nombre,
+                ID_Proveedores = p.ID }).ToList();                   
+
+            return gastosModel;
         }
 
         public List<GastosEvExt> GetGastosEvExtraordinarios(int IdExpensa)

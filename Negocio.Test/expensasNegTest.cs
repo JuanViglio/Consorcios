@@ -6,6 +6,7 @@ using DAO;
 using System.Collections.Generic;
 using WebSistemmas.Common;
 using Negocio;
+using DAO.Models;
 
 namespace Negocio.Test
 {
@@ -41,7 +42,7 @@ namespace Negocio.Test
                 Coeficiente = 5
             };
             List<UnidadesFuncionales> unidadesFuncionales = new List<UnidadesFuncionales>();
-            List<GastosEvOrd> gastosOrdinarios = new List<GastosEvOrd>();
+            List<GastosEvOrdModel> gastosOrdinarios = new List<GastosEvOrdModel>();
             List<GastosFijos> expensasDetalle = new List<GastosFijos>();
 
             unidadesFuncionales.Add(uf);

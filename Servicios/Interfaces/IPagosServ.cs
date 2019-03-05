@@ -1,4 +1,5 @@
 ﻿using DAO;
+using DAO.Models;
 using System.Collections.Generic;
 
 namespace Servicios.Interfaces
@@ -6,7 +7,7 @@ namespace Servicios.Interfaces
     public interface IPagosServ
     {
         void AddPagos(string consorcioId, UnidadesFuncionales item, string gastosExtraordinarios,
-            string totalGastosOrdinarios, int periodoNumerico, List<GastosEvOrd> gastosEvOrd, List<GastosFijos> expensaDetalle, string periodoDetalle);
+            string totalGastosOrdinarios, int periodoNumerico, List<GastosEvOrdModel> gastosEvOrd, List<GastosFijos> expensaDetalle, string periodoDetalle);
 
         bool UpdatePagos(string consorcioId, UnidadesFuncionales item, string gastosExtraordinarios,
             string totalGastosOrdinarios, int periodoNumerico, string periodoDetalle);
