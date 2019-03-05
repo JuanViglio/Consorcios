@@ -387,17 +387,21 @@ namespace Servicios
 
         public List<GastosEvOrdModel> GetGastosEvOrdinarios(int IdExpensa)
         {
-            var gastosModel = (from g in _context.GastosEvOrd
-            join p in _context.Proveedores
-            on g.Proveedores_ID equals p.ID
-            where g.Expensas.ID == IdExpensa
-            select new GastosEvOrdModel {
-                ID = g.ID,
-                Detalle = g.Detalle,
-                Importe = g.Importe,
-                ImporteCompra = g.ImporteCompra,
-                Proveedor = p.Nombre,
-                ID_Proveedores = p.ID }).ToList();                   
+            var proveedoresModel = (from p in _context.Proveedores
+                               select new ProveedoresModel { Codigo = p.ID, Nombre = p.Nombre }).ToList();
+
+            var gastosModel =  (from g in _context.GastosEvOrd
+                                join p in _context.Proveedores
+                                on g.Proveedores_ID equals p.ID into proveedores
+                                from pd in proveedores.DefaultIfEmpty()
+                                where g.Expensas.ID == IdExpensa
+                                select new GastosEvOrdModel {
+                                    ID = g.ID,
+                                    Detalle = g.Detalle,
+                                    Importe = g.Importe,
+                                    ImporteCompra = g.ImporteCompra,
+                                    Proveedor = (pd == null) ? "Ninguno" : pd.Nombre,
+                                    ID_Proveedores = (pd == null) ? 0 : pd.ID }).ToList();                   
 
             return gastosModel;
         }

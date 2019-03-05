@@ -561,15 +561,9 @@ namespace WebSistemmas.Consorcios
 
             if (btnAgregarGastoEvOrd.Text == "Agregar")
             {
-                try
-                {
-                    var ctaCteId = _proveedoresNeg.AddHaber(importeCompra, proveedorId, Constantes.GastoEvExt, detalle);
-                    _expensasServ.AgregarGastoEvOrdinario(expensaId, txtDetalleGastoEvOrd.Text.ToUpper(), importeVenta, importeCompra, proveedorId, ctaCteId);
-                }
-                catch (Exception)
-                {
-                    ConstantesWeb.MostrarError("No se agrego el gasto en la Cta Cte del Proveedor", this.Page);
-                }
+                 decimal ctaCteId = proveedorId == 0 ? 0 : _proveedoresNeg.AddHaber(importeCompra, proveedorId, Constantes.GastoEvExt, detalle);
+
+                _expensasServ.AgregarGastoEvOrdinario(expensaId, txtDetalleGastoEvOrd.Text.ToUpper(), importeVenta, importeCompra, proveedorId, ctaCteId);
             }
             else
             {
@@ -586,6 +580,7 @@ namespace WebSistemmas.Consorcios
             txtDetalleGastoEvOrd.Text = "";
             txtImporteEvOrd.Text = "";
             txtImporteCompraGastoEvOrd.Text = "";
+            ddlProveedoresEvOrd.SelectedValue = "0";
 
             CargarGrillaGastosOrdinarios();
             CargarGrillaGastosEvOrdinarios();
