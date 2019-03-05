@@ -12,10 +12,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/05/2019 11:57:03</publishTime>
     </File>
     <File Include="bin/Negocio.dll">
-      <publishTime>03/05/2019 12:46:29</publishTime>
+      <publishTime>03/05/2019 17:06:25</publishTime>
     </File>
     <File Include="bin/Servicios.dll">
-      <publishTime>03/05/2019 12:46:29</publishTime>
+      <publishTime>03/05/2019 17:06:24</publishTime>
     </File>
     <File Include="bin/System.Data.Entity.dll">
       <publishTime>09/26/2012 03:16:08</publishTime>
@@ -24,7 +24,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/15/2018 13:45:39</publishTime>
     </File>
     <File Include="bin/WebSistemmas.dll">
-      <publishTime>03/05/2019 12:46:30</publishTime>
+      <publishTime>03/05/2019 17:06:25</publishTime>
     </File>
     <File Include="Cobranza/Cobros.aspx">
       <publishTime>02/05/2018 23:52:17</publishTime>

@@ -1,5 +1,6 @@
 ﻿using DAO;
 using Servicios.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -94,6 +95,23 @@ namespace Servicios
         public Gastos GetGastoByNombre (string nombre)
         {
             return _context.Gastos.Where(x => x.Detalle == nombre).FirstOrDefault();
+        }
+
+        public List<Gastos> UpdateGasto(decimal idGasto, string Detalle, int idTipoGasto)
+        {
+            var gasto = _context.Gastos.Where(x => x.ID == idGasto).FirstOrDefault();            
+
+            if (gasto != null)
+            {
+                gasto.Detalle = Detalle;
+                _context.SaveChanges();
+            }
+            else
+            {
+                idTipoGasto = 0;
+            }
+
+            return GetDetalleGastos(idTipoGasto, string.Empty);
         }
     }
 }

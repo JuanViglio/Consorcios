@@ -18,5 +18,7 @@ namespace Servicios.Interfaces
         List<Gastos> AddGasto(int idTipoGasto, string detalleGasto);
 
         Gastos GetGastoByNombre(string nombre);
+
+        List<Gastos> UpdateGasto(decimal idGasto, string Detalle, int idTipoGasto);
     }
 }

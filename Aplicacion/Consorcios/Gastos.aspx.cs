@@ -19,8 +19,7 @@ namespace WebSistemmas.Consorcios
         }
 
         protected void Page_Load(object sender, EventArgs e)
-        {
-            
+        {            
             if (!IsPostBack)
             {
                 CargarComboTipos();
@@ -53,6 +52,13 @@ namespace WebSistemmas.Consorcios
 
                     switch (Tipo)
                     {
+                        case "MODIFICAR":
+                            ClientScript.RegisterStartupScript(GetType(), "showDiv", "$('#divGastoModificar').slideDown()", true);
+
+                            Session["IdGasto"] = GridViewrow.Cells[col_IdGasto].Text;
+                            txtGastoModificar.Text = GridViewrow.Cells[col_NombreGasto].Text;
+                            break;
+
                         case "ELIMINAR":
                             var idGasto = Convert.ToInt32(GridViewrow.Cells[col_IdGasto].Text);
                             grdGastos.DataSource = _gastosServ.DeleteGasto(idGasto, Convert.ToInt32(ddlTipoGastos.SelectedValue));
@@ -134,6 +140,14 @@ namespace WebSistemmas.Consorcios
         {
             txtDetalleBuscar.Text = string.Empty;
             CargarGrillaGastos();
+        }
+
+        protected void btnModificarGasto_Click(object sender, EventArgs e)
+        {
+            lblError.Text = "";
+
+            grdGastos.DataSource = _gastosServ.UpdateGasto(Session["IdGasto"].ToString().ToDecimal(), txtGastoModificar.Text, Convert.ToInt32(ddlTipoGastos.SelectedValue));
+            grdGastos.DataBind();
         }
     }
 }

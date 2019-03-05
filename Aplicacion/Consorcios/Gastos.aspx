@@ -28,7 +28,7 @@
             </tr>
         </table>
         <p>
-            <asp:gridview id="grdGastos" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" onrowcommand="grdGastos_RowCommand" style="margin-top: 0px; margin-left: 0px; margin-right: 30px; margin-bottom: 20px;" width="564px" OnRowDataBound="grdGastos_RowDataBound" AllowPaging="True" OnPageIndexChanging="grdGastos_PageIndexChanging">
+            <asp:gridview id="grdGastos" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" onrowcommand="grdGastos_RowCommand" style="margin-top: 0px; margin-left: 0px; margin-right: 30px; margin-bottom: 20px;" width="638px" OnRowDataBound="grdGastos_RowDataBound" AllowPaging="True" OnPageIndexChanging="grdGastos_PageIndexChanging">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
                         <asp:BoundField DataField="detalle" HeaderText="Detalle">
@@ -37,6 +37,13 @@
                         <asp:BoundField DataField="id" HeaderText="ID">
                             <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
                         </asp:BoundField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <div class="div_parent">
+                                    <asp:ImageButton ID="Modificar" runat="server" CausesValidation="False" CommandName="Modificar" ImageUrl="~/css/img/ico_modificar.gif" ToolTip="Eliminar" />
+                                </div>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <div class="div_parent">
@@ -60,6 +67,7 @@
                     <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
                 </asp:gridview>
         </p>
+
         <p style="height: 32px">
             &nbsp;
             <asp:Label ID="lblPagina" runat="server" Text="Pagina 1"></asp:Label>
@@ -74,7 +82,7 @@
                     </asp:dropdownlist>
                 </td>
                 <td colspan="2">
-                    <asp:button id="btnNuevoGasto" runat="server" text="Nuevo Gasto" height="39px" onclientclick="SlideDivGastoDatos(); return false;" width="112px" style="margin-left: 0px" />
+                    <asp:button id="btnNuevoGasto" runat="server" text="Nuevo Gasto" height="39px" onclientclick="SlideDivGastoDatos(); return false;" width="112px" style="margin-left: 0px" OnClick="btnNuevoGasto_Click" />
                     <asp:button id="btnVolver" runat="server" text="Volver" height="39px" width="112px" style="margin-left: 30px" OnClick="btnVolver_Click" />
                 </td>
             </tr>
@@ -83,13 +91,15 @@
             <tr>
                 <td colspan="4">
                     <div id="divGastoDatos" style="margin-top: 30px; display: none">
-                        <table style="margin-top: 0px; width: 513px; height: 85px;">
+                        <table style="margin-top: 0px; width: 513px; height: 30px;">
                             <tr>
-                                <td style="width: 120px">Nombre del Gasto</td>
+                                <td style="width: 175px">Nombre del Gasto Nuevo</td>
                                 <td colspan="2" style="width: 200px">
                                     <asp:textbox id="txtDetalleGasto" runat="server" width="309px" style="margin-left: 0px"></asp:textbox>
                                 </td>
                             </tr>
+                        </table>
+                        <table>
                             <tr>
                                 <td style="width: 120px; height: 53px">
                                     <asp:button id="btnAceptarNuevoGasto" runat="server" height="30px" onclick="btnAceptarNuevoGasto_Click" text="Agregar" width="90px" />
@@ -99,7 +109,28 @@
                                 </td>
                             </tr>
                         </table>
-
+                    </div>
+                </td>
+                <td colspan="4">
+                    <div id="divGastoModificar" style="margin-top: 30px; display: none"> 
+                        <table style="margin-top: 0px; width: 513px; height: 30px;">
+                            <tr>
+                                <td style="width: 200px">Nombre del Gasto a Modificar</td>
+                                <td colspan="2" style="width: 200px">
+                                    <asp:textbox id="txtGastoModificar" runat="server" width="309px" style="margin-left: 0px"></asp:textbox>
+                                </td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <td style="width: 120px; height: 53px">
+                                    <asp:button id="Button1" runat="server" height="30px" onclick="btnModificarGasto_Click" text="Modificar" width="90px" />
+                                </td>
+                                <td style="height: 53px; width: 200px;" colspan="2">
+                                    <asp:button id="btnCancelarModificar" runat="server" height="30px" text="Cancelar" width="90px" onclientclick="CerrarDivGastoModificar(); return false;"/>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </td>
             </tr>

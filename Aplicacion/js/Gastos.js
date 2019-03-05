@@ -1,17 +1,16 @@
 ﻿function SlideDivGastoDatos() {
-    $('#divGastoNuevo').toggle();
     $('#divGastoDatos').slideDown();
     $('#divGastoModificar').slideUp();
     $('#ctl00_ContentPlaceHolder1_lblError').text("")
 }
 
 function MostrarDivGastoDatos() {
-    $('#divGastoNuevo').toggle();
+    $('#divGastoModificar').toggle();
     $('#divGastoDatos').toggle();
 }
 
 function CerrarDivGastoDatos() {
-    $('#divGastoNuevo').toggle();
+    $('#divGastoModificar').toggle();
     $('#divGastoDatos').slideUp();
     $('#ctl00_ContentPlaceHolder1_lblError').text("")
 }
