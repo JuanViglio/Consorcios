@@ -96,6 +96,7 @@
     <Content Include="Consorcios\UserControls\CtaCteProveedor\GridCtaCteProveedor.ascx" />
     <Content Include="Consorcios\UserControls\Dueños\AgregarDueños.ascx" />
     <Content Include="Consorcios\UserControls\Dueños\GridDueños.ascx" />
+    <Content Include="Consorcios\UserControls\Dueños\ModificarDueños.ascx" />
     <Content Include="Consorcios\UserControls\Error.ascx" />
     <Content Include="Consorcios\UserControls\ExpensaNueva\GastosFijos.ascx" />
     <Content Include="Consorcios\UserControls\ExpensasUF\GridGastosEvExtUF.ascx" />
@@ -329,6 +330,13 @@
     </Compile>
     <Compile Include="Consorcios\UserControls\Dueños\GridDueños.ascx.designer.cs">
       <DependentUpon>GridDueños.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Dueños\ModificarDueños.ascx.cs">
+      <DependentUpon>ModificarDueños.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consorcios\UserControls\Dueños\ModificarDueños.ascx.designer.cs">
+      <DependentUpon>ModificarDueños.ascx</DependentUpon>
     </Compile>
     <Compile Include="Consorcios\UserControls\Error.ascx.cs">
       <DependentUpon>Error.ascx</DependentUpon>

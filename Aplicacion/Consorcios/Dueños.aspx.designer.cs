@@ -58,6 +58,15 @@ namespace WebSistemmas.Consorcios {
         protected global::WebSistemmas.Consorcios.UserControls.Dueños.AgregarDueños UserControlAgregarDueñosID;
         
         /// <summary>
+        /// UserControlModificarDueñosID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebSistemmas.Consorcios.UserControls.Dueños.ModificarDueños UserControlModificarDueñosID;
+        
+        /// <summary>
         /// UserControl2ID control.
         /// </summary>
         /// <remarks>

@@ -9,13 +9,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/DAO.dll">
-      <publishTime>03/05/2019 11:57:03</publishTime>
+      <publishTime>03/16/2019 18:56:19</publishTime>
     </File>
     <File Include="bin/Negocio.dll">
-      <publishTime>03/05/2019 17:06:25</publishTime>
+      <publishTime>03/16/2019 18:56:20</publishTime>
     </File>
     <File Include="bin/Servicios.dll">
-      <publishTime>03/05/2019 17:06:24</publishTime>
+      <publishTime>03/16/2019 18:56:19</publishTime>
     </File>
     <File Include="bin/System.Data.Entity.dll">
       <publishTime>09/26/2012 03:16:08</publishTime>
@@ -24,7 +24,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/15/2018 13:45:39</publishTime>
     </File>
     <File Include="bin/WebSistemmas.dll">
-      <publishTime>03/05/2019 17:06:25</publishTime>
+      <publishTime>03/16/2019 19:41:33</publishTime>
     </File>
     <File Include="Cobranza/Cobros.aspx">
       <publishTime>02/05/2018 23:52:17</publishTime>
@@ -54,7 +54,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/05/2018 19:25:30</publishTime>
     </File>
     <File Include="Consorcios/Dueños.aspx">
-      <publishTime>12/06/2018 01:17:33</publishTime>
+      <publishTime>03/16/2019 18:15:46</publishTime>
     </File>
     <File Include="Consorcios/ExpensaNueva.aspx">
       <publishTime>03/05/2019 11:42:54</publishTime>
@@ -66,7 +66,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2018 17:02:05</publishTime>
     </File>
     <File Include="Consorcios/Gastos.aspx">
-      <publishTime>01/23/2019 09:56:00</publishTime>
+      <publishTime>03/05/2019 19:41:38</publishTime>
     </File>
     <File Include="Consorcios/GastosOperativos.aspx">
       <publishTime>07/09/2018 22:32:54</publishTime>
@@ -99,7 +99,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/31/2018 23:31:24</publishTime>
     </File>
     <File Include="Consorcios/UserControls/CtaCteProveedor/AgregarPagoProveedor.ascx">
-      <publishTime>06/06/2018 23:39:17</publishTime>
+      <publishTime>03/16/2019 19:33:02</publishTime>
     </File>
     <File Include="Consorcios/UserControls/CtaCteProveedor/GridCtaCteProveedor.ascx">
       <publishTime>06/09/2018 16:59:35</publishTime>
@@ -109,6 +109,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Consorcios/UserControls/Dueños/GridDueños.ascx">
       <publishTime>12/06/2018 00:36:00</publishTime>
+    </File>
+    <File Include="Consorcios/UserControls/Dueños/ModificarDueños.ascx">
+      <publishTime>03/16/2019 18:07:16</publishTime>
     </File>
     <File Include="Consorcios/UserControls/Error.ascx">
       <publishTime>12/20/2018 00:22:17</publishTime>
@@ -225,7 +228,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/14/2018 23:12:17</publishTime>
     </File>
     <File Include="js/Gastos.js">
-      <publishTime>02/05/2018 19:25:30</publishTime>
+      <publishTime>03/05/2019 19:27:52</publishTime>
     </File>
     <File Include="js/jquery-1.10.2.js">
       <publishTime>02/05/2018 19:25:30</publishTime>

@@ -56,11 +56,11 @@ namespace WebSistemmas.Consorcios.UserControls.Dueños
             try
             {
                 DueñosModel dueñoModel = new DueñosModel{
-                    Nombre = txtNombreNuevo.Text,
-                    Apellido = txtApellidoNuevo.Text,
-                    Direccion = txtDireccionNuevo.Text,
-                    Mail = txtMail.Text,
-                    Telefono = txtTelefonoNuevo.Text 
+                    Nombre = txtNombreNuevo.Text.ToUpper(),
+                    Apellido = txtApellidoNuevo.Text.ToUpper(),
+                    Direccion = txtDireccionNuevo.Text.ToUpper(),
+                    Mail = txtMail.Text.ToUpper(),
+                    Telefono = txtTelefonoNuevo.Text
                 };
 
                 _dueñosServ.AddDueño(dueñoModel);

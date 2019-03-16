@@ -1,6 +1,13 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AgregarPagoProveedor.ascx.cs" Inherits="WebSistemmas.Consorcios.UserControls.CtaCteProveedor.AgregarPagoProveedor" %>
 
-<div id="divNuevoPago" style="height: 164px; width: 288px; display: none" >
+<style type="text/css">
+    .auto-style1 {
+        height: 195px;
+        width: 288px;
+    }
+</style>
+
+<div id="divNuevoPago" class="auto-style1" style="display: none">
     <table style="width: 251px">
         <tr>
             <td style="width: 103px">Fecha</td>
@@ -14,10 +21,17 @@
                 <asp:TextBox ID="txtImporte" runat="server"></asp:TextBox>
             </td>
         </tr>
+        <%--<tr>
+            <td style="width: 103px">Consorcio</td>
+            <td>
+                <asp:DropDownList ID="ddlConsorcios" runat="server" Height="18px" Width="173px">
+                </asp:DropDownList>
+            </td>
+        </tr>--%>
         <tr>
             <td style="width: 103px">Detalle</td>
             <td>
-                <asp:TextBox ID="txtDetalle" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtDetalle" runat="server" ></asp:TextBox>
             </td>
         </tr>
         <tr>

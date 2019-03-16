@@ -3,7 +3,7 @@
 <%@ Register src="~/Consorcios/UserControls/Dueños/GridDueños.ascx" tagname="UserControlGridDueños" tagprefix="uc3" %>
 <%@ Register src="~/Consorcios/UserControls/Error.ascx" tagname="errorUC" tagprefix="uc2" %>
 <%@ Register src="~/Consorcios/UserControls/Dueños/AgregarDueños.ascx" tagname="UserControlAgregarDueños" tagprefix="uc4" %>
-<%--<%@ Register src="~/Consorcios/UserControls/Proveedores/ModificarDueños.ascx" tagname="UserControlModificarDueños" tagprefix="uc5" %>--%>
+<%@ Register src="~/Consorcios/UserControls/Dueños/ModificarDueños.ascx" tagname="UserControlModificarDueños" tagprefix="uc5" %>
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
     <form id="form1" runat="server">
@@ -28,7 +28,7 @@
                     <uc4:UserControlAgregarDueños ID="UserControlAgregarDueñosID" runat="server" />
                 </td>
                 <td style="width: 437px">
-                    <%--<uc5:UserControlModificarProveedores ID="UserControlModificarProveedoresID" runat="server" />--%>
+                    <uc5:UserControlModificarDueños ID="UserControlModificarDueñosID" runat="server" />
                 </td>
             </tr>
         </table>

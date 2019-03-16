@@ -1,8 +1,5 @@
 ﻿using Negocio;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -20,6 +17,19 @@ namespace WebSistemmas.Consorcios.UserControls.Dueños
             var idDueño = Convert.ToInt32(row.Cells[col_IdDueño].Text);
             _dueñosNeg.EliminarDueño(idDueño);
             LlenarGrillaDueños();
+        }
+
+        private void ModificarDueño(GridViewRow row)
+        {
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "showDiv", "$('#divDueñoModificar').slideDown();", true);
+
+            ContentPlaceHolder placeHolder = Page.Master.FindControl("ContentPlaceHolder1") as ContentPlaceHolder;
+            Control control = placeHolder.FindControl("UserControlModificarDueñosID");
+            ModificarDueños errorUc = (ModificarDueños)control;
+
+            string codigo = row.Cells[col_IdDueño].Text;
+
+            errorUc.MostrarDatosParaModificar(codigo);
         }
 
         private void MostrarError(string error)
@@ -71,7 +81,7 @@ namespace WebSistemmas.Consorcios.UserControls.Dueños
                             break;
 
                         case "MODIFICAR":
-                            
+                            ModificarDueño(GridViewrow);
                             break;
 
                         default:

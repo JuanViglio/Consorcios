@@ -35,6 +35,11 @@ namespace Servicios
             return dueñosModel;
         }
 
+        public Dueños GetDueñoById(decimal idDueño)
+        {
+            return _context.Dueños.Where(x => x.ID == idDueño).FirstOrDefault();
+        }
+
         public List<DueñosModel> GetDueñosCombo()
         {
             var dueñosModel = new List<DueñosModel>() {
@@ -86,6 +91,17 @@ namespace Servicios
                 _context.DeleteObject(dueño);
                 _context.SaveChanges();
             } 
+        }
+
+        public void ModificarDueño (DueñosModel dueñoModificado)
+        {
+            var dueño = GetDueñoById(dueñoModificado.ID);
+            dueño.Nombre = dueñoModificado.Nombre;
+            dueño.Apellido = dueñoModificado.Apellido;
+            dueño.Direccion = dueñoModificado.Direccion;
+            dueño.Telefono = dueñoModificado.Telefono;
+            dueño.Mail = dueñoModificado.Mail;
+            _context.SaveChanges();
         }
     }
 }
