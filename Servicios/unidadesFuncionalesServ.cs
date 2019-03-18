@@ -13,13 +13,14 @@ namespace Servicios
     {
         private ExpensasEntities context = new ExpensasEntities();
 
-        public IEnumerable<UnidadesFuncionalesModel> GetUnidadesFuncionales(string consorciosID)
+        public IEnumerable<UnidadesFuncionalesModel> GetUnidadesFuncionales(string consorciosID, string filtro)
         {
             var dueños = context.Dueños;
             return (from u in context.UnidadesFuncionales
                     join d in context.Dueños
                     on u.Dueños.ID equals d.ID
-                    where u.Consorcios.ID == consorciosID
+                    where u.Consorcios.ID == consorciosID 
+                    && ((u.Departamento == filtro) || (u.UF == filtro) || (d.Nombre.Contains(filtro)) || (d.Apellido.Contains(filtro)) || (filtro == string.Empty))
                     orderby u.UF
                     select new UnidadesFuncionalesModel()
                     {
@@ -264,7 +265,7 @@ namespace Servicios
             UF.Dueños = dueño;
             context.SaveChanges();
 
-            return GetUnidadesFuncionales(idConsorcio);
+            return GetUnidadesFuncionales(idConsorcio, string.Empty);
         }
 
         public IEnumerable<UnidadesFuncionalesModel> AgregarUnidad(string idConsorcio, string idUf, string departamento, decimal coeficiente, string cochera, decimal idDueño)
@@ -282,7 +283,7 @@ namespace Servicios
             UF.Dueños = dueño;
             context.SaveChanges();
 
-            return GetUnidadesFuncionales(idConsorcio);
+            return GetUnidadesFuncionales(idConsorcio, string.Empty);
         }
 
         public List<UnidadesFuncionalesCtaCte> GetCtaCte(decimal idUF)

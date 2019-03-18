@@ -10,6 +10,24 @@
             </span>
             <table>
                 <tr>
+                    <td class="auto-style6" style="height: 46px; width: 210px">
+                        Nro / Depto /
+                        Nombre / Apellido</td>
+                    <td class="auto-style5" style="height: 46px; width: 302px">
+
+                        <asp:TextBox ID="txtFiltro" runat="server" Width="284px"></asp:TextBox>
+
+                    </td>
+                    <td class="auto-style4" style="height: 46px; width: 98px">
+                        <asp:Button ID="btnBuscar" runat="server" Height="32px" OnClick="btnBuscar_Click" Text="Buscar" Width="88px" CssClass="auto-style7" />
+                    </td>
+                    <td style="height: 46px">
+                        <asp:Button ID="btnLimpiar" runat="server" Height="32px" OnClick="btnLimpiar_Click" Text="Limpiar" Width="88px" />
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
                     <td colspan="2" style="height: 131px">
                         <asp:gridview id="grdUnidades" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" onrowcommand="grdUnidades_RowCommand" style="margin-top: 0px; margin-left: 0px; margin-right: 32px;" width="698px" OnRowDataBound="grdUnidades_RowDataBound">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />

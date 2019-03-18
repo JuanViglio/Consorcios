@@ -11,6 +11,7 @@ namespace WebSistemmas.Consorcios
 {
     public partial class UnidadesFuncionales : System.Web.UI.Page
     {
+        #region variables y constantes
         private IUnidadesServ _serv;
         private const int col_numero = 0;
         private const int col_departamento = 1;
@@ -20,6 +21,7 @@ namespace WebSistemmas.Consorcios
         private const int col_coeficiente = 5;
         private const int col_idUF = 6;
         private const int col_DueñoId = 7;
+        #endregion
 
         #region Constructor y Page_Load
         public UnidadesFuncionales()
@@ -30,10 +32,8 @@ namespace WebSistemmas.Consorcios
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {                
-                string idConsorcio = Session["idConsorcio"].ToString();
-                grdUnidades.DataSource = _serv.GetUnidadesFuncionales(idConsorcio);
-                grdUnidades.DataBind();
+            {
+                CargarGrillaUnidades();
                 CargarComboDueños();
             }
         }
@@ -175,6 +175,17 @@ namespace WebSistemmas.Consorcios
         {
             Response.Redirect("Consorcios.aspx#consorcios");
         }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            CargarGrillaUnidades();
+        }
+
+        protected void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarFiltro();
+        }
+        
         #endregion
 
         #region Metodos Privados
@@ -194,6 +205,20 @@ namespace WebSistemmas.Consorcios
             ddlDueños.DataBind();
         }
 
-        #endregion  
+        private void CargarGrillaUnidades()
+        {
+            string idConsorcio = Session["idConsorcio"].ToString();
+            grdUnidades.DataSource = _serv.GetUnidadesFuncionales(idConsorcio, txtFiltro.Text);
+            grdUnidades.DataBind();
+        }
+
+        private void LimpiarFiltro()
+        {
+            txtFiltro.Text = string.Empty;
+            CargarGrillaUnidades();
+        }
+        #endregion
+
+
     }
 }

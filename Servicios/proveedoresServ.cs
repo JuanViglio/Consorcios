@@ -39,7 +39,7 @@ namespace Servicios
                 proveedores.Add(new ProveedoresModel() { Codigo = 0, Nombre = "Ninguno" });
             }
 
-            foreach (var item in _context.Proveedores.Where(x => x.Nombre.Contains(nombre) || nombre == string.Empty).ToList())
+            foreach (var item in _context.Proveedores.Where(x => x.Nombre.Contains(nombre) || nombre == string.Empty).OrderBy(x => x.Nombre).ToList())
             {
                 proveedores.Add(new ProveedoresModel() {
                     Codigo = item.ID,
@@ -58,7 +58,7 @@ namespace Servicios
         {
             try
             {
-                _context.AddToProveedores(new Proveedores { Nombre = nombre, Direccion = direccion, Mail = mail, Tipo = tipo, Saldo = 0 });
+                _context.AddToProveedores(new Proveedores { Nombre = nombre.ToUpper(), Direccion = direccion.ToUpper(), Mail = mail.ToUpper(), Tipo = tipo, Saldo = 0 });
                 _context.SaveChanges();
             }
             catch
@@ -106,9 +106,9 @@ namespace Servicios
             {
                 var proveedor = _context.Proveedores.Where(x => x.ID == proveedorModel.Codigo).FirstOrDefault();
 
-                proveedor.Nombre = proveedorModel.Nombre;
-                proveedor.Direccion = proveedorModel.Direccion;
-                proveedor.Mail = proveedorModel.Mail;
+                proveedor.Nombre = proveedorModel.Nombre.ToUpper();
+                proveedor.Direccion = proveedorModel.Direccion.ToUpper();
+                proveedor.Mail = proveedorModel.Mail.ToUpper();
                 proveedor.Telefono = proveedorModel.Telefono;
                 proveedor.Tipo = proveedorModel.Tipo;
 

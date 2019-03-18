@@ -6,11 +6,11 @@
         margin-top: 0px;
     }
 </style>
-
+<%----%>
 <div id="divProveedorDatos" style="display: none">
     <table class="auto-style1">
         <tr>
-            <td style="width: 130px; height: 23px;">
+            <td style="width: 110px; height: 23px;">
                 <asp:Label ID="Label7" runat="server" Text="Nombre"></asp:Label>
             </td>
             <td style="height: 23px" colspan="2">
@@ -18,7 +18,7 @@
             </td>
         </tr>
         <tr>
-            <td style="width: 130px; height: 23px;">
+            <td style="width: 110px; height: 23px;">
                 <asp:Label ID="Label8" runat="server" Text="Direccion"></asp:Label>
             </td>
             <td style="height: 23px" colspan="2">
@@ -26,7 +26,7 @@
             </td>
         </tr>
         <tr>
-            <td style="width: 130px; height: 23px;">
+            <td style="width: 110px; height: 23px;">
                 <asp:Label ID="Label1" runat="server" Text="Mail"></asp:Label>
             </td>
             <td style="height: 23px" colspan="2">
@@ -34,15 +34,15 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style6">
+            <td>
                 <asp:Label ID="Label4" runat="server" Text="Tipo"></asp:Label>
             </td>
-            <td class="auto-style6">
+            <td>
                 <asp:DropDownList ID="ddlTipoNuevo" runat="server" Height="18px" Width="235px"></asp:DropDownList>
             </td>
         </tr> 
         <tr>
-            <td style="width: 130px; height: 53px">
+            <td style="width: 110px; height: 53px">
                 <asp:Button ID="btnAceptarNuevoProveedor" runat="server" Height="30px" OnClick="btnAceptarNuevoProveedor_Click" Text="Agregar" Width="90px" />
             </td>
             <td style="height: 53px" colspan="2">

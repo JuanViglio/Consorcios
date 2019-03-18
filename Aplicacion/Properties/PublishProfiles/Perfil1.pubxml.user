@@ -12,10 +12,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/16/2019 18:56:19</publishTime>
     </File>
     <File Include="bin/Negocio.dll">
-      <publishTime>03/16/2019 18:56:20</publishTime>
+      <publishTime>03/18/2019 14:39:28</publishTime>
     </File>
     <File Include="bin/Servicios.dll">
-      <publishTime>03/16/2019 18:56:19</publishTime>
+      <publishTime>03/18/2019 14:39:28</publishTime>
     </File>
     <File Include="bin/System.Data.Entity.dll">
       <publishTime>09/26/2012 03:16:08</publishTime>
@@ -24,7 +24,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/15/2018 13:45:39</publishTime>
     </File>
     <File Include="bin/WebSistemmas.dll">
-      <publishTime>03/16/2019 19:41:33</publishTime>
+      <publishTime>03/18/2019 14:39:29</publishTime>
     </File>
     <File Include="Cobranza/Cobros.aspx">
       <publishTime>02/05/2018 23:52:17</publishTime>
@@ -90,7 +90,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/17/2018 00:32:46</publishTime>
     </File>
     <File Include="Consorcios/UnidadesFuncionales.aspx">
-      <publishTime>10/10/2018 17:41:04</publishTime>
+      <publishTime>03/18/2019 14:28:10</publishTime>
     </File>
     <File Include="Consorcios/UnidadesFuncionalesCtaCte.aspx">
       <publishTime>08/29/2018 00:28:46</publishTime>
@@ -135,13 +135,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/01/2018 17:52:26</publishTime>
     </File>
     <File Include="Consorcios/UserControls/Proveedores/AgregarProveedores.ascx">
-      <publishTime>12/28/2018 11:10:55</publishTime>
+      <publishTime>03/18/2019 13:57:50</publishTime>
     </File>
     <File Include="Consorcios/UserControls/Proveedores/GridProveedores.ascx">
       <publishTime>01/23/2019 09:44:14</publishTime>
     </File>
     <File Include="Consorcios/UserControls/Proveedores/ModificarProveedores.ascx">
-      <publishTime>12/28/2018 11:20:00</publishTime>
+      <publishTime>03/18/2019 13:58:06</publishTime>
     </File>
     <File Include="Consorcios/UserControls/Seguros/GridSeguroDetalle.ascx">
       <publishTime>05/01/2018 02:13:23</publishTime>

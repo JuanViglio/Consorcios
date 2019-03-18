@@ -5,7 +5,7 @@ namespace Servicios.Interfaces
 {
     public interface IUnidadesServ
     {
-        IEnumerable<UnidadesFuncionalesModel> GetUnidadesFuncionales(string consorciosID);
+        IEnumerable<UnidadesFuncionalesModel> GetUnidadesFuncionales(string consorciosID, string filtro);
 
         IEnumerable<UnidadesFuncionalesModel> GetUnidadesFuncionalesCombo(string consorciosID);
 

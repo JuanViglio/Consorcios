@@ -4,7 +4,7 @@
 <div id="divProveedorModificar" class="auto-style9" style="display: none">
     <table class="auto-style1">             
         <tr>
-            <td style="width: 130px; height: 23px;">
+            <td style="width: 110px; height: 23px;">
                 <asp:Label ID="Label3" runat="server" Text="Nombre"></asp:Label>
             </td>
             <td>
@@ -52,7 +52,7 @@
             </td>
         </tr>
         <tr style="visibility:hidden"> 
-            <td style="width: 130px; height: 23px;">
+            <td style="width: 100px; height: 23px;">
                 <asp:Label ID="Label2" runat="server" Text="Codigo"></asp:Label>
             </td>
             <td>
