@@ -23,7 +23,12 @@ namespace WebSistemmas.Consorcios
             if (!IsPostBack)
             {
                 CargarComboTipos();
+                if (Session["SelectedValue"] != null) ddlTipoGastos.SelectedValue = Session["SelectedValue"].ToString();
                 CargarGrillaGastos();
+            }
+            else
+            {
+                Session["SelectedValue"] = ddlTipoGastos.SelectedValue;
             }
         }
 

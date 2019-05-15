@@ -193,5 +193,18 @@ namespace Servicios
             return _context.Proveedores.Where(x => x.ID == idProveedor).FirstOrDefault();
         }
 
+        public void ModificarProveedorCtaCte (decimal ctaCte_Id, string detalle, decimal importeCompra, decimal idProveedor)
+        {
+            var proveedorCtaCte = _context.ProveedoresCtaCte.Where(x => x.ID == ctaCte_Id).FirstOrDefault();
+
+            if (proveedorCtaCte != null)
+            {
+                proveedorCtaCte.Detalle = detalle;
+                proveedorCtaCte.Haber = importeCompra;
+                proveedorCtaCte.Proveedores = _context.Proveedores.Where(x => x.ID == idProveedor).FirstOrDefault();
+                _context.SaveChanges();
+            }
+        }
+
     }
 }

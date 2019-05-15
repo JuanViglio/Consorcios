@@ -100,7 +100,12 @@ namespace WebSistemmas.Consorcios
 
             #region Validaciones
 
-            if (txtDepartamento.Text == "")
+            if (!txtNumero.Text.IsNumeric())
+            {
+                lblError.Text = "No se ingreso la UF correctamente";
+                return;
+            }
+            else if (txtDepartamento.Text == "")
             {
                 lblError.Text = "No se ingreso el Departamento de la Unidad Funcional";
                 return;
@@ -140,7 +145,17 @@ namespace WebSistemmas.Consorcios
 
             if (txtNumeroNuevo.Text == "")
             {
-                lblError.Text = "No se ingreso el Numero de la Unididad Funcional";
+                lblError.Text = "No se ingreso la UF";
+                return;
+            }
+            else if (!txtNumeroNuevo.Text.IsNumeric())
+            {
+                lblError.Text = "No se ingreso la UF correctamente";
+                return;
+            }
+            else if (txtDepartamentoNuevo.Text == "")
+            {
+                lblError.Text = "No se ingreso el Departamento de la Unidad Funcional";
                 return;
             }
             else if (txtCoeficienteNuevo.Text == "")

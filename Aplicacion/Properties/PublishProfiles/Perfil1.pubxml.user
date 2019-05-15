@@ -9,13 +9,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/DAO.dll">
-      <publishTime>03/16/2019 18:56:19</publishTime>
+      <publishTime>05/06/2019 10:55:00</publishTime>
     </File>
     <File Include="bin/Negocio.dll">
-      <publishTime>03/18/2019 14:39:28</publishTime>
+      <publishTime>05/06/2019 11:48:24</publishTime>
     </File>
     <File Include="bin/Servicios.dll">
-      <publishTime>03/18/2019 14:39:28</publishTime>
+      <publishTime>05/06/2019 11:48:24</publishTime>
     </File>
     <File Include="bin/System.Data.Entity.dll">
       <publishTime>09/26/2012 03:16:08</publishTime>
@@ -24,7 +24,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/15/2018 13:45:39</publishTime>
     </File>
     <File Include="bin/WebSistemmas.dll">
-      <publishTime>03/18/2019 14:39:29</publishTime>
+      <publishTime>05/06/2019 12:09:01</publishTime>
     </File>
     <File Include="Cobranza/Cobros.aspx">
       <publishTime>02/05/2018 23:52:17</publishTime>
@@ -90,7 +90,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/17/2018 00:32:46</publishTime>
     </File>
     <File Include="Consorcios/UnidadesFuncionales.aspx">
-      <publishTime>03/18/2019 14:28:10</publishTime>
+      <publishTime>04/14/2019 19:31:35</publishTime>
     </File>
     <File Include="Consorcios/UnidadesFuncionalesCtaCte.aspx">
       <publishTime>08/29/2018 00:28:46</publishTime>
@@ -297,10 +297,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/14/2018 23:53:33</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>02/10/2018 14:56:37</publishTime>
+      <publishTime>03/21/2019 16:45:50</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/12/2018 00:11:49</publishTime>
+      <publishTime>04/14/2019 18:37:50</publishTime>
     </File>
   </ItemGroup>
 </Project>

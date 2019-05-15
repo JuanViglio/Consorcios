@@ -25,7 +25,8 @@ namespace WebSistemmas.Consorcios
         private const int GrdOrd_ColIdExpensaDetalle = 2;
         private const int GrdEvOrd_ColIdExpensaDetalle = 4;
         private const int GrdEvOrd_ColIdProveedores = 5;
-        private const int GrdEvExt_ColIdExpensaDetalle = 3;
+        private const int GrdEvExt_ColIdExpensaDetalle = 4;
+        private const int GrdEvExt_ColIdProveedores = 5;
         private const int ColIdGasto = 3;
         private const int ColModificar = 5;
         private const int ColEliminar = 6;
@@ -514,10 +515,11 @@ namespace WebSistemmas.Consorcios
 
                         case "MODIFICAR":
                             Session["gastoEvOrdinarioId"] = Convert.ToDecimal(gridViewrow.Cells[GrdEvOrd_ColIdExpensaDetalle].Text);
+                            ddlProveedoresEvOrd.SelectedValue  = gridViewrow.Cells[GrdEvOrd_ColIdProveedores].Text;
+                            GetTipoProveedorEvOrd();
                             txtDetalleGastoEvOrd.Text = gridViewrow.Cells[ColDetalle].Text;
                             txtImporteCompraGastoEvOrd.Text = gridViewrow.Cells[ColImporteCompra].Text;
                             txtImporteEvOrd.Text = gridViewrow.Cells[ColImporteVenta].Text;
-                            ddlProveedoresEvOrd.SelectedValue  = gridViewrow.Cells[GrdEvOrd_ColIdProveedores].Text;
                             btnAgregarGastoEvOrd.Text = "Modificar";
                             break;
                     }
@@ -552,11 +554,11 @@ namespace WebSistemmas.Consorcios
             decimal importeVenta = txtImporteEvOrd.Text.ToDecimal();
             decimal importeCompra = 0;
             decimal proveedorId = Convert.ToInt32(ddlProveedoresEvOrd.SelectedValue);
-            string detalle = txtDetalleGastoEvOrd.Text + " - " + Session["direccionConsorcio"] + " - " + Session["Periodo"];
+            string detalle = txtDetalleGastoEvOrd.Text.ToUpper() + " - " + Session["direccionConsorcio"] + " - " + Session["Periodo"];
 
             if (txtImporteCompraGastoEvOrd.Enabled == true)
                 importeCompra = txtImporteCompraGastoEvOrd.Text.ToDecimal();
-            else if (txtImporteCompraGastoEvOrd.Text == "")
+            else 
                 importeCompra = importeVenta;
 
             if (btnAgregarGastoEvOrd.Text == "Agregar")
@@ -567,12 +569,13 @@ namespace WebSistemmas.Consorcios
             }
             else
             {
-                _expensasServ.ModificarGastoEvOrdinario(gastoEvOrdinarioId, txtDetalleGastoEvOrd.Text.ToUpper(), txtImporteEvOrd.Text.ToDecimal(), importeCompra, proveedorId);
+                var proveedorCtaCte_id = _expensasServ.ModificarGastoEvOrdinario(gastoEvOrdinarioId, txtDetalleGastoEvOrd.Text.ToUpper(), txtImporteEvOrd.Text.ToDecimal(), importeCompra, proveedorId);
 
-                //get ProveedorCtaCte_id
-                //delete ProveedoreCtaCte
-                //agregar Haber
-
+                if (proveedorCtaCte_id.HasValue)
+                {
+                    _proveedoresServ.ModificarProveedorCtaCte(proveedorCtaCte_id.Value, detalle, importeCompra, proveedorId);
+                }
+                
                 btnAgregarGastoEvOrd.Text = "Agregar";
             }
 
@@ -659,6 +662,7 @@ namespace WebSistemmas.Consorcios
         protected void grdGastosExtraordinarios_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             e.Row.Cells[GrdEvExt_ColIdExpensaDetalle].Visible = false;
+            e.Row.Cells[GrdEvExt_ColIdProveedores].Visible = false;
 
             ImageButton imgBorrar;
             imgBorrar = (ImageButton)(e.Row.FindControl("ELIMINARGASTOEVEXTRAORDINARIO"));

@@ -275,9 +275,10 @@ namespace Servicios
             _context.SaveChanges();
         }
 
-        public void ModificarGastoEvOrdinario(int IdGasto, string Detalle, decimal Importe, decimal ImporteCompra, decimal IdProveedores)
+        public decimal? ModificarGastoEvOrdinario(int IdGasto, string Detalle, decimal Importe, decimal ImporteCompra, decimal IdProveedores)
         {
             var gasto = _context.GastosEvOrd.Where(x => x.ID == IdGasto).FirstOrDefault();
+            var proveedorCtaCte_Id = gasto.ProveedoresCtaCte_ID;
 
             gasto.Proveedores_ID = IdProveedores;
             gasto.Detalle = Detalle;
@@ -285,6 +286,8 @@ namespace Servicios
             gasto.ImporteCompra = ImporteCompra;
 
             _context.SaveChanges();
+
+            return proveedorCtaCte_Id;
         }
 
         public void ActualizarTotalGastosEvOrdinarios(decimal idExpensa)
@@ -406,9 +409,29 @@ namespace Servicios
             return gastosModel;
         }
 
-        public List<GastosEvExt> GetGastosEvExtraordinarios(int IdExpensa)
+        public List<GastosEvOrdModel> GetGastosEvExtraordinarios(int IdExpensa)
         {
-            return _context.GastosEvExt.Where(x => x.Expensas.ID == IdExpensa).ToList();
+            //return _context.GastosEvExt.Where(x => x.Expensas.ID == IdExpensa).ToList();
+
+            var proveedoresModel = (from p in _context.Proveedores
+                                    select new ProveedoresModel { Codigo = p.ID, Nombre = p.Nombre }).ToList();
+
+            var gastosModel = (from g in _context.GastosEvExt
+                               join p in _context.Proveedores
+                               on g.Proveedores_ID equals p.ID into proveedores
+                               from pd in proveedores.DefaultIfEmpty()
+                               where g.Expensas.ID == IdExpensa
+                               select new GastosEvOrdModel
+                               {
+                                   ID = g.ID,
+                                   Detalle = g.Detalle,
+                                   Importe = g.Importe,
+                                   ImporteCompra = g.ImporteCompra,
+                                   Proveedor = (pd == null) ? "Ninguno" : pd.Nombre,
+                                   ID_Proveedores = (pd == null) ? 0 : pd.ID
+                               }).ToList();
+
+            return gastosModel;
         }
 
         public decimal GetTotalGastosExtraordinarios(int IdExpensa)

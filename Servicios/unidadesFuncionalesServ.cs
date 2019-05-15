@@ -13,16 +13,17 @@ namespace Servicios
     {
         private ExpensasEntities context = new ExpensasEntities();
 
-        public IEnumerable<UnidadesFuncionalesModel> GetUnidadesFuncionales(string consorciosID, string filtro)
+        public IEnumerable<UnidadesFuncionalesNumericoModel> GetUnidadesFuncionales(string consorciosID, string filtro)
         {
             var dueños = context.Dueños;
-            return (from u in context.UnidadesFuncionales
+            var ufModel = new List<UnidadesFuncionalesNumericoModel>();
+
+            var uf = (from u in context.UnidadesFuncionales
                     join d in context.Dueños
                     on u.Dueños.ID equals d.ID
                     where u.Consorcios.ID == consorciosID 
-                    && ((u.Departamento == filtro) || (u.UF == filtro) || (d.Nombre.Contains(filtro)) || (d.Apellido.Contains(filtro)) || (filtro == string.Empty))
-                    orderby u.UF
-                    select new UnidadesFuncionalesModel()
+                    && ((u.Departamento == filtro) || (u.UF == filtro) || (d.Nombre.Contains(filtro)) || (d.Apellido.Contains(filtro)) || (filtro == string.Empty))                    
+                    select new
                     {
                         Departamento = u.Departamento,
                         ID = u.ID,
@@ -34,6 +35,25 @@ namespace Servicios
                         Aplicar = false,
                         Dueños_Id = d.ID
                     }).ToList();
+
+
+            foreach (var item in uf)
+            {
+                ufModel.Add(new UnidadesFuncionalesNumericoModel()
+                {
+                    Departamento = item.Departamento,
+                    ID = item.ID,
+                    Apellido = item.Apellido,
+                    Nombre = item.Nombre,
+                    UF = Convert.ToInt32(item.UF),
+                    Cochera = item.Cochera,
+                    Coeficiente = item.Coeficiente,
+                    Aplicar = item.Aplicar,
+                    Dueños_Id = item.Dueños_Id
+                });
+            }
+
+            return ufModel.OrderBy(x => x.UF);
         }
 
         public IEnumerable<UnidadesFuncionalesModel> GetUFByPropietarioId (decimal propietarioID)
@@ -253,7 +273,7 @@ namespace Servicios
             context.SaveChanges();
         }
 
-        public IEnumerable<UnidadesFuncionalesModel> ModificarUnidades(string idConsorcio, int idUF, string departamento, string numeroUF, decimal coeficiente, string cochera, decimal idDueño) 
+        public IEnumerable<UnidadesFuncionalesNumericoModel> ModificarUnidades(string idConsorcio, int idUF, string departamento, string numeroUF, decimal coeficiente, string cochera, decimal idDueño) 
         {
             var UF = context.UnidadesFuncionales.Where(x => x.Consorcios.ID == idConsorcio && x.ID == idUF).FirstOrDefault();
             var dueño = context.Dueños.Where(x => x.ID == idDueño).FirstOrDefault();
@@ -268,7 +288,7 @@ namespace Servicios
             return GetUnidadesFuncionales(idConsorcio, string.Empty);
         }
 
-        public IEnumerable<UnidadesFuncionalesModel> AgregarUnidad(string idConsorcio, string idUf, string departamento, decimal coeficiente, string cochera, decimal idDueño)
+        public IEnumerable<UnidadesFuncionalesNumericoModel> AgregarUnidad(string idConsorcio, string idUf, string departamento, decimal coeficiente, string cochera, decimal idDueño)
         {
             var consorcio = context.Consorcios.Where(x => x.ID == idConsorcio).FirstOrDefault();
             var dueño = context.Dueños.Where(x => x.ID == idDueño).FirstOrDefault();

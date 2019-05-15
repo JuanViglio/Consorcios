@@ -11,7 +11,7 @@
             <table>
                 <tr>
                     <td class="auto-style6" style="height: 46px; width: 210px">
-                        Nro / Depto /
+                        UF / Depto /
                         Nombre / Apellido</td>
                     <td class="auto-style5" style="height: 46px; width: 302px">
 
@@ -32,7 +32,7 @@
                         <asp:gridview id="grdUnidades" runat="server" autogeneratecolumns="False" cellpadding="4" forecolor="#333333" gridlines="None" height="150px" onrowcommand="grdUnidades_RowCommand" style="margin-top: 0px; margin-left: 0px; margin-right: 32px;" width="698px" OnRowDataBound="grdUnidades_RowDataBound">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
-                    <asp:BoundField DataField="UF" HeaderText="Numero">
+                    <asp:BoundField DataField="UF" HeaderText="UF">
                     <ItemStyle Font-Bold="False" Font-Names="Calibri" Font-Size="Large" ForeColor="#8888A5" />
                     </asp:BoundField>
                     <asp:BoundField DataField="Departamento" HeaderText="Departamento">
@@ -88,7 +88,7 @@
                                 </tr>                                
                                 <tr>
                                     <td style="width: 130px">
-                                        <asp:label id="Label5" runat="server" text="Numero"></asp:label>
+                                        <asp:label id="Label5" runat="server" text="UF"></asp:label>
                                     </td>
                                     <td colspan="2">
                                         <asp:textbox id="txtNumero" runat="server" width="155px" style="margin-left: 0px"></asp:textbox>
@@ -152,7 +152,7 @@
                             <table style="margin-top: 47px; width: 375px;">
                                 <tr>
                                     <td style="width: 130px">
-                                        <asp:label id="Label6" runat="server" text="Numero"></asp:label>
+                                        <asp:label id="Label6" runat="server" text="UF"></asp:label>
                                     </td>
                                     <td colspan="2">
                                         <asp:textbox id="txtNumeroNuevo" runat="server" width="155px" style="margin-left: 0px"></asp:textbox>

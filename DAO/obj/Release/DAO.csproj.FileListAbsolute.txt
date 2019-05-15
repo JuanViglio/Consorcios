@@ -21,6 +21,6 @@ D:\Sistemmas\Consorcios\DAO\bin\Release\DAO.dll
 D:\Sistemmas\Consorcios\DAO\bin\Release\DAO.pdb
 D:\Sistemmas\Consorcios\DAO\bin\Release\EntityFramework.dll
 D:\Sistemmas\Consorcios\DAO\bin\Release\EntityFramework.xml
-D:\Sistemmas\Consorcios\DAO\obj\Release\DAO.csprojResolveAssemblyReference.cache
 D:\Sistemmas\Consorcios\DAO\obj\Release\DAO.dll
 D:\Sistemmas\Consorcios\DAO\obj\Release\DAO.pdb
+D:\Sistemmas\Consorcios\DAO\obj\Release\DAO.csprojResolveAssemblyReference.cache

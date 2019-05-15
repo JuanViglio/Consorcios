@@ -5,7 +5,7 @@ namespace Servicios.Interfaces
 {
     public interface IUnidadesServ
     {
-        IEnumerable<UnidadesFuncionalesModel> GetUnidadesFuncionales(string consorciosID, string filtro);
+        IEnumerable<UnidadesFuncionalesNumericoModel> GetUnidadesFuncionales(string consorciosID, string filtro);
 
         IEnumerable<UnidadesFuncionalesModel> GetUnidadesFuncionalesCombo(string consorciosID);
 
@@ -13,9 +13,9 @@ namespace Servicios.Interfaces
 
         List<UnidadesFuncionales> GetAllUnidadesFuncionales();
 
-        IEnumerable<UnidadesFuncionalesModel> ModificarUnidades(string idConsorcio, int idUF, string departamento, string idUf, decimal coeficiente, string cochera, decimal idDueño);
+        IEnumerable<UnidadesFuncionalesNumericoModel> ModificarUnidades(string idConsorcio, int idUF, string departamento, string idUf, decimal coeficiente, string cochera, decimal idDueño);
 
-        IEnumerable<UnidadesFuncionalesModel> AgregarUnidad(string idConsorcio, string idUf, string departamento, decimal coeficiente, string cochera, decimal idDueño);
+        IEnumerable<UnidadesFuncionalesNumericoModel> AgregarUnidad(string idConsorcio, string idUf, string departamento, decimal coeficiente, string cochera, decimal idDueño);
 
         UnidadesFuncionales GetUnidadFuncional(string consorciosID, string UF);
 

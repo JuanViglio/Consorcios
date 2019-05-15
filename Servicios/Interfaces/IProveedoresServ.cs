@@ -30,5 +30,7 @@ namespace Servicios.Interfaces
         void ActualizarSaldo(decimal idProveedor);
 
         Proveedores GetProveedorById(decimal idProveedor);
+
+        void ModificarProveedorCtaCte(decimal ctaCte_Id, string detalle, decimal importeCompra, decimal idProveedor);
     }
 }

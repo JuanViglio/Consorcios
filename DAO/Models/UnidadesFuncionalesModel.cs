@@ -15,4 +15,19 @@
         public string PeriodoDetalle { get; set; }
         public decimal Dueños_Id { get; set; }
     }
+
+    public class UnidadesFuncionalesNumericoModel
+    {
+        public decimal ID { get; set; }
+        public string Departamento { get; set; }
+        public string Apellido { get; set; }
+        public string Nombre { get; set; }
+        public decimal? Coeficiente { get; set; }
+        public decimal PagoId { get; set; }
+        public string Direccion { get; set; }
+        public int UF { get; set; }
+        public string Cochera { get; set; }
+        public bool Aplicar { get; set; }
+        public decimal Dueños_Id { get; set; }
+    }
 }

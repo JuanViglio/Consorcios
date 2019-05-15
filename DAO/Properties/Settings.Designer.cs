@@ -26,8 +26,7 @@ namespace DAO.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-OTQ1PQ3\\SQLEXPRESS;Initial Catalog=Basettaa2;Integrated Secur" +
-            "ity=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=Basettaa2;Integrated Security=True")]
         public string Basettaa2ConnectionString {
             get {
                 return ((string)(this["Basettaa2ConnectionString"]));
