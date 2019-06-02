@@ -18,3 +18,17 @@ D:\Sistemmas\Consorcios\Negocio\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\Sistemmas\Consorcios\Negocio\obj\Debug\Negocio.csprojResolveAssemblyReference.cache
 D:\Sistemmas\Consorcios\Negocio\obj\Debug\Negocio.dll
 D:\Sistemmas\Consorcios\Negocio\obj\Debug\Negocio.pdb
+D:\Sistemmas\ConsorciosOK\Negocio\bin\Debug\Negocio.dll
+D:\Sistemmas\ConsorciosOK\Negocio\bin\Debug\Negocio.pdb
+D:\Sistemmas\ConsorciosOK\Negocio\bin\Debug\DAO.dll
+D:\Sistemmas\ConsorciosOK\Negocio\bin\Debug\Servicios.dll
+D:\Sistemmas\ConsorciosOK\Negocio\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Sistemmas\ConsorciosOK\Negocio\bin\Debug\DAO.pdb
+D:\Sistemmas\ConsorciosOK\Negocio\bin\Debug\DAO.dll.config
+D:\Sistemmas\ConsorciosOK\Negocio\bin\Debug\Servicios.pdb
+D:\Sistemmas\ConsorciosOK\Negocio\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Sistemmas\ConsorciosOK\Negocio\obj\Debug\Negocio.csprojAssemblyReference.cache
+D:\Sistemmas\ConsorciosOK\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+D:\Sistemmas\ConsorciosOK\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+D:\Sistemmas\ConsorciosOK\Negocio\obj\Debug\Negocio.dll
+D:\Sistemmas\ConsorciosOK\Negocio\obj\Debug\Negocio.pdb

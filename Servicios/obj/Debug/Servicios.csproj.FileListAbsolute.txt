@@ -61,3 +61,13 @@ D:\Sistemmas\Consorcios\Servicios\bin\Debug\DAO.pdb
 D:\Sistemmas\Consorcios\Servicios\obj\Debug\Servicios.csprojResolveAssemblyReference.cache
 D:\Sistemmas\Consorcios\Servicios\obj\Debug\Servicios.dll
 D:\Sistemmas\Consorcios\Servicios\obj\Debug\Servicios.pdb
+D:\Sistemmas\ConsorciosOK\Servicios\bin\Debug\Servicios.dll
+D:\Sistemmas\ConsorciosOK\Servicios\bin\Debug\Servicios.pdb
+D:\Sistemmas\ConsorciosOK\Servicios\bin\Debug\DAO.dll
+D:\Sistemmas\ConsorciosOK\Servicios\bin\Debug\DAO.pdb
+D:\Sistemmas\ConsorciosOK\Servicios\bin\Debug\DAO.dll.config
+D:\Sistemmas\ConsorciosOK\Servicios\obj\Debug\Servicios.csprojAssemblyReference.cache
+D:\Sistemmas\ConsorciosOK\Servicios\obj\Debug\Servicios.csproj.CoreCompileInputs.cache
+D:\Sistemmas\ConsorciosOK\Servicios\obj\Debug\Servicios.csproj.CopyComplete
+D:\Sistemmas\ConsorciosOK\Servicios\obj\Debug\Servicios.dll
+D:\Sistemmas\ConsorciosOK\Servicios\obj\Debug\Servicios.pdb

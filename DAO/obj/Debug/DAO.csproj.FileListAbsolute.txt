@@ -48,3 +48,13 @@ D:\Sistemmas\Consorcios\DAO\bin\Debug\EntityFramework.xml
 D:\Sistemmas\Consorcios\DAO\obj\Debug\DAO.dll
 D:\Sistemmas\Consorcios\DAO\obj\Debug\DAO.pdb
 D:\Sistemmas\Consorcios\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
+D:\Sistemmas\ConsorciosOK\DAO\bin\Debug\DAO.dll.config
+D:\Sistemmas\ConsorciosOK\DAO\bin\Debug\DAO.dll
+D:\Sistemmas\ConsorciosOK\DAO\bin\Debug\DAO.pdb
+D:\Sistemmas\ConsorciosOK\DAO\bin\Debug\EntityFramework.dll
+D:\Sistemmas\ConsorciosOK\DAO\bin\Debug\EntityFramework.xml
+D:\Sistemmas\ConsorciosOK\DAO\obj\Debug\DAO.csprojAssemblyReference.cache
+D:\Sistemmas\ConsorciosOK\DAO\obj\Debug\DAO.csproj.CoreCompileInputs.cache
+D:\Sistemmas\ConsorciosOK\DAO\obj\Debug\DAO.csproj.CopyComplete
+D:\Sistemmas\ConsorciosOK\DAO\obj\Debug\DAO.dll
+D:\Sistemmas\ConsorciosOK\DAO\obj\Debug\DAO.pdb
