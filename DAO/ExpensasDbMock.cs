@@ -13,7 +13,7 @@ namespace DAO
         {
             Expensas = new List<Expensa>();
             Expensas.Add(new DAO.Expensa { ID = 1, PeriodoNumerico = 201801 });
-            Expensas.Add(new DAO.Expensa { ID = 2, PeriodoNumerico = 201802 });
+            Expensas.Add(new DAO.Expensa { ID = 2, PeriodoNumerico = 201802 }); 
         }
     }
 
