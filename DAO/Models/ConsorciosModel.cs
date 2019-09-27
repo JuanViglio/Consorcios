@@ -7,7 +7,7 @@ namespace DAO
 {
     public class ConsorciosModel
     {
-        public string Id { get; set; }
+        public string Id { get; set; } 
         public string Direccion { get; set; }
     }
 }
