@@ -8,7 +8,7 @@ namespace Servicios
     public class dueñosServ
     {
         private ExpensasEntities _context;
-        //
+
         public dueñosServ()
         {
             _context = new ExpensasEntities();
