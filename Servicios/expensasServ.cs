@@ -16,7 +16,7 @@ namespace Servicios
         private const int GastoTipoEvOrdinario = 2;
         private const int GastoTipoEvExtraordinario = 3;
         readonly ISegurosServ _segurosServ;
-        //ffff
+        //
         private ExpensasEntities _context; 
 
         public expensasServ(ExpensasEntities context)

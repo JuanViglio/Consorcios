@@ -13,7 +13,7 @@ namespace Servicios
         {
             _context = new ExpensasEntities();
         }
-        //gffff
+
         public List<DueñosModel> GetDueños ()
         {
             List<DueñosModel> dueñosModel = new List<DueñosModel>();
